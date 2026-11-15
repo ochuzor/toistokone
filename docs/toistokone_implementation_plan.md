@@ -92,15 +92,15 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 
 **Tasks**
 
-- [ ] Store unanswered question objects, their exact options/sentence, current answer feedback state, and progress-bar capacity in versioned frontend local storage.
-- [ ] Restore the same queue on refresh and when navigating back to practice; if storage is missing/corrupt/incompatible, request a fresh backend batch.
-- [ ] When queue has **three or fewer** remaining cards, request another batch and append it; prevent concurrent fetches and request loops.
-- [ ] Filter cards already in the local remaining queue when appending, because backend only guarantees uniqueness within each batch.
-- [ ] Keep answered-but-not-advanced card visible with feedback on reload; persist pending `attempt_id` for safe retries.
-- [ ] Implement progress bar as `remaining / capacity`, decreasing on Next and refilling when a new batch is appended; persist capacity across reloads.
-- [ ] Handle network failures, zero-result batches, and stale queue questions after content rebuild gracefully.
+- [x] Store unanswered question objects, their exact options/sentence, current answer feedback state, and progress-bar capacity in versioned frontend local storage.
+- [x] Restore the same queue on refresh and when navigating back to practice; if storage is missing/corrupt/incompatible, request a fresh backend batch.
+- [x] When queue has **three or fewer** remaining cards, request another batch and append it; prevent concurrent fetches and request loops.
+- [x] Filter cards already in the local remaining queue when appending, because backend only guarantees uniqueness within each batch.
+- [x] Keep answered-but-not-advanced card visible with feedback on reload; persist pending `attempt_id` for safe retries.
+- [x] Implement progress bar as `remaining / capacity`, decreasing on Next and refilling when a new batch is appended; persist capacity across reloads.
+- [x] Handle network failures, zero-result batches, and stale queue questions after content rebuild gracefully.
 
-**Exit gate:** Practice can continue without session boundaries; refresh, route changes, and app restart restore the exact remaining questions. Backend never stores active queue.
+**Exit gate:** Complete — browser-local queue state restores exact questions and answer feedback after reload, while duplicate or empty refills safely leave an undersized queue without request loops.
 
 ### Phase 6 — Home summary and polish
 

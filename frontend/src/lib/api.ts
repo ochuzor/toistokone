@@ -35,12 +35,12 @@ export async function fetchBatch(): Promise<QuizQuestion[]> {
   return response.questions
 }
 
-export function submitAnswer(card: CardReference, selectedOptionId: string, correctOptionId: string): Promise<AnswerResult> {
+export function submitAnswer(card: CardReference, selectedOptionId: string, correctOptionId: string, attemptId: string): Promise<AnswerResult> {
   return request<AnswerResult>('/api/answers', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      attempt_id: crypto.randomUUID(),
+      attempt_id: attemptId,
       card,
       selected_option_id: selectedOptionId,
       correct_option_id: correctOptionId,

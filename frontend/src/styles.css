@@ -42,3 +42,4 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .text-button { margin-right: 1rem; border: 0; background: none; color: #16704b; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; }
 .back-link { display: inline-block; margin-top: 1.5rem; color: #475569; }
 .error { color: #b91c1c; font-weight: 600; }
+.notice { color: #64748b; font-size: .9rem; }
