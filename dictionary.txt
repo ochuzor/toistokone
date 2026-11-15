@@ -1,3 +1,8 @@
 # Finnish base word - English meaning / additional meaning
 talo - house / home
 ruoka - food / meal
+auto - car
+melkein - almost / nearly / close to
+asua - to live (somewhere)
+kielioppi - grammar
+tärkeä - important / crucial

@@ -1,2 +1,5 @@
 # base word - additional form / additional form
 ruoka - ruokaa / ruoasta / ruoan
+auto - autosta / auton
+asua - asut
+tärkeä - tärkeää / tärkeät / tärkeämpi
