@@ -1,4 +1,5 @@
 .env
+.codex/config.toml
 .venv/
 __pycache__/
 *.py[cod]
