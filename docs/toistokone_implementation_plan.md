@@ -119,14 +119,14 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 
 **Tasks**
 
-- [ ] Run pipeline, backend, and frontend tests; fix blocking failures.
-- [ ] Manually verify: initial score 0; reach score 3; forms unlock; incorrect at 2 returns to 1; score 3 stays mastered; reset; continue practicing; refresh; restart; reimport content; progress retained.
-- [ ] Test Finnish accented characters, case-insensitive word boundaries, repeated target forms, multiple English translations, duplicate sentence imports, and no matching sentences.
-- [ ] Test quota cases and local queue refill with both full and undersized batches.
-- [ ] Verify that the pipeline never writes `progress.sqlite`, and the backend never persists the active queue.
-- [ ] Deliver concise README and a list of any deviations/open decisions; no unrequested scope expansion.
+- [x] Run pipeline, backend, and frontend tests; fix blocking failures.
+- [x] Manually verify: initial score 0; reach score 3; forms unlock; incorrect at 2 returns to 1; score 3 stays mastered; reset; continue practicing; refresh; restart; reimport content; progress retained.
+- [x] Test Finnish accented characters, case-insensitive word boundaries, repeated target forms, multiple English translations, duplicate sentence imports, and no matching sentences.
+- [x] Test quota cases and local queue refill with both full and undersized batches.
+- [x] Verify that the pipeline never writes `progress.sqlite`, and the backend never persists the active queue.
+- [x] Deliver concise README and a list of any deviations/open decisions; no unrequested scope expansion.
 
-**Exit gate:** All PRD acceptance criteria pass, and the app is usable for the next Finnish lesson.
+**Exit gate:** Complete — the full regression suite and real reimport pass, with `progress.sqlite` unchanged.
 
 ## 3. Suggested coding-agent execution protocol
 
