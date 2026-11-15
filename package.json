@@ -1,0 +1,14 @@
+{
+  "name": "toistokone",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": ".venv/bin/python -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "test:backend": ".venv/bin/python -m unittest discover -s backend/tests -v",
+    "test:frontend": "npm --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

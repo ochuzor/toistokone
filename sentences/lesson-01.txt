@@ -1,0 +1,3 @@
+# Finnish sentence - English translation / additional translation
+Minä syön ruokaa. - I eat food. / I am eating food.
+Ruoka on hyvää. - The food is good.

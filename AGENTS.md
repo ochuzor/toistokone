@@ -43,6 +43,26 @@ imports, and mastery tracking.
 Never overwrite or reset the progress database during
 content imports.
 
+
+#### SQLite MCP Servers
+
+Two SQLite MCP connections are available:
+
+- `sqlite_content`: Generated vocabulary, word forms,
+  and example sentences.
+- `sqlite_progress`: Persistent mastery scores and
+  practice history.
+
+Use the appropriate connection when inspecting data.
+
+The content database may be rebuilt by the import pipeline.
+
+The progress database must never be deleted, replaced,
+or reset by the import pipeline.
+
+Use read-only SQL queries for inspection whenever possible.
+
+
 ### Playwright
 Use browser automation to verify:
 - Navigation between Home and Practice

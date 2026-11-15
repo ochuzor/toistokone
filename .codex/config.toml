@@ -5,10 +5,23 @@ args = ["-y", "@upstash/context7-mcp"]
 # Optional: Add your free API key for 1,000 calls/month
 # env = { CONTEXT7_API_KEY = "ctx7sk-your-free-key" }
 
-# 2. Local SQLite database inspection (adjust path to your .db file)
-[mcp_servers.sqlite]
+# SQLite — generated vocabulary and sentence content
+[mcp_servers.sqlite_content]
 command = "npx"
-args = ["-y", "mcp-server-sqlite-npx", "./backend/app.db"]
+args = [
+  "-y",
+  "mcp-server-sqlite-npx",
+  "data/content.sqlite"
+]
+
+# SQLite — persistent learning progress
+[mcp_servers.sqlite_progress]
+command = "npx"
+args = [
+  "-y",
+  "mcp-server-sqlite-npx",
+  "data/progress.sqlite"
+]
 
 # 3. PostgreSQL database inspection (adjust connection string)
 # [mcp_servers.postgres]
@@ -18,4 +31,9 @@ args = ["-y", "mcp-server-sqlite-npx", "./backend/app.db"]
 # 4. Browser testing for your vanilla React frontend
 [mcp_servers.playwright]
 command = "npx"
-args = ["-y", "@playwright/mcp@latest"]
+args = [
+  "-y",
+  "@playwright/mcp@latest",
+  "--browser=chromium",
+  "--headless"
+]

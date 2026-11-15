@@ -1,80 +1,12 @@
-
-# ==========================================
-# ToistoKone — .gitignore
-# ==========================================
-
-# Node.js
-node_modules/
-dist/
-.vite/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Python
+.env
+.venv/
 __pycache__/
 *.py[cod]
-*.pyo
-.venv/
-venv/
-env/
+node_modules/
+frontend/node_modules/
+frontend/dist/
+data/content.sqlite
+data/progress.sqlite
+data/import-report.txt
 .pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-*.egg-info/
-build/
-
-# Environment variables and local secrets
-.env
-.env.*
-!.env.example
-
-# SQLite databases and temporary files
-*.db
-*.db-shm
-*.db-wal
-*.sqlite
-*.sqlite3
-*.sqlite-shm
-*.sqlite-wal
-*.sqlite3-shm
-*.sqlite3-wal
-
-# Generated import reports
-reports/
-import-report*.txt
-import-report*.md
-
-# Local practice queue / state
-*.local.json
-
-# IDE / editor
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Operating system
-.DS_Store
-Thumbs.db
-Desktop.ini
-
-# Logs
-*.log
-logs/
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-*.bak
-*.orig
-
-# Test / coverage output
 coverage/
-test-results/
-playwright-report/

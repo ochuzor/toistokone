@@ -1,0 +1,3 @@
+# Finnish base word - English meaning / additional meaning
+talo - house / home
+ruoka - food / meal
