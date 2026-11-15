@@ -14,6 +14,8 @@ class ConfigurationError(ValueError):
 @dataclass(frozen=True)
 class Settings:
     quiz_batch_size: int
+    content_db_path: Path
+    progress_db_path: Path
 
 
 def _read_dotenv(path: Path) -> dict[str, str]:
@@ -42,4 +44,10 @@ def load_settings(env: dict[str, str] | None = None) -> Settings:
         raise ConfigurationError("QUIZ_BATCH_SIZE must be a positive integer") from error
     if quiz_batch_size <= 0:
         raise ConfigurationError("QUIZ_BATCH_SIZE must be a positive integer")
-    return Settings(quiz_batch_size=quiz_batch_size)
+    content_db_path = environment.get("CONTENT_DB_PATH", dotenv_values.get("CONTENT_DB_PATH", "data/content.sqlite"))
+    progress_db_path = environment.get("PROGRESS_DB_PATH", dotenv_values.get("PROGRESS_DB_PATH", "data/progress.sqlite"))
+    return Settings(
+        quiz_batch_size=quiz_batch_size,
+        content_db_path=PROJECT_ROOT / content_db_path,
+        progress_db_path=PROJECT_ROOT / progress_db_path,
+    )

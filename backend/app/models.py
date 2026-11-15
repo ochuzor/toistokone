@@ -1,0 +1,51 @@
+from __future__ import annotations
+
+from typing import Literal
+
+from pydantic import BaseModel
+
+
+CardType = Literal["vocabulary", "word_form"]
+
+
+class CardReference(BaseModel):
+    type: CardType
+    base_word: str
+    target_form: str = ""
+
+
+class AnswerRequest(BaseModel):
+    attempt_id: str
+    card: CardReference
+    selected_option_id: str
+    correct_option_id: str
+
+
+class AnswerResult(BaseModel):
+    correct: bool
+    score_before: int
+    score_after: int
+    mastered: bool
+
+
+class ResetRequest(BaseModel):
+    card: CardReference
+
+
+class ResetResult(BaseModel):
+    score: int
+
+
+class CardStats(BaseModel):
+    total: int
+    mastered: int
+
+
+class OverallStats(CardStats):
+    mastery_percent: float
+
+
+class StatsResponse(BaseModel):
+    vocabulary: CardStats
+    word_forms: CardStats
+    overall: OverallStats

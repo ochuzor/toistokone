@@ -45,16 +45,16 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 
 **Tasks**
 
-- [ ] Create `progress.sqlite` on backend startup (not during pipeline); implement `card_progress` and `practice_attempts` schema.
-- [ ] Key vocabulary cards by exact base spelling and word-form cards by exact `(base, form)` spelling; never key progress to regenerated content IDs.
-- [ ] Implement score transitions: `0→1/0`, `1→2/1`, `2→3/1`, `3→3/3` (correct/incorrect).
-- [ ] Implement `POST /api/answers` with atomic progress/history update and client-generated `attempt_id` idempotency.
-- [ ] Update last-practiced time and attempt history even for mastered cards; do not modify score 3.
-- [ ] Implement `POST /api/cards/reset` (score to 0, retain history).
-- [ ] Implement `GET /api/stats` using current content plus progress, including base-form word-form cards.
-- [ ] Keep orphaned progress if content is removed; resetting a vocabulary card below 3 temporarily gates its forms without erasing their scores.
+- [x] Create `progress.sqlite` on backend startup (not during pipeline); implement `card_progress` and `practice_attempts` schema.
+- [x] Key vocabulary cards by exact base spelling and word-form cards by exact `(base, form)` spelling; never key progress to regenerated content IDs.
+- [x] Implement score transitions: `0→1/0`, `1→2/1`, `2→3/1`, `3→3/3` (correct/incorrect).
+- [x] Implement `POST /api/answers` with atomic progress/history update and client-generated `attempt_id` idempotency.
+- [x] Update last-practiced time and attempt history even for mastered cards; do not modify score 3.
+- [x] Implement `POST /api/cards/reset` (score to 0, retain history).
+- [x] Implement `GET /api/stats` using current content plus progress, including base-form word-form cards.
+- [x] Keep orphaned progress if content is removed; resetting a vocabulary card below 3 temporarily gates its forms without erasing their scores.
 
-**Exit gate:** Automated tests cover all transitions, reset, idempotent retries, and persistence across content DB rebuild. Stats are correct for unattempted and mastered cards.
+**Exit gate:** Complete — automated tests cover transitions, reset, idempotent retries, current-content stats, and progress persistence across content rebuilds.
 
 ### Phase 3 — Sentence search and quiz batch API
 

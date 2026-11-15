@@ -1,0 +1,66 @@
+from __future__ import annotations
+
+import tempfile
+import unittest
+from pathlib import Path
+
+from fastapi import HTTPException
+
+from backend.app.config import Settings
+from backend.app.db import initialize_progress_database
+from backend.app.main import answer, app, reset, stats
+from backend.app.models import AnswerRequest, ResetRequest
+from backend.pipeline import run_import
+
+
+class ProgressApiTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temporary_directory = tempfile.TemporaryDirectory()
+        root = Path(self.temporary_directory.name)
+        (root / "sentences").mkdir()
+        (root / "dictionary.txt").write_text("talo - house\n", encoding="utf-8")
+        (root / "word-forms.txt").write_text("", encoding="utf-8")
+        (root / "sentences" / "lesson.txt").write_text("Talo on suuri. - The house is big.\n", encoding="utf-8")
+        run_import(root)
+        self.settings = Settings(
+            quiz_batch_size=20,
+            content_db_path=root / "data" / "content.sqlite",
+            progress_db_path=root / "data" / "progress.sqlite",
+        )
+        initialize_progress_database(self.settings.progress_db_path)
+        app.state.settings = self.settings
+
+    def tearDown(self) -> None:
+        self.temporary_directory.cleanup()
+
+    def test_answer_reset_and_stats_routes(self) -> None:
+        payload = {
+            "attempt_id": "attempt-1",
+            "card": {"type": "vocabulary", "base_word": "talo", "target_form": ""},
+            "selected_option_id": "a",
+            "correct_option_id": "a",
+        }
+        result = answer(AnswerRequest(**payload))
+        self.assertEqual(result.model_dump(), {"correct": True, "score_before": 0, "score_after": 1, "mastered": False})
+
+        retry = answer(AnswerRequest(**{**payload, "selected_option_id": "wrong"}))
+        self.assertEqual(retry.model_dump(), result.model_dump())
+
+        self.assertEqual(stats().overall.model_dump(), {"total": 2, "mastered": 0, "mastery_percent": 0.0})
+        self.assertEqual(reset(ResetRequest(card=payload["card"])).model_dump(), {"score": 0})
+
+    def test_rejects_card_absent_from_current_content(self) -> None:
+        with self.assertRaises(HTTPException) as raised:
+            answer(
+                AnswerRequest(
+                    attempt_id="missing-card",
+                    card={"type": "word_form", "base_word": "talo", "target_form": "talossa"},
+                    selected_option_id="a",
+                    correct_option_id="a",
+                )
+            )
+        self.assertEqual(raised.exception.status_code, 404)
+
+
+if __name__ == "__main__":
+    unittest.main()
