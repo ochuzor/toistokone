@@ -24,6 +24,7 @@ class ProgressApiTests(unittest.TestCase):
         run_import(root)
         self.settings = Settings(
             quiz_batch_size=20,
+            card_score_cooldown_minutes=15,
             content_db_path=root / "data" / "content.sqlite",
             progress_db_path=root / "data" / "progress.sqlite",
         )
@@ -42,6 +43,9 @@ class ProgressApiTests(unittest.TestCase):
         }
         result = answer(AnswerRequest(**payload))
         self.assertEqual(result.model_dump(), {"correct": True, "score_before": 0, "score_after": 1, "mastered": False})
+
+        cooldown_attempt = answer(AnswerRequest(**{**payload, "attempt_id": "attempt-2"}))
+        self.assertEqual(cooldown_attempt.model_dump(), {"correct": True, "score_before": 1, "score_after": 1, "mastered": False})
 
         retry = answer(AnswerRequest(**{**payload, "selected_option_id": "wrong"}))
         self.assertEqual(retry.model_dump(), result.model_dump())

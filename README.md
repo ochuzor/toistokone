@@ -58,7 +58,7 @@ Only direct-child `.txt` files under `sentences/` are imported. Re-running a nor
 
 ## Configuration and v1 limits
 
-`.env` sets `QUIZ_BATCH_SIZE` (default `20`) and local content/progress database paths. ToistoKone is local-only in v1: it has no accounts or sync, sentence matching is exact whole-word matching, and ambiguous spellings are not resolved. Content is imported from your files; the app does not generate or validate sentences.
+`.env` sets `QUIZ_BATCH_SIZE` (default `20`), `CARD_SCORE_COOLDOWN_MINUTES` (default `15`), and local content/progress database paths. After a card's score increases, answer attempts continue to be recorded but cannot change that card's score until its cooldown expires. Set `CARD_SCORE_COOLDOWN_MINUTES=0` to disable this delay. ToistoKone is local-only: it has no accounts or sync, sentence matching is exact whole-word matching, and ambiguous spellings are not resolved. Content is imported from your files; the app does not generate or validate sentences.
 
 ## Tests
 

@@ -75,7 +75,7 @@ class BatchConstructionTests(unittest.TestCase):
         initialize_progress_database(self.progress)
         food = CardReference(type="vocabulary", base_word="ruoka")
         for attempt_id in ("food-1", "food-2", "food-3"):
-            record_answer(self.progress, food, attempt_id, True)
+            record_answer(self.progress, food, attempt_id, True, cooldown_minutes=0)
 
     def tearDown(self) -> None:
         self.temporary_directory.cleanup()

@@ -14,6 +14,7 @@ class ConfigurationError(ValueError):
 @dataclass(frozen=True)
 class Settings:
     quiz_batch_size: int
+    card_score_cooldown_minutes: int
     content_db_path: Path
     progress_db_path: Path
 
@@ -37,6 +38,9 @@ def load_settings(env: dict[str, str] | None = None) -> Settings:
     dotenv_values = _read_dotenv(PROJECT_ROOT / ".env")
     environment = os.environ if env is None else env
     raw_batch_size = environment.get("QUIZ_BATCH_SIZE", dotenv_values.get("QUIZ_BATCH_SIZE", "20"))
+    raw_cooldown_minutes = environment.get(
+        "CARD_SCORE_COOLDOWN_MINUTES", dotenv_values.get("CARD_SCORE_COOLDOWN_MINUTES", "15")
+    )
 
     try:
         quiz_batch_size = int(raw_batch_size)
@@ -44,10 +48,17 @@ def load_settings(env: dict[str, str] | None = None) -> Settings:
         raise ConfigurationError("QUIZ_BATCH_SIZE must be a positive integer") from error
     if quiz_batch_size <= 0:
         raise ConfigurationError("QUIZ_BATCH_SIZE must be a positive integer")
+    try:
+        card_score_cooldown_minutes = int(raw_cooldown_minutes)
+    except (TypeError, ValueError) as error:
+        raise ConfigurationError("CARD_SCORE_COOLDOWN_MINUTES must be a non-negative integer") from error
+    if card_score_cooldown_minutes < 0:
+        raise ConfigurationError("CARD_SCORE_COOLDOWN_MINUTES must be a non-negative integer")
     content_db_path = environment.get("CONTENT_DB_PATH", dotenv_values.get("CONTENT_DB_PATH", "data/content.sqlite"))
     progress_db_path = environment.get("PROGRESS_DB_PATH", dotenv_values.get("PROGRESS_DB_PATH", "data/progress.sqlite"))
     return Settings(
         quiz_batch_size=quiz_batch_size,
+        card_score_cooldown_minutes=card_score_cooldown_minutes,
         content_db_path=PROJECT_ROOT / content_db_path,
         progress_db_path=PROJECT_ROOT / progress_db_path,
     )

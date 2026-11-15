@@ -6,6 +6,7 @@ from backend.app.config import ConfigurationError, load_settings
 class SettingsTests(unittest.TestCase):
     def test_default_batch_size_is_twenty(self) -> None:
         self.assertEqual(load_settings({}).quiz_batch_size, 20)
+        self.assertEqual(load_settings({}).card_score_cooldown_minutes, 15)
 
     def test_accepts_positive_batch_size(self) -> None:
         self.assertEqual(load_settings({"QUIZ_BATCH_SIZE": "7"}).quiz_batch_size, 7)
@@ -15,3 +16,10 @@ class SettingsTests(unittest.TestCase):
             with self.subTest(value=value):
                 with self.assertRaises(ConfigurationError):
                     load_settings({"QUIZ_BATCH_SIZE": value})
+
+    def test_accepts_zero_cooldown_and_rejects_invalid_values(self) -> None:
+        self.assertEqual(load_settings({"CARD_SCORE_COOLDOWN_MINUTES": "0"}).card_score_cooldown_minutes, 0)
+        for value in ("-1", "not-a-number"):
+            with self.subTest(value=value):
+                with self.assertRaises(ConfigurationError):
+                    load_settings({"CARD_SCORE_COOLDOWN_MINUTES": value})

@@ -109,6 +109,7 @@ CREATE TABLE card_progress (
   target_form TEXT NOT NULL DEFAULT '',
   score INTEGER NOT NULL DEFAULT 0 CHECK (score BETWEEN 0 AND 3),
   last_practiced_at TEXT,           -- UTC ISO-8601
+  last_score_increased_at TEXT,     -- UTC ISO-8601; nullable until first increase
   attempt_count INTEGER NOT NULL DEFAULT 0,
   correct_count INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (card_type, base_word, target_form)
@@ -139,7 +140,7 @@ Key conventions:
 
 ### Atomic answer submission
 
-Within a transaction: check whether `attempt_id` already exists; if yes return the stored result without changing score again. Otherwise read score, apply transition, insert/update progress, insert attempt, commit, return the new score. An incorrect answer at score 0 stays 0; at score 1 stays 1; at score 2 becomes 1; at score 3 stays 3. A correct answer increments up to 3. Even score-3 attempts update last-practiced timestamp and history.
+Within a transaction: check whether `attempt_id` already exists; if yes return the stored result without changing score again. Otherwise read score and `last_score_increased_at`. If the configured `CARD_SCORE_COOLDOWN_MINUTES` has not elapsed since that timestamp, retain the score; otherwise apply the transition. Insert/update progress, insert the attempt, commit, and return the score. An incorrect answer at score 0 stays 0; at score 1 stays 1; at score 2 becomes 1; at score 3 stays 3. A correct answer increments up to 3. Record `last_score_increased_at` only when score rises. Every answer updates last-practiced time and history, including cooldown-blocked and score-3 attempts. Existing progress databases are migrated in place to add the timestamp column.
 
 Manual reset changes only the selected card's `score` to 0; it does not delete its attempt history. It is a separate action from answering.
 
@@ -355,6 +356,7 @@ Example `.env`:
 
 ```dotenv
 QUIZ_BATCH_SIZE=20
+CARD_SCORE_COOLDOWN_MINUTES=15
 CONTENT_DB_PATH=data/content.sqlite
 PROGRESS_DB_PATH=data/progress.sqlite
 API_HOST=127.0.0.1

@@ -47,6 +47,7 @@ def answer(request: AnswerRequest) -> AnswerResult:
         request.card,
         request.attempt_id,
         request.selected_option_id == request.correct_option_id,
+        get_settings().card_score_cooldown_minutes,
     )
     return AnswerResult(**result, mastered=result["score_after"] == 3)
 

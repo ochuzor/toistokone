@@ -12,3 +12,4 @@
 ## Completed
 - [x] Implement ToistoKone v1
 - [x] Align documentation references and queue replenishment behavior
+- [x] Add a configurable card-score cooldown
