@@ -7,6 +7,8 @@ from fastapi import FastAPI, HTTPException
 from .config import Settings, load_settings
 from .db import card_exists, get_stats, initialize_progress_database, record_answer, reset_card
 from .models import AnswerRequest, AnswerResult, ResetRequest, ResetResult, StatsResponse
+from .models import QuizBatchResponse
+from .quiz import build_batch
 
 
 @asynccontextmanager
@@ -61,3 +63,13 @@ def stats() -> StatsResponse:
     if not settings.content_db_path.exists():
         raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
     return StatsResponse(**get_stats(settings.content_db_path, settings.progress_db_path))
+
+
+@app.post("/api/quiz/batch", response_model=QuizBatchResponse)
+def quiz_batch() -> QuizBatchResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    return QuizBatchResponse(
+        questions=build_batch(settings.content_db_path, settings.progress_db_path, settings.quiz_batch_size)
+    )

@@ -60,19 +60,19 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 
 **Tasks**
 
-- [ ] Implement Unicode-aware, case-insensitive whole-word matching against Finnish sentences; reject substring matches inside longer words.
-- [ ] Blank **all** target-form occurrences; preserve punctuation and show **all** English translations.
-- [ ] Select a random matching sentence for a selected word-form card; skip forms with no sentence matches.
-- [ ] Build eligible card pool: all vocabulary cards; word-form cards only when parent vocabulary is score 3 and form has a matching sentence.
-- [ ] Implement exact quota algorithm: up to 70% score 1–2; then up to 30% score 3; then **once** up to five score-0 cards for remaining deficit. No quota redistribution/backfill.
-- [ ] Within each bucket select never-practiced first, then least recently practiced; randomize ties.
-- [ ] Generate vocabulary questions: Finnish base prompt; full meaning group as correct option; up to three random other meaning groups as distractors.
-- [ ] Generate word-form questions: blanked sentence, all translations, correct form plus up to three distinct distractors from same base word (including base form).
-- [ ] Shuffle option order and final mixed vocabulary/form question order; no duplicate card in one batch.
-- [ ] Implement `POST /api/quiz/batch` using `.env` batch size. Backend does not store issued batches or queue state.
-- [ ] Add tests for the five agreed 20-card quota examples, eligibility, form matching, distractors, and undersized batches.
+- [x] Implement Unicode-aware, case-insensitive whole-word matching against Finnish sentences; reject substring matches inside longer words.
+- [x] Blank **all** target-form occurrences; preserve punctuation and show **all** English translations.
+- [x] Select a random matching sentence for a selected word-form card; skip forms with no sentence matches.
+- [x] Build eligible card pool: all vocabulary cards; word-form cards only when parent vocabulary is score 3 and form has a matching sentence.
+- [x] Implement exact quota algorithm: up to 70% score 1–2; then up to 30% score 3; then **once** up to five score-0 cards for remaining deficit. No quota redistribution/backfill.
+- [x] Within each bucket select never-practiced first, then least recently practiced; randomize ties.
+- [x] Generate vocabulary questions: Finnish base prompt; full meaning group as correct option; up to three random other meaning groups as distractors.
+- [x] Generate word-form questions: blanked sentence, all translations, correct form plus up to three distinct distractors from same base word (including base form).
+- [x] Shuffle option order and final mixed vocabulary/form question order; no duplicate card in one batch.
+- [x] Implement `POST /api/quiz/batch` using `.env` batch size. Backend does not store issued batches or queue state.
+- [x] Add tests for the five agreed 20-card quota examples, eligibility, form matching, distractors, and undersized batches.
 
-**Exit gate:** A real API batch is generated from imported sample data; tests prove the exact selection behavior and question formats. Empty/undersized results return safely.
+**Exit gate:** Complete — an API batch is generated from imported sample data; tests prove quota behavior, matching, eligibility, formatting, and undersized output safety.
 
 ### Phase 4 — Practice screen (first usable end-to-end milestone)
 

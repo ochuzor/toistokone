@@ -8,7 +8,7 @@ from fastapi import HTTPException
 
 from backend.app.config import Settings
 from backend.app.db import initialize_progress_database
-from backend.app.main import answer, app, reset, stats
+from backend.app.main import answer, app, quiz_batch, reset, stats
 from backend.app.models import AnswerRequest, ResetRequest
 from backend.pipeline import run_import
 
@@ -60,6 +60,11 @@ class ProgressApiTests(unittest.TestCase):
                 )
             )
         self.assertEqual(raised.exception.status_code, 404)
+
+    def test_quiz_batch_route_returns_current_content_without_writing_progress(self) -> None:
+        batch = quiz_batch()
+        self.assertEqual(len(batch.questions), 1)
+        self.assertEqual(batch.questions[0].card.base_word, "talo")
 
 
 if __name__ == "__main__":

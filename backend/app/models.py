@@ -49,3 +49,22 @@ class StatsResponse(BaseModel):
     vocabulary: CardStats
     word_forms: CardStats
     overall: OverallStats
+
+
+class QuizOption(BaseModel):
+    id: str
+    text: str
+
+
+class QuizQuestion(BaseModel):
+    question_id: str
+    card: CardReference
+    score: int
+    prompt: str
+    english_translations: list[str]
+    options: list[QuizOption]
+    correct_option_id: str
+
+
+class QuizBatchResponse(BaseModel):
+    questions: list[QuizQuestion]
