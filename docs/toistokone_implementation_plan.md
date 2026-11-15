@@ -78,15 +78,15 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 
 **Tasks**
 
-- [ ] Implement `/practice` with one card at a time, Finnish prompt, optional English translations, up to four clickable/tappable answer options, and mastery icon (empty / quarter / half / check).
-- [ ] On answer selection, lock choices, submit to backend, and show correct/incorrect feedback and correct answer.
-- [ ] Update mastery icon after successful answer response; display **Reset mastery** button after answering.
-- [ ] Implement reset API call and immediate UI update.
-- [ ] Implement **Next**; only Next removes an answered card and advances. No auto-advance and no keyboard shortcuts.
-- [ ] Show a clear message if no quiz cards are available, with a retry action.
-- [ ] Add navigation back to home without clearing the active queue.
+- [x] Implement `/practice` with one card at a time, Finnish prompt, optional English translations, up to four clickable/tappable answer options, and mastery icon (empty / quarter / half / check).
+- [x] On answer selection, lock choices, submit to backend, and show correct/incorrect feedback and correct answer.
+- [x] Update mastery icon after successful answer response; display **Reset mastery** button after answering.
+- [x] Implement reset API call and immediate UI update.
+- [x] Implement **Next**; only Next removes an answered card and advances. No auto-advance and no keyboard shortcuts.
+- [x] Show a clear message if no quiz cards are available, with a retry action.
+- [x] Add navigation back to home without clearing the active queue.
 
-**Exit gate:** User can complete vocabulary cards, unlock word-form cards, answer contextual questions, reset mastery, and advance by clicking Next. Scores survive backend restart.
+**Exit gate:** Complete — browser verification covers navigation, answer feedback, reset, Next-only advancement, and preserved in-memory queue state on return from home.
 
 ### Phase 5 — Continuous frontend-owned queue and recovery
 

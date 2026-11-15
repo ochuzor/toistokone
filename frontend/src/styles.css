@@ -21,3 +21,24 @@ p { line-height: 1.6; }
 .button { display: inline-block; margin-top: 1rem; padding: .8rem 1.1rem; border-radius: .5rem; background: #16704b; color: white; font-weight: 700; text-decoration: none; }
 
 .secondary { background: #334155; }
+
+button.button { border: 0; cursor: pointer; font: inherit; }
+
+.practice-card { padding: clamp(1.5rem, 6vw, 3rem); }
+.practice-header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.queue-progress { margin: 0; color: #64748b; }
+.mastery-icon { color: #16704b; font-size: 2rem; font-weight: 700; }
+.progress-track { height: .5rem; margin: 1.25rem 0 2rem; overflow: hidden; border-radius: 999px; background: #dce7df; }
+.progress-fill { height: 100%; background: #16704b; }
+.prompt { margin: 0; font-size: clamp(1.5rem, 5vw, 2.3rem); font-weight: 700; line-height: 1.35; }
+.translations { color: #475569; }
+.options { display: grid; gap: .75rem; margin: 1.5rem 0; }
+.option { width: 100%; padding: 1rem; border: 2px solid #cbd5e1; border-radius: .65rem; background: white; color: #1f2937; cursor: pointer; font: inherit; font-weight: 600; text-align: left; }
+.option:hover:not(:disabled) { border-color: #16704b; }
+.option:disabled { cursor: default; }
+.option.correct { border-color: #16704b; background: #dcfce7; }
+.option.incorrect { border-color: #b91c1c; background: #fee2e2; }
+.feedback { border-top: 1px solid #e2e8f0; padding-top: 1rem; }
+.text-button { margin-right: 1rem; border: 0; background: none; color: #16704b; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; }
+.back-link { display: inline-block; margin-top: 1.5rem; color: #475569; }
+.error { color: #b91c1c; font-weight: 600; }
