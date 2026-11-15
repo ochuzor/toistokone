@@ -1,0 +1,160 @@
+# Implementation Plan — ToistoKone
+
+**Status:** Draft 1.0  
+**Companions:** `toistokone_prd_draft.md`, `toistokone_technical_spec_draft.md`  
+**Priority:** Get a useful, local-only practice app running as quickly as possible.  
+**Implementation style:** Small, testable vertical slices; avoid infrastructure or features not required by the PRD.
+
+## 1. Definition of done
+
+The user can edit three kinds of plain-text input, run a terminal import, start the app with `npm run dev`, open the home screen, and practice vocabulary and contextual word forms continuously. Answers immediately persist mastery to `progress.sqlite`; the frontend restores its remaining queue after refresh/restart. Regenerating `content.sqlite` never erases progress.
+
+## 2. Implementation sequence
+
+### Phase 0 — Repository skeleton and local startup
+
+**Tasks**
+
+- [ ] Create root project, `.env.example`, `.gitignore`, and short README.
+- [ ] Create Python FastAPI backend and React + TypeScript + Vite frontend with React Router.
+- [ ] Configure root `npm run dev` to start both services via `concurrently` or equivalent.
+- [ ] Configure Vite `/api` proxy; bind development services to localhost.
+- [ ] Read `QUIZ_BATCH_SIZE=20` from root `.env` on backend startup; validate positive integer.
+- [ ] Add `GET /api/health`; show home and practice routes with placeholders.
+- [ ] Ensure `data/progress.sqlite` and generated content/report files are gitignored; include tiny sample inputs for smoke tests.
+
+**Exit gate:** One command starts both services, `/` and `/practice` render, and `/api/health` succeeds through Vite proxy. Document one-time dependency setup separately from the one-command startup.
+
+### Phase 1 — Import pipeline and content database
+
+**Tasks**
+
+- [ ] Implement strict parser for `dictionary.txt`, `word-forms.txt`, and sorted direct-child `sentences/*.txt`.
+- [ ] Support only exact ` - ` and ` / ` delimiters; skip empty lines and lines whose first character is `#`.
+- [ ] Skip/report malformed lines with filename, line number, and reason.
+- [ ] Build content schema: vocabulary, meanings, word forms, sentences, translations, foreign keys, and indexes.
+- [ ] Insert a separate base-form word-form row for every dictionary word; skip/report form entries without a dictionary base word.
+- [ ] Deduplicate identical vocabulary/forms and exact Finnish sentences; merge unique sentence translations preserving first-seen order.
+- [ ] Implement `python -m backend.pipeline` to build a temporary SQLite DB, verify integrity, then atomically replace `data/content.sqlite` and write `data/import-report.txt`.
+- [ ] Implement `--dry-run` to write **only** the report, never changing content or progress DB.
+- [ ] Add representative sample data: at least two vocabulary words, a word with multiple forms, and multiple sentences/translations.
+
+**Exit gate:** Normal import creates exactly two lasting artifacts (content DB and report); dry-run creates/replaces only report. All valid sample data is queryable, malformed lines are reported, and `progress.sqlite` is never touched by pipeline.
+
+### Phase 2 — Persistent progress and scoring API
+
+**Tasks**
+
+- [ ] Create `progress.sqlite` on backend startup (not during pipeline); implement `card_progress` and `practice_attempts` schema.
+- [ ] Key vocabulary cards by exact base spelling and word-form cards by exact `(base, form)` spelling; never key progress to regenerated content IDs.
+- [ ] Implement score transitions: `0→1/0`, `1→2/1`, `2→3/1`, `3→3/3` (correct/incorrect).
+- [ ] Implement `POST /api/answers` with atomic progress/history update and client-generated `attempt_id` idempotency.
+- [ ] Update last-practiced time and attempt history even for mastered cards; do not modify score 3.
+- [ ] Implement `POST /api/cards/reset` (score to 0, retain history).
+- [ ] Implement `GET /api/stats` using current content plus progress, including base-form word-form cards.
+- [ ] Keep orphaned progress if content is removed; resetting a vocabulary card below 3 temporarily gates its forms without erasing their scores.
+
+**Exit gate:** Automated tests cover all transitions, reset, idempotent retries, and persistence across content DB rebuild. Stats are correct for unattempted and mastered cards.
+
+### Phase 3 — Sentence search and quiz batch API
+
+**Tasks**
+
+- [ ] Implement Unicode-aware, case-insensitive whole-word matching against Finnish sentences; reject substring matches inside longer words.
+- [ ] Blank **all** target-form occurrences; preserve punctuation and show **all** English translations.
+- [ ] Select a random matching sentence for a selected word-form card; skip forms with no sentence matches.
+- [ ] Build eligible card pool: all vocabulary cards; word-form cards only when parent vocabulary is score 3 and form has a matching sentence.
+- [ ] Implement exact quota algorithm: up to 70% score 1–2; then up to 30% score 3; then **once** up to five score-0 cards for remaining deficit. No quota redistribution/backfill.
+- [ ] Within each bucket select never-practiced first, then least recently practiced; randomize ties.
+- [ ] Generate vocabulary questions: Finnish base prompt; full meaning group as correct option; up to three random other meaning groups as distractors.
+- [ ] Generate word-form questions: blanked sentence, all translations, correct form plus up to three distinct distractors from same base word (including base form).
+- [ ] Shuffle option order and final mixed vocabulary/form question order; no duplicate card in one batch.
+- [ ] Implement `POST /api/quiz/batch` using `.env` batch size. Backend does not store issued batches or queue state.
+- [ ] Add tests for the five agreed 20-card quota examples, eligibility, form matching, distractors, and undersized batches.
+
+**Exit gate:** A real API batch is generated from imported sample data; tests prove the exact selection behavior and question formats. Empty/undersized results return safely.
+
+### Phase 4 — Practice screen (first usable end-to-end milestone)
+
+**Tasks**
+
+- [ ] Implement `/practice` with one card at a time, Finnish prompt, optional English translations, up to four clickable/tappable answer options, and mastery icon (empty / quarter / half / check).
+- [ ] On answer selection, lock choices, submit to backend, and show correct/incorrect feedback and correct answer.
+- [ ] Update mastery icon after successful answer response; display **Reset mastery** button after answering.
+- [ ] Implement reset API call and immediate UI update.
+- [ ] Implement **Next**; only Next removes an answered card and advances. No auto-advance and no keyboard shortcuts.
+- [ ] Show a clear message if no quiz cards are available, with a retry action.
+- [ ] Add navigation back to home without clearing the active queue.
+
+**Exit gate:** User can complete vocabulary cards, unlock word-form cards, answer contextual questions, reset mastery, and advance by clicking Next. Scores survive backend restart.
+
+### Phase 5 — Continuous frontend-owned queue and recovery
+
+**Tasks**
+
+- [ ] Store unanswered question objects, their exact options/sentence, current answer feedback state, and progress-bar capacity in versioned frontend local storage.
+- [ ] Restore the same queue on refresh and when navigating back to practice; if storage is missing/corrupt/incompatible, request a fresh backend batch.
+- [ ] When queue has **three or fewer** remaining cards, request another batch and append it; prevent concurrent fetches and request loops.
+- [ ] Filter cards already in the local remaining queue when appending, because backend only guarantees uniqueness within each batch.
+- [ ] Keep answered-but-not-advanced card visible with feedback on reload; persist pending `attempt_id` for safe retries.
+- [ ] Implement progress bar as `remaining / capacity`, decreasing on Next and refilling when a new batch is appended; persist capacity across reloads.
+- [ ] Handle network failures, zero-result batches, and stale queue questions after content rebuild gracefully.
+
+**Exit gate:** Practice can continue without session boundaries; refresh, route changes, and app restart restore the exact remaining questions. Backend never stores active queue.
+
+### Phase 6 — Home summary and polish
+
+**Tasks**
+
+- [ ] Implement `/` with total/mastered vocabulary, total/mastered word forms, overall mastery percentage, and **Start Practicing**.
+- [ ] Ensure stats refresh when returning from practice.
+- [ ] Keep layout responsive and fast to click; no settings/import/admin pages.
+- [ ] Add clear first-run message if `content.sqlite` is missing: run the terminal pipeline.
+- [ ] Verify restart-after-import workflow and progress preservation.
+- [ ] Update README with setup, import, dry-run, dev startup, source formats, `.env`, backup guidance for `progress.sqlite`, and known v1 limitations.
+
+**Exit gate:** A new local user can follow README to import content and start studying; home stats agree with persistent scores.
+
+### Phase 7 — Focused regression and handoff
+
+**Tasks**
+
+- [ ] Run pipeline, backend, and frontend tests; fix blocking failures.
+- [ ] Manually verify: initial score 0; reach score 3; forms unlock; incorrect at 2 returns to 1; score 3 stays mastered; reset; continue practicing; refresh; restart; reimport content; progress retained.
+- [ ] Test Finnish accented characters, case-insensitive word boundaries, repeated target forms, multiple English translations, duplicate sentence imports, and no matching sentences.
+- [ ] Test quota cases and local queue refill with both full and undersized batches.
+- [ ] Verify that the pipeline never writes `progress.sqlite`, and the backend never persists the active queue.
+- [ ] Deliver concise README and a list of any deviations/open decisions; no unrequested scope expansion.
+
+**Exit gate:** All PRD acceptance criteria pass, and the app is usable for the next Finnish lesson.
+
+## 3. Suggested coding-agent execution protocol
+
+For each phase: implement only that phase; run its tests/smoke checks; fix failures; summarize changed files, commands run, and remaining issues. Do not rewrite agreed behavior to simplify tests. Commit after each passing phase if the repository uses Git. Prefer standard libraries and a small dependency footprint. Do not introduce authentication, ORM, Docker, AI generation, cloud services, or extra UI pages.
+
+**Fastest value path:** Phases 0–4 produce a usable end-to-end quiz. Phases 5–7 add the agreed persistence, home dashboard, and reliability needed for daily use. The agent should still complete all phases before calling v1 done.
+
+## 4. Explicit invariants for code review
+
+1. **Only the pipeline** replaces `content.sqlite` and writes `import-report.txt`; **never** `progress.sqlite`.
+2. **Only the backend** writes mastery scores and practice history; **only the frontend** owns the active question queue.
+3. A sentence is **not** a card; score is attached to a vocabulary entry or a `(base, form)` pair.
+4. Score 3 never changes through ordinary answers, only explicit reset.
+5. Quiz allocation is sequential 70% / 30% / up-to-five-new **without backfilling**.
+6. A word-form card is eligible only when its parent vocabulary card is mastered and a matching sentence exists.
+7. Every target occurrence is blanked; every available English sentence translation is displayed.
+8. An answer updates progress immediately; a card leaves the frontend queue **only** when Next is clicked.
+9. New quiz batches append when remaining count is three or fewer; the frontend filters overlap with its queue.
+10. Normal import leaves exactly the two agreed generated artifacts; dry-run leaves only the report as its output.
+
+## 5. Decisions to confirm before or during implementation
+
+These are inherited from the technical-spec draft and are **not** new product requirements:
+
+- **Batch sizes other than 20:** proposed `floor(0.7 × N)` for score 1–2, with the remainder allocated to score 3.
+- **Word with only one distinct form:** proposed skipping its word-form quiz until there are at least two choices, rather than showing a one-answer question.
+- **Local-only grading trust:** technical spec proposes sending both selected and correct option IDs for server scoring. This is fine for local v1 but must be hardened before public deployment.
+- **Overlapping batches:** frontend filters duplicates against its own queue and accepts an undersized append without looping indefinitely.
+- **Large Tatoeba import:** start with direct sentence scanning and add a content-only token index if matching becomes too slow; do not add persistent sentence-to-word associations.
+
+The implementation agent should flag these clearly, use the documented proposed defaults only where needed to make progress, and not treat them as previously confirmed user decisions.
