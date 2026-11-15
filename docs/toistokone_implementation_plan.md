@@ -15,15 +15,15 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 
 **Tasks**
 
-- [ ] Create root project, `.env.example`, `.gitignore`, and short README.
-- [ ] Create Python FastAPI backend and React + TypeScript + Vite frontend with React Router.
-- [ ] Configure root `npm run dev` to start both services via `concurrently` or equivalent.
-- [ ] Configure Vite `/api` proxy; bind development services to localhost.
-- [ ] Read `QUIZ_BATCH_SIZE=20` from root `.env` on backend startup; validate positive integer.
-- [ ] Add `GET /api/health`; show home and practice routes with placeholders.
-- [ ] Ensure `data/progress.sqlite` and generated content/report files are gitignored; include tiny sample inputs for smoke tests.
+- [x] Create root project, `.env.example`, `.gitignore`, and short README.
+- [x] Create Python FastAPI backend and React + TypeScript + Vite frontend with React Router.
+- [x] Configure root `npm run dev` to start both services via `concurrently` or equivalent.
+- [x] Configure Vite `/api` proxy; bind development services to localhost.
+- [x] Read `QUIZ_BATCH_SIZE=20` from root `.env` on backend startup; validate positive integer.
+- [x] Add `GET /api/health`; show home and practice routes with placeholders.
+- [x] Ensure `data/progress.sqlite` and generated content/report files are gitignored; include tiny sample inputs for smoke tests.
 
-**Exit gate:** One command starts both services, `/` and `/practice` render, and `/api/health` succeeds through Vite proxy. Document one-time dependency setup separately from the one-command startup.
+**Exit gate:** Complete — one command starts both services, `/` and `/practice` render, and `/api/health` succeeds through the Vite proxy. One-time dependency setup is documented separately from the one-command startup.
 
 ### Phase 1 — Import pipeline and content database
 
