@@ -23,9 +23,21 @@ npm run dev
 
 Open `http://127.0.0.1:5173`. The frontend proxies `/api` requests to the local FastAPI server at `127.0.0.1:8000`.
 
-## Phase 0 sample input
+## Import content
 
-`dictionary.txt`, `word-forms.txt`, and `sentences/` contain small input examples for the later import pipeline. The pipeline is not implemented yet.
+Edit `dictionary.txt`, `word-forms.txt`, and direct-child `.txt` files in `sentences/`, then build the disposable content database:
+
+```bash
+.venv/bin/python -m backend.pipeline
+```
+
+Use `--dry-run` to validate inputs and update only `data/import-report.txt`:
+
+```bash
+.venv/bin/python -m backend.pipeline --dry-run
+```
+
+The pipeline replaces only `data/content.sqlite` and `data/import-report.txt`. It never modifies `data/progress.sqlite`.
 
 ## Tests
 

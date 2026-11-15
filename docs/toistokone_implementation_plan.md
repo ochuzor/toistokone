@@ -29,17 +29,17 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 
 **Tasks**
 
-- [ ] Implement strict parser for `dictionary.txt`, `word-forms.txt`, and sorted direct-child `sentences/*.txt`.
-- [ ] Support only exact ` - ` and ` / ` delimiters; skip empty lines and lines whose first character is `#`.
-- [ ] Skip/report malformed lines with filename, line number, and reason.
-- [ ] Build content schema: vocabulary, meanings, word forms, sentences, translations, foreign keys, and indexes.
-- [ ] Insert a separate base-form word-form row for every dictionary word; skip/report form entries without a dictionary base word.
-- [ ] Deduplicate identical vocabulary/forms and exact Finnish sentences; merge unique sentence translations preserving first-seen order.
-- [ ] Implement `python -m backend.pipeline` to build a temporary SQLite DB, verify integrity, then atomically replace `data/content.sqlite` and write `data/import-report.txt`.
-- [ ] Implement `--dry-run` to write **only** the report, never changing content or progress DB.
-- [ ] Add representative sample data: at least two vocabulary words, a word with multiple forms, and multiple sentences/translations.
+- [x] Implement strict parser for `dictionary.txt`, `word-forms.txt`, and sorted direct-child `sentences/*.txt`.
+- [x] Support only exact ` - ` and ` / ` delimiters; skip empty lines and lines whose first character is `#`.
+- [x] Skip/report malformed lines with filename, line number, and reason.
+- [x] Build content schema: vocabulary, meanings, word forms, sentences, translations, foreign keys, and indexes.
+- [x] Insert a separate base-form word-form row for every dictionary word; skip/report form entries without a dictionary base word.
+- [x] Deduplicate identical vocabulary/forms and exact Finnish sentences; merge unique sentence translations preserving first-seen order.
+- [x] Implement `python -m backend.pipeline` to build a temporary SQLite DB, verify integrity, then atomically replace `data/content.sqlite` and write `data/import-report.txt`.
+- [x] Implement `--dry-run` to write **only** the report, never changing content or progress DB.
+- [x] Add representative sample data: at least two vocabulary words, a word with multiple forms, and multiple sentences/translations.
 
-**Exit gate:** Normal import creates exactly two lasting artifacts (content DB and report); dry-run creates/replaces only report. All valid sample data is queryable, malformed lines are reported, and `progress.sqlite` is never touched by pipeline.
+**Exit gate:** Complete — normal import creates only the content DB and report; dry-run replaces only the report. Sample data is queryable, malformed lines are reported, and `progress.sqlite` is never touched by the pipeline.
 
 ### Phase 2 — Persistent progress and scoring API
 
