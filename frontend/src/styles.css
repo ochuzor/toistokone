@@ -43,3 +43,9 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .back-link { display: inline-block; margin-top: 1.5rem; color: #475569; }
 .error { color: #b91c1c; font-weight: 600; }
 .notice { color: #64748b; font-size: .9rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1.5rem 0; }
+.stat { display: grid; gap: .25rem; padding: 1rem; border-radius: .75rem; background: #f1f5f9; }
+.stat.overall { background: #dcfce7; }
+.stat span, .stat small { color: #475569; }
+.stat strong { font-size: 1.25rem; }
+@media (max-width: 38rem) { .stats-grid { grid-template-columns: 1fr; } }

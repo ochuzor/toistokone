@@ -21,6 +21,12 @@ export type AnswerResult = {
   mastered: boolean
 }
 
+export type Stats = {
+  vocabulary: { total: number; mastered: number }
+  word_forms: { total: number; mastered: number }
+  overall: { total: number; mastered: number; mastery_percent: number }
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(path, options)
   if (!response.ok) {
@@ -33,6 +39,10 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 export async function fetchBatch(): Promise<QuizQuestion[]> {
   const response = await request<{ questions: QuizQuestion[] }>('/api/quiz/batch', { method: 'POST' })
   return response.questions
+}
+
+export function fetchStats(): Promise<Stats> {
+  return request<Stats>('/api/stats')
 }
 
 export function submitAnswer(card: CardReference, selectedOptionId: string, correctOptionId: string, attemptId: string): Promise<AnswerResult> {

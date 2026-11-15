@@ -106,14 +106,14 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 
 **Tasks**
 
-- [ ] Implement `/` with total/mastered vocabulary, total/mastered word forms, overall mastery percentage, and **Start Practicing**.
-- [ ] Ensure stats refresh when returning from practice.
-- [ ] Keep layout responsive and fast to click; no settings/import/admin pages.
-- [ ] Add clear first-run message if `content.sqlite` is missing: run the terminal pipeline.
-- [ ] Verify restart-after-import workflow and progress preservation.
-- [ ] Update README with setup, import, dry-run, dev startup, source formats, `.env`, backup guidance for `progress.sqlite`, and known v1 limitations.
+- [x] Implement `/` with total/mastered vocabulary, total/mastered word forms, overall mastery percentage, and **Start Practicing**.
+- [x] Ensure stats refresh when returning from practice.
+- [x] Keep layout responsive and fast to click; no settings/import/admin pages.
+- [x] Add clear first-run message if `content.sqlite` is missing: run the terminal pipeline.
+- [x] Verify restart-after-import workflow and progress preservation.
+- [x] Update README with setup, import, dry-run, dev startup, source formats, `.env`, backup guidance for `progress.sqlite`, and known v1 limitations.
 
-**Exit gate:** A new local user can follow README to import content and start studying; home stats agree with persistent scores.
+**Exit gate:** Complete — the home page reads persistent backend statistics, links to practice, and README instructions cover a new local setup and safe content reimports.
 
 ### Phase 7 — Focused regression and handoff
 

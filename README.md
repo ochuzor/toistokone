@@ -39,6 +39,27 @@ Use `--dry-run` to validate inputs and update only `data/import-report.txt`:
 
 The pipeline replaces only `data/content.sqlite` and `data/import-report.txt`. It never modifies `data/progress.sqlite`.
 
+### Source formats
+
+Use only the exact separators shown below. Blank lines and lines beginning with `#` are ignored; malformed lines are reported and skipped.
+
+```text
+# dictionary.txt
+talo - house / home
+
+# word-forms.txt
+ruoka - ruokaa / ruoasta / ruoan
+
+# sentences/lesson-01.txt
+Ruokaa on pöydällä. - Food is on the table.
+```
+
+Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
+
+## Configuration and v1 limits
+
+`.env` sets `QUIZ_BATCH_SIZE` (default `20`) and local content/progress database paths. ToistoKone is local-only in v1: it has no accounts or sync, sentence matching is exact whole-word matching, and ambiguous spellings are not resolved. Content is imported from your files; the app does not generate or validate sentences.
+
 ## Tests
 
 ```bash
