@@ -1,7 +1,7 @@
 # Technical Specification — ToistoKone
 
 **Status:** Draft 1.0  
-**Companion:** `toistokone_prd_draft.md`  
+**Companion:** `toistokone_prd.md`
 **App name:** ToistoKone (repository: `toistokone`; Python package: `toistokone`; UI title: ToistoKone)  
 **Target:** Local-only MVP, built quickly; no accounts, deployment, or AI generation
 

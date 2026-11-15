@@ -1,7 +1,7 @@
 # Implementation Plan — ToistoKone
 
 **Status:** Draft 1.0  
-**Companions:** `toistokone_prd_draft.md`, `toistokone_technical_spec_draft.md`  
+**Companions:** `toistokone_prd.md`, `toistokone_technical_spec.md`
 **Priority:** Get a useful, local-only practice app running as quickly as possible.  
 **Implementation style:** Small, testable vertical slices; avoid infrastructure or features not required by the PRD.
 
