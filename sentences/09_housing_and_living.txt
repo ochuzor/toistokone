@@ -1,0 +1,72 @@
+Tämä asunto on uusi ja mukava. - This apartment is new and comfortable.
+Asunnossa on iso keittiö. - There is a big kitchen in the apartment.
+Tämä kerrostalo on vanha. - This apartment building is old.
+Asun kerrostalossa keskustassa. - I live in an apartment building in the city centre.
+Asunnossa on pieni parveke. - The apartment has a small balcony.
+Istun usein parvekkeella. - I often sit on the balcony.
+Tämä makuuhuone on iso. - This bedroom is big.
+Makuuhuoneessa on sänky ja pöytä. - There is a bed and a table in the bedroom.
+Kylpyhuone on pieni mutta uusi. - The bathroom is small but new.
+Kylpyhuoneessa on peili. - There is a mirror in the bathroom.
+Paljonko vuokra on? - How much is the rent?
+Asunnon vuokra on hyvä. - The rent of the apartment is good.
+Tämä seinä on sininen. - This wall is blue.
+Seinässä on pieni peili. - There is a small mirror on the wall.
+Missä pistorasia on? - Where is the socket?
+Makuuhuoneessa on pistorasia. - There is a socket in the bedroom.
+Keittiössä on uusi jääkaappi. - There is a new fridge in the kitchen.
+Maito on jääkaapissa. - The milk is in the fridge.
+Tämä liesi on vanha. - This stove is old.
+Ruoka on liedellä. - The food is on the stove.
+Kylpyhuoneessa on suihku. - There is a shower in the bathroom.
+Olen suihkussa. - I am in the shower.
+Minä muutan huomenna. - I am moving tomorrow.
+Milloin sinä muutat? - When are you moving?
+Tässä on uusi vuokrasopimus. - Here is the new rental agreement.
+Luen vuokrasopimuksen tänään. - I will read the rental agreement today.
+Kuka on vuokranantaja? - Who is the landlord?
+Tässä on vuokranantajan numero. - Here is the landlord's number.
+Missä avain on? - Where is the key?
+Saisinko avaimen? - Could I have the key?
+Onko muutto huomenna? - Is the move tomorrow?
+Aloitan muuton aamulla. - I will start the move in the morning.
+Paljonko vakuus on? - How much is the deposit?
+Tarvitsen vakuuden huomenna. - I need the deposit tomorrow.
+Tämä suihku on rikki. - This shower is broken.
+Onko jääkaappi rikki? - Is the refrigerator broken?
+Tämä hana vuotaa. - This tap is leaking.
+Kylpyhuoneessa vuotaa vettä. - Water is leaking in the bathroom.
+Tämä hana on vanha ja rikki. - This tap is old and broken.
+Hanasta vuotaa vettä. - Water is leaking from the tap.
+Tämä lamppu ei toimi. - This lamp does not work.
+Vaihdan lampun tänään. - I will change the lamp today.
+Lämmitys ei toimi. - The heating does not work.
+Onko täällä lämmitys? - Is there heating here?
+Uusi liesi toimii hyvin. - The new stove works well.
+Pistorasia ei toimi. - The socket does not work.
+Korjaan tämän lampun. - I will fix this lamp.
+Voisitko korjata lieden? - Could you fix the stove?
+Kerrostalossa on yhteinen keittiö. - The apartment building has a shared kitchen.
+Tämä parveke on yhteinen. - This balcony is shared.
+Anna on uusi asukas. - Anna is a new resident.
+Olen asukas tässä kerrostalossa. - I am a resident in this apartment building.
+Tämä porraskäytävä on vanha. - This stairwell is old.
+Lamppu on rikki porraskäytävässä. - The light is broken in the stairwell.
+Ulkona on iso jäteastia. - There is a big waste container outside.
+Roska on jäteastiassa. - The trash is in the waste container.
+Minä kierrätän kotona. - I recycle at home.
+Osaatko kierrättää? - Do you know how to recycle?
+Minulla on siivousvuoro huomenna. - I have a cleaning turn tomorrow.
+Kuka on siivousvuorossa tänään? - Who is on cleaning duty today?
+Mikko on uusi naapuri. - Mikko is a new neighbour.
+Hei, asutko naapurissa? - Hello, do you live next door?
+Tämä kerrostalo on hiljainen. - This apartment building is quiet.
+Naapuri on hiljainen ja mukava. - The neighbour is quiet and nice.
+Mikä tämä ääni on? - What is this sound?
+Mistä tämä ääni tulee? - Where is this sound coming from?
+Tämä ääni häiritsee. - This sound is disturbing.
+Anteeksi, en halua häiritä. - Sorry, I don't want to disturb.
+Ovikello ei toimi. - The doorbell does not work.
+Uusi ovikello toimii hyvin. - The new doorbell works well.
+Käynti on vasemmalla. - The entrance is on the left.
+Käynti parvekkeelle on makuuhuoneessa. - Access to the balcony is in the bedroom.

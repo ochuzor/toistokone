@@ -1,0 +1,64 @@
+Mikä laskun summa on? - What is the sum of the bill?
+Summa on viisi euroa. - The sum is five euros.
+Mikä eräpäivä on? - What is the due date?
+Eräpäivä on huomenna. - The due date is tomorrow.
+Tämä maksu on iso. - This payment is big.
+Onko maksu valmis? - Is the payment ready?
+Missä tilinumero on? - Where is the account number?
+Tässä on uusi tilinumero. - Here is the new account number.
+Mikä viitenumero on? - What is the reference number?
+Viitenumero on tuossa. - The reference number is there.
+Käteinen ei toimi täällä. - Cash does not work here.
+Maksan käteisellä. - I pay in cash.
+Tässä on kuitti, ole hyvä. - Here is the receipt, here you go.
+Kuitti on pussissa. - The receipt is in the bag.
+Missä maksupääte on? - Where is the payment terminal?
+Tämä maksupääte ei toimi. - This payment terminal does not work.
+Toimiiko lähimaksu täällä? - Does contactless payment work here?
+Lähimaksu toimii hyvin. - Contactless payment works well.
+Minulla on uusi maksukortti. - I have a new payment card.
+Maksan maksukortilla, kiitos. - I will pay with a payment card, thank you.
+Minulla on uusi pankkitili. - I have a new bank account.
+Pankkitilillä on viisi euroa. - There are five euros in the bank account.
+Tämä maksu on tilisiirto. - This payment is a bank transfer.
+Tilisiirto toimii hyvin. - The bank transfer works well.
+Saldo on viisi euroa. - The balance is five euros.
+Mikä saldo on? - What is the balance?
+Missä on pankkiautomaatti? - Where is the ATM?
+Pankkiautomaatti on lähellä. - The ATM is nearby.
+Onko sinulla verkkopankki? - Do you have online banking?
+Verkkopankki toimii hyvin. - Online banking works well.
+Tarvitsen sinun henkilötiedot. - I need your personal details.
+Onko tässä sinun henkilötiedot? - Are your personal details here?
+Mikä on sinun etunimi? - What is your first name?
+Kirjoitan etunimen vihkoon. - I write the first name in the notebook.
+Onko tämä sinun sukunimi? - Is this your last name?
+Tarvitsen sinun sukunimen. - I need your last name.
+Mikä on sinun syntymäaika? - What is your date of birth?
+Kirjoitan syntymäajan tähän. - I write the date of birth here.
+Mikä sinun postinumero on? - What is your postal code?
+Kirjoitan osoitteen ja postinumeron. - I write the address and the postal code.
+Missä on allekirjoitus? - Where is the signature?
+Tarvitsen sinun allekirjoituksen. - I need your signature.
+Tässä on uusi viesti. - Here is a new message.
+Viestissä on uusi osoite. - There is a new address in the message.
+Ilmoitus on seinällä. - The notice is on the wall.
+Ilmoituksessa on uusi aikataulu. - There is a new schedule in the notice.
+Tässä on varauksen vahvistus. - Here is the booking confirmation.
+Vahvistuksessa on osoite ja numero. - There is an address and a number in the confirmation.
+Tämä on laskun muistutus. - This is a reminder for the bill.
+Muistutuksessa on uusi eräpäivä. - There is a new due date in the reminder.
+Tässä on uusi liite. - Here is a new attachment.
+Liitteessä on lasku. - There is an invoice in the attachment.
+Minulla on uusi sähköposti. - I have a new email.
+Sähköpostissa on liite. - There is an attachment in the email.
+Maksussa on ongelma. - There is a problem with the payment.
+Voisitko auttaa tässä ongelmassa? - Could you help with this problem?
+Viestissä on virhe. - There is an error in the message.
+Onko tämä virhe? - Is this an error?
+Onko palautus valmis? - Is the refund ready?
+Ongelma on palautuksessa. - The problem is with the refund.
+Missä on asiakaspalvelu? - Where is customer service?
+Olen nyt asiakaspalvelussa. - I am at customer service now.
+Apu on lähellä. - Help is near.
+Tarvitsen apua maksussa. - I need help with the payment.

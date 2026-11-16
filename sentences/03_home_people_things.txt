@@ -1,0 +1,67 @@
+# Module 3: Home, People, and Things
+
+Minulla on pieni koti. - I have a small home.
+Onko sinulla koira? - Do you have a dog?
+Kissa on sängyllä. - The cat is on the bed.
+Tervetuloa kotiin! - Welcome home!
+
+# Possessions, family, and a home
+Minulla ei ole puhelinta. - I do not have a phone.
+Minulla on pieni koira. - I have a small dog.
+Minulla on äiti ja isä. - I have a mother and a father.
+Minulla on yksi veli ja sisko. - I have one brother and a sister.
+Kotona on keittiö ja huone. - At home there is a kitchen and a room.
+Kirja on pöydällä. - The book is on the table.
+Matto on lattialla ja taulu on seinällä. - The rug is on the floor and the picture is on the wall.
+Puhelin on tuolilla. - The phone is on the chair.
+Tässä on uusi punainen kirja. - Here is a new red book.
+Tuossa on vanha sininen puhelin. - There is an old blue phone.
+Tervetuloa, tule sisään! - Welcome, come in!
+
+Minulla ei ole koiraa. - I do not have a dog.
+Sinulla on kissa. - You have a cat.
+Sinulla on kirja ja puhelin. - You have a book and a phone.
+Onko sinulla auto? - Do you have a car?
+Minulla on perhe Suomessa. - I have a family in Finland.
+Onko sinulla perhe? - Do you have a family?
+Anna on äiti. - Anna is a mother.
+Matti on isä. - Matti is a father.
+Minulla on veli. - I have a brother.
+Onko sinulla sisko? - Do you have a sister?
+Minulla on yksi lapsi. - I have one child.
+Olen kotona nyt. - I am at home now.
+Keittiössä on pöytä. - There is a table in the kitchen.
+Tämä pöytä on hyvä. - This table is good.
+Tuoli on keittiössä. - The chair is in the kitchen.
+Missä tuoli on? - Where is the chair?
+Huoneessa on sänky. - There is a bed in the room.
+Onko tämä sänky hyvä? - Is this bed good?
+Keittiössä on ikkuna. - There is a window in the kitchen.
+Ikkuna on oikealla. - The window is on the right.
+Ovi on vasemmalla. - The door is on the left.
+Onko huoneessa ovi? - Is there a door in the room?
+Tämä huone on iso. - This room is big.
+Tämä pöytä on vanha. - This table is old.
+Tämä tuoli on punainen. - This chair is red.
+Tämä kirja on sininen. - This book is blue.
+Kirja on tuossa. - The book is there.
+Kissa on tuolilla. - The cat is on the chair.
+Puhelin on sängyllä. - The phone is on the bed.
+Koira on lattialla. - The dog is on the floor.
+Taulu on seinällä. - The painting is on the wall.
+Uusi matto on punainen. - The new rug is red.
+Tämä taulu on vanha. - This painting is old.
+Kirja on tuossa pöydällä. - The book is on that table.
+Tämä on eteinen. - This is the hallway.
+Eteinen on pieni. - The hallway is small.
+Koira on eteisessä. - The dog is in the hallway.
+Tässä on olohuone. - Here is the living room.
+Olohuone on iso ja mukava. - The living room is big and comfortable.
+Pöytä on olohuoneessa. - The table is in the living room.
+Kissa on olohuoneessa. - The cat is in the living room.
+Anna on täällä. - Anna is here.
+Ole hyvä ja tule sisään. - Please come in.
+Talossa on neljä ikkunaa. - The house has four windows.
+Lapsi on neljä vuotta vanha. - The child is four years old.
+Minulla on ystävä Suomessa. - I have a friend in Finland.
+Minulla ei ole ystävää. - I do not have a friend.

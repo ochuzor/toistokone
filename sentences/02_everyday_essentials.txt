@@ -1,0 +1,56 @@
+# Module 2: Everyday Essentials
+
+Haluan kahvia, kiitos. - I want coffee, please.
+Paljonko kahvi maksaa? - How much does coffee cost?
+Missä on asema? - Where is the station?
+Menen kotiin illalla. - I go home in the evening.
+
+# Café, shopping, directions, and routines
+Haluatko kahvia vai teetä? - Would you like coffee or tea?
+Otan teetä ja maitoa. - I will take tea and milk.
+Lasku, kiitos. - The bill, please.
+Kaupassa tarvitsen leipää ja ruokaa. - At the shop, I need bread and food.
+Pussi? Ei kiitos. - A bag? No, thank you.
+Pysäkki on vasemmalla. - The stop is on the left.
+Bussi on lähellä. - The bus is nearby.
+Milloin menet töihin? - When do you go to work?
+Huomenna menen kotiin aamulla. - Tomorrow I go home in the morning.
+Tänään menen kotiin myöhään. - Today I go home late.
+
+Missä on vesi? - Where is the water?
+Haluan vettä, kiitos. - I want water, thank you.
+Saisinko teetä, kiitos? - Could I have tea, please?
+Otan kahvia, kiitos. - I will have coffee, please.
+Haluatko maitoa? - Do you want milk?
+Saisinko sokeria, kiitos? - Could I have sugar, please?
+Anteeksi, missä sokeri on? - Excuse me, where is the sugar?
+Anteeksi, missä lasku on? - Excuse me, where is the bill?
+Kahvia, ole hyvä. - Coffee, here you go.
+Ole hyvä, Anna. - You are welcome, Anna.
+Kahvi on yksi euro. - The coffee is one euro.
+Kahvi maksaa kaksi euroa. - The coffee costs two euros.
+Paljonko tämä leipä maksaa? - How much does this bread cost?
+Tämä leipä maksaa kaksi euroa. - This bread costs two euros.
+Otan leipää ja maitoa, kiitos. - I will have bread and milk, please.
+Ostan leipää ja kahvia. - I am buying bread and coffee.
+Tarvitsen ruokaa ja vettä. - I need food and water.
+Paljonko pussi maksaa? - How much does a bag cost?
+Anteeksi, missä on asema? - Excuse me, where is the station?
+Missä bussi on? - Where is the bus?
+Mikä katu tämä on? - What street is this?
+Kauppa on kadulla. - The shop is on the street.
+Asema on oikealla. - The station is on the right.
+Onko kauppa oikealla? - Is the shop on the right?
+Asema on suoraan. - The station is straight ahead.
+Pysäkki on suoraan. - The stop is straight ahead.
+Onko asema lähellä? - Is the station nearby?
+Auto on vasemmalla. - The car is on the left.
+Milloin menet kotiin? - When do you go home?
+Menen kotiin myöhään. - I am going home late.
+
+Otatko teetä vai kahvia? - Will you have tea or coffee?
+Onko tänään maanantai vai tiistai? - Is today Monday or Tuesday?
+Minulla on kolme kissaa.  - I have three cats.
+Kello on kolme. - It is three o'clock.
+Äiti on kaupassa. - Mother is in the store.
+Kävin tänään kaupassa. - I went to the store today.

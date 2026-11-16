@@ -1,0 +1,68 @@
+Minulla on flunssa. - I have the flu.
+Minulla on kuume ja olen sairas. - I have a fever and I am sick.
+Onko sinulla kuume tänään? - Do you have a fever today?
+Missä kipu on? - Where is the pain?
+Minulla on kipua ja olen väsynyt. - I have pain and I am tired.
+Lääkäri on täällä tänään. - The doctor is here today.
+Anna on hyvä lääkäri. - Anna is a good doctor.
+Mikko on hoitaja. - Mikko is a nurse.
+Tarvitsen hoitajan nyt. - I need a nurse now.
+Missä on terveysasema? - Where is the health center?
+Menen huomenna terveysasemalle. - I am going to the health center tomorrow.
+Onko tämä ajanvaraus? - Is this appointment booking?
+Milloin ajanvaraus on? - When is the appointment booking?
+Vastaanotto on täällä. - The reception is here.
+Vastaanotto on lähellä. - The clinic is nearby.
+Varaan ajan tänään. - I am booking an appointment today.
+Haluan varata ajan. - I want to book an appointment.
+Pää on kipeä. - My head hurts.
+Onko sinulla pää kipeä? - Does your head hurt?
+Vatsa on kipeä. - My stomach hurts.
+Minulla on kipua vatsassa. - I have pain in my stomach.
+Minulla on yskä ja kuume. - I have a cough and a fever.
+Onko sinulla yskä? - Do you have a cough?
+Olen kipeä ja väsynyt. - I am sick and tired.
+Oletko sinä kipeä tänään? - Are you sick today?
+Lääkäri tutkii minut nyt. - The doctor examines me now.
+Voisitko tutkia minut? - Could you examine me?
+Hoitaja mittaa kuumeen. - The nurse takes the temperature.
+Voisitko mitata kuumeen? - Could you take the temperature?
+Tämä ohje on hyvä. - This instruction is good.
+Tässä on hoitajan ohje. - Here is the nurse's instruction.
+Mikä on lääkkeen annos? - What is the dose of the medicine?
+Lääkkeen annos on pieni. - The dose of the medicine is small.
+Minä haluan parantua. - I want to get better.
+Lepää kotona, ja sinä paranet. - Rest at home, and you will get better.
+Ota yksi tabletti aamulla. - Take one tablet in the morning.
+Haluatko ottaa lääkkeen nyt? - Do you want to take the medicine now?
+Juo teetä ja lepää. - Drink tea and rest.
+Haluan juoda teetä nyt. - I want to drink tea now.
+Nuku hyvin ja lepää kotona. - Sleep well and rest at home.
+Minulla on allergia. - I have an allergy.
+Onko sinulla allergia? - Do you have an allergy?
+Olen hyvin allerginen. - I am very allergic.
+Oletko sinä allerginen? - Are you allergic?
+Olen allerginen pähkinöille. - I am allergic to nuts.
+Onko tässä pähkinää? - Is there nut in this?
+Otan teetä, koska vältän laktoosia. - I will have tea because I avoid lactose.
+Tässä ruoassa on laktoosia. - There is lactose in this food.
+En ota leipää, koska vältän gluteenia. - I do not take bread because I avoid gluten.
+Tässä ei ole gluteenia. - There is no gluten in this.
+Haluan välttää pähkinöitä. - I want to avoid nuts.
+Vältän tätä ruokaa, koska olen allerginen. - I avoid this food because I am allergic.
+Minä odotan odotushuoneessa. - I wait in the waiting room.
+Missä odotushuone on? - Where is the waiting room?
+Seuraava numero on neljä. - The next number is four.
+Onko tämä sinun numero? - Is this your number?
+Kuka on seuraava? - Who is next?
+Oletko sinä seuraava? - Are you next?
+Minä istun tuolilla. - I sit on a chair.
+Haluatko istua tässä? - Do you want to sit here?
+Voisitko kutsua hoitajan? - Could you call the nurse?
+Lääkäri kutsuu sinut. - The doctor calls you.
+Flunssa on kurja tauti. - The flu/cold is a miserable illness.
+Juon teetä, koska minulla on flunssa. - I am drinking tea because I have a cold.
+Meneekö flunssa ohi viikossa? - Does a cold go away in a week?
+Olen sairas tänään. - I am sick today.
+Lepää ja nuku hyvin. - Rest and sleep well.
+Odotan vuoroa odotushuoneessa. - I am waiting for my turn in the waiting room.

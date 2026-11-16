@@ -1,0 +1,34 @@
+# Module 5: Study and Work
+
+Tämä kurssi on hyvä. - This course is good.
+Opiskelen suomea kurssilla. - I study Finnish on the course.
+Minä olen opettaja. - I am a teacher.
+En ymmärrä opettajaa. - I do not understand the teacher.
+Missä luokka on? - Where is the classroom?
+Opettaja on luokassa. - The teacher is in the classroom.
+Tämä harjoitus on hyvä. - This exercise is good.
+Tämä on uusi harjoitus. - This is a new exercise.
+Anteeksi, voisitko auttaa? - Excuse me, could you help?
+Tämä työpaikka on hyvä. - This workplace is good.
+Uusi työpaikka on mukava. - The new workplace is nice.
+Anna on hyvä kollega. - Anna is a good colleague.
+Tämä kollega on mukava. - This colleague is nice.
+Haluan aloittaa tänään. - I want to start today.
+Aloitan kello kaksi. - I start at two o'clock.
+Haluan lopettaa nyt. - I want to finish now.
+Lopetan kello viisi. - I finish at five o'clock.
+Onko tämä aikataulu hyvä? - Is this schedule good?
+Aikataulu on valmis. - The schedule is ready.
+Kuuntelen opettajaa luokassa. - I am listening to the teacher in the classroom.
+Haluan kuunnella opettajaa. - I want to listen to the teacher.
+Kirjoitan tehtävän nyt. - I am writing the assignment now.
+Onko tämä uusi tehtävä? - Is this a new assignment?
+Minulla on kysymys. - I have a question.
+Ymmärrän, mutta minulla on kysymyksiä. - I understand, but I have questions.
+Mikä on vastaus? - What is the answer?
+Tämä vastaus on hyvä. - This answer is good.
+Minulla on uusi vihko. - I have a new notebook.
+
+Hän haluaa auttaa. - He/She wants to help.
+Voitko auttaa minua? - Can you help me?
+Kirjoitan tehtävän vihkoon. - I write the exercise in the notebook.

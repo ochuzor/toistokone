@@ -1,0 +1,58 @@
+Aamulla pukeudun ja menen töihin. - In the morning I get dressed and go to work.
+Haluan pukeutua nyt. - I want to get dressed now.
+Minulla on aamulla kiire. - I am in a hurry in the morning.
+Onko sinulla kiire nyt? - Are you in a hurry now?
+Eteisessä on iso peili. - There is a big mirror in the hallway.
+Tämä pieni peili on pöydällä. - This small mirror is on the table.
+Pöydällä on uusi herätyskello. - There is a new alarm clock on the table.
+Tarvitsen huomenna herätyskellon. - I need an alarm clock tomorrow.
+Tänään on arkipäivä. - Today is a weekday.
+Menen töihin arkipäivänä. - I go to work on a weekday.
+Tämä on hyvä rutiini. - This is a good routine.
+Tässä on aamun rutiinini. - Here is my morning routine.
+Aikataulu on kalenterissa. - The schedule is in the calendar.
+Minulla on uusi kalenteri. - I have a new calendar.
+Tänään on hyvä työpäivä. - Today is a good workday.
+Lopetan työpäivän kello viisi. - I finish the workday at five o'clock.
+Menen töihin nyt, koska myöhästyn. - I am going to work now because I am late.
+Sinulla on kiire ja myöhästyt. - You are in a rush and you will be late.
+Lounas on valmis. - Lunch is ready.
+Teen lounaan kotona. - I make lunch at home.
+Päivällinen on pöydällä. - Dinner is on the table.
+Teen päivällistä keittiössä. - I am making dinner in the kitchen.
+Uusi lautanen on pöydällä. - The new plate is on the table.
+Leipä on lautasella. - The bread is on the plate.
+Missä haarukka on? - Where is the fork?
+Tarvitsen haarukan. - I need a fork.
+Pieni lusikka on tuossa. - The small spoon is there.
+Haluatko lusikan? - Do you want a spoon?
+Missä pyykki on? - Where is the laundry?
+Onko pyykki valmis? - Is the laundry ready?
+Lattialla on roska. - There is trash on the floor.
+Keittiössä on roska. - There is trash in the kitchen.
+Missä imuri on? - Where is the vacuum cleaner?
+Imuri on eteisessä. - The vacuum cleaner is in the hallway.
+Tämä astia on pöydällä. - This dish is on the table.
+Ruoka on astiassa. - The food is in the dish.
+Tämä kori on pieni. - This basket is small.
+Kirja on korissa. - The book is in the basket.
+Olen tänään väsynyt. - I am tired today.
+Oletko sinä väsynyt? - Are you tired?
+Minulla on nälkä, haluan ruokaa. - I am hungry, I want food.
+Onko sinulla nälkä? - Are you hungry?
+Minulla on jano, haluan vettä. - I am thirsty, I want water.
+Onko sinulla jano? - Are you thirsty?
+Olen väsynyt ja lepään nyt kotona. - I am tired and I am resting at home now.
+Haluan levätä tänään. - I want to rest today.
+Minulla on hyvä olo. - I feel good.
+Onko sinulla hyvä olo? - Do you feel good?
+Minulla on yleensä kiire aamulla. - I am usually in a hurry in the morning.
+Menen yleensä keskustaan raitiovaunulla. - I usually go to the city center by tram.
+Ensin otan kahvia ja sitten luen kirjaa. - First I have coffee and then I read a book.
+Ensin teen työtä ja sitten lepään. - First I work and then I rest.
+Lepään kotona ennen päivällistä. - I rest at home before dinner.
+Luen kirjaa ennen työtä. - I read a book before work.
+Lepään työpäivän jälkeen. - I rest after the workday.
+Menen kotiin lounaan jälkeen. - I go home after lunch.
+Lopuksi luen uutta kirjaa. - Finally I read a new book.
+Lopuksi palautan kirjan kirjastoon. - Finally I return the book to the library.

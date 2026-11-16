@@ -1,0 +1,62 @@
+Tämä on iso kaupunki. - This is a big city.
+Asutko tässä kaupungissa? - Do you live in this city?
+Toimisto on keskustassa. - The office is in the city center.
+Menen keskustaan tänään. - I am going to the city center today.
+Missä kartta on? - Where is the map?
+Onko pysäkki kartalla? - Is the stop on the map?
+Osoite on tässä. - The address is here.
+Toimisto on tässä osoitteessa. - The office is at this address.
+Tämä on mukava alue. - This is a nice area.
+Alueella on uusi kauppa. - There is a new shop in the area.
+Onko tämä raitiovaunu keskustaan? - Is this tram to the city centre?
+Menen töihin raitiovaunulla. - I go to work by tram.
+Paljonko lippu maksaa? - How much does a ticket cost?
+Ostan lipun nyt. - I will buy a ticket now.
+Mikä linja tämä on? - Which line is this?
+Menen keskustaan linjalla yksi. - I go to the city centre on line one.
+Haluan vaihtaa raitiovaunuun. - I want to switch to the tram.
+Vaihdan raitiovaunuun keskustassa. - I switch to the tram in the city centre.
+Matka keskustaan on mukava. - The trip to the city centre is pleasant.
+Olen nyt matkalla kotiin. - I am on my way home now.
+Olen nyt apteekissa. - I am at the pharmacy now.
+Menen tänään apteekkiin. - I am going to the pharmacy today.
+Tarvitsen tätä lääkettä. - I need this medicine.
+Tämä lääke on hyvä. - This medicine is good.
+Onko sinulla resepti? - Do you have a prescription?
+Minulla ei ole reseptiä. - I do not have a prescription.
+Tämä tabletti maksaa kaksi euroa. - This tablet costs two euros.
+Otan kaksi tablettia. - I will take two tablets.
+Tarvitsen tätä voidetta. - I need this cream.
+Kirjasto on lähellä. - The library is nearby.
+Menen huomenna kirjastoon. - I am going to the library tomorrow.
+Haluan lainata tämän kirjan. - I want to borrow this book.
+Palautan kirjan tänään. - I will return the book today.
+Haluatko palauttaa tämän kirjan? - Do you want to return this book?
+Onko sinulla kortti? - Do you have a card?
+Minulla ei ole korttia. - I do not have a card.
+Kirja on hyllyllä. - The book is on the shelf.
+Missä hylly on? - Where is the shelf?
+Missä posti on? - Where is the post office?
+Olen nyt postissa. - I am at the post office now.
+Onko pankki lähellä? - Is the bank nearby?
+Menen huomenna pankkiin. - I am going to the bank tomorrow.
+Täällä on hyvä palvelu. - There is good service here.
+Tarvitsen palvelua. - I need service.
+Onko nyt sinun vuoro? - Is it your turn now?
+Nyt on vuoroni. - Now it is my turn.
+Tämä lomake on valmis. - This form is ready.
+Palautan lomakkeen huomenna. - I will return the form tomorrow.
+Onko tämä hyvä reitti? - Is this a good route?
+Tarvitsen reitin keskustaan. - I need a route to the city center.
+Mikä on määränpää? - What is the destination?
+Menen raitiovaunulla määränpäähän. - I am going to the destination by tram.
+Missä on neuvonta? - Where is the information desk?
+Menen neuvontaan nyt. - I am going to the information desk now.
+Onko sinulla varaus? - Do you have a reservation?
+Teen varauksen huomenna. - I will make the reservation tomorrow.
+Tuossa on opaste keskustaan. - There is a sign to the city center.
+En ymmärrä tätä opastetta. - I do not understand this sign.
+Tämä voide maksaa viisi euroa. - This cream costs five euros.
+
+Voinko lainata tätä kirjaa? - Can I borrow this book?
+Haluatko lainata minun kynääni? - Do you want to borrow my pen?

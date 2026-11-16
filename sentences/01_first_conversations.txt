@@ -1,0 +1,72 @@
+# Module 1: First Conversations
+
+Hei! Minä olen opiskelija. - Hello! I am a student.
+Mikä sinun nimesi on? - What is your name?
+Asun Suomessa. - I live in Finland.
+Puhutko suomea? - Do you speak Finnish?
+Puhutko englantia? - Do you speak English?
+Onko tämä sinun? - Is this yours?
+
+Minä asun Suomessa. - I live in Finland.
+Minä olen opiskelija. - I am a student.
+
+Mistä sinä olet kotoisin? - Where are you from?
+Hei, minä olen kotoisin Suomesta. - Hello, I am from Finland.
+Moi, minä olen Anna. - Hi, I am Anna.
+Hei ja moi! - Hello and hi!
+Hei, nimeni on Anna. - Hello, my name is Anna.
+Moi, nimeni on Mikko. - Hi, my name is Mikko.
+Hei, mikä sinun nimesi on? - Hello, what is your name?
+Hei, hauska tavata! - Hello, nice to meet you!
+Kiitos, hauska tavata! - Thank you, nice to meet you!
+Kuka tämä on? - Who is this?
+Kuka on opiskelija? - Who is a student?
+Kyllä, olen opiskelija. - Yes, I am a student.
+Kyllä, puhun vähän suomea. - Yes, I speak a little Finnish.
+Ymmärrän vähän suomea. - I understand a little Finnish.
+Anteeksi, voitko toistaa? - Excuse me, can you repeat?
+En ymmärrä, voitko toistaa? - I do not understand, can you repeat?
+Minä puhun hitaasti. - I speak slowly.
+Puhun suomea hitaasti. - I speak Finnish slowly.
+Sanotko uudelleen, kiitos? - Could you say that again, please?
+
+Mistä hän tuli? - From where did (s)he come?
+Mistä tiesit? - How did you know?
+Anteeksi, mitä sinä sanot? - Excuse me, what are you saying?
+Minä opiskelen Suomessa. - I study in Finland.
+Opiskelen suomea. - I study Finnish.
+Minä työskentelen Suomessa. - I work in Finland.
+Olen opiskelija ja työskentelen. - I am a student and I work.
+Luen hitaasti suomea. - I read Finnish slowly.
+Kirjoitan suomea. - I write Finnish.
+Minä kirjoitan hitaasti. - I write slowly.
+Mitä minä katson? - What am I watching?
+Katson ja ymmärrän vähän. - I watch and understand a little.
+Missä sinä asut? - Where do you live?
+Sinä asut Suomessa. - You live in Finland.
+Mitä sinä opiskelet? - What do you study?
+Missä sinä työskentelet? - Where do you work?
+Sinä työskentelet ja minä opiskelen. - You work and I study.
+Mitä sinä luet? - What are you reading?
+Sinä luet hitaasti. - You read slowly.
+Mitä sinä kirjoitat? - What are you writing?
+Sinä kirjoitat suomea. - You write Finnish.
+Mitä sinä katsot? - What are you watching?
+Sinä katsot ja minä luen. - You watch and I read.
+Asutko sinä Suomessa? - Do you live in Finland?
+Ehkä sinä olet opiskelija. - Maybe you are a student.
+Ehkä puhun vähän suomea. - Maybe I speak a little Finnish.
+Sinä et puhu suomea. - You do not speak Finnish.
+Minä en ole opiskelija. - I am not a student.
+Minä en asu Suomessa. - I do not live in Finland.
+Sinä et asu Suomessa. - You do not live in Finland.
+En puhu vielä suomea. - I do not speak Finnish yet.
+Varmasti puhun vähän suomea. - I certainly speak a little Finnish.
+Varmasti asun Suomessa. - I certainly live in Finland.
+Minä olen kotoisin Suomesta. - I am from Finland.
+Anteeksi, voitko sanoa uudelleen? - Excuse me, can you say that again?
+Mitä sinä sanot? - What are you saying?
+Sinä opiskelet yliopistossa. - You study at the university.
+Puhut vähän suomea. - You speak a little Finnish.
+Puhut hitaasti. - You speak slowly.
+Hän asuu vielä kotona. - He/She still lives at home.
