@@ -95,6 +95,52 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue((data_dir / "content.sqlite").exists())
         self.assertEqual(progress_path.read_bytes(), b"persistent-progress")
 
+    def test_batched_sentence_import_preserves_translations_and_token_mappings(self) -> None:
+        self.write_sources(
+            "talo - house\nruoka - food\n",
+            "",
+            {
+                "lesson.txt": (
+                    "Talo on suuri. - The house is big. / A large house.\n"
+                    "Ruoka on hyvää. - The food is good.\n"
+                )
+            },
+        )
+
+        run_import(self.root)
+
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            translations = database.execute(
+                """SELECT sentences.finnish, sentence_translations.english, sentence_translations.ordinal
+                   FROM sentence_translations JOIN sentences ON sentences.id = sentence_id
+                   ORDER BY sentences.id, sentence_translations.ordinal"""
+            ).fetchall()
+            token_rows = database.execute(
+                """SELECT sentences.finnish, sentence_tokens.token_casefold
+                   FROM sentence_tokens JOIN sentences ON sentences.id = sentence_id
+                   ORDER BY sentences.id, sentence_tokens.token_casefold"""
+            ).fetchall()
+
+        self.assertEqual(
+            translations,
+            [
+                ("Talo on suuri.", "The house is big.", 0),
+                ("Talo on suuri.", "A large house.", 1),
+                ("Ruoka on hyvää.", "The food is good.", 0),
+            ],
+        )
+        self.assertEqual(
+            token_rows,
+            [
+                ("Talo on suuri.", "on"),
+                ("Talo on suuri.", "suuri"),
+                ("Talo on suuri.", "talo"),
+                ("Ruoka on hyvää.", "hyvää"),
+                ("Ruoka on hyvää.", "on"),
+                ("Ruoka on hyvää.", "ruoka"),
+            ],
+        )
+
     def test_import_builds_nested_form_tree_in_any_declaration_order(self) -> None:
         self.write_sources(
             "auto - car\n",

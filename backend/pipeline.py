@@ -304,17 +304,30 @@ def _build_database(path: Path, content: ImportedContent) -> None:
                     "INSERT INTO word_forms (vocabulary_id, form, parent_form) VALUES (?, ?, ?)",
                     [(vocabulary_id, form, parent) for form, parent in content.forms[word].items()],
                 )
-            for finnish, translations in content.sentences.items():
-                cursor = connection.execute("INSERT INTO sentences (finnish) VALUES (?)", (finnish,))
-                sentence_id = cursor.lastrowid
-                connection.executemany(
-                    "INSERT INTO sentence_translations (sentence_id, english, ordinal) VALUES (?, ?, ?)",
-                    [(sentence_id, english, ordinal) for ordinal, english in enumerate(translations)],
-                )
-                connection.executemany(
-                    "INSERT INTO sentence_tokens (token_casefold, sentence_id) VALUES (?, ?)",
-                    [(token, sentence_id) for token in tokens(finnish)],
-                )
+            connection.executemany(
+                "INSERT INTO sentences (finnish) VALUES (?)",
+                ((finnish,) for finnish in content.sentences),
+            )
+            sentence_ids = {
+                finnish: sentence_id
+                for sentence_id, finnish in connection.execute("SELECT id, finnish FROM sentences")
+            }
+            connection.executemany(
+                "INSERT INTO sentence_translations (sentence_id, english, ordinal) VALUES (?, ?, ?)",
+                (
+                    (sentence_ids[finnish], english, ordinal)
+                    for finnish, translations in content.sentences.items()
+                    for ordinal, english in enumerate(translations)
+                ),
+            )
+            connection.executemany(
+                "INSERT INTO sentence_tokens (token_casefold, sentence_id) VALUES (?, ?)",
+                (
+                    (token, sentence_ids[finnish])
+                    for finnish in content.sentences
+                    for token in tokens(finnish)
+                ),
+            )
         foreign_key_errors = connection.execute("PRAGMA foreign_key_check").fetchall()
         integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
         if foreign_key_errors or integrity != "ok":
