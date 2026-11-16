@@ -1,0 +1,719 @@
+# https://community-courses.memrise.com/community/course/622488/finnish-sentences-audio/
+
+# Basic
+Kuka? - Who?
+Milloin? - When?
+Mitä - What
+Mikä - What, which
+Miksi - Why
+Miten - How (to do)
+Kuinka? - How? (measurement)
+Kuinka kauan? - How long?
+Kuinka paljon? - How much?
+Kuinka monta? - How many?
+Missä - Where
+Mistä - Where from
+Mihin - Where to
+Millainen - What kind of
+Oletko - Are you
+Onko - Is it
+Onko teillä... - Do you have...
+
+# Basic
+Tervetuloa! - Welcome (here)!
+Anteeksi. - Excuse me.
+Kiitos. - Thank you.
+Ole hyvä. - (You're) welcome.
+Mukava tavata. - Nice to meet you.
+Oli mukava tavata. - It was nice to meet you.
+Hauska tutustua. - Nice to make you aquaintance.
+Nuku hyvin. - Sleep well.
+Ei se mitään. - No problem.
+Hyvää päivänjatkoa! - Have a nice day!
+Turvaliista matkaa. - Safe journey.
+Onneksiolkoon! - Congradulations!
+Hyvää syntymäpäivää! - Happy Birthday!
+Onnea! - Good luck!
+Ei kestä. - Don't mention it.
+Terveydeksi. - Bless you (sneeze).
+Selvä homma, ei kiirettä! - It's okay, no hurry!
+
+# Greetings! Thank you! Goodbye! 
+Hei! - Hi!
+Kiitos okein paljon! - Thank you right much!
+Paljon kiitoksia! - Thank you very much!
+Kiitoksia oikein paljon! - Thanks very much!
+Voisitteko sanoa...? - Could you please tell me...
+Anteeksi, että häiritsen, mutta... - Sorry to bother you but...
+Anteeksi, että häiritsen, mutta voisitteko sanoa... - Sorry to bother you, but can you tell me...
+Anteeksi, vielä yksi kysymys. - I'm sorry, one more question.
+Olkaa hyvä. - Here you are/help yourself. (when offering hospitality)
+Hyvää huomenta! - Good morning!
+Hyvää päivää! - Good day!
+Hyvää iltapäivää! - Good afternoon!
+Hyvää yötä! - Good night!
+Näkemiin. - Goodbye.
+Moi moi. - Bye bye.
+
+# Where are you from? 
+Mistäs sä olet kotoisin? - Where are you from? (colloquial)
+Mistä te olette? - Where are you from? (plural, formal)
+Mistä sinä olet? - Where are you from? (singular, formal)
+Mistä kaupungista? - From which town?
+Oletteko Suomesta? - Are you from Finland? (formal)
+Oletko Oulusta? - Are you from Oulu? (informal)
+Olen kotoisin Venäjältä. - I am from Russia.
+Yhdysvalloista. - From the United States
+Ruotsista. - From Sweden.
+Missä te asutte? - Where do you live? (plural, formal)
+Missä sinä asut? - Where do you live? (singular, informal)
+Asutteko Savonlinnassa? - Are you living in Savonlinna? (formal)
+Asutko Espoossa? - Are you living in Espoo? (in.)
+Ystäväni asuu Lontoossa. - My friend lives in London.
+Hän on Dublinista ja hän asuu Kuopiossa. - He is from Dublin and he lives in Kuopio.
+Leena on Kuopiosta ja asuu Dublinissa. - Leena is from Kuopio and lives in Dublin.
+Veeti on Helsingistä ja asuu Tampereella. - Veeti is from Helsinki and lives in Tampere.
+Leo Tampereelta ja asuu Helsingissä. - Leo on from Tampere and lives in Helsinki.
+Olen Kaliforniasta ja asun Pohjois-Carolinassa. - I am from California and I live in North Carolina.
+
+# Language and Nationality 
+Oletko suomalainen? - Are you Finnish?
+Olen amerikkalainen, olen Amerikasta, ja puhun englanti. - I'm American, I'm from America, and I speak English.
+Olen venäläinen, olen Venäjältä, ja puhun venäjää. - I'm Russian, I'm from Russia, and I speak Russian.
+Olen suomalainen, olen suomesta, ja puhun suomea. - I am Finnish, I am from Finland, and I speak Finnish.
+Olen Ruotsista ja asun nyt Suomessa. - I am from Sweden and I live now in Finland.
+Mitä kieliä puhut? - What languages do you speak?
+Ymmärrätkö ruotsia? - Do you understand Swedish?
+Puhutko englantia? - Do you speak English?
+Mä puhun vaan englantia. - I only speak English.
+En puhu suomea. - I don't speak Finnish.
+En ymmärrä Venäjää. - I don't understand Russian.
+Ymmärrän vähän suomea. - I understand a little Finnish.
+Puhun vähän suomea. - I speak a little Finnish.
+
+# Work and School 
+Missä sinä olet töissä? - Where do you work? (colloquial)
+Olen töissä Supermarketissa. Entä sinä? - I work at the Supermarket. How about you?
+Olen baarimikko pubissa. - I am a bartender at the pub.
+Työskentelin pizzaravintolassa yhdeksi vuodeksi. - I worked at a pizza restaurant for one year.
+Ensimmäinen työpaikkani oli tehdä pizzaa. - My first job was to make pizza.
+Minun vähiten suosikki työpaikkani oli vähittäiskaupassa. - My least favorite job was in retail.
+Mika on töissä tavaratalossa. - Mika is working at a department store.
+Pekka on töissä kirjastossa Espoossa. - Pekka is working at the library in Espoo.
+Leena on töissä ravintolassa. - Leena is working at the restaurant.
+Gina puhuu ruotsia ja englantia töissä. - Gina speaks Swedish and English at work.
+Käytkö koulua? - Do you go to school?
+Mitä opiskelet? - What do you study?
+Mitä opiskelit? - What did you study?
+Kuinka kauan olet opiskellut suomea? - How long have you been studying Finnish?
+Tammikuusta kaksituhatta viisitoista lähtien. - From January 2015 onwards.
+
+# Getting to know you 
+Mikäs sun nimi on? - What's your name? (colloquial)
+Mun nimi on - My name is...
+Saanko esitellä - May I introduce...
+Saanko esitellä minun ystävä, Emily. - May I introduce my friend, Emily.
+Kui vanha sä oot? - How old are you?
+Poltatko röökiä tai juotko? - Do you smoke or drink?
+Mä en polta röökiä tai juo. - I don't smoke or drink.
+Mä en juo alkoholia. - I don't drink alcohol.
+Onko sulla poikaystävä? - Do you have a boyfriend?
+Ootko sinkku? - Are you single?
+Olen sinkku. - I'm single.
+Mitäs sä tykkäät tehdä? - What do you like to do?
+Mitä teet vapaa-aikanasi? - What do you do in your free time?
+Tykkään treenata. - I like to workout.
+Tykkään tanssia. - I like to dance.
+Tykkään lukea. - I like to read.
+
+# Getting to know you 
+Milloin sä oot syntynyt? - When were you born?
+Milloin sulla on syntymäpäivä? - When is your birthday?
+Kolmetoista huhtikuusta. - April 13th.
+Yhdeksäntoista kahdeksankymmentäyhdeksän. - 1989.
+Oletko naimisissa? - Are you married?
+Onko sulla lapsia? - Do you have kids?
+Kuinka vanhoja he ovat? - How old are they?
+Vanhin on yksitoista ja nuorin on kolme. - The eldest is eleven and the youngest is three.
+Onko sulla sisaruksia? - Do you have siblings?
+Mä oon ainoa lapsi. - I'm an only child.
+Minulla on nuorempi veli. - I have a younger brother.
+Minulla on vanhempi sisko. - I have an older sister.
+Onko sulla mitään lemmikkejä? - Do you have any pets?
+Minulla on koira ja kissa. - I have a dog and a cat.
+Onko sulla kasvimaata? - Do you have an edible garden?
+Mitä sinä kasvat? - What are you growing?
+
+# Questions and Answers 
+Mitä teet? - What are you doing?
+Mitä teit tänään? - What did you do today?
+Mitä teet tänään? - What are you doing today?
+Mitä mietit? - What are you thinking?
+Mitä se tarkoittaa? - What does that mean?
+Oliko sulla hyvä päivä? - Did you have a good day?
+Teitkö sinä jotain hauskaa tänään? - Did you do anything fun today?
+Onko suunnitelmia loppupäiväksi? - Any plans for the rest of the day?
+Onko tulta? - Do you/does anyone have a light?
+En tupakoi. - I don't smoke.
+Mitä se on? - What is that?
+Miten menee? - How's it going?
+Mitä kuuluu? - How are you?
+Oikein hyvin, kiiti, ja sinä? - Very well, thanks, and you?
+Kiitos kysymästä. - Thanks for asking.
+Jatka, mitä muuta? - Go on, what else?
+Entä muuta? - Anything else?
+Milloin heräsit? - When did you wake up?
+Heräsin noin tunti sitten. - I woke up about an hour ago.
+
+# Questions and Answers 
+Voisitko kirjoittaa sen ylös? - Could you write it down, please?
+Voitteko sanoa...? - Can you say...?
+Voisitko toistaa, kiitos? - Could you repeat that, please?
+Puhukaa hitaasti, olkaa. - Speak slowly, please.
+Kuinka sanotaan suomeksi "table"? - How do you say "table" in Finnish?
+
+# Restaurant and Bar 
+Voinko liittyä seuraan? - Can I join you?
+Voinko istua tähän? - Can I sit here?
+Tuletko tänne usein? - Do you come here often?
+Kerran viikossa. - Once a week.
+Joka lauantai. - Every Saturday.
+Meille vai teille? - My place or yours?
+Missä on vessa? - Where is the toilet?
+Pitäkää vaihtorahat. - Keep the change.
+Pöytä kahdelle, kiitos. - Table for two please.
+
+# People
+Paras ystäväni on tatuoija. - My best friend is a tattoo artist.
+Hän haluaa piirtää ja maalata muotokuvia. - She likes to draw and paint portraits.
+Äitini on armeijassa. - My mother is in the army.
+Setäni on palomies. - My uncle is a firefighter.
+Isovanhempani kasvatti minut. - My grandparents raised me.
+Isoisäni kuoli sydänkohtaukselta. - My grandfather died of a heart attack.
+Äitini ei puhu suomea. - My mom doesn't speak Finnish.
+Hänen vanhempansa eivät puhu Englanti. - His parents do not speak English.
+Venla on sairaanhoitaja sairaalassa. - Venla is a nurse at the hospital.
+Perheeni ei juhliavat Kiitospäivää. - My family does not celebrate Thanksgiving.
+Saamme paljon turisteja Helsingissä. - We get a lot of tourists in Helsinki.
+Tämä luuranko ei ole ihminen. - This skeleton is not human.
+Petteri on luonnontieteiden opettaja. - Petteri is a science teacher.
+Olen opiskelija yliopistossa. - I am a student at the university.
+Tämä on minun sihteeri, Aada. - This is my secretary, Aada.
+Minun suosikki kirjailijani on JK Rowling. - My favorite author is JK Rowling.
+Sinun kantaisä oli kuningas. - Your ancestor was a king.
+Jeesus oli puuseppä. - Jesus was a carpenter.
+Minun naapurit ovat äänekäs. - My neighbors are loud.
+Hänen vanhempi veljensä, Markus, on lentäjä. - His older brother, Markus, is a pilot.
+Sain hieronta hierojasta. - I got a massage from the masseuse.
+Maalari maalasi minun muotokuva. - The painter painted my portrait.
+Olen Yhdysvaltojen kansalainen. - I am a US citizen.
+Tämä on minun heimoni. Minun kansani. - This is my tribe. My people.
+Kämppäkaverini polttaa kannabista. - My roommate smokes cannabis.
+Poliisi on ulkopuolella. - The police are outside.
+Poliitikkojen tiedetään olevan epäluotettavia. - Politicians are known to be unreliable.
+
+# Love and Romance 
+Rakastatko minua? - Do you love me?
+Mitä voin tehdä miellyttääkseni sinua? - What can I do to please you?
+Olen ajatellut sinua koko päivän. - I've been thinking about you all day.
+Olen niin rakastunut sinuun. - I am so in love with you.
+Teet mun onnelliseksi. - You make me happy.
+Sä oot niin komea. - You are so handsome.
+Sä oot seksikas. - You are sexy.
+Seksikäs peto. - Sexy beast.
+Olet tärkeä minulle. - You are important to me.
+Mun rakkaani. - My beloved.
+Rakkaimpani. - Most beloved.
+Rakas - (My) love
+Ilo on puolellani. - The pleasure is mine.
+Kauniita unia. - Sweet dreams.
+poskisuukko - kiss on the cheek
+
+# Food Talk 
+Mitä haluaisit syödä? - What would you like to eat?
+Tykkään syödä pinaattia. - I like to eat spinach.
+Tykkään syödä paljon hedelmiä ja vihanneksia. - I like to eat alot of fruits and vegetables.
+Syön paljon riisiä ja papuja. - I eat alot of rice and beans.
+Mikä sun lempiruoka on? - What's your favorite food?
+Mä tykkään intialaisesta ruoasta. - I like Indian food.
+Aasialaisesta ruoasta. - Asian food.
+Saisinko suklaata? - May I have some chocolate?
+Haluaisitko sellaisen? - Would you like that one?
+Haluatko sellaisen? - Do you want one?
+Haluaisitko palan? - Would you like a piece?
+Onko nälkä? - Are you hungry?
+Onko jano? - Are you thirsty?
+Tykkäätkö sinä teestä? - Do you like tea?
+Mitä söit aamiaiseksi? - What did you eat for breakfast?
+Syötkö lihaa? - Do you eat meat?
+Mä en syö lihaa. - I don't eat meat.
+Oletko vegaani? - Are you vegan?
+Oon vegaani. - I'm vegan.
+Kahvi on pöydässä. Olkaa hyvä. - Coffee is on the table. Please help yourself.
+Söin jo päivällistä mutta säästin sinulle vähän. - I ate dinner already, but I saved you a bit.
+Sulje suusi, kun pureskelee. - Close your mouth when you chew.
+Ei puhelimia pöydässä. - No phones at the table.
+
+# Today and the Weather 
+Mikä päivä tänään on? - What day is today?
+Tänään on tiistai. - Today is Tuesday.
+Huomenna on keskiviikko. - Tomorrow is Wednesday.
+Millainen ilma tänään on? - What's the weather like today?
+On pilvistä. - It's cloudy.
+Tuleeko sade? - Is it going to rain?
+Kuinka kylmä on? - How cold is it?
+Vitun kylmää. - Fucking cold.
+On ihan kiva ilma. - The weather is quite nice.
+Talvella on melko kylmää. - It is pretty cold in the winter.
+Kesällä on lämmin. - It is warm in the summer.
+Kesällä Suomessa on paljon erilaisia festivaaleja. - In the summer in Finland there are many different festivals.
+
+# Civilization
+Minun täytyy noutaa tarvikkeita tavaratalosta. - I have to pick up supplies from the department store.
+Tie on suljettu. - The road is closed.
+Sairaala on kadun varrella. - The hospital is down the street.
+Poliisiasema on kulmalla. - The police station is around the corner.
+He menevät kirkkoon sunnuntaina. - They go to church on Sunday.
+Talo on ennen siltaa. - The house is before the bridge.
+Sauna on valmis sinulle. - The sauna is ready for you.
+
+# Entertainment
+Onks sul jotain lempi bändejä? - What are your favorite bands?
+Millaisesta musiikista tykkäät? - What kind of music you like?
+räpistä - rap (music)
+punkista - punk (music)
+Mä tykkään konemusiikista yleisesti. - I like electronic music in general.
+Onko teillä wi-fi? - Do you have wi-fi?
+Mikä on salasana? - What is the password?
+
+# Finnish Facts 
+Suomen rajanaapurit ovat Ruotsi, Norja ja Venäjä - Finland borders with Sweden, Norway, and Russia.
+Suomessa on yli 180,000 järveä. - In Finland there are over 180,000 lakes.
+Suomen lippu on sininen ja valkoinen. - The Finnish Flag is blue and white.
+Lappi on Pohjois-Suomessa. - The Lapland is in northern Finland.
+Lapissa asuu saamelaisia. - In Lapland live the Saame people.
+Suomessa on kaksi virallista kieltä: suomi ja ruotsi. - Finland has two official langauges: Finnish and Swedish.
+Suomi kuului ennen Ruotsiin. - Finland used to belong to Sweden.
+Suomi itsenäistyi Venäjästä vuonna 1917. - Finland gained independence from Russia in 1917.
+Suomen nykyinen presidentti on Sauli Niinistö. - The current President of Finland is Sauli Niinistö.
+Suomen itsenäisyyspäivä on 6 joulukuuta. - The Finnish Independence Day is 6 December.
+Juhannuksena poltetaan kokkoja. - Bonfires are burnt on Midsummer.
+Suomen pääkaupunki on Helsinki. - The capital of Finland is Helsinki.
+Suomi on ollut EU-jäsen vuodesta 1995. - Finland has been an EU member since 1995.
+Kalevala on Suomen kansalliseepos. - The Kalevala is the Finnish national epic.
+
+# Facts
+Keskitalvella aurinko ei nouse Pohjois-Suomessa. - In midwinter the sun does not rise in northern Finland.
+Keskikesällä aurinko ei laske Suomessa. - In midsummer the sun does not set in Finland.
+Porolaumaa kutsutaan tokaksi. - A herd of reindeer is called "tokka".
+Revontulet ovat yleisiä Pohjois-Suomessa talvisin. - The northern lights are common in northern Finland in the winter.
+Suomen kieli on suomalais-ugrilainen. - The Finnish language is Finno-Ugric.
+Suomen kielessä on 15 sijamuotoa. - The Finnish language has 15 noun cases.
+Suomessa on 2 miljoonaa saunaa. - There are 2 million saunas in Finland.
+Obama sanoi vuonna 2009, että maailman pitäisi päästä eroon ydinaseista. - Obama said in 2009 that the world should get rid of nuclear weapons.
+Romanikerjäläiset ilmestyivät pohjoismaisten suurkaupunkien kaduille EU-jäsenyyden myötä. - Roman citizens appeared on the streets of the Nordic cities as a result of EU membership.
+
+# Idioms
+Nopea kuin ajatus. - Fast as thought.
+Kevyt kuin höyhen. - Light as a feather.
+Itsepäinen kuin passi. - Stubborn as ram.
+Vapaa kuin taivaan lintu. - Free as a bird.
+Ensin, työ, sitten leikki. - First work, then play.
+Kuin elefantti lasikaupassa. - Like an elephant in a glass shop.
+Lyödä kaksi kärpästä yhdellä. - Hit two flies with one hit.
+Ei ole koiraa karvoinin katsominen. - Judge not the dog by it's hair.
+Ei kukaan ole seppä syntyessään. - No one is a blacksmith at birth.
+Penni ajatuksista. - Penny for your thoughts.
+Susi lampaiden vaatteissa. - Fox in lamb's clothing.
+Lyhyt kuin kanan lento. - Short like a chickens flight.
+Älä lyö lyötyä. - Don't hit a man when he's down.
+Kysyvä ei tieltä eksy. - No shame in asking.
+
+# Other
+Olen täysin samaa mieltä sun kanssa. - I totally agree with you.
+Laitan sulle huomenna viestiä. - I'll text you tomorrow.
+Olen selvinpäin. - I am sober (at the moment)
+Olen raitis. - I am sober. (straight-edge)
+Pidä hyvänäsi! - Keep it!/You can have it!
+
+# Imperative
+Kerro minulle yksityiskohdat! - Tell me the details!
+Kerro minulle itsestäsi. - Tell me about yourself.
+Kerro minulle, mitä tunnet. - Tell me how you feel.
+Kerro minulle, miten pääsen kotiisi. - Tell me how to get to your house.
+Kerro hänelle totuus. - Tell him/her the truth.
+Avaa se! - Open it!
+Avaa mielesi. - Open your mind.
+Avaa lahjasi! - Open your present!
+Tule tänne! - Come here!
+Pysy täällä! - Stay here!
+Varo! - Watch out!/Look out!
+Väistä! - Duck! Dodge!
+Odota tässä. - Wait here.
+Jätä se kotiin. - Leave it at home.
+Jätä se rauhaan. - Leave it alone.
+Seuraa tuota mopoa! - Follow that moped!
+Seuraa sinun sydän. - Follow your heart.
+Apua! - Help!
+Katso! - Look!
+
+# Imperative
+Kiirehdi! - Hurry up!
+Matkusta ympäri maailmaa. - Travel around the world.
+Vapauta mielesi. - Free your mind.
+Lue usein. - Read often.
+Elä elämääsi ilman pelkoa. - Live your life without fear.
+Ota se! - Take it!
+Ota se pois päältäsi. - Take it off!
+Ota kengät pois jalastasi. - Take off your shoes.
+Ota hattusi pois päästä pöydässä. - Take your hat off at the table.
+Ota torkut. - Take a nap.
+Yritä vähän nukkua - Try to get some sleep.
+Jää kotiin ja lepää. - Stay home and rest.
+Tyhjennä roskat. - Empty the trash.
+Laita se pöydällä. - Put it on the table.
+Kaada minulle hieman viiniä. - Pour me some wine.
+Sekoita jauhot veteen. - Mix flour with water.
+
+# Imperative
+Ole kiltti ja palauta kynäni kun olet valmis. - Kindly return my pen when you are done.
+Lopeta! - Stop!/Wait!
+Lopeta valittaminen. - Stop complaining.
+Ole hiljaa! - Be quiet!
+Ole varovainen! - Be careful!
+Ole hyvä ja jatka. - Please proceed.
+Näe maailma heidän silmiensä kautta. - See the world through their eyes.
+Olkaapa vaan hyvä ja ottakaa teetä ja välipaloja. - Help yourself to the tee and snacks.
+Katso minua silmiini. - Look into my eyes.
+Seiso suorassa! - Stand up straight!
+Istupas alas. - Please, sit down.
+Maistaisitko tätä keittoa! - (Try) Sample this soup!
+Näpit irti! - Hands off!
+Testaa osaamisesi! - Test your skills!
+
+# Imperative (negative) 
+Älä huolehdi. - Don't worry.
+Älä pelkää. Uskoa itseesi. - Don't fear. Have faith.
+Älä tee sitä.  - Don't do it!
+Älä kiirehdi! - Don't rush!
+Älä ole vihainen. - Don't be angry.
+Älä liiku! - Don't move!
+Älä mene! - Don't go!
+Älä paina painiketta! - Don't push the button!
+Älä koske minuun! - Don't touch me!
+Älä kyhjötä! - Don't slouch! (While person is sitting or standing).
+Älä anna periksi! - Don't give up!
+Älä välitä minusta. - Don't mind me.
+
+# Comparatives and Superlatives 
+Tämä tomaatti on isompi. - This tomato is bigger.
+Poika on pidempi kuin tyttö. - The boy is taller than the girl.
+Mummo on vanhempi kuin äiti. - Grandmother is older than mother.
+Tyttö on iloisempi kuin poika. - The girl is happier than the boy.
+Äiti on lyhyempi kuin isä. - Mother is shorter than father.
+Otto on pisin. - Otto is the tallest.
+Mummo on vanhin. - Grandmother is the oldest.
+Tyttö on pienin. - The girl is the smallest.
+Äiti on kaunein. - Mother is the most beautiful.
+Äidillä on pidemmät hiukset kuin mummolla. - Mother has longer hair than grandmother.
+Nuoremmalla lapsella on nalle. - The younger child has a teddy bear.
+Isoäiti ja isoisä ovat yhtä pitkä. - Grandmother and Grandfather are equally tall.
+Äiti on yhtä vanha kuin isä. - Mother is as old as father.
+
+# Missä? (Where?) 
+Missä sinä olet? - Where are you?
+Olen kylpyhuoneessa. - I'm in the bathroom.
+Makuuhuoneessa. - In the bedroom.
+Missä avaimeni ovat? - Where are my keys?
+Ne ovat pöydällä. - They are on the table.
+Missä on takkini? - Where is my coat?
+Se roikkuu oveen. - It hangs on the door.
+Missä se on? - Where is it?
+Missä sinä menet? - Where are you going?
+Menen Lontooseen kesäkuussä. - I am going to London in June.
+Missä olit? - Where were you?
+Tulin juuri Jyväskylältä. - I came just from Jyvaskyla.
+Missä festivaali on? - Where is the festival?
+Festivaali on Hollannissa. - The festival is in Holland.
+Tapahtuma on Mikkelissä. - The event is in Mikkeli.
+
+# Grammar (manner) 
+Hän salaperäisesti katosi. - He mysteriously disappeared.
+Valitettavasti hän ei ole kotona. - Unfortunately she is not home.
+Valitettavasti en voi mennä. - Unfortunately I can't go.
+En rehellisesti tiedä. - I honestly don't know.
+Kenkä sopii täydellisesti. - The shoe fits perfectly.
+Onneksi meillä on aikaa. - Luckily we have time.
+Sain kotiin turvallisesti. - I got home safely.
+Kuuletko minua selvästi? - Do you hear me clearly?
+Toivottavasti hän saapuu pian. - Hopefully he will arrive soon.
+Hän ei avoimesti jakaa hänen tunteitaan. - He does not openly share his feelings.
+Hän kuiskasi pehmeästi. - She whispered softly.
+
+# Imperfect (past tense) 
+Tämä ei ollut se mitä odotin. - This was not what I expected.
+Hän joi liikaa kahvia ja ei voi istua edelleen. - He drank too much coffee and can't sit still.
+Sain uusi pari kengät. - I got a new pair of shoes.
+Jäin sängyssä kaikki päivä ja pelasin video pelit. - I stayed in bed all day and played video games.
+Petri ompeli reikä housuissa. - Petri sewed the hole in his pants.
+Ansa opiskeli Venäjän kieli lukiossa. - Ansa studied the Russian language in high school.
+Tulin koti ja pesin astiat. - I came home and washed the dishes.
+Kerroin hänen tavata minun täällä. - I told him to meet me here.
+Anteeksi, kaipasin sinun puhelusi. Olin suihkussa. - Sorry, I missed your call. I was in the shower.
+Hän joi liikaa kahvia eikä pysty istumaan paikoillaan. - He drank too much coffee and can't sit still.
+Myin kaikki levysi huumeita varten. - I sold all your records for drugs.
+Hän kuunteli hänen musiikkiaan koko matkan ajan. - She listened to her music the whole ride.
+Hän sulki oven ja jätti minut ulos. - He closed the door and locked me out.
+Hän oli pidätettynä ja käsiraudoissa. - He was arrested and handcuffed.
+Laitoin ruokasi jääkaappiin. - I put your food in the refrigerator
+Nukuin koko lennon ajan. - I slept the whole flight.
+Opin uuden liikkeen hulavanteellani. - I learned a new move with my hula hoop.
+
+# Question words -ko/-kö 
+Uskotko Jumalaan? - Do you believe in God?
+Ajatko autoa? - Do you drive a car?
+Tunnetko sen? - Do you feel it?
+Onko sinulla pyörä? - Do you have a bike?
+Onko sinulla avaimiani? - Do you have my keys?
+Tiedätkö Pakko? - Do you know Pakko?
+Pidätkö karkkia? - Do you like candy?
+Asutko yksin? - Do you live alone?
+Tarvitsetko kyydin? - Do you need a ride?
+Pysäköitkö autosi autotalliin? - Do you park your car in the garage?
+Näetkö lintu? - Do you see the bird?
+Nukutko kanssa yövalo? - Do you sleep with a nightlight?
+Puhutko venäjää? - Do you speak Russian?
+Ajatteletko minua? - Do you think about me?
+Haluatko kuunnella musiikkia? - Do you want to listen to music?
+Työskenteletkö viikonloppuisin? - Do you work on weekends?
+
+# Question words -ko/-kö 
+Soititko mummo? - Did you call grandma?
+Pudotitko kännykkäni? - Did you drop my cell phone?
+Menitkö Lunun juhliin? - Did you go to Luna's party?
+Kuulitko minua? - Did you hear me?
+Tiesitkö että hän on sairaalassa? - Did you know that he is in the hospital?
+Tapasitko hänet kahvilassa? - Did you meet him at the cafe?
+Pakkasitko minun housuni? - Did you pack my pants?
+Näitkö Anna kirjastossa? - Did you see Anna at the library?
+Näitkö hänet tänään? - Did you see her today?
+
+# Inessive (in) -ssa/-ssä Locative Case 
+Leipä on kaapissa. - The bread is in the cupboard.
+Me asumme Espoossa. - We live in Espoo..
+Anne on puutarhassa. - Anne is in the garden.
+Minna on koulussa. - Minna is at school.
+Isä nukkuu sängyssä. - Father is sleeping in bed.
+Kalat uivat valtameressä. - Fish swim in the ocean.
+Lintu on puussa. - The bird is in the tree.
+Iva on jo unessa. - Iva is already asleep.
+He käyvät monessa maassa. - They visit many countries.
+Hanna on puhelimessa. - Hanna is on the phone.
+Sormus on sormessa. - The ring is on the finger.
+Raimo lukee bussissa. - Raimo reads on the bus.
+Kirjat ovat hyllyssä. - The books are on the shelf.
+Kissa on laatikossa. - The cat is in the box.
+Kirja on repussa. - The book is in the backpack.
+Kuva on albumissa. - The photo is in the album.
+Anita istuu lentokoneessa. - Anita is sitting on the airplane.
+Asunnossa on kolme makuuhuonetta. - In the apartment are three bedrooms.
+Kirjastossa on tänään paljon ihmisiä. - In the library are today many people.
+Me menemme Suomeen tammikuussa. - We will go to Finland in January.
+Perhe asuu pienessä asunnossa. - The family lives in a small apartment.
+Kenkä on telineessa. - The shoe is on the rack.
+Astiat ovat astianpesukoneessa. - The dishes are in the dishwasher.
+Kännykkäni on taskussani. - My cell phone is in my pocket.
+Luin kirjan tunnissa. - I read the book in an hour.
+Suomessa hänet voi nähdä Ruisrockissa ja Tammerfestissa. - In Finland, he can be seen in Ruisrock and Tammerfest.
+
+# Elative (from) -sta/-stä Locative Case 
+Lähditkö talosta? - Did you leave from the house?
+Me tulemme Suomesta. - We come from Finland.
+Minusta suklaa on liian makeaa. - In my opinion, chocolate is too sweet.
+Minun poikaystävästä olen kaunis. - In my boyfriend's opinion I am beautiful.
+Leenasta tämä on kivaa. - In Leena's opinion this is great.
+Otan leivän kaapista. - I am taking bread from the cupboard.
+He pitävät hyvästä ruoasta.He pitävät hyvästä ruoasta. - They like good food.
+Me tykkäämme musiikista. - We like music.
+Pidätkö minusta? - Do you like me?
+Minä tykkään suklaasta. - I like chocolate.
+
+# Adessive (on, at, with) -lla/-llä Locative Case 
+Kengät ovat lattialla. - The shoes are on the floor.
+Koira on pihalla. - The dog is in the yard.
+He asuvat Vantaalla. - They live in Vantaa.
+He ovat Venäjällä. - They are in Russia.
+Mökillä on savusauna. - At the cottage is a smoke sauna.
+Laiva on Merellä. - The ship is at sea.
+Linnut lentävät taivaalla. - The birds are flying in the sky.
+Erik ja Maria ovat kahvilassa. - Erik and Maria are at the coffee shop.
+Kukat ovat ikkunalla. - The flowers are in the window.
+Koira seisoo ovella. - The dog is standing at the door.
+Hän matkustaa bussilla. - He's traveling by bus.
+Aurinko nousee aamulla. - The sun rises in the morning.
+Aurinko laskee illalla. - The sun sets in the evening.
+Markus ja Janina ovat lounaalla. - Markus and Janina are having lunch.
+Taulu on seinällä. - The painting is on the wall.
+Onko lentokone jo kentällä? - Is the airplane already on the ground? (at the airport)
+Vainikkala on Venäjän rajalla. - Vainikkala is at the Russian border.
+Minun kukkaro on tuolilla. - My purse is on the chair.
+Ninalla on uusi tietokone. - Nina has a new computer.
+Thomasilla on harmaat hiukset. - Thomas has grey hair.
+Talvella voi hiihtää. - In winter one can ski.
+Tällä hetkellä en voi tulla. - At the moment I can't come.
+Yöllä katson televisiota. - At night I watch television.
+Ensi viikolla lähden Lappiin. - Next week I will go to Lapland.
+Jämillä on auto. - Jämi has a car.
+Avaan oven avaimella. - I open the door with a key.
+Me kirjoitamme kynällä. - We write with a pen.
+Älä leiki ihmisellä. - Do not play with the human.
+Myynnissä on talo parvekkeella. - There is a house for sale with a balcony.
+Pese kätesi saippualla. - Wash your hands with soap.
+
+# Allative (onto) -lle Locative Case 
+Astuin hänen varpailleen. - I stepped on his toe.
+Laita kirja pöydälle. - Put the book on the table.
+Vene putosi tielle. - A boat fell onto the road.
+Pysäköitkö kadulle? - Are you parked on the street?
+Lähden kaupungille. - I'm going to town.
+Jätäthän keittiön siistiksi seuraaville, kiitos. - Please leave the kitchen clean for the next ones, thanks
+Ensilumi satoi eri puolille Suomea. - The first snow fell in various parts of Finland.
+
+# Illative (into) Locative Case 
+Mene länteen. - Go into the west.
+Menen Englantiin. - I'm going into England.
+Hän astui huoneeseen. - He stepped into the room.
+Tulimme Suomeen viime vuonna. - We came into Finland last year.
+Laitan leivän kaappiin. - I put the bread into the cupboard.
+Ihmiset astuivat junaan. - The people stepped into the train.
+Työskentelen yhdestä kuuteen. - I work from one until six.
+Kerjäämisestä voi joutua vankilaan. - Begging may get you into jail.
+
+# Ablative Locative Case 
+Askel askeleelta. - Step by step (expression)
+Saitko rahaa ihmisiltä? - Did you get money from the people?
+Varokaa katoilta putoavaa lunta. - Watch out for snow falling from the housetops.
+Se tuoksuu hyvältä. - It smells good.
+Hän näyttää onnelliselta. - She looks happy.
+Tuo kuulostaa aivan tyhmältä. - That sounds quite stupid.
+Miltä hän näyttää? - What does he look like?
+Juna lähtee laiturilta neljä. - The train leaves from the platform four.
+Kello on puoli kymmeneltä. - The time is half past nine.
+
+# Superessive (in some place) Adverbial Case 
+Satoiko siellä? - Did it rain over there?
+Hän on muualla. - He/She is elsewhere.
+Täällä paistaa aurinko. - The sun is shining here.
+
+# Aika (time) 
+aamulla - in the morning
+päivällä - in the afternoon
+illalla - in the evening
+yöllä - in the night
+viisi minuuttia - five minutes to
+viisi minuuttia yli - five minutes past
+viittä vaille - five (min) short of
+
+# Aika (time)
+Paljonko kello on? - What time is it?
+Mitä kello on? - What is the time?
+Kello on yksi. - It is one o'clock.
+Kello on kaksitoista. - It is twelve o'clock.
+Kello on tasan kolme. - It is exactly three o'clock.
+Kello on viisi minuuttia yli yksi. - It is five minutes past one.
+Kello on viisi yli yksi. - It is five past one.
+Viittä vaille kaksi. - Five (min) short of 2.
+Kello on 20 minuuttia vaille kuusi. - It is 20 minutes short of 6.
+Onko kello jo niin paljon? - Is it already that late?
+Minulla on kiire. - I'm in a hurry.
+Yksi puolitoista tuntia on yhdeksänkymmentä minuuttia. - One and a half hours is ninety minutes.
+Nähdään maanantaina. - See you on Monday.
+
+# Aika (time) 
+Kello on 13.00. - It is 13.00 (1pm).
+Kello on 15.00. - It is 15.00 (3pm).
+Kello on viisi minuuttia yli yksi. - It's five minutes past one.
+Kello on tasan kaksitoista. - It's exactly twelve o'clock (pm).
+Kello on kaksikymmentäneljä. - It is 24.00 (12am).
+Tapamme hänet kello kuusitoista. - We meet her at 16.00 (4pm).
+Minun täytyy olla jonnekin klo 9.45. - I have to be somewhere at 9:45am.
+Puolue alkaa klo 17.30. - The party starts at 17.30 (5:30pm).
+Meidän täytyy olla siellä kello 18.30. - We have to be there by 18.30 (6:30pm).
+Meidän täytyy saapua klo 14.10. - We must arrive at 14.10 (2:10pm).
+Entä 12.15? - How about 12.15 (12:15 pm)?
+Olen valmis klo 22.30. - I'll be ready at 22.30 (10:30pm).
+Tapaan sinut klo 22.40. - I will meet you at 22.40 (11:40pm).
+
+# Aika (time) 
+Mihin aikaan pankki aukeavat? - At what time does the bank open?
+Ovatko postit auki nyt? - Are the post offices open now?
+Onko kauppa kiinni? - Is the shop closed.
+Voitteko sanoa mihin aikaan pankit aukeavat aamulla? - Can you tell me at what time the banks open in the morning?
+Tavallisesti noin kello kymmenen. - Usualy at 10 o'clock.
+Pankit aukeavat kello kymmenen. - The banks open at 10 o'clock.
+Ja mihin aikaan ne menevät kiinni? - And at what time do they close?
+Mihin aikaan museo menee kiinni? - At what time does the museum close?
+Ne ovat kiinni perjantaina. - They are closed on Friday.
+Ne ovat kiinni joka keskiviikko ja torstai. - They are closed every Wednesday and Thursday.
+Pankit eivät ole auki sunnuntaina. - The banks are not open on Sunday.
+Ovatko postit auki lauantaina? - Are the post offices open on Saturday?
+Valitettavasti ne eivät ole auki lauantaina. - Unfortunately they are not open on Saturday.
+Kauppa suljetaan klo 21.00. - The shop closes at 21.00 (9pm).
+
+# Ohjeet (directions) 
+oikealla - on the right
+vasemmalla - on the left
+oikealle - to the right
+vasenmmalle - to the left
+tuolla - over there
+kaukana - far
+lähellä - near
+vastapäätä - opposite, across from
+kulmassa - on the corner
+sinne - to there
+tänne - to here
+ohi - past
+edessä - in front of
+suoraan eteenpain - straight ahead
+suoraan edessä - dead ahead
+kävelkää - walk (polite instruction)
+kääntykää - turn (polite instruction)
+
+# Ohjeet (directions) 
+Voinko auttaa sinua? - Can I help you?
+Voitko auttaa minua? - Can you help me?
+Missä lähin pankki on? - Where is the nearest bank?
+Se on aivan hotellin vieressä. - It is right next to the hotel.
+Mene suoraan käänny sitten vasempaan. - Go straight then turn left.
+Seuratkaa tätä tietä. - Follow this road.
+Tehkää U-käännös. - Make a U-turn.
+Jatkakaa kävelyä suoraan. - Keep going straight.
+Missä rautatieasema on? - Where is the railway station?
+Se on tuolla oikealla. - It's there on the right.
+Anteeksi, missä pääposti on? - Excuse me, Where is the main post?
+Se on Mannerheimintiellä. - It is on Mannerheimintie.
+Onko hotelli InterContinental kaukana? - Is Hotel InterContinental far?
+Onko se kaukana? - Is it far?
+Ei ole, se on melko lähellä. - No, it's pretty close.
+Se on tuolla, vasemmalla, hotelli Hesperian vieressä. - It's over there, on the left, next to Hesperia.
+Se on Korkeavuorenkadulla, pääpostin vieressä. - It is on Korkeavuorenkatu, next to the main post office.
+Missä Forumin ostoskeskus on? - Where is the Forum Shopping Center?
+Se on Mannerheimintiellä, melkein Sokosta vastapäätä. - It is on Mannerheimintie, almost opposite to Sokos.
+
+# Ohjeet (directions) 
+Espoo on Helsingin lähellä. - Espoo is near Helsinki.
+Kirjakauppa on tavaratalon lähellä. - The bookstore is near the department store.
+Ostoskeskus on rautatieaseman lähellä. - The shopping center is near the railway station.
+Helsingin matkailutoimisto on hotellin lähellä. - The Helsinki Tourist Office is near the hotel.
+Akateeminen kirjakauppa on Stockmannin takana. - The Academic Bookstore is behind Stockmann.
+Se on Pohjois-Esplanadilla, Stockmannin takana. - It is on North Esplanade, behind Stockmann.
+Hotellin Hesperia on Hotelli Inter Continental vieressä. - The hotel Hesperia is next to Hotel Inter Continental.
+Posti on tavaratalon vieressä. - The post office is next to the department store.
+Museo on Finlandiatalon vieressä. - The museum is next to Finlandia.
+Sokos on rautatieasemaa vastapäätä. - Sokos is opposite the train station.
+Pääposti toimisto on Sokosta vastapäätä. - The main post office is opposite to Sokos.
+Stockmannin tavaratalo on Mannerheimintien ja Aleksanterinkadun kulmassa. - The Stockmann department store is at the corner of Mannerheimintie and Aleksanterinkatu.
+
+# News
+Moni tanskalainen pitää uusia lakeja liian ankarina. - Many Danes consider the new laws too harsh.
+Kodittomien elämä turvattomampaa. - The lives of the homeless are less secure.

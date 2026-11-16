@@ -1,0 +1,750 @@
+# Introduce yourself 
+Kiitos, Tom. - Thank you, Tom.
+Anteeksi, kuka sinä olet? - Excuse me, who are you?
+Sinä olet mukava. - You are nice.
+Anteeksi Väinö. - Sorry Väinö.
+Kuka sinä olet? Minä olen Aino. - Who are you? I am Aino.
+Terve! Minä olen Elsa. - Hello! I am Elsa.
+Kiitos, Otso. - Thank you, Otso.
+Terve! Minä olen Otso. - Hello! I am Otso.
+Minä olen Roosa. - I am Roosa.
+Sinä olet Roosa. - You are Roosa.
+Minä olen Joni. - I am Joni.
+Kiitos, Tyyne. - Thank you, Tyyne.
+Terve! kuka sinä olet? - Hello! who are you?
+
+# Use common phrases 
+Sinä olet mukava ja hauska. - You are nice and funny.
+Paljon onnea! - Good luck!
+Tervetuloa ja onnea! - Welcome and good luck!
+Jee! Paljon onnea! - Yay! Congratulations!
+No, tervetuloa! - Well, welcome!
+Paljon onnea! Kippis! - Congratulations! Cheers!
+Kippis ja paljon onnea! - Cheers and congratulations!
+Paljon onnea, Aino! - Congratulations, Aino!
+No, kippis! - Well, cheers!
+Matti, sinä olet hauska. - Matti, you are funny.
+Tervetuloa! Jee! - Welcome! Yay!
+No, terve! - Well, hello!
+No, kiitos. - Well, thank you.
+Jee! Tervetuloa! - Yay! Welcome!
+Sinä olet hauska. - You are funny.
+Tervetuloa! Kippis! - Welcome! Cheers!
+
+# Talk about people 
+Tyyne on todella mukava. - Tyyne is really nice.
+Sinä olet todella komea. - You are really handsome.
+Hän on mies. - He is a man.
+Hän on velho. - She is a wizard.
+Hilla on aina kaunis. - Hilla is always beautiful.
+Hän on kaunis. - She is beautiful.
+Joni on mies. - Joni is a man.
+Hän on nainen. - She is a woman.
+Hilla on lapsi. - Hilla is a child.
+Sinä olet komea. - You are handsome.
+Sinä olet aina mukava. - You are always nice.
+Väinö on mies. - Väinö is a man.
+Sinä olet todella kaunis. - You are really beautiful.
+Sinä olet kaunis. - You are beautiful.
+Väinö on velho. - Väinö is a wizard.
+Minä olen velho. - I am a wizard.
+Hän on mukava ja komea. - He is nice and handsome.
+Aino on aina mukava. - Aino is always nice.
+
+#  Describe things 
+Hän on tyttö. - She is a girl.
+Suomalainen on aina rehellinen. - A Finn is always honest.
+Olet kaunis ihminen. - You are a beautiful person.
+Matti on sisukas suomalainen. - Matti is a Finn with sisu.
+Kantele on suomalainen soitin. - The kantele is a Finnish instrument.
+Hyvä Suomi! - Bravo Finland!
+Liisa on sisukas nainen. - Liisa is a woman with sisu.
+Tämä on Otso. - This is Otso.
+Olen hiljainen poika. - I am a quiet boy.
+Hyvä Joni! - Go Joni!
+Tämä on hyvä kantele. - This is a good kantele.
+Olen sisukas suomalainen. - I am a Finn with sisu.
+Hän on sisukas nainen. - She is a woman with sisu.
+Hyvä Aino! - Go Aino!
+Suomi on aina kaunis. - Finland is always beautiful.
+Liisa on rehellinen tyttö. - Liisa is an honest girl.
+
+#  Discuss your pets 
+Tämä koira on valkoinen. - This dog is white.
+Tämä pupu on söpö. - This bunny is cute.
+Väärin, minulla on kissa. - Wrong, I have a cat.
+Tämä koira on todella tuhma! - This dog is really naughty!
+Sinulla on poni! - You have a pony!
+Millainen kissa hänellä on? - What kind of cat does she have?
+Kuka on kiltti koira? - Who is a good dog?
+Hänellä on sininen käärme. - She has a blue snake.
+Minulla on söpö pupu. - I have a cute bunny.
+Millainen undulaatti se on? - What kind of parakeet is it?
+Väärin, hänellä on poni. - Wrong, she has a pony.
+Sinulla on koira. - You have a dog.
+Millainen koira se on? - What kind of dog is it?
+Minulla on valkoinen pupu. - I have a white bunny.
+Se on vihreä käärme. - It is a green snake.
+Tämä undulaatti on vihreä. - This parakeet is green.
+
+# Talk about places 
+Onko hän shamaani? - Is he a shaman?
+Tämä maa on Venäjä. - This country is Russia.
+Väinö, onko sinulla suomalainen nimi? - Väinö, do you have a Finnish name?
+Millainen maa Viro on? - What kind of country is Estonia?
+Kaupunki on iso. - The city is big.
+Missä norjalainen kissa on? - Where is the Norwegian cat?
+Olen ruotsalainen. - I am Swedish.
+Vihreä auto on iso. - The green car is big.
+Hyvä laulu on islantilainen. - The good song is Icelandic.
+Hänellä on saamelainen nimi. - She has a Sámi name.
+Minulla on kännykkä. - I have a cell phone.
+Virolainen nainen on mukava. - An Estonian woman is nice.
+Kaisa, onko minulla kiltti poni? - Kaisa, do I have a nice pony?
+Saamelainen mies on shamaani. - The Sámi man is a shaman.
+Suomalainen on velho ja ruotsalainen on viikinki. - The Finn is a wizard and the Swede is a Viking.
+Laulu on virolainen. - The song is Estonian.
+Poika on islantilainen. - The boy is Icelandic.
+Missä tanskalainen on? - Where is the Dane?
+
+# Use the present tense 
+Isä, onko nalle onnellinen? - Father, is the teddy bear happy?
+Nuori pari tanssii yhdessä. - The young couple is dancing together.
+Väinö ja Kaisa ovat nyt naimisissa. - Väinö and Kaisa are now married.
+Tanssitko sinä? - Do you dance?
+Te nauratte ja itkette. - You laugh and cry.
+Sinä laulat usein. - You sing often.
+Iloinen vauva nauraa. - A happy baby laughs.
+Missä te istutte? - Where are you sitting?
+Me nauramme ja te nauratte. - We are laughing and you are laughing.
+He kasvavat yhdessä. - They grow up together.
+Väinö ja Aino, oletteko te naimisissa? - Väinö and Aino, are you married?
+Laulaako koira? - Is the dog singing?
+He nauravat ja laulavat. - They laugh and sing.
+Seisovatko he yhdessä? - Are they standing together?
+Sinä naurat. - You're laughing.
+Oletteko te naimisissa? Paljon onnea! - Are you married? Congratulations!
+Onko Mirri onnellinen kissa? - Is Mirri a happy cat?
+Tanssivatko he yhdessä? - Are they dancing together?
+Musti ja Mirri kasvavat nopeasti. - Musti and Mirri grow fast.
+Te tanssitte yhdessä. - You are dancing together.
+Hilla on todella iloinen. - Hilla is really happy.
+Ovatko Matti ja Liisa pari? - Are Matti and Liisa a couple?
+He ovat perhe. - They are a family.
+
+# Talk about possessions 
+Minulla on uusi kellari. - I have a new basement.
+Tuo veranta on lämmin. - That veranda is warm.
+Teillä on kaunis kantele. - You have a beautiful kantele.
+Tuo talo on moderni mutta mukava. - That house is modern but comfortable.
+Meillä on uusi sänky. - We have a new bed.
+Heillä on moderni koti. - They have a modern home.
+Meillä on oma koti. - We have a home of our own.
+Se on veranta. - It is a veranda.
+Tuo huone on sininen. - That room is blue.
+Millainen sohva hänellä on? - What kind of sofa does he have?
+Tuo pöytä on valkoinen. - That table is white.
+Sinulla on todella hiljainen huone. - You have a really quiet room.
+Tuo valkoinen talo on moderni. - That white house is modern.
+Minulla on uusi koti. - I have a new home.
+Meillä on pieni talo mutta suuri piha. - We have a small house but a large yard.
+Teillä on mukava koti. - You have a nice home.
+Sinulla on mukava sohva. - You have a nice sofa.
+Tuo talo on vanha mutta mukava. - That house is old but comfortable.
+Tuo sänky on valkoinen. - That bed is white.
+
+# Ask and answer questions 
+Hei Pöllö! - Hi Pöllö!
+Kahviko? Kyllä, kiitos. - Coffee? Yes, thank you.
+Kyllä, kiitos. - Yes, please.
+Yksi kahvi, ole hyvä. - One coffee, here you are.
+Onko hänellä kylmä? On. - Is he cold? Yes, he is.
+Kahviko? Joo, ja pulla, kiitos. - Coffee? Yes, and a pulla, please.
+Pulla, ole hyvä. - A pulla, here you are.
+Anteeksi, oletko sinä Pöllö? - Excuse me, are you Pöllö?
+Ei, kiitos. - No, thank you.
+Joo, ei. - Yes, no.
+Joo, anteeksi. - Yes, sorry.
+Kahvi ja pulla, kiitos. - A coffee and a pulla, please.
+Kahvi, ole hyvä. - Coffee, here you are.
+Onko teillä kuuma? On. - Are you hot? Yes.
+Anteeksi, oletko sinä Pöllölä? Olen. - Excuse me, are you Pöllölä? Yes, I am.
+Anteeksi, oletko sinä Pöllönen? - Excuse me, are you Pöllönen?
+Pöllö, oletko valmis? Olen. - Pöllö, are you ready? Yes, I am.
+Hei hei! - Bye bye!
+
+# Refer to languages 
+Kiina on aasialainen kieli. - Chinese is an Asian language.
+Kyllä, tuo lause on oikein. - Yes, that sentence is correct.
+Miksi tämä vastaus on väärin? - Why is this answer wrong?
+Sana vai lause? - A word or a sentence?
+Tämä kysymys on usein tärkeä. - This question is often important.
+Onko korea helppo kieli? - Is Korean an easy language?
+Millainen kieli unkari on? - What is the Hungarian language like?
+Millainen kieli on espanja? - What kind of language is Spanish?
+Miksi kiina on tärkeä kieli? - Why is Chinese an important language?
+Kiina on niin kaunis kieli. - Chinese is such a beautiful language.
+Suomi on kaunis kieli. - Finnish is a beautiful language.
+Opettaja, millainen kieli saksa on? - Teacher, what kind of language is German?
+Onko espanja tärkeä kieli? - Is Spanish an important language?
+Opettaja, miksi tämä lause on väärin? - Teacher, why is this sentence wrong?
+Japani on aasialainen kieli. - Japanese is an Asian language.
+Millainen kieli viro on? - What kind of language is Estonian?
+Miksi ranska on kaunis kieli? - Why is French a beautiful language?
+Meillä on suomalainen aksentti. - We have a Finnish accent.
+
+# Talk about food 
+Sitruuna on tässä. - The lemon is right here.
+Se on keltainen tomaatti. - It is a yellow tomato.
+Missä ketsuppi ja sinappi ovat? - Where are the ketchup and the mustard?
+Kala on tässä. - The fish is here.
+Au! Peruna on kuuma! - Ouch! The potato is hot!
+Onko sipuli pyöreä? - Is the onion round?
+Minulla on jano. Missä vesi on? - I am thirsty. Where is the water?
+Pippuri on mauste. - Pepper is a spice.
+Lasi on siinä ihan kohdallaan. - The glass is right there.
+Onko ketsuppi mauste? - Is ketchup a spice?
+Sitruuna on tuossa. - The lemon is right there.
+Onko teillä vielä jano? - Are you still thirsty?
+Meillä on punainen lautanen. - We have a red plate.
+Omena on pyöreä ja punainen. - The apple is round and red.
+Heillä on jo nälkä. - They are already hungry.
+Tomaatti on tässä. - The tomato is right here.
+Tuo tomaatti on pyöreä. - That tomato is round.
+
+# Find out where places are 
+Anteeksi, mutta missä oopperatalo on? - Excuse me, but where is the opera house?
+Voi ei, tämä on sama silta. - Oh no, this is the same bridge.
+Oikein, tämä on oikea stadion. - That's right, this is a right stadium.
+Onko se auki? - Is it open?
+Tämä kahvila on mukava. - This cafe is nice.
+Onko tuo oikea rakennus? - Is that the right building?
+Anteeksi, mutta missä tori on? - Excuse me, but where is the market?
+Puisto on lähellä. - The park is near.
+Tämä rakennus on melko hiljainen. - This building is pretty quiet.
+Mikä linna tämä on? - What castle is this?
+Puisto on tuolla. - The park is there.
+Ehkä oikea puisto on tuolla. - Maybe the right park is over there.
+Onko stadion täällä? - Is the stadium here?
+Ehkä museo on nyt auki. - Maybe the museum is now open.
+Tuo talo on melko outo. - That house is pretty strange.
+Roosa, missä oopperatalo on? - Roosa, where is the opera house?
+Museo on taas kiinni. - The museum is closed again.
+
+# Describe amounts 
+Onko meillä vielä mehua? - Do we have any juice left?
+Tomaatti on pieni mutta makea. - The tomato is small but sweet.
+Onko tuo juustoa vai maitoa? - Is that cheese or milk?
+Mämmi on mustaa. - The mämmi is black.
+Minulla on pullo oranssia limonadia. - I have a bottle of orange soda pop.
+Kana on lihaa. - Chicken is meat.
+Se on ketsuppia. - It is ketchup.
+Suomalainen mehu on tuossa. - The Finnish juice is right there.
+Onko tuo tomaatti keltainen vai oranssi? - Is that tomato yellow or orange?
+Onko meillä tarpeeksi mehua? - Do we have enough juice?
+Hyi! Tämä kastike on makeaa! - Yuck! This dressing is sweet!
+Tuo kastike on outoa. - That sauce is weird.
+Liha on loppu. - The meat is all gone.
+Miikka, onko maito täällä? - Miikka, is there any milk here?
+Hänellä on makea, punainen omena. - She has a sweet, red apple.
+Heillä on aina samaa ruokaa. - They always have the same food.
+Onko tämä maitoa? - Is this milk?
+Onko juusto tuolla? - Is the cheese over there?
+Tämä mehu on oranssia. - This juice is orange.
+Meillä on lihaa kotona. - We have meat at home.
+
+# Discuss languages 
+Vaari, puhutko sinä japania? - Grandpa, do you speak Japanese?
+Hiljainen muusikko puhuu vain suomea. - The quiet musician only speaks Finnish.
+Onko tämä unkaria vai suomea? - Is this Hungarian or Finnish?
+Puhuuko tanskalainen professori viroa? - Does the Danish professor speak Estonian?
+Turisti puhuu espanjaa. - The tourist speaks Spanish.
+Ahkera virolainen puhuu ranskaa. - The hardworking Estonian speaks French.
+Poika puhuu sujuvaa ranskaa. - The boy speaks fluent French.
+Moni ihminen puhuu kiinaa. - Many people speak Chinese.
+Hän puhuu taas englantia. - He is speaking English again.
+Tämä on suomalainen tai virolainen. - This is either Finnish or Estonian.
+Puhutte japania. - You speak Japanese.
+Se on saksaa tai englantia. - It is either German or English.
+Minä puhun englantia. - I speak English.
+Virolainen insinööri puhuu suomea. - The Estonian engineer speaks Finnish.
+Puhumme vähän kiinaa. - We speak a little Chinese.
+Lapsi puhuu myös koreaa. - The child also speaks Korean.
+Ahkera opettaja puhuu sujuvaa suomea. - The hardworking teacher speaks fluent Finnish.
+Moni afrikkalainen lapsi puhuu ranskaa. - Many African children speak French.
+Älykäs kissa puhuu vain ranskaa. - The intelligent cat only speaks French.
+Ahkera venäläinen puhuu koreaa. - The hardworking Russian speaks Korean.
+Muusikko puhuu saksaa. - The musician speaks German.
+
+# Talk about chores 
+Te siivoatte isoa taloa. - You are cleaning a big house.
+He maalaavat taloa. - They are painting the house.
+Sinä korjaat halpaa tuolia. - You are fixing a cheap chair.
+Taulu on nyt valmis. - The picture is ready now.
+Te korjaatte vanhaa autoa. - You are fixing an old car.
+Maalaatko lattiaa? - Are you painting the floor?
+Minä maalaan verantaa. - I am painting a veranda.
+Me grillaamme ja laulamme. - We are barbecuing and singing.
+Onko asunto siisti vai sotkuinen? - Is the apartment tidy or messy?
+Siivoaako hän pihaa? Siivoaa. - Is he cleaning the yard? Yes, he is.
+Voi ei, kello on rikki. - Oh no, the clock is broken.
+Tajuaako hän, että katto on jo valmis? - Does he realize that the roof is already ready?
+Vaari korjaa kelloa. - Grandpa is repairing the clock.
+Vaari siivoaa pihaa. - Grandpa is cleaning the yard.
+Korjaatko lamppua? - Are you fixing the lamp?
+Sinä maalaat vanhaa tuolia. - You are painting an old chair.
+Poika, tajuatko sinä, että tämä huone on sotkuinen? - Boy, do you realize that this room is messy?
+Siivoamme taloa, koska se on sotkuinen. - We are cleaning the house because it is messy.
+Vaari maalaa isoa taulua. - Grandpa is painting a big picture.
+He maalaavat kattoa. - They are painting the roof.
+Maalaatko taulua? Maalaan. - Are you painting a picture? Yes, I am.
+
+# Say what you can do 
+Osaatko sinä kirjoittaa? - Can you write?
+Kanadalainen ratsastaa hyvin. - The Canadian rides well.
+He osaavat piirtää ja maalata. - They can draw and paint.
+Miksi tanssitte tangoa? - Why do you tango?
+Pöllönen puhuu sekä tanskaa että norjaa. - Pöllönen speaks both Danish and Norwegian.
+Sinä olet tosi lahjakas tanssija. - You are a really talented dancer.
+Minulla on ystävä, joka on melko pitkä. - I have a friend who is pretty tall.
+Onko meillä amerikkalainen aksentti? - Do we have an American accent?
+Hys! Väinö laulaa. - Shh! Väinö is singing.
+Anna puhuu sekä suomea että ruotsia. - Anna speaks both Finnish and Swedish.
+Kuinka moni kanadalainen osaa ranskaa? - How many Canadians know French?
+Minulla on opettaja, joka osaa tanssia. - I have a teacher who knows how to dance.
+Komea muusikko on amerikkalainen. - The handsome musician is American.
+Pitkä suomalainen laulaa tangoa. - The tall Finn is singing a tango.
+Osaavatko he kirjoittaa? - Can they write?
+Suomalainen mies osaa piirtää. - The Finnish man can draw.
+Oho! Viikinki tanssii hyvin! - Oh wow! The Viking dances well!
+Ehkä hän on laulaja. - Perhaps he is a singer.
+
+# Make requests 
+Nam! Tämä pirtelö on hyvää. - Yum! This milkshake is good.
+Onko teillä jotain kylmää juotavaa? - Do you have something cold to drink?
+Mitä haluatte juoda? Kahvia vai glögiä? - What would you like to drink? Coffee or glögi?
+Mitä hän haluaa? Pullaako? - What does she want? Pulla?
+Onko teillä myös pirtelöä? - Do you also have milkshake?
+Onko teillä glögiä? - Do you have any glögi?
+Onko teillä pehmeää jäätelöä? - Do you have any soft ice cream?
+Sokeri on makeaa. - Sugar is sweet.
+Haluatko mämmiä? - Do you want some mämmi?
+Tämä kahvi on liian kuumaa. - This coffee is too hot.
+Minulla on kuuma. Haluan syödä kylmää jäätelöä. - I am hot. I want to eat some cold ice cream.
+Tämä tee on vihreää. - This tea is green.
+Haluan syödä pullaa. - I want to eat a pulla.
+Mitä he haluavat? Kahviako? - What do they want? Coffee?
+Minä haluan mämmiä. - I want some mämmi.
+Tämä pirtelö on tosi hyvää. - This milkshake is really good.
+
+# Form the plural 
+Nämä kanat sanovat kot kot. - These chickens say cluck cluck.
+Missä puput ovat? - Where are the bunnies?
+Nousen ylös, koska koira murisee. - I get up, because the dog is growling.
+Söpöt koirat yrittävät murista. - Cute dogs try to growl.
+Nuo lehmät potkaisevat karhua. - Those cows kick the bear.
+Ketkä maalaavat pöllöä? - Who are the people painting an owl?
+Opettajat yrittävät pestä koiraa. - The teachers are trying to wash the dog.
+Nämä koirat etsivät ruokaa. - These dogs are looking for food.
+Ketkä pesevät ruskeaa koiraa? - Who are the people washing the brown dog?
+Pesevätkö he koiraa? - Are they washing the dog?
+Mustat kissat tanssivat taas tangoa. - The black cats are dancing the tango again.
+Minä pesen lattiaa ja isä pesee koiraa. - I wash the floor and dad washes the dog.
+Se on eri undulaatti. - It is another parakeet.
+Nämä lehmät sanovat muu. - These cows say moo.
+Etsivätkö koirat lintua? - Are the dogs searching for a bird?
+Mitä pöllö sanoo? Huhuu. - What does the owl say? Hoot.
+Painavat karhut murisevat. - The heavy bears are growling.
+Koirat puraisevat sipulia ja itkevät. - Dogs bite onions and cry.
+Tuhmat kissat ovat taas pulassa. - The naughty cats are in trouble again.
+Nuo ponit potkaisevat opettajaa. - Those ponies kick the teacher.
+Me nousemme nopeasti ylös, koska karhut ovat lähellä. - We get up quickly, because the bears are near.
+Me juoksemme, koska koira on pulassa. - We are running, because the dog is in trouble.
+Ruskeat pöllöt ovat kaukana. - The brown owls are far away.
+
+# Discuss where people live 
+Miksi sinä haluat viettää aikaa Ruotsissa? - Why do you want to spend time in Sweden?
+Väinö ja Aino asuvat Suomessa. - Väinö and Aino live in Finland.
+Rooma on Italiassa. - Rome is in Italy.
+Haluan viettää enemmän aikaa Oslossa. - I want to spend more time in Oslo.
+Miksi tämä paikka on niin hiljainen? - Why is this place so quiet?
+Puola on kaunis paikka. - Poland is a beautiful place.
+Asun nykyään tässä maassa. - I live in this country nowadays.
+Asutko sinä Tanskassa? - Do you live in Denmark?
+Me asumme Saksassa. - We live in Germany.
+Haluan käydä Lontoossa. - I want to visit London.
+Haluamme asua Prahassa. - We want to live in Prague.
+Lahjakas muusikko asuu Pariisissa. - The talented musician lives in Paris.
+Oslo on Norjassa. - Oslo is in Norway.
+Haluan viettää enemmän aikaa Tallinnassa. - I want to spend more time in Tallinn.
+Pariisi on Ranskassa. - Paris is in France.
+Haluan syödä juustoa Sveitsissä. - I want to eat cheese in Switzerland.
+Asun nykyään tässä maassa. - I live in this country today.
+Asutko sinä Ruotsissa? Asun. - Do you live in Sweden? Yes, I do.
+Tori on Berliinissä. - The square is in Berlin.
+Haluamme asua Prahassa. - We want to live in Prague.
+Onko Unkari kaukana? - Is Hungary far away?
+
+# Use numbers 
+Meillä on kotona neljä vihreää lemmikkiä. - We have four green pets at home.
+Vihainen kissa puraisee isää. - The angry cat bites father.
+Polle on nätti hevonen. - Polle is a pretty horse.
+Minä omistan kahdeksan kanaa. - I own eight chickens.
+Heillä on ainakin kuusi lintua. - They have at least six birds.
+Sillä on kolme pentua. - She has three puppies.
+Neljä sinistä lintua laulaa hiljaa. - Four blue birds sing quietly.
+Ehkä heillä on vain kaksi valkoista koiraa. - Maybe they have only two white dogs.
+Onko se villi vai lemmikki? - Is it wild or a pet?
+Meillä on kaksi pörröistä norjalaista kissaa. - We have two fluffy, Norwegian cats.
+Kaksi pörröistä koiraa istuu nyt hiljaa. - Two fluffy dogs sit quietly now.
+Neljä ystävällistä tyttöä omistaa neljä pyöreää pupua. - Four friendly girls own four round bunnies.
+He omistavat seitsemän sinistä kalaa. - They own seven blue fish.
+Kaksi surullista suomalaista etsii mustaa kissaa. - Two sad Finns are looking for a black cat.
+Minulla on monta kissaa. - I have many cats.
+Kuusi venäläistä poikaa etsii tärkeää karhua. - Six Russian boys are looking for an important bear.
+Viisi onnellista kissaa seisoo lähellä. - Five happy cats are standing nearby.
+He omistavat yhdeksän suomalaista hevosta. - They own nine Finnish horses.
+Viisi villiä pöllöä sanoo huhuu. - Five wild owls are saying hoot.
+Onko tuo sika lemmikki? - Is that pig a pet?
+
+# Form negative sentences 
+Sinä et puhu islantia. - You do not speak Icelandic.
+Leo ja Kaisa eivät asu enää Virossa. - Leo and Kaisa do not live in Estonia anymore.
+En osaa puhua japania, vaikka asun Japanissa. - I can't speak Japanese, even though I live in Japan.
+Australialainen mies ei ole kotona. - The Australian man is not at home.
+Miksi te ette asu enää Kanadassa? - Why don't you live in Canada anymore?
+Tanssitteko te usein tangoa? Emme. Meillä on nykyään niin vähän aikaa. - Do you dance the tango often? No. We have so little time these days.
+Nämä shamaanit asuvat Kanadassa. - These shamans live in Canada.
+He eivät halua eksyä. - They do not want to get lost.
+Leo puhuu sujuvaa venäjää. - Leo speaks fluent Russian.
+Etkö asu enää Espanjassa? - Do you not live in Spain anymore?
+Turistit eivät puhu suomea. - The tourists do not speak Finnish.
+Emme asu Pariisissa vaan Prahassa. - We do not live in Paris but in Prague.
+Suomi ei ole Skandinaviassa! - Finland is not in Scandinavia!
+Anteeksi, emme osaa puhua englantia. - Sorry, we cannot speak English.
+Tuo sana on hindiä. - That word is Hindi.
+Oletko amerikkalainen? En. Olen kanadalainen. - Are you American? No. I'm Canadian.
+Hän ei tajua, että Berliini ei ole Sveitsissä. - She does not realize that Berlin is not in Switzerland.
+Eikö Otso asu enää Ruotsissa? - Doesn't Otso live in Sweden anymore?
+Me emme asu enää Japanissa. - We do not live in Japan anymore.
+En ole Kanadassa vaan Suomessa. - I am not in Canada but in Finland.
+Suomi ei ole Skandinaviassa, mutta Ruotsi on. - Finland is not in Scandinavia, but Sweden is.
+Ehkä he eivät puhu venäjää. - Maybe they do not speak any Russian.
+
+# Talk about nature 
+Onko tuo kasvi myrkyllinen? - Is that plant poisonous?
+Tuo kukka on myrkyllinen. - That flower is poisonous.
+Vanha puu kasvaa tässä metsässä. - An old tree grows in this forest.
+Sinä hymyilet ja kävelet pois. - You smile and walk away.
+Marjat kasvavat metsässä. - Berries grow in the forest.
+Metsä on keskellä Saksaa. - The forest is in the middle of Germany.
+Kylmät purot ovat jäässä. - The cold streams are frozen.
+Elävätkö nuo isot pöllöt Suomessa? - Do those big owls live in Finland?
+Onko ilves iso kissa? - Is the lynx a big cat?
+Karhut haistelevat kasvia. - The bears are sniffing the plant.
+Jää on kylmää. - Ice is cold.
+Ne istuvat maassa. - They are sitting on the ground.
+Isot puut kasvavat vielä. - The big trees are still growing.
+Siili kävelee. - The hedgehog is walking.
+Puu kasvaa keskellä metsää. - The tree grows in the middle of the forest.
+Karhu on kalassa Norjassa. - The bear is fishing in Norway.
+Ilves kävelee pois. - The lynx walks away.
+Me hymyilemme, koska kävelemme metsässä. - We are smiling, because we are walking in the forest.
+Ilves elää kylmässä metsässä. - The lynx lives in a cold forest.
+Se on kaunis järvi. - It is a beautiful lake.
+
+# Express fondness 
+Ajatteletko sinä häntä usein? - Do you think of him often?
+Halaan ujoa naista, vaikka myös minä olen ujo. - I hug the shy woman, even though I am also shy.
+Mummo halaa onnellista morsianta. - Grandma hugs the happy bride.
+Kaikki ihailevat heitä. - Everyone admires them.
+Kissa haluaa olla lähellä pentua. - The cat wants to be close to the kitten.
+Vauva rakastaa heitä. - Baby loves them.
+Minulla on kaksi sisukasta vaaria. - I have two grandpas with sisu.
+Perhe rakastaa viisasta mummoa. - The family loves the wise grandma.
+Minä itken koska minulla on ikävä Suomea. - I am crying because I miss Finland.
+Itkettekö te? Meillä on ikävä äitiä ja isää. - Are you crying? We miss Mother and Father.
+Ihailetko sinä Liisaa, koska hänellä on sisua? - Do you admire Liisa, because she has sisu?
+Hänellä on kaunis hymy. - She has a beautiful smile.
+Minä ihailen sinua. - I admire you.
+Rakastan tätä sisukasta naista. - I love this woman with sisu.
+Italialainen mies maalaa lämmintä hymyä. - The Italian man is painting a warm smile.
+Itketkö sinä? En halua, että sinä itket. - Are you crying? I do not want you to cry.
+Kaikki ihailevat komeaa sulhasta. - Everyone admires the handsome groom.
+Morsian hymyilee. - The bride is smiling.
+Kaksi kaunista koiraa rakastaa meitä. - Two beautiful dogs love us.
+Minä ajattelen sinua usein. - I think of you often.
+Rakastan Pyryä, koska meillä on hauskaa yhdessä. - I love Pyry, because we have fun together.
+Onko hänellä poikaystävää? - Does she have a boyfriend?
+Kulta, haluan, että sinulla on hauskaa. - Darling, I want you to have fun.
+
+# Go to a coffee shop 
+Kahvilat ovat vielä kiinni. - The cafés are still closed.
+Anteeksi, missä hillot ovat? - Excuse me, where are the jams?
+Tämä ei ole kiisseliä vaan hilloa. - This is not kissel but jam.
+Miksi tuo australialainen leivos on vihreä? - Why is that Australian pastry green?
+Me haluamme maistaa lörtsyä. - We want to taste a lörtsy.
+Otso syö herkullista lörtsyä. - Otso eats delicious lörtsy.
+Anteeksi, missä rahkat ovat? Ne ovat tuolla. - Excuse me, where are the quarks? They are over there.
+Tyttö ostaa mämmiä, kermaa, ja sokeria. - The girl is buying mämmi, cream, and sugar.
+Kolme lasia simaa, kiitos. - Three glasses of mead, please.
+Juotteko te kahvia? - Do you drink coffee?
+Syöttekö te leipää? - Do you eat bread?
+Paljonko lörtsyt maksavat? - How much do the lörtsy cost?
+Kiisseli on makeaa. - Kissel is sweet.
+Kuppi kahvia, mustana, kiitos. - A cup of coffee, black, please.
+Tämä karjalanpiirakka on täydellinen. - This Karelian pasty is perfect.
+Syön banaania. - I am eating a banana.
+Ostan kermaa ja hilloa, koska haluan täytekakkua. - I am buying cream and jam, because I want layered cake.
+Salmiakki on sekä suolaista että makeaa. - Salmiakki is both salty and sweet.
+Kinuski on venäläistä herkkua. - Kinusk is a Russian delicacy.
+Äiti, saanko jäätelöä? - Mother, can I get some ice cream?
+Paljonko nuo isot korvapuustit maksavat? - How much do those big cinnamon rolls cost?
+Viineri on tanskalainen leivos. - The Danish pastry is a Danish pastry.
+He syövät jäätelöä ja kinuskia. - They are eating ice cream and kinusk.
+
+# Tell time 
+On ilta ja kello on yhdeksän. - It is evening and it is nine o'clock.
+Kello on puoli kaksitoista. - It's half past eleven.
+Paljonko meillä on aikaa? Kymmenen minuuttia. - How much time do we have? Ten minutes.
+Onko sinulla kiire? - Are you in a hurry?
+Kello on tasan kuusi. - It is exactly six o'clock.
+Hän on väsynyt joka aamu. - He is tired every morning.
+Kello on melkein kaksitoista. - It is almost twelve o'clock.
+Seisooko tuo kello? - Has that clock stopped?
+Onko se kalenterissa? - Is it on the calendar?
+Meillä on vain viisi sekuntia. - We have only five seconds.
+Kello on puoli kuusi. - It is half past five.
+Paljonko kello on? Kello on kolme - What time is it? It's three o'clock.
+Pieni hetki! Meillä on kiire. - Just a moment! We are busy.
+On kuuma päivä. - It's a hot day.
+Minä olen väsynyt, koska on myöhä. - I am tired, because it is late.
+Kalenteri on rikki ja kello seisoo. - The calendar is broken and the clock has stopped.
+On ilta; minulla ei ole enää kiire. - It is evening; I am no longer busy.
+Kello on melkein yksitoista. - It is almost eleven o'clock.
+
+# Form sentences 
+Kuu on kuin pyöreä juusto. - The moon is like a round cheese.
+Täällä on muutama vadelma. - There are a few raspberries over here.
+Tämä helmi on täydellinen. - This pearl is perfect.
+Tuossa on kuusi. - There is a spruce right there.
+Puussa on outo lehti. - There is a strange leaf on the tree.
+Me emme ole saunassa emmekä metsässä. - We are neither in the sauna nor in the forest.
+Koko suo on oranssi. - The whole bog is orange.
+Turistit ihailevat sinivalkoista taivasta. - The tourists are admiring the blue and white sky.
+Lähellä on suo. - There is a bog nearby.
+He eivät ole kotona eivätkä metsässä. - They are neither at home nor in the forest.
+Tuolla on muutama tumma pilvi. - There are a few dark clouds over there.
+Lähellä on pitkä mutta turvallinen silta. - There is a long but safe bridge nearby.
+Se on kaukana mutta kirkas. - It is far away but bright.
+Tässä on sininen kukka. - Here is a blue flower.
+Tuossa on marja. - There is a berry right there.
+Lumi on märkää. - The snow is wet.
+Lähellä on kaunis järvi. - There is a beautiful lake nearby.
+
+# Use common phrases 
+Päivää. Osaatko sanoa, missä lähin kahvila on? - Good day, Can you tell me where the closest café is?
+Ole varovainen; tee on kuumaa. - Be careful; the tea is hot.
+Anteeksi, että olen myöhässä. No, ei se mitään. - Sorry that I am late. Well, it happens.
+Mitä kuuluu? Ihan hyvää, kiitos. - How are you? Pretty well, thank you.
+Hei Lumi. Mitä kuuluu? Ihan hyvää kai. - Hi Lumi. How are you? I think it's going well.
+Hyvää iltaa. No, iltaa. - Good evening. Well, good evening.
+Nähdään myöhemmin! Hyvää päivänjatkoa! - See you later! Have a nice day!
+Hei, osaatko sanoa missä oopperatalo on? - Hi, can you tell me where the opera house is?
+Hyvää yötä! - Good night!
+Ole hyvä. Hyvää päivänjatkoa. - Here you are. Have a nice day.
+No, nähdään myöhemmin! Hei! - Well, see you later! Bye!
+Olen yleensä väärässä. - I am usually wrong.
+Onko hän oikeassa? - Is he right?
+Terve. Osaatteko te sanoa, missä lähin kirkko on? - Hello, Can you tell me where the closest church is?
+Hyvää päivää! - Good day!
+Se on ihan hyvä. Oletko varma? - It is just fine. Are you sure?
+Olen varma, että tämä lause on suomea. - I'm sure this sentence is Finnish.
+Ole kiltti ja ole varovainen, Pöllölä. - Please be careful, Pöllölä.
+No, huomenta! Mitä kuuluu? - Well, good morning! How are you?
+
+# Talk about technology 
+Onko sinulla tablettia tai kännykkää? - Do you have a tablet or a cell phone?
+Millainen akku tässä läppärissä on? - What kind of battery does this laptop have?
+No, toimiiko se? - Well, is it working?
+Hei, voinko minä lainata tuota laturia? - Hi, can I borrow that charger?
+Miksi sinulla on mikrofoni? - Why do you have a microphone?
+Miksi tuo meemi on niin suosittu? - Why is that meme so popular?
+Heillä ei ole radiota. - They do not have a radio.
+Mitä peliä te pelaatte? - What game are you playing?
+Onko sinulla edes kameraa? - Do you even have a camera?
+Miksi tämä video on niin suosittu? - Why is this video so popular?
+Meillä ei ole tulostinta. - We do not have a printer.
+Voimmeko lainata laturia? - Can we borrow a charger?
+Onko pistoke seinässä? On. - Is there a plug in the wall? Yes, there is.
+Onko tuo video suosittu Ranskassa? - Is that video popular in France?
+Netti ei toimi. - The internet is not working.
+Anteeksi, onko sinulla laturia? - Excuse me, do you have a charger?
+Läppärissä on outo peli. - There's a strange game on the laptop.
+Onko heillä televisiota? - Do they have a television?
+Meemissä on japanilainen koira. - There is a Japanese dog in the meme.
+Onko sinulla uusi kamera? - Do you have a new camera?
+Prinsessa ei ole tässä linnassa. - The princess is not in this castle.
+Video pätkii. - The video keeps buffering.
+Mitä he pelaavat? - What are they playing?
+Jee, se toimii taas! - Yay, it is working again!
+
+# Order food and drink 
+Tämä viini on liian kallista. - This wine is too expensive.
+Anteeksi, laskussa on virhe. - Sorry, there is an error in the check.
+Saisimmeko pastaa, jossa on paljon juustoa? - Could we have pasta which has lots of cheese?
+Voisitko suositella jotain paikallista herkkua? - Could you recommend some local delicacies?
+Olemme pahoillamme, mutta appelsiinit ovat loppu. - Our apologies, but we are out of oranges.
+Pöytä on lähellä keittiötä. - The table is close to the kitchen.
+Haluaisitko sinä lisää pitsaa? - Would you like some more pizza?
+Anteeksi, mutta minulla ei ole lusikkaa. - Excuse me, but I do not have a spoon.
+Pöytä on keskellä ravintolaa. - The table is in the middle of the restaurant.
+Onko teillä terassia? - Do you have a terrace?
+Tämä viini on todella halpaa. Ehkä ruokalistassa on virhe. - This wine is really cheap. Maybe there is a mistake in the menu.
+Miksi tässä lörtsyssä ei ole yhtään hilloa? - Why is there no jam in this lörtsy?
+Laskussa on virhe. - There is a mistake in the check.
+Tämä paikka on liian kallis. - This place is too expensive.
+Haluaisitko käydä tuossa ravintolassa? - Would you like to go to that restaurant?
+Ravintolassa on kuusi kokkia. - There are six cooks in the restaurant.
+Olemme pahoillamme, mutta olemme kiinni. - Our apologies, but we are closed.
+Saisimmeko me sushia, kiitos? - Could we have some sushi, please?
+
+# Explore a city 
+Haluan lukea sängyssä, vaikka olen väsynyt. - I want to read in bed, although I am tired.
+Helsinkiläinen pari katselee kotona amerikkalaista sarjaa. - A Helsinki couple is watching an American series at home.
+Keskustassa on monta hyvää kahvilaa. - There are many good cafés downtown.
+Berliinissä on melkein neljä miljoonaa asukasta. - Berlin has almost four million inhabitants.
+Karanteenissa on miljoona ihmistä. - There are a million people in quarantine.
+Näytelmässä on surullinen tanskalainen mies. - The play features a sad Danish man.
+Tuo pitkä puisto on keskellä Helsinkiä. - That long park is in the middle of Helsinki.
+Tyhjässä hotellissa on hiljaista. - It is quiet in the empty hotel.
+Hän on aina lomalla. - He is always on vacation.
+Metrossa on ruuhkaa. - It is crowded in the metro.
+Opiskeletko sinä historiaa? - Do you study history?
+Suosittu laulaja asuu tässä kaupungissa. - The popular singer lives in this city.
+Mikä rakennus! - What a building!
+Oulussa on yliopisto. - There is a university in Oulu.
+Helsingissä on metro. - There is a metro in Helsinki.
+Kaupunki on jossain lähellä Helsinkiä. - The city is somewhere near Helsinki.
+Nuo kaupungit ovat Australiassa. - Those cities are in Australia.
+Meillä on pari ystävää, jotka opiskelevat kemiaa Kuopiossa. - We have a couple of friends who study chemistry in Kuopio.
+Elsa asuu Oulussa. - Elsa lives in Oulu.
+Pariisilainen nainen istuu hiljaa teatterissa ja katselee suosittua näytelmää. - The Parisian woman is sitting quietly in the theater and watching a popular play.
+Huh, mikä ruuhka! - Whoa, what a traffic jam!
+Onko maalaus tässä museossa? - Is the painting in this museum?
+Me kävelemme keskellä katua. - We are walking in the middle of the street.
+Montako yliopistoa Suomessa on? - How many universities are there in Finland?
+
+# Shop for clothes 
+Mekko on sininen kuin taivas. - The dress is as blue as the sky.
+Haluaisitko sovittaa sitä? - Would you like to try it on?
+Millaista kelloa etsit? - What kind of watch are you looking for?
+Anteeksi, etsin sovituskoppia. - Excuse me, I am looking for the fitting room.
+Millaiset korut ovat muotia? - What kind of jewelry is fashionable?
+Kenkä on likainen. - The shoe is dirty.
+Nämä lasit maksavat kaksisataa euroa. - These glasses cost two hundred euros.
+Paljonko tuo ruskea vyö maksaa? - How much does that brown belt cost?
+Minkäkokoinen tämä keltainen paita on? - What size is this yellow shirt?
+Kirjavat vyöt ovat nyt muotia. - Colorful belts are now in fashion.
+Minkäkokoinen tuo paita on? - What size is that shirt?
+Minä en omista yhtään sormusta. - I do not own a single ring.
+Housut maksavat sata euroa. - The pants cost a hundred euros.
+Montako vyötä sinä omistat? - How many belts do you own?
+Mitä kokoa nämä housut ovat? - What size are these pants?
+Violetti ei ole kukka vaan väri. - Purple is not a flower but a color.
+Minkävärinen kravatti sinulla on? - What color tie do you have?
+Tämä kirjava hattu on tosi ruma. - This colorful hat is really ugly.
+Suomalaiset vyöt ovat loppu. - The Finnish belts are all gone.
+Tuo kirjava paita on halpa. - That colorful shirt is cheap.
+Onko teillä tätä hattua mustana tai harmaana? - Do you have this hat in black or gray?
+Takki on kaunis, mutta istuuko se? - The coat is beautiful, but does it fit?
+
+# Use words that end in i 
+Suo on täällä, joten joki on tuolla. - The bog is over here, so the river is over there.
+Tuolla on kaksi uutta siltaa. - There are two new bridges there.
+He huomaavat monta tummaa pilveä. - They notice many dark clouds.
+He juoksevat alas mäkeä. - They are running down the hill.
+Luuletko, että hän käy usein kalassa? - Do you think that he goes fishing often?
+Puussa istuu viisi villiä lasta. - There are five wild children sitting in a tree.
+Maassa on uutta lunta. - There is fresh snow on the ground.
+Toivon, että vesi ei ole kylmää. - I hope that the water is not cold.
+Käärme puraisee sutta. - The snake bites the wolf.
+Maassa on monta pientä kiveä. - There are many small rocks on the ground.
+Mitä kieltä pöllöt puhuvat? - What language do owls speak?
+Minä seuraan poroa. - I am following the reindeer.
+Eläin puraisee sientä. - The animal bites the mushroom.
+Jatkamme järven etsintää. - We keep on searching for the lake.
+Lapsi maalaa punaista kukkaa ja kahta vihreää lehteä. - The child is painting a red flower and two green leaves.
+Montako tähteä Isossa Karhussa on? - How many stars are there in Ursa Major?
+Tuolla on kolme suurta saarta. - There are three large islands over there.
+He pesevät viittä likaista lautasta purossa. - They are washing five dirty plates in the creek.
+Onko tuo vettä vai hikeä? - Is that water or sweat?
+Hän kuuntelee, kun lintu laulaa. - He listens, while the bird sings.
+Kuusi lasta etsii yhtä täydellistä kuusta. - Six children are looking for one perfect spruce.
+Pöllö katselee suurta sutta. - The owl is watching the large wolf.
+Hän katselee tähteä ja toivoo onnea. - He is watching the star and wishes for happiness.
+Tyttö ihailee kuutta kuusta. - The girl is admiring six spruces.
+He seuraavat uutta tietä. - They are following the new road.
+Huomaatteko? Tuo orava on jo harmaa. - Do you notice? That squirrel is already gray.
+
+# Discuss your vacation 
+Pipo ei ole minulla. - I do not have the beanie.
+Ovatko passit heillä? - Do they have the passports?
+Hän ei voi lukea kirjaa rauhassa, koska koira häiritsee häntä. - He can't read a book in peace because the dog is disturbing him.
+Etsin toista lippua. - I am looking for the other ticket.
+Onneksi me emme tarvitse autoa. - Luckily we don't need a car.
+Etsimme toista sandaalia. - We are looking for the other sandal.
+Tarvitsenko minä karttaa? - Do I need a map?
+Missä toinen suksi on? - Where is the other ski?
+Deodorantti on loppu. - The deodorant is all gone.
+Haluamme istua varjossa, emmekä auringossa. - We want to sit in the shade, not in the sun.
+Tarvitsen lisää saippuaa. - I need more soap.
+...lääkkeet, passi, avain. Onko meillä nyt kaikki? - ...medications, passport, key. Do we have everything now?
+Onko sinulla lompakkoa? - Do you have a wallet?
+Meillä on termari. - We have a thermos.
+Onko sinulla pipoa? - Do you have a beanie?
+Minulla on kampa, mutta pyyhe on sinulla. - I have a comb, but you have the towel.
+Onneksi tässä kaupungissa on metro. - Good thing this city has a metro.
+Vesipullot eivät ole meillä. - We do not have the water bottles.
+
+# Talk about your hobbies 
+Mitä biisiä kuuntelet? - What song are you listening to?
+Miten usein te juoksette? - How often do you run?
+Suomalaiset laulavat usein karaokea. - Finns often sing karaoke.
+Osaan pelata koripalloa mutten jääkiekkoa. - I can play basketball but not hockey.
+Tanssitko sinä balettia? - Do you dance ballet?
+Norjalaiset harrastavat usein hiihtoa. - Norwegians often go skiing.
+Oletko sinä kuorossa? - Are you in a choir?
+Tämä pingviini pelaa jääkiekkoa. - This penguin plays ice hockey.
+Minä olen hyvä rallissa. - I am good at rally driving.
+Suomalainen huuhkaja on hyvä jalkapallossa. - The Finnish eagle owl is good at soccer.
+Pelaatteko te koripalloa? - Do you play basketball?
+Urheilu on hauskaa. - Sport is fun.
+Neulotko sinä usein? - Do you knit often?
+Suomalaiset leijonat osaavat pelata jääkiekkoa. - Finnish lions know how to play ice hockey.
+Te harrastatte hiihtoa muttette jääkiekkoa. - You enjoy skiing but not ice hockey.
+Miksi kuuntelet niin usein oopperaa? - Why do you listen to opera so often?
+Minä en osaa ajaa. - I can't drive.
+Me harrastamme matkailua. - We enjoy traveling.
+Minä haluan soittaa viulua. - I want to play the violin.
+Tuo urheilija osaa myös soittaa kitaraa. - That sportsperson can also play the guitar.
+Pesäpallo on suomalainen peli. - Nestball is a Finnish game.
+Nuo amerikkalaiset hait pelaavat jääkiekkoa. - Those American sharks play ice hockey.
+Osaatko sinä soittaa pianoa? - Can you play the piano?
+
+# Say goodbye 
+Oli hauska tutustua. Nähdään pian uudelleen. - It was nice meeting you. See you soon again.
+Oletko kunnossa? Se on ohi nyt! - Are you OK? It is over now!
+Toivon, että sinulla oli hauskaa. - I hope that you had fun.
+Se on ohi. Entä nyt? - It is over. Now what?
+Kaikki on kunnossa! - Everything is OK!
+Se on ohi. Nähdään myöhemmin! - It is over. See you later!
+Oletko kunnossa? - Are you OK?
+Oli hauska tutustua. - It was nice meeting you.
+Tämä on hauskaa! Tee se uudelleen! - This is fun! Do it again!
+Tee se uudelleen! - Do it again!
+Se on nyt ohi. Oletko kunnossa? - It is over now, Are you OK?
+Entä nyt? Tee se uudelleen! - Now what? Do it again!
+Tämä oli helppoa! - This was easy!
+Oli hauska tutustua. Nähdään pian! - It was nice meeting you. See you soon!
+Tämä oli helppoa ja hauskaa! - This was easy and fun!

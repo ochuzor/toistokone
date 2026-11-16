@@ -1,0 +1,3461 @@
+# https://ankiweb.net/shared/info/1301955498
+On se. - It is.
+Se on. - It is.
+Hän on. - He is.
+On hän. - It is he.
+Ja mitä? - And what?
+Että mitä? - That what?
+Ei ole. - None. 
+Ei mitään. - None.
+Niin on. - That is so.
+Ei niin. - Not so. 
+En niin. - Not so. 
+Et niin. - Not so.
+Niin olen. - That's right. / Yes, I am. / Indeed, I am.
+Niin, niin. - Yes, yes. 
+Kyllä, kyllä. - Yes, yes.
+Niin mitä? - So what? 
+Mikä sitten? - So what?
+Mitä niin? - What so? 
+Mikä niin? - What so?
+Niin oli. - That was the case.
+Mutta mitä? - But what?
+Mitä vain. - Whatever.
+Minä olen. - I am.
+Minä en. - I do not. / I will not.
+En minä. - Not me.
+Olen minä. - I am me.
+Mitä nyt? - What now? 
+Mikä nyt? - What now?
+Ei nyt. - Not now. 
+Älä nyt. - Not now.
+Nyt on. - Now it is.
+Ja sinä. - And you.
+En voi. - I can't.
+Ei voi. - Cannot.
+Sinä olet. - You are.
+Niin olet. - That's right you are.
+Olen täällä. - I am here. 
+Olen tässä. - I am here.
+Minä täällä. - I'm here.
+Ei täällä. - Not here.
+Olet täällä. - You are here.
+Ei minun. - Not mine.
+Et voi. - You can't. 
+Et saa. - You can't.
+Et sinä. - Not you.
+Voi olla. - It may be.
+Hyvä on. - All right. 
+Kaikki hyvin. - All right.
+Ole hyvä. - Please.
+Ei hyvä. - Not good.
+Hyvä niin. - Good so.
+Hyvä, hyvä. - Good, good.
+Olet hyvä. - You're good.
+Niin ovat. - So are they.
+Mitä sitten? - What then?
+Ei sitten. - Not then.
+Ja sitten? - And then?
+Onko hyvä? - Is it good?
+Onko se? - Is it?
+Voi sinua. - Oh you.
+Mutta miksi? - But why?
+Miksi niin? - Why so?
+Miksi nyt? - Why now?
+Miksi sitten? - Then why?
+Miten niin? - How so?
+Miten vain. - Anyway.
+Miten on? - How are you?
+Mutta miten? - But how?
+Älä ole. - Don't be.
+Ei, älä. - No, don't.
+Kyllä vain. - Yes only.
+Kyllä on. - Yes it is.
+Kyllä olen. - Yes I am.
+Kyllä olet. - Yes you are.
+Olen kyllä. - Yes, I have.
+On kyllä. - Yes.
+Kyllä oli. - Yes it was.
+Voi kyllä. - Oh yes.
+En mitään. - Nothing.
+Mitä siitä? - What about that?
+Siitä vain. - Of that only.
+Se siitä. - That's it. 
+Siinä se. - That's it. 
+Juuri se. - That's it.
+Kyllä, kiitos. - Yes, thank you.
+Kiitos vain. - Thank you only.
+En, kiitos. - No, please.
+Kiitos siitä. - Thank you for that.
+Kiitos, kiitos. - Thank you, thank you.
+Voi kiitos. - Oh thank you.
+Hei sitten. - Hello then.
+Hei hei. - Hey hey.
+Hei, kaikki. - Hi, everyone.
+Hei vain. - Hi there.
+Hei, sinä. - Hi, you.
+Mikä on? - What is it?
+Niin olisi. - That would be the case.
+Tässä on. - Here is.
+Tai mitä? - Or what? 
+Vai mitä? - Or what?
+Ei minulle. - Not for me.
+En tiedä. - I don't know.
+Et tiedä. - You don't know.
+Minulla on. - I have.
+Missä olet? - Where are you?
+Missä olen? - Where am I?
+Ehkä ei. - Maybe not.
+Ehkä niin. - Maybe so.
+Oletko sinä? - Are you?
+Oletko täällä? - Are you here?
+Hyvin, kiitos. - Well, thank you.
+Ei hyvin. - Not well.
+Ei vielä. - Not yet. 
+En vielä. - Not yet. 
+Et vielä. - Not yet. 
+Emme vielä. - Not yet.
+Kiitos vielä. - Thanks again.
+Kuka olet? - Who are you?
+Kuka sitten? - Who then?
+Anteeksi mitä? - Sorry what?
+Anteeksi vain. - I beg your pardon.
+Kiitos sinulle. - Thank you.
+Jo vain. - Already.
+Nyt jo? - Now already?
+Minä haluan. - I want to.
+Haluan sinut. - I want you.
+Kyllä haluan. - Yes I want to.
+Tänne se. - Here it is.
+Missä olemme? - Where are we?
+Olemme täällä. - We are here.
+Niin olemme. - So we are.
+Tehdä mitä? - Do what?
+Tiedän sen. - I know that.
+Minä tiedän. - I know. 
+Tiedän kyllä. - I know.
+Tiedän, tiedän. - I know, I know.
+Nyt tiedän. - Now I know.
+Niin, tiedän. - Yes, I know.
+Tule tänne. - Come here.
+Tule nyt. - Come on. 
+Tule jo. - Come on.
+Tule vain. - Just come.
+Emme niin. - Not so.
+Kiitos paljon. - Thank you very much.
+Anna olla. - Let be.
+Anna anteeksi. - Forgive me.
+Anna tänne. - Give it here.
+Anna se. - Give it.
+Anna minun. - Give me.
+Kuka siellä? - Who's there?
+Oletko siellä? - Are you there?
+Sinun täytyy. - You have to.
+Minun täytyy. - I have to.
+Onko sinulla? - Do you have?
+Eivät ole. - They are not.
+Eivät kaikki. - Not all.
+Hän tulee. - He comes.
+Siinä kaikki. - That's all.
+Siinä on. - It has.
+Kiitos, herra. - Thank you, sir.
+Eikö niin? - Isn't that so?
+Eikö vain? - Isn't it?
+Eikö mitään? - Isn't there anything?
+Ei enää. - Not anymore. 
+En enää. - Not anymore. 
+Et enää. - Not anymore.
+Onko selvä? - Is it clear?
+Selvä on. - That is clear.
+Selvä, kiitos. - All right, please.
+Selvä se. - Clear that.
+Selvä sitten. - All right then.
+Selvä, selvä. - Clear, clear.
+Tämä selvä. - This is clear.
+Mistä sitten? - Then where?
+Vain yksi. - Only one.
+Vielä yksi. - One more. 
+Yksi vielä. - One more.
+Juuri niin. - That's right. 
+Niin juuri. - That's right. 
+Aivan niin. - That's right. 
+Ihan totta. - That's right. 
+Aivan oikein. - That's right.
+Juuri nyt. - Right now.
+Näin on. - That is the case.
+Näin sen. - I saw it.
+Onko näin? - Is that so?
+Tässä näin. - Here I saw. 
+Täällä näin. - Here I saw. 
+Tänne näin. - Here I saw.
+Näin hänet. - I saw him.
+Juuri näin. - Just like that.
+Näin sinut. - I saw you.
+Kuinka niin? - How so?
+Anteeksi kuinka? - Sorry how?
+Kuinka paljon? - How much?
+En halua. - I don't want to.
+Vai niin. - Or so.
+Ei vai? - Hey?
+On vai? - Is it?
+Vai onko? - Or is it?
+Anna mennä. - Let go.
+Pitää mennä. - Gotta go. 
+Täytyy mennä. - Gotta go.
+Yksi, kaksi. - One, two.
+Olin siellä. - I was there.
+Niin olin. - That's how I was.
+Joku tulee. - Someone is coming.
+En koskaan. - Never. 
+Ei koskaan. - Never.
+Niin kai. - Of course. 
+Totta kai. - Of course.
+Ei kai. - I don't think so.
+Kiitos tästä. - Thank you for this.
+Mitä mies? - What man?
+Hyvä mies. - Good man.
+Kuka tietää? - Who knows?
+Hän tietää. - He knows.
+Hyvä tietää. - Good to know.
+Haluan tietää. - I want to know.
+Ei aivan. - Not quite. 
+Ei ihan. - Not quite.
+Niin, aivan. - Yes, absolutely.
+No niin. - Well.
+No mitä? - Well what?
+No hyvä. - Well good.
+Hei, isä. - Hi, Dad.
+Kiitos, isä. - Thank you, Dad.
+Kyllä, isä. - Yes, father.
+Anteeksi, isä. - Sorry, Dad.
+Ei, isä. - No, father.
+Voin hyvin. - I'm fine.
+Kyllä voin. - Yes I can.
+Minä voin. - I can.
+Ihan hyvin. - All right. 
+Kaikki kunnossa. - All right.
+Ihan hyvä. - Pretty good. 
+Aika hyvin. - Pretty good. 
+Aika hyvä. - Pretty good. 
+Ihan hyvää. - Pretty good.
+Mene vain. - Just go.
+Mene nyt. - Go now.
+Älä mene. - Don't go.
+Mene jo. - Go.
+Mene sinä. - You go.
+Mene sitten. - Then go.
+Mene takaisin. - Go back.
+Eikö totta? - Isn't it true?
+Oikein hyvä. - Very good. 
+Oikein hyvää. - Very good.
+Oikein hyvin. - Very well.
+Vielä vähän. - A little more.
+Ehkä vähän. - Maybe a little.
+Siis mitä? - So what?
+Entä sinä? - What about you? 
+Entä te? - What about you? 
+Entä sinulla? - What about you? 
+Entä sinun? - What about you? 
+Entä sinulle? - What about you?
+Entä sitten? - What then?
+Entä nyt? - What about now?
+Entä minä? Mitä minusta? - What about me?
+Entä tämä? - What about this?
+Entä hän? - What about him?
+Entä me? - What about us?
+Entä tuo? - What about that?
+On aika. - It's time.
+Kuka olette? - Who are you?
+Missä olette? - Where are you?
+Kuten mitä? - Like what?
+Kuten aina. - As always.
+Hei, äiti. - Hi, Mom.
+Kiitos, äiti. - Thank you, Mom.
+Kyllä, äiti. - Yes, mother.
+Anteeksi, äiti. - Sorry, mother.
+Mitä teet? - What are you doing?
+Todella hyvä. - Really good. 
+Todella hyvää. - Really good.
+Todella hyvin. - Really well.
+Todella paljon. - Really a lot.
+Miten voit? - How can you? 
+Kuinka voit? - How can you?
+Voit mennä. - You can go.
+Kyllä voit. - Yes you can.
+Ei kukaan. - No one.
+Mitä haluat? - What do you want?
+Kuten haluat. - As you wish.
+Jos haluat. - If you want.
+Olen kunnossa. - I am fine.
+Olet kunnossa. - You're fine.
+Olemme kunnossa. - We're fine.
+Ei minusta. - Not to me.
+Entä itse? - What about yourself?
+Hei vaan. - Hey.
+Siitä vaan. - That's it.
+Miten vaan. - Anyway.
+Kyllä vaan. - Yes, but.
+Kiitos vaan. - Thank you.
+Sinä myös. - You too.
+Kuin myös. - As well as.
+Kuten myös. - As well.
+Tule mukaan. - Come along.
+Tule ulos. - Come out.
+Mene ulos. - Go out.
+Tiedän kaiken. - I know everything.
+Juuri noin. - Just about.
+Noin juuri. - About the root.
+Onko noin? - Is that about?
+Katso tätä. - See this.
+Katso minua. - Look at me.
+Katso nyt. - See now.
+Katso häntä. - Look at him.
+Katso itse. - See for yourself.
+Älä katso. - Don't look.
+Katso tänne. - See here.
+Katso sitä. - See it.
+Anna tulla. - Let it come.
+Pidä tätä. - Hold this.
+Pidä se. - Hold it.
+Ei taas. - Not again.
+Hei taas. - Hey again.
+Se auttaa. - It helps.
+Päästä hänet. - Let him go.
+Ei tänään. - Not today. 
+En tänään. - Not today.
+Etkö tiedä? - Don't know?
+Katso vaikka. - See though.
+Kerro minulle. - Tell me.
+Kerro nyt. - Tell me now.
+Kerro hänelle. - Tell him.
+Kerro sinä. - You tell me.
+En kerro. - I don't tell.
+Kerro vain. - Just tell me.
+Kerro kaikki. - Tell me all.
+Älä kerro. - Don't tell.
+Mene kotiin. - Go home.
+Haluan kotiin. - I want to go home.
+Tule kotiin. - Come home.
+Pidä kiinni. - Hold on.
+Tee se. - Do it.
+Tee jotain. - Do something.
+Tee niin. - Do so.
+Mitä muuta? - What else? 
+Entä muuta? - What else?
+Ei muuta. - Does not change.
+Eikö muuta? - Isn't there anything else?
+Onko muuta? - Is there anything else?
+Kaksi vuotta. - Two years.
+Nyt mennään. - Now let's go.
+Mennään sitten. - Let's go then.
+Mennään kotiin. - Let's go home.
+Mennään nyt. - Let's go now.
+Mennään jo. - Let's go already.
+Sitten mennään. - Then let's go.
+Mennään takaisin. - Let's go back.
+Mennään ulos. - Let's go out.
+Mennään tänne. - Let's go here.
+Mennään vain. - Let's just go.
+Saa nähdä. - Let's see.
+Nyt heti. - Now immediately.
+Ilman muuta. - Without further ado.
+Haluatko jotain? - Do you want something?
+Haluatko sinä? - Do you want to?
+Haluatko nähdä? - Want to see?
+Haluatko sen? - Do you want it?
+Mene sinne. - Go there.
+Mennään sinne. - Let's go there.
+Saat anteeksi. - You will be forgiven.
+Saat sen. - You get it.
+Ette voi. - You can't.
+Mitä tapahtui? - What happened?
+Niin varmasti. - So for sure.
+Aivan varmasti. - Certainly. 
+Ihan varmasti. - Certainly.
+En varmasti. - Certainly not. 
+Ei varmasti. - Certainly not.
+Ota tämä. - Take this. 
+Ota tästä. - Take this.
+Ota se. - Take it.
+Ota vain. - Just take it.
+Ota nämä. - Take these.
+Ota ne. - Take them.
+Ota nyt. - Take it now.
+Ota hänet. - Take him.
+Kolme vuotta. - Three years.
+Antaa olla. - Let be.
+Antaa mennä. - Let go.
+Antaa tulla. - Lets come.
+Mistä tiedät? - How do you know?
+Tiedät sen. - You know that.
+Tiedät kyllä. - You know.
+Mitä tiedät? - What do you know?
+Odota vähän. - Wait a minute.
+Odota tässä. - Wait here. 
+Odota täällä. - Wait here.
+Odota, odota. - Wait, wait.
+Odota nyt. - Wait now.
+Odota siinä. - Wait there.
+Odota minua. - Wait for me.
+Miten menee? - How are you? 
+Kuinka menee? - How are you?
+Hyvin menee. - Going well.
+Ei tarvitse. - Not required.
+En tarvitse. - I don't have to.
+Pian nyt. - Soon now.
+En nähnyt. - I did not see.
+Täältä tulee. - Here comes.
+Teen sen. - I do it.
+Mitä teen? - What do I do?
+Teen niin. - I do so.
+Sen teen. - I do. 
+Niin teen. - I do.
+Mitä hänestä? - What about him?
+Hyvä poika. - Good boy.
+Hei, poika. - Hey, boy.
+Tule, poika. - Come on, boy.
+Voi luoja. - Oh my God.
+Hyvä luoja. - Good Creator.
+Sanoin jo. - I already said.
+Sanoin ei. - I said no.
+Tule sisään. - Come in. 
+Käy sisään. - Come in.
+Mene sisään. - Go inside.
+Mennään sisään. - Let's go in.
+Sisään siitä. - Log in from it.
+Sisään vain. - Log in only.
+Minä vastaan. - I answer.
+En usko. - I don't think so.
+Usko pois. - Believe it or not.
+Usko minua. - Believe me.
+Ei käy. - Not applicable.
+Se käy. - It works.
+Tuolla noin. - There are approx.
+Asia selvä. - The point is clear.
+Katso heitä. - Look at them.
+Niin varmaan. - So sure.
+Kiitos teille. - Thank you.
+Missä olit? - Where were you?
+Sano jotain. - Say something.
+Sano sinä. - You say.
+Sano vain. - Just say.
+Sano nyt. - Say it now.
+Sain sen. - I got it.
+Sain sinut. - I got you.
+Sain hänet. - I got him.
+Todella hienoa. - Really great. 
+Tosi hienoa. - Really great.
+Hienoa, kiitos. - Great, please.
+Ei ikinä. - Never. 
+En ikinä. - Never.
+Tiedätkö mitä? - You know what?
+Tiedätkö miksi? - Do you know why?
+Tiedätkö sen? - Do you know that?
+Tiedätkö sinä? - Do you know?
+Rakastan sinua. - I love you. 
+Rakastan teitä. - I love you.
+Rakastan häntä. - I love him/her.
+Rakastan sitä. - I love it.
+Oletko varma? - Are you sure?
+Olen varma. - I'm sure.
+Joo, joo. - Yeah, yeah.
+Vielä kerran. - Once again. 
+Kerran vielä. - Once again.
+Hyvä juttu. - Good thing.
+Selvä juttu. - A clear thing.
+Tarvitsen sinua. - I need you.
+Tarvitsen sitä. - I need it.
+Täytyy lähteä. - Gotta leave.
+Haluatko lähteä? - Do you want to leave?
+Minne mennään? - Where to go?
+Minä ajan. - I drive.
+Koko ajan. - All the time.
+Olet oikeassa. - You are right. 
+Olette oikeassa. - You are right.
+Olit oikeassa. - You were right.
+Olin oikeassa. - I was right.
+Minä tulen. - I will come.
+Tulen heti. - I'll be right there.
+Tulen pian. - I'll be back soon.
+Tulen sinne. - I'll be there.
+Tulen takaisin. - I'll be back.
+Kyllä, rouva. - Yes, ma'am.
+Anteeksi, rouva. - Sorry, ma'am.
+Kiitos, rouva. - Thank you, ma'am.
+Hyvä tyttö. - Good girl.
+Entä tyttö? - What about the girl?
+Mitä tapahtuu? - What's going on?
+Se tapahtuu. - It happens.
+Pidä hauskaa. - Have fun.
+Todella hauskaa. - Really fun. 
+Tosi hauskaa. - Really fun.
+Onko hauskaa? - Is it fun?
+Pidän siitä. - I like it.
+Pidän sinusta. - I like you.
+Pidän hänestä. - I like him.
+Pidän tästä. - I like this.
+Oletko valmis? - Are you ready?
+Olen valmis. - I'm ready.
+Tarvitsen rahaa. - I need money.
+Kuinka kauan? - For how long?
+Kauan sitten. - A long time ago.
+Miten kauan? - How long?
+Niin teki. - He did so.
+Sinä ensin. - You first.
+Hei, kulta. - Hey, honey.
+Kiitos, kulta. - Thank you, honey.
+Anteeksi, kulta. - Sorry, honey.
+Voi, kulta. - Oh, honey.
+Kiitos, tohtori. - Thank you, Doctor.
+Katso tuota. - See that.
+Kerro lisää. - Tell me more.
+Haluatko lisää? - Want more?
+Minä menen. - I'm going.
+Menen kotiin. - I'm going home.
+Menen sisään. - I'm going in.
+Menen sinne. - I'm going there.
+Menen ulos. - I'm going out.
+Menen nyt. - I'm going now.
+Hyvää päivää. - Good day.
+Kaksi päivää. - Two days.
+Hauskaa päivää. - Have a nice day.
+Joka päivä. - Every day.
+Miten meni? - How did it go?
+Oliko muuta? - Was there anything else?
+Älkää nyt. - Don't now.
+Ihan tosi? - Really true?
+Tosi hyvä. - Really good.
+Ehkä myöhemmin. - Maybe later.
+Nähdään myöhemmin. - See you later.
+Nähdään huomenna. - See you tomorrow.
+Nähdään pian. - See you soon.
+Nähdään taas. - See you again.
+Nähdään siellä. - See you there.
+Nähdään sitten. - See you then. 
+Nähdään silloin. - See you then.
+Se nähdään. - It will be seen.
+Voin odottaa. - I can wait.
+Mitä sanoit? - What did you say?
+Milloin vain. - Anytime.
+Tule alas. - Come down.
+Niin minäkin. - So do I.
+Kuten minäkin. - Like me.
+Olet paras. - You are the best.
+Ylös siitä. - Up from it.
+Paljon parempi. - Much better.
+Mitä kuuluu? - What's up?
+En osaa. - I can't.
+Ei mikään. - None.
+Ei ketään. - No one.
+Niin tein. - I did.
+Tein sen. - I did it.
+En ymmärrä. - I do not understand.
+Et ymmärrä. - You don't understand.
+Etkö ymmärrä? - Don't you understand?
+Ette ymmärrä. - You do not understand.
+Mitä teit? - What did you do?
+Teit sen. - You did it.
+Niin teit. - That's what you did.
+Teit oikein. - You did the right thing.
+Teit mitä? - You did what?
+Oletteko varma? - Are you sure?
+Se se on. - That's it.
+Se on hän. - It is he.
+Hän se on. - He is it.
+Mitä se on? Mikä se on? - What is it?
+Ei, en ole. - No, I'm not.
+Ei, ei ole. - No, it is not.
+Niin se on. - That's right. 
+Niin sitä pitää. - That's right.
+Mitä se oli? - What was that? 
+Mikä se oli? - What was that?
+Se oli hän. - It was him.
+Hän se oli. - He was it.
+Se olen minä. - It's me.
+Minä se olen. - I am it.
+Mitä tämä on? - What is this? 
+Mikä tämä on? - What is this?
+Tämä se on. - This is it.
+Se on tämä. - That is this.
+Sinä ja minä. - You and me.
+Mitä sinä nyt? - What are you now?
+En minä voi. - I can't. 
+Minä en voi. - I can't.
+Ei, en voi. - No, I can't.
+En vain voi. - I just can't.
+Mutta en voi. - But I can't.
+Se olet sinä. - It's you.
+Ja sinä olet? - And you are?
+Sitä se on. - That's what it is.
+En minä sitä. - Not me.
+Niin kuin mitä? - Like what?
+Hän on täällä. - He is here. 
+Hän on tässä. - He is here.
+Mitä sinä täällä? - What are you here for?
+Se on täällä. Se on tässä. - It's here.
+Hän oli täällä. - He was here.
+Mitä täällä on? - What's here? 
+Mitä tässä on? - What's here?
+Minä olen täällä. - I am here. 
+Minä olen tässä. - I am here.
+Täällä se on. - Here it is. 
+Tässä se on. - Here it is.
+Ei ole täällä. - Not here.
+Se on minun. - It's mine.
+Hän on minun. - He is mine.
+Tämä on minun. - This is mine.
+Ei voi olla. - Cannot be.
+Se on hyvä. - That is good.
+Ole hyvä vain. - Please.
+Hän on hyvä. - He is good.
+Tämä on hyvä. - This is good.
+Tässä on hyvä. - This is good.
+Se oli hyvä. - That was good. 
+Tuo oli hyvä. - That was good.
+Nyt on hyvä. - Now it's good.
+
+Ne ovat täällä. - They are here.
+Hyvä on sitten. - That's fine then.
+Ja mitä sitten? - And then what?
+Onko hän täällä? - Is he here?
+Onko se hän? - Is that him? 
+Onko tuo hän? - Is that him?
+Onko se hyvä? - Is it good?
+Onko nyt hyvä? - Is it good now?
+Onko se tämä? - Is this this?
+Onko tämä hyvä? - Is this good?
+Ja minä sinua. - And I you.
+Miksi olet täällä? - Why are you here?
+Miten hän voi? - How is he/she?
+Oli miten oli. - It was how it was.
+Miten niin ei? - How not?
+Se on sinun. - It's yours.
+Onko tämä sinun? - Is this yours?
+Tämä on sinun. - This is yours.
+Onko se sinun? - Is that yours?
+Hän on sinun. - He is yours.
+Kyllä se on. - Yes it is.
+Kyllä hän on. - Yes he is.
+Kyllä ja ei. - Yes and no.
+Kyllä se siitä. - Yes that's it.
+Se siitä sitten. - That's it then.
+Hyvä on, kiitos. - All right, please.
+Hei, hei, hei. - Hey, hey, hey.
+Hei, mitä nyt? - Hi, what now?
+Mikä nyt on? - What is it now?
+Mikä sinä olet? - What are you?
+Mikä sinun on? - What do you have?
+Mikä minä olen? - What am I?
+Mikä hän on? - What is he?
+Mikä sitten on? - So what is it?
+Mitä ne ovat? - What are they?
+Ne ovat minun. - They are mine.
+Miten olisi tämä? - How would this be?
+Hän pitää siitä. - He likes it.
+Tämä oli tässä. - This was here.
+Tässä hän on. - Here he is.
+Tässä, ole hyvä. - Here, please.
+Onko tässä kaikki? - Is that all?
+Tässä ne ovat. - Here they are.
+Tässä on kaikki. - That's all.
+Kaikki on tässä. - Everything is here.
+Tässä ja nyt. - Here and now.
+Tai sitten ei. - Or not. 
+Tai sitten en. - Or not.
+Se on minulle. - That's for me.
+En minä tiedä. - I don't know. 
+Minä en tiedä. - I don't know.
+Et tiedä sitä. - You don't know that.
+En tiedä miten. - I don't know how.
+En tiedä siitä. - I don't know about that.
+Ei, en tiedä. - No, I don't know.
+Ei minulla ole. - I don't have. 
+Minulla ei ole. - I don't have.
+Täällä on jotain. - There is something here.
+Missä hän on? - Where is he?
+Missä se on? - Where is it?
+Missä olet ollut? - Where have you been?
+Missä sinä olet? - Where are you?
+Missä he ovat? - Where are they? 
+Missä ne ovat? - Where are they?
+Missä kaikki ovat? - Where is everyone?
+Missä minä olen? - Where am I?
+Missä hän oli? - Where was he?
+Missä se oli? - Where was it?
+Missä olet nyt? - Where are you now?
+Mikä tuo on? - What is that? 
+Mitä tuo on? - What is that?
+Mitä tuo oli? - What was that? 
+Mikä tuo oli? - What was that?
+Tuo on hyvä. - That's good.
+Tuo se on. - That's it. 
+Siinä se on. - That's it. 
+Se on siinä. - That's it.
+Tuo on hän. - That's him.
+Onko tuo minulle? - Is that for me?
+Tuo on minun. - That's mine.
+Ehkä, ehkä ei. - Maybe, maybe not.
+Oletko se sinä? - Is that you?
+Onko kaikki hyvin? - Is everything all right?
+Kaikki on hyvin. - All is well.
+Hän voi hyvin. - He's fine.
+Ei vielä mitään. - Nothing yet.
+Kuka sinä olet? - Who are you?
+
+Kuka tuo on? - Who is that?
+Kuka se on? - Who is it?
+Kuka se oli? - Who was it?
+Kuka tämä on? - Who is this?
+Kuka hän oli? - Who was he?
+Kuka tuo oli? - Who was that?
+Kuka minä olen? - Who am I?
+Tämä on sinulle. - This is for you.
+Se on sinulle. - It's for you.
+Minulla on jo. - I already have.
+Sitä minä haluan. - That's what I want.
+Tuo hänet tänne. - Bring him here.
+Tuo se tänne. - Bring it here.
+Missä me olemme? - Where are we?
+Me kaikki olemme. - We are all.
+Mitä pitää tehdä? - What needs to be done?
+Haluan tehdä sen. - I want to do it.
+Se on meidän. - It's ours.
+Tiedän, kuka olet. - I know who you are.
+Minä tiedän sen. - I know that.
+Tiedän sen nyt. - I know that now.
+Minä vain tiedän. - I just know.
+Älä tule tänne. - Don't come here.
+Mitä saa olla? - What is allowed?
+Se on paljon. - That's a lot.
+Ei paljon mitään. - Not much of anything.
+Anna se minulle. - Give it to me.
+Anna se tänne. - Give it here. 
+Anna tänne se. - Give it here.
+Anna hänen olla. - Let him be.
+Anna minun olla. - Let me be.
+Anna sen olla. - Let it be.
+Anna jo olla. - Leave it alone.
+Anna kun minä. - Let me. / Allow me
+Anna minulle anteeksi. - Forgive me.
+Anna ne minulle. - Give them to me.
+Anna hänet minulle. - Give him to me.
+Anna olla jo. - Leave it alone.
+Anna ne tänne. - Give them here.
+Kuka siellä on? - Who is there?
+Mitä siellä on? - What's there?
+Oletko vielä siellä? - Are you still there?
+Onko hän siellä? - Is he there?
+Siellä hän on. - There he is.
+Siellä se on. - There it is.
+Hän on siellä. - He's there.
+Hän oli siellä. - He was there.
+En ollut siellä. - I wasn't there.
+Siellä he ovat. - There they are.
+Mitä sinulla on? - What do you have? 
+Mikä sinulla on? - What do you have?
+Sinulla on minut. - You have me.
+Onko sinulla se? - Do you have it?
+Nyt se tulee. - Now it comes.
+Nyt hän tulee. - Now he comes.
+Hän tulee kyllä. - He will come.
+Kyllä hän tulee. - Yes, he will.
+Hän tulee tänne. - He comes here. / He is coming here.
+Tässä se tulee. - Here it comes.
+Olet aina ollut. - You always have been.
+Niin kuin aina. - As always.
+Siinä hän on. - That's where he is.
+Mitä siinä on? - What's in it?
+Se oli siinä. - That was it. 
+Siinä se oli. - That was it.
+Siinä oli kaikki. - That was all.
+Siinä he ovat. - That's where they are.
+Siinä on kaikki. - That's all.
+Siinä sinä olet. - That's where you are.
+Onko siinä kaikki? - Is that all?
+Siinä hän tulee. - That's where he comes from.
+Anna se takaisin. - Give it back.
+Hän tulee takaisin. - He comes back.
+Haluan sen takaisin. - I want it back.
+Ei ole enää. - Not anymore.
+Mitä te täällä? - What are you here for?
+Mistä minä tiedän? - How do I know?
+Mistä se tulee? - Where does it come from?
+Ei juuri nyt. - Not right now. 
+En juuri nyt. - Not right now.
+Juuri ja juuri. - Just and just.
+Minä näin sen. - I saw it.
+Näin on hyvä. - This is good. 
+Tämä on hyvää. - This is good.
+Tiedän, mitä näin. - I know what I saw.
+Minä näin hänet. - I saw him.
+
+En halua sitä. - I don't want that.
+Minä en halua. - I don't want to.
+Mitä pitäisi tehdä? - What should be done?
+Kyllä vai ei? - Yes or no?
+Minun pitää mennä. - I have to go. 
+Minun täytyy mennä. - I have to go.
+Meidän pitää mennä. - We have to go. 
+Meidän täytyy mennä. - We have to go.
+Anna hänen mennä. - Let him go.
+Minun pitäisi mennä. - I should go.
+Anna minun mennä. - Let me go.
+Anna mennä vain. - Just let go.
+Sinun pitää mennä. - You have to go. 
+Sinun täytyy mennä. - You have to go.
+Nyt pitää mennä. - Now I/we have to go. / Have to go now.
+Sinun pitäisi mennä. - You should go.
+Vain me kaksi. - Only the two of us.
+Se olin minä. - It was me.
+Minä se olin. - I was that.
+Mitä meillä on? - What do we have?
+Onko siellä joku? - Is there anyone there?
+Täällä on joku. - There's someone here.
+Onko täällä joku? - Is anyone here?
+Anna se hänelle. - Give it to him.
+Niin kai sitten. - I guess then.
+Kyllä tämä tästä. - Yes this here.
+Kyllä se tästä. - Yes that's it.
+Olet hyvä mies. - You are a good man.
+Hän tietää sen. - He knows it.
+No hyvä on. - Well, that's fine.
+Missä isä on? - Where is the father?
+Mitä voin tehdä? - What can I do?
+Voin tehdä sen. - I can do it.
+Ihan miten vain. - Anyway. 
+Ihan miten vaan. - Anyway.
+Voin ihan hyvin. - I'm fine.
+Ihan mitä vain. - Anything. You are a good guy.
+Mene nyt vain. - Just go now.
+Mene sinä vain. - You just go.
+Se on totta. - That is true. 
+Totta se on. - That is true. 
+Tuo on totta. - That is true.
+Onko se totta? Onko tuo totta? - Is that true?
+Ei ole totta. - Not true.
+Totta kai on. - Of course it is.
+Onko tämä totta? - Is this true?
+Totta kai olen. - Of course I am.
+Kyllä, totta kai. - Yes, of course.
+Tämä on totta. - This is true.
+Se oli totta. - That was true.
+Kiitos oikein paljon. - Thank you very much. 
+Kiitos todella paljon. - Thank you very much.
+Kuka oikein olet? - Who exactly are you?
+Se on oikein. - That's right.
+Nyt on aika. - Now is the time.
+Kuka te olette? - Who are you?
+Missä te olette? - Where are you?
+Miksi olette täällä? - Why are you here?
+Ja te olette? - And you are?
+Kuten me kaikki. - Like all of us.
+Missä äiti on? - Where is the mother?
+Hyvä on, äiti. - All right, Mom.
+Äiti on tässä. - The mother is here.
+Se on hyvää. - That's good.
+Onko se hyvää? - Is it good?
+Se oli hyvää. - That was good.
+Mitä sinä teet? - What are you doing?
+Mitä teet täällä? - What are you doing here?
+Mitä oikein teet? - What exactly are you doing?
+Mitä teet siellä? - What are you doing there?
+Mitä teet nyt? - What are you doing now?
+Miten teet sen? - How do you do that?
+Mitä sitten teet? - So what do you do?
+Miten sinä voit? - How can you? 
+Kuinka sinä voit? - How can you?
+Totta kai voit. - Of course you can.
+Voit pitää sen. - You can keep it.
+Kukaan ei tiedä. - No one knows.
+Kukaan ei ole. - No one is.
+Siitä on aikaa. - There is time for that.
+Meillä on aikaa. - We have time.
+Anna hänelle aikaa. - Give him time.
+Onko sinulla aikaa? - Do you have time?
+Minulla on aikaa. - I have time.
+Mitä sinä haluat? - What do you want?
+Mitä haluat tehdä? - What do you want to do?
+Mitä haluat tietää? - What do you want to know?
+Mitä oikein haluat? - What exactly do you want?
+Mitä vain haluat. - Whatever you want.
+Mitä sitten haluat? - So what do you want?
+Jos niin haluat. - If that’s what you want. / If you wish.
+Ihan miten haluat. - Just the way you want it.
+Miten vain haluat. - As you wish.
+Hän on kunnossa. - He's fine.
+Kaikki on kunnossa. - Everything is fine.
+Se on kunnossa. - That's fine.
+Ei, olen kunnossa. - No, I'm fine.
+He ovat kunnossa. - They're fine.
+Kyllä, olen kunnossa. - Yes, I'm fine.
+Minä olen kunnossa. - I am fine.
+Mitä haluat minusta? - What do you want from me?
+Hän pitää minusta. - He likes me.
+Ole hyvä vaan. - Please.
+Anna mennä vaan. - Let it go but.
+Mitä hän sanoi? - What did he say?
+Niin hän sanoi. - That's what he said.
+Kuka niin sanoi? - Who said so?
+Mitä se sanoi? - What did it say?
+Hän sanoi niin. - He said so.
+Kuka sen sanoi? - Who said that?
+Hän tietää kaiken. - He knows everything.
+Noin sitä pitää. - About that.
+Katso nyt häntä. - Now look at him.
+Katso nyt tätä. - Now look at this.
+Katso nyt minua. - Now look at me.
+Anna tulla vain. - Just come.
+Anna tulla vaan. - Let it come but.
+Mikä hänellä on? - What does he have?
+Mitä nyt taas? - What now again?
+Ei kai taas. - Not again.
+Entä sen jälkeen? - What about after that?
+Mitä sen jälkeen? - What then?
+Etkö tule mukaan? - Don't you come along?
+Etkö halua sitä? - Don't you want that?
+Olen pahoillani siitä. - I'm sorry about that.
+Ei, olen pahoillani. - No, I'm sorry.
+Hän pitää sinusta. - He likes you.
+Haluan puhua hänelle. - I want to talk to him.
+Anna minun puhua. - Let me speak.
+Anna hänen puhua. - Let him speak.
+En voi puhua. - I can't talk.
+Haluan vain puhua. - I just want to talk.
+Mistä haluat puhua? - What do you want to talk about?
+Niitä ei ole. - They do not exist.
+En halua niitä. - I don't want them.
+Kerro sinä minulle. - You tell me.
+Kerro se hänelle. - Tell him.
+Älä kerro hänelle. - Don't tell him.
+Mistä se tuli? - Where did it come from?
+Mistä tuo tuli? - Where did that come from?
+Haluan mennä kotiin. - I want to go home.
+En tee sitä. - I don't do that.
+Tee mitä haluat. - Do what you want.
+Tee se nyt. - Do it now.
+Tee se sitten. - Then do it.
+Tee sinä se. - You do it.
+Haluan näyttää jotain. - I want to show something.
+Katso nyt meitä. - Now look at us.
+En voi muuta. - I can't change.
+Mitä muuta haluat? - What else do you want?
+No niin, mennään. - Well, let's go.
+Nyt sitä mennään. - Now let's go.
+Näin sitä mennään. - This is how it goes. 
+Näin se menee. - This is how it goes.
+Tässä sitä mennään. - Here it goes.
+Hyvä on, mennään. - All right, let's go.
+Taas sitä mennään. - Again, let's go.
+Haluan nähdä hänet. - I want to see him.
+Haluan nähdä sen. - I want to see it.
+Haluan nähdä sinut. - I want to see you.
+Mitä nämä ovat? - What are these?
+Nämä ovat sinulle. - These are for you.
+Haluatko puhua siitä? - Do you want to talk about it?
+Haluatko tulla mukaan? - Do you want to join?
+Haluatko nähdä sen? - Do you want to see it?
+Haluatko todella tietää? - Do you really want to know?
+Älä mene sinne. - Don't go there.
+Mitä voin sanoa? - What can I say?
+Mitä pitäisi sanoa? - What should be said?
+En voi sanoa. - I can't say.
+Haluatko sanoa jotain? - Do you want to say something?
+Niin voi sanoa. - So to speak.
+Mitä sitten tapahtui? - So what happened?
+Mitä sinulle tapahtui? - What happened to you? 
+Mitä teille tapahtui? - What happened to you?
+Mitä hänelle tapahtui? - What happened to him?
+Miten se tapahtui? - How did it happen?
+Mitä oikein tapahtui? - What exactly happened?
+Mitä täällä tapahtui? - What happened here?
+Mitä siellä tapahtui? - What happened there?
+Kerro, mitä tapahtui. - Tell me what happened.
+Se vain tapahtui. - It just happened.
+Miten tämä tapahtui? - How did this happen?
+Mitä juuri tapahtui? - What just happened?
+Mitä minulle tapahtui? - What happened to me?
+Missä se tapahtui? - Where did it happen?
+Ota se pois. - Take it off.
+Ota ne pois. - Take them out.
+Ota minut mukaan. - Take me with you.
+Yksi, kaksi, kolme. - One, two, three.
+Kolme, kaksi, yksi. - Three, two, one.
+Mistä tiedät sen? - How do you know that? 
+Mistä sen tiedät? - How do you know that? 
+Miten tiedät sen? - How do you know that? 
+Miten tiedät siitä? - How do you know that? 
+Kuinka tiedät sen? - How do you know that?
+Mitä sinä tiedät? - What do you know?
+Kyllä sinä tiedät. - Yes, you know.
+Mistä sinä tiedät? - How do you know?
+Tiedät, mitä tehdä. - You know what to do.
+Sinä tiedät sen. - You know that.
+Kaikki menee hyvin. - Everything is going well.
+Hei, miten menee? - Hi, how are you?
+Hyvin se menee. - That's fine.
+Miten sinulla menee? - How are you?
+Niin se menee. - That's how it goes.
+Miten siellä menee? - How's it going there?
+Ei sinun tarvitse. Sinun ei tarvitse. - You don't have to.
+Ei minun tarvitse. Minun ei tarvitse. - I don't have to.
+Mitä hän haluaa? - What does he want?
+Hän tulee pian. - He's coming soon.
+En voi kertoa. - I can't tell.
+Voit kertoa minulle. - You can tell me.
+Oletko nähnyt häntä? - Have you seen him?
+Olen nähnyt sen. - I've seen it.
+Oletko nähnyt sen? - Have you seen it?
+Olen nähnyt hänet. - I've seen him.
+Oletko nähnyt tämän? - Have you seen this?
+Haluan pois täältä. - I want to get out of here.
+Mennään pois täältä. - Let's get out of here.
+Mene pois täältä. - Get out of here.
+Mitä minä teen? - What do I do?
+Minä teen sen. - I will do it.
+Tiedän, mitä teen. - I know what I'm doing.
+Teen sen itse. - I do it myself.
+Teen mitä vain. - I will do anything.
+Mitä oikein teen? - What exactly am I doing?
+Sitä minä teen. - That's what I do.
+En pidä hänestä. - I don't like him.
+Mitä tiedät hänestä? - What do you know about him?
+Se on poika. - It's a boy.
+Missä poika on? - Where is the boy?
+Tule tänne, poika. - Come here, boy.
+Olet hyvä poika. - You're a good boy.
+Minulla on poika. - I have a son.
+Mitä olet tehnyt? - What have you done?
+Mitä olen tehnyt? - What have I done?
+Voi hyvä luoja. - Oh good creator.
+Mitä minä sanoin? - What did I say?
+Mitä hän tekee? - What is he doing?
+Mitä se tekee? - What does it do?
+Hän tekee sen. - He does it.
+Päästä minut sisään. - Let me in.
+Haluatko tulla sisään? - Do you want to come in?
+Päästä hänet sisään. - Let him in.
+En usko sitä. En usko niin. - I don't think so.
+Etkö usko minua? - Don't you believe me?
+En oikein usko. - I don't really think so.
+Ei, en usko. - No, I don't think so.
+Kyllä se käy. - Yes it works.
+Se käy hyvin. - It's going well.
+Tuolla hän on. - There he is.
+Hän on tuolla. - He's over there.
+Tuolla se on. - There it is.
+Se on tuolla. - It's over there.
+Mitä tuolla on? - What's over there?
+Tuolla he ovat. - There they are.
+Tuolla on joku. - There's someone there.
+He ovat tuolla. - They're over there.
+Tuolla on jotain. - There's something there.
+Vielä yksi asia. - One more thing. 
+Yksi asia vielä. - One more thing. 
+Vielä yksi juttu. - One more thing. 
+Yksi juttu vielä. - One more thing.
+Onko asia selvä? - Is this clear?
+Asia on näin. - That is the case.
+Asia on selvä. - The point is clear.
+Tämä on teille. - This is for you.
+Missä sinä olit? - Where were you?
+Se olit sinä. - It was you.
+Älä sano noin. - Don't say that. 
+Älä sano sitä. - Don't say that. 
+Älä sano niin. - Don't say that.
+Sano se hänelle. - Say it to him.
+Se on hienoa. - That's great.
+Se olisi hienoa. - That would be great.
+Tämä on hienoa. - This is great.
+Se oli hienoa. - That was great.
+Mitä voimme tehdä? - What can we do?
+Ja tiedätkö mitä? - And you know what?
+Tiedätkö, kuka olen? - Do you know who I am?
+Mutta tiedätkö mitä? - But you know what?
+Minä rakastan sinua. - I love you.
+Rakastan sinua, isä. - I love you, Dad.
+Rakastan sinua, äiti. - I love you, Mom.
+Minä rakastan häntä. - I love him.
+Koska rakastan sinua. - Because I love you.
+Oletko varma tästä? - Are you sure about this?
+Oletko aivan varma? - Are you absolutely sure?
+Oletko varma siitä? - Are you sure about that?
+Oletko ihan varma? - Are you sure?
+Se on varma. - That's for sure.
+Niin voisi sanoa. - You could say that.
+Kiitos vielä kerran. - Thanks again.
+Vain tämän kerran. - Only this time.
+Juttu on näin. - This is the case.
+Minä tarvitsen sinua. - I need you.
+Minun pitää lähteä. - I have to leave. 
+Minun täytyy lähteä. - I have to leave.
+On aika lähteä. - It's time to leave.
+Sinun pitää lähteä. - You have to leave. 
+Sinun täytyy lähteä. - You have to leave.
+Minne hän menee? - Where is he going?
+Minne haluat mennä? - Where do you want to go?
+Olen yhä täällä. - I am still here.
+Hän on oikeassa. - He is right.
+Hän oli oikeassa. - He was right.
+Ehkä olet oikeassa. - Maybe you're right.
+Olet aivan oikeassa. - You are absolutely right.
+Siinä olet oikeassa. - That's right.
+Olet varmaan oikeassa. - You're probably right.
+Voit olla oikeassa. - You may be right. 
+Olet ehkä oikeassa. - You may be right.
+He ovat oikeassa. - They are right.
+Tulen pian takaisin. - I'll be back soon.
+Tulen heti takaisin. - I'll be right back. 
+Tulen ihan pian. - I'll be right back.
+Minä tulen mukaan. - I will come along.
+Se on mitä on. - That's what it is.
+Se ei ole hän. - It's not him. 
+Ei se ole hän. - It's not him.
+Ei, ei se ole. - No, it is not.
+Niin se vain on. - That's just the way it is.
+Minä se vain olen. - It's just me. 
+Se olen vain minä. - It's just me.
+Mitä tämä nyt on? - What is this now?
+Vain sinä ja minä. - Only you and me.
+Hän on täällä nyt. - He's here now.
+Mitä tämä kaikki on? - What is all this?
+Se ei ole minun. - It's not mine. 
+Ei se ole minun. - It's not mine.
+Tämä ei ole minun. - This is not mine.
+Nyt se on minun. - Now it's mine.
+Et voi olla täällä. - You can't be here.
+En voi olla täällä. - I can't be here.
+Ei se voi olla. - It cannot be. 
+Se ei voi olla. - It cannot be.
+Hyvä on, hyvä on. - All right, all right.
+Hyvä, että olet täällä. - Good to have you here.
+Ei, se on hyvä. - No, that's good.
+Mitä tämä sitten on? - So what is this? 
+Mikä tämä sitten on? - So what is this?
+Mitä se sitten on? - So what is it? 
+Mikä se sitten on? - So what is it?
+Miksi hän on täällä? - Why is he here?
+Miksi sinä olet täällä? - Why are you here?
+Miksi sitten olet täällä? - Then why are you here?
+Miten niin ei ole? - How is that not?
+Miten niin et voi? - How can you not?
+Se ei ole sinun. - It's not yours.
+Nyt se on sinun. - Now it's yours.
+Se on nyt sinun. - It's yours now.
+Kyllä, se olen minä. - Yes, it's me.
+Kyllä, hän on täällä. - Yes, he is here.
+Kyllä, hän se on. - Yes, he is.
+Kyllä, se on hän. - Yes, it's him.
+Ei, ei se mitään. - No, it's nothing.
+Hei, se olen minä. - Hey, it's me.
+Mikä sinä sitten olet? - So what are you?
+Mikä minä sitten olen? - So what am I?
+Ja mikä se on? - And what is it?
+Mikä hän sitten on? - What is he then?
+Se ei ollut hän. - It wasn't him. 
+Ei se ollut hän. - It wasn't him.
+Tässä se nyt on. - Here it is now.
+Kaikki tai ei mitään. - All or nothing.
+Miten niin et tiedä? - How come you don't know?
+Et sinä sitä tiedä. - You don't know that.
+Missä hän on nyt? - Where is he now? 
+Missä hän nyt on? - Where is he now?
+Missä sinä olet ollut? - Where have you been?
+Missä hän sitten on? - Then where is he?
+Missä he ovat nyt? - Where are they now? 
+Missä he nyt ovat? - Where are they now?
+Missä hän voi olla? - Where can he be?
+Missä se sitten on? - Where is it then?
+Missä se on nyt? - Where is it now? 
+Missä se nyt on? - Where is it now?
+Missä hän on ollut? - Where has he been?
+Mitä tuo nyt oli? - What was that now?
+Tuo ei ole minun. - That's not mine.
+Tuo ei ole hän. - That's not him.
+Hei, mikä tuo on? - Hi, what is that?
+Mikä tuo sitten on? - So what is that?
+Ei, kaikki on hyvin. - No, everything is fine.
+Kaikki on nyt hyvin. - Everything is fine now. 
+Kaikki on hyvin nyt. - Everything is fine now.
+Onko täällä kaikki hyvin? - Is everything all right here?
+Kaikki ei ole hyvin. - Not all is well.
+Minulla on kaikki hyvin. - I'm all right.
+Kyllä, kaikki on hyvin. - Yes, everything is fine.
+Sitten kaikki on hyvin. - Then everything is fine.
+Onko kaikki nyt hyvin? - Is everything all right now?
+Miksi olet vielä täällä? - Why are you still here?
+Onko hän vielä täällä? - Is he still here?
+Kuka hän sitten on? - Who is he then?
+Ja kuka sinä olet? - And who are you?
+Kuka sinä sitten olet? - Who are you then?
+Kuka se sitten oli? - Who was it then?
+Kuka se voi olla? - Who can it be?
+Minulla on sinulle jotain. - I have something for you. 
+Minulla on jotain sinulle. - I have something for you.
+He ovat jo täällä. - They are already here.
+Mikä tuo sinut tänne? - What brings you here? 
+Mikä sinut tänne tuo? - What brings you here?
+En voi tehdä sitä. - I can't do that. 
+En voi tehdä niin. - I can't do that.
+Mitä minun pitää tehdä? - What do I need to do? 
+Mitä minun täytyy tehdä? - What do I need to do?
+Et voi tehdä sitä. - You can't do that. 
+Et voi tehdä niin. - You can't do that. 
+Et voi tehdä näin. - You can't do that.
+Minun pitää tehdä jotain. - I have to do something. 
+Minun täytyy tehdä jotain. - I have to do something.
+Mitä hän voi tehdä? - What can he do?
+Meidän pitää tehdä jotain. - We have to do something.
+Mitä meidän pitää tehdä? - What do we have to do?
+Tiedän, missä se on. - I know where it is.
+Tiedän, kuka hän on. - I know who he is.
+Tiedän, missä hän on. - I know where he is.
+Tiedän, että olet täällä. - I know you're here.
+Kyllä minä sen tiedän. - Yes, I know that.
+Tiedän, mikä se on. - I know what it is.
+Tiedän, kuka sinä olet. - I know who you are.
+Et saa olla täällä. - You must not be here.
+Anna minun tehdä se. - Let me do it.
+Anna minun tehdä tämä. - Let me do this.
+Anna hänen tehdä se. - Let him do it.
+Tiedän, että olet siellä. - I know you're there.
+Onko siellä kaikki hyvin? - Is everything all right there? 
+Onko kaikki hyvin siellä? - Is everything all right there?
+Se ei ole siellä. - It's not there.
+Meidän täytyy tehdä jotain. - We need to do something.
+Minun täytyy tehdä tämä. - I have to do this.
+Sinun täytyy tehdä se. - You have to do it.
+Sen täytyy olla hän. - It must be him.
+Niin sen täytyy olla. - That's the way it has to be.
+Sinun täytyy tehdä jotain. - You have to do something.
+Sen täytyy olla täällä. - It must be here.
+Onko sinulla kaikki hyvin? - Are you all right?
+Mitä sinulla on siellä? - What do you have there?
+Mitä sinulla on minulle? - What do you have for me?
+Onko sinulla jotain minulle? - Do you have something for me?
+Onko sinulla minulle jotain? - Do you have anything for me?
+Ne eivät ole minun. - They are not mine.
+Niin on aina ollut. - That has always been the case.
+Mitä sinulla on siinä? - What do you have in it? 
+Mitä sinulla siinä on? - What do you have in it?
+Siinä se nyt on. - That's what it is now.
+Eikö hän ole täällä? - Isn't he here?
+Eikö se ole hyvä? - Isn't that good?
+Mistä minä sen tiedän? - How do I know that?
+Mitä minun pitäisi tehdä? - What should I do?
+Mitä meidän pitäisi tehdä? - What should we do?
+Hänen pitäisi olla täällä. - He should be here.
+Sen pitäisi olla täällä. - It should be here.
+Minun täytyy nyt mennä. - I have to go now. 
+Minun pitää nyt mennä. - I have to go now. 
+Minun pitää mennä nyt. - I have to go now. 
+Minun täytyy mennä nyt. - I have to go now.
+Minun pitää mennä takaisin. - I have to go back. 
+Minun täytyy mennä takaisin. - I have to go back.
+Meillä on kaikki hyvin. - We are all well.
+Onko meillä kaikki hyvin? - Are we all well?
+Ei sitä koskaan tiedä. - You never know.
+Nyt tai ei koskaan. - Now or never.
+Sitä ei koskaan tiedä. - It is never known.
+Hän on hyvä mies. - He is a good man.
+Hän oli hyvä mies. - He was a good man.
+Kuka tuo mies on? Kuka se mies on? - Who is that man?
+Kuka tämä mies on? - Who is this man?
+Kuka se mies oli? - Who was that man?
+Missä se mies on? - Where is that man?
+Sinun pitäisi tietää se. - You should know that.
+Se on hyvä tietää. - That's good to know.
+Hän tietää, mitä tehdä. - He knows what to do.
+No niin, no niin. - Well, well.
+No, missä hän on? - Well, where is he?
+Minä voin tehdä sen. - I can do it.
+Mitä minä voin tehdä? - What can I do?
+Voin tehdä mitä haluan. - I can do what I want.
+Kaikki on ihan hyvin. - Everything is fine.
+Se on ihan hyvä. - That's pretty good.
+Ei voi olla totta. - Cannot be true.
+Mutta se on totta. - But it is true.
+Koska se on totta. - Because it is true.
+Kyllä, se on totta. - Yes, that's true.
+Se on kyllä totta. - That is true.
+Totta kai se on. - Of course it is.
+Ei, se on totta. - No, that's true.
+Mitä tämä oikein on? - What exactly is this? 
+Mikä tämä oikein on? - What exactly is this?
+Kuka sinä oikein olet? - Who exactly are you?
+Mitä tuo oikein oli? - What exactly was that?
+Kuka hän oikein on? - Who exactly is he?
+Se on oikein hyvä. - That's very good.
+Mikä sinä oikein olet? - What exactly are you?
+Mikä se oikein on? - What exactly is it?
+Mikä sinulla oikein on? - What exactly do you have?
+Mitä se oikein oli? - What exactly was it?
+Se on siis totta. - So it is true.
+Kaikki on siis hyvin. - So everything is fine.
+Entä jos ei ole? - What if not?
+Entä kuka minä olen? - And who am I?
+Nyt on sen aika. - Now is the time.
+Miksi te olette täällä? - Why are you here?
+Mitä hyvää siinä on? - What's good about it?
+Mitä sinä täällä teet? - What are you doing here? 
+Mitä sinä teet täällä? - What are you doing here?
+Mitä sinä oikein teet? - What exactly are you doing?
+Mitä sinä siellä teet? - What are you doing there? 
+Mitä sinä teet siellä? - What are you doing there?
+Mitä oikein teet täällä? - What exactly are you doing here?
+Mitä sinä nyt teet? - What are you doing now?
+Hei, mitä sinä teet? - Hi, what are you doing?
+Mitä sinä sitten teet? - Then what do you do?
+Mitä sitten teet täällä? - So what are you doing here?
+Isä, mitä sinä teet? - Father, what are you doing?
+Äiti, mitä sinä teet? - Mom, what are you doing?
+Kiitos, että teet tämän. - Thank you for doing this.
+Miten sinä sen teet? - How do you do that? 
+Miten sinä teet sen? - How do you do that?
+Oletko se todella sinä? - Is that really you?
+Hän on todella hyvä. - He's really good.
+Tämä on todella hyvää. - This is really good.
+Se on todella hyvä. - That's really good. 
+Se on todella hyvää. - That's really good.
+Miten voit tietää sen? - How can you know that?
+Kukaan ei saa tietää. - No one should know.
+Kukaan ei tiedä mitään. - No one knows anything.
+Kukaan ei tiedä siitä. - No one knows about it.
+Siitä on jo aikaa. - It's been a while.
+Meillä on vielä aikaa. - We still have time.
+Mitä sinä oikein haluat? - What exactly do you want?
+Mitä sinä haluat tehdä? - What do you want to do?
+Mitä sinä sitten haluat? - What do you want then?
+Voit tehdä mitä haluat. - You can do whatever you want.
+Hän on ihan kunnossa. - She's fine.
+Ei, kaikki on kunnossa. - No, everything is fine.
+Mitä sinä haluat minusta? - What do you want from me? 
+Mitä sinä minusta haluat? - What do you want from me?
+Mitä itse teet täällä? - What are you doing here yourself?
+En minä vaan tiedä. - I don't know.
+Mitä sinä sillä teet? - What are you doing with it?
+Mitä hän sanoi sinulle? - What did he say to you?
+Mitä hän sanoi minusta? - What did he say about me?
+Et voi tehdä noin. - You can't do that. 
+Ette voi tehdä sitä. - You can't do that. 
+Ette voi tehdä näin. - You can't do that. 
+Ette voi tehdä niin. - You can't do that.
+Katso, mitä minulla on. - Look what I have.
+Et voi tulla tänne. - You can't come here. 
+Et saa tulla tänne. - You can't come here. 
+Tänne ei saa tulla. - You can't come here. 
+Ette voi tulla tänne. - You can't come here.
+Onko hänellä kaikki hyvin? - Is he all right?
+Minun täytyy päästä pois. - I have to get out.
+Etkö voi tehdä mitään? - Can't you do anything?
+Ei, minä olen pahoillani. - No, I'm sorry.
+En tiedä sinusta mitään. - I don't know anything about you.
+En voi puhua nyt. - I can't talk now.
+Anna minun puhua hänelle. - Let me talk to him.
+Minun täytyy puhua hänelle. - I need to talk to him.
+Minun pitää puhua hänelle. - I have to talk to him.
+Meidän pitää puhua tästä. - We need to talk about this.
+Minulla ei ole niitä. - I don't have them.
+Niitä on niin paljon. - There are so many of them.
+Kerro, missä hän on. - Tell me where he is.
+Minun pitää mennä kotiin. - I have to go home. 
+Minun täytyy mennä kotiin. - I have to go home.
+Sinun pitäisi mennä kotiin. - You should go home.
+Se on sinusta kiinni. - It's up to you.
+En saa häntä kiinni. - I can't catch him.
+Ei, älä tee sitä. - No, don't do it.
+Tee se nyt vain. - Just do it now.
+Tee niin kuin haluat. - Do as you please.
+Tee mitä sinun täytyy. - Do what you have to.
+Haluan näyttää sinulle jotain.  - I want to show you something.
+Haluan näyttää teille jotain. - I want to show you something.
+Sitten meitä on kaksi. - Then there are two of us.
+Mitä muuta hän sanoi? - What else did he say?
+Minulla ei ole muuta. - I have nothing else. 
+Muuta minulla ei ole. - I have nothing else.
+Mitä muuta sinulla on? - What else do you have?
+Mitä muuta voin tehdä? - What else can I do?
+Tämä on jotain muuta. - This is something else.
+Se on jotain muuta. - It's something else.
+Mitä muuta haluat tietää? - What else do you want to know?
+Siitä on kaksi vuotta. - It's been two years.
+No niin, nyt mennään. - Well, now let's go.
+Sinun täytyy nähdä tämä. - You have to see this. 
+Sinun pitää nähdä tämä. - You have to see this.
+Minun täytyy nähdä hänet. - I have to see him.
+Et voi mennä sinne. - You can't go there. 
+Ette voi mennä sinne. - You can't go there.
+En voi mennä sinne. - I can't go there.
+Ette saa olla täällä. - You must not be here.
+Miten voit sanoa noin? - How can you say that? 
+Kuinka voit sanoa noin? - How can you say that?
+Mitä minun pitäisi sanoa? - What should I say?
+Mitä muuta voin sanoa? - What else can I say?
+Et voi sanoa noin. - You can't say that.
+En voi sanoa sitä. - I can't say that.
+En tiedä, mitä tapahtui. - I don't know what happened.
+Mitä sen jälkeen tapahtui? - What happened next?
+Mitä siellä oikein tapahtui? - What exactly happened there?
+Haluan tietää, mitä tapahtui. - I want to know what happened.
+Haluatko varmasti tehdä tämän? - Are you sure you want to do this?
+Onko kaikki varmasti hyvin? - Is everything sure well?
+Hän on varmasti kunnossa. - He's definitely fine.
+Onko se varmasti hän? - Is it definitely hin/her?
+Siitä on kolme vuotta. - It's been three years.
+Haluan antaa sen sinulle. - I want to give it to you.
+Haluan antaa sinulle jotain. - I want to give you something.
+Mistä sinä sen tiedät? - How do you know that? 
+Miten sinä sen tiedät? - How do you know that?
+Mitä sinä siitä tiedät? - What do you know about that?
+Kyllä sinä sen tiedät. - Yes, you know that.
+Tiedät, mitä pitää tehdä. - You know what to do.
+Mistä tiedät tämän kaiken? - How do you know all this?
+Niin se vain menee. - That's how it goes.
+Hän haluaa nähdä sinut. - He wants to see you.
+Hän haluaa puhua sinulle. - He wants to talk to you.
+Minun pitää kertoa jotain. Minun täytyy kertoa jotain. - I have to say something.
+Haluan kertoa sinulle jotain. - I want to tell you something.
+Haluatko kertoa minulle jotain? - Do you want to tell me something?
+En ole nähnyt häntä. - I have not seen him.
+Kukaan ei nähnyt mitään. - No one saw anything.
+Minun täytyy saada tietää. - I need to know.
+Mitä minä nyt teen? - What do I do now?
+Mitä minä täällä teen? - What am I doing here? 
+Mitä minä teen täällä? - What am I doing here?
+Mitä minä oikein teen? - What exactly am I doing?
+Mitä minä sitten teen? - What do I do then?
+Hyvä on, teen sen. - All right, I'll do it.
+Mitä haluat, että teen? - What do you want me to do?
+Miten minä sen teen? - How do I do that?
+Teen mitä vain haluat. - I will do whatever you want.
+Anna minä teen sen. - Let me do it.
+En tiedä hänestä mitään. - I don't know anything about him.
+Et tiedä hänestä mitään. - You know nothing about him.
+Hän on hyvä poika. - He is a good boy.
+Hän oli hyvä poika. - He was a good boy.
+Missä se poika on? - Where is that boy?
+Kuka tuo poika on? - Who is that boy?
+Mitä sinä olet tehnyt? - What have you done?
+Mitä hän on tehnyt? - What has he done?
+Mitä minä olen tehnyt? - What have I done?
+Mitä olet tehnyt hänelle? - What have you done to him?
+Mitä olet tehnyt minulle? - What have you done to me?
+Oletko tehnyt tätä ennen? - Have you done this before?
+Mitä minä juuri sanoin? - What did I just say?
+Mitä minä sanoin sinulle? - What did I tell you?
+Mitä hän täällä tekee? - What is he doing here? 
+Mitä hän tekee täällä? - What is he doing here?
+Mitä hän oikein tekee? - What exactly is he doing?
+Hän tietää, mitä tekee. - He knows what he's doing.
+Mitä hän siellä tekee? - What is he doing there?
+Mitä hän nyt tekee? - What is he doing now?
+Mitä tuo täällä tekee? - What is that doing here?
+Miten hän tekee sen? - How does he do it?
+Se tekee sinulle hyvää. - It does you good.
+Mitä se täällä tekee? - What is it doing here?
+Enemmän kuin mitään muuta. - More than anything else.
+Kukaan ei usko minua. - No one believes me.
+Mitä hän tekee tuolla? - What is he doing over there?
+Se on hyvä asia. - That is a good thing.
+Onko se hyvä asia? - Is that a good thing?
+Ja vielä yksi asia. - And one more thing. 
+Ja vielä yksi juttu. - And one more thing.
+Tämä on hyvä asia. - This is a good thing. 
+Tämä on hyvä juttu. - This is a good thing.
+On vielä yksi asia. - There is one more thing.
+Kiitos, että sain tulla. - Thank you for allowing me to come.
+Minusta se on hienoa. - I think it's great.
+Et ikinä usko tätä. - You will never believe this.
+Mitä me voimme tehdä? - What can we do?
+Mitä muuta voimme tehdä? - What else can we do?
+Tiedätkö, missä hän on? - Do you know where he is?
+Tiedätkö, mikä tämä on? - Do you know what this is? 
+Tiedätkö, mitä tämä on? - Do you know what this is?
+Tiedätkö, mikä se on? - Do you know what it is?
+Tiedätkö, kuka minä olen? - Do you know who I am?
+Tiedätkö, kuka hän on? - Do you know who he is?
+Tiedätkö, missä se on? - Do you know where it is?
+Tiedätkö, miksi olet täällä? - Do you know why you're here?
+Tiedätkö varmasti, mitä teet? - Are you sure you know what you're doing?
+Tiedätkö, mitä hän sanoi? - Do you know what he said?
+Mistä tiedät tuon kaiken? - How do you know all that?
+Rakastan sinua niin paljon. - I love you so much.
+Tiedät, että rakastan sinua. - You know I love you.
+Ja minä rakastan sinua. - And I love you.
+Rakastan sinua todella paljon. - I really love you a lot.
+Rakastan sinua hyvin paljon. - I love you very much.
+Mutta minä rakastan sinua. - But I love you.
+Kaikki näyttää olevan kunnossa. - Everything seems to be fine.
+Miten voit olla varma? Kuinka voit olla varma? - How can you be sure?
+Siitä voit olla varma. Voit olla varma siitä. - You can be sure of that.
+Yksi asia on varma. - One thing is certain.
+Et voi olla varma. - You can't be sure.
+En ole vielä varma. - I'm not sure yet. 
+En ole varma vielä. - I'm not sure yet.
+Miksi olet niin varma? - Why are you so sure?
+En ole enää varma. - I'm not sure anymore.
+Kuka se voisi olla? - Who could it be?
+Missä hän voisi olla? - Where could he be?
+Mitä se voisi olla? - What could it be?
+Minä voin ottaa sen. - I can take it.
+Se tapahtui vain kerran. - It only happened once.
+Se on hyvä juttu. - That's a good thing.
+Sinun on aika lähteä. - It's time for you to leave. 
+Teidän on aika lähteä. - It's time for you to leave.
+Nyt on aika lähteä. - Now is the time to leave.
+Meidän on aika lähteä. - It is time for us to leave.
+Et voi lähteä nyt. - You can't leave now.
+Ehkä meidän pitäisi lähteä. - Maybe we should leave.
+Sinun täytyy lähteä täältä. - You have to leave here.
+Miksi olet yhä täällä? - Why are you still here?
+Hän on yhä täällä. - He is still here.
+Hän on yhä siellä. - He is still there.
+Onko hän yhä täällä? - Is he still here?
+Ehkä hän on oikeassa. - Maybe he's right.
+Tiedät, että olen oikeassa. - You know I'm right.
+Ei, hän on oikeassa. - No, he's right.
+Ehkä he ovat oikeassa. - Maybe they are right.
+Ehkä hän oli oikeassa. - Maybe he was right.
+Hän voi olla oikeassa. - He may be right.
+Hyvä on, minä tulen. - All right, I'll come.
+Haluatko, että tulen mukaan? - Do you want me to come along?
+Kuka tuo tyttö on? - Who is that girl? 
+Kuka se tyttö on? - Who is that girl?
+Missä se tyttö on? - Where is that girl?
+Hän on hyvä tyttö. - She is a good girl.
+Kuka tämä tyttö on? - Who is this girl?
+Mitä täällä oikein tapahtuu? - What's really going on here?
+Mitä siellä oikein tapahtuu? - What's really going on there?
+Sitä tapahtuu koko ajan. - It happens all the time.
+Mikä on niin hauskaa? - What's so fun?
+Mitä hauskaa siinä on? - What's the fun about it?
+Se voisi olla hauskaa. - It could be fun.
+Onko se sinusta hauskaa? - Is that fun for you?
+Minulla oli todella hauskaa. - I had a lot of fun. 
+Minulla oli tosi hauskaa. - I had a lot of fun.
+Mitä hauskaa siinä olisi? - What fun would that be?
+Se voi olla hauskaa. - It can be fun.
+Onko sinulla joku toinen? - Do you have anyone else?
+Missä se toinen on? - Where is that other one?
+Mikä tuo teidät tänne? - What brings you here?
+Kuka tuo nainen on? - Who is that woman? 
+Kuka se nainen on? - Who is that woman?
+Missä se nainen on? - Where is that woman?
+Kuka tämä nainen on? - Who is this woman?
+Kuka se nainen oli? - Who was that woman?
+En ole vielä valmis. - I am not ready yet.
+Et ole vielä valmis. - You are not ready yet.
+Heti kun olet valmis. - As soon as you're done.
+En ole valmis vielä. - I'm not ready yet.
+Se on paljon rahaa. - That's a lot of money.
+Se on vain rahaa. - It's just money.
+Onko teillä kaikki hyvin? - Are you all right?
+Siitä on jo kauan. - It's been a long time. 
+Siitä on kauan aikaa. - It's been a long time.
+Siitä on niin kauan. - It's been so long.
+Se oli kauan sitten. - That was a long time ago.
+Kuinka kauan siitä on? - How long has it been?
+Se tapahtui kauan sitten. - It happened a long time ago.
+Mitä hän teki sinulle? - What did he do to you?
+Kuka teki tämän sinulle? - Who did this to you?
+Miten hän teki sen? - How did he do it?
+Hän teki sen itse. - He did it himself.
+Mitä hän teki siellä? - What did he do there? 
+Mitä hän siellä teki? - What did he do there?
+Hän teki sen taas. - He did it again.
+Kuka sen sitten teki? - Who then did it?
+Mitä hän teki täällä? - What did he do here?
+Mitä hän sitten teki? - What did he do then?
+Mitä hän täällä teki? - What was he doing here?
+Mitä olisi pitänyt tehdä? - What should have been done?
+Minun olisi pitänyt tietää. - I should have known.
+Minun olisi pitänyt kertoa. - I should have told.
+Sinun olisi pitänyt kertoa. - You should have told.
+Mitä olisi pitänyt sanoa? - What should have been said?
+Mitä olisin voinut tehdä? - What could I have done?
+Kaikki on hyvin, kulta. - All is well, honey.
+Onko kaikki hyvin, kulta? - Is everything all right, honey?
+Hyvä on, minä menen. - All right, I'll go.
+Mikä päivä tänään on? - What day is it today?
+Mikä päivä nyt on? - What day is it now?
+Tänään on se päivä. - Today is that day.
+Mitä minä tällä teen? - What am I doing with this?
+Mistä tässä on kyse? - What is this about?
+Mistä oikein on kyse? - What exactly is it about? 
+Mistä on oikein kyse? - What exactly is it about?
+Siitä tässä on kyse. - That is what this is about.
+Mistä sitten on kyse? - So what is it about?
+Mistä siinä oli kyse? - What was it about?
+Mistä nyt on kyse? - What is it about now?
+Tiedän, mistä on kyse. - I know what it's about.
+Mistä siinä on kyse? - What is it about?
+Kerro, mistä on kyse. - Tell me what it is all about.
+Oliko vielä jotain muuta? - Was there anything else?
+Oliko se varmasti hän? - Was it certainly him?
+Se on tosi hyvä. - That's really good. 
+Se on tosi hyvää. - That's really good.
+Hän on tosi hyvä. - He's really good.
+Tämä on tosi hyvää. - This is really good.
+Hän haluaa tavata sinut. - He wants to meet you.
+Minun täytyy tavata hänet. - I have to meet him.
+Eikö se voi odottaa? - Can't it wait?
+Eikö tämä voi odottaa? - Can't this wait?
+Huomenna on uusi päivä. - Tomorrow is a new day.
+Mitä sinä sanoit hänelle? - What did you say to him?
+Mitä sinä juuri sanoit? - What did you just say?
+Miksi sitten sanoit niin? - Then why did you say that?
+Minäkin rakastan sinua, isä. - I love you too, Dad.
+Minäkin rakastan sinua, äiti. - I love you too, Mom.
+Minäkin rakastan sinua, kulta. - I love you too, honey.
+Halusin vain nähdä sinut. - I just wanted to see you.
+Halusin vain sanoa sen. - I just wanted to say it.
+Halusin vain kertoa sen. - I just wanted to tell you that.
+Sinun on paras lähteä. - You better leave.
+Minun on paras lähteä. - I better leave.
+Vie hänet pois täältä. - Get him out of here.
+Vie meidät pois täältä. - Get us out of here.
+Parempi kuin ei mitään. - Better than nothing.
+Mitä se sinulle kuuluu? - What does it belong to you? 
+Mitä se teille kuuluu? - What does it belong to you?
+Mitä asiaa sinulla oli? - What did you have?
+Mitä asiaa sinulla on? - What do you have? 
+Mitä asiaa teillä on? - What do you have?
+Minulla on sinulle asiaa. - I have something for you. 
+Minulla on asiaa sinulle. - I have something for you. 
+Minulla on sinulle jotakin. - I have something for you. 
+Minulla on jotakin sinulle. - I have something for you.
+Minulla on asiaa hänelle. - I have a case for him/her.
+Mitä asiaa hänellä oli? - What did he/she have?
+Oliko sinulla jotain asiaa? - Did you have something?
+Mikään ei muuta sitä. - Nothing changes that.
+Haluan näyttää sinulle jotakin. - I want to show you something.
+Mikä tämä paikka on? - What is this place?
+Mikä paikka tämä on? - What place is this?
+Tämä on se paikka. - This is the place.
+Tämä on hyvä paikka. - This is a good place.
+Missä se paikka on? - Where is that place?
+Onko tämä se paikka? - Is this the place?
+Mitä minä nyt tein? - What did I do now?
+Miksi sinä noin teit? - Why did you do that? 
+Miksi sinä niin teit? - Why did you do that?
+Miten sinä tuon teit? - How did you do that? 
+Miten sinä teit sen? - How did you do that?
+Mitä sinä teit hänelle? - What did you do to him?
+Katso nyt, mitä teit. - Now look at what you did.
+Mitä sinä siellä teit? - What did you do there? 
+Mitä sinä teit siellä? - What did you do there?
+Miksi sinä teit sen? - Why did you do it?
+Mitä sinä oikein teit? - What exactly did you do?
+Miksi sitten teit sen? - Then why did you do it?
+Mitä sinä teit minulle? - What did you do to me?
+Mitä sinä sitten teit? - So what did you do?
+Sinä teit tämän minulle. - You did this to me.
+Onko sinulla hetki aikaa? - Do you have a moment? 
+Onko teillä hetki aikaa? - Do you have a moment?
+Tässä menee vain hetki. - Only a moment goes by here.
+Tähän menee vain hetki. - This only takes a moment.
+Anna minulle hetki aikaa. - Give me a moment.
+Se on ohi nyt. - It's over now.
+Se on nyt ohi. - It is now over.
+Nyt se on ohi. - Now it's over.
+Tämä on pian ohi. - This will soon be over.
+Se on pian ohi. - It will soon be over.
+Sitten se on ohi. - Then it's over.
+Se on sama asia. - It's the same thing.
+Onko tämä oikea paikka? - Is this the right place?
+Tämä on oikea paikka. - This is the right place.
+Hän on se oikea. - He is that right.
+Kuinka vanha hän on? - How old is he? 
+Miten vanha hän on? - How old is he?
+Kuinka vanha sinä olet? - How old are you? 
+Miten vanha sinä olet? - How old are you?
+Kuinka vanha hän oli? - How old was he/she?
+Kuinka kauan olet tiennyt? - How long have you known?
+Toivottavasti tiedät, mitä teet. - I hope you know what you're doing.
+Toivottavasti hän on kunnossa. - I hope he's fine.
+Toivottavasti kaikki on hyvin. - I hope all is well.
+Mitä minä voisin tehdä? - What could I do?
+Minun olisi pitänyt soittaa. - I should have called.
+Hyvä on. Kaikki hyvin. - All right.
+En tiedä. - I don't know.
+Mitä nyt? Mikä nyt? - What now?
+Mitä tapahtui? - What happened?
+Mitä tarkoitat? - What do you mean?
+Voi luoja. - Oh my God.
+No niin. - Well.
+Miten niin? - How so?
+Miten menee? - How are you? 
+Kuinka menee? - How are you?
+Tule tänne. - Come here.
+Rakastan sinua. - I love you. 
+Rakastan teitä. - I love you.
+Oletko varma? - Are you sure?
+Hyvää yötä. - Good night.
+Olet oikeassa. - You are right. 
+Olette oikeassa. - You are right.
+Ole hyvä. - Please.
+Mitä kuuluu? - What's up?
+En voi. - I can't.
+Ei ole. Ei mitään. - None.
+Mitä teet? - What are you doing?
+Onko selvä? - Is it clear?
+En ymmärrä. - I do not understand.
+Entä sinä? Entä te? - What about you? 
+Entä sinulla? - What about you? 
+Entä sinun? - What about you? 
+Entä sinulle? - What about you?
+Niin on. - That is so.
+Juuri niin. - That's right. 
+Niin juuri. - That's right. 
+Aivan niin. - That's right. 
+Ihan totta. - That's right. 
+Aivan oikein. - That's right.
+Niin minäkin. - So do I.
+Ole kiltti. - Please.
+Olen kunnossa. - I am fine.
+Tiedän sen. - I know that.
+Oletko valmis? - Are you ready?
+Oletko tosissasi? - Are you serious?
+Mitä haluat? - What do you want?
+Ihanko totta? - Is that true? 
+Ihanko tosi? - Is that true? 
+Pitääkö paikkansa? - Is that true?
+Tiedätkö mitä? - You know what?
+En mitään. - Nothing.
+Vai niin. - Or so.
+Kuka siellä? - Who's there?
+Entä sitten? - What then?
+Odota hetki. - Please wait.
+Missä olet? - Where are you?
+Mitä sitten? - What then?
+En usko. - I don't think so.
+Kyllä vain. - Yes only.
+Mitä tapahtuu? - What's going on?
+Ei tarvitse. - Not required.
+
+Anna mennä. - Let go.
+Suokaa anteeksi. - Forgive me.
+En minäkään. - Neither do I.
+Ei käy. - Not applicable.
+Hei, kulta. - Hey, honey.
+Tule sisään. Käy sisään. - Come in.
+Siinä kaikki. - That's all.
+Ei vielä. - Not yet. 
+En vielä. - Not yet. 
+Et vielä. - Not yet. 
+Emme vielä. - Not yet.
+Ole varovainen. - Be careful.
+Kuka olet? - Who are you?
+Onneksi olkoon. - Congratulations.
+Mitä sanoit? - What did you say?
+Ole hiljaa. - Be quiet.
+Hei sitten. - Hello then.
+Tee se. - Do it.
+Ei mikään. - None.
+Katso tätä. - See this.
+Nähdään myöhemmin. - See you later.
+Mistä tiedät? - How do you know?
+Mitä sanot? - What do you say?
+Tule nyt. - Come on. 
+Tule jo. - Come on.
+Lupaan sen. - I promise it.
+Olen tosissani. - I'm serious.
+Miten voit? - How can you? 
+Kuinka voit? - How can you?
+Luojan kiitos. - Thank God.
+Anna olla. - Let be.
+Enpä tiedä. - I don't know.
+Olkaa hyvä. - Please. 
+Olkaa hyvät. - Please. 
+Olkaa kiltti. - Please.
+Katso minua. - Look at me.
+Minne menet? - Where did you go?
+Luota minuun. - Trust me.
+Eipä kestä. - Not sustainable.
+Kuulostaa hyvältä. - Sounds good.
+Eikö niin? - Isn't that so?
+Hyvää työtä. - Good job.
+Ilman muuta. - Without further ado.
+Onnea matkaan. - Congratulations on your trip.
+Juuri noin. - Just about.
+Anna tulla. - Let it come.
+Kuinka niin? - How so?
+Selvä on. - That is clear.
+Nouse ylös. - Get up.
+Ei tietenkään. - Of course not. 
+En tietenkään. - Of course not. 
+Et tietenkään. - Of course not. 
+Emme tietenkään. - Of course not. 
+Ette tietenkään. - Of course not.
+Mikä on? - What is it?
+Ihan sama. - Exactly the same. 
+Aivan sama. - Exactly the same.
+Palaan pian. - I will be back soon.
+Ei kestä. - Not sustainable.
+Enpä usko. - I don't think so. 
+Enpä taida. - I don't think so.
+Anteeksi kuinka? - Sorry how?
+Kaikki järjestyy. - Everything will be fine.
+Hyvää huomenta. - Good morning.
+Olit oikeassa. - You were right.
+Siinäkö kaikki? - Is that all?
+Kyllä on. - Yes it is.
+Kuuntele minua. - Listen to me.
+Ei niin. - Not so. 
+En niin. - Not so. 
+Et niin. - Not so.
+Niin kai. - Of course. 
+Totta kai. - Of course.
+Tätä tietä. - This way.
+Hyvä luoja. - Good Creator.
+Mitä luulet? - What do you think?
+Hei, isä. - Hi, Dad.
+Pitää mennä. - Gotta go. 
+Täytyy mennä. - Gotta go.
+Nyt riittää. - That is enough. 
+Se riittää. - That is enough.
+Hei, äiti. - Hi, Mom.
+Mitä siitä? - What about that?
+Hyvänen aika. - Dear time.
+Ei aavistustakaan. - No idea.
+Näytät hyvältä. - You look good.
+En muista. - I do not remember.
+Minä tiedän. - I know. 
+Tiedän kyllä. - I know.
+Pidän siitä. - I like it.
+Olen valmis. - I'm ready.
+Anna anteeksi. - Forgive me.
+Hyvä poika. - Good boy.
+Oikein hyvä. - Very good. 
+Oikein hyvää. - Very good.
+En oikeastaan. - Not really. 
+Ei oikeastaan. - Not really.
+Ai niin. - Oh yes.
+Nähdään huomenna. - See you tomorrow.
+Ei nyt. Älä nyt. - Not now.
+En halua. - I don't want to.
+Hyvää iltaa. - Good evening.
+Ihan hyvin. - All right. 
+Kaikki kunnossa. - All right.
+Hei hei. - Hey hey.
+Ei kukaan. - No one.
+Mitä teemme? - What do we do?
+Minä lähden. - I'm leaving.
+Tiedät sen. - You know that.
+En pysty. - I can't.
+Minä menen. - I'm going.
+Luulen niin. - I think so.
+Pyydän anteeksi. - I apologize.
+Ota tämä. - Take this. 
+Ota tästä. - Take this.
+Mene vain. - Just go.
+Niin varmaan. - So sure.
+Anteeksi mitä? - Sorry what?
+Tunnetko hänet? - Do you know him?
+Olen täällä. - I am here. 
+Olen tässä. - I am here.
+Tulkaa sisään. - Come in.
+Mitä muuta? - What else? 
+Entä muuta? - What else?
+Siitä vain. - Of that only.
+Tiesin sen. - I knew it.
+Näin on. - That is the case.
+Kuuletko minua? - Can you hear me?
+Entä nyt? - What about now?
+Antaa olla. - Let be.
+Otan osaa. - I will take part.
+Minä olen. - I am.
+Tule mukaani. - Come with me. 
+Tulkaa mukaani. - Come with me.
+Odota vähän. - Wait a minute.
+Avaa ovi. - Open the door.
+Sillä lailla. - Like that.
+Pärjään kyllä. - Yes, I can.
+Et ymmärrä. - You don't understand.
+Riittää jo. - Enough already.
+Ota se. - Take it.
+Se siitä. - That's it. 
+Siinä se. - That's it. 
+Juuri se. - That's it.
+Pidätkö siitä? - Do you like it?
+Suo anteeksi. - Forgive me.
+Ota rauhallisesti. - Take it easy. 
+Ottakaa rauhallisesti. - Take it easy.
+Jatka vain. - Just continue.
+Minä täällä. - I'm here.
+Pieni hetki. - A little moment.
+Mitä tarkoitatte? - What do you mean?
+Ei enää. - Not anymore. 
+En enää. - Not anymore. 
+Et enää. - Not anymore.
+Pidä hauskaa. - Have fun.
+Miten meni? - How did it go?
+Niin oli. - That was the case.
+
+Tehdään se. - Let's do it.
+Mene nyt. - Go now.
+Ihan tosi? - Really true?
+Hyvin tehty. - Well done.
+Hauska tutustua. - Fun to meet.
+Minua pelottaa. - It scares me.
+Seuratkaa minua. - Follow me.
+Minähän sanoin. - I said.
+Avaa se. - Open it.
+Usko pois. - Believe it or not.
+Oletko siellä? - Are you there?
+Hyvää joulua. - Merry Christmas. 
+Hauskaa joulua. - Merry Christmas.
+Ymmärrän kyllä. - I understand. 
+Minä ymmärrän. - I understand.
+Nähdään pian. - See you soon.
+Sinun vuorosi. - Your turn.
+Asia selvä. - The point is clear.
+Hetki vain. - Just a moment.
+Kerro minulle. - Tell me.
+Mitä haluatte? - What do you want?
+Hyvä ajatus. - Good idea.
+Miten vain. - Anyway.
+En tajua. - I don't understand.
+
+Mitä hänestä? - What about him?
+Odota tässä. - Wait here. 
+Odota täällä. - Wait here.
+Arvaa mitä? - Guess what?
+Häivytään täältä. - Let's get out of here.
+En tiennyt. - I did not know.
+Tervetuloa takaisin. - Welcome back.
+Minä pyydän. - I ask.
+Samat sanat. - Same words.
+Olet myöhässä. - You're late.
+Minä lupaan. - I promise.
+Käänny ympäri. - Turn around.
+Voi pojat. - Oh boys.
+Hyvä tyttö. - Good girl.
+Pidä kiirettä. - Hurry. 
+Pitäkää kiirettä. - Hurry.
+Pitää paikkansa. - Hold true. / That is true.
+Hyvää päivänjatkoa. - Good day.
+Et voi. Et saa. - You can't.
+Nyt heti. - Now immediately.
+Pysy siinä. - Stay with it.
+Mistä puhut? - What are you talking about?
+Ei kiinnosta. - Not of interest.
+Voi taivas. - Oh heaven.
+Nyt mennään. - Now let's go.
+Mene kotiin. - Go home.
+Suu kiinni. - Mouth closed.
+Älä mene. - Don't go.
+Tiedätkö miksi? - Do you know why?
+Kuten mitä? - Like what?
+Seuraa minua. - Follow me.
+Katsokaa tätä. - Look at this.
+Tulkaa tänne. - Come here.
+Sain sen. - I got it.
+Se toimii. - It works.
+Pidä kiinni. - Hold on.
+Teen sen. - I do it.
+Minä tulen. - I will come.
+Miltä tuntuu? - How do you feel?
+Kyllä, kiitos. - Yes, thank you.
+Kyllä olen. - Yes I am.
+Miltä näyttää? - What does it look like?
+Tulen kohta. - I come soon.
+Mistä tiesit? - How did you know?
+Entä minä? - What about me? 
+Mitä minusta? - What about me?
+Kyllä, rouva. - Yes, ma'am.
+Mitä seuraavaksi? - What's next?
+Tiedät kyllä. - You know.
+Mitä varten? - For what?
+Näytät upealta. - You look great.
+Ei todellakaan. - Certainly not.
+Siltä näyttää. - It seems so.
+Niinkö luulet? - Is that what you think?
+Missä olit? - Where were you?
+Hyvä kysymys. - Good question.
+En koskaan. - Never. 
+Ei koskaan. - Never.
+Pysy täällä. - Stay here. 
+Pysy tässä. - Stay here. 
+Jää tänne. - Stay here.
+En todellakaan. - Not really.
+Katso nyt. - See now.
+Mitä teit? - What did you do?
+Vannon sen. - I swear it.
+Hieno homma. - Great job.
+Tulen heti. - I'll be right there.
+Hyvä juttu. - Good thing.
+Hyvää syntymäpäivää. - Happy birthday.
+Niin varmasti. - So for sure.
+Minä yritän. - I will try.
+Ymmärrän sen. - I understand that.
+Tule mukaan. - Come along.
+Entä tämä? - What about this?
+Eikö olekin? - Isn't it?
+Hei, kaverit. - Hey, guys.
+Ei ikinä. - Never. 
+En ikinä. - Never.
+Teen parhaani. - I do my best.
+Odottakaa hetki. - Wait a moment.
+Tunnen sinut. - I know you.
+Miksi kysyt? - Why do you ask?
+Usko minua. - Believe me.
+Voi olla. - It may be.
+Hyppää kyytiin. - Jump aboard.
+Minne menemme? - Where are we going? 
+Mihin menemme? - Where are we going?
+Miksi ihmeessä? - Why in the world?
+Liian myöhäistä. - Too late.
+Näen sen. - I see it.
+On se. Se on. - It is.
+Hoidan asian. - I'll take care of it. 
+Hoidan sen. - I'll take care of it. 
+Minä hoidan. - I'll take care of it.
+Antaa mennä. - Let go.
+Tulen pian. - I'll be back soon.
+Hetkinen vain. - Just a moment.
+Kiitos, isä. - Thank you, Dad.
+Että mitä? - That what?
+Hei, kaveri. - Hey, dude.
+Toivon niin. - I hope so.
+Hyvää päivää. - Good day.
+Katso minuun. - Look at me.
+Puhu minulle. - Talk to me.
+Minä häivyn. - I will disappear.
+Kuinka paljon? - How much?
+Niin arvelinkin. - So I guessed.
+Mitä teen? - What do I do?
+Oletteko varma? - Are you sure?
+Muistatko minut? - Do you remember me?
+Kuka tietää? - Who knows?
+Ei muuta. - Does not change.
+Tulen mukaasi. - I'll come with you.
+Mitä teette? - What are you doing?
+Käy istumaan. - Go sit down.
+Mitä tehdään? - What to do?
+Soita minulle. - Call me.
+Miten sujuu? - How are you?
+Päästä hänet. - Let him go.
+Hyvältä näyttää. - Looks good. 
+Näyttää hyvältä. - Looks good.
+Mitä pidät? - What do you like?
+Etkö ymmärrä? - Don't you understand?
+Olen mukana. - I'm in.
+Hyvät herrat. - Gentlemen.
+Tuletko mukaan? - Will you come along?
+Minne matka? - Where to travel?
+Missä olemme? - Where are we?
+Älähän nyt. - Not now.
+En minä. - Not me.
+Kuka olette? - Who are you?
+Kuulit kyllä. - You heard yes.
+Tarvitsen sinua. - I need you.
+Oliko muuta? - Was there anything else?
+Mitä sanotte? - What do you say?
+Hyviä uutisia. - Good news.
+Nyt riitti. - Now that was enough.
+Tiedättekö mitä? - You know what?
+Sama täällä. - Same here.
+Eikö vain? - Isn't it?
+Tulen sinne. - I'll be there.
+Onko valmista? - Is it ready?
+Mennään sitten. - Let's go then.
+Pystyt siihen. - You can do it.
+Tänne päin. - This way.
+Mihin menet? - Where are you going?
+Tulehan tänne. - Come here.
+Hän tulee. - He comes.
+Kas noin. - See approx.
+Sinä myös. - You too.
+Häivy täältä. - Get out of here.
+Hyvin menee. - Going well.
+Perillä ollaan. - Arriving.
+Olet kunnossa. - You're fine.
+Katso häntä. - Look at him.
+Nähdään taas. - See you again.
+Sulje silmäsi. - Close your eyes.
+Anna palaa. - Let's go back.
+Vauhtia nyt. - Momentum now.
+Rauhoitu nyt. - Calm down now.
+Sehän nähdään. - That's what we'll see.
+Niin minullakin. Niin minunkin. - So do I.
+Kuulitko tuon? - Did you hear that?
+Arvostan sitä. - I appreciate it.
+Sepä hienoa. - That's great.
+Nähdään siellä. - See you there.
+Tervetuloa kotiin. - Welcome home.
+Aivan varmasti.  - Certainly.
+Ihan varmasti. - Certainly.
+Rakastan häntä. - I love him.
+Hoidan tämän. - I'll take care of this.
+Kuuntele nyt. - Listen now.
+Mennään kotiin. - Let's go home.
+Voitko hyvin? - Are you all right?
+Kiitos, kulta. - Thank you, honey.
+Rakastan sitä. - I love it.
+Mitä näet? - What do you see?
+Ei hajuakaan. - No smell.
+Oletko sinä? - Are you?
+Katso tuota. - See that.
+Sopii minulle. - Suitable for me.
+Hauska nähdä. - Nice to see you.
+Olkaa varovaisia. - Be careful.
+Lasketko leikkiä? - Do you play?
+Missä olen? - Where am I?
+Lykkyä tykö. - Postpone to.
+Onko nälkä? - Is there hunger?
+Voi sentään. - Oh, after all.
+Minä tarjoan. - I offer.
+Se sopii. - It fits.
+No mitä? - Well what?
+Selvä homma. - A good thing.
+Joo, joo. - Yeah, yeah.
+Ikävä kuulla. - Sorry to hear.
+Miten on? - How are you?
+
+Sama se. - Same with.
+Sulje ovi. - Close the door.
+Mitä tahansa. - Anything.
+Sepä hyvä. - That's good.
+Tarkoitan sitä. - I mean it.
+Olenko oikeassa? - Am I right?
+Vielä kerran. - Once again.
+Kerran vielä. - Once again.
+Kerro nyt. - Tell me now.
+Mutta miksi? - But why?
+Voi veljet. - Oh brothers.
+Katso ympärillesi. - Look around you.
+Voin hyvin. - I'm fine.
+Kuinka kauan? - For how long?
+Olet kaunis. - You are beautiful.
+Kiitos, äiti. - Thank you, Mom.
+Hyvä yritys. - Good company.
+Tunnen sen. - I feel it.
+Onko kysyttävää? - Any questions?
+Ei täällä. - Not here.
+Anna kätesi. - Give your hand.
+Olet rakas. - You are dear.
+Minä odotan. - I'm waiting.
+Antaa tulla. - Lets come.
+Kiitos vain. - Thank you only.
+Mikäs siinä. - What's in it.
+Olen raskaana. - I am pregnant.
+Etkö muista? - Don't you remember?
+Ota iisisti. - Take it easy. 
+Ota rennosti. - Take it easy.
+Millä tavalla? - In what way?
+Olet turvassa. - You are safe.
+Soitan myöhemmin. - I'll call later.
+Selvä, kiitos. - All right, please.
+Tunnen hänet. - I know him.
+Katso itseäsi. - See for yourself.
+Kerro totuus. - Tell the truth.
+Miltä näytän? - What do I look like?
+Oletko seonnut? - Have you married?
+Kenen kanssa? - With whom?
+Hei vaan. - Hey.
+Hei, kultaseni. - Hey, darling.
+Puhutaan myöhemmin. - Talk later.
+Pidän sinusta. - I like you.
+Sopiiko se? - Does it fit?
+Minä ajan. - I drive.
+Siitä vaan. - That's it.
+Hengitä syvään. - Take a deep breath.
+Ei tänään. - Not today. 
+En tänään. - Not today.
+Niinpä tietysti. - So of course. 
+Niinpä tietenkin. - So of course.
+Herranen aika. - Lord's time.
+Kiitos kaikesta. - Thank you for everything.
+Mitä aiot? - What are you going to do?
+Niinpä niin. - So so.
+Löysin sen. - I found it.
+Etkö tajua? - Don't you realize?
+Entä itse? - What about yourself?
+Oikein hyvin. - Very well.
+Jutellaan myöhemmin. - To be discussed later.
+Saitko sen? - Did you get it?
+Kuten haluat. - As you wish.
+Anna tänne. - Give it here.
+Mitä löysit? - What did you find?
+Näin sen. - I saw it.
+Pidän hänestä. - I like him.
+Pysy siellä. - Stay there.
+Voimmeko jutella? - Can we chat?
+Siis mitä? - So what?
+Kas niin. - Is that so.
+Tai mitä? - Or what? 
+Vai mitä? - Or what?
+Sepä mukavaa. - That's nice. 
+Sepä kiva. - That's nice.
+Lähdetään täältä. - Let's start here.
+Kuin myös. - As well as.
+Tuliko selväksi? - Did it become clear?
+Kerro hänelle. - Tell him.
+Koko ajan. - All the time.
+Luotan sinuun. - I trust you.
+Ei lainkaan. - Not at all. 
+En lainkaan. - Not at all. 
+Ei mitenkään. - Not at all. 
+Ei ollenkaan. - Not at all. 
+En ollenkaan. - Not at all.
+Anna se. - Give it.
+Kuuleeko kukaan? - Does anyone hear? / Is anyone listening?
+Minäpä kerron. - Let me tell you.
+Ihan oikeasti. - Really.
+Olen poliisi. - I'm a cop.
+Mene autoon. - Get in the car.
+Ei aivan. - Not quite. 
+Ei ihan. - Not quite.
+Tehdään niin. - This is done. 
+Tehdään näin. - This is done.
+Uskon sinua. - I believe you.
+Se toimi. - It worked.
+Missä olette? - Where are you?
+Kuinka monta? - How many?
+Sano jotain. - Say something.
+Niin tietenkin. - Yes, of course. 
+Niin tietysti. - Yes, of course. 
+On toki. - Yes, of course.
+Tottahan toki. - Of course.
+Kas näin. - See so.
+Huomaan sen. - I notice it.
+Nähdään illalla. - See you in the evening.
+Viisi minuuttia. - Five minutes.
+Tule katsomaan. - Come and see. 
+Tulkaa katsomaan. - Come and see.
+Et sinä. - Not you.
+Onko näin? - Is that so?
+En tiennytkään. - I didn't know.
+Ei suinkaan. - Not at all. 
+En suinkaan. - Not at all.
+Hieno juttu. - Great thing.
+Nähdään aamulla. - See you in the morning.
+Kiitos teille. - Thank you.
+Mistä hyvästä? - What good?
+Hei, pojat. - Hey, boys.
+Tunnenko sinut? - Do I know you?
+Tule vain. - Just come.
+Oletko tyytyväinen? - Are you satisfied?
+Siltä vaikuttaa. - It seems so.
+Ei välttämättä. - Not necessarily.
+Hän tietää. - He knows.
+Voin selittää. - I can explain.
+Uskon sen. - I believe it.
+Ehkä ei. - Maybe not.
+Tulen takaisin. - I'll be back.
+Minun vuoroni. - My turn.
+Etkö tiedä? - Don't know?
+Kas tässä. - Look here.
+Ei hyvä. - Not good.
+Kysy häneltä. - Ask him.
+Mitä sinä teet? - What are you doing?
+Missä hän on? - Where is he?
+Onko kaikki hyvin? - Is everything all right?
+Kaikki on hyvin. - All is well.
+Mitä tämä on? - What is this? 
+Mikä tämä on? - What is this?
+Mikä tuo on? - What is that? 
+Mitä tuo on? - What is that?
+Kuka sinä olet? - Who are you?
+Kuka hän on? - Who is she/he?
+Mitä teet täällä? - What are you doing here?
+Mitä se tarkoittaa? - What does it mean?
+Mistä on kyse? - What is it about?
+Mitä täällä tapahtuu? - What's going on here?
+Missä se on? - Where is it?
+Mitä hän sanoi? - What did he say?
+Se on totta. - That is true. 
+Totta se on. - That is true. 
+Tuo on totta. - That is true.
+Mitä on tapahtunut? - What has happened?
+Mitä aiot tehdä? - What are you going to do? 
+Mitä sinä aiot? - What are you going to do?
+Mitä oikein teet? - What exactly are you doing?
+Hän on oikeassa. - He is right.
+Missä olet ollut? - Where have you been?
+Kuka tuo on? - Who is that?
+Mistä sinä puhut? - What are you talking about? 
+Mistä oikein puhut? - What are you talking about? 
+Mitä sinä puhut? - What are you talking about?
+Minun pitää mennä. - I have to go. 
+Minun täytyy mennä. - I have to go.
+Mitä sinä haluat? - What do you want?
+Olen samaa mieltä. - I agree.
+Se on ohi. - It's over.
+Minne sinä menet? - Where are you going? 
+Mihin sinä menet? - Where are you going?
+Mitä se on? - What is it? 
+Mikä se on? - What is it?
+En minä tiedä. - I don't know. 
+Minä en tiedä. - I don't know.
+Mitä hän tekee? - What is he doing?
+Minne olet menossa? - Where are you going? 
+Mihin olet menossa? - Where are you going? 
+Minne olette menossa? - Where are you going? 
+Mihin olette menossa? - Where are you going?
+Minun on mentävä. - I have to go.
+Mitä tuo oli? - What was that? 
+Mikä tuo oli? - What was that?
+Mitä mieltä olet? - What do you think? 
+Mitä mieltä olette? - What do you think? 
+Mitä olet mieltä? - What do you think? 
+Mitä sinä luulet? - What do you think?
+Mitä me teemme? - What do we do?
+Hyvä on sitten. - That's fine then.
+Missä sinä olet? - Where are you?
+Onko se totta? - Is that true? 
+Onko tuo totta? - Is that true?
+Se on hyvä. - That is good.
+Hän on täällä. - He is here. 
+Hän on tässä. - He is here.
+Minä rakastan sinua. - I love you.
+Minä hoidan tämän. - I will take care of this.
+Kuka siellä on? - Who is there?
+Mitä sinä teit? - What did you do?
+Kuka se on? - Who is it?
+Kuka se oli? - Who was it?
+Mikä on nimesi? - What is your name? 
+Mikä nimesi on? - What is your name?
+Minäkin rakastan sinua. - I love you too.
+Miten hän voi? - How can he?
+Hän on kunnossa. - He's fine.
+Missä he ovat? - Where are they? 
+Missä ne ovat? - Where are they?
+Mitä sinä sanoit? - What did you say?
+Mitä minä teen? - What do I do?
+Yksi, kaksi, kolme. - One, two, three.
+Kaikki on kunnossa. - Everything is fine.
+Siinähän sinä olet. - That's you.
+Miksi olet täällä? - Why are you here?
+Siinä hän on. - That's where he is.
+Se on hän. - It is he.
+Mitä minä sanoin? - What did I say?
+Minä teen sen. - I will do it.
+Se on kaunis. - It's beautiful.
+Anna se minulle. - Give it to me.
+Mitä siellä tapahtuu? - What's going on there?
+Keitä he ovat? - Who are they?
+Se olen minä. - It's me.
+Mitä tuo tarkoittaa? - What does that mean?
+Mitä kello on? - What time is it?
+Älä sano noin. - Don't say that. 
+Älä sano sitä. - Don't say that. 
+Älä sano niin. - Don't say that.
+Olen ylpeä sinusta. - I am proud of you.
+Niin minäkin sinua. - So do I.
+Keitä te olette? - Who are you?
+En osaa sanoa. - I can't say.
+Tuolla hän on. - There he is.
+En sanonut niin. - I did not say so.
+Kuka te olette? - Who are you?
+Mitä sinä tarkoitat? - What do you mean?
+Tulen kohta takaisin. - I'll be right back.
+Mitä se oli? - What was that? 
+Mikä se oli? - What was that?
+Onko täällä ketään? - Is anyone here?
+Mitä tämä tarkoittaa? - What does this mean?
+Minulla on asiaa. - I have a point.
+Se olisi mukavaa. - That would be nice.
+Anna se tänne. - Give it here. 
+Anna tänne se. - Give it here.
+Mitä saisi olla? - What should be?
+Ei voi olla. - Cannot be.
+Tämä on tärkeää. - This is important.
+Meidän on mentävä. - We have to go.
+Kaikki menee hyvin. - Everything is going well.
+Minä hoidan sen. - I'll take care of it. 
+Minä hoidan asian. - I'll take care of it.
+Tulen pian takaisin. - I'll be back soon.
+Ei ole totta. - Not true.
+Se on minun. - It's mine.
+Mitä nyt tapahtuu? - What's happening now?
+Minulla on nälkä. - I am hungry.
+Missä kaikki ovat? - Where is everyone?
+Voi hyvä luoja. - Oh good creator.
+Minne hän meni? - Where did he go? 
+Mihin hän meni? - Where did he go?
+Onko hän täällä? - Is he here?
+Kuinka hän voi? - How is he/she doing? / How can he?
+Oli hauska tavata. - It was fun to meet.
+Tämä on sinulle. - This is for you.
+Mitä sinulla on? - What do you have? 
+Mikä sinulla on? - What do you have?
+Mitä olet tehnyt? - What have you done?
+Mitä sitten tapahtui? - So what happened?
+Mitä siellä on? - What's there?
+Se on mahdollista. - It is possible. 
+On se mahdollista. - It is possible.
+Minulla on kiire. - I am in a hurry.
+Mitä yrität sanoa? - What are you trying to say?
+Mitä sinulle tapahtui? - What happened to you? 
+Mitä teille tapahtui? - What happened to you?
+Mitä hän teki? - What did he do?
+Missä minä olen? - Where am I?
+Mitä siinä on? - What's in it?
+Hän on tuolla. - He's over there.
+Kuka tämä on? - Who is this?
+Mitä hänelle tapahtui? - What happened to him?
+Pidä huolta itsestäsi. - Take care of yourself. 
+Pidä huoli itsestäsi. - Take care of yourself. 
+Pidä itsestäsi huolta. - Take care of yourself.
+Ole hyvä vain. - Please.
+Ei kuulu sinulle. - Does not belong to you.
+Mitä hän sanoo? - What does he say?
+Mistä olet kotoisin? - Where are you from? 
+Mistä olette kotoisin? - Where are you from?
+Onko siellä ketään? - Is anyone there?
+Se on hienoa. - That's great.
+Se olisi hienoa. - That would be great.
+Ei pidä paikkaansa. - Not true.
+Miksi teit sen? - Why did you do it?
+Paljonko kello on? - What time is it?
+Mitä sinä täällä? - What are you here for?
+Mitä nämä ovat? - What are these?
+Anna kun katson. - Let me look.
+Mitä ne ovat? - What are they?
+Se on tärkeää. - That is important.
+Mitä oikein tarkoitat? - What exactly do you mean?
+Tämä on uskomatonta. - This is incredible.
+Missä me olemme? - Where are we?
+Mikä on tilanne? - What is the situation?
+Mitä teette täällä? - What are you doing here?
+Se oli mahtavaa. - It was awesome.
+Noin sitä pitää. - About that.
+Mitä nyt tehdään? - What to do now?
+Hei, miten menee? - Hi, how are you?
+Kiitos, että tulit.  - Thank you for coming.
+Kiitos, kun tulit. - Thank you for coming.
+Meidän pitää mennä. - We have to go. 
+Meidän täytyy mennä. - We have to go.
+Tämä on mahtavaa. - This is awesome.
+Oletko varma tästä? - Are you sure about this?
+Vielä yksi asia. - One more thing. 
+Yksi asia vielä. - One more thing. 
+Vielä yksi juttu. - One more thing. 
+Yksi juttu vielä. - One more thing.
+Minulla on suunnitelma. - I have a plan.
+Se on totuus. - That is the truth.
+Onko sinulla nälkä? - Are you hungry? 
+Onko teillä nälkä? - Are you hungry?
+Se on täällä. - It's here. 
+Se on tässä. - It's here.
+Minne olemme menossa? - Where are we going? 
+Mihin olemme menossa? - Where are we going?
+Mitä voin tehdä? - What can I do?
+Ei sinun tarvitse. - You don't have to. 
+Sinun ei tarvitse. - You don't have to.
+Se oli hauskaa. - It was fun.
+Hän se on. - He is it.
+Kuinka vanha olet? - How old are you? 
+Miten vanha olet? - How old are you?
+Anna hänen olla. - Let him be.
+Mitä he tekevät? - What are they doing?
+En pysty siihen. - I can't do that.
+Nyt se alkaa. - Now it begins.
+En halua sitä. - I don't want that.
+Tulen ihan kohta. - I'll be right there.
+Mitä haluat tehdä? - What do you want to do?
+Kyllä se siitä. - Yes that's it.
+Se olet sinä. - It's you.
+Hän on kaunis. - She is beautiful.
+Mistä sait tämän? - Where did you get this?
+En voi kertoa. - I can't tell.
+Minulla on töitä. - I have jobs.
+Onko siellä joku? - Is there anyone there?
+Mitä haluat minusta? - What do you want from me?
+Se on helppoa. - It's easy.
+Mitä nuo ovat? - What are those?
+Hän on tulossa. - He's coming.
+Mitä luulet tekeväsi? - What do you think you are doing?
+Hei, mitä kuuluu? - Hi, what's up?
+Mitä te haluatte? - What do you want?
+Onko ketään kotona? - Is anyone at home?
+Entä sen jälkeen? - What about after that?
+Mikä nyt on? - What is it now?
+Kuka hän oli? - Who was he?
+Mitä hän haluaa? - What does he want?
+Minne me menemme? - Where are we going? 
+Mihin me menemme? - Where are we going?
+Mitä siinä lukee? - What does it say?
+Mistä sait sen? - Where did you get it?
+Anna minun olla. - Let me be.
+Minä otan sen. - I'll take it.
+Oliko siinä kaikki? - Was it all there?
+Tämä se on. - This is it.
+Kiitos, että tulitte. - Thank you for coming. 
+Kiitos, kun tulitte. - Thank you for coming.
+
+Ne ovat täällä. - They are here.
+Se oli onnettomuus. - It was an accident.
+Oletko se sinä? - Is that you?
+Hän on hyvä. - He is good.
+Mitä tuo tarkoitti? - What did that mean?
+Siitä tulee hauskaa. - It's going to be fun.
+Mitä sinulle kuuluu? - What belongs to you?
+Se on sinulle. - It's for you.
+En tee sitä. - I don't do that.
+Se on hieno. Sehän on hienoa. - That's great.
+Saanko kysyä jotain? - Can I ask you something? 
+Voinko kysyä jotain? - Can I ask you something? 
+Saanko kysyä jotakin? - Can I ask you something? 
+Voinko kysyä jotakin? - Can I ask you something?
+Meillä oli sopimus. - We had a contract.
+Se olin minä. - It was me.
+Haluan puhua kanssasi. - I want to talk to you.
+Miltä se tuntuu? - How does it feel?
+Missä sinä olit? - Where were you?
+Hän voi hyvin. - He's fine.
+Mitä se tekee? - What does it do?
+En tunne häntä. - I don't know him.
+Anna hänen mennä. - Let him go.
+Tiedät, mitä tarkoitan. - You know what I mean.
+Mitä voin sanoa? - What can I say?
+Minä tein sen. - I did it.
+Hyvin se menee. - That's fine.
+Mikä sinä olet? - What are you?
+Kiitos oikein paljon. - Thank you very much. 
+Kiitos todella paljon. - Thank you very much.
+Mitä oikein ajattelit? - What exactly were you thinking?
+En usko sitä. - I don't think so. 
+En usko niin. - I don't think so.
+Mitä minä tein? - What did I do?
+Taidat olla oikeassa. - You seem to be right.
+Mistä tiedät sen? - How do you know that? 
+Mistä sen tiedät? - How do you know that? 
+Miten tiedät sen? - How do you know that? 
+Miten tiedät siitä? - How do you know that? 
+Kuinka tiedät sen? - How do you know that?
+Mitä oikein puhut? - What exactly are you talking about?
+Sinä ja minä. - You and me.
+Siitä on kauan. - It's been a long time.
+Tästä tulee hauskaa. - This is going to be fun.
+Miksi teit noin? - Why did you do that? 
+Miksi teit niin? - Why did you do that?
+Hän on ystäväni. - He is my friend.
+Kyllä minä pärjään. - Yes, I can.
+Kuka niin sanoo? - Who says so?
+Tuolla se on. - There it is.
+Miten sinä voit? - How can you? 
+Kuinka sinä voit? - How can you?
+Kyllä vai ei? - Yes or no?
+Minun pitää lähteä. - I have to leave. 
+Minun täytyy lähteä. - I have to leave.
+Se on poissa. - It's gone.
+En sanonut mitään. - I did not say anything.
+Missä äiti on? - Where is the mother?
+Se oli siinä. Siinä se oli. - That was it.
+Onko sinulla lapsia? - Do you have children? 
+Onko teillä lapsia? - Do you have children?
+Saanko tulla sisään? - Can I come in? 
+Voinko tulla sisään? - Can I come in?
+Jo oli aikakin. - It was time. 
+Oli jo aikakin. - It was time.
+Missä muut ovat? - Where are the others?
+En malta odottaa. - I can't wait.
+Mikä on suunnitelma? - What is a plan?
+Mistä minä tietäisin? - How would I know?
+Se on tehty. - It's done.
+Tai sitten ei. - Or not. 
+Tai sitten en. - Or not.
+Missä rahat ovat? - Where is the money?
+Mitä sinä höpiset? - What are you talking about? 
+Mitä sinä höpötät? - What are you talking about?
+Se on tuolla. - It's over there.
+Minun on pakko. - I have to.
+Niin hän sanoi. - That's what he said.
+Vien sinut kotiin. - I'll take you home.
+Se siitä sitten. - That's it then.
+Kolme, kaksi, yksi. - Three, two, one.
+Mistä hän puhuu? - What is he talking about?
+Älä kuuntele häntä. - Don't listen to him.
+Tämä on hyvä. - This is good. 
+Tässä on hyvä. - This is good.
+Tee minulle palvelus. - Do me a favor.
+Minulla on ajatus. - I have an idea.
+Miten löysit minut? - How did you find me? 
+Kuinka löysit minut? - How did you find me?
+Sinä teit sen. - You did it.
+Kuka niin sanoi? - Who said so?
+Voi hyvänen aika. - Oh my goodness.
+Se on hauskaa. - It's fun.
+Mitä oikein tapahtuu? - What exactly is happening?
+En kuule mitään. - I can't hear anything.
+Kyllä tämä tästä. - Yes this here.
+Onko se mahdollista? - Is it possible?
+Ei tällä kertaa. - Not this time. 
+En tällä kertaa. - Not this time.
+Miten se meni? - How did it go?
+Sanoiko hän niin? - Did he say that?
+Ihan miten vain. - Anyway. 
+Ihan miten vaan. - Anyway.
+Kukaan ei tiedä. - No one knows.
+Se on sinun. - It's yours.
+Mikä sinun on? - What do you have?
+Sieltä hän tulee. - That's where he comes from.
+Mistä te puhutte? - What are you talking about?
+Nyt on parempi. - Now is better.
+Siitä on aikaa. - There is time for that.
+Haluatko puhua siitä? - Do you want to talk about it?
+Miksi tulit tänne? - Why did you come here?
+Mitä haluat tietää? - What do you want to know?
+Kuka sen teki? - Who did it?
+Hän on sairas. - He is ill.
+Tulen heti takaisin. - I'll be right back. 
+Tulen ihan pian. - I'll be right back.
+Miten sinulla menee? - How are you?
+Voit luottaa minuun. - You can trust me. 
+Voitte luottaa minuun. - You can trust me.
+Hän oli oikeassa. - He was right.
+Oletko nyt tyytyväinen? - Are you satisfied now?
+Se on hyvää. - That's good.
+Mitä hän halusi? - What did he want?
+Se on käsky. - It is a commandment.
+Miten se tapahtui? - How did it happen?
+Me teimme sen. - We did it.
+Ei missään nimessä. - By no means. 
+En missään nimessä. - By no means.
+Se on mahtavaa. - That's awesome. 
+Sehän on mahtavaa. - That's awesome.
+Kaikki järjestyy kyllä. - Yes, everything will be fine. 
+Kyllä kaikki järjestyy. - Yes, everything will be fine.
+Mitä pitäisi tehdä? - What should be done?
+Mitä voimme tehdä? - What can we do?
+Mitä he sanoivat? - What did they say?
+Mitä sanoit hänelle? - What did you tell him?
+Anteeksi, että myöhästyin. - Sorry to be late.
+Se on täydellinen. - It's perfect.
+Kuka tämän teki? - Who did this? 
+Kuka teki tämän? - Who did this?
+Miksi sanot noin? - Why do you say that? 
+Miksi sanot niin? - Why do you say that?
+Mitä minulle tapahtuu? - What happens to me?
+He ovat tulossa. - They are coming.
+Se on työtäni. - That's my job.
+Anna sen olla. - Let it be.
+Ota se pois. - Take it off.
+Ei muuta kysyttävää. - No other question.
+Mistä sait tuon? - Where did you get that?
+Minä lähden nyt. - I'm leaving now.
+Mitä olen tehnyt? - What have I done?
+Niinhän minä sanoin. - That's what I said.
+Missä isä on? - Where is the father?
+Kuka on seuraava? - Who is next?
+Mitä oikein tapahtui? - What exactly happened?
+Hän on minun. - He is mine.
+Lähdetään pois täältä. - Let's get out of here.
+En tarkoita sitä. - I don't mean that.
+Miten pääsit tänne? - How did you get here? 
+Kuinka pääsit tänne? - How did you get here?
+Tämä oli tässä. - This was here.
+Niin se on. - That's right. 
+Niin sitä pitää. - That's right.
+Katso nyt itseäsi. - Now look at yourself.
+Se olit sinä. - It was you.
+Millainen hän on? - What is he like?
+Ole kuin kotonasi. - Be at home. 
+Olkaa kuin kotonanne. - Be at home.
+Oletko nähnyt häntä? - Have you seen him?
+Se on upea. - It's gorgeous.
+Onko se hän? - Is that him? 
+Onko tuo hän? - Is that him?
+Minä tulen mukaan. - I will come along.
+Olet niin kaunis. - You are so beautiful.
+Ja minä sinua. - And I you.
+Tuo on hyvä. - That's good.
+Kaikki on valmista. - Everything is ready.
+Mitä aiotte tehdä? - What are you going to do?
+Mitä teet työksesi? - What do you do for a living?
+Olen etsinyt sinua. - I've been looking for you.
+Miltä se näyttää? - What does it look like?
+Mitä täällä tapahtui? - What happened here?
+Minne hän menee? - Where is he going?
+Hän teki sen. - He did it.
+Kuka tuo oli? - Who was that?
+Mitä teit hänelle? - What did you do to him?
+Ei yhtään mitään. En yhtään mitään. - Nothing at all.
+Minulla on kysymys. - I have a question.
+Olen pahoillani siitä. - I'm sorry about that.
+Se oli uskomatonta. - It was amazing.
+Tämä on vakavaa. - This is serious.
+En saa henkeä. - I can't breathe. 
+En voi hengittää. - I can't breathe.
+Mitä asia koskee? - What is relevant?
+No niin, pojat. - Well, boys.
+Se oli hyvä. - That was good. 
+Tuo oli hyvä. - That was good.
+Mikä täällä haisee? - What's stinking here?
+Miten teit sen? - How did you do that? 
+Miten teit tuon? - How did you do that? 
+Kuinka teit sen? - How did you do that?
+Tämä on hienoa. - This is great.
+Sinun on pakko. - You have to.
+Missä tyttö on? - Where is the girl?
+Mitä teemme nyt? - What do we do now? 
+Mitä nyt teemme? - What do we do now?
+Tiedän, mitä teen. - I know what I'm doing.
+Sinä et ymmärrä. - You do not understand. 
+Te ette ymmärrä. - You do not understand.
+Et tiedä sitä. - You don't know that.
+Miltä hän näytti? - What did he look like?
+Olen iloinen puolestasi. - I am happy for you. 
+Olen onnellinen puolestasi. - I am happy for you.
+Ehkä olet oikeassa. - Maybe you're right.
+Mistä minä tiedän? - How do I know?
+Hän on mahtava. - He is awesome.
+Olen nähnyt sen. - I've seen it.
+Minne te menette? - Where are you going? 
+Mihin te menette? - Where are you going?
+Mitä siellä tapahtui? - What happened there?
+Mitä sitten tapahtuu? - So what happens?
+Mitä sait selville? - What did you find out?
+Minulla on tapaaminen. - I have an appointment.
+Oletko sitä mieltä? - Do you think so?
+Se meni hyvin. - It went well.
+Tämä on hauskaa. - This is fun.
+Totta kai on. - Of course it is.
+Soitan sinulle takaisin. - I'll call you back.
+Anna se takaisin. - Give it back.
+Kuka luulet olevasi? - Who do you think you are?
+Missä te olette? - Where are you?
+Mitä sinä puuhaat? - What are you doing? 
+Mitä oikein puuhaat? - What are you doing? 
+Mitä sinä touhuat? - What are you doing? 
+Mitä oikein touhuat? - What are you doing? 
+Mitä sinä hommaat? - What are you doing? 
+Mitä te puuhaatte? - What are you doing?
+Minne luulet meneväsi? - Where do you think you're going? 
+Mihin luulet meneväsi? - Where do you think you're going?
+Ovi on auki. - The door is open.
+Kyllä se käy. - Yes it works.
+Missä äitisi on? - Where is your mother?
+Puhutaan siitä myöhemmin. - Talk about it later.
+Se on mennyttä. - It's gone.
+Hän on veljeni. - He is my brother.
+Mitä ajat takaa? - What are you chasing?
+Kuka oikein olet? - Who exactly are you?
+Sehän on hyvä. - That's good.
+Kyllä se on. - Yes it is.
+Kuka minä olen? - Who am I?
+Hän on söpö. - She's cute.
+Mikä on nimenne? - What is your name? 
+Mikä nimenne on? - What is your name?
+Millaista se oli? - What was it like?
+Olen saanut tarpeekseni. - I have had enough.
+Minun oli pakko. - I had to.
+Se oli hienoa. - That was great.
+Miten se toimii? - How does it work?
+Ei kestä kiittää. - Can't thank.
+Se on loppu. - That's the end.
+Rakastan sinua, isä. - I love you, Dad.
+Siinä on järkeä. - That makes sense. 
+Tuossa on järkeä. - That makes sense.
+Minne he menivät? - Where did they go?
+Millainen hän oli? - What was he like?
+Missä poikani on? - Where is my son?
+Keitä nuo ovat? - Who are those?
+Oli kiva tavata. - It was nice to meet you. 
+Oli mukava tavata. - It was nice to meet you.
+Niin kai sitten. - I guess then.
+Mitä oikein teette? - What exactly are you doing?
+Hän oli täällä. - He was here.
+Se on lahja. - It is a gift.
+En ole kuullutkaan. - I haven't heard.
+Onko tämä sinun? - Is this yours?
+Onko sinulla rahaa? - Do you have money?
+Minun pitäisi mennä. - I should go.
+Oletko vielä siellä? - Are you still there?
+Tiedän, kuka olet. - I know who you are.
+Se on mahtava. - It's awesome.
+Tämä on ohi. - This is over.
+Ja tiedätkö mitä? - And you know what?
+Sitäkö sinä haluat? - Is that what you want?
+Mitä täällä on? - What's here? 
+Mitä tässä on? - What's here?
+Ei kovin hyvin. - Not very well. 
+En kovin hyvin. - Not very well.
+Se oli kaunista. - It was beautiful.
+Se oli lähellä. - It was close.
+Tässä hän on. - Here he is.
+Se oli hän. - It was him.
+Ei tule kuuloonkaan. - Can't hear.
+Hän pitää sinusta. - He likes you.
+Se on ihana. - It's wonderful.
+Mitä sinä näit? - What did you see?
+Se on lukossa. - It's locked.
+Milloin se tapahtui? - When did it happen?
+Hän rakastaa sinua. - He loves you.
+Mitä siinä sanotaan? - What does it say? 
+Mistä se kertoo? - What does it say?
+Mitä sinä etsit? - What are you looking for?
+Ole niin kiltti. - Please.
+Miltä hän näyttää? - What does he look like?
+Etkö luota minuun? - Don't you trust me?
+Miltä sinusta tuntuu? - How do you feel?
+Oletko aivan varma? - Are you absolutely sure?
+Se ei toiminut. - It did not work.
+Miksi olette täällä? - Why are you here?
+Mitä meillä on? - What do we have?
+Mitä oikein haluat? - What exactly do you want?
+Minne se meni? - Where did it go? 
+Mihin se meni? - Where did it go?
+Pidä häntä silmällä. - Keep an eye on him.
+Tämä on kunnia. - This is an honor.
+Minä menen nyt. - I'm going now.
+Voi hyvä Jumala. - Oh good God.
+Minulla on rahaa. - I have money.
+Anna minun selittää. - Let me explain.
+He ovat poissa. - They are gone. 
+Ne ovat poissa. - They are gone.
+Minulla on ehdotus. - I have a suggestion.
+Niin olen kuullut. - So I've heard.
+Ei ole enää. - Not anymore.
+Hän puhuu totta. - He speaks the truth.
+Olet hyvä mies. - You are a good man.
+Mitäs täällä on? - What's here?
+Tuossa hän on. - That's where he is.
+Nyt en ymmärrä. - Now I don't understand.
+Anna minun mennä. - Let me go.
+Mikä nimesi olikaan? - What was your name?
+On aika lähteä. - It's time to leave.
+Taas se alkaa. - It starts again.
+Hyvää yötä, kulta. - Good night, honey.
+No niin, mennään. - Well, let's go.
+Tästä se lähtee. - This is where it starts.
+Hän on turvassa. - He is safe.
+Kerro, mitä tapahtui. - Tell me what happened.
+Minulla on tekemistä. - I have something to do.
+Haluatko tulla mukaan? - Do you want to join?
+Mikäs tämä on? - What is this?
+Mitä sinä tuijotat? - What are you staring at? 
+Mitä te tuijotatte? - What are you staring at?
+Mitä sinä sanot? - What do you say?
+Onko se hyvä? - Is it good?
+Näytän sinulle jotain. - I'll show you something.
+En minä voi. - I can't. 
+Minä en voi. - I can't.
+Älä mene sinne. - Don't go there.
+Tämä on minun. - This is mine.
+Hän tulee takaisin. - He comes back.
+Hyvää uutta vuotta. - Happy New Year.
+Oletko varma siitä? - Are you sure about that?
+Tiedän, mitä ajattelet. - I know what you're thinking.
+Se vähän riippuu. - It depends a bit.
+Miltä se tuntui? - How did it feel?
+Kyllä se sopii. - Yes, it is.
+Minä jään tänne. - I will stay here.
+Tämäkö se on? - Is this it?
+Hyvää päivän jatkoa. - Have a good day.
+Soitan sinulle myöhemmin. - I'll call you later.
+Tiedän, mitä tarkoitat. - I know what you mean.
+Hän pärjää kyllä. - He's doing well.
+Mitä sä teet? - What are you doing? 
+Mitä te teette? - What are you doing?
+Haluan nähdä hänet. - I want to see him.
+Miten se onnistuu? - How does it work?
+Mitä sinä täällä teet? - What are you doing here? 
+Mitä sinä teet täällä? - What are you doing here?
+Ei voi olla totta. - Cannot be true.
+Mikä sinun nimesi on? - What is your name?
+Mikä hänen nimensä on? - What is his name? 
+Mikä on hänen nimensä? - What is his name?
+Mitä minun pitäisi tehdä? - What should I do?
+En voi tehdä sitä. - I can't do that. 
+En voi tehdä niin. - I can't do that.
+Mitä me nyt teemme? - What are we doing now? 
+Mitä me teemme nyt? - What are we doing now?
+Miten se on mahdollista? - How is this possible? 
+Miten tämä on mahdollista? - How is this possible? 
+Kuinka tämä on mahdollista? - How is this possible?
+Mitä haluat minun tekevän? - What do you want me to do? 
+Mitä haluatte minun tekevän? - What do you want me to do?
+Mitä sinulle on tapahtunut? - What has happened to you? 
+Mitä teille on tapahtunut? - What has happened to you?
+Mikä tämä paikka on? - What is this place?
+Mitä hän täällä tekee? - What is he doing here? 
+Mitä hän tekee täällä? - What is he doing here?
+Mistä sinä sen tiedät? - How do you know that? 
+Miten sinä sen tiedät? - How do you know that?
+Hyvä on, hyvä on. - All right, all right.
+Mitä sinä oikein teet? - What exactly are you doing?
+Hyvät naiset ja herrat. - Ladies and gentlemen.
+Se on pitkä tarina. - It's a long story.
+Mikä hänen nimensä oli? - What was his name?
+Missä hän on nyt? - Where is he now? 
+Missä hän nyt on? - Where is he now?
+Onko sinulla hetki aikaa? - Do you have a moment? 
+Onko teillä hetki aikaa? - Do you have a moment?
+Minulla on sinulle jotain. - I have something for you. 
+Minulla on jotain sinulle. - I have something for you.
+Mitä minun pitää tehdä? - What do I need to do? 
+Mitä minun täytyy tehdä? - What do I need to do?
+Mistä sinä oikein puhut? - What are you talking about?
+Mikä tuo ääni on? - What is that voice?
+Sillä ei ole merkitystä. - Not relevant.
+Mikä sen nimi on? - What is its name?
+Mitä minä nyt teen? - What do I do now?
+Mitä meidän pitäisi tehdä? - What should we do?
+Et voi tehdä sitä. - You can't do that. 
+Et voi tehdä niin. - You can't do that. 
+Et voi tehdä näin. - You can't do that.
+Mitä mieltä sinä olet? - What do you think? 
+Mitä mieltä te olette? - What do you think?
+Niin se vain on. - That's just the way it is.
+Hän on hyvä mies. - He is a good man.
+Mikä paikka tämä on? - What place is this?
+Missä sinä olet ollut? - Where have you been?
+Mitä tämä oikein on? - What exactly is this? 
+Mikä tämä oikein on? - What exactly is this?
+Pidä minut ajan tasalla. - Keep me updated. 
+Pitäkää minut ajan tasalla. - Keep me updated.
+Mitä täällä on tapahtunut? - What has happened here?
+Mistä tässä on kyse? - What is this about?
+Minulla on hyviä uutisia. - I have good news.
+En tiedä, mitä tapahtui. - I don't know what happened.
+Nyt on sinun vuorosi. - Now it's your turn.
+Mitä sinä olet tehnyt? - What have you done?
+Tiedätkö, mitä se tarkoittaa? - Do you know what that means?
+Mitä haluat minun sanovan? - What do you want me to say?
+Haluan näyttää sinulle jotain. - I want to show you something. 
+Haluan näyttää teille jotain. - I want to show you something.
+Se on työn alla. - It is under construction.
+Siitäkö tässä on kyse? - Is that what this is about?
+Mikä hänen nimensä olikaan? - What was his name?
+Mitä sinä aiot tehdä? - What are you going to do?
+Mitä hän on tehnyt? - What has he done?
+Nyt on minun vuoroni. - Now it's my turn.
+Mitä täällä oikein tapahtuu? - What's really going on here?
+Miksi hän on täällä? - Why is he here?
+Kuinka vanha hän on? - How old is he? 
+Miten vanha hän on? - How old is he?
+En ole nähnyt häntä. - I have not seen him.
+Mikä tuo haju on? - What is that smell?
+Katson, mitä voin tehdä. - I see what I can do.
+Rakastan sinua niin paljon. - I love you so much.
+Tämä on vasta alkua. - This is just the beginning.
+Miten voit sanoa noin? - How can you say that? 
+Kuinka voit sanoa noin? - How can you say that?
+Mistä tuossa oli kyse? - What was that about?
+Kuinka se on mahdollista? - How is that possible?
+Se on ohi nyt. - It's over now.
+Mitä te oikein teette? - What exactly are you doing?
+Tiedätkö, missä hän on? - Do you know where he is?
+Yksi, kaksi, kolme, neljä. - One, two, three, four.
+Mitä me täällä teemme? - What are we doing here? 
+Mitä me teemme täällä? - What are we doing here?
+Hän oli hyvä mies. - He was a good man.
+Mitä se sinulle kuuluu? - What does it belong to you? 
+Mitä se teille kuuluu? - What does it belong to you?
+Mitä minä olen tehnyt? - What have I done?
+Mikä teidän nimenne on? - What is your name?
+Minne sinä olet menossa? - Where are you going? 
+Mihin sinä olet menossa? - Where are you going? 
+Minne te olette menossa? - Where are you going?
+Se on hyvä asia. - That is a good thing.
+En voi sallia sitä. - I cannot allow that.
+Mitä minun pitäisi sanoa? - What should I say?
+Anna minun hoitaa tämä. - Let me handle this.
+En minä niin sanonut. - I didn't say that.
+Mitä sinä oikein puhut? - What exactly are you talking about?
+Meidän on tehtävä jotain. - We have to do something. 
+Meidän on tehtävä jotakin. - We have to do something.
+Olen täysin samaa mieltä. - I agree completely.
+Se ei ole minun. - It's not mine. 
+Ei se ole minun. - It's not mine.
+Se ei ole hän. - It's not him. 
+Ei se ole hän. - It's not him.
+Se on pitkä juttu. - It's a long thing.
+Olen niin ylpeä sinusta. - I'm so proud of you. 
+Olen tosi ylpeä sinusta. - I'm so proud of you.
+Siitä on pitkä aika. - It's been a long time. 
+Se on pitkä aika. - It's been a long time.
+Tiedän, miltä sinusta tuntuu. - I know how you feel.
+Se on ainoa keino. - That is the only way.
+Hän on hyvä poika. - He is a good boy.
+Tiedän, että olet siellä. - I know you're there.
+Minä voin tehdä sen. - I can do it.
+Saanko kysyä yhtä asiaa? - May I ask one thing?
+Minulla on sinulle yllätys. - I have a surprise for you. 
+Minulla on yllätys sinulle. - I have a surprise for you. 
+Minulla on teille yllätys. - I have a surprise for you.
+Mitä sinä siellä teet? - What are you doing there? 
+Mitä sinä teet siellä? - What are you doing there?
+Kauanko olet ollut täällä? - How long have you been here? 
+Kauanko olette olleet täällä? - How long have you been here?
+Hän on hyvä tyyppi. - He's a good guy.
+Ei sitä koskaan tiedä. - You never know.
+Minulla on sinulle lahja. - I have a gift for you. 
+Minulla on lahja sinulle. - I have a gift for you.
+Mikä on homman nimi? - What is the name of the job?
+Mikä päivä tänään on? - What day is it today?
+Se on nyt ohi. - It is now over.
+Tiedätkö, mikä tämä on? - Do you know what this is? 
+Tiedätkö, mitä tämä on? - Do you know what this is?
+Paljonko meillä on aikaa? - How much time do we have?
+Mitä sinä siitä tiedät? - What do you know about that?
+Ole hyvä ja istu. - Please sit down.
+Olen kuullut sinusta paljon. - I have heard a lot about you.
+Mitä tämä nyt on? - What is this now?
+Mistä oikein on kyse? - What exactly is it about? 
+Mistä on oikein kyse? - What exactly is it about?
+En voi puhua nyt. - I can't talk now.
+Se on hyvä ajatus. - That's a good idea.
+Anna minun puhua hänelle. - Let me talk to him.
+En ole vielä valmis. - I am not ready yet.
+Vain sinä ja minä. - Only you and me.
+Meillä on paljon yhteistä. - We have a lot in common.
+Helppo sinun on sanoa. - Easy you have to say.
+Minulla on parempi ajatus. - I have a better idea.
+Nyt tai ei koskaan. - Now or never.
+Meillä on paljon puhuttavaa. - We have a lot to talk about.
+Kuka sinä oikein olet? - Who exactly are you?
+Sinun täytyy luottaa minuun. - You have to trust me. 
+Sinun pitää luottaa minuun. - You have to trust me.
+Mitä olisi pitänyt tehdä? - What should have been done?
+Mitä sinä siitä välität? - What do you care about that?
+Miksi sinä olet täällä? - Why are you here?
+Mitä sinulla on mielessä? - What do you have in mind?
+Keitä nämä ihmiset ovat? - Who are these people?
+Minun täytyy puhua kanssasi. - I need to talk to you. 
+Minun pitää puhua kanssasi. - I need to talk to you.
+Mitä sinulla on siinä? - What do you have in it? 
+Mitä sinulla siinä on? - What do you have in it?
+Se on siis totta. - So it is true.
+Mitä aiot tehdä asialle? - What are you going to do about it?
+Tämä vie vain hetken. - This only takes a moment. 
+Tämä kestää vain hetken. - This only takes a moment.
+Mitä hyötyä siitä on? - What are the benefits?
+Kuulit, mitä hän sanoi. - You heard what he said.
+Vien sinut pois täältä. - I'll take you out of here.
+Olkaa hyvä ja istukaa. - Please sit down. 
+Olkaa hyvät ja istukaa. - Please sit down.
+Milloin näit hänet viimeksi? - When was the last time you saw him? 
+Koska näit hänet viimeksi? - When was the last time you saw him?
+Mistä hyvästä tuo oli? - What good was that?
+Miksi sinä noin teit? - Why did you do that? 
+Miksi sinä niin teit? - Why did you do that?
+Miten voit olla varma? - How can you be sure? 
+Kuinka voit olla varma? - How can you be sure?
+Mitä aiot tehdä nyt? - What are you going to do now? 
+Mitä aiot nyt tehdä? - What are you going to do now?
+Haluan puhua hänen kanssaan. - I want to talk to him.
+Viekää hänet pois täältä. - Get him out of here.
+Vie hänet pois täältä. - Get him out of here.
+Olen iloinen, että tulit. - I'm glad you came.
+Mitä me sitten teemme? - So what do we do? 
+Mitä me siis teemme? - So what do we do?
+Kaikki tulee olemaan hyvin. - Everything will be fine.
+Meidän täytyy tehdä jotain. - We need to do something.
+Miksi sitten olet täällä? - Then why are you here?
+Katsotaan, mitä voin tehdä. - Let's see what I can do.
+Tämä on iso juttu. - This is a big deal.
+Kaikki kääntyy parhain päin. - Everything turns for the best.
+Sinun on luotettava minuun. - You have to trust me.
+Kuinka vanha sinä olet? - How old are you? 
+Miten vanha sinä olet? - How old are you?
+Haluatko varmasti tehdä tämän? - Are you sure you want to do this?
+Kaikki on ihan hyvin. - Everything is fine.
+Tämä on suuri kunnia. - This is a great honor.
+Kukaan ei saa tietää. - No one should know.
+Viime kerrasta on aikaa. - There is time from the last time.
+Tämä on vapaa maa. - This is a free country.
+Siitä on jo kauan. - It's been a long time. 
+Siitä on kauan aikaa. - It's been a long time.
+Minulla on tärkeää asiaa. - I have an important point.
+Mitä me oikein teemme? - What exactly are we doing?
+Siitä tässä on kyse. - That is what this is about.
+Kuka tuo mies on? - Who is that man? 
+Kuka se mies on? - Who is that man?
+Miten se tähän liittyy? - How does it relate to this? 
+Miten se liittyy tähän? - How does it relate to this?
+Tämä on minun taloni. - This is my house.
+Se on hyvä juttu. - That's a good thing.
+Sinun täytyy uskoa minua. - You have to believe me. 
+Teidän täytyy uskoa minua. - You have to believe me. 
+Sinun pitää uskoa minua. - You have to believe me.
+Hän haluaa puhua kanssasi. - He wants to talk to you.
+Se on hyvä uutinen. - That's good news. 
+Sehän on hyvä uutinen. - That's good news.
+Mitä minä voin tehdä? - What can I do?
+Missä hän sitten on? - Then where is he?
+Mitä oikein teet täällä? - What exactly are you doing here?
+Se on paljon rahaa. - That's a lot of money.
+Anna minun tehdä se. - Let me do it.
+Kukaan ei ole täydellinen. - No one is perfect.
+Et ole oma itsesi. - You are not yourself.
+Se on iso juttu. - That's the big deal.
+Mitä olet tehnyt hänelle? - What have you done to him?
+Ei, kaikki on hyvin. - No, everything is fine.
+Eikö hän olekin kaunis? - Isn't she beautiful?
+En ole vielä päättänyt. - I have not yet decided.
+Oletko mukana vai et? - Are you involved or not?
+Minun on puhuttava kanssasi. - I need to talk to you.
+Mitä minä täällä teen? - What am I doing here? 
+Mitä minä teen täällä? - What am I doing here?
+Hän on paras ystäväni. - He's my best friend.
+Et voi mennä sinne. - You can't go there. 
+Ette voi mennä sinne. - You can't go there.
+Mitä hänelle on tapahtunut? - What has happened to him?
+Mitä asiaa sinulla oli? - What did you have?
+Minne hän on menossa? - Where is he going? 
+Mihin hän on menossa? - Where is he going?
+Mitä hän sanoi sinulle? - What did he say to you?
+Se oli vain unta. - It was just a dream.
+Ilo oli minun puolellani. - Joy was on my side.
+Siitä voit olla varma. - You can be sure of that. 
+Voit olla varma siitä. - You can be sure of that.
+Älä edes ajattele sitä. - Don't even think about it.
+Miten niin et tiedä? - How come you don't know?
+Mitä kasvoillesi on tapahtunut? - What has happened to your face?
+Siitä on niin kauan. - It's been so long.
+Ajatteletko samaa kuin minä? - Do you think the same as me?
+Pidä huoli omista asioistasi. - Take care of your own affairs.
+Olen kuullut tuon ennenkin. - I have heard that before.
+Siitä on jo aikaa. - It's been a while.
+Tämä on minun kotini. - This is my home.
+Mitä muuta hän sanoi? - What else did he say?
+Kaikki on nyt hyvin. - Everything is fine now. 
+Kaikki on hyvin nyt. - Everything is fine now.
+Yksi asia on varma. - One thing is certain.
+Kuka tuo nainen on? - Who is that woman? 
+Kuka se nainen on? - Who is that woman?
+Mitä sinulla on mielessäsi? - What do you have in mind?
+Sinun on uskottava minua. - You have to believe me. 
+Teidän on uskottava minua. - You have to believe me.
+Nyt on tosi kyseessä. - This is true.
+Minun on tehtävä tämä. - I have to do this.
+Mitä tämä on olevinaan? - What is this supposed to be?
+Se on menoa nyt. - It's going now.
+Se on sinusta kiinni. - It's up to you.
+Minun on löydettävä hänet. - I have to find him.
+Ole varovainen sen kanssa. - Be careful with it.
+Se on hyvä kysymys. - That is a good question.
+Ehkä hän on oikeassa. - Maybe he's right.
+Olen todella ylpeä sinusta. - I'm really proud of you.
+Teillä on oikeus vaieta. - You have the right to remain silent. 
+Sinulla on oikeus vaieta. - You have the right to remain silent.
+Mikä on niin hauskaa? - What's so fun?
+Minun täytyy nyt mennä. - I have to go now. 
+Minun pitää nyt mennä. - I have to go now. 
+Minun pitää mennä nyt. - I have to go now. 
+Minun täytyy mennä nyt. - I have to go now.
+Minun on saatava tietää. - I need to know.
+Hän on yksi meistä. - He is one of us.
+No niin, no niin. - Well, well.
+Hän haluaa tavata sinut. - He wants to meet you.
+Se on salaista tietoa. - It is secret information.
+Minulla ei ole muuta. - I have nothing else. 
+Muuta minulla ei ole. - I have nothing else.
+Keitä te oikein olette? - Who exactly are you?
+Kuka oikein luulet olevasi? - Who exactly do you think you are?
+Mitä sinä nyt teet? - What are you doing now?
+Mistä minä sen tietäisin? - How would I know that?
+Älä puhu minulle noin. - Don't talk to me about that.
+Minun pitää mennä töihin. - I have to go to work. 
+Minun täytyy mennä töihin. - I have to go to work. 
+Minun pitää lähteä töihin. - I have to go to work.
+Mitä tuo oli olevinaan? - What was that supposed to be?
+Miten tässä näin kävi? - How did this happen here?
+Minun on nyt mentävä. - I have to go now. 
+Minun on mentävä nyt. - I have to go now.
+Pyhitetty olkoon sinun nimesi. - Hallowed be thy name.
+Kuka tuo tyyppi on? - Who is that guy? 
+Kuka se tyyppi on? - Who is that guy?
+Se oli minun ideani. - That was my idea.
+Mitä järkeä siinä on? - What's the point?
+Tiedätkö, mikä se on? - Do you know what it is?
+Mitä minä oikein teen? - What exactly am I doing?
+Älä ota sitä henkilökohtaisesti. - Don't take it personally.
+Eikö se voi odottaa? - Can't it wait?
+Minun on mentävä töihin. - I have to go to work.
+Hän on niin kaunis. - She is so beautiful.
+Mitä se edes tarkoittaa? - What does it even mean?
+Miten sinä tuon teit? - How did you do that? 
+Miten sinä teit sen? - How did you do that?
+Mitä hän oikein tekee? - What exactly is he doing?
+Sanon tämän vain kerran. - I will say this only once.
+Mitä hän teki sinulle? - What did he do to you?
+Kuka hän luulee olevansa? - Who does he think he is?
+Hän oli paras ystäväni. - He was my best friend.
+Nyt se on ohi. - Now it's over.
+Mitä olet mennyt tekemään? - What have you gone to do?
+Anna minun puhua loppuun. - Let me speak to the end.
+Se on hyvä merkki. - That's a good sign.
+Meidän on lähdettävä täältä. - We have to start here.
+Helpommin sanottu kuin tehty. - Easier said than done.
+Se vie vain hetken. - It only takes a moment.
+Tämä on pian ohi. - This will soon be over.
+Mikä päivä nyt on? - What day is it now?
+Mistä sitten on kyse? - So what is it about?
+Kuka tuo tyttö on? - Who is that girl? 
+Kuka se tyttö on? - Who is that girl?
+Sinun on nähtävä tämä. - You have to see this.
+Se ei merkitse mitään. - It means nothing. 
+Ei se merkitse mitään. - It means nothing.
+Hei, mitä sinä teet? - Hi, what are you doing?
+Mitä asiaa sinulla on? - What do you have? 
+Mitä asiaa teillä on? - What do you have?
+Mitä minä sitten teen? - What do I do then?
+Se ei ollut hän. - It wasn't him. 
+Ei se ollut hän. - It wasn't him.
+Se on hyvä alku. - That's a good start.
+Onko sinulla kaikki hyvin? - Are you all right?
+Se on ihan hyvä. - That's pretty good.
+Anna kun katson sinua. - Let me look at you.
+Tiedän, missä se on. - I know where it is.
+Viisi, kuusi, seitsemän, kahdeksan. - Five, six, seven, eight.
+Mikä tuo sinut tänne? - What brings you here? 
+Mikä sinut tänne tuo? - What brings you here?
+Tiedän, kuka hän on. - I know who he is.
+Mikä sinun nimesi olikaan? - What was your name?
+Onko se liikaa pyydetty? - Is it overfished?
+Tämä on viimeinen kerta. - This is the last time.
+Mitä ihmettä sinä teet? - What miracle are you doing?
+Tämä on se paikka. - This is the place.
+Mistä te oikein puhutte? - What are you talking about?
+Kerro, missä hän on. - Tell me where he is.
+Vain sillä on väliä. - Only that matters.
+Mitä tuo muka tarkoitti? - What did that mean?
+Tiedän, missä hän on. - I know where he is.
+Ei se ole mahdollista. - Not possible.
+On ollut pitkä päivä. - It's been a long day.
+Miksi kerrot tämän minulle? - Why are you telling me this?
+Miksi kerrot minulle tämän? - Why are you telling me this?
+Kuka tämä mies on? - Who is this man?
+Kaikki on hyvin, kulta. - All is well, honey.
+Mistä hän on kotoisin? - Where is he from?
+Tätä tietä, olkaa hyvä. - This way, please.
+Mitä tuo muka tarkoittaa? - What does that supposedly mean?
+Sitten meitä on kaksi. - Then there are two of us.
+Mitä mieltä olet siitä? - What do you think about it?
+Meidän täytyy löytää hänet. - We have to find him.
+Mitä me nyt tehdään? - What are we doing now?
+Olen kuullut teistä paljon. - I have heard a lot about you.
+Missä he ovat nyt? - Where are they now?
+Missä he nyt ovat? - Where are they now?
+Mitä hauskaa siinä on? - What's the fun about it?
+Miten se minuun liittyy? - How does it relate to me?
+Miten se liittyy minuun? - How does it relate to me?
+Meidän on löydettävä hänet. - We have to find him.
+Onko sinulla jotain sanottavaa? - Do you have anything to say?
+Onko sinulla mitään sanottavaa? - Do you have anything to say?
+Onko sinulla jotain kerrottavaa? - Do you have anything to say?
+Luuletko, etten tiedä sitä? - Do you think I don't know that?
+Se on niin kaunis. - It's so beautiful.
+Se on niin yksinkertaista. - It's that simple.
+Niin yksinkertaista se on. - It's that simple.
+Mitä me voimme tehdä? - What can we do?
+Minun on parasta lähteä. - I better leave.
+Mitä tuo oikein oli? - What exactly was that?
+Se on sen arvoista. - It's worth it.
+Mitä muuta sinulla on? - What else do you have?
+Kuka niin on sanonut? - Who said that?
+Oletko se todella sinä? - Is that really you?
+Miksi olet yhä täällä? - Why are you still here?
+Minulla on sinulle asiaa. - I have something for you.
+Minulla on asiaa sinulle. - I have something for you.
+Minulla on sinulle jotakin. - I have something for you.
+Minulla on jotakin sinulle. - I have something for you.
+Mitä varten tuo on? - What is that for?
+Hän on yksi heistä. - He is one of them.
+Se ei tarkoita mitään. - It means nothing.
+Ei se tarkoita mitään. - It means nothing.
+Mitä olisin voinut tehdä? - What could I have done?
+Et voi tehdä noin. - You can't do that.
+Ette voi tehdä sitä. - You can't do that.
+Ette voi tehdä näin. - You can't do that.
+Ette voi tehdä niin. - You can't do that.
+Kuulitte, mitä hän sanoi. - You heard what he said.
+Mitä he tekivät sinulle? - What did they do to you?
+Se oli kauan sitten. - That was a long time ago.
+Asia on loppuun käsitelty. - The case has been closed.
+Oliko se sen arvoista? - Was it worth it?
+Mitä aiot tehdä minulle? - What are you going to do to me?
+Miksi olet vielä täällä? - Why are you still here?
+Se ei ole kaukana. - It's not far.
+Minun pitää mennä kotiin. - I have to go home.
+Minun täytyy mennä kotiin. - I have to go home.
+Pidän sinut ajan tasalla. - I'll keep you up to date.
+Meidän pitää tehdä jotain. - We have to do something.
+Se on ainoa mahdollisuutemme. - That is our only possibility.
+Minulla on yksi kysymys. - I have one question.
+En ole koskaan kuullutkaan. - I've never heard of it.
+En ole ikinä kuullutkaan. - I've never heard of it.
+En minä sitä tarkoita. - I don't mean that.
+Mutta se on totta. - But it is true.
+Mitä eroa niillä on? - What is the difference between them?
+Minun pitää kertoa jotain. - I have to say something.
+Minun täytyy kertoa jotain. - I have to say something.
+Ehkä joku toinen kerta. - Maybe some other time.
+Miten niin ei ole? - How is that not?
+Tiedän, että olet täällä. - I know you're here.
+Kyllä minä sen tiedän. - Yes, I know that.
+Se on hyvin tärkeää. - That is very important.
+Se on vain sanonta. - It's just a saying.
+Se on mukava kuulla. - It's nice to hear.
+Ole vain oma itsesi. - Just be yourself.
+Voinko kysyä sinulta jotain? - Can I ask you something?
+Saanko kysyä sinulta jotain? - Can I ask you something?
+Mitä sinä sitten teet? - Then what do you do?
+Mitä sinulla on siellä? - What do you have there?
+Mitä sitten teet täällä? - So what are you doing here?
+Kaikki näyttää olevan kunnossa. - Everything seems to be fine.
+Haluan näyttää sinulle jotakin. - I want to show you something.
+Mitä se sinua liikuttaa? - What moves you?
+Mitä hyötyä siitä olisi? - What good would it do?
+Mitä aiot tehdä sillä? - What are you going to do with it?
+Tiedätkö, kuka minä olen? - Do you know who I am?
+Ei tarvitse pyytää anteeksi. - No need to apologize.
+Se oli hänen ideansa. - That was his idea.
+Minun on kerrottava jotain. - I have to say something.
+Enemmän kuin mitään muuta. - More than anything else.
+Se on sama asia. - It's the same thing.
+Sinulla on kaksi vaihtoehtoa. - You have two options.
+Mitä tämä kaikki on? - What is all this?
+Sano, että rakastat minua. - Say you love me.
+Kuka hän oikein on? - Who exactly is he?
+Milloin näitte hänet viimeksi? - When was the last time you saw him?
+Mitä sinä teit hänelle? - What did you do to him?
+Se on kaunis nimi. - It's a beautiful name.
+Tiedät, että rakastan sinua. - You know I love you.
+Se on hänen nimensä. - That's his name.
+Minulla on paljon töitä. - I have a lot of work to do.
+Mitä tuo meteli on? - What is that noise?
+Hän on hyvä ihminen. - He is a good person.
+Etkö ole samaa mieltä? - Don't you agree?
+Kuka teki tämän sinulle? - Who did this to you?
+Älä kutsu minua siksi. - Don't call me that.
+Onko siellä kaikki hyvin? - Is everything all right there?
+Onko kaikki hyvin siellä? - Is everything all right there?
+Kuinka kaukana se on? - How far is it?
+Miten kaukana se on? - How far is it?
+Onko se hyvä asia? - Is that a good thing?
+Anna kun kysyn jotain. - Let me ask you something.
+Miten aiot tehdä sen? - How are you going to do that?
+Mitä tämä sitten on? - So what is this?
+Mikä tämä sitten on? - So what is this?
+Tiedätkö, kuka hän on? - Do you know who she/he is?
+Hän on todella hyvä. - He's really good.
+Tiedätkö, missä se on? - Do you know where it is?
+Minun on mentävä kotiin. - I have to go home.
+Mitä olet saanut selville? - What have you found out?
+Olisiko sinulla hetki aikaa? - Would you have a moment?
+Olisiko teillä hetki aikaa? - Would you have a moment?
+Minulla on paljon tekemistä. - I have a lot to do.
+Kuka hän sitten on? - Who is he then?
+Tiedän, mitä aiot sanoa. - I know what you're going to say.
+Sittenhän meitä on kaksi. - Then there are two of us.
+Näin sen omin silmin. - I saw it with my own eyes.
+Se oli sen arvoista. - It was worth it.
+Tämä on ainoa keino. - This is the only way.
+Anteeksi, että olemme myöhässä. - Sorry we're late.
+Se on minun asiani. - That's my business.
+Se on oma asiani. - That's my business.
+Miksi se sinua kiinnostaa? - Why is it of interest to you?
+Tiedätkö, mitä kello on? - Do you know what time it is?
+Mitä tuo nyt oli? - What was that now?
+Se ei ole normaalia. - This is not normal.
+Tämä ei ole normaalia. - This is not normal.
+Tiedän, miltä se tuntuu. - I know how it feels.
+Minun on puhuttava hänelle. - I have to talk to him.
+Eikö se ole selvää? - Isn't that clear?
+Mitä sinä sillä tarkoitat? - What do you mean by that?
+Hyvä on, minä tulen. - All right, I'll come.
+Mistä sinä tuon sait? - Where did you get that?
+Kuka sinä luulet olevasi? - Who do you think you are?
+Kuka tämä tyyppi on? - Who is this guy?
+Tiedän, mitä se tarkoittaa. - I know what that means.
+Kuka se voisi olla? - Who could it be?
+Mistä te sen tiedätte? - How do you know that?
+Tehdään yksi asia selväksi. - One thing is made clear.
+Et voi olla täällä. - You can't be here.
+Haluan kertoa sinulle jotain. - I want to tell you something.
+Tässä menee vain hetki. - Only a moment goes by here.
+Hänen pitäisi olla täällä. - He should be here.
+Ja minä rakastan sinua. - And I love you.
+Minä voin ottaa sen. - I can take it.
+Se on todella kaunis. - It's really beautiful.
+Minun on parasta mennä. - I better go.
+Me molemmat tiedämme sen. - We both know it.
+Kyllä se minulle sopii. - Yes, it suits me.
+Voinko kysyä yhtä asiaa? - Can I ask one thing?
+Kaikki tai ei mitään. - All or nothing.
+Mitä hän kertoi sinulle? - What did he tell you?
+Se voisi olla hauskaa. - It could be fun.
+Anteeksi, että jouduitte odottamaan. - Sorry you had to wait.
+Ja kuka sinä olet? - And who are you?
+Tiedät, mitä se tarkoittaa. - You know what that means.
+Hänen tilansa on vakaa. - His condition is stable.
+Tulen ihan kohta takaisin. - I'll be right back.
+Sinun täytyy nähdä tämä. - You have to see this.
+Sinun pitää nähdä tämä. - You have to see this.
+Mikä vuosi nyt on? - What year is it now?
+En tiedä, mitä ajatella. - I don't know what to think.
+Mitä sinä luulet tekeväsi? - What do you think you are doing?
+Mitä minä juuri sanoin? - What did I just say?
+Se on omaksi parhaaksesi. - It's for your own good.
+Minun on palattava töihin. - I have to go back to work.
+Hyvä on, minä menen. - All right, I'll go.
+Eihän sitä koskaan tiedä. - You never know.
+En ole kuullut hänestä. - I haven't heard of him.
+Se on loppu nyt. - It's over now.
+Onko kaikki varmasti hyvin? - Is everything sure well?
+Minun pitää palata töihin. - I have to go back to work.
+Minun täytyy palata töihin. - I have to go back to work.
+Mitä he täällä tekevät? - What are they doing here?
+Mitä he tekevät täällä? - What are they doing here?
+Mitä sinä yrität sanoa? - What are you trying to say?
+Miltä se sinusta tuntuu? - How does it feel to you?
+Olen aina rakastanut sinua. - I have always loved you.
+Et ole muuttunut yhtään. - You haven't changed anything.
+Meidän on jatkettava matkaa. - We must continue our journey.
+Voinko puhua kanssasi hetken? - Can I talk to you for a moment?
+Hän on minun poikani. - He is my son.
+Tämä on todella hyvää. - This is really good.
+En ole kuullutkaan hänestä. - I haven't heard of him.
+Hyvä on, teen sen. - All right, I'll do it.
+Sinun on parasta lähteä. - You better leave.
+Huomenna on tärkeä päivä. - Tomorrow is an important day.
+Hän oli hieno mies. - He was a great man.
+Soita, jos tarvitset jotain. - Call if you need anything.
+Tiedät, että olen oikeassa. - You know I'm right.
+Tämä on viimeinen mahdollisuutesi. - This is your last chance.
+Tämä on viimeinen tilaisuutesi. - This is your last chance.
+Tiedättekö, missä hän on? - Do you know where he is?
+Sinun on aika lähteä. - It's time for you to leave.
+Teidän on aika lähteä. - It's time for you to leave.
+Mitä järkeä tässä on? - What's the point here?
+Hän on minun kanssani. - He is with me.
+Tiedän, millaista se on. - I know what it's like.
+Ole hiljaa ja kuuntele. - Be quiet and listen.
+Ketään ei ole kotona. - No one is home.
+Kukaan ei ole kotona. - No one is home.
+Vie minut hänen luokseen. - Take me to him.
+Mikä sen nimi olikaan? - What was its name?
+Mitä sinä oikein ajattelit? - What were you thinking?
+Minun on pakko mennä. - I have to go.
+Haluan, että olet onnellinen. - I want you to be happy.
+Mikä tuo ääni oli? - What was that voice?
+Mitä se sitten on? - So what is it?
+Mikä se sitten on? - So what is it?
+Mitä sinulla on minulle? - What do you have for me?
+Mistä siinä oli kyse? - What was it about?
+Millainen olo sinulla on? - How are you feeling?
+Meillä on paljon tekemistä. - We have a lot to do.
+Hän on täällä jossain. - He's here somewhere.
+Mitä mieltä olet tästä? - What do you think about this?
+Mistä hän oikein puhuu? - What is he really talking about?
+Siinä taisi olla kaikki. - That seems to be everything.
+Mitä sinä teet työksesi? - What do you do for a living?
+Minulla ei ole niitä. - I don't have them.
+Mitä siellä oikein tapahtuu? - What's really going on there?
+Mitä pikemmin, sen parempi. - The sooner the better.
+Mistä nyt on kyse? - What is it about now?
+Mitä oikein luulet tekeväsi? - What exactly do you think you are doing?
+Tässä se nyt on. - Here it is now.
+Minun on tehtävä jotain. - I have to do something.
+Mitä aiot tehdä hänelle? - What are you going to do to him?
+Tiedätkö, mitä tämä tarkoittaa? - Do you know what this means?
+Hän on yhä täällä. - He is still here.
+Toivottavasti tiedät, mitä teet. - I hope you know what you're doing.
+Vain sillä on merkitystä. - Only that matters.
+Et saa olla täällä. - You must not be here.

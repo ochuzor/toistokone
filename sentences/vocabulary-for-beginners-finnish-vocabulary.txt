@@ -1,0 +1,4781 @@
+# Finnish Loanwords
+
+banaani - banana
+baari - bar
+bussi - bus
+elefantti - elephant
+energia - energy
+faksi - fax
+filmi - film
+galleria - gallery
+gangsteri - gangster
+geologia - geology
+gramma - gram
+grilli - grill
+halli - hall
+helikopteri - helicopter
+hotelli - hotel
+idea - idea
+kaakao - cacao
+kaaos - chaos
+kahvi - coffee
+kamera - camera
+kenguru - kangaroo
+kirahvi - giraffe
+
+kitara - guitar
+konjakki - cognac
+konsertti - concert
+krokotiili - crocodile
+lamppu - lamp
+meloni - melon
+metri - meter
+metro - metro
+ministeri - minister
+museo - museum
+musiikki - music
+neutraali - neutral
+normaali - normal
+oliivi - olive
+ooppera - opera
+pankki - bank
+paperi - paper
+piano - piano
+pitsa - pizza
+presidentti - president
+professori - professor
+
+salaatti - salad
+sampoo - shampoo
+pubi - pub
+radio - radio
+siideri - cider
+sohva - sofa
+sokeri - sugar
+taksi - taxi
+tee - tea
+televisio - television
+tomaatti - tomato
+traktori - tractor
+trumpetti - trumpet
+tupakka - tobacco
+video - video
+viini - wine
+viski - whiskey
+viulu - violin
+turisti - tourist
+
+# Survival Finnish – Basic Phrases
+
+Ongelmia - Problems
+varo! - watch out!
+apua! - help!
+tulipalo! - fire!
+varas! - thief!
+poliisi - police
+ambulanssi - ambulance
+vaara - danger
+seis - stop
+huomio! - attention!
+rikki - broken
+epäkunnossa - out of order
+kielletty - forbidden
+suljettu - closed
+eksynyt - lost
+mene pois! - go away!
+en ymmärrä - I don't understand
+Kohtelias - Polite
+hei - hello
+moi - hello
+anteeksi - sorry
+kyllä - yes
+joo - yes
+ei - no
+kiitos - thank you
+ei kiitos - no thank you
+hetkinen - just a moment
+ole hyvä - here you are
+onneksi olkoon - congratulations
+hauska tutustua - nice to meet you
+
+Kylttejä - Signs
+myydään - for sale
+vuokrataan - for rent
+varattu - reserved
+vapaa - free
+ilmainen - free of charge
+sisään - entrance "in"
+ulos - exit "out"
+varauloskäynti - emergency exit
+ei sisäänkäyntiä - no entry
+ale - sales
+hissi - elevator
+rullaportaat - escalator
+taksi - taxi
+avoinna ma-pe - open Mon-Fri
+suljettu la-su - closed Sat-Sun
+vedä - pull
+työnnä - push
+loppuunmyynti - final sales
+loppuunmyyty - sold out
+vuoronumero - queue number
+WC N - ladies bathroom
+WC M - men's bathroom
+tervetuloa - welcome
+läpikulku kielletty - no thoroughfare
+
+Kysymyksiä - Questions
+Missä hotelli Sokos on? - Where is the Sokos hotel?
+Missä Itsenäisyydenkatu on? - Where is the street Itsenäisyydenkatu?
+Missä sairaala on? - Where is the hospital?
+Missä vessa on? - Where is the toilet?
+Missä naisten vessa on? - Where is the ladies toilet?
+Missä miesten vessa on? - Where is the men's toilet?
+Entä muuta? (in the store) - Do you want anything else?
+Kuittia? (in the store) - Receipt? / Do you want the receipt?
+Mitä saisi olla? (in the store) - What would you like?
+Minkämaalainen sinä olet? - What nationality are you?
+Puhutko englantia? - Do you speak English?
+Voisitko puhua englantia? - Could you speak English?
+Puhuuko kukaan täällä englantia? - Does anyone speak English here?
+Voisitko kirjoittaa sen ylös? - Could you write that down?
+Voisitko toistaa? - Could you please repeat that?
+Voisitko auttaa minua? - Could you help me?
+Mitä kuuluu? - How are you?
+Oletko kunnossa? - Are you okay?
+Onko tämä paikka vapaa? - Is this spot free?
+Missä saan tupakoida? - Where am I allowed to smoke?
+Saisinko vettä? - Could I get some water?
+Paljonko se maksaa? - How much does it cost?
+
+# Classroom vocabulary – Luokkasanasto Opiskelusanasto
+
+avain - key
+harjoitus - exercise
+ikkuna - window
+kahvitauko - coffee break
+kansio - folder, binder
+kello - clock
+kielikurssi - language course
+kirja - book
+kotitehtävä - homework
+kumi - eraser
+pyyhekumi - eraser
+kurssi - course
+kuulakärkikynä - ballpoint pen
+kynä - pen, pencil
+kysymys - question
+kännykkä - mobile phone
+kääntäjä - translator
+lamppu - lamp
+laukku - bag
+liima - glue
+lounastauko - lunch break
+luokka - classroom
+lyijykynä - pencil
+läksyt - homework
+läppäri - laptop
+opettaja - teacher
+opetus - teaching
+opiskelija - student
+opiskelu - study, studying
+oppikirja - textbook
+ovi - door
+paperi - paper
+puhelin - telephone
+pulpetti - desk
+pöytä - table
+reppu - backpack
+roskakori - trash can
+sanakirja - dictionary
+tauko - break
+tehtävä - exercise, task
+teippi - tape
+teroitin - pencil sharpener
+tietokone - computer
+tuoli - chair
+valkotaulu - whiteboard
+valo - light
+vastaus - answer
+verhot - curtains
+vihko - notebook
+virhe - mistake
+viivoitin - ruler
+välitunti - recess
+
+Alleviivaa uudet sanat! - Underline the new words!
+Avaa kirja sivulle 20. - Open the book to page 20.
+Haluaako joku kysyä jotain? - Does someone want to ask something?
+Haluatko kysyä jotain? - Do you want to ask something
+Huomenna opiskelet itsenäisesti. - Tomorrow you will study independently
+Huomenna pidetään testi. - Tomorrow there will be a test.
+Keskustele parisi kanssa! - Discuss with your partner!
+Keskustele pienryhmässä! - Discuss in a small group!
+Kirjoita kuvasta! - Write about the picture!
+Kirjoita oikea vastaus! - Write the correct answer!
+Kirjoita sanat ylös! - Write the words down!
+Kirjoita uudet sanat vihkoon! - Write the new words in the notebook!
+Kirjoita vastaukset! - Write the answers!
+Kirjoita vihkoon! - Write in the notebook!
+Koulu alkaa huomenna kello 9.00. - School starts at 9 am tomorrow.
+Kuuntele ja kirjoita vastaus! - Listen and write the answer!
+Kuuntele ja kirjoita! - Listen and write!
+Kuuntele minua! - Listen to me!
+Kuuntele, kun joku muu puhuu! - Listen when someone else speaks!
+Kysy ja vastaa! - Ask and answer!
+Kysy, jos et ymmärrä! - Ask if you don't understand!
+Kysy pariltasi! - Ask your partner!
+Lue dialogi parin kanssa! - Read the dialogue with your partner!
+Lue teksti! - Read the text!
+Lue ääneen! - Read aloud!
+Mene istumaan! - Go sit down!
+Muista tehdä kotitehtävä! - Remember to do your homework!
+Odota hetki. - Wait a moment.
+Odota vähän! - Wait a little!
+Onko kysymyksiä? - Any questions?
+Opiskele uudet sanat! - Study the new words!
+Palauta tehtävä huomenna! - Turn in the assignment tomorrow!
+Pidetään tauko! - Let's take a break!
+Puhu naapurin kanssa! - Talk to your neighbor!
+Tarvitsetko apua? - Do you need help?
+Tee kotitehtävä! - Do the homework!
+Tee tehtävä! - Do the assignment!
+Tule tänne! - Come here!
+Tänään opiskellaan verbityyppejä. - Today we are learning the verbtypes.
+Täydennä aukot! - Fill in the gaps!
+Vastaa kysymyksiin! - Answer the questions!
+Ymmärrätkö? - Do you understand?
+Ympyröi oikea vastaus! - Circle the correct answer!
+
+Anteeksi, että olen myöhässä. - I'm sorry I'm late.
+Anteeksi, voinko kysyä jotain? - I'm sorry, can I ask something?
+En muista. - I don't remember.
+En muistanut tehdä kotitehtävää. - I didn't remember to do the homework.
+En osaa vastata tähän kysymykseen. - I can't answer this question.
+En tiedä vastausta tähän kysymykseen. - I don't know the answer to this question.
+En tiedä. - I don't know.
+En tiedä, mitä tähän pitää kirjoittaa. - I don't know what to write here.
+En voi tulla kouluun huomenna. - I can't come to school tomorrow.
+En ymmärrä tätä tehtävää. - I don't understand this assignment.
+En ymmärrä, mitä tämä tarkoittaa. - I don't understand what this means.
+En ymmärrä, mitä tässä pitää tehdä. - I don't understand what I have to do here.
+En ymmärrä. - I don't understand.
+Kirjani jäi kotiin. - My book was left at home.
+Käyn huomenna Kelassa. - I'm going to Kela tomorrow.
+Käyn huomenna lääkärillä. - I'm going to the doctor tomorrow.
+Lapseni on sairas. - My child is sick.
+Miksi tätä kutsutaan suomeksi? - How do you call this in Finnish?
+Miksi tätä sanotaan suomeksi? - How do you say this in Finnish?
+Mikä tämä on? - What is this?
+Minulla on flunssa. - I have the common cold.
+Minulla on kysymys. - I have a question.
+Minulla on tapaaminen huomenna. - I have an appointment tomorrow.
+Miten sanotaan suomeksi "please"? - How do you say "please" in Finnish?
+Mitä meidän pitää nyt tehdä? - What should we do now?
+Mitä se tarkoittaa? - What does it mean?
+Mitä tässä harjoituksessa pitää tehdä? - What do we have to do in this exercise?
+Myöhästyin bussista. - I was late for the bus.
+Nukuin pommiin. - I overslept.
+Olen sairas. - I'm sick.
+Olen valmis. - I'm ready.
+Onko meillä kotitehtävä? - Do we have homework?
+Onko tämä oikein? - Is this correct?
+Tulen huomenna vasta kello kymmenen. - I will only come at 10 am tomorrow.
+Tulen vähän myöhässä. - I will be a little late.
+Unohdin kotitehtäväni kotiin. - I forgot my homework at home.
+Unohdin kynäni kotiin. - I forgot my pen at home.
+Unohdin tehdä kotitehtävän. - I forgot to do my homework.
+Voinko käydä vessassa nyt? - Can I go to the bathroom now?
+Voinko lainata kynää? - Can I borrow a pen?
+Voisitko antaa esimerkkejä? - Could you give some examples?
+Voisitko auttaa minua? - Could you help me?
+Voisitko puhua hitaammin? - Could you talk more slowly?
+Voisitko sanoa uudelleen? - Could you say that again?
+Voisitko tarkistaa tämän? - Could you check this?
+
+# Your First 100 Finnish Verbs – Finnish for Beginners
+
+olla - to be
+minä olen - I am
+minä en ole - I am not
+istua - to sit
+minä istun - I sit
+minä en istu - I won't sit / I am not sitting
+seisoa - to stand
+minä seison - I am standing / I stand
+minä en seiso - I am not standing
+syödä - to eat
+minä syön - I eat / I am eating
+minä en syö - I am not eating / I won't eat
+juoda - to drink
+minä juon - I drink
+minä en juo - I don't drink / I am not drinking
+odottaa - to wait
+minä odotan - I am waiting / I wait
+minä en odota - I am not waiting / I don't wait
+ymmärtää - to understand
+minä ymmärrän - I understand
+minä en ymmärrä - I don't understand
+muistaa - to remember
+minä muistan - I remember
+minä en muista - I don't remember
+unohtaa - to forget
+minä unohdan - I forget
+minä en unohda - I will not forget / I don't forget
+ajatella - to think
+minä ajattelen - I think
+minä en ajattele - I don't think
+tietää - to know
+minä tiedän - I know
+minä en tiedä - I don't know
+osata - to know how to do something
+minä osaan - I know (how to do something)
+minä en osaa - I don't know (how to do something)
+opiskella - to study
+minä opiskelen - I study / I am studying
+minä en opiskele - I don't study / I am not studying
+oppia - to learn
+minä opin - I learn / I am learning
+minä en opi - I don't learn / I am not learning
+kysyä - to ask
+minä kysyn - I ask / I am asking
+minä en kysy - I am not asking / I don't ask
+vastata - to answer
+minä vastaan - I answer / I am answering
+minä en vastaa - I am not answering / I do not answer / I will not answer
+pyytää - to request
+minä pyydän - I request / I am requesting
+minä en pyydä - I don't request / I am not requesting
+sanoa - to say
+minä sanon - I say / I'll say
+minä en sano - I don't say / I will not say / I am not saying
+kertoa - to tell
+minä kerron - I tell / I will tell / I am telling
+minä en kerro - I will not tell / I am not telling
+keskustella - to chat / to discuss
+minä keskustelen - I am chatting/discussing
+minä en keskustele - I will not chat/discuss / I will not discuss/chat
+nukkua - to sleep
+minä nukun - I sleep / I am sleeping
+minä en nuku - I am not sleeping / I will not sleep
+herätä - to wake up
+minä herään - I awake / I wake up
+minä en herää - I will not wake up / I am not waking up / I will not awake
+nousta - to get up
+minä nousen - I get up / I arise / I will get up / I will arise
+minä en nouse - I am not getting up
+maata - to lie down
+minä makaan - I am lying down / I lie down / I will lie down
+minä en makaa - I am not lying down
+pestä - to wash
+minä pesen - I wash / I am washing
+minä en pese - I will not wash / I am not washing
+tiskata - to wash dishes
+minä tiskaan - I am doing the dishes / I will do the dishes
+minä en tiskaa - I will not do the dishes / I am not doing the dishes
+siivota - to clean
+minä siivoan - I clean / I am cleaning
+minä en siivoa - I do not clean / I am not cleaning
+imuroida - to vacuum
+minä imuroin - I am vacuuming / I vacuum
+minä en imuroi - I do not vacuum / I am not vacuuming
+uida - to swim
+minä uin - I swim / I am swimming
+minä en ui - I don't swim / I am not swimming
+kävellä - to walk
+minä kävelen - I walk / I am walking
+minä en kävele - I am not walking / I don't walk
+pyöräillä - to ride a bike
+minä pyöräilen - I am riding a bike / I ride a bike / I will ride a bike
+minä en pyöräile - I will not ride a bike / I am not riding a bike
+ajaa - to drive
+minä ajan - I drive (a car) / I am driving (a car) / I will drive (a car)
+minä en aja - I am not driving / I will not drive
+juosta - to run
+minä juoksen - I run / I am running
+minä en juokse - I am not running / I will not run
+pelata - to play sports
+minä pelaan - I play (sports) / I am playing (sports)
+minä en pelaa - I am not playing (sports)
+leikkiä - to play (child)
+minä leikin - I am playing (child)
+minä en leiki - I am not playing (child) / I will not play (child)
+soittaa - to play (musical instrument) / to call (on the phone)
+minä soitan - I play (musical instrument) / I will play (musical instrument)
+minä en soita - I don't play (musical instrument) / I will not play (musical instrument)
+ottaa - to take
+minä otan - I take / I will take
+minä en ota - I do not take / I will not take
+antaa - to give
+minä annan - I give / I am giving / I will give
+minä en anna - I do not give / I am not giving / I will not give
+lainata - to borrow, to lend
+minä lainaan - I borrow / I am borrowing / I will borrow
+minä en lainaa - I do not borrow / I am not borrowing / I will not borrow
+tavata - to meet
+minä tapaan - I meet / I am meeting / I will meet
+minä en tapaa - I do not meet / I am not meeting / I will not meet
+tutustua - to get to know
+minä tutustun - I am getting to know
+minä en tutustu - I am not getting to know
+tehdä - to do
+minä teen - I am doing / I will do
+minä en tee - I am not doing / I will not do
+nähdä - to see
+minä näen - I see / I am seeing
+minä en näe - I don't see / I am not seeing
+katsoa - to watch
+minä katson - I am watching / I watch
+minä en katso - I am not watching / I do not watch
+tulla - to come
+minä tulen - I come / I am coming / I will come
+minä en tule - I do not come / I am not coming / I will not come
+mennä - to go
+minä menen - I will go / I am going
+minä en mene - I will not go / I am not going
+lähteä - to leave
+minä lähden - I am leaving / I leave
+minä en lähde - I am not leaving / I don't leave / I will not leave
+jäädä - to stay
+minä jään - I stay / I will stay / I am staying
+minä en jää - I do not stay / I will not stay / I am not staying
+saapua - to arrive
+minä saavun - I arrive / I am arriving / I will arrive
+minä en saavu - I do not arrive / I am not arriving / I will not arrive
+käydä - to visit
+minä käyn - I visit / I will visit / I am visiting
+minä en käy - I do not visit / I will not visit / I am not visiting
+tuoda - to bring
+minä tuon - I bring / I will bring / I am bringing
+minä en tuo - I do not bring / I will not bring / I am not bringing
+viedä - to take (to) somewhere
+minä vien - I will take (to) somewhere / I take (to) somewhere
+minä en vie - I will not take (to) somewhere / I do not take (to) somewhere
+rakastaa - to love
+minä rakastan - I love
+minä en rakasta - I do not love / I love not
+vihata - to hate
+minä vihaan - I hate
+minä en vihaa - I do not hate / I hate not
+tykätä - to like
+minä tykkään - I like
+minä en tykkää - I do not like
+pelätä - to fear
+minä pelkään - I fear
+minä en pelkää - I do not fear
+pukea - to dress, to put on (e.g. clothes), to clothe
+minä puen - I wear / I am wearing
+minä en pue - I am not wearing
+riisua - to undress
+minä riisun - I am undressing
+minä en riisu - I am not undressing
+maksaa - to pay
+minä maksan - I pay / I will pay
+minä en maksa - I am not paying / I will not pay
+ostaa - to buy
+minä ostan - I buy / I am buying
+minä en osta - I am not buying / I do not buy
+myydä - to sell
+minä myyn - I sell / I am selling
+minä en myy - I do not sell / I am not selling
+kirjoittaa - to write
+minä kirjoitan - I write / I am writing
+minä en kirjoita - I do not write / I am not writing
+lukea - to read
+minä luen - I am reading / I read
+minä en lue - I am not reading / I do not read
+kuunnella - to listen
+minä kuuntelen - I am listening / I listen
+minä en kuuntele - I do not listen / I am not listening
+kuulla - to hear
+minä kuulen - I hear / I am hearing
+minä en kuule - I don't hear / I am not hearing
+piirtää - to draw
+minä piirrän - I am drawing / I draw
+minä en piirrä - I am not drawing / I will not draw
+maalata - to paint
+minä maalaan - I am painting / I paint
+minä en maalaa - I am not painting
+nauraa - to laugh
+minä nauran - I laugh / I am laughing
+minä en naura - I am not laughing
+itkeä - to cry
+minä itken - I am crying / I cry
+minä en itke - I am not crying 
+hymyillä - to smile
+minä hymyilen - I smile / I am smiling
+minä en hymyile - I am not smiling
+matkustaa - to travel
+minä matkustan - I travel / I am traveling 
+minä en matkusta - I am not traveling 
+muuttaa - to move house
+minä muutan - I move house / I am moving house
+minä en muuta - I am not moving house
+työntää - to push
+minä työnnän - I am pushing
+minä en työnnä - I am not pushing
+vetää - to pull
+minä vedän - I am pulling
+minä en vedä - I am not pulling
+nostaa - to lift
+minä nostan - I lift / I am lifting
+minä en nosta - I am lifting
+laskea - to count
+minä lasken - I count / I am counting
+minä en laske - I am not counting
+laittaa - to put
+minä laitan - I put / I am putting
+minä en laita - I am not putting
+heittää - to throw
+minä heitän - I throw / I am throwing
+minä en heitä - I am not throwing
+häiritä - to disturb
+minä häiritsen - I am disturbing
+minä en häiritse - I am not disturbing / I will not disturbing
+valita - to choose
+minä valitsen - I choose
+minä en valitse - I do not choose / I choose not
+tarvita - to need
+minä tarvitsen - I need
+minä en tarvitse - I do not need
+hoitaa - to take care of
+minä hoidan - I take care of / I am taking care of
+minä en hoida - I will not take care of / I am not taking care of
+auttaa - to help
+minä autan - I help / I am helping
+minä en auta - I am not helping / I will not help
+varata - to reserve
+minä varaan - I reserve
+minä en varaa - I do not reserve
+tilata - to order (drinks)
+minä tilaan - I order / I will order
+minä en tilaa - I do not order
+asua - to live somewhere
+minä asun - I live
+minä en asu - I do not live (somewhere)
+syntyä - to be born
+minä synnyn - I am born
+minä en synny - I am not born
+elää - to be alive
+minä elän - I am alive / I am living
+minä en elä - I am not living / I am not alive
+kuolla - to die
+minä kuolen - I die / I will die
+minä en kuole - I will not die / I die not
+etsiä - to search
+minä etsin - I search / I am lookig for
+minä en etsi - I am not looking for / I search not
+löytää - to find
+minä löydän - I find
+minä en löydä - I do not find / I find not
+avata - to open
+minä avaan - I open / I will open / I am opening
+minä en avaa - I do not open / I will not open / I am not opening
+sulkea - to close
+minä suljen - I close / I am closing / I will close
+minä en sulje - I am not closing / I will not close
+korjata - to fix
+minä korjaan - I fix / I am fixing / I will fix
+minä en korjaa - I am not fixing / I will not fix / I fix not
+riittää - to be enough
+minä riitän - I am enough
+minä en riitä - I am not enough
+laulaa - to sing
+minä laulan - I sing / I am singing
+minä en laula - I am not singing / I do not sing
+tapahtua - to happen
+se tapahtuu - it happens / it is happening
+se ei tapahdu - it does not happen / it is not happening
+alkaa - to start, to begin
+se alkaa - it starts / it is starting
+se ei ala - it does not start / it is not starting
+aloittaa - to begin
+minä aloitan - I begin / I will begin
+minä en aloita - I am not beginning
+loppua - to end
+se loppuu - it ends / it's ending
+se ei lopu - it's not ending / it does not end
+
+# Country names in Finnish – Mistä sinä olet kotoisin?
+
+Afganistan - Afghanistan
+Olen kotoisin Afganistanista. - I come from Afganistan
+Albania - Albania
+Olen kotoisin Albaniasta. - I come from Albania.
+Algeria - Algeria
+Olen kotoisin Algeriasta. - I come from Algeria.
+Angola - Angola
+Olen kotoisin Angolasta. - I come from Angola.
+Argentiina - Argentina
+Olen kotoisin Argentiinasta. - I come from Argentina.
+Armenia - Armenia
+Olen kotoisin Armeniasta. - I come from Armenia.
+Australia - Australia
+Olen kotoisin Australiasta. - I come from Australia
+Itävalta - Austria
+Olen kotoisin Itävallasta. - I come from Austria
+Belgia - Belgium
+Olen kotoisin Belgiasta. - I come from Belgium.
+Brasilia - Brazil
+Olen kotoisin Brasiliasta. - I come from Brazil.
+Bulgaria - Bulgaria
+Olen kotoisin Bulgariasta. - I come from Bulgaria.
+Kambodža - Cambodia
+Olen kotoisin Kambodžasta. - I come from Cambodia.
+Kamerun - Cameroon
+Olen kotoisin Kamerunista. - I come from Cameroon.
+Kanada - Canada
+Olen kotoisin Kanadasta. - I come from Canada.
+Kiina - China
+Olen kotoisin Kiinasta. - I come from China.
+Kolumbia - Colombia
+Olen kotoisin Kolumbiasta. - I come from Colombia.
+Costa Rica - Costa Rica
+Olen kotoisin Costa Ricasta. - I come from Costa Rica.
+Kroatia - Croatia
+Olen kotoisin Kroatiasta. - I come from Croatia.
+Kuuba - Cuba
+Olen kotoisin Kuubasta. - I come from Cuba.
+Kypros - Cyprus
+Olen kotoisin Kyprokselta. - I come from Cyprus.
+Olen kotoisin Kyproksesta. - I come from Cyprus.
+Tšekki - Czech Republic
+Olen kotoisin Tšekistä. - I come from Czech Republic.
+Kongon demokraattinen tasavalta - the Democratic Republic of the Congo
+Olen kotoisin Kongon demokraattisesta tasavallasta. - I come from the Democratic Republic of the Congo.
+Tanska - Denmark
+Olen kotoisin Tanskasta. - I come from Denmark.
+Djibouti - Djibouti
+Olen kotoisin Djiboutista. - I come from Djibouti.
+Dominikaaninen tasavalta - Dominican Republic
+Olen kotoisin Dominikaanisesta tasavallasta. - I come from the Dominican Republic.
+Ecuador - Ecuador
+Olen kotoisin Ecuadorista. - I come from Ecuador.
+Egypti - Egypt
+Olen kotoisin Egyptistä. - I come from Egypt.
+El Salvador - El Salvador
+Olen kotoisin El Salvadorista. - I come from El Salvador.
+Viro - Estonia
+Olen kotoisin Virosta. - I come from Estonia.
+Etiopia - Ethiopia
+Olen kotoisin Etiopiasta. - I come from Ethiopia.
+Fidži - Fiji
+Olen kotoisin Fidžiltä. - I come from Fiji
+Olen kotoisin Fidžistä. - I come from Fiji
+Suomi - Finland
+Olen kotoisin Suomesta. - I come from Finland.
+Ranska - France
+Olen kotoisin Ranskasta. - I come from France.
+Gabon - Gabon
+Olen kotoisin Gabonista. - I come from Gabon.
+Gambia - Gambia
+Olen kotoisin Gambiasta. - I come from Gambia.
+Georgia - Georgia
+Olen kotoisin Georgiasta. - I come from Georgia.
+Saksa - Germany
+Olen kotoisin Saksasta. - I come from Germany.
+Ghana - Ghana
+Olen kotoisin Ghanasta. - I come from Ghana.
+Kreikka - Greece
+Olen kotoisin Kreikasta. - I come from Greece.
+Grenada - Grenada
+Olen kotoisin Grenadasta. - I come from Grenada.
+Guinea - Guinea
+Olen kotoisin Guineasta. - I come from Guinea.
+Haiti - Haiti
+Olen kotoisin Haitista. - I come from Haiti.
+Honduras - Honduras
+Olen kotoisin Hondurasista. - I come from Honduras.
+Unkari - Hungary
+Olen kotoisin Unkarista. - I come from Hungary.
+Islanti - Iceland
+Olen kotoisin Islannista. - I come from Iceland.
+Intia - India
+Olen kotoisin Intiasta. - I come from India.
+Indonesia - Indonesia
+Olen kotoisin Indonesiasta. - I come from Indonesia.
+Iran - Iran
+Olen kotoisin Iranista. - I come from Iran.
+Irak - Iraq
+Olen kotoisin Irakista. - I come from Iraq.
+Irlanti - Ireland
+Olen kotoisin Irlannista. - I come from Ireland.
+Israel - Israel
+Olen kotoisin Israelista. - I come from Israel.
+Italia - Italy
+Olen kotoisin Italiasta. - I come from Italy.
+Norsunluurannikko - Ivory Coast
+Olen kotoisin Norsunluurannikolta. - I come from Ivory Coast.
+Jamaika - Jamaica
+Olen kotoisin Jamaikalta. - I come from Jamaica.
+Olen kotoisin Jamaikasta. - I come from Jamaica.
+Japani - Japan
+Olen kotoisin Japanista. - I come from Japan.
+Kenia - Kenya
+Olen kotoisin Keniasta. - I come from Kenya.
+Latvia - Latvia
+Olen kotoisin Latviasta. - I come from Latvia.
+Libanon - Lebanon
+Olen kotoisin Libanonista. - I come from Lebanon.
+Liberia - Liberia
+Olen kotoisin Liberiasta. - I come from Liberia.
+Liettua - Lithuania
+Olen kotoisin Liettuasta. - I come from Lithuania.
+Uganda - Uganda
+Olen kotoisin Ugandasta. - I come from Uganda.
+Ukraina - Ukraine
+Olen kotoisin Ukrainasta. - I come from Ukraine.
+Yhdistynyt kuningaskunta - United Kingdom
+Olen kotoisin Yhdistyneestä kuningaskunnasta. - I come from the United Kingdom.
+Iso-Britannia - United Kingdom
+Olen kotoisin Isosta-Britanniasta. - I come from the United Kingdom.
+Yhdysvallat - United States
+Olen kotoisin Yhdysvalloista. - I come from United States.
+USA - USA
+Olen kotoisin USA:sta. - I come from USA.
+
+# Talking about Languages in Finnish – Minä puhun suomea
+
+Minä puhun suomea - I speak Finnish
+arabia - Arabic
+Minä puhun arabiaa. - I speak Arabic.
+englanti - English
+Minä puhun englantia. - I speak English.
+espanja - Spanish
+Minä puhun espanjaa. - I speak Spanish.
+hindi - Hindi
+Minä puhun hindiä. - I speak Hindi.
+hollanti - Dutch
+Minä puhun hollantia. - I speak Dutch.
+igbo - Igbo
+Minä puhun igboa. - I speak Igbo.
+italia - Italian
+Minä puhun italiaa. - I speak Italian.
+japani - Japanese
+Minä puhun japania. - I speak Japanese.
+joruba - Yoruba
+Minä puhun jorubaa. - I speak Yoruba.
+kiina - Chinese
+Minä puhun kiinaa. - I speak Chinese.
+korea - I speak Korean
+Minä puhun koreaa. - I speak Korean.
+kreikka - Greek
+Minä puhun kreikkaa. - I speak Greek.
+nepali - Nepalese
+Minä puhun nepalia. - I speak Nepalese.
+norja - Norwegian
+Minä puhun norjaa. - I speak Norwegian.
+persia - Persian
+Minä puhun persiaa. - I speak Persian.
+portugali - Portuguese
+Minä puhun portugalia. - I speak Portuguese.
+puola - Polish
+Minä puhun puolaa. - I speak Polish.
+ranska - French
+Minä puhun ranskaa. - I speak French.
+saksa - German
+Minä puhun saksaa. - I speak German.
+somali - Somali
+Minä puhun somalia. - I speak Somali.
+swahili - Swahili
+Minä puhun swahilia. - I speak Swahili.
+tagalogi - Tagalog
+Minä puhun tagalogia. - I speak Tagalog.
+tanska - Danish
+Minä puhun tanskaa. - I speak Danish.
+thai - Thai
+Minä puhun thaita. - I speak Thai.
+turkki - Turkish
+Minä puhun turkkia. - I speak Turkish.
+unkari - Hungarian
+Minä puhun unkaria. - I speak Hungarian.
+urdu - Urdu
+Minä puhun urdua. - I speak Urdu.
+viro - Estonia
+Minä puhun viroa. - I speak Estonian.
+venäjä - Russian
+Minä puhun venäjää. - I speak Russian.
+vietnam - Vietnamese
+Minä puhun vietnamia. - I speak Vietnamese.
+
+Mitä kieltä sinä puhut? - What language do you speak?
+Mitä kieliä sinä puhut? - What languages do you speak?
+Puhuuko Joel englantia? - Does Joel speak English?
+Puhuuko Joel suomea? - Does Joel speak Finnish?
+Puhutko sinä ranskaa? - Do you speak French?
+Puhutko sinä arabiaa? - Do you speak Arabian?
+Oletko opiskellut ranskaa? - Have you studied French?
+
+Minun äidinkieleni on arabia. - My native language is Arabic.
+Äidinkieleni on urdu. - My native language is Urdu.
+En puhu suomea. - I don't speak Finnish.
+Minä puhun suomea. - I speak Finnish.
+Minä puhun vähän suomea. - I speak a little Finnish.
+Minä puhun vain suomea. - I speak only Finnish.
+Osaan puhua suomea sujuvasti. - I can speak Finnish fluently.
+Osaan puhua suomea melko hyvin. - I can speak Finnish fairly well.
+Osaan puhekielen suomea hyvin. - I can use spoken Finnish fluently.
+Kirjoittaminen on minulle vielä hankalaa. - Writing is still challenging for me.
+Olen parempi puhumaan kuin kirjoittamaan. - I'm better at speaking than at writing.
+Minä puhun ruotsia huonosti. - I speak Swedish badly.
+Minä puhun englantia sujuvasti. - I speak English fluently.
+Minä puhun ranskaa hyvin. - I speak French well.
+Hän puhuu aika hyvin. - He speaks quite good.
+Minä ymmärrän, mutta en puhu paljon. - I understand, but I don't speak a lot.
+Puhun kolmea kieltä. - I speak three languages.
+Puhun kahta kieltä sujuvasti. - I speak two languages fluently.
+Haluan oppia puhumaan suomea. - I want to learn to speak Finnish.
+
+# The Numbers in Finnish – Numerot
+
+numerot - numbers
+nolla -     0  
+Minulla on nolla paperia. - I have zero papers.
+yksi -     1  
+Minulla on yksi kissa. - I have one cat.
+kaksi -     2  
+Minulla on kaksi poikaa. - I have two sons.
+kolme -     3  
+Minulla on kolme pingviiniä. - I have three penguins.
+neljä -     4  
+Minulla on neljä ammattia. - I have four professions.
+viisi -     5  
+Minulla on viisi kukkaa. - I have five flowers.
+kuusi -     6  
+Minulla on kuusi deodoranttia. - I have six deodorants.
+seitsemän - 7  
+Minulla on seitsemän ystävää. - I have seven friends.
+kahdeksan - 8  
+Minulla on kahdeksan jojoa. - I have eight yoyos.
+yhdeksän - 9  
+Minulla on yhdeksän paitaa. - I have nine shirts.
+kymmenen - 10 
+Minulla on kymmenen sormea. - I have ten fingers.
+
+kymmenen -       10
+Kaupassa on kymmenen alennusta. - In the store are 10 discounts.
+yksitoista -     11
+Huoneessa on yksitoista maalausta. - In the room are 11 paintings.
+kaksitoista -    12
+Keittiössä on kaksitoista ulkofileetä. - In the kitchen are 12 sirloins.
+kolmetoista -    13
+Eteisessä on kolmetoista tuuletinta. - In the hallway are 13 fans.
+neljätoista -    14
+Kulhossa on neljätoista maustetta. - In the bowl are 14 spices.
+viisitoista -    15
+Kattilassa on viisitoista perunaa. - In the pot are 15 potatoes.
+kuusitoista -    16
+Saunassa on kuusitoista laudetta. - In the sauna are 16 benches.
+seitsemäntoista - 17, seventeen
+Baarissa on seitsemäntoista lautasta. - In the bar are 17 plates.
+kahdeksantoista - 18, eighteen
+Puistossa on kahdeksantoista lapiota. - In the park are 18 shovels.
+yhdeksäntoista - 19
+Junassa on yhdeksäntoista olutta. - In the train are 19 beers.
+kaksikymmentä -  20
+Autossa on kaksikymmentä kirvestä. - In the car are 20 axes.
+
+kaksikymmentä - 20
+kaksikymmentäyksi - 21
+kaksikymmentäkaksi - 22
+kaksikymmentäkolme - 23
+kaksikymmentäneljä - 24
+kaksikymmentäviisi - 25
+kaksikymmentäkuusi - 26
+kaksikymmentäseitsemän - 27
+kaksikymmentäkahdeksan - 28
+kaksikymmentäyhdeksän - 29
+kolmekymmentä - 30
+
+kymmenen - 10
+kaksikymmentä - 20
+kolmekymmentä - 30
+neljäkymmentä - 40
+viisikymmentä - 50
+kuusikymmentä - 60
+seitsemänkymmentä - 70
+kahdeksankymmentä - 80
+yhdeksänkymmentä - 90
+
+sata - 100      
+kaksisataa - 200      
+kolmesataa - 300      
+tuhat - 1000     
+kahdeksantuhatta - 8000     
+kymmenentuhatta - 10.000   
+satatuhatta - 100.000  
+kaksisataatuhatta - 200.000  
+miljoona - 1.000.000
+
+yhdeksänkymmentäyhdeksän - 99
+satayksi - 101 
+kaksisataakymmenen - 210 
+kaksisataayksitoista - 211 
+kolmesataakolmekymmentäyksi - 331 
+tuhatkymmenen - 1010
+kaksituhattakymmenen - 2010
+kaksituhattayhdeksäntoista - 2019
+kaksituhattakaksikymmentä - 2020
+
+ensimmäinen - 1st 
+toinen - 2nd 
+kolmas - 3rd 
+neljäs - 4th 
+viides - 5th 
+kuudes - 6th 
+seitsemäs - 7th 
+kahdeksas - 8th 
+yhdeksäs - 9th 
+kymmenes - 10th
+
+yhdestoista - 11th
+kahdestoista - 12th
+kolmastoista - 13th
+neljästoista - 14th
+viidestoista - 15th
+kuudestoista - 16th
+seitsemästoista - 17th
+kahdeksastoista - 18th
+yhdeksästoista - 19th
+kahdeskymmenes - 20th
+
+kahdeskymmenesensimmäinen - 21st
+kahdeskymmenestoinen - 22nd
+kahdeskymmeneskolmas - 23rd
+kahdeskymmenesneljäs - 24th
+kahdeskymmenesviides - 25th
+kahdeskymmeneskuudes - 26th
+kahdeskymmenesseitsemäs - 27th
+kahdeskymmeneskahdeksas - 28th
+kahdeskymmenesyhdeksäs - 29th
+kolmaskymmenes - 30th
+
+kymmenes - 10th
+kahdeskymmenes - 20th
+kolmaskymmenes - 30th
+neljäskymmenes - 40th
+viideskymmenes - 50th
+kuudeskymmenes - 60th
+seitsemäskymmenes - 70th
+kahdeksaskymmenes - 80th
+yhdeksäskymmenes - 90th
+sadas - 100th 
+tuhannes - 1000th
+
+Ensimmäinen maailmansota on ohi. - The first world war is over.
+Tänään on kolmaskymmenes joulukuuta. - Today is the 30th of December.
+Tämä on viides kerta että kysyt tuota! - That's the fifth time you ask that!
+Olen perheeni kuudes lapsi. - I'm the sixth child in my family.
+Tämä oli minun toinen maraton. - This was my second marathon.
+Kolmastoista kerros on kirottu. - The thirteenth floor is cursed.
+Hän oli kahdeskymmenesviides. - She was the 25th.
+Tämä on kahdeksas puhelimesi vuodessa! - This is your eighth phone this year!
+Sadas asiakas saa palkinnon. - The 100th customer gets a prize.
+Kymmenes yritykseni onnistui. - My tenth attempt succeeded.
+
+# The Colors – Värit – Finnish Vocabulary
+
+beige - beige
+fuksia - fuchsia
+harmaa - grey
+hopea - silver
+keltainen - yellow
+khaki - khaki
+kulta - gold
+liila - lilac
+musta - black
+oranssi - orange
+pinkki - pink
+punainen - red
+ruskea - brown
+sininen - blue
+turkoosi - turquoise
+valkoinen - white
+vihreä - green
+violetti - purple
+
+vaaleansininen - light blue
+tummansininen - dark blue
+taivaansininen - sky blue
+vauvansininen - baby blue
+kirkkaansininen - bright blue
+indigosininen - indigo blue
+vaaleanpunainen - light pink
+tummanpunainen - dark red
+tulenpunainen - fiery red
+viininpunainen - wine red
+kirsikanpunainen - cherry red
+kirkkaanpunainen - bright red
+rubiininpunainen - ruby red
+tiilenpunainen - brick red
+
+vaaleanvihreä - light green
+tummanvihreä - dark green
+harmaanvihreä - grey-green
+limenvihreä - lime green
+mintunvihreä - mint green
+myrkynvihreä - poison green
+oliivinvihreä - olive green
+smaragdinvihreä - emerald green
+vaaleanruskea - light brown
+tummanruskea - dark brown
+kastanjanruskea - chestnut red
+aprikoosinvärinen - apricot colored
+hiekanvärinen - sand colored
+kullanruskea - gold-brown
+kermanvärinen - cream colored
+luumunvärinen - plum colored
+mandariininvärinen - color of mandarins
+
+uusi - new
+vanha - old
+iloinen - happy
+surullinen - sad
+kaunis - beautiful
+ruma - ugly
+pitkä - long, tall
+lyhyt - short
+terve - healthy
+sairas - sick
+lihava - fat
+laiha - skinny
+paksu - thick
+ohut - thin
+nuori - young
+vanha - old
+auki - open
+kiinni - closed
+täysi - full
+tyhjä - empty
+kallis - expensive
+halpa - cheap
+vaikea - difficult
+helppo - easy
+rikas - rich
+köyhä - poor
+kuuma - hot
+kylmä - cold
+kuiva - dry
+märkä - wet
+valoisa - bright
+pimeä - dark
+vihainen - angry
+rauhallinen - calm
+sotkuinen - messy
+siisti - tidy
+leveä - wide
+kapea - narrow
+pehmeä - soft
+kova - hard
+painava - heavy
+kevyt - light
+terävä - sharp
+tylsä - blunt
+hauska - funny, fun
+tylsä - boring
+hidas - slow
+nopea - fast
+korkea - high
+matala - low
+hapan - sour
+makea - sweet
+fiksu - smart
+tyhmä - stupid
+kiltti - good
+tuhma - naughty
+ahkera - hard-working
+laiska - lazy
+likainen - dirty
+puhdas - clean
+vahva - strong
+heikko - weak
+ilmainen - free of charge
+maksullinen - costs
+
+# Telling the Time in Finnish: Mitä kello on?
+
+Mitä kello on? - What time is it?
+Paljonko kello on? - What is the time?
+mihin aikaan? - at what time?
+milloin? - when?
+
+aika - time
+rannekello - watch
+seinäkello - wall clock
+herätyskello - alarm clock
+
+ajoissa - on time
+myöhässä - late
+etuajassa - early
+ehtiä - to have the time
+
+Kello on kahdeksan aamulla. - It's 8 am.
+Kello on kymmenen aamupäivällä. - It's 10 am.
+Kello on kaksi iltapäivällä. - It's 2 pm.
+Kello on kahdeksan illalla. - It's 8 pm.
+Kello on kaksi yöllä. - It's 2 am.
+Kello on neljä aamuyöllä. - It's 4 am.
+
+Kello on tasan yksi. - It's exactly one o'clock. / klo 1.00 / 13.00 
+Kello on tasan kaksitoista. - It's exactly twelve o'clock. / klo 12.00 / 00.00
+Kello on puoli kolme. - It's half past two. / klo 2.30 / 14.30 
+Kello on puoli kuusi. - It's half past five. / klo 5.30 / 17.30 
+Kello on viisi (minuuttia) yli kaksi. - It's five (minutes) past two. / klo 2.05 / 14.05 
+Kello on kaksikymmentä (minuuttia) yli viisi. - It's twenty (minutes) past five. / klo 5.20 / 17.20 
+Kello on viisi (minuuttia) vailla kaksi. - It's five (minutes) before two. / klo 1.55 / 13.55 
+Kello on kymmenen (minuuttia) vailla kymmenen. - It's ten (minutes) before ten. / klo 9.50 / 21.50 
+
+Herään joka yö yhdeltä. - I wake at one every night.
+Koulu loppuu kahdelta. - School ends at two.
+Tapaan Arin kolmelta. - I meet Ari at three.
+Juon kahvia neljältä. - I drink coffee at four.
+Sarja alkaa viideltä. - The series starts at five.
+Minulla on tapaaminen kuudelta. - I have a meeting at six.
+Heräsin seitsemältä. - I woke up at seven.
+Käyn suihkussa kahdeksalta. - I take a shower at eight.
+Syön aamupalaa yhdeksältä. - I eat breakfast at nine.
+Kauppa aukeaa kymmeneltä. - The store opens at ten.
+Syön brunssia yhdeltätoista. - I eat brunch at eleven.
+Nukun jo kahdeltatoista. - I'm already sleeping at twelve.
+
+kello yksi - 1 o'clock
+kello kaksi - 2 o'clock
+kello kolme - 3 o'clock
+kello neljä - 4 o'clock
+kello viisi - 5 o'clock
+kello kuusi - 6 o'clock
+kello seitsemän - 7 o'clock
+kello kahdeksan - 8 o'clock
+kello yhdeksän - 9 o'clock
+kello kymmenen - 10 o'clock
+kello yksitoista - 11 o'clock
+kello kaksitoista - 12 o'clock
+
+yhdeltä - from/at 1
+kahdelta - from/at 2
+kolmelta - from/at 3
+neljältä - from/at 4
+viideltä - from/at 5
+kuudelta - from/at 6
+seitsemältä  - from/at 7
+kahdeksalta - from/at 8
+yhdeksältä - from/at 9
+kymmeneltä - from/at 10
+yhdeltätoista - from/at 11
+kahdeltatoista - from/at 12
+
+kahdeksan nolla nolla - kahdeksan nolla nolla / 8.00 
+kahdeksan kolmekymmentä - kaheksan kolkyt / 8.30 
+seitsemän neljäkymmentä - seittemän nelkyt / 7.40 
+seitsemän neljäkymmentäviisi - seittemän nelkytviis / 7.45 
+kaksitoista nolla viisi - kakstoista nolla viis / 12.05
+neljätoista viisitoista - neljätoista viistoista / 14.15
+seitsemäntoista kaksikymmentä - seittemäntoista kakskyt / 17.20
+kaksikymmentä viisikymmentäviisi - kakskyt viiskytviis / 20.55
+
+Lähden viisi yli viisi. - I leave at 5.05
+Lähden viisi yli viiden. - I leave at 5.05
+Lähden viittä yli viisi. - I leave at 5.05
+Lähden viittä yli viiden. - I leave at 5.05
+
+Lähden viisi vailla/vaille viisi. - I'm leaving at 4.45
+Lähden viittä vailla/vaille viisi. - I'm leaving at 4.45
+Lähden viittä vailla/vaille viiden. - I'm leaving at 4.45
+Lähden viittä vailla/vaille viiden. - I'm leaving at 4.45
+
+Kello on kymmenen yli viisi päivällä. - It's ten past five in the afternoon.
+Kello on kymmentä yli viisi päivällä. - It's ten past five in the afternoon.
+Kello on kymmenen yli viiden päivällä. - It's ten past five in the afternoon.
+Kello on kymmentä yli viiden päivällä. - It's ten past five in the afternoon.
+
+# The Days of the Week – Viikonpäivät
+
+maanantai - Monday
+maanantaina - on Monday
+tiistai - Tuesday
+tiistaina - on Tuesday
+keskiviikko - Wednesday
+keskiviikkona - on Wednesday
+torstai - Thursday
+torstaina - on Thursday
+perjantai - Friday
+perjantaina - on Friday
+lauantai - Saturday
+lauantaina - on Saturday
+sunnuntai - Sunday
+sunnuntaina - on Sunday
+
+maanantaisin - on Mondays
+joka maanantai - every Monday
+tiistaisin - on Tuesdays
+joka tiistai - every Tuesday
+keskiviikkoisin - on Wednesdays
+joka keskiviikko - every Wednesday
+torstaisin - on Thursdays
+joka torstai - every Thursday
+perjantaisin - on Fridays
+joka perjantai - every Friday
+lauantaisin - on Saturdays
+joka lauantai - every Saturday
+sunnuntaisin - on Sundays
+joka sunnuntai - every Sunday
+
+maanantaista - from Monday
+maanantaihin - until Monday
+tiistaista - from Tuesday
+tiistaihin - until Tuesday
+keskiviikosta - from Wednesday
+keskiviikkoon - until Wednesday
+torstaista - from Thursday
+torstaihin - until Thursday
+perjantaista - from Friday
+perjantaihin - until Friday
+lauantaista - from Saturday
+lauantaihin - until Saturday
+sunnuntaista - from Sunday
+sunnuntaihin - until Sunday
+
+Olen lomalla maanantaista alkaen - I'm on vacation starting from Monday.
+Keskiviikosta alkaen olen työtön. - Starting from Wednesday I'm unemployed.
+Tiistaista lähtien toimin osa-aikaisena. - I will work half-time starting from Tuesday.
+Perjantaista lähtien asun yksin. - Starting from Friday I will live alone.
+
+Olen lomalla sunnuntaihin asti. - I'm on vacation until Sunday.
+Aurinko paistaa maanantaihin asti . - The sun will shine until Monday.
+
+Lue kirja keskiviikkoon mennessä! - Read the book by Wednesday!
+Tiistaihin mennessä pitää olla valmis. - I have to be ready by Tuesday.
+
+viime maanantaina - last Monday
+tänä maanantaina - this Monday
+ensi maanantaina - next Monday
+viime tiistaina - last Tuesday
+tänä tiistaina - this Tuesday
+ensi tiistaina - next Tuesday
+viime keskiviikkona - last Wednesday
+tänä keskiviikkona - this Wednesday
+ensi keskiviikkona - next Wednesday
+viime torstaina - last Thursday
+tänä torstaina - this Thursday
+ensi torstaina - next Thursday
+viime perjantaina - last Friday
+tänä perjantaina - this Friday
+ensi perjantaina - next Friday
+viime lauantaina - last Saturday
+tänä lauantaina - this Saturday
+ensi lauantaina - next Saturday
+viime sunnuntaina - last Sunday
+tänä sunnuntaina - this Sunday
+ensi sunnuntaina - next Sunday
+
+Koulu alkaa maanantaina. - School starts on Monday.
+Viime maanantaina myöhästyin bussista. - I was late for the bus last Monday.
+Käyn joka tiistai kuntosalilla. - I go to the gym every Tuesday.
+Ensi tiistaina on syntymäpäiväni. - Next Tuesday is my birthday.
+Olen lomalla keskiviikkoon asti. - I'm on vacation until Wednesday.
+Matkustan keskiviikosta perjantaihin. - I travel from Wednesday till Friday.
+Torstaista lähtien on myrskyisää. - Starting from Thursday it's stormy.
+Torstai on viikon paras päivä. - Thursday is the best day of the week.
+Me syömme ravintolassa perjantaisin. - We eat in a restaurant on Fridays.
+Talo on valmis perjantaihin mennessä. - The building will be ready by Friday.
+Tänä lauantaina on pääsiäinen. - On this Saturday is Easter.
+Aion lauantaista alkaen olla tupakoimatta. - I plan not to smoke from Saturday on.
+Kävin uimassa viime sunnuntaina. - I went swimming last Sunday.
+Hiihtoloma alkaa maanantaina. - Winter break starts on Monday.
+
+# The Months – Kuukaudet
+
+tammikuu - January
+tammikuussa - in January
+helmikuu - February
+helmikuussa - in February
+maaliskuu - March
+maaliskuussa - in March
+huhtikuu - April
+huhtikuussa - in April
+toukokuu - May
+toukokuussa - in May
+kesäkuu - June
+kesäkuussa - in June
+heinäkuu - July
+heinäkuussa - in July
+elokuu - August
+elokuussa - in August
+syyskuu - September
+syyskuussa - in September
+lokakuu - October
+lokakuussa - in October
+marraskuu - November
+marraskuussa - in November
+joulukuu - December
+joulukuussa - in December
+
+tammikuusta - from January
+tammikuuhun - until January
+helmikuusta - from February
+helmikuuhun - until February
+maaliskuusta - from March
+maaliskuuhun - until March
+huhtikuusta - from April
+huhtikuuhun - until April
+toukokuusta - from May
+toukokuuhun - until May
+kesäkuusta - from June
+kesäkuuhun - until June
+heinäkuusta - from July
+heinäkuuhun - until July
+elokuusta - from August
+elokuuhun - until August
+syyskuusta - from September
+syyskuuhun - until September
+lokakuusta - from October
+lokakuuhun - until October
+marraskuusta - from November
+marraskuuhun - until November
+joulukuusta - from December
+joulukuuhun - until December
+
+Olen lomalla kesäkuusta alkaen - I'm on vacation starting from June.
+Tammikuusta alkaen työvuorot pitenevät. - Starting from January shifts will get longer.
+Maaliskuusta lähtien työskentelen osa-aikaisena. - I'm working half-time starting from March.
+Elokuusta lähtien bussit kulkee harvemmin. - Starting from August the buses ride more rarely.
+
+Olen lomalla syyskuuhun asti. - I'm on vacation until September.
+Aurinko paistaa lokakuuhun asti. - The sun will shine until October.
+
+Maksa laina takaisin elokuuhun mennessä! - Pay the loan back by August!
+Joulukuuhun mennessä tiedetään vastaukset. - By December we will know the answers.
+
+Missä kuussa talvi alkaa? - During what month does winter start?
+Matkustin viime kuussa Tallinnaan. - I traveled to Tallinn last month.
+Muutan ensi kuussa Helsinkiin. - I'm moving to Helsinki next month.
+Tässä kuussa on 28 päivää. - In this month there are 28 days.
+Käyn siskoni luona kerran kuussa. - I visit my sister once a month.
+Käyn isän haudalla kaksi kertaa kuussa. - I visit my father's grave two times a month.
+Näen painajaisia suunnilleen kolme kertaa kuussa. - I have nightmares about three times a month.
+
+Synnytin vauvani kuukausi sitten. - I gave birth to our baby a month ago.
+Aloitin kurssin kaksi kuukautta sitten. - I started the course two months ago.
+Vauvani syntyy kuukauden päästä. - My baby will be born in a month.
+Kurssini alkaa kahden kuukauden päästä. - My course starts in two months' time.
+Kuukauden kuluttua järvissä voi taas uida. - A month from now you can swim in the lakes again.
+Kolmen kuukauden kuluttua syksy alkaa taas. - In three months' time autumn will start again.
+
+Tammikuu on lempikuukauteni. - January is my favorite month.
+Missä kuussa olet syntynyt? - In what month were you born?
+Olen syntynyt helmikuussa. - I was born in February.
+Syön lihaa kerran kuussa. - I eat meat once a month.
+Maaliskuuhun asti voi vielä sataa lunta. - It can still snow until March.
+Vauvani syntyi kaksi kuukautta sitten. - My baby was born two months ago.
+Olen yrittänyt laihtua huhtikuusta lähtien. - I've been trying to lose weight starting from April.
+Odotan toukokuuhun asti. - I will wait until May.
+Aloitin opinnot kuukausi sitten. - I started my studies a month ago.
+Haluan palata kotimaahani kuukauden päästä. - I want to return to my home country in a month.
+Syksy kestää syyskuusta joulukuuhun. - Autumn lasts from September until December.
+Joulukuussa satoi paljon lunta. - It snowed a lot in December.
+Kokous on viides lokakuuta. - The meeting is on the fifth of October.
+
+# Breakfast – Aamiainen – Finnish Vocabulary
+
+aamiainen - breakfast 
+Juotavaa - Drinks
+# kahvi - coffee
+kahvi maidolla - coffee with milk
+kahvi kerman kera - coffee with cream
+musta kahvi - black coffee / coffee without milk
+kahvi maitovaralla - a coffee with space for milk
+kofeiiniton kahvi - decaffeinated coffee
+latte - latte
+tee - tea
+tee sitruunan kera - tea with lemon
+maito - milk
+kaakao - hot cocoa
+tomaattimehu - tomato juice
+tuoremehu - fruit juice
+appelsiinimehu - orange juice
+Munat - Eggs
+kananmuna - egg
+kovaksi keitetty muna - hard-boiled egg
+pehmeäksi keitetty muna - soft-boiled egg
+kinkkua ja munia - ham and eggs
+pekonia ja munia - bacon and eggs
+munakokkeli - scrambled eggs
+paistettu muna - fried egg
+uppomuna - poached egg
+munavoi - egg butter
+Leivonnaiset - Baked goods
+leipä - bread
+leipäviipale - a slice of bread
+paahdettu leipä - toast
+tumma leipä - brown bread
+vaalea leipä - white bread
+ruisleipä - rye bread
+kauraleipä - oat bread
+karjalanpiirakka - Karelian pasty
+pulla - bun (pic)
+voileipä - sandwich
+sämpylä - roll
+voisarvi - croissant
+gluteeniton leipä - gluten-free bread
+Muuta - Other
+murot - cereal
+puuro - porridge
+mysli - muesli
+hunaja - honey
+sokeri - sugar
+hillo - jam
+marmeladi - marmelade
+maapähkinävoi - peanut butter
+suklaalevite - chocolate spread
+leivänpäälliset - cold cuts
+meetvursti - salami
+
+# Vegetables – Vihannekset tai Kasvikset
+
+vihannekset - vegetables
+Kasvikset - vegetables
+bataatti - sweet potato
+brysselinkaali - brussels sprouts
+endiivi - endive
+fenkoli - fennel
+herne - pea
+jäävuorisalaatti - iceberg lettuce
+kaali - cabbage
+keräkaali - headed cabbage
+kesäkurpitsa - zucchini
+kiinankaali - Chinese cabbage
+kikherne - chickpea
+kirsikkatomaatti - cherry tomato
+kukkakaali - cauliflower
+kurkku - cucumber
+kurpitsa - pumpkin
+lanttu - rutabaga
+lehtisalaatti - lettuce
+maa-artisokka - Jerusalem artichoke
+maissi - corn
+munakoiso - eggplant
+nauris - turnip
+okra - ocher
+palsternakka - parsnip
+paprika - bell pepper
+papu - bean
+parsa - asparagus
+parsakaali - broccoli
+peruna - potato
+pinaatti - spinach
+porkkana - carrot
+punajuuri - beetroot
+punakaali - red cabbage
+purjo - leek
+raparperi - rhubarb
+retiisi - radish
+ruusukaali - brussels sprouts
+selleri - celery
+sikuri - chicory
+tomaatti - tomato
+valkosipuli - garlic
+Syön paljon vihanneksia. - I eat a lot of vegetables.
+On tärkeää syödä paljon kasviksia. - It's important to eat a lot of vegetables.
+Syön paljon kaalia. - I eat a lot of cabbage.
+Syön usein salaattia. - I often eat lettuce/salad.
+Tänään syön kukkakaalia. - Todat I eat cauliflower.
+Suomalaiset syövät paljon perunoita. - Finns eat a lot of potatoes.
+Tykkään valkosipulista. - I like garlic.
+En pidä kurkusta. - I don't like cucumber.
+
+# Fruit – Hedelmät – Finnish Vocabulary
+
+hedelmät - fruits
+ananas - pineapple
+appelsiini - orange
+aprikoosi - apricot
+avokado - avocado
+banaani - banana
+verkkomeloni - cantaloupe
+granaattiomena - pomegranate
+greippi - grapefruit
+hunajameloni - honeydew
+kiivi - kiwi
+klementiini - clementine
+kookospähkinä - coconut
+kumkvatti - kumquat
+limetti - lime
+litsi - litchi
+luumu - plum
+mandariini - tangerine
+mango - mango
+meloni - melon
+nektariini - nectarine
+omena - apple
+papaija - papaya
+persikka - peach
+päärynä - pear
+satsuma - satsuma
+sitruuna - lemon
+taateli - date
+vesimeloni - watermelon
+viikuna - fig
+viinirypäle - grape
+vaaleat (vihreät) viinirypäleet - white (green) grapes
+tummat viinirypäle - dark grapes
+eksoottinen - exotic
+halkaista omena - to split an apple
+haukata omenaa - to bite into an apple
+hapan - sour
+hedelmäliha - fruit flesh; pulp
+hedelmämehu - fruit juice
+hedelmäpirtelö - fruit smoothie
+hedelmäpuristin - fruit press, squeezer
+hedelmäsalaatti - fruit salad
+hedelmäveitsi - fruit knife
+hillo - jam
+kirpeä - tart
+kivetön kirsikka - pitted cherry
+kuori - peel, shell
+kuoria omena - to peel an apple
+kuivattu - dried
+kypsä - ripe
+lohko - section, slice
+makea - sweet
+marmeladi - marmelade
+mehukas - juicy
+mädätä - to rot, decay
+mätä - rotten
+omenapuu - apple tree
+omenasose - applesauce
+persikan kivi - peach stone
+raaka - raw
+siemen - seed
+siemenetön - seedless
+siemenkota - core (of apple)
+sitrushedelmä - citrus fruit
+terttu - bunch
+terveellinen - healthy
+tuore - fresh
+viipale - slice
+
+Syön paljon hedelmiä. - I eat a lot of fruit.
+Syön usein melonia. - I often eat melon.
+Pidän viinirypäleistä. - I like grapes.
+Tykkään vesimelonista. - I like watermelon.
+En tykkää mangosta. - I dont like mango.
+Ostan viisi omenaa. - I buy five apples.
+Ostin kolme päärynää. - I bought three pears.
+Avokadot ovat kalliita. - Avocados are expensive.
+Banaanit ovat tarjouksessa. - The bananas are on sale.
+Haluatko omenan? - Do you want an apple?
+Banaani on keltainen. - A banana is yellow.
+Minä kuorin omenan. - I will peel the apple.
+
+# Berries – Marjat – Finnish Vocabulary
+
+marjat - berries
+boysenmarja - boysenberry
+juolukka - bog whortleberry
+karhunvatukka - blackberry
+karpalo - cranberry
+karviaismarja - gooseberry
+kirsikka - cherry
+lakka - cloudberry
+lillukka - stone bramble
+mansikka - strawberry
+mesimarja - arctic bramble
+metsämansikka - wild strawberry
+mustikka - blueberry *
+mustaherukka - blackcurrant
+pensasmustikka - highbush blueberry
+pihlajanmarja - rowanberry
+punaherukka - red currant
+puolukka - lingonberry
+tyrni - buckthorn
+vadelma - raspberry
+variksenmarja - black crowberry
+viinimarja - currant
+hillomarja - berry for jam
+luonnonmarja - berry in nature
+metsämarja - berry in forest
+puutarhamarja - berry in garden
+talousmarja - cultivated berry
+pakastemarja - frozen berry
+marja - berry
+pensas - shrub, bush
+sato - harvest
+hillo - jam
+hyytelö - jelly
+kiisseli - kissel
+mehu - juice
+tuoremehu - juice
+marjakeitto - berry soup
+mustikkapiirakka - blueberry pie
+makea - sweet
+hapan - sour
+raaka - green, raw
+kypsä - ripe
+kypsyä - to ripen
+kukkia - to blossom
+marjastaa - to pick berries
+poimia marjoja - to pick berries
+kerätä - to collect
+mennä marjaan - to go to pick berries
+olla marjassa - to be picking berries
+säilöä - to conserve
+survoa - to crush
+marjastaja - berry picker
+mehumaija - steam juicer
+mehustin - steam juicer
+
+# Herbs and Spices – Yrtit ja Mausteet
+
+Yrtit ja Mausteet - Herbs and Spices
+
+anis - aniseed
+aromisuola - aroma of salt
+basilika - basil
+cayennepippuri - cayenne pepper
+chili - chili
+curry - curry
+fenkoli - fennel
+inkivääri - ginger
+juustokumina - cumin
+kaneli - cinnamon
+kardemumma - cardamom
+koiruoho - wordwood
+korianteri - coriander
+kumina - caraway
+kurkuma - turmeric
+laventeli - lavender
+limetti - lime
+maustepippuri - allspice
+meirami - marjoram
+minttu - mint
+muskottipähkinä - nutmeg
+mustapippuri - black pepper
+oregano - oregano
+
+paprika - paprika
+persilja - parsley
+piparjuuri - horseradish
+piparminttu - peppermint
+pippuri - pepper
+punapippuri - red pepper
+rakuuna - tarragon
+rosmariini - rosmary
+ruohosipuli - chives
+sahrami - saffron
+salvia - sage
+seesami - sesame
+sitruunamelissa - lemon balm
+sokeri - sugar
+suola - salt
+tilli - dill
+timjami - thyme
+vanilja - vanilla
+viherminttu - spearmint
+viinimarja - currant
+
+# Meat – Liha ja Liharuokia 
+
+liha - meat
+Liharuokia - Meat dishes
+filee - fillet
+fileeselkä - sirloin
+gulassi - goulash
+hampurilainen - hamburger
+jänis - hare
+jauheliha - minced meat
+kani - rabbit
+kääryle - collared beef
+kinkku - ham
+kyljykset - chops
+lampaanliha - mutton
+lihahöystö - ragout
+lihakääryleet - beef rolls
+lihapullat - meat balls
+makkara - sausage
+maksalaatikko - liver casserole
+muhennos - stew
+naudanliha - beef
+pihvi - steak
+piirakka - pie
+sianliha - pork
+sianlihamakkarat - pork sausages
+vasikanliha - veal
+vasikanpää - calfs head
+villisika - wild boar
+viilokki - fricassee
+
+Siipikarja - Poultry
+ankka - duck
+broilerinliha - chicken
+fasaani - pheasant
+hanhi - goose
+kalkkuna - turkey
+kana - chicken
+kanalintu - fowl
+kurppa - snipe
+kyyhkynen - pigeon
+peltopyy - patridge
+viiriäinen - quail
+Ruhonosat - Carcasse parts
+aivot - brains
+etuselkä - chuck
+kieli - tongue
+kylki - flank
+lapa - shoulder
+maksa - liver
+munuaiset - kidneys
+paisti - joint
+potka - shank
+reisi - leg
+rinta - brisket
+ulkofilee - sirloins
+
+Valmistustavat - Cooking ways
+fileoitu - filleted
+grillattu - grilled
+haudutettu - stewed
+höyrytetty - steamed
+jauhettu - minced
+keitetty - boiled
+kypsennetty - cooked
+leivitetty - breaded
+marinoitu - marinated
+muhennettu - braised, stewed
+paistettu - fried
+savustettu - smoked
+suolattu - salted
+tyhjiökypsennetty - sous-vide
+
+Minä en syö lihaa. - I dont eat meat.
+Minä olen kasvissyöjä. - Im a vegetarian.
+Minä olen vegaani. - Im a vegan.
+En syö mitään eläinperäisiä tuotteita. - I dont eat any animal products.
+Millaisesta lihasta sinä tykkäät? - What kind of meat do you like?
+Syötkö mieluummin kalaa vai lihaa? - Do you rather eat fish or meat?
+Syötäisiinkö lihapullia tänään? - Could we eat meatballs today?
+Syön joka päivä makkaroita. - I eat sausages every day.
+Haluan vähentää lihansyöntiä. - I want to eat less meat.
+En syö porsaanlihaa. - I dont eat pork.
+Uskontoni kieltää sianlihan syömisen. - My religion forbids me from eating pork.
+Suuria määriä raakaa lihaa ei kannata syödä. - You shouldnt eat large quantities of raw meat.
+Kananliha on halvempaa kuin naudanliha. - Chicken is cheaper than beef.
+
+# Beverages – Drinks – Juomat
+
+Viini - Wine
+punaviini - red wine
+valkoviini - white wine
+burgundiviini - burgundy
+roséviini - rose wine
+omenaviini - apple wine
+samppanja - champagne
+kuohuviini - sparkling wine
+hapan - sour
+kuiva - dry
+kypsä - mature
+makea - sweet
+mieto - mild
+sekoitus - blended
+uusi - new
+vanha - old
+vuosikerta - vintage
+väkevä - strong
+Muut alkoholijuomat - Other alcoholic drinks
+aprikoosilikööri - apricot liqueur
+brandy - brandy
+gini - gin
+grogi - grog
+kalja - table beer
+katkerot - bitters
+kirsikkalikööri - cherry liqueur
+konjakki - cognac
+kossu - Koskenkorva
+lasi olutta - a glass of beer
+likööri - liqueur
+munalikööri - advocaat
+munkkilikööri - Benedictine
+olut - beer
+keskiolut - medium strength beer
+pontikka - home-distilled liquor
+pullotettu olut - bottled beer
+punssi - punch
+rommi - rum
+siideri - cider
+tölkkiolut - canned beer
+viina - liquor
+viski - whiskey
+vodka - vodka
+Alkoholittomat juomat - Alcohol free drinks
+appelsiinijuoma - orangeade
+appelsiinimehu - orange juice
+energiajuoma - energy drink
+greippimehu - grapefruit juice
+hanavesi - tap water
+kaakao - cocoa
+kahvi - coffee
+kivennäisvesi - tonic
+limsa - lemonade
+maito - milk
+maitokahvi - coffee with milk
+mehu - juice
+mineraalivesi - mineral water
+mustaherukkamehu - blackcurrant juice
+pirtelö - milkshake
+sima - mead
+sitruunamehu - lemon juice
+smoothie - smoothie
+soodavesi - soda
+tee - tea
+tuoremehu - fresh juice
+
+# Condiments, soups and sauces
+
+öljy - oil
+ruokaöljy - cooking oil
+auringonkukkaöljy - sunflower oil
+avokadoöljy - avocado oil
+ekstra-neitsytoliiviöljy - extra virgin olive oil
+hasselpähkinäöljy - hazelnut oil
+kasviöljy - vegetable oil
+kookosöljy - coconut oil
+kylmäpuristettu öljy - cold-pressed oil
+maissiöljy - corn oil
+maapähkinäöljy - groundnut oil
+manteliöljy - almond oil
+maustettu öljy - flavoured oil
+oliiviöljy - olive oil (extra virgin etc)
+pellavansiemenöljy - flaxseed oil
+puhdistamaton kookosöljy - unrefined coconut oil
+puhdistettu maapähkinäöljy - refined peanut oil
+rypsiöljy - rapeseed oil
+rypälesiemenöljy - rapeseed oil
+saksanpähkinäöljy - walnut oil
+seesaminsiemenöljy - sesami seed oil
+
+Maustekastikkeet - Condiments
+makea  - sweet
+mieto - mild
+keskivavha - medium-strength
+vahva - strong
+tulinen - hot
+
+aioli - aioli
+balsamiviinietikka - balsamic vinegar
+chilikastike - chili sauce
+chutney - chutney
+dippauskastike - dip, dipping sauce
+dippi - dip, dipping sauce
+dippikastike - dip, dipping sauce
+etikka - vinegar
+gochujang - gochujang
+grillauskastike - barbecue sauce
+grillikastike - barbecue sauce
+guacamole - guacamole
+hapanimeläkastike - sweet-and-sour sauce
+harissa - harissa
+HP-kastike - HP Sauce
+hummus - hummus
+kalakastike - fish sauce
+ketsuppi - ketchup
+majoneesi - mayonnaise
+mallasetikka - malt vinegar
+omenaviinietikka - cider vinegar
+remoulade-kastike - remoulade
+Sambal-lastole - Sambal
+salaattikastike - salad dressing
+salaatinkastike - salad dressing
+salsa - salsa
+sinappi - mustard
+soijakastike - soy sauce
+sriracha-kastike - sriracha sauce
+tabasco - tabasco
+tahini - tahini
+tartarkastike - tartar sauce
+tartarinkastike - tartar sauce
+teriyakikastike - teriyaki sauce
+tomaattiketsuppi - tomato ketchup
+tsatsiki - tzatziki
+viinietikka - wine vinegar
+worchesterkastike - worcestershire sauce
+worcestershirekastike - worcestershire sauce
+Worcestershire -kastike - Worcestershire sauce
+öljypohjainen salaattikastike - oil-based salad dressing
+
+Kastikkeet - Sauces 
+appelsiinikastike - orange sauce
+aprikoosikastike - apricot sauce
+béarnaisekastike - béarnaise sauce
+bearninkastike - béarnaise sauce
+béchamelkastike - béchamel sauce
+valkokastike - béchamel sauce
+bolognankastike - bolongese pasta sauce
+bolognesekastike - bolongese pasta sauce
+chilikastike - chili sauce, hot sauce
+chutney - chutney
+chutneykastike - chutney
+currykastike - curry sauce
+karrikastike - curry sauce
+etikkakastike - vinegar sauce
+gratiinikastike - gratin sauce
+gratinointikastike - gratin sauce
+herkkusienikastike - mushroom sauce
+hollandaisekastike - hollandaise sauce
+hollanninkastike - hollandaise sauce
+hollantilainen kastike - hollandaise sauce
+jauhelihakastike - minced meat sauce
+jauheliha-tomaattikastike - bolognese sauce
+juustokastike - cheese sauce
+karrikastike - curry sauce
+currykastike - curry sauce
+katkarapukastike - shrimp sauce
+kermakastike - cream sauce
+läskisoosi - pork sauce 
+sianlihakastike - pork sauce 
+madeirakastike - madeira sauce
+makkarakastike - sausage sauce
+marinointikastike - marinade sauce
+marinadi - marinade sauce
+marinadikastike - marinade sauce
+pastakastike - pasta sauce
+pesto - pesto
+pestokastike - pesto
+pippurikastike - peppercorn sauce
+punaviinikastike - red wine sauce
+ranskalainen salaatinkastike - vinaigrette
+Rhode Island -kastike - Rhode Island sauce
+ruskea kastike - brown sauce
+sianlihakastike - pork sauce 
+läskisoosi - pork sauce 
+tomaatti- ja basilikakastike - tomato and basil sauce
+voikastike - beurre blanc
+valkokastike - béchamel sauce
+béchamelkastike - béchamel sauce
+voi-valkoviinikastike - beurre blanc
+sienikastike - mushroom sauce
+sinappikastike - mustard sauce
+sipulikastike - onion gravy
+sitruunakastike - lemon sauce
+munakastike - hollandaise sauce
+
+keitot - soups
+kalakeitto - fish soup
+borssikeitto - borscht
+gazpacho - gazpacho
+kasvissosekeitto - vegetable puree soup
+herkkusienikeitto - mushroom soup
+hernekeitto - pea soup
+hernesoppa - pea soup
+juliennekeitto - soup julienne
+juustokeitto - cheese soup
+kaalikeitto - cabbage soup
+kanakeitto - chicken soup
+kasviskeitto - vegetable soup
+vihanneskeitto - vegetable soup
+tomaattikeitto - tomato soup
+sosekeitto - cream soup
+kesäkeitto - "summer soup"
+sipulikeitto - onion soup
+linssikeitto - lentil soup
+lohikeitto - salmon soup
+madekeitto - burbot soup
+makkarakeitto - sausage soup
+siskonmakkarakeitto - siskonmakkara soup 
+minestronekeitto - minestrone soup
+misokeitto - miso soup
+papukeitto - bean soup
+papurokko - pea soup
+papusoppa - pea soup
+parsakaalikeitto - broccoli soup
+parsakeitto - asparagus soup
+pinaattikeitto - spinach soup
+porkkanasosekeitto - carrot puree soup
+ramenkeitto - ramen soup
+rapukeitto - crab soup
+sipulikeitto - onion soup
+vihanneskeitto - vegetable soup
+kasviskeitto - vegetable soup
+pussikeitto - instant package soup
+
+liemi - broth, stock
+kirkas liemi - clear broth
+suurustettu liemi - thickened stock
+kalaliemi - fish stock
+kanaliemi - chicken stock / chicken broth
+lihaliemi - meat broth
+etikkaliemi - pickle juice
+mausteliemi - spice brine, marinade
+paistinliemi - meat gravy
+paistoliemi - meat gravy
+paistinkastike - meat gravy
+liemikuutio - bouillon cube, stock cube
+fondi - fond, broth base
+liemipohja - fond, broth base
+katkarapufondi - shrimp broth base
+vasikanlihafondi - veal broth base
+liemitiiviste - broth concentrate
+häränluuliemi - ox bone based broth
+luuliemi - bone broth
+lihaliemi - broth, bouillon
+kanaliemi - chicken broth
+lihaliemitiiviste - broth concentrate
+
+hedelmäsose - fruit puree
+jälkiruokakastike - dessert sauce
+karamellikastike - caramel sauce
+kinuskikastike - caramel sauce, fudge sauce
+kiisseli - kissel 
+mustikkakeitto - blueberry soup 
+omenasose - apple sauce
+suklaakastike - chocolate sauce, chocolate syrup
+vaahterasiirappi - maple syrup
+vaniljakastike - vanilla sauce, custard
+
+kattila - saucepan
+kastikekulho - gravy boat
+kastikekauha - gravy ladle
+kastikelusikka - gravy spoon
+krutonki - crouton
+kylmä kastike - cold sauce
+lämmin kastike - warm sauce
+sakea kastike - thick sauce
+samettimainen kastike - velvety soup
+majoneesipohjainen kastike - mayonnaise-based sauce
+lihaliemipohjainen keitto - broth-based soup
+lämmitetty keitto - re-warmed
+paakkuinen kastike - lumpy sauce
+kokkareinen kastike - lumpy sauce
+kokkare - glob, lump
+klimppi - glob, lump
+kermalla suurustettu kastike - sauce thickened with cream
+karrilla maustettu kastike - sauce seasoned with curry
+pähkinöistä valmistettu kastike - sauce made with nuts
+sinapilla maustettu kastike - sauce flavored with mustard
+sianlihasta tehty kastike - sauce made with pork
+tomaattia sisältävä kastike - sauce containing tomato
+hauduttaa - to simmer, to stew
+hauduttaa lihaa - to braise meat
+kaataa kastike päälle - to pour the sauce on top
+kauhoa keittoa lautaselle - to scoop soup into a plate
+keittää kastiketta - to cook the sauce
+kirkastaa liemi - to brighten the broth
+maistaa keittoa - to taste the soup
+maustaa kastike piparjuurella - to season the sauce with horseradish
+ohentaa kastiketta - to thin the sauce
+sakeuttaa kastike jauhoilla - to thicken the sauce with flour
+sekoittaa ainekset - to mix the ingredients
+suurustaa kastike perunajauhoilla - to thicked the sauce with potato starch
+tarjota keitto kuumana - to serve the soup hot
+viimeistellä kastike kermalla - to finish the sauce with cream
+
+# Maito – Milk – Dairy products
+
+maito - milk
+maitojuoma - milk drink
+ykkösmaito - semi-skimmed milk (1 % fat)
+kevytmaito - semi-skimmed milk
+kevytmaitojuoma - semi-skimmed milk drink
+täysmaito - whole milk
+laktoositon maito - lactose-free milk
+laktoositon maitojuoma - lactose-free milk drink
+vähälaktoosinen maito - low-lactose milk
+raakamaito - raw milk
+tinkimaito = tilamaito - raw milk straight from the farm
+pastöroimaton maito - unpasteurized milk
+pastöroitu maito - pasteurized milk
+homogenoitu maito - homogenized milk
+luomumaito - organic milk
+iskukuumennettu maito - UHT (ultra-high temperature processed) milk
+kestomaito - UHT milk, long-life milk
+maitojauhe - powdered milk
+maitotiiviste - evaporated milk, condensed milk
+kondensoitu maito - condensed sweetened milk
+vapaan lehmän maito - free range cows milk
+vuohenmaito - goat milk
+kauramaito - oat milk
+mantelimaito - almond milk
+riisimaito - rice milk
+soijamaito - soy milk
+ternimaito - first milk
+ensimaito - first milk
+pullomaito - bottle milk (for baby)
+äidinmaito - human breast milk
+rintamaito - human breast milk
+kefiiri - kefir, fermented milk
+piimä - sour milk, soured milk
+rasvaton piimä - fat-free soured milk
+kirnupiimä - buttermilk
+maitojauhe - milk powder
+
+kerma - cream
+kestokerma - UHT (ultra-high temperature processed) cream
+iskukuumennettu kerma - UHT cream
+kahvikerma - coffee cream
+kevytkerma - light cream
+ranskankerma - crème fraîche
+kuohukerma - heavy cream, whipping cream
+vispikerma - whipping cream
+kermavaahto - whipped cream
+ruokakerma - cream for cooking (can be heated up)
+smetana - smetana, soured cream
+hapankerma - soured cream
+
+juusto - cheese
+juustoraaste - grated cheese
+feta - feta
+fetajuusto - feta
+salaattijuusto - feta-style salad cheese, salted or in oil
+homejuusto - mold cheese
+sinihomejuusto - blue cheese
+valkohomejuusto - white mold cheese
+juhannusjuusto - red cheese soup of Midsummer
+punainen hera - red cheese soup of Midsummer
+leipäjuusto - bread cheese, Finnish squeaky cheese
+aurajuusto - A Finnish blue cheese called "Aura"
+murukolojuusto - cheese with irregular holes
+mustaleimainen juusto - Emmentaler cheese fermented 9 months
+herajuusto - brunost
+punaleima - Emmentaler cheese fermented 6 months
+raejuusto - granular cottage cheese
+rakletti - raclette
+sinileima - Emmentaler cheese fermented 3 months
+sulatejuusto - processed cheese
+tuorejuusto - curd cheese, cottage cheese
+uunijuusto - oven-baked cottage cheese made of first milk
+kermajuusto - cream cheese, mild-tasting crumbly cheese
+fondue - fondue
+fondyy - fondue
+
+brie - brie
+briejuusto - brie cheese
+brienjuusto - brie cheese
+camembert - camembert
+camembertjuusto - camembert cheese
+camembertinjuusto - camembert cheese
+cheddar - cheddar
+cheddarjuusto - cheddar cheese
+cheddarinjuusto - cheddar cheese
+edam - edam
+edamjuusto - edam cheese
+edaminjuusto - edam cheese
+emmental - emmental
+emmentaljuusto - emmental cheese
+emmentalinjuusto - emmental cheese
+gorgonzola - gorgonzola
+gorgonzolajuusto - gorgonzola cheese
+gorgonzolanjuusto - gorgonzola cheese
+gouda - gouda
+goudajuusto - gouda cheese
+goudanjuusto - gouda cheese
+gruyère - gruyère
+gruyèrejuusto - gruyère cheese
+gruyèrenjuusto - gruyère cheese
+pecorino - pecorino
+pecorinojuusto - pecorino cheese
+parmesaani - parmiggiano reggiano
+parmesaanijuusto - parmiggiano reggiano cheese
+parmanjuusto - parmiggiano reggiano cheese
+ricotta - ricotta
+ricottajuusto - ricotta cheese
+roquefort - roquefort
+roquefortjuusto - roquefort cheese
+roquefortinjuusto - roquefort cheese
+stilton - stilton
+stiltonjuuso - stilton cheese
+stiltoninjuusto - stilton cheese
+tilsit - tilsit
+tilsitjuusto - tilsit tilsit
+tilsitinjuusto - tilsit cheese
+
+voi - butter
+maalaisvoi - butter prepared directly in a farm
+meijerivoi - butter produced in a dairy
+maustevoi - flavored butter, herb butter
+valkosipulivoi - garlic butter
+margariini - margarine
+oivariini - mixtures of butter and rapeseed oil
+voimariini - mixtures of butter and rapeseed oil
+ingmariini - mixtures of butter and rapeseed oil
+kirkastettu voi - clarified butter
+
+vaniljakastike - custard
+pirtelö - milkshake
+jäätelö - ice cream
+pehmis - soft ice cream
+vanukas - sweet dessert pudding
+jogurtti - yoghurt
+juotava jogurtti - drinkable yogurt
+maustamaton jogurtti - unflavored yoghurt
+rahka - quark
+maitorahka - curd cheese
+viili - curdled milk, yoghurt-like consistency
+kermaviili - sour cream
+serbetti - sherbert
+valkokastike - béchamel sauce
+
+hapate - fermentation starter, ferment
+hera - whey
+juoksutin - rennet
+juustonjuoksutin - rennet
+juustohöylä - cheese slicer
+juustoveitsi - cheese knife
+juustotarjotin - cheese platter
+juustonkuori - cheese skin
+juustonpala - piece of cheese
+juustoviipale - slice of cheese
+juustotahko - wheel of cheese
+kalsium - calcium
+kaseiini - casein
+kirnu - churn
+kitti - smear (of cheese)
+kolo - hole
+kuutio - cube
+laktoosi-intoleranssi - lactose intolerance
+loraus (maitoa) - dash (of milk)
+maitoallergia - milk allergy
+maitoauto - tanker collecting milk from farms
+maitohappo - lactic acid
+maito­happo­bakteeri - lactic acid bacteria
+maitohappokäyminen - lactic acid fermentation
+maitokannu - milk can
+maitotila - milk producing farm
+maitotölkki - milk carton
+meijeri - dairy, milk processing plant
+proteiini - protein
+valkuaisaine - protein
+purkki - can (for yoghurt etc.)
+rasia - carton (for butter etc.)
+rasvapitoisuus - fat percentage
+tilatankki - bulk tank for milk in farms
+vatkain - electric mixer, kept in hand
+vispilä - whisk
+
+allerginen maidolle - allergic to milk
+homogenisoitu - homogenised
+härski voi - oxygenated, rancid butter
+iskukuumennettu - UHT-processed
+kermainen juusto - creamy cheese
+kova juusto - hard cheese
+laktoositon - lactose-free
+maidoton - milkless, non-dairy
+pastöroitu - pasteurised
+puolikova juusto - semi-hard cheese
+rasvaton - fat-free
+suolaton - unsalted (butter etc.)
+vastalypsetty - freshly milked
+vähälaktoosinen - low-lactose
+vähärasvainen - low-fat
+vähäsuolainen - low-salted
+
+gratinoida - to gratinate
+hapantua - to sour
+iskukuumentaa - to process in UHT
+juoksettaa - to curdle
+kaataa maitoa - to pour milk
+keittää - to boil (transitive)
+kermoa - to separate cream from milk
+kiehua - to boil, sometimes over (intransitive)
+kirnuta - to churn
+lorauttaa (kermaa) - to pour freely (cream etc.)
+lypsää lehmä - to milk the cow
+läikyttää - to spill
+pastöroida - to pasteurize
+piimittää maitoa - to turn milk into cultured buttermilk
+polttaa pohjaan - to burn, to overheat
+raastaa juustoa - to grate (cheese)
+vatkata - to whip
+vispata - to whip
+voidella - to butter, to oil, to lubricate
+
+# Bodyparts – Kehonosat Ruumiinosat
+
+kasvot - face
+naama - face
+pää - head
+huuli - lip
+huulet - lips
+hammas - tooth, teeth
+suu - mouth
+kieli - tongue
+nenä - nose
+sierain - nostril
+sieraimet - nostrils
+poski - cheek
+posket - cheeks
+poskipää  - cheekbone
+poskipäät - cheekbones
+otsa - forehead
+silmä - eye
+silmät - eyes
+silmäripsi - eyelash
+ripset - lashes
+hiukset - hair
+tukka - hair
+ohimo - temple
+ohimot - temples
+korva - ear
+korvat - ears
+kulmakarvat - eyebrows
+leuka - chin
+kaula - neck
+niska - back of the neck
+takaraivo - back of head
+
+vatsa - stomach
+maha - belly
+vyötärö - waist
+napa - navel, belly button
+rintakehä - chest
+rinta - chest, breast
+rinnat - breast, breasts
+tissit - boobs
+selkä - back
+alaselkä - lower back
+yläselkä - upper back
+selkäranka - spine
+kylki - side
+kyljet - sides
+lonkka - hip
+lonkat - hips
+peppu - butt
+takapuoli - butt
+kainalo - armpit
+kainalot - armpits
+
+käsi - hand, arm
+kädet - hands, arms
+käsivarsi - arm
+käsivarret - arms
+kämmen - palm of hand
+kämmenet - palm of hands
+kädenselkä - back of hand
+kädenselät - back of hands
+nyrkki, nyrkit - fist, fists
+sormi, sormet - finger, fingers
+etusormi, etusormet - index finger, index fingers
+peukalo, peukalot - thumb, thumbs
+keskisormi, keskisormet - middle finger, middle fingers
+nimetön, nimettömät - ring finger, ring fingers
+pikkurilli, pikkurillit - little finger, little fingers
+kynsi, kynnet - nail, nails
+ranne, ranteet - wrist, wrists
+kyynärpää, kyynärpäät - elbow, elbows
+kyynärvarsi, käsivarret - forearm, forearms
+olkapää, olkapäät - shoulder, shoulders
+olkavarsi, olkavarret - upper arm, upper arms
+jalka, jalat - leg, or foot
+jalkaterä, jalkaterät - foot, feet
+jalkapohja, jalkapohjat - sole of foot, soles of feet
+kantapää, kantapäät - heel, heels
+polvi - knee
+polvet - knees
+nilkka, nilkat - ankle, ankles
+pohje, pohkeet - calf, calves
+sääri - shin
+sääret - shins
+reisi - thigh
+reidet - thighs
+lantio - pelvis
+varvas - toe
+varpaat - toes
+
+huuli - lip
+huulet - lips
+kylki - side
+kyljet - sides
+kynsi - nail
+kynnet - nails
+kyynärvarsi - forearm
+kyynärvarret - forearms
+käsi - hand
+kädet - hands
+olkavarsi - upper arm
+olkavarret - upper arms
+polvi - knee
+polvet - knees
+reisi - thigh
+reidet - thighs
+ripsi - eyelash
+ripset - eyelashes
+sormi - finger
+sormet - fingers
+sääri - shin
+sääret - shins
+
+jalka - foot
+jalat - feet
+korva - ear
+korvat - ears
+kämmen - palm
+kämmenet - palms
+lonkka - hip
+lonkat - hips
+nilkka - ankle
+nilkat - ankles
+rinta - breast
+rinnat - breasts
+silmä - eye
+silmät - eyes
+
+hammas - tooth
+hampaat - teeth
+ien - gum
+ikenet - gums
+pohje - calf
+pohkeet - calves
+ranne - wrist
+ranteet - wrists
+sierain - nostril
+sieraimet - nostrils
+varvas - toe
+varpaat - toes
+
+# At the Doctors – Lääkärillä
+
+lääkärillä - at the doctor's
+Mikä sinua vaivaa? - Whats wrong with you?
+Mikä teitä vaivaa? - Whats wrong with you (politer)?
+Minkälaista vaivaa teillä on? - Whats troubling you?
+Mikä tuo sinut tänne? - What brings you here?
+Milloin olet viimeksi käynyt lääkärillä? - When have you last been at the doctors?
+Milloin nämä oireet alkoivat? - When did these symptoms start?
+Kuinka kauan nämä oireet ovat jatkuneet? - How long have these symptoms continued?
+Kuinka kauan sinulla on ollut yskä? - How long have you had a cough?
+Onko sinulla ollut kuumetta? - Have you had a fever?
+Onko sinulla kuumetta? - Do you have a fever?
+Onko lämpöä ollut? - Have you had a fever?
+Mihin sattuu? - Where does it hurt?
+Missä tilanteessa kipu tulee? - In what situations does it hurt?
+Onko tämä kipeä tästä kohdasta? - Does it hurt in this spot?
+Sattuuko tämä? - Does this hurt?
+Kuinka voimakasta kipu on? - How strong is the pain?
+Onko teillä ennen ollut tällaisia oireita? - Have you had these kinds of symptoms before?
+Harrastatko mitään liikuntaa? - Do you do any sports?
+Mitä olet syönyt? - What have you eaten?
+Mitä olet juonut? - What have you drunk?
+Oletko syönyt mitään erikoista? - Have you eaten anything unusual?
+Muistatko yhtään, milloin tuo tapahtui? - Can you at all recall when that happened?
+Muistatko yhtään, mikä lääke se oli? - Can you at all recall what medicine that was?
+Onko sinulla allergioita? - Do you have allergies?
+Otatko tällä hetkellä mitään lääkkeitä? - Are you currently using any medication?
+Onko sinulla muuta kuin tämä lääke käytössä? - Are you using any medicines besides this?
+Miten olet nukkunut viime aikoina? - How have you slept lately?
+Oletko koskaan ollut leikkauksessa? - Have you ever been in surgery?
+
+Minua pyörryttää. - I feel dizzy.
+Minä olen sairas. - Im sick.
+Minä voin pahoin. - I feel sick.
+Minulla on huono olo. - I feel bad.
+Minä olen vilustunut. - I have a cold.
+Tähän koskee. - It hurts here.
+Minua oksettaa. - I feel like throwing up / I'm nauseous.
+Olen oksentanut. - I have thrown up.
+Minulla on kuumetta. - I have a fever.
+Minulla ei ole kuumetta. - I dont have a fever.
+Olen saanut haavan. - I have cut myself.
+Olen polttanut itseni. - Ive burned myself.
+Olen kaatunut. - Ive fallen.
+Selkä on kipeä. - My back hurts.
+Selkää särkee. - My back hurts.
+Minulla on selkä kipeä. - My back hurts.
+Käärme on purrut minua. - A snake bit me.
+Minulla on yhtäkkiä alkanut särkeä päätä. - Ive started to get headaches suddenly.
+Pari viikkoa sitten alkoi sattua tähän kohtaan. - A few weeks ago it started hurting here.
+En ole pystynyt kävelemään normaalisti. - I havent been able to walk normally.
+En ole pystynyt kumartumaan. - I havent been able to bend over.
+Niskani tuntuu todella jäykältä. - My neck feels really stiff.
+Hengittäminen on vaikeaa. - Its hard to breathe.
+Minulla on kovia pääkipuja. - I have terrible headaches.
+Minulla on ripuli. - I have diarrhea.
+Vatsaan sattuu todella paljon. - My stomach really hurts.
+Niska on jumissa. - My neck is stuck.
+
+Riisu alusvaatteisiisi. - Strip down to your underwear.
+Riisu alusvaatteisillesi. - Strip down to your underwear.
+Ota paita pois. - Remove your shirt.
+Riisu paitasi. - Remove your shirt.
+Otapa kenkä pois. - Please remove your shoe.
+Hengitä sisään! - Breathe in!
+Hengitä ulos! - Breathe out!
+Hengitä ihan normaalisti! - Just breathe normally!
+Hengitä ulos hitaasti! - Breathe out slowly!
+Pidätä hengitystäsi! - Hold your breath!
+Älä pidätä hengitystäsi. - Dont hold your breath.
+Tutkitaan vähän! - Lets check this out!
+Punnitaan sinut - Lets weigh you (singular).
+Punnitaan teidät. - Lets weigh you (plural).
+Mikä verran painatte? - How much do you weigh?
+Kurkistetaan korviin. - Lets take a look in your ears.
+Anna kun kuuntelen keuhkoja. - Let me listen to your lungs.
+Mitataan verenpainetta. - Lets measure your blood pressure.
+Katsotaanpa sitten verenpaineet. - Lets look at the blood pressure then.
+Näytä kieltäsi. - Show your tongue.
+Nousepa seisomaan. - Please stand up.
+
+Verenpaine on (hieman) liian korkea. - The blood pressure is (a little) too high.
+Verenpaineesi on matala. - Your blood pressure is low.
+Älä huoli. - Dont worry.
+Mitään turvotusta ei näy. - There is no swelling visible.
+Sinun pitää käydä rokotuksessa. - You need to get vaccinated.
+Tarvitset jäykkäkouristusrokotuksen. - You need a vaccine for tetanus.
+Kirjoitan sinulle lähetteen silmälääkärille. - Ill write you a referral to an eye specialist.
+Biopsia osoittaa kasvaimen. - The biopsy shows a tumor.
+Testitulokset ovat saapuneet. - The test results have come in.
+Verikokeessa ei näkynyt mitään erikoista. - There was nothing special visible in the blood test.
+Verikokeessa ei löytynyt viruksen vasta-aineita. - The blood test didnt detect any antibodies to the virus.
+Verikokeessa ei todettu mitään poikkeavaa. - There were no abnormalities in the blood tests.
+Testitulokset saapuvat parissa päivässä. - The test results will arrive in a couple of days.
+Kirjoitan sinulle reseptin. - Ill write you a prescription.
+Sinulla on sähköinen resepti. - You have an electronic prescription.
+Paranet todennäköisesti parissa päivässä. - You will probably recover in a couple of days.
+Oireet eivät viitaa mihinkään vakavampaan. - The symptoms dont imply anything more serious.
+Kirjoitan sinulle kolmen päivän sairausloma. - Ill write you three days of sickness leave.
+
+Mene kotiin ja lepää. - Go home and rest.
+Ota tämä lääke kolme kertaa päivässä. - Take this medicine three times a day.
+Ota tämä lääke heti aamulla. - Take this medicine right away in the morning.
+Ota tämä lääke ennen nukkumaanmenoa. - Take this medicine before bedtime.
+Käy apteekissa hakemassa nämä lääkkeet. - Go get these medicines from the pharmacy.
+Juo runsaasti nestettä mutta vältä alkoholia. - Drink a lot of fluids but avoid alcohol.
+Varaa uusi vastaanottoaika viikon päästä. - Reserve a new apointment for next week.
+Ota yhteyttä, jos oireet jatkuvat. - Contact us if the symptoms persist.
+Katsotaan, miltä se kahden kuukauden päästä näyttää. - Lets see how it looks two months from now.
+
+# Bones and Intestines – Luut ja Sisäelimet
+
+luut - bones
+häntäluu - tail bone
+kylkiluu - rib
+kyynärluu - ulna
+lantioluu - pelvic bone
+lapaluu - shoulder blade
+nenäluu - nasal bone
+nikamat - vertebrae
+olkaluu - humerus
+poskiluu - cheekbone
+pääkallo - skull
+rintalasta - sternum
+rystyset - knuckles
+selkäranka - spine
+solisluu - clavicle
+
+Sisäelimet - Intestines
+haima - pancreas
+keuhkot - lungs
+kohtu - womb
+laskimo - vein
+maksa - liver
+mahalaukku - stomach
+munasarja - ovaries
+munuaiset - kidneys
+paksusuoli - colon
+perna - spleen
+peräsuoli - rectum
+ohutsuoli - small intestine
+sappirakko - gall bladder
+suoli - bowel, gut
+sydän - heart
+umpisuoli - appendix
+valtimo - artery
+verisuoni - blood vessel
+virtsarakko - bladder
+aivot - brain
+
+# Being Sick and Illnesses – Finnish Vocabulary
+
+Minulla on - I have
+Minulla oli - I had
+ahdistushäiriö - anxiety disorder
+aivohalvaus - a stroke
+aivotärähdys - a concussion
+ajos, paise - an abcess
+allergia - allergy
+anemia - anemia
+auringonpistos - sunstroke
+astma - asthma
+bronkiitti - bronchitis
+emätintulehdus - vaginal infection
+epilepsia - epilepsy
+eturauhassyöpä - prostate cancer
+flunssa - flu, influenza
+heinänuha - hay-fever
+hengitysvaikeuksia - difficulty breathing
+ihotauti - skin disease
+ihottuma - a rash
+inkontinenssi - incontinence
+keskenmeno - miscarriage
+keuhkokuume - pneumonia
+kitarisantulehdus - tonsillitis
+korvatulehdus - ear infection
+lavantauti - typhoid
+leukemia - leukemia
+malaria - malaria
+masennus - depression
+merisairaus - sea-sickness
+migreeni - migraine
+munuaiskivi - kidney stone
+nivelreuma - arthritis
+noidannuoli - lumbago
+
+närästys - heartburn
+pahoinvointi - nausea
+paleltuma - frostbite
+paniikkikohtaus - panic attack
+polio - polio
+rintasyöpä - breast cancer
+sairaus - illness
+tartunta - infection
+tuberkuloosi - tuberculosis
+raskausmyrkytys - pre-eclampsia
+reumatismi - rheumatism
+ripuli - diarrhea
+ruokamyrkytys - food poisoning
+sappikivi - gall stone
+selkäsärky, selkäkipu - back ache
+sikotauti - mumps
+sokeritauti, diabetes - diabetes
+sokki - shock
+sukupuolitauti - venereal disease
+sydänkohtaus - heart attack
+sydänvika - heart problem
+syöpä - cancer
+trauma - trauma
+traumaperäinen stressihäiriö - PTSD
+tuhkarokko - scarlet fever
+ummetus - constipation
+umpisuolentulehdus - appendicitis
+unettomuus - insomnia
+vatsahaava - stomach ulcer
+vesirokko - chicken pox
+
+Olen sairas. - Im sick.
+Minulla on huono olo. - I dont feel well.
+En voi hyvin. - Im not doing well.
+En tiedä, mikä minua vaivaa. - I dont know whats wrong with me.
+Tarvitsen lääkärin. - I need a doctor.
+Tarvitsen lääkettä. - I need medication.
+Haluan varata ajan lääkärille. - I want to make an appointment with a doctor.
+Voisitko soittaa ambulanssin? - Could you call an ambulance?
+Tarvitsen lääkärintodistuksen. - I need a doctors note.
+En voi tulla kouluun tänään. - I cant come to school today.
+En voi tulla töihin tänään. - I cant come to work today.
+
+# Birds – Lintu – Linnut
+
+lintu - bird 
+linnut - birds
+
+fasaani - pheasant
+haikara - stork
+hanhi - goose
+harakka - magpie
+haukka - hawk
+joutsen - swan
+kakadu - cockatoo
+kanahaukka - goshawk
+kivitasku - wheatear
+kolibri - hummingbird
+korppi - raven
+kotka - eagle
+kottarainen - starling
+kuovi - curlew
+kurki - crane
+kyyhky - dove
+käki - cuckoo
+leivonen - lark
+lokki - gull
+maakotka - golden eagle
+metso - wood grouse
+metsästyshaukka - falcon
+naakka - rook
+
+närhi - jay
+palokärki - black woodpecker
+peipponen - chaffinch
+pelikaani - pelican
+pingviini - penguin
+pulu - pigeon
+punatulkku - bullfinch
+pääskynen - swallow
+pöllö - owl
+rastas - fieldfare
+riikinkukko - peacock
+satakieli - nightingale
+sorsa - wild duck
+strutsi - ostrich
+talitiainen - great tit
+teeri - black grouse
+tervapääsky - swift
+tiira - tern
+tikka - woodpecker
+tilhi - waxwing
+törmäpääsky - bank swallow
+varis - crow
+varpunen - sparrow
+västäräkki - wagtail
+
+haukkametsästys - falconry
+hautoa munia - to brood eggs
+häkkilintu - cage bird
+höyhen - feather
+kuoriutua munasta - to hatch
+lentää - to fly
+liitäminen - gliding flight
+linnunlaulu - bird vocalization
+linnunparvi - bird flock
+linnunpesä - birds nest
+linnunpoikanen - chick, nestling
+linnunpönttö - nest box
+lintubongaus - bird watching
+lintuhäkki - aviary
+
+munia - to lay eggs
+muuttolintu - migratory bird
+nokka - beak
+pesintä - nesting
+pesiä - to nest
+petolintu - bird of prey
+pyrstö - tail
+pyrstösulat - tail feathers
+ruokkia - to feed
+räpylät - flippers
+siipi - wing
+siivet - wings
+sulka - feather, plume
+untuvat - down feathers
+
+# Fish and Sea Creatures
+
+Kalat - Fish
+makean veden kala - freshwater fish
+suolaisen veden kala - salt water fish
+ahven - perch
+ankerias - eel
+delfiini - dolphin
+harjus - greyling
+harmaanieriä - lake trout
+hauki - pike
+kampela - flounder
+kapakala - dried cod
+karppi - carp
+kiiski - ruffe
+kirjolohi - rainbow trout
+kolja - haddock
+kuha - pikeperch
+kuore - smelt
+lahna - bream
+lohi - salmon
+makrilli - mackerel
+meriahven - sea bass
+meriantura - sole
+merilohi - Atlantic salmon
+meritaimen - sea trout
+miekkakala - swordfish
+miekkavalas - killer whale
+miljoonakala - guppy
+muikku - vendace
+
+Lisää kaloja - More fish
+mullo - mullet
+nahkiainen - lamprey
+nieriä - char
+pallas - halibut
+pallokala - pufferfish
+piikkikampela - turbot
+piraija - piranha
+puna-ahven - red snapper
+punakampela - plaice
+puronieriä - brook trout
+rausku - manta ray
+ruutana - sturgeon
+ryhävalas - humpback whale
+sardelli - anchovy
+seepia - cuttlefish
+seiti - haddock
+siika - lake whitefish
+silakka - Baltic herring
+silli - herring
+sinivalas - blue whale
+suutari - tench
+särki - roach
+säyne - ide, chub
+taimen - trout
+tiikerihai - tiger shark
+tonnikala - tuna
+turska - cod
+
+Merenelävät - Sea animals
+simpukka - clam, mussel
+rapu - (hard-shell) crab
+äyriäinen - crayfish
+hummeri - lobster
+osteri - oyster
+katkarapu - prawn, shrimp
+langustirapu - spiny lobster
+merihevonen - seahorse
+meritähti - seastar
+kalmari - squid
+meduusa - jellyfish
+mustekala - octopus
+merimakkara - sea cucumber
+
+Muita sanoja - Other words
+meressä - in a/the sea
+järvessä - in a/the lake
+aalto - wave
+aallot - waves
+vedenpinta - surface of the water
+meren pohja - seabed
+evä - fin
+suomu - scale
+selkärangaton - invertebrate
+lonkero - tentacle
+merirokko - barnacle
+pyrstö - fish tail
+koralli - coral
+plankton - plankton
+
+# Insects – Animals – Eläimet
+
+hyönteinen - insect
+ötökkä - bug
+kärpänen - fly
+hyttynen - mosquito
+sääski - mosquito
+perhonen - butterfly
+ampiainen - wasp
+mehiläinen - bee
+kimalainen - bumblebee
+paarma - horsefly
+kovakuoriainen - beetle
+leppäkerttu - ladybug
+sudenkorento - dragonfly
+heinäsirkka - grasshopper
+muurahainen - ant
+hämähäkki - spider
+mato - worm
+punkki - tick
+kirppu - flea
+täi - louse
+lude - bedbug
+torakka - cockroach
+satiainen - groin louse
+
+loinen - parasite
+syöpäläiset - vermin
+toukka - larva
+verkkosilmät - compound eyes
+siipi - wing
+pölyttäjä - pollinator
+munia - to lay eggs
+parvi - swarm
+kuningatar - queen
+kuhnuri - drone
+siitepöly - pollen
+tuntosarvet - antennae
+mehiläisyhdyskunta - bee colony
+mehiläispesä - beehive
+hunajakenno - honeycomb
+parveilu - swarming
+muurahaiskeko - ant hill
+
+# Mammals – Animals – Eläimet
+
+nisäkäs - mammal
+ahma - wolverine
+apina - monkey
+delfiini - dolphin
+dromedaari - dromedary
+fretti - ferret
+gepardi - cheetah
+gorilla - gorilla
+haisunäätä - skunk
+hamsteri - hamster
+hevonen - horse
+hiiri - mouse
+hirvi - moose
+hylje - seal
+härkä - ox
+ihminen - human
+ilves - lynx
+jaguaari - jaguar
+jänis - rabbit
+karhu - bear
+karitsa - lamb
+karja - cattle
+
+karju - boar
+kettu - fox
+kirahvi - giraffe
+kissa - cat
+koala - koala
+kojootti - coyote
+kuusipeura - fallow deer
+lammas - sheep
+lehmä - cow
+leijona - lion
+leopardi - leopard
+lepakko - bat
+liito-orava - flying squirrel
+majava - beaver
+marsu - guinea pig
+metsäkauris - roe deer
+mursu - walrus
+myyrä - mole
+mäyrä - badger
+naali - arctic fox
+norsu - elephant
+näätä - marten
+
+orava - squirrel
+ori - stallion
+panda - panda
+peura - caribou
+poro - reindeer
+pukki - billy goat
+saksanhirvi - red deer
+sarvikuono - rhino
+saukko - otter
+siili - hedgehog
+sika - pig
+sonni - bull
+supikoira - raccoon dog
+susi - wolf
+tamma - mare
+tiikeri - tiger
+valas - whale
+varsa - foal
+vasikka - calf
+visentti - bison
+vuohi - goat
+
+# Pets – Lemmikit – Lemmikkineläin
+
+Lemmikit - Pets
+akvaariokala - aquarium fish
+gerbiili - gerbil
+hamsteri - hamster
+hiiri - mouse
+hämähäkki - spider
+kanarialintu - canary
+kani - rabbit
+kilpikonna - turtle
+kissa - cat
+koira - dog
+kultakala - goldfish
+käärme - snake
+marsu - guinea pig
+lisko - lizard
+papukaija - parrot
+rotta - rat
+
+allerginen (koirille) - allergic (to dogs)
+akvaario - aquarium
+eläinlääkäri - veterinarian
+eläintarvikekauppa - pet supply store
+häkki - cage
+kanikoppi - rabbit hutch
+kenneli - kennel
+luikerrella - to slither
+omistaja - owner
+pitää lemmikkieläimiä - to have pets
+reviiri - territory
+terraario - terrarium
+visertää - to chirp
+
+# Reptiles – Animals – Eläimet
+
+animals - eläimet
+matelija - reptile
+käärme - snake
+kyykäärme - adder
+rantakäärme - grass snake
+kobra - cobra
+silmälasikäärme - spectacled cobra
+sisilisko - lizard
+kilpikonna - turtle
+alligaattori - alligator
+krokotiili - crocodile
+kaimaani - caiman
+suokilpikonna - terrapin
+sammakko - frog
+rupisammakko - toad
+etana - snail
+kuningasboa - boa constrictor
+
+keuhkot - lungs
+munia - to lay eggs
+hautoa munia - to bury eggs
+lamauttaa saalis - to paralyze prey
+alkio - embryo
+suomu - scale
+raajaton - legless
+vaihtolämpöinen - cold-blooded
+horros - lethargy
+kuristaa - to strangle
+myrkkykäärme - venomous snake
+kuristajakäärme - contrictor
+saalis - prey
+paikoiltaan irtoavat leuat - loose jaws
+käärmeennahka - snake skin
+uusia nahkansa - to shed its skin
+luoda nahka - to molt
+kaksihaarainen kieli - forked tongue
+terraario - terrarium
+irrottaa häntä - to shed tail
+talvihorros - hibernation
+koiras - male
+naaras - female
+
+# Saying Thank You in Finnish – Kiitos avusta, Kiitti sulle, Kiitoksia kahvista
+
+Kiitos paljon! - Thanks a lot!
+Kiitos todella paljon! - Thank you very much!
+Paljon kiitoksia! - Thanks a lot!
+Kiitti! Tänks! Tattis! - Thanks! (spoken language)
+Sydämelliset kiitokset! - Heartfelt thanks!
+Lämmin kiitos! - Warm thanks!
+Lämpöiset kiitokset! - Warm thanks!
+Tuhannet kiitokset! - Many thanks! "thousands"
+Iso kiitos teille! - Big thanks to you!
+Kiitos oikein paljon! - Thanks very much!
+Suurkiitos! - Big thanks!
+Suurkiitokset! - Many thanks!
+Kiitos ja kumarrus! - "Thanks and a bow" (ie. my most humble thanks)
+
+Kiitos, Matti! - Thanks, Matti!
+Kiitos, kultaseni. - Thank you, darling.
+Kiitos, arvoisa puhemies. - Thank you Mr President.
+Kiitos sinulle! - Thank you!
+Kiitos sinulle, äiti! - Thank you, mother!
+Kiitos sulle! Kiitti sulle! - Thank you! (spoken)
+Kiitos teille, ystävät! - Thank you, friends!
+Lämmin kiitos teille! - Warm thanks to you!
+Kiitos teille kaikille! - Thank you all of you!
+Kiitos teille jokaiselle! - Thanks to each of you!
+Suuri ja lämmin kiitos teille! - A big and warm thank you! (plural)
+Kiitos teille kaikille avustanne! - Thanks to all of you for your help!
+Kiitos kaikille osallistujille! - Thanks to all the participants!
+Kiitos kaikille ihanille asiakkaillemme! - Thanks to all our wonderful customers!
+Kiitos kaikille työkavereille! - Thanks to all co-workers!
+Kiitos koko työryhmälle! - Thanks to the whole team!
+Iso kiitos koko tiimille! - A big thanks to the whole team!
+Erityiskiitos Hannalle! - Special thanks to Hanna!
+Kiitos koko henkilökunnalle hyvästä hoidosta! - Thanks to the whole staff for the good care!
+Kiitos kaikille kärsivällisyydestä! - Thanks to everyone for the patience!
+
+Kiitos kahvista! - Thanks for the coffee!
+Kiitos ruoasta! - Thanks for the food!
+Kiitos lahjasta! - Thanks for the present!
+Kiitos lahjoista! - Thanks for the presents!
+Kiitos kukista! - Thanks for the flowers!
+Kiitos avusta! - Thanks for the help!
+Kiitos tuesta! - Thanks for the support!
+Kiitos vinkistä! - Thanks for the tip!
+Kiitos neuvosta! - Thanks for the advice!
+Kiitos kaikista neuvoista. - Thanks for all the advice.
+Kiitos kutsusta! - Thanks for the invitation!
+Kiitos viestistä! - Thanks for the message!
+Kiitos kirjeestäsi! - Thanks for your letter!
+Kiitos kyydistä! - Thanks for the ride!
+Kiitos rehellisyydestä. - Thanks for the honesty.
+Kiitos kaikesta! - Thanks for everything!
+Kiitos tästä! - Thanks for this!
+Kiitos seurasta! - Thanks for the company!
+Kiitos ihanasta viikonlopusta! - Thanks for the great weekend!
+Kiitos ihanasta illasta. - Thanks for the wonderful evening.
+Suurkiitokset hauskasta illasta. - Big thanks for the fun evening.
+Kiitos tästä päivästä! - Thanks for this day!
+Kiitos viimeisestä! - Thanks for last time!
+Kiitos viimekertaisesta! - Thanks for last time!
+Kiitos kuluneesta vuodesta! - Thanks for the past year!
+Lämmin kiitos osanotosta. - A warm thanks for your sympathy.
+Kiitos yhteydenotostasi! - Thank you for contacting us!
+Kiitos soitosta. - Thanks for calling.
+Kiitos kysymyksistänne. - Thanks for your (plural) questions.
+Kiitos ilmoittautumisesta! - Thanks for the registration!
+Kiitos palautteestasi! - Thanks for your feedback.
+Kiitos ajastasi. - Thanks for your (singular) time.
+Kiitos ajastanne. - Thanks for your (plural) time.
+Kiitos käynnistä! - Thank you for stopping by!
+Kiitos syntymäpäiväonnitteluista! - Thanks for the birthday wishes!
+Kiitos nopeasta palvelusta! - Thanks for the fast service!
+Kiitos nopeasta vastauksesta. - Thanks for the fast reply.
+Kiitos nopeasta toimituksesta. - Thanks for the fast delivery.
+Kiitos tilauksesta. - Thank you for your order.
+Kiitos hyvästä palvelusta! - Thanks for the good service!
+Kiitos hyvästä yhteistyöstä! - Thanks for the great teamwork!
+
+Kiitos, että tiskasit! - Thanks for washing the dishes.
+Kiitos, että olet siinä. - Thanks for being there.
+Kiitos, että tulit takaisin. - Thanks for coming back.
+Kiitos, kun kävit! - Thanks for visiting!
+Kiitos teille kaikille, että tulitte. - Thanks to all of you for coming.
+Kiitos, kun käytät kasvomaskia. - Thanks for using a face mask.
+Kiitos, kun olet olemassa. - Thanks for existing.
+Kiitos, että kerroit! - Thanks for telling me!
+Kiitos, että kuuntelit. - Thanks for listening.
+Kiitos, että otit meihin yhteyttä. - Thanks for contacting us.
+Kiitos, kun asioit meillä. - Thanks for doing business with us.
+Kiitos, että ilmoitit asiasta hyvissä ajoin. - Thanks for notifying us in good time.
+Kiitos, että vastasit kyselyyn. - Thanks for answering to the survey.
+
+Kiitos jo etukäteen! - Thanks in advance!
+Kiitos ja tervetuloa uudelleen! - Thanks and come again!
+Vielä kerran kiitos teille kaikille. - Thanks once again to all of you.
+Kiitos ja kuulemiin. - Thank you and goodbye.
+Kiitos samoin! - Thank, you too!
+Taivaan kiitos. - Thank heaven.
+Luojan kiitos. - Thank God.
+Jumalan kiitos. - Thank God.
+Kiitos sulle, Jeesuksemme  - Thank you, our Jesus.
+Ei kestä kiittää. - No need to thank (me).
+Ei kiittämistä. - No need to thank (me).
+
+Minä kiitän äitiäni. - I thank my mother.
+Sinä kiität minua turhaan. - You thank me in vain.
+Hän kiittää meitä kaikkia. - She thanks all of us.
+Herra, me kiitämme nimeäsi. - Lord, we thank your name.
+Näinkö te kiitätte minua? - Is this how you (plural) thank me?
+He kiittävät metsän henkeä. - They thank the spirit of the forest.
+Haluan kiittää vanhempiani. - I want to thank my parents.
+Haluan kiittää sinua avusta. - I want to thank you for the help.
+Kiitin häntä kutsusta. - I thanked him for the invitation.
+Kiitämme teitä osallistumisesta. - We thank you for participating.
+En tiedä, miten kiittää sinua. - I dont know how to thank you.
+
+# How to Say Yes and No in Finnish – Kyllä ja Ei
+
+Kyllä. - Yes.
+Joo.  - Yeah.
+Juu. - Yep.
+Kyllä, (minä) tulen. - Yes, Im coming
+
+Puhelinnumerosi on 045-2154989. – Niin. - Your phone number is 045-2154989. – Yeah.
+Olihan se huomenna? – Niin. - It was tomorrow, wasnt it? – Yeah.
+Tulitko bussilla tänne? – Niin. - Did you come here by bus? – Yeah.
+
+Onpas tänään kaunis päivä. – Niin on! - Wow, today is a beautiful day. – Yeah!
+Tämä kakku on vähän epäonnistunut. – Niin on. - This cake is a little bit of a fail. – Yeah, it is.
+Eilen oli hirveä myrsky. – Niin oli. - There was a terrible storm yesterday. – Yeah.
+Huomenna pitää käydä kaupassa – Niin pitää. - We have to go to the store tomorrow – Yes, we do.
+
+Haluatko lisää kahvia? – Joo kiitos. - Do you want more coffee? – Yes, please.
+Haluatko lisää kahvia? – Haluan. - Do you want more coffee? – I do.
+Soitatko minulle illalla? – Soitan, joo. - Will you call me tonight? – I will, yes.
+Soitatko minulle illalla? – Soitan. - Will you call me tonight? – I will.
+Tuleeko Matti tänään? – Tulee. - Will Matti come today? – He will.
+Tuleeko Matti tänään? – Joo, hän tulee. - Will Matti come today? – Yes, he will.
+Kävikö koira jo pissalla? – Kävi. - Has the dog gone to the toilet yet? – He did.
+Kävikö koira jo pissalla? – Kyllä, hän kävi. - Has the dog gone to the toilet yet? – Yes, he did.
+
+Minä istun. - I am sitting. / I sit
+Minä en istu. - I am not sitting. / I don't sit
+Minä haluan. - I want.
+Minä en halua. - I do not want.
+Sinä istut. - You are sitting.
+Sinä et istu. - You do not sit.
+Sinä haluat. - You want.
+Sinä et halua. - You do not want.
+Hän istuu. - He is sitting.
+Hän ei istu. - He does not sit.
+Hän haluaa. - He wants.
+Hän ei halua. - He does not want.
+Me istumme. - We are sitting.
+Me emme istu. - We do not sit.
+Me haluamme. - We want.
+Me emme halua. - We do not want.
+Te istutte. - You are sitting.
+Te ette istu. - You do not sit.
+Te haluatte. - You want.
+Te ette halua. - You do not want.
+He istuvat. - They are sitting.
+He eivät istu. - They do not sit.
+He haluavat. - They want.
+He eivät halua. - They do not want.
+
+Osaatko uida? – Ei, en osaa uida. - Can you swim? – No, I can't swim.
+Osaatko uida? – En osaa. - Can you swim? – I can't.
+Osaatko uida? – En. - Can you swim? – No.
+
+Saanko tulla? – Ei, et saa tulla. - Can I come? – No, you can't come.
+Saanko tulla? – Et saa. - Can I come? – You can't.
+Saanko tulla? – Et. - Can I come? – No.
+
+Tuleeko Tanja? – Ei, Tanja ei tule. - Is Tanja coming? – No, Tanja is not coming.
+Tuleeko Tanja? – Ei tule. - Is Tanja coming? – She is not coming.
+Tuleeko Tanja? – Ei. - Is Tanja coming? – No.
+
+Haluatteko kahvia? – Ei, emme halua. - Do you want coffee? – No, we don't.
+Haluatteko kahvia? – Emme halua. - Do you want coffee? – We don't.
+Haluatteko kahvia? – Ei. / Emme. - Do you want coffee? – No. / We don't.
+
+Saammeko auttaa? – Ei, ette saa. - Can we help? – No, you can't.
+Saammeko auttaa? – Ette saa. - Can we help? – You can't.
+Saammeko auttaa? – Ei. / Ette. - Can we help? – No. / You can't.
+
+Laulavatko he? – Ei, he eivät laula. - Are they singing? – No, they're not singing.
+Laulavatko he? – Eivät laula. - Are they singing? – They dont sing.
+Laulavatko he? – Ei. / Eivät. - Are they singing? – No. / They're not.
+
+Joukkue pelasi kyllä hyvin tänään. - The team did play well today.
+Minä luulen kyllä, että joulupukilla on paljon hommia. - I do think that Santa has a lot to do.
+Sinun täytyy kyllä tulla huomenna. - You do have to come tomorrow.
+Sinä selviät kyllä avioerosta. - You really will survive the divorce.
+Kyllä me pystymme siihen. - We really can do this.
+Olen kyllä eri mieltä. - I really am of a different opinion.
+En kyllä tiedä mitä ajatella tästä. - I really dont know what to think of this.
+Hän ei kyllä tiedä, missä asun nykyään. - He doesnt know where I live these days.
+
+Juu juu, puhu sinä vain. - Yeah yeah, whatever you say.
+Joopa joo. - Yeah right. (sarcastic)
+Just joo. - Yeah right. (sarcastic)
+No just joo. - Yeah right. (sarcastic)
+No joo. - Yeah, I guess youre right.
+Kyllä kai. - Yeah, I guess.
+Kylläpäs täällä on puhdasta! - Wow, its clean in here!
+Ikävä kyllä se ei ole mahdollista. - Sadly, thats not possible.
+Jaa mää vai? - Huh, are you talking to me?
+Tahdon. - I will. ("Yes" when getting married)
+Eihän siitä tule mitään. - You do know that nothing will come out of this.
+Eipä oikeastaan. - Not really.
+Enpä nyt niin sanoisi. - I wouldnt say that exactly.
+En kylläkään ole varma, mutta eiköhän...? - Im not really sure, but isnt...?
+
+# How to Say "I don't know" in Finnish
+
+En tiedä. - I don't know.
+En tiedä mitään. - I don't know anything.
+En tiedä yhtään. - I don't know at all.
+En tiedä yhtään mitään. - I don't know anything at all.
+En edes tiedä. - I don't even know.
+En vielä tiedä. - I don't know yet.
+En tosiaan tiedä. - I really don't know.
+Enpä tiedä. - I don't know, not sure.
+Valitettavasti en tiedä. - Unfortunately I don't know.
+En tiedä sinusta, mutta... - I don't know about you, but...
+En tunne häntä. - I don't know him.
+En osaa sanoa. - I can't really say.
+En osaa vastata. - I don't know how to answer.
+Ei hajuakaan. - No clue.
+Ei aavistustakaan. - I have no idea.
+Minulla ei ole hajuakaan. - I have no clue.
+En tajua miksi olen täällä. - I don't know why I'm here.
+En mä tiedä. - I don't know (spoken)
+Emmä tiedä. - I don't know (spoken)
+Emmä tiiä. - I don't know (spoken)
+
+En tiedä, mikä sinun ongelmasi on. - I don't know what your problem is.
+En tiedä, mikä minua vaivaa. - I don't know what's wrong with me.
+En tiedä, mikä minuun meni. - I don't know what got into me.
+En tiedä, mikä se on. - I don't know what it is.
+
+En tiedä, mitä täällä on tekeillä. - I don't know what's going on here.
+En tiedä, mitä te haluatte minusta. - I don't know what you want from me.
+En tiedä, mitä vastata tuohon. - I don't know what to reply to that.
+En tiedä mitä tehdä. - I don't know what to do.
+En tiedä, mitä muutakaan tekisin. - I don't know what else I would do.
+En tiedä, mitä tapahtui. - I don't know what happened.
+En tiedä, mitä on tapahtunut. - I don't know what has happened.
+En tiedä, mitä haluan. - I don't know what I want.
+En tiedä mitä ajatella siitä. - I don't know what to think of that.
+
+En tiedä miksi. - I don't know why.
+En tiedä, miksi tulisin. - I don't know why I'd come.
+En tiedä, miksi tulin. - I don't know why I came.
+En tiedä, miksi olen niin väsynyt. - I don't know why I'm so tired.
+En tiedä, miksi kysyt minulta. - I don't know why you're asking me.
+En tiedä, miksi sitä kutsutaan. - I don't know what you call that.
+En tiedä, miksi opiskelen suomea. - I don't know why I study Finnish.
+En tiedä miksi, mutta... - I don't know why, but...
+
+En tiedä miten. - I don't know how.
+En tiedä, miten se toimii. - I don't know how it works.
+En tiedä, miten jatkaa. - I don't know how to go on.
+En tiedä, miten hän teki sen. - I don't know how he did it.
+En tiedä, miten se tapahtui. - I don't know how it happened.
+En tiedä, miten se kirjoitetaan. - I don't know how you write that.
+En tiedä, miten se sanotaan. - I don't know how it is said.
+En tiedä, miten aloittaisin. - I don't know how I should start.
+En tiedä, miten se on mahdollista. - I don't know how it's possible.
+
+En tiedä, kuinka kauan se kestää. - I don't know how long it takes.
+En tiedä, kuinka monta päivää nukuin. - I don't know how many days I slept.
+
+En tiedä, milloin syntymäpäiväsi on. - I don't know when your birthday is.
+En tiedä, milloin hän tulee. - I don't know when he's coming.
+En tiedä, milloin hän palaa. - I don't know when he'll be back.
+En tiedä, milloin juna tulee. - I don't know when the train comes.
+
+En tiedä, mistä hän tulee. - I don't know where he comes from.
+En tiedä, mistä aloittaisin. - I don't know where to start.
+En tiedä, mistä sinä puhut. - I don't know what you're talking about.
+En tiedä, mistä on kyse. - I don't know what it's about
+En tiedä, mistä se johtuu. - I don't know what causes this.
+En tiedä mistään mitään. - I don't know anything about anything.
+
+En tiedä mihin mennä. - I don't know where to go.
+En tiedä, mihin olen menossa. - I don't know where I'm going.
+En tiedä, mihin laitoin puhelimeni. - I don't know where I put my phone.
+
+En tiedä, missä puhelimeni on. - I don't know where my phone is.
+En tiedä, missä kirjasto on. - I don't know where the library is.
+En tiedä, missä olisin ilman häntä. - I don't know where I'd be without him.
+En tiedä, missä voin puhua suomea. - I don't know where I can speak Finnish.
+
+En tiedä, kuka olen. - I don't know who I am.
+En tiedä, kuka isäni on. - I don't know who my father is.
+En tiedä, kuka on sen tehnyt. - I don't know who has done it.
+En tiedä, kenelle voin puhua tästä. - I don't know who I can talk to about this.
+En tiedä, kenelle muulle soittaisi. - I don't know who else I would call.
+En tiedä, kenestä puhut. - I don't know who you're talking about.
+En tiedä, kenestä pidän enemmän. - I don't know who I like more.
+En tiedä, ketä rakastan enemmän. - I don't know who I love more.
+En tiedä, ketä äänestäisin. - I don't know who I should vote for.
+En tiedä, kenen kanssa voin puhua. - I don't know who I can talk with.
+
+En tiedä, tuleeko hän vai ei. - I don't know if he's coming or not.
+En tiedä, onko hän vielä elossa. - I don't know if he's still alive.
+En tiedä, voinko auttaa. - I don't know if I can help.
+En tiedä, muuttuuko hän ikinä. - I don't know if he will ever change.
+En tiedä, olenko kertonut tästä. - I don't know if I've talked about this.
+En tiedä, johtuuko se minusta. - I don't know if it's because of me.
+
+En tiedä vastausta. - I don't know the answer.
+En tiedä verkon salasanaa. - I don't know the wifi password.
+En tiedä tarkkoja yksityiskohtia. - I don't know the exact details.
+En tiedä nykyhintaa. - I don't know the current price.
+En tiedä tuon miehen nimeä. - I don't know that man's name.
+En tiedä tarkkaa päivämäärää. - I don't know the exact date.
+En tiedä osoitettasi. - I don't know your address.
+
+# Mitä Kuuluu? Miten Menee? – "How are you?" in Finnish
+
+Mitä kuuluu? - How are you?
+Hyvää, kiitos. - Fine, thanks
+Ihan hyvää, kiitos. - Pretty good, thanks.
+Hyvää vain, kiitos. - Just fine, thanks.
+Hyvää kuuluu. - I'm fine.
+
+Miten menee? - How is it going?
+Hyvin, kiitos. - Fine, thanks
+Ihan hyvin, kiitos. - Pretty well, thanks.
+
+Mitä sinulle kuuluu? - How are you?
+Mitä äidille kuuluu? - How's mother?
+Mitä miehellesi kuuluu? - How is your husband?
+Mitä Antille kuuluu? - How's Antti?
+Mitä sinulle ja Antille kuuluu? - How are you and Antti?
+Miten sinulla menee? - How are you doing?
+Miten äidillä menee? - How is mother doing?
+Miten miehelläsi menee? - How's your husband doing?
+Miten Antilla menee? - How's Antti doing?
+Miten sinulla ja Antilla menee? - How are you and Antti doing?
+
+Mitä kuuluu? – Hyvää, entä sinulle? - How are you? – Good, what about you?
+Miten menee? – Hyvin, entä sinulla? - How are you doing? – Well, what about you?
+Miten menee? – Hyvin, miten teillä? - How are you doing? – Good, what about you (plural)?
+
+Mitä kuuluu? - How are you?
+Mitä sinulle kuuluu? - How are you?
+Miten menee? - How are you doing?
+Miten sinulla menee? - How are you doing?
+Miten sinulla on mennyt? - How have you been?
+Miten voit? - How are you? Are you alright?
+Kuinka voit? - How are you? Are you alright?
+Mitä kuuluu nykyään? - How are you these days?
+Miten menee koulussa? - How are things at school?
+Miten menee töissä? - How are things at work?
+Miten menee kotona? - How are things at home?
+Kuinka pyyhkii? - What's up? How's it going? (informal)
+Kuinka hurisee? - What's up? How's it going? (informal)
+Kuis hurisee? - What's up? How's it going? (informal)
+Kuis sul hurisee? - What's up with you (informal)
+Mitä jätkä? - What's up dude? (informal)
+Mitäs jätkä? - What's up dude? (informal)
+Mitäs jätkät? - What's up my dudes? (informal)
+Mitä jätkä meinaa? - What's up dude? What are you up to? (informal)
+Mitä mies? - What's up man? (informal)
+No mitä mies? - So what's up man? (informal)
+Mitä oot puuhaillu? - What have you been up to? (informal)
+Kui sul on menny? - How have you been? (informal)
+Onks kaikki ok? - Is everything alright? (informal)
+
+Mitä kuuluu? – Hyvää kiitos. Entä sinulle? - Good, thanks. What about you?
+Mitä kuuluu? – Kiitos hyvää. Entä sinulle? - Good, thanks. What about you?
+Miten menee? – Hyvin kiitos. Entä sinulla? - Good, thanks. What about you?
+Miten menee? – Kiitos hyvin. Entä sinulla? - Good, thanks. What about you?
+Mitä kuuluu? – Ihan hyvää. Kiitos kysymästä. - Good, thanks for asking.
+Miten menee? – Ihan hyvin. Kiitos kysymästä. - Good, thanks for asking.
+
+Entä sinulle? - What about you?
+Entäpä sinulle? - What about you?
+Entä itsellesi? - What about you?
+Entäpä sinulle itsellesi? - What about you?
+Mitä sulle? - What about you? (informal)
+Mitäs sinne? - What about you? (informal)
+Entä sinulla? - What about you?
+Entä sulla? - What about you? (informal)
+Entäs sulla? - What about you? (informal)
+
+(Minulle kuuluu) hyvää. - I'm good. I'm fine.
+Hyvää, kiitos. - I'm good, thanks.
+Kiitos, ihan hyvää. - Fine, thanks.
+Oikein hyvää, kiitos! - Very good, thank you!
+Erittäin hyvää, kiitos! - Very good, thank you!
+(Minulla menee) hyvin. - (I'm doing) well.
+(Minulla menee) mainiosti. - (I'm doing) great.
+Loistavasti! - Great!
+Ihan kivasti. - Pretty nice.
+Erittäin hienosti, kiitos. - Very nice, thank you.
+Ihan mukavasti, kiitos. - Quite nicely, thanks.
+Oikein mukavasti, kiitos. - Very nicely, thanks.
+Oikein hyvin, kiitos. - Very well, thanks.
+Ihan hyvin, kiitos! - Just fine, thank you!
+Ihan hyvinhän tässä. - Just fine here.
+Paremmin kuin viime viikolla. - Better than last week.
+
+Ihan hyvää, kiitos. - Pretty good, thanks.
+Ihan kivaa, kiitos. - Pretty nice, thanks.
+Ihan ok:ta, kiitos. - I'm okay, thanks.
+Ihan ookoo, kiitos. - I'm okay, thanks.
+Mitäs tässä. - Nothing much.
+Mitäpä tässä. - Nothing much.
+Ei erikoista. - Nothing special
+Ei mitään erikoista. - Nothing special.
+Eipä tässä mitään erikoista. - Eh, nothing special here.
+Eipä mitään ihmeellistä. - Nothing special.
+Ei kai tässä mitään ihmeempää. - Nothing out of the ordinary, I guess.
+Ei ihmeempiä. - Nothing out of the ordinary.
+Eipä mitään ihmeempiä. - Nothing out of the ordinary.
+Ei kummempaa. - Nothing special.
+Ei kummempia. - Nothing special.
+Ei kai tässä kummempia. - Nothing special here, I guess.
+Ei kurjuutta kummempaa. - No worse than usually.
+Ei valittamista. - Can't complain.
+Ei moittimista. - Can't complain.
+Ei kait sitä mitään. - Nothing special I guess. (informal)
+Sitä samaa vanhaa. - Same old. Same as always.
+Arkea vain. - Same old everyday life.
+Ei hyvää eikä huonoa. - Not bad nor good.
+Nooooh ihan jees. - Eh, pretty okay.
+Ihan normaalisti. - Just like normal.
+Samalla tavalla kuin aina. - Same as always.
+Siinähän se menee. - It's going just fine.
+Siinähän se. - It's going just fine.
+Siinä se menee, hetki hetkeltä. - It's going fine, moment by moment.
+Tässähän tämä. - It's okay. (informal)
+Tässähän tää menee. - It's okay. (informal)
+Tässähän tää. - It's okay. (informal)
+Ihan ok. - I'm fine.
+Ei hassummin. - Not bad.
+
+Ei kovin hyvää. - Not terribly good.
+Ei hyvää. - Not good.
+Ei yhtään hyvää. - Not good at all.
+Huonoa. - Bad.
+Noh, rehellisesti ei kovin hyvää. - Well, honestly not very good.
+Ei kovin hyvää, mutta kiitos kysymästä. - Not terribly good, but thanks for asking.
+Vähän huonoa. - Not so good. "A little bad."
+Noooooh... - Weeell... (followed by a shrug)
+Väsyttää. - I'm tired.
+Eipä kehumista. - Not that great.
+Ei kurjuutta kummempaa. - No more miserable than normally.
+Samaa paskaa päivästä toiseen. - The same shit every day.
+Paskaaks tässä. - Just shit here. (informal)
+Vittuuks tässä. - Just shit here. (informal)
+Ei kovin hyvin. - Not very well.
+Huonosti. - Badly.
+Ei mee kovin hyvin. - It's not going very well. (informal)
+
+Hei Antti, mitä jätkä! Minne oot menossa? - Hey Antti, what's up! Where are you going?
+No, mitä jätkä. Kiva nähdä pitkästä aikaa! - Oh hey dude. It's been a while!
+Mitä jätkä, mitä kuuluu! - Hey dude, what's up!
+Mitä jätkä, mitä uutta? - Hey dude, what's new?
+Kato Teemu, mitäs jätkä! Miten kesä on menny? - Oh hey Teemu, what's up dude! How's summer been?
+
+No, eipä mitään ihmeellistä, kauhea kiire. - Eh, nothing special really, I'm incredibly busy.
+Ihan hyvää, perusarkea ja koulujuttuja. - Pretty good here, basic everyday life and school stuff.
+Eipä mitään erikoista, töitä ja lastenhoitoa. - Nothing special, work and taking care of the kids.
+Hyvää kuuluu! Olen menossa elokuviin. - I'm good! I'm going to the movies.
+Ihan hyvää, just töistä tulin. - Pretty good, I just left work.
+Hyvää! Kesäloman viimeinen viikko menossa. - Good! My last week of symmer vacation.
+Hyvää kuuluu, paitsi töissä on hieman kiirettä. - Good, except that work is a little hectic.
+Ihan jees, tätä normaalia perhe-elämää. - Pretty okay, normal family life stuff.
+Ihan hyvää, varattiin just kesämatka. - Pretty good, we just booked a summer trip.
+Ei kovin hyvää. Olen kipeä. - Not that good. I'm sick.
+
+# Minulla on – Possession (Having Something)
+
+Minulla on yksi lapsi. - I have one child.
+Sinulla on oma huone. - You have your own room.
+Hänellä on vanha talo. - He has an old house.
+Meillä on vanha puhelin. - We have an old phone.
+Teillä on kaksi lasta. - You (plural) have two children.
+Heillä on kissa. - They have a cat.
+Miialla on punainen kynä. - Miia has a red pen.
+Mikolla on silmälasit. - Mikko has glasses.
+
+Minulla ei ole poikaystävää. - I don't have a boyfriend.
+Sinulla ei ole omaa huonetta. - You don't have your own room.
+Hänellä ei ole parveketta. - He doesn't have a balcony.
+Meillä ei ole  perhettä. - We don't have a family.
+Teillä ei ole  autoa. - You (plural) don't have a car.
+Heillä ei ole  kissaa. - They don't have a cat.
+Miialla ei ole punaista kynää. - Miia doesn't have a red pen.
+Mikolla ei ole maitoa. - Mikko doesn't have milk.
+
+Minulla on yksi lapsi. - I have one child.
+Minulla on kaksi lasta. - I have two children.
+Minulla on lapsia. - I have children.
+Onko sinulla vaimo? - Do you have a wife?
+Minulla on vaimo. - I have a wife.
+Minulla on kaunis vaimo. - I have a beautiful wife.
+Minulla ei ole vaimoa. - I don't have a wife.
+Minulla oli vaimo. - I had a wife.
+Minulla on puhelin. - I have a phone.
+Minulla on uusi puhelin. - I have a new phone.
+Minulla ei ole puhelinta. - I don't have a phone.
+Minulla ei ole uutta puhelinta. - I don't have a new phone.
+Minulla ei ollut puhelinta. - I didn't have a phone.
+Minulla on omena. - I have an apple.
+Minulla ei ole omenaa. - I don't have an apple.
+Minulla on omenoita. - I have apples.
+Minulla ei ole omenoita. - I don't have apples.
+Minulla ei ollut omenaa. - I didn't have an apple.
+
+Sinulla on nälkä. - You're hungry.
+Sinulla ei ole nälkä. - You're not hungry.
+Hänellä on jano. - She's thirsty.
+Hänellä ei ole jano. - She's not thirsty.
+Meillä on kuuma. - We're hot.
+Meillä ei ole kuuma. - We're not hot.
+Heillä on kylmä. - They're cold.
+Heillä ei ole kylmä. - They're not cold.
+
+Meillä on kiire. - We're in a hurry.
+Meillä on kiirettä. - We're in a hurry.
+Meillä ei ole kiire. - We're not in a hurry.
+Meillä ei ole kiirettä. - We're not in a hurry.
+Meillä ei ole mikään kiire. - We're not in a hurry. (literally: "We don't have any hurry")
+Meillä ei ole mitään kiirettä. - We're not in a hurry. (literally: "We don't have any hurry")
+
+Onneksi minulla on sinut. - Luckily I have you.
+Hänellä on minut. - He has me.
+Jos minulla ei olisi sinua... - If I didn't have you...
+Voi meitä, kun meillä ei ole teitä. - Poor us, we don't have you (plural).
+
+Asunnossa on ikkuna. - In the apartment there is a window. / The apartment has a window.
+Kirjassa on yli 300 sivua. - In the book there are over 300 pages. / The book has over 300 pages.
+Autossa on neljä rengasta. - The car has four wheels
+Pöydässä on neljä jalkaa. - The table has four legs.
+
+Minun täytyy opiskella. - I have to study.
+Sinun täytyy opiskella. - You have to study.
+Hänen täytyy opiskella. - He/She has to study.
+Meidän täytyy opiskella. - We have to study.
+Teidän täytyy opiskella. - You (plural) have to study.
+Heidän täytyy opiskella. - They have to study.
+Lapsen täytyy opiskella. - The child has to study.
+Miehen täytyy opiskella. - The man has to study.
+Saaran täytyy opiskella. - Saara has to study.
+Matin täytyy opiskella. - Matti has to study.
+
+Sinun täytyy lähteä. - You have to go.
+Sinun pitää lähteä. - You have to go.
+Sinun on pakko lähteä. - You have to go.
+
+Minun täytyy mennä. - I have to go.
+Minun pitää mennä. - I have to go.
+Sinun täytyy mennä. - You have to go.
+Sinun pitää mennä. - You have to go.
+Hänen täytyy mennä. - He has to go.
+Hänen pitää mennä. - He has to go.
+Tytön täytyy mennä. - The girl has to go.
+Tytön pitää mennä. - The girl has to go.
+Meidän täytyy mennä. - We have to go.
+Meidän pitää mennä. - We have to go.
+Teidän täytyy mennä. - You have to go.
+Teidän pitää mennä. - You have to go.
+Heidän täytyy mennä. - They have to go.
+Heidän pitää mennä. - They have to go.
+Tyttöjen täytyy mennä. - The girls have to go.
+Tyttöjen pitää mennä. - The girls have to go.
+
+Minun täytyy opiskella. - I have to study.
+Sinun täytyy imuroida. - You have to vacuum clean.
+Hänen täytyy tiskata. - He/She has to do the dishes.
+Meidän täytyy herätä aikaisin. - We have to wake up early.
+Teidän täytyy käydä kaupassa. - You (plural) have to go to the store.
+Heidän täytyy ostaa leipää. - They have to buy bread.
+Lapsen täytyy kuunnella hyvin. - The child has to listen well.
+Miehen täytyy puhua suomea. - The man has to speak Finnish.
+Vaimon täytyy olla rehellinen. - The wife has to be honest.
+Opiskelijan täytyy olla hiljaa. - The student has to be quiet.
+Pekan täytyy pysyä täällä. - Pekka has to stay here
+Matin täytyy voittaa. - Matti has to win.
+Minun täytyy jäädä ylitöihin tänään. - I have to stay and work overtime today.
+Sinun täytyy lukea monta tenttikirjaa. - You have to read many exam books.
+Hänen täytyy lähteä työmatkalle Kiinaan. - She has to go to China on a work trip.
+Meidän täytyy tehdä lumitöitä pihalla. - We have to shovel the snow in the yard.
+Teidän täytyy muistaa soittaa hammaslääkärille. - You have to remember to call the dentist.
+Heidän täytyy ostaa limsaa juhliin. - They have to buy soda for the party.
+Lyhyen naisen täytyy käyttää korkkareita. - The short woman has to use high heels.
+Miesten täytyy ostaa ruusuja vaimoilleen. - The men have to buy roses for their wives.
+
+Minun täytyy jäädä ylitöihin tänään. - I have to work overtime today.
+Minun ei tarvitse jäädä ylitöihin tänään. - I don't have to work overtime today.
+Sinun pitää lukea monta tenttikirjaa. - You have to read a lot of exam books.
+Sinun ei tarvitse lukea monta tenttikirjaa. - You don't have to read a lot of exam books.
+Hänen on pakko lähteä työmatkalle Kiinaan. - He has to go on a business trip to China.
+Hänen ei tarvitse lähteä työmatkalle Kiinaan. - He doesn't have to go on a business trip to China.
+Meidän pitää tehdä lumitöitä pihalla. - We have to shovel snow in the yard.
+Meidän ei tarvitse tehdä lumitöitä pihalla. - We don't have to shovel snow in the yard.
+Teidän täytyy muistaa soittaa hammaslääkärille. - You have to remember to call the dentist.
+Teidän ei tarvitse muistaa soittaa hammaslääkärille. - You don't have to remember to call the dentist.
+Heidän pitää ostaa limsaa juhliin. - They have to buy soda for the party.
+Heidän ei tarvitse ostaa limsaa juhliin. - They don't have to buy soda for the party.
+Lyhyen naisen on pakko käyttää korkkareita. - A short woman has to wear high heels.
+Lyhyen naisen ei tarvitse käyttää korkkareita. - A short woman doesn't have to wear high heels.
+Miesten täytyy ostaa ruusuja vaimoilleen. - Men have to buy roses for their wives.
+Miesten ei tarvitse ostaa ruusuja vaimoilleen. - Men don't have to buy roses for their wives.
+
+Hän ostaa uuden takin. - He buys a new coat.
+Hänen täytyy ostaa uusi takki. - He has to buy a new coat.
+Minä avaan ikkunan. - I open the window.
+Minun täytyy avata ikkuna. - I have to open the window.
+Sinä korjaat auton. - You fix the car.
+Sinun pitää korjata auto. - You have to fix the car.
+Hän maalaa aidan. - He paints the fence.
+Hänen pitää maalata aita. - He has to paint the fence.
+Me kerromme totuuden. - We tell the truth.
+Meidän täytyy kertoa totuus. - We have to tell the truth.
+Me tarvitsemme isomman asunnon. - We need a bigger apartment.
+Meidän on pakko löytää isompi asunto. - We have to find a bigger apartment.
+Anna haluaa syödä omenan. - Anna wants to eat an apple.
+Annan on pakko syödä omena. - Anna has to eat an apple.
+Te ratkaisette ongelman. - You solve the problem.
+Teidän täytyy ratkaista ongelma. - You have to solve the problem.
+Me löydämme Emman. - We find Emma.
+Meidän täytyy löytää Emma. - We have to find Emma.
+Me hoidamme tämän ensin. - We take care of this first.
+Meidän täytyy hoitaa tämä ensin. - We have to take care of this first.
+Me suljemme ydinvoimalan. - We close the nuclear power plant.
+Meidän täytyy sulkea ydinvoimala. - We have to close the nuclear power plant.
+
+Minä teen ruokaa. - I cook.
+Minun täytyy tehdä ruokaa. - I have to cook.
+Opettaja juo olutta. - The teacher drinks beer.
+Opettajan täytyy juoda olutta. - The teacher must drink beer.
+Sinä keität kahvia. - You make coffee.
+Sinun täytyy keittää kahvia. - You have to make coffee.
+Sinä jatkat elämääsi. - You go on with your life.
+Sinun täytyy jatkaa elämääsi. - You have to go on with your life.
+Minä mietin tätä. - I'm thinking about this.
+Minun täytyy miettiä tätä. - I have to think about this.
+Sinä uskot minua. - You believe me.
+Sinun täytyy uskoa minua. - You have to believe me.
+Hän rakastaa lapsia. - He loves children.
+Hänen täytyy rakastaa lapsia. - He has to love children.
+
+Hänen täytyy ostaa uusi takki. - He has to buy a new coat.
+Hänen ei tarvitse ostaa uutta takkia. - He doesn't have to buy a new coat.
+Meidän täytyy löytää isompi asunto. - We have to find a bigger apartment.
+Meidän ei tarvitse löytää isompaa asuntoa. - We don't have to find a bigger apartment.
+Annan pitää syödä omena. - Anna has to eat an apple.
+Annan ei tarvitse syödä omenaa. - Anna doesn't have to eat an apple.
+Miesten pitää avata ikkuna. - The men have to open the window.
+Miesten ei tarvitse avata ikkunaa. - The men don't have to open the window.
+Opettajan täytyy juoda olutta. - The teacher has to drink a beer.
+Opettajan ei tarvitse juoda olutta. - The teacher doesn't have to drink a beer.
+Minun täytyy keittää kahvia. - I have to make coffee.
+Minun ei tarvitse keittää kahvia. - I don't have to make coffee.
+
+Sinun täytyy lähteä. - You have to go.
+Sinun pitää lähteä. - You have to go.
+Sinun on lähdettävä. - You have to go.
+Sinun tulee lähteä. - You should go.
+Sinun on pakko lähteä. - You have to go.
+Sinun kannattaa lähteä. - You should go.
+Sinun pitänee lähteä. - You should leave.
+Sinun olisi hyvä lähteä. - You'd better go.
+
+# Tykätä and Pitää – Saying You Like Things in Finnish
+
+Minä tykkään - I like          
+Minä pidän - I like          
+Minä en tykkää - I don't like    
+Minä en pidä - I don't like    
+Hän tykkää - He likes        
+Hän pitää - He likes        
+Hän ei tykkää - He doesn't like 
+Hän ei pidä - He doesn't like 
+Minä tykkäsin - I liked         
+Minä pidin - I liked         
+Minä en tykännyt - I didn't like   
+Minä en pitänyt - I didn't like   
+Hän tykkäsi - He liked        
+Hän piti - He liked        
+Hän ei tykännyt - He didn't like  
+Hän ei pitänyt - He didn't like  
+Minä tykkäisin - I would like    
+Minä pitäisin - I would like    
+Minä en tykkäisi - I wouldn't like 
+Minä en pitäisi - I wouldn't like 
+Hän tykkäisi - He would like   
+Hän pitäisi - He would like   
+Hän ei tykkäisi - He wouldn't like
+Hän ei pitäisi - He wouldn't like
+
+Mistä sinä tykkäät? - What do you like?
+Kenestä sinä tykkäät? - Who do you like?
+Tykkäätkö minusta? - Do you like me?
+Pidätkö suklaasta? - Do you like chocolate.
+Mistä ruoasta pidät? - What food do you like?
+Millaisista vaatteista pidät? - What kind of clothes do you like?
+Mistä väristä pidät? - What color do you like?
+Mistä marjoista tykkäät? - What kind of berries do you like?
+Millaisesta taiteesta tykkäät? - What kind of art do you like?
+Millaisista kukista pidät? - What kind of flowers do you like?
+Pidätkö oluesta? - Do you like beer?
+Mistä väristä pidät eniten? - What color do you like the most?
+Tykkäätkö kalliista vaatteista? - Do you like expensive clothes?
+Etkö pidä opettajasta? - Don't you like the teacher?
+Eikö Ari tykkää vedestä? - Doesn't Ari like water?
+
+Minä tykkään sinusta. - I like you.
+Minä pidän sinusta. - I like you.
+Minä pidän suklaasta. - I like chocolate.
+En tykkää makeasta. - I don't like sweet stuff.
+Me pidämme lasagnesta. - We like lasagna.
+Naiset pitävät viinistä. - The women like wine.
+Minä en pidä oluesta. - I don't like beer.
+Minä tykkään talvesta. - I like winter.
+Minä en tykkää kesästä. - I don't like summer.
+Kalle pitää koulusta. - Kalle likes school.
+Minä tykkäsin jalkapallosta. - I liked soccer.
+Antti ei tykkää opettajasta. - Antti doesn't like the teacher.
+Liisa tykkää Facebookista. - Liisa likes Facebook.
+Lapsi pitää maidosta. - The child likes milk.
+Mies ei tykkää viinistä. - The man doesn't like wine.
+En pidä hänestä. - I don't like him/her.
+En koskaan pitänyt hänestä. - I never liked him/her.
+Yritin pitää hänestä. - I tried to like him/her.
+
+Pidän mustasta kahvista. - I like black coffee.
+Tykkään kylmästä talvesta. - I like a cold winter.
+En pidä tästä koirasta. - I don't like this dog.
+En pidä tästä isosta koirasta. - I don't like this big dog.
+En pidä tuosta lelusta. - I don't like that toy.
+En tykkää vaikeasta tehtävästä. - I don't like the hard exercise.
+Tykkään sinisestä mekosta. - I like the blue dress.
+Tykkäätkö kirkkaasta lampusta? - Do you like the bright lamp?
+En pidä siitä pojasta. - I don't like that boy.
+En pidä vihaisesta pojasta. - I don't like the angry boy.
+Pidämme hyvästä ruoasta. - We like good food.
+
+Pidän tästä kissasta. - I like this cat.
+Pidän kissoista. - I like cats.
+Pidän mustasta kissasta. - I like the black cat.
+Pidän mustista kissoista. - I like black cats.
+Pidän tosi paljon kissoista. - I really like cats.
+En pitänyt kissoista. - I didn't like cats.
+En pidä koirista. - I don't like dogs.
+Pidän eniten ruusuista. - I like roses the most.
+Pidän mustasta kahvista. - I like black coffee.
+En pidä mustista kissoista. - I don't like black cats.
+Antti ei tykkää opettajasta. - Antti doesn't like the teacher.
+Antti ei tykkää opettajista. - Antti doesn't like teachers.
+He pitävät lapsista. - They like children.
+Lapsi pitää maidosta. - The child likes milk.
+Me pidämme toisistamme. - We like each other.
+He tykkäävät toisistaan. - They like each other.
+He eivät pidä toisistaan. - They don't like each other.
+
+Tykkään uida. - I like to swim.
+Pidän uimisesta. - I like swimming.
+Pidän uinnista. - I like swimming.
+Tykkään pyöräillä. - I like to ride a bike.
+Pidän pyöräilemisestä. - I like riding a bike.
+Tykkään pyöräilystä. - I like riding a bike.
+Pidän pyöräilystä. - I like riding a bike.
+Tykkään hiihtää. - I like to ski.
+Pidän hiihtämisestä. - I like skiing.
+Tykkään hiihdosta. - I like skiing.
+Pidän hiihdosta. - I like skiing.
+Tykkään lukea. - I like to read.
+Pidän lukemisesta. - I like reading.
+Tykkään katsoa elokuvia. - I like to watch movies.
+Pidän elokuvien katsomisesta. - I like to watch movies.
+Tykkään poimia marjoja. - I like to pick berries.
+Pidän marjojen poimimisesta. - I like picking berries.
+
+# To Play: Pelata, Leikkiä, Soittaa, Näytellä – What's the Difference
+
+Minä pelaan jääkiekkoa. - I play ice hockey.
+Minä pelaan Fortniteä. - I play Fortnite.
+Sinä pelaat tennistä. - You play tennis.
+Sinä pelaat rahapelejä. - You play cash games.
+Hän pelaa jalkapalloa. - She plays soccer.
+Hän pelaa Minecraftia. - She plays Minecraft.
+Me pelaamme pesäpalloa. - We play baseball.
+Me pelaamme Monopolia. - We play Monopoly.
+Te pelaatte sulkapalloa. - You play badminton.
+Te pelaatte Tetristä. - You play Tetris.
+He pelaavat golfia. - They play golf.
+He pelaavat lautapelejä. - They play boardgames.
+
+Minä leikin pihalla. - I play in the yard.
+Minä leikin Legoilla. - I play with Legos.
+Sinä leikit ulkona. - You play outside.
+Sinä leikit leluautoilla. - You play with toy cars.
+Hän leikkii yksin. - She plays alone.
+Hän leikkii omilla varpaillaan. - She plays with her toes.
+Me leikimme piilosta. - We play hide and seek.
+Me leikimme nukeilla. - We play with dolls.
+Te leikitte kotia. - You play house.
+Te leikitte ruoalla. - You play with your food.
+He leikkivät hippaa. - They play tag.
+He leikkivät barbeilla. - They play with barbies.
+
+Minä soitan kitaraa. - I play the guitar
+Minä soitan ovikelloa. - I ring the doorbell.
+Sinä soitat pianoa. - You play the piano.
+Sinä soitat äidillesi. - You call your mom.
+Hän soittaa viulua. - She plays the violin.
+Hän soittaa kelloa. - She rings the bell.
+Me soitamme rumpuja. - We play the drums.
+Me soitamme summeria. - We ring the buzzer.
+Te soitatte huilua. - You play the flute.
+Te soitatte CD-levyä. - You play a CD.
+He soittavat urkuja. - They play the organ.
+He soittavat auton torvea. - They honk the car's horn.
+
+Minä näyttelen komediateatterissa. - I act in the comedy theater.
+Sinä näyttelet Sofia-nimistä palkkamurhaajaa. - You play the role of a serial killer called Sofia.
+Hän näyttelee pääosaa TV-sarjassa. - She plays the lead in the TV-series.
+Me näyttelemme tärkeää roolia elokuvassa. - We play an important role in the movie.
+Te näyttelette elokuvassa Olavi Virran poikia. - You play the sons of Olavi Virta in the movie.
+He näyttelevät Putouksessa. - They act in the show called Putous.
+
+# Osata Voida Saada – Finnish Verbs Differences
+
+Minä osaan ajaa autoa. - I can drive a car. / I know how to drive a car, I've had lessons.
+Minä voin ajaa autoa. - I can drive a car. / I'm able to drive a car. Nothing is restricting me.
+Minä en osaa ajaa autoa. - I can't drive a car. / I haven't mastered the driving skill.
+Minä en voi ajaa autoa. - I can't drive a car. / I e.g. broke my leg, it's physically impossible.
+Minä osaan uida. - I can swim. / I know how to, I've learned how to swim.
+Minä voin uida. - I can swim. / I'm currently unrestricted, so I can swim.
+Minä en osaa uida. - I can't swim. / I don't know how to, I've never learned how to swim.
+Minä en voi uida. - I can't swim. / I can't e.g. because I don't have a swimming suit.
+
+Minä osaan ajaa autoa. - I can drive a car. / I know how to drive a car, I've learned it.
+Minä saan ajaa autoa. - I can drive a car. / I have a driver's license, so I am allowed to.
+Minä en osaa ajaa autoa. - I can't drive a car. / I haven't learned how to drive a car.
+Minä en saa ajaa autoa. - I can't drive a car. / I'm not allowed to drive a car – no license.
+Minä osaan uida. - I can swim. / I know how to, I've learned how to swim.
+Minä saan uida. - I can swim. / I'm allowed to, e.g. my mom gave me permission.
+Minä en osaa uida. - I can't swim. / I don't know how to, I've never learned how to swim.
+Minä en saa uida. - I can't swim. / I'm not allowed to, because e.g. my teacher said no.
+
+Minä osaan ajaa autoa. - I know how to drive a car, I've learned it.
+Minä saan ajaa autoa. - I have a driver's license, so I am allowed to.
+Minä voin ajaa autoa. - I am able to drive a car, nothing is obstructing me.
+Minä osaan uida. - I know how to, I've learned how to swim.
+Minä saan uida. - I'm allowed to swim, e.g. my mom gave me permission.
+Minä voin uida. - It's a possibility for me, I am able to swim.
+
+# The Difference Between Tai and Vai
+
+Odota päivä tai kaksi, kyllä se paranee. - Wait a day or two, it will get better.
+Hän ei koskaan kysellyt kuulumisia tai kutsunut kahville. - She never asked how I was or invited me for coffee.
+Hänen nimensä oli Kaisa tai Kaija tai jotain. - Her name was Kaisa or Kaija or something.
+
+Vai niin. - I see.
+"En tulekaan tänne." – "Vai niin." - "I'm not coming here." – "Oh, right."
+Vai mitä? - Eh? / Right? / Isn't it?
+"Tämä on loistava idea. Vai mitä, Janne?" - "This is a great idea. Isn't it, Janne?"
+
+# The Difference Between Mikä and Mitä
+
+Mikä tämä on? Tämä on pöytä. - What is this? This is a table.
+Mitä tämä on? Tämä on teetä. - What is this? This is tea.
+
+Mikä tässä on? Tässä on kukka. - What is here? Here is a flower.
+Mitä tässä on? Tässä on kahvia. - What is here? Here is coffee.
+
+Mitä sinä teet? Minä syön. - What are you doing? I'm eating.
+Mitä sinä teet? Minä luen tämän kirjan. - What are you doing? I'm reading this book.
+Mitä sinä rakastat? Minä rakastan autoani. - What do you love? I love my car.
+
+Mikä tämä on? – Se on kukka. - What is this? – It's a flower.
+Mikä sinun puhelinnumerosi on? – Se on 045-10 10 101. - What is your phone number? – It is 045-10 10 101.
+Mikä sinun lempiväri on? – Minun lempiväri on punainen. - What is your favorite color? – My favorite color is red.
+
+Mitä tämä on? – Se on kahvia. - What is this? – It's coffee.
+Mitä tämä on? – Se on kultaa. - What is this? – It's gold.
+Mitä tämä on? – Se on rakkautta. - What is this? – It's love.
+
+Mikä pöydällä on? – Pöydällä on minun avaimeni. - What is on the table? – My key is on the table.
+Mikä lautasella on? – Lautasella on omena. - What is on the plate? – There is an apple on the plate.
+Mikä tämä on? – Se on makaronilaatikko. - What is this? – It is a mac and cheese.
+
+Mitä makaronilaatikossa on? – Siinä on makaronia, munia ja naudanlihaa. - What is in the box of pasta? – It has pasta, eggs and beef.
+Mitä lautasella on? – Lautasella on vadelmahilloa. - What is on the plate? – There is raspberry jam on the plate.
+Mitä materiaalia tämä sormus on? – Se on kultaa. - What material is this ring made of? – It is gold.
+
+Mitä sinä teet vapaa-ajalla? – Minä tanssin balettia. - What do you do in your free time? – I dance ballet.
+Mitä sinä teet huomenna? – Olen töissä. - What are you doing tomorrow? – I'm at work.
+
+Mitä ruokaa sinä teet? – Teen makaronilaatikkoa. - What food are you making? – I am making a mac and cheese.
+Mitä sinä rakennat? – Rakennan talon/taloa. - What are you building? – I am building a house/a house.
+Minkä leivoksen valitset? – Valitsen runebergintortun. - What cake are you choosing? – I am choosing a runeberg cake.
+Mikä kirja sinun täytyy lukea? – Minun täytyy lukea tuo kirja. - What book do you need to read? – I need to read that book.
+
+Mitä sinä katsot? – Katson televisiota. - What are you watching? – I'm watching TV.
+Mitä sinä opiskelet? – Opiskelen suomen kieltä. - What are you studying? – I'm studying Finnish.
+Mitä sinä rakastat? – Rakastan suklaata. - What do you love? – I love chocolate.
+
+# The Verb Harrastaa – Talking about Your Hobbies
+
+Harrastan hiihtoa. - I enjoy skiing.
+Harrastan balettia. - I enjoy ballet.
+Harrastan luistelua. - I enjoy skating.
+Harrastan tennistä. - I enjoy tennis.
+
+Harrastan hiihtoa. - I enjoy skiing as a hobby.
+Harrastan hiihtämistä. - I enjoy skiing as a hobby.
+Harrastan tanssia. - I enjoy dancing as a hobby.
+Harrastan tanssimista. - I enjoy dancing as a hobby.
+Harrastan kalastusta. - I enjoy fishing as a hobby.
+Harrastan kalastamista. - I enjoy fishing as a hobby.
+Harrastan uintia. - I enjoy swimming as a hobby.
+Harrastan uimista. - I enjoy swimming as a hobby.
+
+Katson televisiota. - I enjoy watching television as a hobby.
+Harrastan television katsomista. - I enjoy watching television as a hobby.
+Pelaan tennistä. - I enjoy playing tennis as a hobby.
+Harrastan tenniksen pelaamista. - I enjoy playing tennis as a hobby.
+Laitan ruokaa. - I enjoy making food as a hobby.
+Harrastan ruoan laittamista. - I enjoy making food as a hobby.
+Otan aurinkoa. - I enjoy sunbathing as a hobby.
+Harrastan auringon ottamista. - I enjoy sunbathing as a hobby.
+
+Kävelen metsässä. - I enjoy walking in the forest.
+Harrastan metsässä kävelemistä. - I enjoy walking in the forest.
+Löhöän sohvalla. - I enjoy being lazy on the couch.
+Harrastan sohvalla löhöämistä. - I enjoy being lazy on the couch.
+Uin uima-altaassa. - I enjoy swimming in the swimming pool.
+Harrastan uima-altaassa uimista. - I enjoy swimming in the swimming pool.
+
+# Minä käyn kaupassa – Käydä – Example Sentences
+
+minä käyn - I go / I am going
+minä kävin - I went
+sinä käyt - you go / you are going
+sinä kävit - you went
+hän käy - he goes / he is going
+hän kävi - he went
+me käymme - we go / we are going
+me kävimme - we went
+te käytte - you (pl) go / you are going
+te kävitte - you (pl) went
+he käyvät - they go
+he kävivät - they went
+
+Minä käyn kaupassa tänään. - I will stop by at the store today.
+Minä kävin eilen kaupassa. - I went to the store yesterday.
+Minä kävin eilen pankissa. - I went to the bank yesterday.
+Käyn joskus leipomossa. - I go to the bakery sometimes.
+Hän ei käynyt apteekissa. - He didn't go to the pharmacy.
+Äiti kävi neuvolassa. - Mother went to the maternity clinic.
+Hän kävi kampaamossa. - She went to the hairdresser's.
+Haluan käydä taidemuseossa. - I want to go to the art museum.
+Kävitkö jo kirjastossa? - Did you go to the library already?
+Kävimme uimahallissa. - We went to the swimming hall.
+Pojat kävivät eläintarhassa. - The boys went to the zoo.
+Käyn usein baarissa. - I often go to the bar.
+Käyn joka päivä kioskilla. - I go to the kiosk every day.
+Kävimme poliisiasemalla. - We went to the police station.
+Kävitkö paloasemalla? - Did you go to the fire station?
+Käyn joka päivä kuntosalilla. - I go to the gym every day.
+Kävin pikaisesti pihalla. - I made a quick stop at the yard.
+Kävitkö jo rannalla? - Have you been at the beach already?
+Maija käy usein torilla. - Maija often goes to the market.
+Kävin ystäväni luona. - I visited my friend.
+Oletko jo käynyt luonani? - Have you already visited me?
+Haluan käydä Antin luona. - I want to go to Antti's place.
+Kävin mummolassa. - I went to grandma's place.
+Haluan käydä sadassa maassa. - I want to visit 100 countries.
+Käyn usein Tampereella. - I often visit Tampere.
+Käyn usein Helsingissä. - I often visit Helsinki.
+Minun pitää käydä suihkussa. - I have to take a shower.
+Kävin eilen suihkussa. - I took a shower yesterday.
+Saanko käydä vessassa? - Can I go to the bathroom?
+Olen jo käynyt vessassa. - I've already been to the bathroom.
+Kävitkö jo ulkona? - Have you been outside yet?
+Käytkö täällä usein? - Do you come here often?
+
+Käyn pesemässä kasvoni. - I go to wash my face.
+Kävin katsomassa elokuvan. - I went to see a movie.
+Haluan käydä luistelemassa. - I want to go skating.
+Kävimme ratsastamassa. - We went horseback riding.
+Käyn tänään shoppailemassa. - I'm going shopping today.
+Kävin ostamassa uuden takin. - I went to buy a new coat.
+En käynyt syömässä tänään. - I didn't go to eat out today.
+Kävitkö jo syömässä? - Did you already go to eat?
+Älä käy nukkumassa vielä! - Don't go to sleep yet!
+Kävin monta kertaa uimassa. - I went swimming many times.
+Kävin nostamassa rahaa. - I went to withdraw money.
+Kävitkö jo maksamassa? - Did you already go to pay?
+Käydäänkö hiihtämässä? - Shall we go ski?
+Käymme kävelemässä. - We go for a walk.
+Käyn yksin juoksemassa. - I go for a run alone.
+Kävitkö pyöräilemässä? - Did you go cycling?
+
+# Clothes – Vaatteet
+
+Vaatteet - Clothes
+aamutakki - dressing gown
+alushame - petticoat
+alushousut - underpants
+aluspaita - undershirt
+alusvaatteet - underwear
+anorakki - anorak
+bikinit - bikini
+bleiseri - blazer
+bokserit - boxershorts
+esiliina - apron
+essu - apron
+farkkupaita - jeans shirt
+farkut - jeans
+farmarit - blue jeans
+frakki - tailcoat
+hame - skirt
+hiihtohousut - ski trousers
+housupuku - trouser suit
+housut - pants
+huppari - hoodie
+iltapuku - evening gown
+jakku - jacket
+jakkupuku - two piece dress and jacket
+kauluspaita - button-up shirt
+kesämekko - summer dress
+korsetti - corset
+kylpytakki - bathrobe
+liivi - waistcoat, vest
+lyhyet housut - short pants
+mekko - dress
+minihame - mini skirt
+mokkajakku - suede jacket
+mokkatakki - suede coat
+nahkatakki - leather jacket
+neulepusero - pullover
+neuletakki - cardigan
+paita - shirt
+pikkuhousut - panties
+polvisukat - knee socks
+poolopaita - turtle neck
+puku - suit
+pusero - blouse
+pyjama - pajamas
+päällystakki - overcoat
+rintaliivit - bra
+sadetakki - raincoat
+solmio - tie
+shortsit - shorts
+stoola - stole
+sukat - socks
+sukkahousut - tights
+suojahaalari - coverall
+takki - coat
+toppatakki - quilted jacket
+toppi - top
+tuulipuku - windbreaker
+T-paita - T-shirt
+tunika - tunic
+turkistakki - fur jacket
+turkki - fur coat
+tuulipusero - windcheater
+työvaatteet - work clothes
+uimamyssy - bathing cap
+uimahousut - bathing trunks
+uimapuku - swimsuit
+verryttelypuku - sweatsuit
+villapaita - sweater
+villapusero - sweater
+villatakki - cardigan
+virkapuku - uniform
+yöpaita - nightgown
+yöpuku - night clothes
+äitiyshousut - maternity pants
+
+Asusteet - Accessories
+hartiahuivi - shawl
+hattu - hat
+hiussolki - hair clip
+huivi - scarf
+kaulakoru - necklace
+kaulaliina - scarf
+kihlasormus - engagement ring
+korvakorut - earrings
+käsineet - gloves
+käsilaukku - hand bag
+lippalakki - cap
+lippis - cap (spoken)
+myssy - cap
+nenäliina - handkerchief
+pipo - woolly hat, beanie
+rannekello - watch
+rannerengas - bracelet
+sormus - ring
+olkihattu - straw hat
+päähuivi - head scarf
+vihkisormus - wedding ring
+vyö - belt
+Osat - Parts
+hakaneula - safety pin
+hiha - sleeve
+hihaton - sleeveless
+huppu - hood
+kalvosin - cuff
+kaula-aukko - neckline
+kaulus - collar
+kengännauhat - shoelaces
+lahje - pants' leg
+nappi - button
+sauma - seam
+tarranauha - velcro
+tasku - pocket
+vetoketju - zipper
+vuori - inside lining
+Materiaalit - Materials
+kashmir - cashmere
+keinokuitu - synthetic fibre
+mohair - mohair
+nahka - leather
+pellava - linen
+pitsi - lace
+puuvilla - cotton
+sametti - velvet
+silkki - silk
+turkis - fur
+villa - wool
+Kuviot - Patterns
+yksivärinen - one color
+raidallinen - striped
+ruudullinen - checkered
+kuviollinen - patterned
+pilkullinen - dotted
+
+# School – Koulu
+
+aikuiskoulutuskeskus - adult education center
+aikuislukio - high school for adults
+alkeiskurssi - elementary, basic course
+ammatillinen aikuiskoulutus - professional adult education
+ammattikorkeakoulu - university of applied sciences
+ammattikoulu - trade/vocational school
+erityisopetus - special education
+esikoulu (spoken: eskari) - preschool (for 6 year olds)
+jatkokurssi - intermediate course
+korkeakoulu - university
+koulu - school
+koulutus - schooling, education
+kurssi - course
+leikkikoulu - playschool
+lukio - high school
+oppilaitos - academy
+peruskoulu - primary school
+poliisiammattikorkeakoulu - police academy
+päiväkoti - kindergarten (for kids below 6)
+sisäoppilaitos - boarding school
+yhteiskoulu - co-educational school
+yksityiskoulu - private school
+yliopisto - university
+
+dekaani - dean
+dosentti - docent
+kasvattaja - educator
+koulunkäyntiavustaja - school attendance assistant
+koululainen - schoolchild
+kouluttaja - instructor
+lastentarhanopettaja - kindergarten teacher
+lehtori - lecturer
+liikunnanopettaja - PE teacher
+luennoitsija - lecturer
+luokanvalvoja - homeroom teacher
+luokkakaveri - classmate
+opettaja - teacher
+opiskelija - student
+oppilas - pupil
+rehtori - principal
+seiskaluokkalainen - seventh-grader
+sijainen - substitute
+ylioppilas - secondary school graduate
+yliopisto-opiskelija - university student
+
+dokumenttikamera - document camera
+koulukirja - study book
+kynä - pen
+liitu - chalk
+lyijykynä - pencil
+laskin - calculator
+mustataulu, valkotaulu, taulu - blackboard, whiteboard, board
+oppimateriaalit - learning materials
+paperi - paper
+penaali - pencil case
+projektori, tykki - projector
+(pyyhe)kumi - eraser
+ruutupaperi - squared paper
+sanakirja - dictionary
+teroitin - pencil-sharpener
+värikynä - colored pencil
+
+aine - school subject
+oppiaine - school subject
+biologia - biology
+elämänkatsomustieto - ethics
+fysiikka - physics 
+historia - history
+kemia - chemistry 
+kotitalous - domestic science
+kuvataide - visual arts 
+käsityö - handicraft
+liikunta - physical education
+maantieto - geography 
+matematiikka - mathematics 
+musiikki - music
+terveystieto - health education
+toinen kotimainen kieli - other official language (Finnish/Swedish)
+uskonto - religion
+vieraat kielet - foreign languages
+yhteiskuntaoppi - social studies
+äidinkieli - mothertongue
+
+harjoitella - to practice
+huijata - to cheat
+ilmoittautua kurssille - to sign up for a course
+kerrata - to rehearse
+kirjoittaa - to write
+kouluttaa - to educate
+kuunnella - to listen
+kääntää - to translate
+luennoida - to lecture
+luntata - to copy someone's answers
+muistaa - to remember
+opettaa - to teach
+opiskella - to study
+oppia - to learn
+osallistua pääsykokeeseen - to take an entrance exam
+päntätä kokeeseen - to cram for an exam
+saada huonoja arvosanoja - to get bad grades
+saada hyviä arvosanoja - to get good grades
+selittää - to explain
+suorittaa tutkinto - to finish a degree
+tarkistaa - to check
+tehdä läksyt, kotitehtävät - to do the homework
+toistaa - to repeat
+tutkia - to examine
+täydentää aukot - to fill in the gaps
+unohtaa - to forget
+valmistua + translative - to graduate as a...
+valmistua + mistä - to graduate from...
+
+essee - essay
+fuksi - first year student (spoken)
+jatkotutkinto - graduate degree
+kandi - bachelor thesis
+kandidaatin tutkinto - bachelor's degree
+kirjatentti - book-based exam
+lisensiaatti - licentiate degree
+luennoitsija - lecturer
+luento - lecture
+luentosali - lecture hall
+lääketieteellinen laitos - medical faculty
+maisterin tutkinto - master's degree
+opintolaina - student loan
+opiskelija-asunto - student apartment
+opiskelija-asuntola - student housing
+opiskelijakortti - student card
+pakollinen kurssi - obligatory course
+pro gradu - master's thesis
+pääaine - major
+pääsykoe - entrance exam
+seminaari - seminar
+sivuaine - minor
+tentti - exam
+tenttikirja - exam book
+tiedekunta - faculty
+tutkielma - term paper
+tutkinto - degree
+tuutori - tutor
+yliopistotutkinto - university degree
+vaihto-opiskelija - exchange student
+vaihtovuosi - exchange year
+valinnainen kurssi - optional course
+väitellä - to defend your thesis
+väitöskirja - dissertation
+
+akateeminen - academic
+arvosana - grade, mark (e.g. 4/5)
+harjoitus - exercise
+hyväksytty - pass
+hylätty - no pass, fail, abandoned
+jälki-istunto - detention
+kevätlukukausi - spring term
+koe, testi, tentti - test, exam
+koulukiusaaminen - school bullying
+kouluruoka - school lunch
+leirikoulu - school camp
+lukukausi - semester
+lukuvuosi - academic year
+luokka - classroom
+läksyt, kotitehtävä - homework
+oppivelvollisuus - compulsory education
+syyslukukausi - autumn term
+tukiopetus - tutoring
+varhaiskasvatus - early childhood education
+välitunti - recess
+ekalla luokalla - in the first year of primary school
+tokalla luokalla - in the second year of primary school
+
+# Talking About the Weather
+
+Ilma on kaunis. - The weather is beautiful.
+On kaunis ilma. - The weather is beautiful.
+On kaunis päivä. - It's a beautiful day.
+On pilvinen päivä. - It's a cloudy day.
+On kylmä ulkona. - It's cold outside.
+On melko kylmä päivä. - It's a fairly cold day.
+Aurinko paistaa. - The sun is shining.
+On oikein kuuma. - It's really hot.
+On pilvistä. - It's cloudy.
+On liukasta. - It's slippery.
+Sataa. - It rains.
+Sataa vettä. - It rains. ("It rains water")
+Sataa lunta. - It snows. ("It rains snow")
+Sataa räntää. - It rains wet snow.
+Sataa rakeita. - It hails.
+Ei sada - It doesn't rain.
+Eilen satoi. - It rained yesterday.
+Tuulee. - It's windy.
+Tuulee oikein kovasti. - It's very windy.
+On myrsky. - There's a (wind)storm.
+On ukonilma. - There's a thunderstorm.
+Salamoi. - There's lightning. ("It lightens")
+On kaksi astetta pakkasta. - It's minus two degrees.
+On miinus kaksi astetta. - It's minus two degrees.
+
+aste - degree
+aurinko - sun
+halla - frost
+helle - heat wave
+hurrikaani - hurricane
+kostea - humid
+lumi - snow
+pilvi - cloud
+pouta - dry weather
+räntä - wet snow
+sade - rain
+sadekausi - rain season
+sadekuuro - rain shower
+tihkusade - drizzle
+salama - lightning
+sateenkaari - rainbow
+selkeä - clear
+sumu - mist
+sää, ilma, keli - weather
+taivas - sky
+tulva - flood
+tuuli - wind
+ukkonen - thunder
+viileä - chilly
+
+Millainen ilma tänään on? - What kind of weather is it today?
+Onko kaunis ilma tänään? - Is the weather beautiful today?
+Paistaako aurinko? - Does the sun shine?
+Sataako? - Is it raining?
+Sataako lunta? - Is it snowing?
+Luvattiinko sadetta? - Did they predict rain?
+Tuuleeko? - Is there wind?
+Kuinka monta astetta on? - How many degrees is it?
+Kuinka kylmä on? - How cold is it?
+Onko pakkasta? - Is it freezing?
+
+On pilvinen päivä. - It's a cloudy day.
+On pilvistä. - It's cloudy.
+On sateinen päivä. - It's a rainy day.
+On sateista. - It's rainy.
+On tuulinen päivä. - It's a windy day.
+On tuulista. - It's windy.
+On aurinkoinen päivä. - It's a sunny day.
+On aurinkoista. - It's sunny.
+On sumuinen päivä. - It's a misty/foggy day.
+On sumuista. - It's misty/foggy.
+
+# Places in the City
+
+kauppa - shop
+myymälä - store
+ruokakauppa - food store
+vaatekauppa - clothing store
+kirjakauppa - book store
+kenkäkauppa - shoe store
+elektroniikkakauppa - electronics store
+kalustekauppa - furniture store
+eläinkauppa - pet store
+lähikauppa - convenience store
+leipomo - bakery
+kirpputori, kirppis - second-hand store
+kauppakeskus - shopping center
+ostoskeskus - shopping mall
+tavaratalo - department store
+kioski - kiosk
+pankki - bank
+posti - post office
+kauneushoitola - beauty salon
+kampaamo - hairdresser's
+parturi - barbershop
+parturi-kampaamo - hairdressing salon
+poliisiasema - police station
+paloasema - fire station
+oikeustalo - courthouse
+suutari - cobbler, locksmith
+kiinteistötoimisto - real estate office
+toimisto - office
+pesula - laundromat
+
+baari - bar
+pubi - pub
+kahvila - cafe / coffee shop
+ravintola - restaurant
+ruokala - canteen
+kahvio - cafeteria
+ruokailutila - eatery
+
+sairaala - hospital
+terveyskeskus - health center
+terveysasema - health center
+hammaslääkäri - dentist's
+mielisairaala - mental hospital
+leikkaussali - operating room
+ensiapuasema - emergency room
+lääkärin vastaanotto - consulting room
+odotushuone - waiting room
+neuvola - maternity clinic
+apteekki - pharmacy
+orpokoti - orphanage
+vanhainkoti - home for the elderly
+
+päiväkoti - day care
+esikoulu - preschool
+peruskoulu - primary school
+lukio - high school
+yliopisto - university
+työväenopisto - adult education center
+autokoulu - driving school
+musiikkikoulu - music school
+opiskelija-asunto - student housing
+
+kuntosali - gym
+urheilukeskus - sports center
+urheilukenttä - sports, playing field
+hiihtokeskus - ski resort
+leikkikenttä - playground
+golfkenttä - golf course
+tenniskenttä - tennis court
+jalkapallokenttä - soccer field
+leikkipuisto - playground
+latu - ski trail
+kirjasto - library
+matkatoimisto - travel agency
+museo - museum
+taidemuseo - art museum
+taidegalleria - art gallery
+näyttely - exhibition
+elokuvateatteri - cinema
+teatteri - theatre
+kylpylä - spa
+uimahalli - swimming hall
+uimala - outdoor swimming pool
+huvipuisto - amusement park
+stadion - stadium
+messukeskus - exhibition center
+eläintarha - zoo
+
+huoltoasema - gas station
+bensiiniasema - petrol station
+bensa-asema - petrol station (spoken)
+autokorjaamo - auto repair shop
+juna-asema - train station
+rautatieasema - train station
+bussiasema - bus station
+linja-autoasema - bus station
+bussipysäkki - bus stop
+parkkipaikka - parking lot
+moottoritie - motorway
+jalkakäytävä - sidewalk
+risteys - crossroads
+lentoasema - airport
+lentokenttä - airport, runway
+satama - harbor
+hotelli - hotel
+motelli - motel
+
+katu - street
+tie - road
+metsä - forest
+piha - yard
+puisto - park
+kansallispuisto - national park
+puutarha - garden
+tori - market place
+silta - bridge
+saari - island
+ranta - beach
+rakennustyömaa - building site
+keskusta - city center
+kaupunki - city
+kylä - village
+suurkaupunki - large city
+pääkaupunki - capital city
+esikaupunki - suburb
+lähiö - downtown
+
+rakennus - building
+talo - house
+koti - home
+omakotitalo - detached house
+rivitalo - terrace house
+paritalo - semi-detached house
+kerrostalo - apartment building
+pilvenpiirtäjä - skyscraper
+huvila - villa
+torni - tower
+näkötorni - observation tower
+tehdas - factory
+linna - castle
+palatsi - palace
+kartano - mansion
+linnoitus - fortress
+kirkko - church
+tuomiokirkko - cathedral
+moskeija - mosque
+temppeli - temple
+vankila - prison
+puutalo - wooden house
+tiilitalo - brick house
+hirsimökki - log cabin
+kesämökki - summer cottage
+sauna - sauna
+maatila - farm
+
+# Rooms and Furniture – Huoneet ja Huonekalut
+
+Huoneen osat - Parts of a room
+lattia - floor
+katto - roof
+seinä - wall
+ulkoseinä - outer wall
+väliseinä - partition wall
+ikkuna - window
+ovi - door
+nurkka - corner
+tapetti - wallpaper
+Keittiö - Kitchen
+pakastin - freezer
+jääkaappi - fridge
+pakastelokero - freezer compartment
+tiskiallas - kitchen sink
+tiskiaine - washing up liquid
+vesihana - water tap
+talouspaperirulla - kitchen roll
+liesi, hella - stove
+uuni - oven
+keittolevyt - cooking hobs
+uuniritilä - oven grid
+astianpesukone - dish washing machine
+tiskikone - dishwasher
+keittiön pöytä - kitchen table
+talouspaperi - kitchen towel
+mikroaaltouuni - microwave oven
+mikro - microwave
+kuivauskaappi - drying cabinet
+astiasto - tableware, china
+aterimet - cutlery
+palohälytin - fire alarm
+liesituuletin - kitchen hood
+astiakaappi - cupboard
+tupakeittiö - kitchen-living room
+työtaso - worktop
+jääkaappipakastin - fridge-freezer
+keittiökaappi - kitchen cupboard
+jakkara - stool
+verhot - curtains
+vetolaatikko - drawer
+Olohuone - Living room
+jalkalamppu - floor lamp
+kahvipöytä - coffee table
+kirjahylly - book case
+lepotuoli - recliner
+maalaus - painting
+maljakko - vase
+matto - rug
+nojatuoli - armchair
+pölynimuri - vacuum cleaner
+seinäkello - wall clock
+sohva - couch
+sohvatyyny - sofa cushion
+takka - fireplace
+televisio - television
+
+Makuuhuone - Bedroom
+herätyskello - alarm clock
+hylly - shelf
+lakana - sheet
+lipasto - dresser
+parisänky - double bed
+patja - mattress
+peitto - blanket
+päiväpeite - bedspread
+sänky - bed
+tietokone - computer
+tyyny - pillow
+tyynyliina - pillowcase
+untuvapeitto - duvet
+vaatekaappi - wardrobe
+yölamppu - bedside lamp
+yöpaita - nightgown
+yöpöytä - bedside table
+Kylpyhuone - Bathroom
+kylpyamme - bath tub
+suihku - shower
+vessa - toilet
+vessanpönttö - toilet bowl
+vessaistuin - toilet seat
+vessapaperi - toilet paper
+pesuallas, lavuaari - washbasin, sink
+peili - mirror
+kokovartalopeili - full-length mirror
+vesihana - water tap
+saippua - soap
+pesukone - washing machine
+pyykkikori - laundry basket
+suihkuverho - shower curtain
+pyyhe - towel
+pyyhkeet - towels
+pyyhekaappi - towel cabinet
+vieraspyyhe - guest towel
+kylpypyyhe - bath towel
+bidee - bidet
+pesusieni - bath sponge
+pyyhetanko - towel rail
+saippuakuppi - soap dish
+tulppa - bath plug
+viemäriaukko - plug hole
+
+# Family members – Perhe ja sukulaiset
+
+Perussanoja - Basic words
+perhe - family
+veli - brother
+sisko - sister
+sisar - sister
+vanhemmat - parents
+äiti - mother
+isä - father
+vanhempi - parent
+lapsi - child
+tyttö - girl
+tytär - daughter
+poika - son
+vaimo - wife
+mies - husband
+pikkusisko - little sister
+isosisko - older sister
+pikkuveli - little brother
+isoveli - older brother
+isovanhemmat - grandparents
+isoäiti - grandmother
+isoisä - grandfather
+lastenlapset - grandchildren
+täti - aunt
+setä - uncle (father's side)
+eno - uncle (mother's side)
+serkku - cousin
+käly - sister-in-law
+lanko - brother-in-law
+anoppi - mother-in-law
+appi - father-in-law
+miniä - daughter-in-law
+vävy - son-in-law
+
+Hieman vaikeampia sanoja - Somewhat more difficult words
+sisarukset - siblings
+perheenjäsenet - family members
+sukulaiset - extended family
+sukulainen - relative
+sisarenpoika - nephew (sister's son)
+veljenpoika - nephew (brother's son)
+sisarentytär - niece (sister's daughter)
+veljentytär - niece (brother's daughter)
+pojantytär - granddaughter (son's daughter)
+tyttärentytär - granddaughter (daughter's daughter)
+pojanpoika - grandson (son's son)
+tyttärenpoika - grandson (daughter's son)
+pikkuserkku - second cousin
+isoisänisä - great-grandfather
+lapsenlapsen lapsi - great-grandchild
+kummivanhemmat - godparents
+kummisetä - godfather
+kummitäti - godmother
+kummipoika - godson
+kummitytär - goddaughter
+kummityttö - goddaughter
+Hiukan puhekieltä - A little spoken language
+mummo - grandma
+mummi - grandma
+mummu - grandma
+muori - grandma
+pappa - grandpa
+ukki - grandpa
+ukko - grandpa
+vaari - grandpa
+isi - dad, daddy
+iskä - dad, daddy
+faija - dad, daddy
+
+naimisissa - married
+mennä naimisiin - to get married
+avioliitto - marriage
+aviomies - husband in marriage
+aviovaimo - wife in marriage
+avoliitto - cohabitation
+avomies - common-law husband
+avovaimo - common-law wife
+parisuhde - relationship
+parisuhteessa - in a relationship
+kihloissa - engaged
+mennä kihloihin - to get engaged
+naimaton - unmarried
+eronnut - divorced
+leski - widow, widower
+kumppani - partner
+puoliso - spouse
+
+isäpuoli - stepfather
+äitipuoli - stepmother
+sisarpuoli - stepsister
+velipuoli - stepbrother
+tytärpuoli - stepdaughter
+poikapuoli - stepson
+huoltaja - caregiver, guardian
+holhooja - guardian
+orpo - orphan
+sijaisperhe - foster family
+adoptio - adoption
+adoptoitu - adopted
+adoptoida - to adopt
+adoptioäiti - adoptive mother
+biologinen äiti - biological mother
+yksinhuoltaja - single parent

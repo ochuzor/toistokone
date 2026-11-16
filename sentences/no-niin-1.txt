@@ -1,0 +1,84 @@
+Mikä päivä tänään on? - What day is it today?
+Monesko päivä tänään on? - What is the date today?
+Mikä viikko nyt on? - What week is it now?
+Minkälainen ilma tänään on? - What is the weather like today?
+Otetaan luku, kuinka monta opiskelijaa on paikalla. - Let's count how many students are present.
+
+Lapset leikkivät. - Children are playing.
+Sofia ja toinen lapsi leikkivät. - Sofia and another child are playing.
+leikkipuisto - playground
+Hieno juttu! - That's great!
+Haluatko tulla meille? - Would you like to come over to our place?
+lähellä - near
+kaukana - far
+
+Yöllä oli lämmin. - It was warm at night.
+Sofia on Kaisan tyttö. - Sofia is Kaisa's daughter.
+Kaisa ja Sofia ovat kaupassa. - Kaisa and Sofia are at the store.
+Sandrine on suomalainen. - Sandrine is Finnish.
+Kaisa puhuu ranskaa. - Kaisa speaks French.
+Sandrinen poika on 2 vuotta. - Sandrine's son is 2 years old.
+Kaisa soittaa Sandrinelle huomenna. - Kaisa will call Sandrine tomorrow.
+Yöllä oli kylmä. - It was cold at night.
+
+Tänään on kaunis ilma. - The weather is beautiful today.
+Millainen sää tänään on? - What is the weather like today?
+Kenen kanssa Kaisa puhuu? - Who is Kaisa talking to?
+Minkämaalainen Sandrine on? - What country is Sandrine from?
+Mitä kieliä Kaisa puhuu? - What languages ​​does Kaisa speak?
+Minkä ikäinen Kaisan tyttö on? - How old is Kaisa's daughter?
+Miksi Sandrine ei mene Kaisan kotiin? - Why isn't Sandrine going to Kaisa's home?
+Mihin Kaisan pitää mennä? - Where does Kaisa need to go?
+
+Minun nimi on Kaisa. - My name is Kaisa.
+Mun nimi on Kaisa. - My name is Kaisa.
+Mä oon suomalainen. - I am Finnish.
+Mä oon kotoisin Ähtäristä. - I am from Ähtäri.
+Minkämaalainen sä oot? - What is your nationality?
+Mikä sun äidinkieli on? - What is your native language?
+Mä en puhu ranskaa. - I don’t speak French.
+Mä puhun englantia. - I speak English.
+Mun äidinkieli on suomi. - My native language is Finnish.
+Mun pitää mennä! - I have to go!
+
+noppa - dice
+nopan silmäluku - die value
+valkoinen noppa - white die
+punainen noppa - red die
+sininen noppa - blue die
+
+Minä puhun suomea. - I speak Finnish.
+Hän ei puhu suomea. - He/She does not speak Finnish.
+Puhutko sinä suomea? - Do you speak Finnish?
+
+Millä voi mennä Tukholmaan? - How can you get to Stockholm?
+Millä voi matkustaa Lappiin? - How can you travel to Lapland?
+Millä voi mennä Tallinnaan? - How can you get to Tallinn?
+Millä pääsee Suomenlinnaan? - How can you get to Suomenlinna?
+Millä pääsee Helsingin keskustasta Espooseen? - How can you get from the center of Helsinki to Espoo?
+Millä pääsee Helsingin keskustasta Linnanmäelle? - How can you get from the center of Helsinki to Linnanmäki?
+
+Millä sinä menet käymään sinun vanhassa kotimaassa? - How do you travel to visit your old home country?
+Millä sinun lapsi menee kouluun? - How does your child get to school?
+Millä sinä tulet kurssille? - How do you get to the course?
+Millä sinä menet pyöräretkelle? - How do you go on a bike trip?
+Millä sinä menet onkimaan? - How do you go fishing?
+
+Miksi kimppakyyti on opettajan mielestä hyvä idea? - Why does the teacher think carpooling is a good idea?
+Mikä on ekologinen tapa liikkua? - What is an eco-friendly way to travel?
+Mikä ei ole ekologinen tapa liikkua? Miksi? - What is not an eco-friendly way to travel? Why?
+
+Millä opettaja käy töissä? - How does the teacher get to work?
+Millä opettajan mies käy töissä? - How does the teacher’s husband get to work?
+Millä Markus menee kouluun? - How does Markus get to school?
+Millä Lucas menee kouluun? - How does Lucas get to school?
+Millä perhe matkustaa? - How does the family travel?
+Millä he kulkevat mökillä? - How do they get to the summer cottage?
+Millä he eivät mene mökille? Miksi? - How do they *not* get to the summer cottage? Why?
+Osaatko päätellä, millä he menevät mökille? - Can you figure out how they get to the summer cottage?
+
+Kuinka monta huonetta asunnossa on? - How many rooms does the apartment have?
+Minkä kokoinen asunto on? - What is the size of the apartment?
+Monennessako kerroksessa asunto on? - On which floor is the apartment located?
+Paljonko asunnon kuukausivuokra on? - What is the monthly rent for the apartment?
+Milloin asuntoon voi muuttaa? - When can one move into the apartment?

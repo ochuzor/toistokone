@@ -1,0 +1,37 @@
+Kuka hän on? - Who is she/he?
+Mikä hänen sukunimi on? - What is his/her surname?
+Miten hänen nimi kirjoitetaan? - How is his/her name spelled?
+Minkä maalainen hän on? - What is his/her nationality?
+Missä hän asuu? - Where does he/she live?
+Mitä kieltä hän puhuu? - What language does he/she speak?
+
+Vastaa kysymyksiin. - Answer the questions.
+Minkä maalainen Jere on? - What nationality is Jere?
+Minkä ikäinen Jere on? - How old is Jere?
+Mikä Tyynen sukunimi on? - What is Tyyne's surname?
+Mikä Tyynen puhelinnumero on? - What is Tyyne's phone number?
+Missä Aleksi asuu? - Where does Aleksi live?
+Mikä Aleksin sähköpostiosoite on? - What is Aleksi's email address?
+Kuka puhuu venäjää? - Who speaks Russian?
+Kuka asuu Helsingissä? - Who lives in Helsinki?
+Mitä kieltä Jere puhuu? - What language does Jere speak?
+
+Hei, olen Susan. Olen kanadalainen. - Hi, I'm Susan. I'm Canadian.
+Minkä maalainen sinä olet? - Where are you from?
+Olen suomalainen. - I'm Finnish.
+Puhutko englantia? - Do you speak English?
+Joo, puhun. - Yes, I (do) speak.
+Mutta nyt me puhumme suomea, me olemme Suomessa. - But now we're speaking Finnish; we're in Finland.
+
+Mitä teet aamulla kesällä? - What do you do in the morning in the summer?
+Entä keskiviikkona? - What about on Wednesday?
+Entä kello kuusi illalla? - What about at six in the evening?
+
+Minulla on poika. - I have a son.
+Sinulla on tyttöystävä. - You have a girlfriend.
+Hänellä on hyvä kaveri. - He/She has a good friend.
+Meillä on uusi osoite. - We have a new address.
+Teillä on keltainen auto. - You have a yellow car.
+Heillä on sama äidinkieli. - They have the same native language.
+Tyynellä on kolme lasta. - Tyyni has three children.
+Oscarilla on oma kahvila. - Oscar has his own café.
