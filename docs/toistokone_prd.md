@@ -37,14 +37,14 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 ### Word-form cards
 
 - Each listed form is a distinct card, **including the base form itself**.
-- Word-form cards are eligible only after the parent vocabulary card reaches score 3.
+- Direct form children are eligible after the parent vocabulary card reaches score 3. Nested form children are eligible only after their immediate parent form reaches score 3.
 - Prompt: a Finnish example sentence with every whole-word occurrence of the target form blanked out; display **all** English translations of the full sentence.
 - Sentence matching is case-insensitive and exact on whole words; no morphological analysis or precomputed associations.
 - Choose a matching sentence with weighted randomness each time the card is used.
   Prefer contexts with mastered tracked vocabulary families: sentences with 0,
   1, 2, or 3+ unmastered tracked families receive weights of 16, 8, 4, and 1.
   Count a family once; ignore untracked words and the target family.
-- Answers: correct form plus up to three distinct distractors drawn exclusively from other forms of the same base word (including its base form), shuffled. If fewer than four distinct forms exist, show fewer options.
+- Answers: correct form plus up to three distinct distractors from its immediate learning branch: its parent and direct siblings, shuffled. If fewer than four distinct options exist, show fewer options.
 - If no matching sentence exists, exclude that word-form card from quiz selection until content is updated.
 - A sentence is not a card: mastery is tracked per word form, across all example sentences.
 - All blanks in a question share one answer and count as a single attempt.
@@ -103,7 +103,7 @@ Examples (available score 1/2, score 3, score 0 → selected):
 The terminal-only pipeline reads:
 
 - `dictionary.txt`: `talo - house / home`
-- `word-forms.txt`: `ruoka - ruokaa / ruoasta / ruoan`
+- `word-forms.txt`: `auto - autossa` followed by `autossa - autossani / autossasi`
 - `sentences/*.txt`: `Minä olen Liisa. - My name is Liisa. / I am Liisa.`
 
 Input rules:

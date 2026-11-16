@@ -81,13 +81,14 @@ Use only the exact separators shown below. Blank lines and lines beginning with 
 talo - house / home
 
 # word-forms.txt
-ruoka - ruokaa / ruoasta / ruoan
+auto - autossa
+autossa - autossani / autossasi
 
 # sentences/lesson-01.txt
 Ruokaa on pöydällä. - Food is on the table.
 ```
 
-Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
+Each `word-forms.txt` line declares children of its left-hand parent. The parent may be a dictionary word or another declared form; declarations can appear in any order. Every form has one parent, and unknown parents, duplicates, and cycles are reported and skipped. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
 
 ## Configuration and v1 limits
 

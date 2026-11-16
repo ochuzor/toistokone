@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from backend.app.db import initialize_progress_database, record_answer
+from backend.app.db import initialize_progress_database, record_answer, reset_card
 from backend.app.models import CardReference
 from backend.app.quiz import Candidate, _sentence_weight, build_batch, select_candidates
 from backend.app.sentences import blank_form, matches_form
@@ -104,6 +104,48 @@ class BatchConstructionTests(unittest.TestCase):
         self.assertEqual(len(food_form["options"]), 3)
         self.assertEqual(sum(option["id"] == food_form["correct_option_id"] for option in food_form["options"]), 1)
         self.assertFalse(any(question["card"]["type"] == "word_form" and question["card"]["base_word"] == "talo" for question in questions))
+
+
+class HierarchicalBatchTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temporary_directory = tempfile.TemporaryDirectory()
+        self.root = Path(self.temporary_directory.name)
+        (self.root / "sentences").mkdir()
+        (self.root / "dictionary.txt").write_text("auto - car\n", encoding="utf-8")
+        (self.root / "word-forms.txt").write_text(
+            "autossa - autossani / autossasi\nauto - autossa\n", encoding="utf-8"
+        )
+        (self.root / "sentences" / "lesson.txt").write_text(
+            "Auto on uusi. - The car is new.\nAutossa istun. - I sit in the car.\n"
+            "Autossani istun. - I sit in my car.\nAutossasi istut. - You sit in your car.\n",
+            encoding="utf-8",
+        )
+        run_import(self.root)
+        self.content = self.root / "data" / "content.sqlite"
+        self.progress = self.root / "data" / "progress.sqlite"
+        initialize_progress_database(self.progress)
+        self.vocabulary = CardReference(type="vocabulary", base_word="auto")
+        self.parent_form = CardReference(type="word_form", base_word="auto", target_form="autossa")
+        for attempt_id in ("vocabulary-1", "vocabulary-2", "vocabulary-3"):
+            record_answer(self.progress, self.vocabulary, attempt_id, True, cooldown_minutes=0)
+
+    def tearDown(self) -> None:
+        self.temporary_directory.cleanup()
+
+    def test_nested_forms_unlock_after_immediate_parent_and_use_branch_options(self) -> None:
+        before_parent_mastery = build_batch(self.content, self.progress, 20, random.Random(4))
+        self.assertFalse(any(question["card"]["target_form"] == "autossani" for question in before_parent_mastery))
+
+        for attempt_id in ("parent-1", "parent-2", "parent-3"):
+            record_answer(self.progress, self.parent_form, attempt_id, True, cooldown_minutes=0)
+        after_parent_mastery = build_batch(self.content, self.progress, 20, random.Random(4))
+        nested = next(question for question in after_parent_mastery if question["card"]["target_form"] == "autossani")
+        option_texts = {option["text"] for option in nested["options"]}
+        self.assertEqual(option_texts, {"autossa", "autossani", "autossasi"})
+
+        reset_card(self.progress, self.parent_form)
+        after_reset = build_batch(self.content, self.progress, 20, random.Random(4))
+        self.assertFalse(any(question["card"]["target_form"] == "autossani" for question in after_reset))
 
 
 if __name__ == "__main__":

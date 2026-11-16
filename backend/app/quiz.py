@@ -49,13 +49,13 @@ def _load_content(
                ORDER BY vocabulary.id, vocabulary_meanings.ordinal"""
         ):
             vocabulary.setdefault(word, []).append(meaning)
-        forms: dict[str, list[str]] = {}
-        for word, form in connection.execute(
-            """SELECT vocabulary.finnish, word_forms.form
+        forms: dict[str, dict[str, str | None]] = {}
+        for word, form, parent_form in connection.execute(
+            """SELECT vocabulary.finnish, word_forms.form, word_forms.parent_form
                FROM vocabulary JOIN word_forms ON vocabulary.id = word_forms.vocabulary_id
                ORDER BY vocabulary.id, word_forms.id"""
         ):
-            forms.setdefault(word, []).append(form)
+            forms.setdefault(word, {})[form] = parent_form
         token_families: dict[str, set[str]] = {}
         for base_word, word_forms in forms.items():
             for form in word_forms:
@@ -79,20 +79,26 @@ def _load_content(
                  AND progress.card_progress.target_form = ''"""
         ):
             candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at))
-        for base_word, form, score, last_practiced_at, parent_score in connection.execute(
-            """SELECT vocabulary.finnish, word_forms.form, COALESCE(form_progress.score, 0),
-                      form_progress.last_practiced_at, COALESCE(parent_progress.score, 0)
+        for base_word, form, parent_form, score, last_practiced_at, vocabulary_score, parent_score in connection.execute(
+            """SELECT vocabulary.finnish, word_forms.form, word_forms.parent_form,
+                      COALESCE(form_progress.score, 0), form_progress.last_practiced_at,
+                      COALESCE(vocabulary_progress.score, 0), COALESCE(parent_progress.score, 0)
                FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id
                LEFT JOIN progress.card_progress AS form_progress
                  ON form_progress.card_type = 'word_form'
                  AND form_progress.base_word = vocabulary.finnish
                  AND form_progress.target_form = word_forms.form
+               LEFT JOIN progress.card_progress AS vocabulary_progress
+                 ON vocabulary_progress.card_type = 'vocabulary'
+                 AND vocabulary_progress.base_word = vocabulary.finnish
+                 AND vocabulary_progress.target_form = ''
                LEFT JOIN progress.card_progress AS parent_progress
-                 ON parent_progress.card_type = 'vocabulary'
+                 ON parent_progress.card_type = 'word_form'
                  AND parent_progress.base_word = vocabulary.finnish
-                 AND parent_progress.target_form = ''"""
+                 AND parent_progress.target_form = word_forms.parent_form"""
         ):
-            if parent_score == 3 and _has_matching_sentence(connection, form):
+            parent_is_mastered = vocabulary_score == 3 if parent_form is None or parent_form == base_word else parent_score == 3
+            if parent_is_mastered and _has_matching_sentence(connection, form):
                 candidates.append(Candidate("word_form", base_word, form, score, last_practiced_at))
     return vocabulary, forms, token_families, mastered_families, candidates
 
@@ -176,8 +182,11 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
                 )
                 sentence, english_translations = rng.choices(matching_sentences, weights=weights, k=1)[0]
                 prompt = blank_form(sentence, card.target_form)
-                distinct_forms = list(dict.fromkeys(forms[card.base_word]))
-                distractors = [form for form in distinct_forms if form != card.target_form]
+                form_parents = forms[card.base_word]
+                parent_form = form_parents[card.target_form]
+                branch_parent = card.base_word if parent_form is None else parent_form
+                branch_forms = [branch_parent, *(form for form, parent in form_parents.items() if parent == branch_parent)]
+                distractors = [form for form in dict.fromkeys(branch_forms) if form != card.target_form]
                 rng.shuffle(distractors)
                 options, correct_id = _options([card.target_form, *distractors[:3]], card.target_form, rng)
             questions.append(

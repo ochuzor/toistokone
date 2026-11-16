@@ -52,7 +52,7 @@ class ImportReport:
 @dataclass
 class ImportedContent:
     vocabulary: OrderedDict[str, list[str]]
-    forms: OrderedDict[str, list[str]]
+    forms: OrderedDict[str, OrderedDict[str, str | None]]
     sentences: OrderedDict[str, list[str]]
     report: ImportReport
 
@@ -81,7 +81,7 @@ def _parse_line(path: Path, line_number: int, line: str, report: ImportReport) -
 def parse_content(project_root: Path) -> ImportedContent:
     report = ImportReport()
     vocabulary: OrderedDict[str, list[str]] = OrderedDict()
-    forms: OrderedDict[str, list[str]] = OrderedDict()
+    forms: OrderedDict[str, OrderedDict[str, str | None]] = OrderedDict()
     sentences: OrderedDict[str, list[str]] = OrderedDict()
 
     dictionary_path = project_root / "dictionary.txt"
@@ -97,23 +97,58 @@ def parse_content(project_root: Path) -> ImportedContent:
             continue
         vocabulary[finnish] = list(OrderedDict.fromkeys(meanings))
 
-    forms = OrderedDict((word, [word]) for word in vocabulary)
+    raw_edges: list[tuple[Path, int, str, str]] = []
     forms_path = project_root / "word-forms.txt"
     report.word_forms_file_count = int(forms_path.exists())
     for number, line in _read_lines(forms_path):
         parsed = _parse_line(forms_path, number, line, report)
         if parsed is None:
             continue
-        base_word, additional_forms = parsed
-        if base_word not in vocabulary:
-            report.skipped_lines.append(f"{forms_path}: line {number}: unknown vocabulary base word '{base_word}'")
+        parent, children = parsed
+        for child in children:
+            raw_edges.append((forms_path, number, parent, child))
+
+    parent_by_child: OrderedDict[str, tuple[str, Path, int]] = OrderedDict()
+    for path, line_number, parent, child in raw_edges:
+        if child in vocabulary or child in parent_by_child:
+            report.duplicate_form_count += 1
+            report.skipped_lines.append(f"{path}: line {line_number}: duplicate or ambiguous form '{child}'")
             continue
-        for form in additional_forms:
-            if form in forms[base_word]:
-                report.duplicate_form_count += 1
-                report.skipped_lines.append(f"{forms_path}: line {number}: duplicate form '{form}' for '{base_word}'")
-                continue
-            forms[base_word].append(form)
+        parent_by_child[child] = (parent, path, line_number)
+
+    resolving: set[str] = set()
+    resolved_roots: dict[str, str | None] = {}
+
+    def resolve_root(form: str) -> str | None:
+        if form in vocabulary:
+            return form
+        if form in resolved_roots:
+            return resolved_roots[form]
+        if form in resolving or form not in parent_by_child:
+            return None
+        resolving.add(form)
+        parent, _, _ = parent_by_child[form]
+        root = resolve_root(parent)
+        resolving.remove(form)
+        resolved_roots[form] = root
+        return root
+
+    forms = OrderedDict((word, OrderedDict([(word, None)])) for word in vocabulary)
+    for child, (parent, path, line_number) in parent_by_child.items():
+        if resolve_root(child) is None:
+            report.skipped_lines.append(f"{path}: line {line_number}: unknown parent or cycle for form '{child}'")
+
+    def add_form(root: str, form: str) -> None:
+        if form in forms[root] or form not in parent_by_child:
+            return
+        parent, _, _ = parent_by_child[form]
+        if parent != root:
+            add_form(root, parent)
+        forms[root][form] = parent
+
+    for child, root in resolved_roots.items():
+        if root is not None:
+            add_form(root, child)
 
     sentences_dir = project_root / "sentences"
     sentence_paths = sorted(sentences_dir.glob("*.txt")) if sentences_dir.exists() else []
@@ -154,6 +189,8 @@ CREATE TABLE word_forms (
     id INTEGER PRIMARY KEY,
     vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE,
     form TEXT NOT NULL,
+    parent_form TEXT,
+    FOREIGN KEY (vocabulary_id, parent_form) REFERENCES word_forms(vocabulary_id, form),
     UNIQUE (vocabulary_id, form)
 );
 CREATE INDEX idx_word_forms_vocab ON word_forms(vocabulary_id);
@@ -185,8 +222,8 @@ def _build_database(path: Path, content: ImportedContent) -> None:
                     [(vocabulary_id, meaning, ordinal) for ordinal, meaning in enumerate(meanings)],
                 )
                 connection.executemany(
-                    "INSERT INTO word_forms (vocabulary_id, form) VALUES (?, ?)",
-                    [(vocabulary_id, form) for form in content.forms[word]],
+                    "INSERT INTO word_forms (vocabulary_id, form, parent_form) VALUES (?, ?, ?)",
+                    [(vocabulary_id, form, parent) for form, parent in content.forms[word].items()],
                 )
             for finnish, translations in content.sentences.items():
                 cursor = connection.execute("INSERT INTO sentences (finnish) VALUES (?)", (finnish,))

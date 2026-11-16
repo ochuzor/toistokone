@@ -93,6 +93,36 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue((data_dir / "content.sqlite").exists())
         self.assertEqual(progress_path.read_bytes(), b"persistent-progress")
 
+    def test_import_builds_nested_form_tree_in_any_declaration_order(self) -> None:
+        self.write_sources(
+            "auto - car\n",
+            "autossa - autossani / autossasi\nauto - autossa\n",
+            {"lesson.txt": "Autossani olen. - I am in my car.\n"},
+        )
+
+        run_import(self.root)
+
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            rows = database.execute(
+                """SELECT form, parent_form FROM word_forms
+                   JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id
+                   WHERE vocabulary.finnish = 'auto' ORDER BY word_forms.id"""
+            ).fetchall()
+        self.assertEqual(rows, [("auto", None), ("autossa", "auto"), ("autossani", "autossa"), ("autossasi", "autossa")])
+
+    def test_import_reports_invalid_form_tree_edges(self) -> None:
+        self.write_sources(
+            "auto - car\n",
+            "missing - orphan\ncycle-a - cycle-b\ncycle-b - cycle-a\nauto - autossa / autossa\n",
+            {"lesson.txt": "Auto on uusi. - The car is new.\n"},
+        )
+
+        report = run_import(self.root)
+
+        self.assertEqual(report.form_count, 2)
+        self.assertGreaterEqual(report.duplicate_form_count, 1)
+        self.assertTrue(any("unknown parent or cycle" in line for line in report.skipped_lines))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -72,6 +72,8 @@ CREATE TABLE word_forms (
   id INTEGER PRIMARY KEY,
   vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE,
   form TEXT NOT NULL,
+  parent_form TEXT,
+  FOREIGN KEY (vocabulary_id, parent_form) REFERENCES word_forms(vocabulary_id, form),
   UNIQUE (vocabulary_id, form)
 );
 CREATE INDEX idx_word_forms_vocab ON word_forms(vocabulary_id);
@@ -94,7 +96,7 @@ CREATE TABLE sentence_tokens (
 );
 ```
 
-**Word-form normalization:** Every imported vocabulary word must have a base-form entry in `word_forms`, even if it is absent from `word-forms.txt`. This is necessary for the separately scored base-form word-form card and for distractor selection. A `word-forms.txt` entry referencing a base word absent from `dictionary.txt` is reported and skipped rather than silently creating a vocabulary card with no English meaning.
+**Word-form normalization:** Every imported vocabulary word has a base-form entry in `word_forms`, even if it is absent from `word-forms.txt`. Each declared form has one immediate parent: either a dictionary root or another declared form in the same root tree. Declarations may appear in any order; unknown parents, duplicate/ambiguous forms, and cycles are reported and skipped. The base form and direct children unlock after vocabulary mastery; nested children require their immediate parent form's mastery.
 
 **Sentence search:** Because the accepted matching rule is case-insensitive whole-word matching (not substring matching), use a two-stage search:
 
@@ -137,7 +139,7 @@ CREATE INDEX idx_attempts_card ON practice_attempts(card_type, base_word, target
 
 Key conventions:
 - Vocabulary: `('vocabulary', exact_base_spelling, '')`.
-- Word form: `('word_form', exact_base_spelling, exact_form_spelling)`.
+- Word form: `('word_form', root_dictionary_spelling, exact_form_spelling)`.
 - Preserve exact input spelling for keys; matching in sentences alone is case-insensitive. Ambiguity/homographs are explicitly not resolved in v1.
 - Missing progress rows mean score 0, no attempts, never practiced. Do not eagerly create rows for all imported content.
 - When content disappears, retain orphaned progress rows; they simply do not appear in current quiz eligibility or home statistics.
@@ -159,8 +161,9 @@ Manual reset changes only the selected card's `score` to 0; it does not delete i
 talo - house / home
 
 # word-forms.txt
-# base word - additional form / additional form
-ruoka - ruokaa / ruoasta / ruoan
+# parent word or form - child form / child form
+auto - autossa
+autossa - autossani / autossasi
 
 # sentences/lesson-01.txt
 Minä olen Liisa. - My name is Liisa. / I am Liisa.
@@ -175,7 +178,7 @@ Rules:
 - Malformed lines are skipped and reported with filename, line number and reason; continue importing other lines.
 - Deduplicate identical Finnish sentences across files using exact text, merge unique English translations preserving first-seen order; report duplicate sentence and translation counts.
 - For vocabulary/forms, deduplicate identical values rather than making duplicate cards. Report conflicts or duplicates.
-- Insert base-form word-form cards for every vocabulary entry, even if there is no `word-forms.txt` line for it.
+- Insert base-form word-form cards for every vocabulary entry, even if there is no `word-forms.txt` line for it. Resolve hierarchical declarations before loading the database; report and skip unknown parents, duplicate/ambiguous forms, and cycles.
 
 ### Output and safety
 
@@ -196,7 +199,7 @@ Report should include input file counts, imported vocabulary/forms/sentences/tra
 
 Let `N = QUIZ_BATCH_SIZE` (positive integer). For v1 use `quota_12 = floor(0.7 * N)` and `quota_3 = N - quota_12`. **Rounding for sizes other than 20 is a proposed convention requiring confirmation.**
 
-1. Build eligible cards from current content and progress. Vocabulary is always eligible. Word forms require parent vocabulary score 3 and at least one sentence match.
+1. Build eligible cards from current content and progress. Vocabulary is always eligible. Base forms and direct children require root vocabulary score 3; nested forms require their immediate parent form score 3. Every word form also requires a matching sentence.
 2. From score 1–2 cards, select up to `quota_12`.
 3. From score 3 cards, select up to `quota_3`.
 4. If the result contains fewer than `N` cards, select **once** up to `min(5, N - count)` score-0 cards.
@@ -231,7 +234,7 @@ Example results at N=20:
 
 - Prompt: sentence with every case-insensitive whole-word occurrence of the target form replaced by `____`.
 - English: all translations of that sentence, in stored order.
-- Options: target form plus up to three **distinct** other forms of the same base word, including the base form; randomize.
+- Options: target form plus up to three **distinct** options from its immediate branch: its parent and direct siblings; randomize.
 - If only one distinct form exists, a one-option question would not test recall. **Proposed v1 safeguard:** exclude such word-form cards until at least two distinct forms exist; see §13 for confirmation.
 - Ensure that replacing target text does not accidentally blank a substring of a longer Finnish word.
 

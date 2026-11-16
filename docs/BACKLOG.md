@@ -13,3 +13,4 @@
 - [x] Align documentation references and queue replenishment behavior
 - [x] Add a configurable card-score cooldown
 - [x] Add mastery-aware sentence selection
+- [x] Add hierarchical word-form trees
