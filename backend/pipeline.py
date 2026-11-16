@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import os
 import sqlite3
+import sys
 import tempfile
 from collections import OrderedDict
 from dataclasses import dataclass, field
@@ -25,6 +26,8 @@ class ImportReport:
     duplicate_form_count: int = 0
     duplicate_sentence_count: int = 0
     duplicate_translation_count: int = 0
+    missing_word_form_children: dict[str, list[str]] = field(default_factory=dict)
+    fatal_errors: list[str] = field(default_factory=list)
     skipped_lines: list[str] = field(default_factory=list)
 
     def render(self, *, dry_run: bool) -> str:
@@ -42,11 +45,26 @@ class ImportReport:
             f"Duplicate word forms: {self.duplicate_form_count}",
             f"Duplicate sentences: {self.duplicate_sentence_count}",
             f"Duplicate translations: {self.duplicate_translation_count}",
+            f"Missing word-form roots: {len(self.missing_word_form_children)}",
+            f"Errors: {len(self.fatal_errors)}",
             f"Skipped lines: {len(self.skipped_lines)}",
         ]
+        if self.missing_word_form_children:
+            lines.extend(["", "Missing word-form roots:"])
+            for root in sorted(self.missing_word_form_children):
+                lines.append(f"- {root}:")
+                lines.extend(f"  - {form}" for form in sorted(self.missing_word_form_children[root]))
+        if self.fatal_errors:
+            lines.extend(["", "Errors:", *self.fatal_errors])
         if self.skipped_lines:
             lines.extend(["", "Diagnostics:", *self.skipped_lines])
         return "\n".join(lines) + "\n"
+
+
+class ImportValidationError(RuntimeError):
+    def __init__(self, report: ImportReport):
+        super().__init__("content import validation failed")
+        self.report = report
 
 
 @dataclass
@@ -116,12 +134,38 @@ def parse_content(project_root: Path) -> ImportedContent:
             continue
         parent_by_child[child] = (parent, path, line_number)
 
+    declared_forms = set(parent_by_child)
+    cycle_forms: set[str] = set()
+    reported_cycles: set[tuple[str, ...]] = set()
+    for start in parent_by_child:
+        chain: list[str] = []
+        positions: dict[str, int] = {}
+        current = start
+        while current in parent_by_child and current not in vocabulary:
+            if current in positions:
+                cycle = chain[positions[current]:]
+                normalized = min(tuple(cycle[index:] + cycle[:index]) for index in range(len(cycle)))
+                if normalized not in reported_cycles:
+                    reported_cycles.add(normalized)
+                    _, path, line_number = parent_by_child[current]
+                    cycle_path = [*normalized, normalized[0]]
+                    report.fatal_errors.append(
+                        f"{path}: line {line_number}: word-form cycle: {' -> '.join(cycle_path)}"
+                    )
+                cycle_forms.update(cycle)
+                break
+            positions[current] = len(chain)
+            chain.append(current)
+            current = parent_by_child[current][0]
+
     resolving: set[str] = set()
     resolved_roots: dict[str, str | None] = {}
 
     def resolve_root(form: str) -> str | None:
         if form in vocabulary:
             return form
+        if form in cycle_forms:
+            return None
         if form in resolved_roots:
             return resolved_roots[form]
         if form in resolving or form not in parent_by_child:
@@ -133,10 +177,23 @@ def parse_content(project_root: Path) -> ImportedContent:
         resolved_roots[form] = root
         return root
 
+    def missing_root(form: str) -> str | None:
+        current = form
+        while current in parent_by_child:
+            parent, _, _ = parent_by_child[current]
+            if parent in vocabulary:
+                return None
+            if parent not in parent_by_child:
+                return parent
+            current = parent
+        return None
+
     forms = OrderedDict((word, OrderedDict([(word, None)])) for word in vocabulary)
     for child, (parent, path, line_number) in parent_by_child.items():
-        if resolve_root(child) is None:
-            report.skipped_lines.append(f"{path}: line {line_number}: unknown parent or cycle for form '{child}'")
+        if resolve_root(child) is None and child not in cycle_forms:
+            root = missing_root(child)
+            if root is not None:
+                report.missing_word_form_children.setdefault(root, []).append(child)
 
     def add_form(root: str, form: str) -> None:
         if form in forms[root] or form not in parent_by_child:
@@ -249,6 +306,9 @@ def run_import(project_root: Path = PROJECT_ROOT, *, dry_run: bool = False) -> I
     data_dir = project_root / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
     report_path = data_dir / "import-report.txt"
+    if content.report.fatal_errors:
+        report_path.write_text(content.report.render(dry_run=dry_run), encoding="utf-8")
+        raise ImportValidationError(content.report)
     if not dry_run:
         descriptor, temporary_name = tempfile.mkstemp(prefix="content-", suffix=".sqlite", dir=data_dir)
         os.close(descriptor)
@@ -266,7 +326,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Build ToistoKone content database")
     parser.add_argument("--dry-run", action="store_true", help="write only the import report")
     arguments = parser.parse_args()
-    report = run_import(dry_run=arguments.dry_run)
+    try:
+        report = run_import(dry_run=arguments.dry_run)
+    except ImportValidationError as error:
+        print(error.report.render(dry_run=arguments.dry_run), end="")
+        print("Import failed: word-form tree contains a cycle.", file=sys.stderr)
+        raise SystemExit(1) from error
     print(report.render(dry_run=arguments.dry_run), end="")
 
 

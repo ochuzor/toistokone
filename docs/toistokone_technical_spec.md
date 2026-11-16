@@ -96,7 +96,7 @@ CREATE TABLE sentence_tokens (
 );
 ```
 
-**Word-form normalization:** Every imported vocabulary word has a base-form entry in `word_forms`, even if it is absent from `word-forms.txt`. Each declared form has one immediate parent: either a dictionary root or another declared form in the same root tree. Declarations may appear in any order; unknown parents, duplicate/ambiguous forms, and cycles are reported and skipped. The base form and direct children unlock after vocabulary mastery; nested children require their immediate parent form's mastery.
+**Word-form normalization:** Every imported vocabulary word has a base-form entry in `word_forms`, even if it is absent from `word-forms.txt`. Each declared form has one immediate parent: either a dictionary root or another declared form in the same root tree. Declarations may appear in any order. The report groups every skipped descendant under its unresolved root missing from the dictionary and retains non-fatal diagnostics for duplicate/ambiguous forms. Cycles are fatal validation errors: their full path is reported, no replacement content database is produced, and the prior content database remains intact. The base form and direct children unlock after vocabulary mastery; nested children require their immediate parent form's mastery.
 
 **Sentence search:** Because the accepted matching rule is case-insensitive whole-word matching (not substring matching), use a two-stage search:
 
@@ -193,7 +193,7 @@ Dry run (`python -m backend.pipeline --dry-run`): parse/validate and replace **o
 
 Suggested CLI: `python -m backend.pipeline [--dry-run]`. Running the pipeline while the backend is active is unsupported for v1; restart the app after rebuilding.
 
-Report should include input file counts, imported vocabulary/forms/sentences/translations, duplicates, skipped lines and diagnostics. Exactly two generated artifacts on normal run, one on dry-run; temporary files must be cleaned up.
+Report should include input file counts, imported vocabulary/forms/sentences/translations, duplicates, missing word-form roots grouped with their skipped descendants, skipped lines, diagnostics, and fatal validation errors. Exactly two generated artifacts on a successful normal run, one on dry-run; a fatal cycle writes only the report and leaves the prior content database intact.
 
 ## 5. Quiz selection algorithm
 

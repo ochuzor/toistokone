@@ -4,8 +4,9 @@ import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
-from backend.pipeline import run_import
+from backend.pipeline import ImportReport, ImportValidationError, main, run_import
 
 
 class PipelineTests(unittest.TestCase):
@@ -46,7 +47,8 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(report.duplicate_form_count, 1)
         self.assertEqual(report.duplicate_sentence_count, 1)
         self.assertEqual(report.duplicate_translation_count, 2)
-        self.assertEqual(len(report.skipped_lines), 4)
+        self.assertEqual(len(report.skipped_lines), 3)
+        self.assertEqual(report.missing_word_form_children, {"missing": ["nope"]})
 
         database = sqlite3.connect(self.root / "data" / "content.sqlite")
         self.assertEqual(database.execute("SELECT COUNT(*) FROM vocabulary").fetchone()[0], 2)
@@ -110,18 +112,56 @@ class PipelineTests(unittest.TestCase):
             ).fetchall()
         self.assertEqual(rows, [("auto", None), ("autossa", "auto"), ("autossani", "autossa"), ("autossasi", "autossa")])
 
-    def test_import_reports_invalid_form_tree_edges(self) -> None:
+    def test_report_lists_missing_word_form_roots_alphabetically(self) -> None:
         self.write_sources(
             "auto - car\n",
-            "missing - orphan\ncycle-a - cycle-b\ncycle-b - cycle-a\nauto - autossa / autossa\n",
+            "zeta - child-z\nalfa - child-a\nzeta - child-z-again\nauto - autossa\n",
             {"lesson.txt": "Auto on uusi. - The car is new.\n"},
         )
 
         report = run_import(self.root)
 
-        self.assertEqual(report.form_count, 2)
-        self.assertGreaterEqual(report.duplicate_form_count, 1)
-        self.assertTrue(any("unknown parent or cycle" in line for line in report.skipped_lines))
+        self.assertEqual(report.missing_word_form_children, {"alfa": ["child-a"], "zeta": ["child-z", "child-z-again"]})
+        rendered = (self.root / "data" / "import-report.txt").read_text(encoding="utf-8")
+        self.assertIn("Missing word-form roots:\n- alfa:\n  - child-a\n- zeta:\n  - child-z\n  - child-z-again", rendered)
+
+        dry_run = run_import(self.root, dry_run=True)
+        self.assertEqual(dry_run.missing_word_form_children, {"alfa": ["child-a"], "zeta": ["child-z", "child-z-again"]})
+
+    def test_cycle_is_fatal_and_preserves_existing_databases(self) -> None:
+        self.write_sources(
+            "auto - car\n",
+            "autossa - autossani\nautossani - autossa\n",
+            {"lesson.txt": "Auto on uusi. - The car is new.\n"},
+        )
+        data_dir = self.root / "data"
+        data_dir.mkdir()
+        content_path = data_dir / "content.sqlite"
+        progress_path = data_dir / "progress.sqlite"
+        content_path.write_bytes(b"existing-content")
+        progress_path.write_bytes(b"persistent-progress")
+
+        with self.assertRaises(ImportValidationError) as raised:
+            run_import(self.root)
+
+        self.assertIn("word-form cycle: autossa -> autossani -> autossa", raised.exception.report.fatal_errors[0])
+        self.assertEqual(content_path.read_bytes(), b"existing-content")
+        self.assertEqual(progress_path.read_bytes(), b"persistent-progress")
+        report = (data_dir / "import-report.txt").read_text(encoding="utf-8")
+        self.assertIn("Errors:", report)
+
+        with self.assertRaises(ImportValidationError):
+            run_import(self.root, dry_run=True)
+        self.assertEqual(content_path.read_bytes(), b"existing-content")
+        self.assertEqual(progress_path.read_bytes(), b"persistent-progress")
+
+    def test_main_exits_non_zero_for_fatal_cycle(self) -> None:
+        report = ImportReport(fatal_errors=["word-forms.txt: line 1: word-form cycle: a -> a"])
+        with patch("backend.pipeline.run_import", side_effect=ImportValidationError(report)):
+            with patch("sys.argv", ["pipeline"]):
+                with self.assertRaises(SystemExit) as raised:
+                    main()
+        self.assertEqual(raised.exception.code, 1)
 
 
 if __name__ == "__main__":

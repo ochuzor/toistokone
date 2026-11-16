@@ -14,3 +14,4 @@
 - [x] Add a configurable card-score cooldown
 - [x] Add mastery-aware sentence selection
 - [x] Add hierarchical word-form trees
+- [x] Report missing word-form roots and reject cycles
