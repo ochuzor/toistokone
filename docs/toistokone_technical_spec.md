@@ -216,10 +216,11 @@ Let `N = QUIZ_BATCH_SIZE` (positive integer). For v1 use `quota_12 = floor(0.7 *
 3. From score 3 cards, select up to `quota_3`.
 4. If the result contains fewer than `N` cards, select **once** up to `min(5, N - count)` score-0 cards.
 5. **Do not backfill** missing score-1/2 or score-3 allocations from other buckets, except the single score-0 step.
-6. Never repeat a card within a batch.
-7. Within each bucket, order by `last_practiced_at` ascending, with NULL first; break ties randomly.
-8. For each selected word-form card, choose one weighted-random matching sentence using mastery-aware context weights, blank all whole-word occurrences, and include every English translation.
-9. Generate answer options and shuffle cards and options before returning.
+6. Preserve the chosen vocabulary/form mix in the score-0 selection. For its never-practised vocabulary slots, use the best available `frequency_words.frequency_rank`; unranked vocabulary follows ranked vocabulary and ties stay randomized. Do not prioritize word forms or previously practised score-0 cards this way.
+7. Never repeat a card within a batch.
+8. Within each bucket, order by `last_practiced_at` ascending, with NULL first; break ties randomly.
+9. For each selected word-form card, choose one weighted-random matching sentence using mastery-aware context weights, blank all whole-word occurrences, and include every English translation.
+10. Generate answer options and shuffle cards and options before returning.
 
 Example results at N=20:
 

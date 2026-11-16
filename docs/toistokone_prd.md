@@ -91,7 +91,7 @@ Batch size is configured by `QUIZ_BATCH_SIZE` in `.env`, default `20`. For a bat
 
 For the default N=20, these quotas are 14, 6, and at most 5 respectively. Do not redistribute unused quota between the first two groups or perform further backfilling. Return an undersized batch if necessary.
 
-Within each score group, select the **least recently practiced** cards first, prioritizing never-practiced cards. Never duplicate a card within a batch. Mix vocabulary and word-form questions and shuffle their presentation order.
+Within each score group, select the **least recently practiced** cards first, prioritizing never-practiced cards. For the selected never-practiced score-0 vocabulary slots only, replace random vocabulary choices with the highest-ranked available frequency-list words; preserve the selected vocabulary/word-form mix, place unranked vocabulary afterward, and retain randomized ties. Never duplicate a card within a batch. Mix vocabulary and word-form questions and shuffle their presentation order.
 
 Examples (available score 1/2, score 3, score 0 → selected):
 

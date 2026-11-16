@@ -19,3 +19,4 @@
 - [x] Filter Tatoeba sentences using frequency and length
 - [x] Batch content database imports
 - [x] Add contextual frequency-based word recommendations
+- [x] Prioritize frequency-ranked new vocabulary in quiz batches

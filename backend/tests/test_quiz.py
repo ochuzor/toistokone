@@ -73,6 +73,31 @@ class QuizSelectionTests(unittest.TestCase):
         )
         self.assertEqual(selected[0].base_word, "new")
 
+    def test_new_vocabulary_uses_frequency_rank_without_changing_the_selected_form_mix(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "unranked", "", 0, None, None),
+            Candidate("vocabulary", "rank-three", "", 0, None, 3),
+            Candidate("vocabulary", "rank-two", "", 0, None, 2),
+            Candidate("vocabulary", "rank-one", "", 0, None, 1),
+            Candidate("word_form", "root-a", "form-a", 0, None),
+            Candidate("word_form", "root-b", "form-b", 0, None),
+            Candidate("word_form", "root-c", "form-c", 0, None),
+        ]
+        baseline = [
+            Candidate(card.card_type, card.base_word, card.target_form, card.score, card.last_practiced_at)
+            for card in candidates
+        ]
+
+        selected = select_candidates(candidates, 5, random.Random(7))
+        selected_without_ranks = select_candidates(baseline, 5, random.Random(7))
+
+        vocabulary_count = sum(card.card_type == "vocabulary" for card in selected_without_ranks)
+        self.assertEqual(sum(card.card_type == "vocabulary" for card in selected), vocabulary_count)
+        self.assertEqual(
+            {card.frequency_rank for card in selected if card.card_type == "vocabulary"},
+            set(range(1, vocabulary_count + 1)),
+        )
+
 
 class BatchConstructionTests(unittest.TestCase):
     def setUp(self) -> None:

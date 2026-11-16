@@ -17,22 +17,44 @@ class Candidate:
     target_form: str
     score: int
     last_practiced_at: str | None
+    frequency_rank: int | None = None
 
 
 def select_candidates(candidates: list[Candidate], batch_size: int, rng: random.Random) -> list[Candidate]:
     """Apply the PRD's non-backfilling 70/30/up-to-five-new selection rule."""
-    def take(items: list[Candidate], limit: int) -> list[Candidate]:
+    def take(items: list[Candidate], limit: int, *, prioritize_new_vocabulary: bool = False) -> list[Candidate]:
         shuffled = list(items)
         rng.shuffle(shuffled)
         shuffled.sort(key=lambda card: (card.last_practiced_at is not None, card.last_practiced_at or ""))
-        return shuffled[:limit]
+        selected = shuffled[:limit]
+        if not prioritize_new_vocabulary:
+            return selected
+
+        vocabulary_positions = [
+            index
+            for index, card in enumerate(selected)
+            if card.card_type == "vocabulary" and card.last_practiced_at is None
+        ]
+        ranked_vocabulary = sorted(
+            (card for card in shuffled if card.card_type == "vocabulary" and card.last_practiced_at is None),
+            key=lambda card: (card.frequency_rank is None, card.frequency_rank if card.frequency_rank is not None else 0),
+        )
+        for index, card in zip(vocabulary_positions, ranked_vocabulary):
+            selected[index] = card
+        return selected
 
     quota_12 = math.floor(0.7 * batch_size)
     quota_3 = batch_size - quota_12
     selected = take([card for card in candidates if card.score in (1, 2)], quota_12)
     selected.extend(take([card for card in candidates if card.score == 3], quota_3))
     if len(selected) < batch_size:
-        selected.extend(take([card for card in candidates if card.score == 0], min(5, batch_size - len(selected))))
+        selected.extend(
+            take(
+                [card for card in candidates if card.score == 0],
+                min(5, batch_size - len(selected)),
+                prioritize_new_vocabulary=True,
+            )
+        )
     rng.shuffle(selected)
     return selected
 
@@ -70,6 +92,9 @@ def _load_content(
             )
         }
 
+        frequency_ranks = {
+            token: rank for token, rank in connection.execute("SELECT token_casefold, frequency_rank FROM frequency_words")
+        }
         candidates: list[Candidate] = []
         for word, score, last_practiced_at in connection.execute(
             """SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at
@@ -78,7 +103,7 @@ def _load_content(
                  AND progress.card_progress.base_word = vocabulary.finnish
                  AND progress.card_progress.target_form = ''"""
         ):
-            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at))
+            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold())))
         for base_word, form, parent_form, score, last_practiced_at, vocabulary_score, parent_score in connection.execute(
             """SELECT vocabulary.finnish, word_forms.form, word_forms.parent_form,
                       COALESCE(form_progress.score, 0), form_progress.last_practiced_at,
