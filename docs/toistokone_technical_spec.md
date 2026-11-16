@@ -193,7 +193,7 @@ Dry run (`python -m backend.pipeline --dry-run`): parse/validate and replace **o
 
 Suggested CLI: `python -m backend.pipeline [--dry-run]`. Running the pipeline while the backend is active is unsupported for v1; restart the app after rebuilding.
 
-Report should include input file counts, imported vocabulary/forms/sentences/translations, duplicates, missing word-form roots grouped with their skipped descendants, skipped lines, diagnostics, and fatal validation errors. Exactly two generated artifacts on a successful normal run, one on dry-run; a fatal cycle writes only the report and leaves the prior content database intact.
+Report should include input file counts, imported vocabulary/forms/sentences/translations, duplicates, missing word-form roots grouped with their skipped descendants, and valid form cards grouped by root when they have fewer than two distinct supporting Finnish sentences. Support counts use the same exact whole-word matcher as quiz generation; translations and repeated target occurrences do not add sentences. Include skipped lines, diagnostics, and fatal validation errors. Exactly two generated artifacts on a successful normal run, one on dry-run; a fatal cycle writes only the report and leaves the prior content database intact.
 
 ## 5. Quiz selection algorithm
 

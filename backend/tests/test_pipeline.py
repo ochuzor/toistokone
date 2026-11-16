@@ -163,6 +163,29 @@ class PipelineTests(unittest.TestCase):
                     main()
         self.assertEqual(raised.exception.code, 1)
 
+    def test_report_groups_forms_with_fewer_than_two_supporting_sentences(self) -> None:
+        self.write_sources(
+            "auto - car\ntalo - house\n",
+            "autossa - autossani\nauto - autossa\nmissing - orphan\n",
+            {
+                "lesson.txt": (
+                    "AUTO auto. - The car is new. / A new car.\n"
+                    "Autossa istun. - I sit in the car.\n"
+                    "autossa odotan. - I wait in the car.\n"
+                    "autossaikaa ei lasketa. - This substring does not count.\n"
+                )
+            },
+        )
+
+        report = run_import(self.root)
+
+        self.assertEqual(report.insufficient_sentence_support, {"auto": [("auto", 1), ("autossani", 0)], "talo": [("talo", 0)]})
+        rendered = (self.root / "data" / "import-report.txt").read_text(encoding="utf-8")
+        self.assertIn("Insufficient sentence support:\n- auto:\n  - auto (1)\n  - autossani (0)\n- talo:\n  - talo (0)", rendered)
+
+        dry_run = run_import(self.root, dry_run=True)
+        self.assertEqual(dry_run.insufficient_sentence_support, report.insufficient_sentence_support)
+
 
 if __name__ == "__main__":
     unittest.main()

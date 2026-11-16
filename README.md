@@ -88,7 +88,7 @@ autossa - autossani / autossasi
 Ruokaa on pöydällä. - Food is on the table.
 ```
 
-Each `word-forms.txt` line declares children of its left-hand parent. The parent may be a dictionary word or another declared form; declarations can appear in any order. Every form has one parent. The import report groups skipped descendants under each unresolved root parent missing from `dictionary.txt`; duplicates are reported separately. A form cycle is fatal: the report shows its path, the import fails, and the existing content database is retained. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
+Each `word-forms.txt` line declares children of its left-hand parent. The parent may be a dictionary word or another declared form; declarations can appear in any order. Every form has one parent. The import report groups skipped descendants under each unresolved root parent missing from `dictionary.txt`; duplicates are reported separately. It also groups valid form cards with fewer than two supporting Finnish sentences, using the same whole-word matching as practice. A form cycle is fatal: the report shows its path, the import fails, and the existing content database is retained. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
 
 ## Configuration and v1 limits
 

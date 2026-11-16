@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from backend.app.config import PROJECT_ROOT
-from backend.app.sentences import tokens
+from backend.app.sentences import matches_form, tokens
 
 
 @dataclass
@@ -27,6 +27,7 @@ class ImportReport:
     duplicate_sentence_count: int = 0
     duplicate_translation_count: int = 0
     missing_word_form_children: dict[str, list[str]] = field(default_factory=dict)
+    insufficient_sentence_support: dict[str, list[tuple[str, int]]] = field(default_factory=dict)
     fatal_errors: list[str] = field(default_factory=list)
     skipped_lines: list[str] = field(default_factory=list)
 
@@ -46,6 +47,7 @@ class ImportReport:
             f"Duplicate sentences: {self.duplicate_sentence_count}",
             f"Duplicate translations: {self.duplicate_translation_count}",
             f"Missing word-form roots: {len(self.missing_word_form_children)}",
+            f"Forms with fewer than 2 supporting sentences: {sum(len(forms) for forms in self.insufficient_sentence_support.values())}",
             f"Errors: {len(self.fatal_errors)}",
             f"Skipped lines: {len(self.skipped_lines)}",
         ]
@@ -54,6 +56,11 @@ class ImportReport:
             for root in sorted(self.missing_word_form_children):
                 lines.append(f"- {root}:")
                 lines.extend(f"  - {form}" for form in sorted(self.missing_word_form_children[root]))
+        if self.insufficient_sentence_support:
+            lines.extend(["", "Insufficient sentence support:"])
+            for root in sorted(self.insufficient_sentence_support):
+                lines.append(f"- {root}:")
+                lines.extend(f"  - {form} ({count})" for form, count in sorted(self.insufficient_sentence_support[root]))
         if self.fatal_errors:
             lines.extend(["", "Errors:", *self.fatal_errors])
         if self.skipped_lines:
@@ -230,6 +237,21 @@ def parse_content(project_root: Path) -> ImportedContent:
     report.form_count = sum(len(word_forms) for word_forms in forms.values())
     report.sentence_count = len(sentences)
     report.translation_count = sum(len(translations) for translations in sentences.values())
+    sentence_token_index: dict[str, list[str]] = {}
+    for sentence in sentences:
+        for token in tokens(sentence):
+            sentence_token_index.setdefault(token, []).append(sentence)
+    for root, word_forms in forms.items():
+        for form in word_forms:
+            form_tokens = tokens(form)
+            candidates = (
+                sentence_token_index.get(form.casefold(), [])
+                if len(form_tokens) == 1 and next(iter(form_tokens)) == form.casefold()
+                else sentences
+            )
+            support_count = sum(matches_form(sentence, form) for sentence in candidates)
+            if support_count < 2:
+                report.insufficient_sentence_support.setdefault(root, []).append((form, support_count))
     return ImportedContent(vocabulary, forms, sentences, report)
 
 
