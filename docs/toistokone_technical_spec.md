@@ -87,6 +87,11 @@ CREATE TABLE sentence_translations (
   PRIMARY KEY (sentence_id, english)
 );
 CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentence_id);
+CREATE TABLE sentence_tokens (
+  token_casefold TEXT NOT NULL,
+  sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE,
+  PRIMARY KEY (token_casefold, sentence_id)
+);
 ```
 
 **Word-form normalization:** Every imported vocabulary word must have a base-form entry in `word_forms`, even if it is absent from `word-forms.txt`. This is necessary for the separately scored base-form word-form card and for distractor selection. A `word-forms.txt` entry referencing a base word absent from `dictionary.txt` is reported and skipped rather than silently creating a vocabulary card with no English meaning.
@@ -96,7 +101,7 @@ CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentenc
 1. Fetch candidate sentences using a simple index-assisted strategy (optional) or scan the sentence table for v1; **never** treat `LIKE '%form%'` as a definitive match.
 2. Verify each candidate using a Unicode-aware case-insensitive whole-word boundary matcher in Python; use the same matcher to blank every occurrence. Do not split Finnish words on accented letters. Avoid matching within longer words.
 
-For the fastest correct v1 implementation, scan `sentences` with a Python matcher and cache matches per form in backend memory during batch generation; the imported database still has indexes on sentence IDs and translations. **Performance note:** A scan may become slow for very large Tatoeba corpora; see §12 for an optional search index. No sentence-to-form association table is persisted.
+The import pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens. Quiz generation uses it to fetch candidate sentences, then verifies whole-word matches in Python before use. The same tokens support mastery-aware weighting: a vocabulary family is known when its vocabulary card is score 3; sentences receive weights 16, 8, 4, or 1 for 0, 1, 2, or 3+ unmastered tracked families. A repeated family counts once, and untracked words do not count. No sentence-to-form association table is persisted.
 
 ## 3. Progress database (`progress.sqlite`)
 
@@ -198,7 +203,7 @@ Let `N = QUIZ_BATCH_SIZE` (positive integer). For v1 use `quota_12 = floor(0.7 *
 5. **Do not backfill** missing score-1/2 or score-3 allocations from other buckets, except the single score-0 step.
 6. Never repeat a card within a batch.
 7. Within each bucket, order by `last_practiced_at` ascending, with NULL first; break ties randomly.
-8. For each selected word-form card, choose one random matching sentence, blank all whole-word occurrences, and include every English translation.
+8. For each selected word-form card, choose one weighted-random matching sentence using mastery-aware context weights, blank all whole-word occurrences, and include every English translation.
 9. Generate answer options and shuffle cards and options before returning.
 
 Example results at N=20:
@@ -385,7 +390,7 @@ Required: working local pipeline, two databases, FastAPI service, two React rout
 
 ## 12. Scale note: thousands of Tatoeba sentences
 
-The `sentences` and `sentence_translations` primary/foreign-key indexes support lookups and joins but **do not themselves make arbitrary whole-word searches fast**. If a full scan proves slow, add a content-only inverted index (e.g. `sentence_tokens(token_casefold, sentence_id)` populated from each sentence during import) and index `(token_casefold, sentence_id)`. This is a search index, **not** a word-form association, and does not change the separate-sentence design. Verify exact whole-word matches in Python before using results. Prefer this optional index if initial Tatoeba imports are large enough to affect batch latency.
+The content-only `sentence_tokens(token_casefold, sentence_id)` index is populated on every import and is the candidate lookup path for word-form quiz sentences. It is a search index, not a sentence-to-word-form association; exact whole-word matches remain verified in Python before a sentence is used.
 
 ## 13. Open implementation decisions (do not silently invent product behavior)
 

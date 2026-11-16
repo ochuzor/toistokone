@@ -3,7 +3,6 @@
 
 ## Next
 - [ ] Improve quiz feedback visibility
-- [ ] Improve sentence selection quality
 
 ## Later
 - [ ] Add practice statistics by day
@@ -13,3 +12,4 @@
 - [x] Implement ToistoKone v1
 - [x] Align documentation references and queue replenishment behavior
 - [x] Add a configurable card-score cooldown
+- [x] Add mastery-aware sentence selection

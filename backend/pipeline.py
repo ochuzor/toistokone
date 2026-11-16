@@ -9,6 +9,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from backend.app.config import PROJECT_ROOT
+from backend.app.sentences import tokens
 
 
 @dataclass
@@ -163,6 +164,11 @@ CREATE TABLE sentence_translations (
     PRIMARY KEY (sentence_id, english)
 );
 CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentence_id);
+CREATE TABLE sentence_tokens (
+    token_casefold TEXT NOT NULL,
+    sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE,
+    PRIMARY KEY (token_casefold, sentence_id)
+);
 """
 
 
@@ -188,6 +194,10 @@ def _build_database(path: Path, content: ImportedContent) -> None:
                 connection.executemany(
                     "INSERT INTO sentence_translations (sentence_id, english, ordinal) VALUES (?, ?, ?)",
                     [(sentence_id, english, ordinal) for ordinal, english in enumerate(translations)],
+                )
+                connection.executemany(
+                    "INSERT INTO sentence_tokens (token_casefold, sentence_id) VALUES (?, ?)",
+                    [(token, sentence_id) for token in tokens(finnish)],
                 )
         foreign_key_errors = connection.execute("PRAGMA foreign_key_check").fetchall()
         integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]

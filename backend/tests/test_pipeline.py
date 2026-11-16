@@ -51,6 +51,12 @@ class PipelineTests(unittest.TestCase):
         database = sqlite3.connect(self.root / "data" / "content.sqlite")
         self.assertEqual(database.execute("SELECT COUNT(*) FROM vocabulary").fetchone()[0], 2)
         self.assertEqual(database.execute("SELECT COUNT(*) FROM word_forms").fetchone()[0], 5)
+        self.assertEqual(
+            database.execute(
+                "SELECT token_casefold FROM sentence_tokens WHERE token_casefold = ?", ("minä",)
+            ).fetchall(),
+            [("minä",)],
+        )
         translations = database.execute(
             "SELECT english FROM sentence_translations JOIN sentences ON sentences.id = sentence_id "
             "WHERE finnish = ? ORDER BY ordinal",

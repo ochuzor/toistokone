@@ -40,7 +40,10 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - Word-form cards are eligible only after the parent vocabulary card reaches score 3.
 - Prompt: a Finnish example sentence with every whole-word occurrence of the target form blanked out; display **all** English translations of the full sentence.
 - Sentence matching is case-insensitive and exact on whole words; no morphological analysis or precomputed associations.
-- Choose a random matching sentence each time the card is used.
+- Choose a matching sentence with weighted randomness each time the card is used.
+  Prefer contexts with mastered tracked vocabulary families: sentences with 0,
+  1, 2, or 3+ unmastered tracked families receive weights of 16, 8, 4, and 1.
+  Count a family once; ignore untracked words and the target family.
 - Answers: correct form plus up to three distinct distractors drawn exclusively from other forms of the same base word (including its base form), shuffled. If fewer than four distinct forms exist, show fewer options.
 - If no matching sentence exists, exclude that word-form card from quiz selection until content is updated.
 - A sentence is not a card: mastery is tracked per word form, across all example sentences.
@@ -111,6 +114,8 @@ Input rules:
 - Import every `.txt` file in `sentences/`.
 - Merge duplicate Finnish sentences by **exact Finnish text**, combining distinct English translations.
 - Store sentences independently from words/forms and index them for efficient whole-word searches at quiz-generation time.
+- Build a content-only case-folded sentence-token index for scalable lookup and
+  contextual sentence weighting.
 - Do not use AI to generate or validate content in v1. Sentences can be added manually or imported from Tatoeba after formatting.
 
 A normal run **replaces exactly two artifacts**: the content SQLite database and a human-readable import report. A `--dry-run` generates only the report and leaves the existing content database untouched. The pipeline **never touches** the separate progress SQLite database. After regeneration, restarting the app is acceptable; no live reload is required.

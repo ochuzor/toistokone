@@ -7,7 +7,7 @@ from pathlib import Path
 
 from backend.app.db import initialize_progress_database, record_answer
 from backend.app.models import CardReference
-from backend.app.quiz import Candidate, build_batch, select_candidates
+from backend.app.quiz import Candidate, _sentence_weight, build_batch, select_candidates
 from backend.app.sentences import blank_form, matches_form
 from backend.pipeline import run_import
 
@@ -22,6 +22,22 @@ class SentenceMatchingTests(unittest.TestCase):
     def test_matching_is_case_insensitive_without_matching_substrings(self) -> None:
         self.assertTrue(matches_form("RUOKAA on.", "ruokaa"))
         self.assertFalse(matches_form("ruokaaikaa", "ruokaa"))
+
+    def test_sentence_weight_counts_unmastered_families_once(self) -> None:
+        token_families = {
+            "tuttu": {"tuttu"},
+            "uusi": {"uusi"},
+            "toinen": {"toinen"},
+            "kolmas": {"kolmas"},
+        }
+        mastered = {"tuttu"}
+
+        self.assertEqual(_sentence_weight("Tuttu.", token_families, mastered), 16)
+        self.assertEqual(_sentence_weight("Tuttu uusi.", token_families, mastered), 8)
+        self.assertEqual(_sentence_weight("Tuttu uusi toinen.", token_families, mastered), 4)
+        self.assertEqual(_sentence_weight("Tuttu uusi toinen kolmas.", token_families, mastered), 1)
+        self.assertEqual(_sentence_weight("Uusi uusi.", token_families, mastered), 8)
+        self.assertEqual(_sentence_weight("Uusi.", token_families, set(), "uusi"), 16)
 
 
 class QuizSelectionTests(unittest.TestCase):
