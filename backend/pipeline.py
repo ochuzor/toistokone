@@ -17,11 +17,13 @@ from backend.app.sentences import matches_form, tokens
 class ImportReport:
     dictionary_file_count: int = 0
     word_forms_file_count: int = 0
+    frequency_file_count: int = 0
     sentence_file_count: int = 0
     vocabulary_count: int = 0
     form_count: int = 0
     sentence_count: int = 0
     translation_count: int = 0
+    frequency_entry_count: int = 0
     duplicate_vocabulary_count: int = 0
     duplicate_form_count: int = 0
     duplicate_sentence_count: int = 0
@@ -37,11 +39,13 @@ class ImportReport:
             f"Mode: {'dry run' if dry_run else 'normal'}",
             f"Dictionary files: {self.dictionary_file_count}",
             f"Word-form files: {self.word_forms_file_count}",
+            f"Frequency files: {self.frequency_file_count}",
             f"Sentence files: {self.sentence_file_count}",
             f"Imported vocabulary: {self.vocabulary_count}",
             f"Imported word forms: {self.form_count}",
             f"Imported sentences: {self.sentence_count}",
             f"Imported translations: {self.translation_count}",
+            f"Imported frequency entries: {self.frequency_entry_count}",
             f"Duplicate vocabulary entries: {self.duplicate_vocabulary_count}",
             f"Duplicate word forms: {self.duplicate_form_count}",
             f"Duplicate sentences: {self.duplicate_sentence_count}",
@@ -79,6 +83,7 @@ class ImportedContent:
     vocabulary: OrderedDict[str, list[str]]
     forms: OrderedDict[str, OrderedDict[str, str | None]]
     sentences: OrderedDict[str, list[str]]
+    frequency_words: OrderedDict[str, int]
     report: ImportReport
 
 
@@ -108,6 +113,7 @@ def parse_content(project_root: Path) -> ImportedContent:
     vocabulary: OrderedDict[str, list[str]] = OrderedDict()
     forms: OrderedDict[str, OrderedDict[str, str | None]] = OrderedDict()
     sentences: OrderedDict[str, list[str]] = OrderedDict()
+    frequency_words: OrderedDict[str, int] = OrderedDict()
 
     dictionary_path = project_root / "dictionary.txt"
     report.dictionary_file_count = int(dictionary_path.exists())
@@ -121,6 +127,31 @@ def parse_content(project_root: Path) -> ImportedContent:
             report.skipped_lines.append(f"{dictionary_path}: line {number}: duplicate vocabulary '{finnish}'")
             continue
         vocabulary[finnish] = list(OrderedDict.fromkeys(meanings))
+
+    frequency_path = project_root / "frequency" / "fi_50k.txt"
+    report.frequency_file_count = int(frequency_path.exists())
+    if not frequency_path.exists():
+        report.fatal_errors.append(f"missing required frequency file: {frequency_path}")
+    else:
+        for number, line in _read_lines(frequency_path):
+            fields = line.split()
+            if len(fields) != 2:
+                report.fatal_errors.append(f"{frequency_path}: line {number}: expected word and positive frequency count")
+                continue
+            word, count_text = fields
+            try:
+                count = int(count_text)
+            except ValueError:
+                report.fatal_errors.append(f"{frequency_path}: line {number}: invalid frequency count '{count_text}'")
+                continue
+            if count <= 0:
+                report.fatal_errors.append(f"{frequency_path}: line {number}: frequency count must be positive")
+                continue
+            token = word.casefold()
+            if token in frequency_words:
+                report.fatal_errors.append(f"{frequency_path}: line {number}: duplicate frequency word '{word}'")
+                continue
+            frequency_words[token] = count
 
     raw_edges: list[tuple[Path, int, str, str]] = []
     forms_path = project_root / "word-forms.txt"
@@ -237,6 +268,7 @@ def parse_content(project_root: Path) -> ImportedContent:
     report.form_count = sum(len(word_forms) for word_forms in forms.values())
     report.sentence_count = len(sentences)
     report.translation_count = sum(len(translations) for translations in sentences.values())
+    report.frequency_entry_count = len(frequency_words)
     sentence_token_index: dict[str, list[str]] = {}
     for sentence in sentences:
         for token in tokens(sentence):
@@ -252,7 +284,7 @@ def parse_content(project_root: Path) -> ImportedContent:
             support_count = sum(matches_form(sentence, form) for sentence in candidates)
             if support_count < 2:
                 report.insufficient_sentence_support.setdefault(root, []).append((form, support_count))
-    return ImportedContent(vocabulary, forms, sentences, report)
+    return ImportedContent(vocabulary, forms, sentences, frequency_words, report)
 
 
 SCHEMA = """
@@ -284,6 +316,11 @@ CREATE TABLE sentence_tokens (
     token_casefold TEXT NOT NULL,
     sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE,
     PRIMARY KEY (token_casefold, sentence_id)
+);
+CREATE TABLE frequency_words (
+    token_casefold TEXT PRIMARY KEY,
+    frequency_rank INTEGER NOT NULL UNIQUE,
+    frequency_count INTEGER NOT NULL CHECK (frequency_count > 0)
 );
 """
 
@@ -328,6 +365,14 @@ def _build_database(path: Path, content: ImportedContent) -> None:
                     for token in tokens(finnish)
                 ),
             )
+            connection.executemany(
+                "INSERT INTO frequency_words (token_casefold, frequency_rank, frequency_count) VALUES (?, ?, ?)",
+                (
+                    (token, rank, count)
+                    for rank, (token, count) in enumerate(content.frequency_words.items(), start=1)
+                ),
+            )
+            connection.execute("CREATE INDEX idx_sentence_tokens_sentence ON sentence_tokens(sentence_id)")
         foreign_key_errors = connection.execute("PRAGMA foreign_key_check").fetchall()
         integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
         if foreign_key_errors or integrity != "ok":
@@ -365,7 +410,7 @@ def main() -> None:
         report = run_import(dry_run=arguments.dry_run)
     except ImportValidationError as error:
         print(error.report.render(dry_run=arguments.dry_run), end="")
-        print("Import failed: word-form tree contains a cycle.", file=sys.stderr)
+        print("Import failed: content validation errors found.", file=sys.stderr)
         raise SystemExit(1) from error
     print(report.render(dry_run=arguments.dry_run), end="")
 

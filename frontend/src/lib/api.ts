@@ -27,6 +27,14 @@ export type Stats = {
   overall: { total: number; mastered: number; mastery_percent: number }
 }
 
+export type Recommendation = {
+  word: string
+  frequency_rank: number
+  frequency_count: number
+  related_vocabulary_count: number
+  examples: { finnish: string; english_translations: string[] }[]
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(path, options)
   if (!response.ok) {
@@ -43,6 +51,11 @@ export async function fetchBatch(): Promise<QuizQuestion[]> {
 
 export function fetchStats(): Promise<Stats> {
   return request<Stats>('/api/stats')
+}
+
+export async function fetchRecommendations(): Promise<Recommendation[]> {
+  const response = await request<{ recommendations: Recommendation[] }>('/api/recommendations')
+  return response.recommendations
 }
 
 export function submitAnswer(card: CardReference, selectedOptionId: string, correctOptionId: string, attemptId: string): Promise<AnswerResult> {

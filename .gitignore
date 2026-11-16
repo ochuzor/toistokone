@@ -13,3 +13,4 @@ data/progress.sqlite
 data/import-report.txt
 .pytest_cache/
 coverage/
+*:Zone.Identifier

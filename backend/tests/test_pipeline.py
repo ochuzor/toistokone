@@ -14,6 +14,8 @@ class PipelineTests(unittest.TestCase):
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary_directory.name)
         (self.root / "sentences").mkdir()
+        (self.root / "frequency").mkdir()
+        (self.root / "frequency" / "fi_50k.txt").write_text("talo 100\nruoka 90\nauto 80\n", encoding="utf-8")
 
     def tearDown(self) -> None:
         self.temporary_directory.cleanup()
@@ -64,9 +66,33 @@ class PipelineTests(unittest.TestCase):
             "WHERE finnish = ? ORDER BY ordinal",
             ("Minä syön ruokaa.",),
         ).fetchall()
+        frequency_count = database.execute("SELECT COUNT(*) FROM frequency_words").fetchone()[0]
         database.close()
         self.assertEqual(translations, [("I eat food.",), ("I am eating food.",)])
         self.assertIn("Imported vocabulary: 2", (self.root / "data" / "import-report.txt").read_text(encoding="utf-8"))
+        self.assertEqual(frequency_count, 3)
+
+    def test_missing_or_invalid_frequency_file_is_fatal_and_preserves_databases(self) -> None:
+        self.write_sources("talo - house\n", "", {"lesson.txt": "Talo on suuri. - The house is big.\n"})
+        data_dir = self.root / "data"
+        data_dir.mkdir()
+        content_path = data_dir / "content.sqlite"
+        progress_path = data_dir / "progress.sqlite"
+        content_path.write_bytes(b"existing-content")
+        progress_path.write_bytes(b"persistent-progress")
+        frequency_path = self.root / "frequency" / "fi_50k.txt"
+
+        for contents, expected_error in [(None, "missing required frequency file"), ("talo no\n", "invalid frequency count"), ("talo 1\nTALO 2\n", "duplicate frequency word")]:
+            with self.subTest(contents=contents):
+                if contents is None:
+                    frequency_path.unlink(missing_ok=True)
+                else:
+                    frequency_path.write_text(contents, encoding="utf-8")
+                with self.assertRaises(ImportValidationError) as raised:
+                    run_import(self.root)
+                self.assertIn(expected_error, raised.exception.report.fatal_errors[0])
+                self.assertEqual(content_path.read_bytes(), b"existing-content")
+                self.assertEqual(progress_path.read_bytes(), b"persistent-progress")
 
     def test_dry_run_preserves_content_and_progress_databases(self) -> None:
         self.write_sources("talo - house\n", "", {"lesson.txt": "Talo on suuri. - The house is big.\n"})

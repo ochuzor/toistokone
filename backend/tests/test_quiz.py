@@ -79,6 +79,8 @@ class BatchConstructionTests(unittest.TestCase):
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary_directory.name)
         (self.root / "sentences").mkdir()
+        (self.root / "frequency").mkdir()
+        (self.root / "frequency" / "fi_50k.txt").write_text("ruoka 100\ntalo 90\n", encoding="utf-8")
         (self.root / "dictionary.txt").write_text("ruoka - food / meal\ntalo - house\n", encoding="utf-8")
         (self.root / "word-forms.txt").write_text("ruoka - ruokaa / ruoassa\n", encoding="utf-8")
         (self.root / "sentences" / "lesson.txt").write_text(
@@ -111,6 +113,8 @@ class HierarchicalBatchTests(unittest.TestCase):
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary_directory.name)
         (self.root / "sentences").mkdir()
+        (self.root / "frequency").mkdir()
+        (self.root / "frequency" / "fi_50k.txt").write_text("auto 100\nautossa 90\n", encoding="utf-8")
         (self.root / "dictionary.txt").write_text("auto - car\n", encoding="utf-8")
         (self.root / "word-forms.txt").write_text(
             "autossa - autossani / autossasi\nauto - autossa\n", encoding="utf-8"

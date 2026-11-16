@@ -84,6 +84,8 @@ class TatoebaExtractionTests(unittest.TestCase):
         self.assertIn("Output Finnish sentences: 1", rendered_report)
         (self.root / "dictionary.txt").write_text("yleinen - common\n", encoding="utf-8")
         (self.root / "word-forms.txt").write_text("", encoding="utf-8")
+        (self.root / "frequency").mkdir()
+        (self.root / "frequency" / "fi_50k.txt").write_text("yleinen 100\n", encoding="utf-8")
         imported = run_import(self.root)
         self.assertEqual(imported.sentence_count, 1)
         with self.assertRaises(FileExistsError):

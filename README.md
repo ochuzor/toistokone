@@ -58,7 +58,9 @@ Open `http://127.0.0.1:5173`. The frontend proxies `/api` requests to the local 
 
 ## Import content
 
-Edit `dictionary.txt`, `word-forms.txt`, and direct-child `.txt` files in `sentences/`, then build the disposable content database:
+Edit `dictionary.txt`, `word-forms.txt`, `frequency/fi_50k.txt`, and
+direct-child `.txt` files in `sentences/`, then build the disposable content
+database:
 
 ```bash
 .venv/bin/python -m backend.pipeline
@@ -103,11 +105,24 @@ talo - house / home
 auto - autossa
 autossa - autossani / autossasi
 
+# frequency/fi_50k.txt
+on 4061285
+ei 2202943
+
 # sentences/lesson-01.txt
 Ruokaa on pöydällä. - Food is on the table.
 ```
 
-Each `word-forms.txt` line declares children of its left-hand parent. The parent may be a dictionary word or another declared form; declarations can appear in any order. Every form has one parent. The import report groups skipped descendants under each unresolved root parent missing from `dictionary.txt`; duplicates are reported separately. It also groups valid form cards with fewer than two supporting Finnish sentences, using the same whole-word matching as practice. A form cycle is fatal: the report shows its path, the import fails, and the existing content database is retained. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
+Each `word-forms.txt` line declares children of its left-hand parent. The parent may be a dictionary word or another declared form; declarations can appear in any order. Every form has one parent. `frequency/fi_50k.txt` is required: every line must contain one word and a positive frequency count, and duplicate words are rejected. The import report groups skipped descendants under each unresolved root parent missing from `dictionary.txt`; duplicates are reported separately. It also groups valid form cards with fewer than two supporting Finnish sentences, using the same whole-word matching as practice. A form cycle or invalid frequency list is fatal: the report shows the error, the import fails, and the existing content database is retained. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
+
+### Word recommendations
+
+The **Word recommendations** page suggests common three-or-more-character
+surface forms that occur in the imported sentences beside your existing
+dictionary words or declared forms. Suggestions are frequency-first and show
+supporting Finnish-English examples. They are review aids only: add accepted
+words manually to `dictionary.txt`, then rerun the pipeline. The app does not
+infer lemmas, translations, or word-form trees automatically.
 
 ## Configuration and v1 limits
 

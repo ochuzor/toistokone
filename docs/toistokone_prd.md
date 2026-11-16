@@ -14,7 +14,20 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 
 - Show total and mastered vocabulary cards, total and mastered word-form cards, and overall mastery percentage.
 - Provide a **Start Practicing** button linking to `/practice`.
+- Provide a **Word recommendations** link to `/recommendations`.
 - Returning home must not discard the active quiz queue.
+
+### Recommendations (`/recommendations`)
+
+- Show up to 20 suggested Finnish surface forms for manual review.
+- Suggest only frequency-list words of at least three characters that occur in
+  imported sentences beside an existing vocabulary/form family; exclude
+  existing base words and declared forms.
+- Rank primarily by global frequency, then by contextual breadth and
+  occurrences. Show frequency rank, related-vocabulary count, and up to two
+  Finnish-English examples.
+- Adding a suggestion remains a manual edit to `dictionary.txt` followed by a
+  content import. Do not infer lemmas, translations, or word-form trees.
 
 ### Practice (`/practice`)
 
@@ -104,6 +117,7 @@ The terminal-only pipeline reads:
 
 - `dictionary.txt`: `talo - house / home`
 - `word-forms.txt`: `auto - autossa` followed by `autossa - autossani / autossasi`
+- `frequency/fi_50k.txt`: `on 4061285`
 - `sentences/*.txt`: `Minä olen Liisa. - My name is Liisa. / I am Liisa.`
 
 Input rules:
@@ -112,6 +126,8 @@ Input rules:
 - Ignore blank lines and lines beginning with `#`.
 - Skip malformed lines and report them.
 - Import every `.txt` file in `sentences/`.
+- Require exactly one word and a positive frequency count per frequency-list
+  line; reject missing, malformed, or duplicate frequency entries fatally.
 - Merge duplicate Finnish sentences by **exact Finnish text**, combining distinct English translations.
 - Store sentences independently from words/forms and index them for efficient whole-word searches at quiz-generation time.
 - Build a content-only case-folded sentence-token index for scalable lookup and
@@ -124,7 +140,7 @@ A normal run **replaces exactly two artifacts**: the content SQLite database and
 
 | Data | Storage | Owner |
 |---|---|---|
-| Vocabulary, meanings, forms, sentences, translations | Content SQLite | Import pipeline |
+| Vocabulary, meanings, forms, sentences, translations, frequency ranks | Content SQLite | Import pipeline |
 | Mastery scores, last-practiced timestamps/history | Separate progress SQLite | Backend |
 | Active unanswered quiz queue | Browser-local persistence | Frontend |
 
@@ -146,6 +162,7 @@ Content database IDs are not stable progress identifiers. Regenerating content m
 - [ ] Normal and dry-run pipeline outputs follow the two-artifact/one-report contract.
 - [ ] Regenerating content does not modify progress data.
 - [ ] Home shows accurate vocabulary/form mastery totals and percentage.
+- [ ] Recommendations show contextual, frequency-first unknown words with examples.
 - [ ] Vocabulary questions show all meanings and randomized distractors.
 - [ ] Mastered vocabulary unlocks separate word-form cards, including the base form.
 - [ ] Word-form questions use randomly selected matching sentences, blank every matching occurrence, and show all English translations.

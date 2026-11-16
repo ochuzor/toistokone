@@ -16,6 +16,8 @@ class ProgressDatabaseTests(unittest.TestCase):
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary_directory.name)
         (self.root / "sentences").mkdir()
+        (self.root / "frequency").mkdir()
+        (self.root / "frequency" / "fi_50k.txt").write_text("talo 100\nruoka 90\n", encoding="utf-8")
         (self.root / "dictionary.txt").write_text("talo - house\nruoka - food\n", encoding="utf-8")
         (self.root / "word-forms.txt").write_text("ruoka - ruokaa\n", encoding="utf-8")
         (self.root / "sentences" / "lesson.txt").write_text("Ruokaa on. - There is food.\n", encoding="utf-8")

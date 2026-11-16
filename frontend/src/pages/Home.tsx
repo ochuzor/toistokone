@@ -28,7 +28,10 @@ export default function Home() {
           <div className="stat overall"><span>Overall mastery</span><strong>{stats.overall.mastery_percent}%</strong><small>{stats.overall.mastered} / {stats.overall.total} cards</small></div>
         </div>
       </>}
-      <Link className="button" to="/practice">Start Practicing</Link>
+      <div className="home-actions">
+        <Link className="button" to="/practice">Start Practicing</Link>
+        <Link className="button secondary" to="/recommendations">Word recommendations</Link>
+      </div>
     </section>
   )
 }

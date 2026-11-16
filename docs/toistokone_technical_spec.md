@@ -22,6 +22,8 @@ toistokone/
   package.json                  # root dev script, using concurrently
   dictionary.txt
   word-forms.txt
+  frequency/
+    fi_50k.txt
   sentences/                   # any number of *.txt files
   data/
     content.sqlite             # generated, disposable
@@ -94,6 +96,12 @@ CREATE TABLE sentence_tokens (
   sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE,
   PRIMARY KEY (token_casefold, sentence_id)
 );
+CREATE INDEX idx_sentence_tokens_sentence ON sentence_tokens(sentence_id);
+CREATE TABLE frequency_words (
+  token_casefold TEXT PRIMARY KEY,
+  frequency_rank INTEGER NOT NULL UNIQUE,
+  frequency_count INTEGER NOT NULL CHECK (frequency_count > 0)
+);
 ```
 
 **Word-form normalization:** Every imported vocabulary word has a base-form entry in `word_forms`, even if it is absent from `word-forms.txt`. Each declared form has one immediate parent: either a dictionary root or another declared form in the same root tree. Declarations may appear in any order. The report groups every skipped descendant under its unresolved root missing from the dictionary and retains non-fatal diagnostics for duplicate/ambiguous forms. Cycles are fatal validation errors: their full path is reported, no replacement content database is produced, and the prior content database remains intact. The base form and direct children unlock after vocabulary mastery; nested children require their immediate parent form's mastery.
@@ -103,7 +111,7 @@ CREATE TABLE sentence_tokens (
 1. Fetch candidate sentences using a simple index-assisted strategy (optional) or scan the sentence table for v1; **never** treat `LIKE '%form%'` as a definitive match.
 2. Verify each candidate using a Unicode-aware case-insensitive whole-word boundary matcher in Python; use the same matcher to blank every occurrence. Do not split Finnish words on accented letters. Avoid matching within longer words.
 
-The import pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens. Quiz generation uses it to fetch candidate sentences, then verifies whole-word matches in Python before use. The same tokens support mastery-aware weighting: a vocabulary family is known when its vocabulary card is score 3; sentences receive weights 16, 8, 4, or 1 for 0, 1, 2, or 3+ unmastered tracked families. A repeated family counts once, and untracked words do not count. No sentence-to-form association table is persisted.
+The import pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens. Quiz generation uses it to fetch candidate sentences, then verifies whole-word matches in Python before use. The same tokens support mastery-aware weighting: a vocabulary family is known when its vocabulary card is score 3; sentences receive weights 16, 8, 4, or 1 for 0, 1, 2, or 3+ unmastered tracked families. A repeated family counts once, and untracked words do not count. No sentence-to-form association table is persisted. `frequency_words` stores the required frequency source for contextual word recommendations; it is content-only and has no progress state.
 
 ## 3. Progress database (`progress.sqlite`)
 
@@ -165,6 +173,9 @@ talo - house / home
 auto - autossa
 autossa - autossani / autossasi
 
+# frequency/fi_50k.txt
+on 4061285
+
 # sentences/lesson-01.txt
 Minä olen Liisa. - My name is Liisa. / I am Liisa.
 ```
@@ -179,6 +190,7 @@ Rules:
 - Deduplicate identical Finnish sentences across files using exact text, merge unique English translations preserving first-seen order; report duplicate sentence and translation counts.
 - For vocabulary/forms, deduplicate identical values rather than making duplicate cards. Report conflicts or duplicates.
 - Insert base-form word-form cards for every vocabulary entry, even if there is no `word-forms.txt` line for it. Resolve hierarchical declarations before loading the database; report and skip unknown parents, duplicate/ambiguous forms, and cycles.
+- Require `frequency/fi_50k.txt`. Each line has one word and a positive integer count. Store case-folded tokens in source order as frequency ranks; a missing, malformed, non-positive, or duplicate entry is fatal.
 
 ### Output and safety
 
@@ -193,7 +205,7 @@ Dry run (`python -m backend.pipeline --dry-run`): parse/validate and replace **o
 
 Suggested CLI: `python -m backend.pipeline [--dry-run]`. Running the pipeline while the backend is active is unsupported for v1; restart the app after rebuilding.
 
-Report should include input file counts, imported vocabulary/forms/sentences/translations, duplicates, missing word-form roots grouped with their skipped descendants, and valid form cards grouped by root when they have fewer than two distinct supporting Finnish sentences. Support counts use the same exact whole-word matcher as quiz generation; translations and repeated target occurrences do not add sentences. Include skipped lines, diagnostics, and fatal validation errors. Exactly two generated artifacts on a successful normal run, one on dry-run; a fatal cycle writes only the report and leaves the prior content database intact.
+Report should include input file counts, imported vocabulary/forms/sentences/translations/frequency entries, duplicates, missing word-form roots grouped with their skipped descendants, and valid form cards grouped by root when they have fewer than two distinct supporting Finnish sentences. Support counts use the same exact whole-word matcher as quiz generation; translations and repeated target occurrences do not add sentences. Include skipped lines, diagnostics, and fatal validation errors. Exactly two generated artifacts on a successful normal run, one on dry-run; a fatal cycle or frequency-list error writes only the report and leaves the prior content database intact.
 
 ## 5. Quiz selection algorithm
 

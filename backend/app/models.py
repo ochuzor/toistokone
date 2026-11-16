@@ -51,6 +51,23 @@ class StatsResponse(BaseModel):
     overall: OverallStats
 
 
+class RecommendationExample(BaseModel):
+    finnish: str
+    english_translations: list[str]
+
+
+class Recommendation(BaseModel):
+    word: str
+    frequency_rank: int
+    frequency_count: int
+    related_vocabulary_count: int
+    examples: list[RecommendationExample]
+
+
+class RecommendationsResponse(BaseModel):
+    recommendations: list[Recommendation]
+
+
 class QuizOption(BaseModel):
     id: str
     text: str

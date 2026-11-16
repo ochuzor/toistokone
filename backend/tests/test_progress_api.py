@@ -8,7 +8,7 @@ from fastapi import HTTPException
 
 from backend.app.config import Settings
 from backend.app.db import initialize_progress_database
-from backend.app.main import answer, app, quiz_batch, reset, stats
+from backend.app.main import answer, app, quiz_batch, recommendations, reset, stats
 from backend.app.models import AnswerRequest, ResetRequest
 from backend.pipeline import run_import
 
@@ -18,6 +18,8 @@ class ProgressApiTests(unittest.TestCase):
         self.temporary_directory = tempfile.TemporaryDirectory()
         root = Path(self.temporary_directory.name)
         (root / "sentences").mkdir()
+        (root / "frequency").mkdir()
+        (root / "frequency" / "fi_50k.txt").write_text("suuri 100\ntalo 90\n", encoding="utf-8")
         (root / "dictionary.txt").write_text("talo - house\n", encoding="utf-8")
         (root / "word-forms.txt").write_text("", encoding="utf-8")
         (root / "sentences" / "lesson.txt").write_text("Talo on suuri. - The house is big.\n", encoding="utf-8")
@@ -69,6 +71,11 @@ class ProgressApiTests(unittest.TestCase):
         batch = quiz_batch()
         self.assertEqual(len(batch.questions), 1)
         self.assertEqual(batch.questions[0].card.base_word, "talo")
+
+    def test_recommendations_route_returns_contextual_words(self) -> None:
+        response = recommendations()
+        self.assertEqual(response.recommendations[0].word, "suuri")
+        self.assertEqual(response.recommendations[0].examples[0].english_translations, ["The house is big."])
 
 
 if __name__ == "__main__":
