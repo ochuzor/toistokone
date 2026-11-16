@@ -16,3 +16,4 @@
 - [x] Add hierarchical word-form trees
 - [x] Report missing word-form roots and reject cycles
 - [x] Report forms with insufficient practice sentences
+- [x] Filter Tatoeba sentences using frequency and length

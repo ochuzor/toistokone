@@ -72,6 +72,25 @@ Use `--dry-run` to validate inputs and update only `data/import-report.txt`:
 
 The pipeline replaces only `data/content.sqlite` and `data/import-report.txt`. It never modifies `data/progress.sqlite`.
 
+### One-time Tatoeba extraction
+
+To turn the local Tatoeba export into an import-ready sentence source, run this
+once:
+
+```bash
+.venv/bin/python -m backend.tatoeba_extract
+```
+
+It reads `tatoeba/fi_50k.txt` and `tatoeba/finn-eng.txt`, then writes
+`sentences/tatoeba-filtered.txt` and `tatoeba/extraction-report.txt`. The
+default beginner filter keeps Finnish sentences of at most eight word tokens
+with no more than two words outside the 10,000 most frequent listed forms.
+Missing frequency forms count as uncommon. Duplicate Finnish sentences are
+merged with their distinct English translations. The extractor refuses to
+overwrite either output unless `--force` is supplied. It is separate from the
+normal import pipeline, so the raw Tatoeba files are no longer needed after you
+have verified the generated source file.
+
 ### Source formats
 
 Use only the exact separators shown below. Blank lines and lines beginning with `#` are ignored; malformed lines are reported and skipped.
