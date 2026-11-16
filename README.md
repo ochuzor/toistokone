@@ -1,6 +1,39 @@
 # ToistoKone
 
-ToistoKone is a local-first Finnish vocabulary and word-form practice app.
+**A full-stack application built through AI-assisted, specification-driven software development.**
+
+ToistoKone is a local-first Finnish vocabulary and word-form practice application built with React, FastAPI, and SQLite.
+
+The primary goal of this project is to demonstrate my approach to **AI-assisted software engineering**: using OpenAI Codex as a coding agent while retaining human ownership of requirements, architectural decisions, implementation approval, and software quality.
+
+Development follows a structured workflow:
+
+1. Define requirements and acceptance criteria.
+2. Have Codex investigate the codebase and propose a solution.
+3. Review and approve the implementation plan.
+4. Implement and verify changes with automated tests and browser testing.
+5. Document the results and maintain a traceable change history.
+
+The repository includes the product specifications, architecture documentation, agent instructions, and completed change records to make this process transparent.
+
+## Tech Stack
+
+- **Frontend:** React, Vite
+- **Backend:** Python, FastAPI
+- **Database:** SQLite
+- **AI Coding Agent:** OpenAI Codex
+- **Development Tools:** Context7, Playwright MCP, SQLite MCP
+
+## Development Approach
+
+This project follows a lightweight, spec-driven development workflow inspired by approaches such as GitHub's Spec Kit, combining structured specifications, AI-assisted implementation, human review, and automated verification.
+
+- Translating product requirements into technical specifications
+- Designing and implementing a full-stack application
+- Directing AI coding agents through structured development workflows
+- Reviewing and validating AI-generated implementations
+- Debugging and regression testing
+- Maintaining documentation throughout iterative development
 
 ## One-time setup
 
