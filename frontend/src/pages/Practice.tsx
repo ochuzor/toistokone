@@ -117,7 +117,7 @@ export default function Practice() {
     <div className="options" aria-label="Answer choices">{current.options.map((option) => {
       const isCorrect = result && option.id === current.correct_option_id
       const isSelected = option.id === answer?.selectedOptionId
-      const feedbackClass = result ? (isCorrect ? ' correct' : isSelected ? ' incorrect' : '') : ''
+      const feedbackClass = result ? (isCorrect ? ' correct' : isSelected ? ' incorrect' : ' faded') : ''
       return <button className={`option${feedbackClass}`} disabled={!!answer} key={option.id} onClick={() => chooseOption(option.id)}>{option.text}</button>
     })}</div>
     {answer && <div className="feedback" role="status">{result ? <><p>{result.correct ? 'Correct!' : 'Not quite — the correct answer is highlighted.'}</p><button className="text-button" onClick={() => void reset()}>Reset mastery</button><button className="button" onClick={next}>Next</button></> : <><p>Saving your answer…</p>{error && <button className="button" onClick={() => void submitPendingAnswer(current, answer)}>Retry submission</button>}</>}</div>}

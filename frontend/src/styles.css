@@ -37,7 +37,8 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .option:hover:not(:disabled) { border-color: #16704b; }
 .option:disabled { cursor: default; }
 .option.correct { border-color: #16704b; background: #dcfce7; }
-.option.incorrect { border-color: #b91c1c; background: #fee2e2; }
+.option.incorrect { border-color: #b91c1c; background: #fee2e2; color: #b91c1c; text-decoration: line-through; }
+.option.faded { opacity: .45; }
 .feedback { border-top: 1px solid #e2e8f0; padding-top: 1rem; }
 .text-button { margin-right: 1rem; border: 0; background: none; color: #16704b; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; }
 .back-link { display: inline-block; margin-top: 1.5rem; color: #475569; }

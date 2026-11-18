@@ -2,7 +2,6 @@
 # ToistoKone — Improvement Backlog
 
 ## Next
-- [ ] Improve quiz feedback visibility
 
 ## Later
 - [ ] Add practice statistics by day
@@ -20,3 +19,4 @@
 - [x] Batch content database imports
 - [x] Add contextual frequency-based word recommendations
 - [x] Prioritize frequency-ranked new vocabulary in quiz batches
+- [x] Clarify incorrect quiz answers
