@@ -123,13 +123,19 @@ class BatchConstructionTests(unittest.TestCase):
     def tearDown(self) -> None:
         self.temporary_directory.cleanup()
 
-    def test_word_forms_unlock_only_when_parent_is_mastered_and_question_is_formatted(self) -> None:
+    def test_word_forms_require_a_sentence_and_at_least_one_branch_distractor(self) -> None:
         questions = build_batch(self.content, self.progress, 10, random.Random(3))
         food_form = next(question for question in questions if question["card"]["type"] == "word_form" and question["card"]["target_form"] == "ruokaa")
         self.assertEqual(food_form["prompt"], "____ on, ____!")
         self.assertEqual(food_form["english_translations"], ["There is food.", "Food exists."])
         self.assertEqual(len(food_form["options"]), 3)
         self.assertEqual(sum(option["id"] == food_form["correct_option_id"] for option in food_form["options"]), 1)
+        self.assertFalse(any(question["card"]["type"] == "word_form" and question["card"]["base_word"] == "talo" for question in questions))
+
+        house = CardReference(type="vocabulary", base_word="talo")
+        for attempt_id in ("house-1", "house-2", "house-3"):
+            record_answer(self.progress, house, attempt_id, True, cooldown_minutes=0)
+        questions = build_batch(self.content, self.progress, 10, random.Random(3))
         self.assertFalse(any(question["card"]["type"] == "word_form" and question["card"]["base_word"] == "talo" for question in questions))
 
 

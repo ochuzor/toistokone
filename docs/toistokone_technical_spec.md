@@ -211,7 +211,7 @@ Report should include input file counts, imported vocabulary/forms/sentences/tra
 
 Let `N = QUIZ_BATCH_SIZE` (positive integer). For v1 use `quota_12 = floor(0.7 * N)` and `quota_3 = N - quota_12`. **Rounding for sizes other than 20 is a proposed convention requiring confirmation.**
 
-1. Build eligible cards from current content and progress. Vocabulary is always eligible. Base forms and direct children require root vocabulary score 3; nested forms require their immediate parent form score 3. Every word form also requires a matching sentence.
+1. Build eligible cards from current content and progress. Vocabulary is always eligible. Base forms and direct children require root vocabulary score 3; nested forms require their immediate parent form score 3. Every word form also requires a matching sentence and at least two distinct immediate-branch options.
 2. From score 1–2 cards, select up to `quota_12`.
 3. From score 3 cards, select up to `quota_3`.
 4. If the result contains fewer than `N` cards, select **once** up to `min(5, N - count)` score-0 cards.
@@ -247,8 +247,7 @@ Example results at N=20:
 
 - Prompt: sentence with every case-insensitive whole-word occurrence of the target form replaced by `____`.
 - English: all translations of that sentence, in stored order.
-- Options: target form plus up to three **distinct** options from its immediate branch: its parent and direct siblings; randomize.
-- If only one distinct form exists, a one-option question would not test recall. **Proposed v1 safeguard:** exclude such word-form cards until at least two distinct forms exist; see §13 for confirmation.
+- Options: target form plus up to three **distinct** options from its immediate branch: its parent and direct siblings; randomize. Exclude the card when this produces fewer than two distinct options.
 - Ensure that replacing target text does not accidentally blank a substring of a longer Finnish word.
 
 No sentence is assigned its own mastery score. Multiple sentences share the same word-form card.
@@ -411,9 +410,8 @@ The content-only `sentence_tokens(token_casefold, sentence_id)` index is populat
 ## 13. Open implementation decisions (do not silently invent product behavior)
 
 1. **Non-20 batch rounding:** Proposed `floor(0.7N)` and remainder for score-3 quota; confirm if needed.
-2. **Only one distinct form:** Proposed skipping the word-form question rather than showing a trivially correct single option; confirm if needed.
-3. **Question grading trust:** Local MVP can submit selected/correct option IDs as above; later deployment needs server-verifiable answer integrity.
-4. **Queue duplicate exhaustion:** If new batches repeatedly overlap the frontend queue, filter duplicates and allow an undersized queue; avoid infinite retries. The backend does not track frontend queue state.
-5. **Sentence import scale:** Start with direct sentence scans; add a token index if Tatoeba corpus size causes unacceptable latency.
+2. **Question grading trust:** Local MVP can submit selected/correct option IDs as above; later deployment needs server-verifiable answer integrity.
+3. **Queue duplicate exhaustion:** If new batches repeatedly overlap the frontend queue, filter duplicates and allow an undersized queue; avoid infinite retries. The backend does not track frontend queue state.
+4. **Sentence import scale:** Start with direct sentence scans; add a token index if Tatoeba corpus size causes unacceptable latency.
 
 These are technical proposals, not changes to the confirmed PRD. All other behavior is governed by the agreed requirements.

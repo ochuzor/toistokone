@@ -59,6 +59,12 @@ def select_candidates(candidates: list[Candidate], batch_size: int, rng: random.
     return selected
 
 
+def _branch_options(form_parents: dict[str, str | None], base_word: str, target_form: str) -> list[str]:
+    parent_form = form_parents[target_form]
+    branch_parent = base_word if parent_form is None else parent_form
+    return list(dict.fromkeys([branch_parent, *(form for form, parent in form_parents.items() if parent == branch_parent)]))
+
+
 def _load_content(
     content_path: Path, progress_path: Path
 ) -> tuple[dict[str, list[str]], dict[str, list[str]], dict[str, set[str]], set[str], list[Candidate]]:
@@ -123,7 +129,11 @@ def _load_content(
                  AND parent_progress.target_form = word_forms.parent_form"""
         ):
             parent_is_mastered = vocabulary_score == 3 if parent_form is None or parent_form == base_word else parent_score == 3
-            if parent_is_mastered and _has_matching_sentence(connection, form):
+            if (
+                parent_is_mastered
+                and _has_matching_sentence(connection, form)
+                and len(_branch_options(forms[base_word], base_word, form)) >= 2
+            ):
                 candidates.append(Candidate("word_form", base_word, form, score, last_practiced_at))
     return vocabulary, forms, token_families, mastered_families, candidates
 
@@ -207,10 +217,7 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
                 )
                 sentence, english_translations = rng.choices(matching_sentences, weights=weights, k=1)[0]
                 prompt = blank_form(sentence, card.target_form)
-                form_parents = forms[card.base_word]
-                parent_form = form_parents[card.target_form]
-                branch_parent = card.base_word if parent_form is None else parent_form
-                branch_forms = [branch_parent, *(form for form, parent in form_parents.items() if parent == branch_parent)]
+                branch_forms = _branch_options(forms[card.base_word], card.base_word, card.target_form)
                 distractors = [form for form in dict.fromkeys(branch_forms) if form != card.target_form]
                 rng.shuffle(distractors)
                 options, correct_id = _options([card.target_form, *distractors[:3]], card.target_form, rng)

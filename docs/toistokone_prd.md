@@ -57,8 +57,8 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
   Prefer contexts with mastered tracked vocabulary families: sentences with 0,
   1, 2, or 3+ unmastered tracked families receive weights of 16, 8, 4, and 1.
   Count a family once; ignore untracked words and the target family.
-- Answers: correct form plus up to three distinct distractors from its immediate learning branch: its parent and direct siblings, shuffled. If fewer than four distinct options exist, show fewer options.
-- If no matching sentence exists, exclude that word-form card from quiz selection until content is updated.
+- Answers: correct form plus up to three distinct distractors from its immediate learning branch: its parent and direct siblings, shuffled. A question requires at least two distinct options.
+- If no matching sentence or immediate-branch distractor exists, exclude that word-form card from quiz selection until content is updated.
 - A sentence is not a card: mastery is tracked per word form, across all example sentences.
 - All blanks in a question share one answer and count as a single attempt.
 
