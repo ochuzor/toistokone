@@ -17247,6 +17247,7 @@ Käskin sinun olla mainitsematta sitä hänen läsnäollessaan. - I told you not
 Boston on liian kylmä minulle Chicagosta puhumattakaan. - Boston is too cold for me, let alone Chicago.
 Minulla ei ole senttiä dollarista puhumattakaan. - I don't have a cent, let alone a dollar.
 Minulla ei ole pyörää, autosta puhumattakaan. - I don't have a bicycle, let alone a car.
+Minulla ei ole pyörää. - I don't have a bicycle.
 Ryhdistäydy! - Get a grip on yourself! / Get a grip! / Man up! / Get a grip on yourself. / Pull yourself together!
 Ryhdistäydy, Tom. - Get a grip, Tom.
 Kasaa itsesi! - Get a grip!
@@ -41472,7 +41473,7 @@ On hän piru vieköön hölmö. - He is a bloody fool.
 Kiitos kirjoitusvirheen huomaamisesta. - Thanks for spotting the typo.
 Onko Sisilia hyvinkin lähellä Maltaa? - Is Sicily very close to Malta?
 Mikä on tyttönimesi? - What's your maiden name?
-Kokemani perusteella kestää vuoden oppia ranskan kielioppi. - In my experience, it takes one year to learn French grammar.
+# Kokemani perusteella kestää vuoden oppia ranskan kielioppi. - In my experience, it takes one year to learn French grammar.
 On noloa myöhästyä treffeiltä. - It's embarrassing to be late for a date.
 Voisin sen sijaan auttaa teitä. - Instead, I could help you out.
 Valtaa? Rahaa? Kuinka mielettömältä kaikki nykyään tuntuukaan! - Power? Money? Everything seems so ridiculous now!

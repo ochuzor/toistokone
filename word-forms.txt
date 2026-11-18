@@ -1,7 +1,7 @@
 # base word - additional form / additional form
 ruoka - ruokaa / ruoasta / ruoan
 auto - autosta / auton / autoa / autossa / autoon / autolla / autolle
-asua - asut
+asua - asut / asun
 tärkeä - tärkeää / tärkeät / tärkeämpi
 talo - taloa / talosta
 kenkä - kenkää / kengät / kengästä / kengältä / kengällä / kengälle
