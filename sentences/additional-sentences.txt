@@ -73,3 +73,11 @@ Kävelen illalla sillalla. - I walk on the bridge in the evening.
 Mennään rannalle! - Let's go to the beach!
 oikea ranta - right bank
 vasen ranta - left bank
+
+Uusi vai vanha sana? - New or old word?
+Onko siili uusi vai vanha sana? - Is hedgehog a new or old word?
+Luontoa on suojeltava. - Nature must be protected.
+
+Hän on hyväluontoinen. - She/he is good-natured.
+Hänellä on hyvä luonto. - She/he has a good nature.
+Hän maksoi luonnossa. - He/she paid in kind.

@@ -89,3 +89,12 @@ aita - hedge / fence / railings
 apu - help / assistance / auxiliary
 lamppu - lamp / light bulb
 jalka - foot / leg / base / stalk
+bussi - bus
+
+luonto - nature / environment / outdoors
+perhe - family
+ruumiinosa - part of the body
+ruumis - body / corpse
+posti - postal service / post office / mail
+poliisi - the police / police officer
+hotelli - hotel
