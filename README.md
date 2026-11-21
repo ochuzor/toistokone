@@ -58,8 +58,9 @@ Open `http://127.0.0.1:5173`. The frontend proxies `/api` requests to the local 
 
 ## Import content
 
-Edit `dictionary.txt`, `word-forms.txt`, `frequency/fi_50k.txt`, and
-direct-child `.txt` files in `sentences/`, then build the disposable content
+Edit `dictionary.txt`, `frequency/fi_50k.txt`, and direct-child `.txt` files
+in `sentences/`. Keep the Kaikki Finnish JSONL at
+`lexicon/kaikki.org-dictionary-Finnish-words.jsonl`, then build the disposable content
 database:
 
 ```bash
@@ -101,10 +102,6 @@ Use only the exact separators shown below. Blank lines and lines beginning with 
 # dictionary.txt
 talo - house / home
 
-# word-forms.txt
-auto - autossa
-autossa - autossani / autossasi
-
 # frequency/fi_50k.txt
 on 4061285
 ei 2202943
@@ -113,20 +110,20 @@ ei 2202943
 Ruokaa on pöydällä. - Food is on the table.
 ```
 
-Each `word-forms.txt` line declares children of its left-hand parent. The parent may be a dictionary word or another declared form; declarations can appear in any order. Every form has one parent. `frequency/fi_50k.txt` is required: every line must contain one word and a positive frequency count, and duplicate words are rejected. The import report groups skipped descendants under each unresolved root parent missing from `dictionary.txt`; duplicates are reported separately. It also groups valid form cards with fewer than two supporting Finnish sentences, using the same whole-word matching as practice. A form cycle or invalid frequency list is fatal: the report shows the error, the import fails, and the existing content database is retained. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
+The first pipeline run builds an ignored reusable `data/kaikki-forms.sqlite` index from the Kaikki source; later imports reuse it unless the source changes. Kaikki generates singular nominative, genitive, partitive, inessive, elative, and illative cards where applicable, plus six active affirmative present-indicative verb cards. The report lists unsupported words and alternate valid forms; it selects the first ordinary single-word form. `frequency/fi_50k.txt` is required: every line must contain one word and a positive frequency count, and duplicate words are rejected. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. Your learning history remains in `data/progress.sqlite`; back it up periodically if it matters to you.
 
 ### Word recommendations
 
 The **Word recommendations** page suggests common three-or-more-character
 surface forms that occur in the imported sentences beside your existing
-dictionary words or declared forms. Suggestions are frequency-first and show
+dictionary words or generated grammar forms. Suggestions are frequency-first and show
 supporting Finnish-English examples. They are review aids only: add accepted
 words manually to `dictionary.txt`, then rerun the pipeline. The app does not
 infer lemmas, translations, or word-form trees automatically.
 
 ## Configuration and v1 limits
 
-`.env` sets `QUIZ_BATCH_SIZE` (default `20`), `CARD_SCORE_COOLDOWN_MINUTES` (default `15`), and local content/progress database paths. After a card's score increases, answer attempts continue to be recorded but cannot change that card's score until its cooldown expires. Set `CARD_SCORE_COOLDOWN_MINUTES=0` to disable this delay. For word-form practice, sentences with more mastered tracked vocabulary are favored; words absent from imported vocabulary and forms do not affect that preference. ToistoKone is local-only: it has no accounts or sync, sentence matching is exact whole-word matching, and ambiguous spellings are not resolved. Content is imported from your files; the app does not generate or validate sentences.
+`.env` sets `QUIZ_BATCH_SIZE` (default `20`), `CARD_SCORE_COOLDOWN_MINUTES` (default `15`), and local content/progress database paths. After a card's score increases, answer attempts continue to be recorded but cannot change that card's score until its cooldown expires. Set `CARD_SCORE_COOLDOWN_MINUTES=0` to disable this delay. ToistoKone is local-only: it has no accounts or sync, and ambiguous Kaikki spellings are reported while the first ordinary candidate is selected. Content is imported from your files; the app does not generate or validate sentences.
 
 ## Tests
 

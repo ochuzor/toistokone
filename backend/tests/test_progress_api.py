@@ -11,6 +11,7 @@ from backend.app.db import initialize_progress_database
 from backend.app.main import answer, app, quiz_batch, recommendations, reset, stats
 from backend.app.models import AnswerRequest, ResetRequest
 from backend.pipeline import run_import
+from backend.tests.kaikki_fixture import write_kaikki
 
 
 class ProgressApiTests(unittest.TestCase):
@@ -19,9 +20,9 @@ class ProgressApiTests(unittest.TestCase):
         root = Path(self.temporary_directory.name)
         (root / "sentences").mkdir()
         (root / "frequency").mkdir()
+        write_kaikki(root)
         (root / "frequency" / "fi_50k.txt").write_text("suuri 100\ntalo 90\n", encoding="utf-8")
         (root / "dictionary.txt").write_text("talo - house\n", encoding="utf-8")
-        (root / "word-forms.txt").write_text("", encoding="utf-8")
         (root / "sentences" / "lesson.txt").write_text("Talo on suuri. - The house is big.\n", encoding="utf-8")
         run_import(root)
         self.settings = Settings(
@@ -52,7 +53,7 @@ class ProgressApiTests(unittest.TestCase):
         retry = answer(AnswerRequest(**{**payload, "selected_option_id": "wrong"}))
         self.assertEqual(retry.model_dump(), result.model_dump())
 
-        self.assertEqual(stats().overall.model_dump(), {"total": 2, "mastered": 0, "mastery_percent": 0.0})
+        self.assertEqual(stats().overall.model_dump(), {"total": 7, "mastered": 0, "mastery_percent": 0.0})
         self.assertEqual(reset(ResetRequest(card=payload["card"])).model_dump(), {"score": 0})
 
     def test_rejects_card_absent_from_current_content(self) -> None:
@@ -60,7 +61,7 @@ class ProgressApiTests(unittest.TestCase):
             answer(
                 AnswerRequest(
                     attempt_id="missing-card",
-                    card={"type": "word_form", "base_word": "talo", "target_form": "talossa"},
+                    card={"type": "word_form", "base_word": "talo", "target_form": "missing-slot"},
                     selected_option_id="a",
                     correct_option_id="a",
                 )

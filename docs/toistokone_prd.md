@@ -49,18 +49,11 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 
 ### Word-form cards
 
-- Each listed form is a distinct card, **including the base form itself**.
-- Direct form children are eligible after the parent vocabulary card reaches score 3. Nested form children are eligible only after their immediate parent form reaches score 3.
-- Prompt: a Finnish example sentence with every whole-word occurrence of the target form blanked out; display **all** English translations of the full sentence.
-- Sentence matching is case-insensitive and exact on whole words; no morphological analysis or precomputed associations.
-- Choose a matching sentence with weighted randomness each time the card is used.
-  Prefer contexts with mastered tracked vocabulary families: sentences with 0,
-  1, 2, or 3+ unmastered tracked families receive weights of 16, 8, 4, and 1.
-  Count a family once; ignore untracked words and the target family.
-- Answers: correct form plus up to three distinct distractors from its immediate learning branch: its parent and direct siblings, shuffled. A question requires at least two distinct options.
-- If no matching sentence or immediate-branch distractor exists, exclude that word-form card from quiz selection until content is updated.
-- A sentence is not a card: mastery is tracked per word form, across all example sentences.
-- All blanks in a question share one answer and count as a single attempt.
+- Kaikki generates labelled grammar cards for applicable dictionary words: six singular nominal cases and six active affirmative present-indicative verb forms.
+- Form cards unlock after their base vocabulary card reaches score 3.
+- Prompt: the base word plus its grammar cue, for example `talo — Inessiivi (missä?)` or `tehdä — hän ____`.
+- Answers: correct form plus up to three distinct forms from the same nominal or verb profile, shuffled. A question requires at least two distinct options.
+- Sentences are not required for form practice; they remain imported for recommendations and future contextual practice.
 
 ## 4. Mastery rules
 
@@ -116,7 +109,7 @@ Examples (available score 1/2, score 3, score 0 → selected):
 The terminal-only pipeline reads:
 
 - `dictionary.txt`: `talo - house / home`
-- `word-forms.txt`: `auto - autossa` followed by `autossa - autossani / autossasi`
+- `lexicon/kaikki.org-dictionary-Finnish-words.jsonl`: local Kaikki morphology source, indexed locally by the pipeline
 - `frequency/fi_50k.txt`: `on 4061285`
 - `sentences/*.txt`: `Minä olen Liisa. - My name is Liisa. / I am Liisa.`
 
@@ -129,7 +122,7 @@ Input rules:
 - Require exactly one word and a positive frequency count per frequency-list
   line; reject missing, malformed, or duplicate frequency entries fatally.
 - Merge duplicate Finnish sentences by **exact Finnish text**, combining distinct English translations.
-- Store sentences independently from words/forms and index them for efficient whole-word searches at quiz-generation time.
+- Store sentences independently from words/forms and index them for recommendations and future contextual practice.
 - Build a content-only case-folded sentence-token index for scalable lookup and
   contextual sentence weighting.
 - Do not use AI to generate or validate content in v1. Sentences can be added manually or imported from Tatoeba after formatting.
@@ -165,8 +158,8 @@ Content database IDs are not stable progress identifiers. Regenerating content m
 - [ ] Recommendations show contextual, frequency-first unknown words with examples.
 - [ ] Vocabulary questions show all meanings and randomized distractors.
 - [ ] Mastered vocabulary unlocks separate word-form cards, including the base form.
-- [ ] Word-form questions use randomly selected matching sentences, blank every matching occurrence, and show all English translations.
-- [ ] Word forms with no matching sentence are skipped.
+- [ ] Word-form questions use Kaikki-derived grammar prompts and same-profile distractors.
+- [ ] Words without applicable Kaikki profiles remain available as vocabulary cards.
 - [ ] Every answer immediately updates grading, mastery score, and persistence.
 - [ ] Score transitions, permanent mastery, and manual resets behave exactly as specified.
 - [ ] Batch selection obeys the strict 70% / 30% / up-to-5 algorithm and least-recently-practiced priority.

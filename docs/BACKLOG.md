@@ -21,3 +21,4 @@
 - [x] Prioritize frequency-ranked new vocabulary in quiz batches
 - [x] Clarify incorrect quiz answers
 - [x] Exclude word-form questions with only one answer option
+- [x] Generate grammar form cards from Kaikki

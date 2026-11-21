@@ -21,7 +21,8 @@ toistokone/
   .env.example
   package.json                  # root dev script, using concurrently
   dictionary.txt
-  word-forms.txt
+  lexicon/
+    kaikki.org-dictionary-Finnish-words.jsonl  # local, ignored source
   frequency/
     fi_50k.txt
   sentences/                   # any number of *.txt files
@@ -29,6 +30,7 @@ toistokone/
     content.sqlite             # generated, disposable
     progress.sqlite            # persistent, never pipeline-owned
     import-report.txt          # generated
+    kaikki-forms.sqlite        # generated local morphology index
   backend/
     requirements.txt
     app/
@@ -73,10 +75,11 @@ CREATE INDEX idx_vocabulary_meanings_vocab ON vocabulary_meanings(vocabulary_id)
 CREATE TABLE word_forms (
   id INTEGER PRIMARY KEY,
   vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE,
+  card_key TEXT NOT NULL,
   form TEXT NOT NULL,
-  parent_form TEXT,
-  FOREIGN KEY (vocabulary_id, parent_form) REFERENCES word_forms(vocabulary_id, form),
-  UNIQUE (vocabulary_id, form)
+  profile TEXT NOT NULL,
+  prompt_label TEXT NOT NULL,
+  UNIQUE (vocabulary_id, card_key)
 );
 CREATE INDEX idx_word_forms_vocab ON word_forms(vocabulary_id);
 
@@ -104,14 +107,9 @@ CREATE TABLE frequency_words (
 );
 ```
 
-**Word-form normalization:** Every imported vocabulary word has a base-form entry in `word_forms`, even if it is absent from `word-forms.txt`. Each declared form has one immediate parent: either a dictionary root or another declared form in the same root tree. Declarations may appear in any order. The report groups every skipped descendant under its unresolved root missing from the dictionary and retains non-fatal diagnostics for duplicate/ambiguous forms. Cycles are fatal validation errors: their full path is reported, no replacement content database is produced, and the prior content database remains intact. The base form and direct children unlock after vocabulary mastery; nested children require their immediate parent form's mastery.
+**Grammar-card generation:** The pipeline indexes the local Kaikki JSONL source and generates form cards for matching dictionary headwords. Nominal cards cover six singular cases; verb cards cover six active affirmative present-indicative persons. `card_key` identifies the grammar slot independently of its surface spelling, so a shared noun/verb spelling keeps separate progress. The first non-rare single-word candidate is selected and alternatives are reported. All generated cards unlock after vocabulary mastery.
 
-**Sentence search:** Because the accepted matching rule is case-insensitive whole-word matching (not substring matching), use a two-stage search:
-
-1. Fetch candidate sentences using a simple index-assisted strategy (optional) or scan the sentence table for v1; **never** treat `LIKE '%form%'` as a definitive match.
-2. Verify each candidate using a Unicode-aware case-insensitive whole-word boundary matcher in Python; use the same matcher to blank every occurrence. Do not split Finnish words on accented letters. Avoid matching within longer words.
-
-The import pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens. Quiz generation uses it to fetch candidate sentences, then verifies whole-word matches in Python before use. The same tokens support mastery-aware weighting: a vocabulary family is known when its vocabulary card is score 3; sentences receive weights 16, 8, 4, or 1 for 0, 1, 2, or 3+ unmastered tracked families. A repeated family counts once, and untracked words do not count. No sentence-to-form association table is persisted. `frequency_words` stores the required frequency source for contextual word recommendations; it is content-only and has no progress state.
+**Sentence storage:** The pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens for contextual recommendations and future sentence-based practice. No sentence-to-form association table is persisted. `frequency_words` stores the required frequency source for contextual word recommendations; it is content-only and has no progress state.
 
 ## 3. Progress database (`progress.sqlite`)
 
@@ -168,10 +166,8 @@ Manual reset changes only the selected card's `score` to 0; it does not delete i
 # Finnish base word - English meaning / additional meaning
 talo - house / home
 
-# word-forms.txt
-# parent word or form - child form / child form
-auto - autossa
-autossa - autossani / autossasi
+# lexicon/kaikki.org-dictionary-Finnish-words.jsonl
+# local Kaikki source; parsed into data/kaikki-forms.sqlite
 
 # frequency/fi_50k.txt
 on 4061285
@@ -188,8 +184,7 @@ Rules:
 - Preserve Finnish spelling and case, sentence punctuation, and translation text, except trimming outer whitespace.
 - Malformed lines are skipped and reported with filename, line number and reason; continue importing other lines.
 - Deduplicate identical Finnish sentences across files using exact text, merge unique English translations preserving first-seen order; report duplicate sentence and translation counts.
-- For vocabulary/forms, deduplicate identical values rather than making duplicate cards. Report conflicts or duplicates.
-- Insert base-form word-form cards for every vocabulary entry, even if there is no `word-forms.txt` line for it. Resolve hierarchical declarations before loading the database; report and skip unknown parents, duplicate/ambiguous forms, and cycles.
+- Generate Kaikki cards only for the configured nominal and verb profiles. Skip rare, possessive, negative, passive, and multi-word forms; report words without a usable profile and alternate candidates.
 - Require `frequency/fi_50k.txt`. Each line has one word and a positive integer count. Store case-folded tokens in source order as frequency ranks; a missing, malformed, non-positive, or duplicate entry is fatal.
 
 ### Output and safety
@@ -201,17 +196,17 @@ Normal run:
 4. Atomically replace `data/content.sqlite` only after successful build.
 5. Replace `data/import-report.txt` with a human-readable report.
 
-Dry run (`python -m backend.pipeline --dry-run`): parse/validate and replace **only** `data/import-report.txt`; do not create, open for writing, or replace `data/content.sqlite`. Neither mode ever writes to `progress.sqlite`.
+Dry run (`python -m backend.pipeline --dry-run`): parse/validate and replace `data/import-report.txt`; do not create, open for writing, or replace `data/content.sqlite`. It may build or refresh the ignored reusable Kaikki index. Neither mode ever writes to `progress.sqlite`.
 
 Suggested CLI: `python -m backend.pipeline [--dry-run]`. Running the pipeline while the backend is active is unsupported for v1; restart the app after rebuilding.
 
-Report should include input file counts, imported vocabulary/forms/sentences/translations/frequency entries, duplicates, missing word-form roots grouped with their skipped descendants, and valid form cards grouped by root when they have fewer than two distinct supporting Finnish sentences. Support counts use the same exact whole-word matcher as quiz generation; translations and repeated target occurrences do not add sentences. Include skipped lines, diagnostics, and fatal validation errors. Exactly two generated artifacts on a successful normal run, one on dry-run; a fatal cycle or frequency-list error writes only the report and leaves the prior content database intact.
+Report should include imported vocabulary/forms/sentences/translations/frequency entries, Kaikki index rebuild status, words without usable profiles, alternate form candidates, duplicates, diagnostics, and fatal validation errors. Exactly two content artifacts on a successful normal run, one on dry-run; the local reusable Kaikki index is built or refreshed separately from content replacement. A fatal source or frequency error writes only the report and leaves the prior content database intact.
 
 ## 5. Quiz selection algorithm
 
 Let `N = QUIZ_BATCH_SIZE` (positive integer). For v1 use `quota_12 = floor(0.7 * N)` and `quota_3 = N - quota_12`. **Rounding for sizes other than 20 is a proposed convention requiring confirmation.**
 
-1. Build eligible cards from current content and progress. Vocabulary is always eligible. Base forms and direct children require root vocabulary score 3; nested forms require their immediate parent form score 3. Every word form also requires a matching sentence and at least two distinct immediate-branch options.
+1. Build eligible cards from current content and progress. Vocabulary is always eligible. Generated grammar cards require base-vocabulary score 3 and at least two distinct options in their nominal or verb profile.
 2. From score 1–2 cards, select up to `quota_12`.
 3. From score 3 cards, select up to `quota_3`.
 4. If the result contains fewer than `N` cards, select **once** up to `min(5, N - count)` score-0 cards.
@@ -219,7 +214,7 @@ Let `N = QUIZ_BATCH_SIZE` (positive integer). For v1 use `quota_12 = floor(0.7 *
 6. Preserve the chosen vocabulary/form mix in the score-0 selection. For its never-practised vocabulary slots, use the best available `frequency_words.frequency_rank`; unranked vocabulary follows ranked vocabulary and ties stay randomized. Do not prioritize word forms or previously practised score-0 cards this way.
 7. Never repeat a card within a batch.
 8. Within each bucket, order by `last_practiced_at` ascending, with NULL first; break ties randomly.
-9. For each selected word-form card, choose one weighted-random matching sentence using mastery-aware context weights, blank all whole-word occurrences, and include every English translation.
+9. For each selected word-form card, generate the stored base-word and grammar-label prompt.
 10. Generate answer options and shuffle cards and options before returning.
 
 Example results at N=20:
@@ -245,12 +240,11 @@ Example results at N=20:
 
 ### Word form
 
-- Prompt: sentence with every case-insensitive whole-word occurrence of the target form replaced by `____`.
-- English: all translations of that sentence, in stored order.
-- Options: target form plus up to three **distinct** options from its immediate branch: its parent and direct siblings; randomize. Exclude the card when this produces fewer than two distinct options.
-- Ensure that replacing target text does not accidentally blank a substring of a longer Finnish word.
+- Prompt: the base word plus the stored grammar label, such as `talo — Inessiivi (missä?)` or `tehdä — hän ____`.
+- English translations: none for a grammar card.
+- Options: target form plus up to three **distinct** options from its same-profile Kaikki forms; randomize. Exclude the card when this produces fewer than two distinct options.
 
-No sentence is assigned its own mastery score. Multiple sentences share the same word-form card.
+No sentence is assigned a form-card mastery score in this grammar-prompt mode.
 
 ## 7. HTTP API (`/api`)
 
@@ -299,7 +293,7 @@ Response example (illustrative, not real content):
 }
 ```
 
-For word-form questions, `prompt` is the blanked Finnish sentence and `english_translations` contains all sentence translations. Option count varies from 2 to 4, subject to the one-option safeguard above.
+For word-form questions, `target_form` is the stable grammar slot key (for example `nominal:elative`), `prompt` contains the base word and grammar cue, and `english_translations` is empty. Option count varies from 2 to 4.
 
 The batch endpoint does **not** create or modify progress, track issued questions, or store queue state.
 
@@ -310,7 +304,7 @@ Request:
 ```json
 {
   "attempt_id": "client-generated-uuid",
-  "card": { "type": "word_form", "base_word": "ruoka", "target_form": "ruoasta" },
+  "card": { "type": "word_form", "base_word": "ruoka", "target_form": "nominal:elative" },
   "selected_option_id": "b",
   "correct_option_id": "a"
 }
@@ -389,7 +383,7 @@ If content database is missing, show a clear instruction to run the terminal pip
 
 ## 10. Testing requirements
 
-**Pipeline:** exact delimiters, blank/comment lines, malformed-line reporting, multiple files, deduplication/translation merging, base-form insertion, orphan word forms, dry-run never touching existing content DB, normal-run atomic replacement, progress DB untouched.
+**Pipeline:** exact delimiters, blank/comment lines, malformed-line reporting, multiple files, Kaikki index creation/reuse, canonical and alternative form selection, deduplication/translation merging, dry-run never touching existing content DB, normal-run atomic replacement, progress DB untouched.
 
 **Sentence matcher:** case-insensitive matching, Finnish accented letters, punctuation boundaries, no substring matches, all repeated occurrences blanked, missing matches excluded.
 
@@ -405,7 +399,7 @@ Required: working local pipeline, two databases, FastAPI service, two React rout
 
 ## 12. Scale note: thousands of Tatoeba sentences
 
-The content-only `sentence_tokens(token_casefold, sentence_id)` index is populated on every import and is the candidate lookup path for word-form quiz sentences. It is a search index, not a sentence-to-word-form association; exact whole-word matches remain verified in Python before a sentence is used.
+The content-only `sentence_tokens(token_casefold, sentence_id)` index is populated on every import for recommendations and future contextual practice. It is not a sentence-to-word-form association.
 
 ## 13. Open implementation decisions (do not silently invent product behavior)
 

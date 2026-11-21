@@ -6,6 +6,7 @@ from pathlib import Path
 
 from backend.app.recommendations import get_recommendations
 from backend.pipeline import run_import
+from backend.tests.kaikki_fixture import write_kaikki
 
 
 class RecommendationTests(unittest.TestCase):
@@ -14,12 +15,12 @@ class RecommendationTests(unittest.TestCase):
         self.root = Path(self.temporary_directory.name)
         (self.root / "frequency").mkdir()
         (self.root / "sentences").mkdir()
+        write_kaikki(self.root)
         (self.root / "frequency" / "fi_50k.txt").write_text(
             "yleinen 100\nkonteksti 90\nja 80\nauto 70\nautossa 60\nirrallinen 50\n",
             encoding="utf-8",
         )
         (self.root / "dictionary.txt").write_text("auto - car\ntalo - house\n", encoding="utf-8")
-        (self.root / "word-forms.txt").write_text("auto - autossa\n", encoding="utf-8")
         (self.root / "sentences" / "lesson.txt").write_text(
             "Talo konteksti. - House context.\n"
             "Auto konteksti yleinen ja. - Car context common.\n"

@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from backend.pipeline import run_import
+from backend.tests.kaikki_fixture import write_kaikki
 from backend.tatoeba_extract import extract_sentences, run_extraction
 
 
@@ -14,6 +15,7 @@ class TatoebaExtractionTests(unittest.TestCase):
         self.root = Path(self.temporary_directory.name)
         self.frequency_path = self.root / "fi_50k.txt"
         self.source_path = self.root / "finn-eng.txt"
+        write_kaikki(self.root)
         self.frequency_path.write_text("yleinen 100\nharvinainen 10\ntuttu 5\n", encoding="utf-8")
 
     def tearDown(self) -> None:
@@ -83,7 +85,6 @@ class TatoebaExtractionTests(unittest.TestCase):
         self.assertIn("Common-word rank limit: 2", rendered_report)
         self.assertIn("Output Finnish sentences: 1", rendered_report)
         (self.root / "dictionary.txt").write_text("yleinen - common\n", encoding="utf-8")
-        (self.root / "word-forms.txt").write_text("", encoding="utf-8")
         (self.root / "frequency").mkdir()
         (self.root / "frequency" / "fi_50k.txt").write_text("yleinen 100\n", encoding="utf-8")
         imported = run_import(self.root)

@@ -9,6 +9,7 @@ from pathlib import Path
 from backend.app.db import get_stats, initialize_progress_database, record_answer, reset_card
 from backend.app.models import CardReference
 from backend.pipeline import run_import
+from backend.tests.kaikki_fixture import write_kaikki
 
 
 class ProgressDatabaseTests(unittest.TestCase):
@@ -17,16 +18,16 @@ class ProgressDatabaseTests(unittest.TestCase):
         self.root = Path(self.temporary_directory.name)
         (self.root / "sentences").mkdir()
         (self.root / "frequency").mkdir()
+        write_kaikki(self.root)
         (self.root / "frequency" / "fi_50k.txt").write_text("talo 100\nruoka 90\n", encoding="utf-8")
         (self.root / "dictionary.txt").write_text("talo - house\nruoka - food\n", encoding="utf-8")
-        (self.root / "word-forms.txt").write_text("ruoka - ruokaa\n", encoding="utf-8")
         (self.root / "sentences" / "lesson.txt").write_text("Ruokaa on. - There is food.\n", encoding="utf-8")
         run_import(self.root)
         self.content_path = self.root / "data" / "content.sqlite"
         self.progress_path = self.root / "data" / "progress.sqlite"
         initialize_progress_database(self.progress_path)
         self.vocabulary = CardReference(type="vocabulary", base_word="talo")
-        self.form = CardReference(type="word_form", base_word="ruoka", target_form="ruokaa")
+        self.form = CardReference(type="word_form", base_word="ruoka", target_form="nominal:partitive")
 
     def tearDown(self) -> None:
         self.temporary_directory.cleanup()
@@ -56,7 +57,7 @@ class ProgressDatabaseTests(unittest.TestCase):
             record_answer(self.progress_path, self.vocabulary, attempt_id, True, cooldown_minutes=0)
         for attempt_id in ("four", "five", "six"):
             record_answer(self.progress_path, self.form, attempt_id, True, cooldown_minutes=0)
-        self.assertEqual(get_stats(self.content_path, self.progress_path)["overall"], {"total": 5, "mastered": 2, "mastery_percent": 40.0})
+        self.assertEqual(get_stats(self.content_path, self.progress_path)["overall"], {"total": 14, "mastered": 2, "mastery_percent": 14.29})
 
         reset_card(self.progress_path, self.vocabulary)
         with sqlite3.connect(self.progress_path) as connection:

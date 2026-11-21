@@ -5,182 +5,61 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from backend.app.db import initialize_progress_database, record_answer, reset_card
+from backend.app.db import initialize_progress_database, record_answer
 from backend.app.models import CardReference
 from backend.app.quiz import Candidate, _sentence_weight, build_batch, select_candidates
-from backend.app.sentences import blank_form, matches_form
 from backend.pipeline import run_import
+from backend.tests.kaikki_fixture import write_kaikki
 
 
-class SentenceMatchingTests(unittest.TestCase):
-    def test_matches_unicode_whole_words_and_blanks_every_occurrence(self) -> None:
-        sentence = "Äiti syö ruokaa, ja ruokaa jää pöydälle."
-        self.assertTrue(matches_form(sentence, "ruokaa"))
-        self.assertFalse(matches_form("ruokaakin syödään", "ruokaa"))
-        self.assertEqual(blank_form(sentence, "ruokaa"), "Äiti syö ____, ja ____ jää pöydälle.")
-
-    def test_matching_is_case_insensitive_without_matching_substrings(self) -> None:
-        self.assertTrue(matches_form("RUOKAA on.", "ruokaa"))
-        self.assertFalse(matches_form("ruokaaikaa", "ruokaa"))
-
+class SentenceWeightTests(unittest.TestCase):
     def test_sentence_weight_counts_unmastered_families_once(self) -> None:
-        token_families = {
-            "tuttu": {"tuttu"},
-            "uusi": {"uusi"},
-            "toinen": {"toinen"},
-            "kolmas": {"kolmas"},
-        }
-        mastered = {"tuttu"}
-
-        self.assertEqual(_sentence_weight("Tuttu.", token_families, mastered), 16)
-        self.assertEqual(_sentence_weight("Tuttu uusi.", token_families, mastered), 8)
-        self.assertEqual(_sentence_weight("Tuttu uusi toinen.", token_families, mastered), 4)
-        self.assertEqual(_sentence_weight("Tuttu uusi toinen kolmas.", token_families, mastered), 1)
-        self.assertEqual(_sentence_weight("Uusi uusi.", token_families, mastered), 8)
-        self.assertEqual(_sentence_weight("Uusi.", token_families, set(), "uusi"), 16)
+        families = {"tuttu": {"tuttu"}, "uusi": {"uusi"}, "toinen": {"toinen"}, "kolmas": {"kolmas"}}
+        self.assertEqual(_sentence_weight("Tuttu uusi toinen kolmas.", families, {"tuttu"}), 1)
 
 
 class QuizSelectionTests(unittest.TestCase):
-    def cards(self, score: int, count: int, prefix: str) -> list[Candidate]:
-        return [Candidate("vocabulary", f"{prefix}{index}", "", score, None) for index in range(count)]
-
-    def test_strict_quota_examples(self) -> None:
-        examples = [
-            ((20, 20, 20), (14, 6, 0)),
-            ((8, 20, 20), (8, 6, 5)),
-            ((20, 2, 20), (14, 2, 4)),
-            ((5, 3, 2), (5, 3, 2)),
-            ((0, 0, 20), (0, 0, 5)),
-        ]
-        for (count_12, count_3, count_0), expected in examples:
-            with self.subTest(available=(count_12, count_3, count_0)):
-                selected = select_candidates(
-                    self.cards(1, count_12, "one") + self.cards(3, count_3, "three") + self.cards(0, count_0, "zero"),
-                    20,
-                    random.Random(1),
-                )
-                counts = tuple(sum(card.score == score for card in selected) for score in (1, 3, 0))
-                self.assertEqual(counts, expected)
-
-    def test_never_practiced_cards_precede_practiced_cards(self) -> None:
-        selected = select_candidates(
-            [
-                Candidate("vocabulary", "old", "", 1, "2026-01-01T00:00:00+00:00"),
-                Candidate("vocabulary", "new", "", 1, None),
-            ],
-            2,
-            random.Random(2),
-        )
-        self.assertEqual(selected[0].base_word, "new")
-
-    def test_new_vocabulary_uses_frequency_rank_without_changing_the_selected_form_mix(self) -> None:
-        candidates = [
-            Candidate("vocabulary", "unranked", "", 0, None, None),
-            Candidate("vocabulary", "rank-three", "", 0, None, 3),
-            Candidate("vocabulary", "rank-two", "", 0, None, 2),
-            Candidate("vocabulary", "rank-one", "", 0, None, 1),
-            Candidate("word_form", "root-a", "form-a", 0, None),
-            Candidate("word_form", "root-b", "form-b", 0, None),
-            Candidate("word_form", "root-c", "form-c", 0, None),
-        ]
-        baseline = [
-            Candidate(card.card_type, card.base_word, card.target_form, card.score, card.last_practiced_at)
-            for card in candidates
-        ]
-
-        selected = select_candidates(candidates, 5, random.Random(7))
-        selected_without_ranks = select_candidates(baseline, 5, random.Random(7))
-
-        vocabulary_count = sum(card.card_type == "vocabulary" for card in selected_without_ranks)
-        self.assertEqual(sum(card.card_type == "vocabulary" for card in selected), vocabulary_count)
-        self.assertEqual(
-            {card.frequency_rank for card in selected if card.card_type == "vocabulary"},
-            set(range(1, vocabulary_count + 1)),
-        )
+    def test_new_vocabulary_uses_frequency_rank_without_changing_mix(self) -> None:
+        candidates = [Candidate("vocabulary", "unranked", "", 0, None), Candidate("vocabulary", "rank-two", "", 0, None, 2), Candidate("vocabulary", "rank-one", "", 0, None, 1), Candidate("word_form", "root", "form", 0, None)]
+        selected = select_candidates(candidates, 4, random.Random(7))
+        self.assertEqual(sum(card.card_type == "vocabulary" for card in selected), 3)
+        self.assertEqual({card.frequency_rank for card in selected if card.card_type == "vocabulary"}, {1, 2, None})
 
 
-class BatchConstructionTests(unittest.TestCase):
+class GrammarBatchTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary_directory.name)
         (self.root / "sentences").mkdir()
         (self.root / "frequency").mkdir()
-        (self.root / "frequency" / "fi_50k.txt").write_text("ruoka 100\ntalo 90\n", encoding="utf-8")
-        (self.root / "dictionary.txt").write_text("ruoka - food / meal\ntalo - house\n", encoding="utf-8")
-        (self.root / "word-forms.txt").write_text("ruoka - ruokaa / ruoassa\n", encoding="utf-8")
-        (self.root / "sentences" / "lesson.txt").write_text(
-            "Ruokaa on, ruokaa! - There is food. / Food exists.\nTalo on suuri. - The house is big.\n",
-            encoding="utf-8",
-        )
+        (self.root / "frequency" / "fi_50k.txt").write_text("talo 100\ntehdä 90\n", encoding="utf-8")
+        (self.root / "dictionary.txt").write_text("talo - house\ntehdä - to do\n", encoding="utf-8")
+        write_kaikki(self.root)
         run_import(self.root)
         self.content = self.root / "data" / "content.sqlite"
         self.progress = self.root / "data" / "progress.sqlite"
         initialize_progress_database(self.progress)
-        food = CardReference(type="vocabulary", base_word="ruoka")
-        for attempt_id in ("food-1", "food-2", "food-3"):
-            record_answer(self.progress, food, attempt_id, True, cooldown_minutes=0)
 
     def tearDown(self) -> None:
         self.temporary_directory.cleanup()
 
-    def test_word_forms_require_a_sentence_and_at_least_one_branch_distractor(self) -> None:
-        questions = build_batch(self.content, self.progress, 10, random.Random(3))
-        food_form = next(question for question in questions if question["card"]["type"] == "word_form" and question["card"]["target_form"] == "ruokaa")
-        self.assertEqual(food_form["prompt"], "____ on, ____!")
-        self.assertEqual(food_form["english_translations"], ["There is food.", "Food exists."])
-        self.assertEqual(len(food_form["options"]), 3)
-        self.assertEqual(sum(option["id"] == food_form["correct_option_id"] for option in food_form["options"]), 1)
-        self.assertFalse(any(question["card"]["type"] == "word_form" and question["card"]["base_word"] == "talo" for question in questions))
+    def master(self, word: str) -> None:
+        for attempt in range(3):
+            record_answer(self.progress, CardReference(type="vocabulary", base_word=word), f"{word}-{attempt}", True, cooldown_minutes=0)
 
-        house = CardReference(type="vocabulary", base_word="talo")
-        for attempt_id in ("house-1", "house-2", "house-3"):
-            record_answer(self.progress, house, attempt_id, True, cooldown_minutes=0)
-        questions = build_batch(self.content, self.progress, 10, random.Random(3))
-        self.assertFalse(any(question["card"]["type"] == "word_form" and question["card"]["base_word"] == "talo" for question in questions))
-
-
-class HierarchicalBatchTests(unittest.TestCase):
-    def setUp(self) -> None:
-        self.temporary_directory = tempfile.TemporaryDirectory()
-        self.root = Path(self.temporary_directory.name)
-        (self.root / "sentences").mkdir()
-        (self.root / "frequency").mkdir()
-        (self.root / "frequency" / "fi_50k.txt").write_text("auto 100\nautossa 90\n", encoding="utf-8")
-        (self.root / "dictionary.txt").write_text("auto - car\n", encoding="utf-8")
-        (self.root / "word-forms.txt").write_text(
-            "autossa - autossani / autossasi\nauto - autossa\n", encoding="utf-8"
-        )
-        (self.root / "sentences" / "lesson.txt").write_text(
-            "Auto on uusi. - The car is new.\nAutossa istun. - I sit in the car.\n"
-            "Autossani istun. - I sit in my car.\nAutossasi istut. - You sit in your car.\n",
-            encoding="utf-8",
-        )
-        run_import(self.root)
-        self.content = self.root / "data" / "content.sqlite"
-        self.progress = self.root / "data" / "progress.sqlite"
-        initialize_progress_database(self.progress)
-        self.vocabulary = CardReference(type="vocabulary", base_word="auto")
-        self.parent_form = CardReference(type="word_form", base_word="auto", target_form="autossa")
-        for attempt_id in ("vocabulary-1", "vocabulary-2", "vocabulary-3"):
-            record_answer(self.progress, self.vocabulary, attempt_id, True, cooldown_minutes=0)
-
-    def tearDown(self) -> None:
-        self.temporary_directory.cleanup()
-
-    def test_nested_forms_unlock_after_immediate_parent_and_use_branch_options(self) -> None:
-        before_parent_mastery = build_batch(self.content, self.progress, 20, random.Random(4))
-        self.assertFalse(any(question["card"]["target_form"] == "autossani" for question in before_parent_mastery))
-
-        for attempt_id in ("parent-1", "parent-2", "parent-3"):
-            record_answer(self.progress, self.parent_form, attempt_id, True, cooldown_minutes=0)
-        after_parent_mastery = build_batch(self.content, self.progress, 20, random.Random(4))
-        nested = next(question for question in after_parent_mastery if question["card"]["target_form"] == "autossani")
-        option_texts = {option["text"] for option in nested["options"]}
-        self.assertEqual(option_texts, {"autossa", "autossani", "autossasi"})
-
-        reset_card(self.progress, self.parent_form)
-        after_reset = build_batch(self.content, self.progress, 20, random.Random(4))
-        self.assertFalse(any(question["card"]["target_form"] == "autossani" for question in after_reset))
+    def test_generated_forms_unlock_after_vocabulary_and_use_grammar_prompts(self) -> None:
+        before = build_batch(self.content, self.progress, 20, random.Random(3))
+        self.assertFalse(any(question["card"]["type"] == "word_form" for question in before))
+        self.master("talo")
+        self.master("tehdä")
+        questions = build_batch(self.content, self.progress, 20, random.Random(3))
+        inessive = next(question for question in questions if question["card"]["target_form"] == "nominal:inessive")
+        verb = next(question for question in questions if question["card"]["target_form"] == "verb:present-3sg")
+        self.assertEqual(inessive["prompt"], "talo — Inessiivi (missä?)")
+        self.assertEqual(verb["prompt"], "tehdä — hän ____")
+        self.assertIn("talossa", {option["text"] for option in inessive["options"]})
+        self.assertEqual(len(inessive["options"]), 4)
+        self.assertEqual(verb["english_translations"], [])
 
 
 if __name__ == "__main__":

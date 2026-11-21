@@ -10,13 +10,13 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from backend.app.config import PROJECT_ROOT
-from backend.app.sentences import matches_form, tokens
+from backend.app.sentences import tokens
+from backend.kaikki import GeneratedForm, ensure_index, generated_forms
 
 
 @dataclass
 class ImportReport:
     dictionary_file_count: int = 0
-    word_forms_file_count: int = 0
     frequency_file_count: int = 0
     sentence_file_count: int = 0
     vocabulary_count: int = 0
@@ -25,46 +25,37 @@ class ImportReport:
     translation_count: int = 0
     frequency_entry_count: int = 0
     duplicate_vocabulary_count: int = 0
-    duplicate_form_count: int = 0
     duplicate_sentence_count: int = 0
     duplicate_translation_count: int = 0
-    missing_word_form_children: dict[str, list[str]] = field(default_factory=dict)
-    insufficient_sentence_support: dict[str, list[tuple[str, int]]] = field(default_factory=dict)
+    kaikki_index_rebuilt: bool = False
+    missing_lexicon_profiles: list[str] = field(default_factory=list)
+    form_alternatives: dict[str, dict[str, list[str]]] = field(default_factory=dict)
     fatal_errors: list[str] = field(default_factory=list)
     skipped_lines: list[str] = field(default_factory=list)
 
     def render(self, *, dry_run: bool) -> str:
         lines = [
-            "ToistoKone import report",
-            f"Mode: {'dry run' if dry_run else 'normal'}",
-            f"Dictionary files: {self.dictionary_file_count}",
-            f"Word-form files: {self.word_forms_file_count}",
-            f"Frequency files: {self.frequency_file_count}",
-            f"Sentence files: {self.sentence_file_count}",
-            f"Imported vocabulary: {self.vocabulary_count}",
-            f"Imported word forms: {self.form_count}",
-            f"Imported sentences: {self.sentence_count}",
-            f"Imported translations: {self.translation_count}",
+            "ToistoKone import report", f"Mode: {'dry run' if dry_run else 'normal'}",
+            f"Dictionary files: {self.dictionary_file_count}", f"Frequency files: {self.frequency_file_count}",
+            f"Sentence files: {self.sentence_file_count}", f"Kaikki index rebuilt: {'yes' if self.kaikki_index_rebuilt else 'no'}",
+            f"Imported vocabulary: {self.vocabulary_count}", f"Imported grammar forms: {self.form_count}",
+            f"Imported sentences: {self.sentence_count}", f"Imported translations: {self.translation_count}",
             f"Imported frequency entries: {self.frequency_entry_count}",
             f"Duplicate vocabulary entries: {self.duplicate_vocabulary_count}",
-            f"Duplicate word forms: {self.duplicate_form_count}",
             f"Duplicate sentences: {self.duplicate_sentence_count}",
             f"Duplicate translations: {self.duplicate_translation_count}",
-            f"Missing word-form roots: {len(self.missing_word_form_children)}",
-            f"Forms with fewer than 2 supporting sentences: {sum(len(forms) for forms in self.insufficient_sentence_support.values())}",
-            f"Errors: {len(self.fatal_errors)}",
-            f"Skipped lines: {len(self.skipped_lines)}",
+            f"Words without usable Kaikki profiles: {len(self.missing_lexicon_profiles)}",
+            f"Form slots with alternatives: {sum(len(slots) for slots in self.form_alternatives.values())}",
+            f"Errors: {len(self.fatal_errors)}", f"Skipped lines: {len(self.skipped_lines)}",
         ]
-        if self.missing_word_form_children:
-            lines.extend(["", "Missing word-form roots:"])
-            for root in sorted(self.missing_word_form_children):
-                lines.append(f"- {root}:")
-                lines.extend(f"  - {form}" for form in sorted(self.missing_word_form_children[root]))
-        if self.insufficient_sentence_support:
-            lines.extend(["", "Insufficient sentence support:"])
-            for root in sorted(self.insufficient_sentence_support):
-                lines.append(f"- {root}:")
-                lines.extend(f"  - {form} ({count})" for form, count in sorted(self.insufficient_sentence_support[root]))
+        if self.missing_lexicon_profiles:
+            lines.extend(["", "Words without usable Kaikki profiles:", *[f"- {word}" for word in self.missing_lexicon_profiles]])
+        if self.form_alternatives:
+            lines.extend(["", "Alternative Kaikki forms (first candidate selected):"])
+            for word in sorted(self.form_alternatives):
+                lines.append(f"- {word}:")
+                for slot, alternatives in sorted(self.form_alternatives[word].items()):
+                    lines.append(f"  - {slot}: {' / '.join(alternatives)}")
         if self.fatal_errors:
             lines.extend(["", "Errors:", *self.fatal_errors])
         if self.skipped_lines:
@@ -81,16 +72,14 @@ class ImportValidationError(RuntimeError):
 @dataclass
 class ImportedContent:
     vocabulary: OrderedDict[str, list[str]]
-    forms: OrderedDict[str, OrderedDict[str, str | None]]
+    forms: OrderedDict[str, list[GeneratedForm]]
     sentences: OrderedDict[str, list[str]]
     frequency_words: OrderedDict[str, int]
     report: ImportReport
 
 
 def _read_lines(path: Path):
-    if not path.exists():
-        return []
-    return enumerate(path.read_text(encoding="utf-8").splitlines(), start=1)
+    return [] if not path.exists() else enumerate(path.read_text(encoding="utf-8").splitlines(), start=1)
 
 
 def _parse_line(path: Path, line_number: int, line: str, report: ImportReport) -> tuple[str, list[str]] | None:
@@ -100,21 +89,18 @@ def _parse_line(path: Path, line_number: int, line: str, report: ImportReport) -
         report.skipped_lines.append(f"{path}: line {line_number}: expected exactly one ' - ' separator")
         return None
     left, right = line.split(" - ")
-    left = left.strip()
     values = [value.strip() for value in right.split(" / ")]
-    if not left or not right.strip() or any(not value for value in values):
+    if not left.strip() or not right.strip() or any(not value for value in values):
         report.skipped_lines.append(f"{path}: line {line_number}: empty field")
         return None
-    return left, values
+    return left.strip(), values
 
 
 def parse_content(project_root: Path) -> ImportedContent:
     report = ImportReport()
     vocabulary: OrderedDict[str, list[str]] = OrderedDict()
-    forms: OrderedDict[str, OrderedDict[str, str | None]] = OrderedDict()
     sentences: OrderedDict[str, list[str]] = OrderedDict()
     frequency_words: OrderedDict[str, int] = OrderedDict()
-
     dictionary_path = project_root / "dictionary.txt"
     report.dictionary_file_count = int(dictionary_path.exists())
     for number, line in _read_lines(dictionary_path):
@@ -127,6 +113,26 @@ def parse_content(project_root: Path) -> ImportedContent:
             report.skipped_lines.append(f"{dictionary_path}: line {number}: duplicate vocabulary '{finnish}'")
             continue
         vocabulary[finnish] = list(OrderedDict.fromkeys(meanings))
+
+    source_path = project_root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+    index_path = project_root / "data" / "kaikki-forms.sqlite"
+    if not source_path.exists() and not index_path.exists():
+        report.fatal_errors.append(f"missing Kaikki source and index: {source_path}")
+    elif source_path.exists():
+        index_path.parent.mkdir(parents=True, exist_ok=True)
+        report.kaikki_index_rebuilt = ensure_index(source_path, index_path, {word.casefold() for word in vocabulary})
+
+    forms: OrderedDict[str, list[GeneratedForm]] = OrderedDict()
+    if index_path.exists():
+        for word in vocabulary:
+            generated, alternatives = generated_forms(index_path, word)
+            forms[word] = generated
+            if not generated:
+                report.missing_lexicon_profiles.append(word)
+            if alternatives:
+                report.form_alternatives[word] = alternatives
+    else:
+        forms = OrderedDict((word, []) for word in vocabulary)
 
     frequency_path = project_root / "frequency" / "fi_50k.txt"
     report.frequency_file_count = int(frequency_path.exists())
@@ -153,98 +159,6 @@ def parse_content(project_root: Path) -> ImportedContent:
                 continue
             frequency_words[token] = count
 
-    raw_edges: list[tuple[Path, int, str, str]] = []
-    forms_path = project_root / "word-forms.txt"
-    report.word_forms_file_count = int(forms_path.exists())
-    for number, line in _read_lines(forms_path):
-        parsed = _parse_line(forms_path, number, line, report)
-        if parsed is None:
-            continue
-        parent, children = parsed
-        for child in children:
-            raw_edges.append((forms_path, number, parent, child))
-
-    parent_by_child: OrderedDict[str, tuple[str, Path, int]] = OrderedDict()
-    for path, line_number, parent, child in raw_edges:
-        if child in vocabulary or child in parent_by_child:
-            report.duplicate_form_count += 1
-            report.skipped_lines.append(f"{path}: line {line_number}: duplicate or ambiguous form '{child}'")
-            continue
-        parent_by_child[child] = (parent, path, line_number)
-
-    declared_forms = set(parent_by_child)
-    cycle_forms: set[str] = set()
-    reported_cycles: set[tuple[str, ...]] = set()
-    for start in parent_by_child:
-        chain: list[str] = []
-        positions: dict[str, int] = {}
-        current = start
-        while current in parent_by_child and current not in vocabulary:
-            if current in positions:
-                cycle = chain[positions[current]:]
-                normalized = min(tuple(cycle[index:] + cycle[:index]) for index in range(len(cycle)))
-                if normalized not in reported_cycles:
-                    reported_cycles.add(normalized)
-                    _, path, line_number = parent_by_child[current]
-                    cycle_path = [*normalized, normalized[0]]
-                    report.fatal_errors.append(
-                        f"{path}: line {line_number}: word-form cycle: {' -> '.join(cycle_path)}"
-                    )
-                cycle_forms.update(cycle)
-                break
-            positions[current] = len(chain)
-            chain.append(current)
-            current = parent_by_child[current][0]
-
-    resolving: set[str] = set()
-    resolved_roots: dict[str, str | None] = {}
-
-    def resolve_root(form: str) -> str | None:
-        if form in vocabulary:
-            return form
-        if form in cycle_forms:
-            return None
-        if form in resolved_roots:
-            return resolved_roots[form]
-        if form in resolving or form not in parent_by_child:
-            return None
-        resolving.add(form)
-        parent, _, _ = parent_by_child[form]
-        root = resolve_root(parent)
-        resolving.remove(form)
-        resolved_roots[form] = root
-        return root
-
-    def missing_root(form: str) -> str | None:
-        current = form
-        while current in parent_by_child:
-            parent, _, _ = parent_by_child[current]
-            if parent in vocabulary:
-                return None
-            if parent not in parent_by_child:
-                return parent
-            current = parent
-        return None
-
-    forms = OrderedDict((word, OrderedDict([(word, None)])) for word in vocabulary)
-    for child, (parent, path, line_number) in parent_by_child.items():
-        if resolve_root(child) is None and child not in cycle_forms:
-            root = missing_root(child)
-            if root is not None:
-                report.missing_word_form_children.setdefault(root, []).append(child)
-
-    def add_form(root: str, form: str) -> None:
-        if form in forms[root] or form not in parent_by_child:
-            return
-        parent, _, _ = parent_by_child[form]
-        if parent != root:
-            add_form(root, parent)
-        forms[root][form] = parent
-
-    for child, root in resolved_roots.items():
-        if root is not None:
-            add_form(root, child)
-
     sentences_dir = project_root / "sentences"
     sentence_paths = sorted(sentences_dir.glob("*.txt")) if sentences_dir.exists() else []
     report.sentence_file_count = len(sentence_paths)
@@ -261,124 +175,48 @@ def parse_content(project_root: Path) -> ImportedContent:
             for translation in translations:
                 if translation in sentences[finnish]:
                     report.duplicate_translation_count += 1
-                    continue
-                sentences[finnish].append(translation)
+                else:
+                    sentences[finnish].append(translation)
 
     report.vocabulary_count = len(vocabulary)
-    report.form_count = sum(len(word_forms) for word_forms in forms.values())
+    report.form_count = sum(len(entries) for entries in forms.values())
     report.sentence_count = len(sentences)
     report.translation_count = sum(len(translations) for translations in sentences.values())
     report.frequency_entry_count = len(frequency_words)
-    sentence_token_index: dict[str, list[str]] = {}
-    for sentence in sentences:
-        for token in tokens(sentence):
-            sentence_token_index.setdefault(token, []).append(sentence)
-    for root, word_forms in forms.items():
-        for form in word_forms:
-            form_tokens = tokens(form)
-            candidates = (
-                sentence_token_index.get(form.casefold(), [])
-                if len(form_tokens) == 1 and next(iter(form_tokens)) == form.casefold()
-                else sentences
-            )
-            support_count = sum(matches_form(sentence, form) for sentence in candidates)
-            if support_count < 2:
-                report.insufficient_sentence_support.setdefault(root, []).append((form, support_count))
     return ImportedContent(vocabulary, forms, sentences, frequency_words, report)
 
 
 SCHEMA = """
 PRAGMA foreign_keys = ON;
 CREATE TABLE vocabulary (id INTEGER PRIMARY KEY, finnish TEXT NOT NULL UNIQUE);
-CREATE TABLE vocabulary_meanings (
-    vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE,
-    meaning TEXT NOT NULL, ordinal INTEGER NOT NULL,
-    PRIMARY KEY (vocabulary_id, meaning)
-);
+CREATE TABLE vocabulary_meanings (vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE, meaning TEXT NOT NULL, ordinal INTEGER NOT NULL, PRIMARY KEY (vocabulary_id, meaning));
 CREATE INDEX idx_vocabulary_meanings_vocab ON vocabulary_meanings(vocabulary_id);
-CREATE TABLE word_forms (
-    id INTEGER PRIMARY KEY,
-    vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE,
-    form TEXT NOT NULL,
-    parent_form TEXT,
-    FOREIGN KEY (vocabulary_id, parent_form) REFERENCES word_forms(vocabulary_id, form),
-    UNIQUE (vocabulary_id, form)
-);
+CREATE TABLE word_forms (id INTEGER PRIMARY KEY, vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE, card_key TEXT NOT NULL, form TEXT NOT NULL, profile TEXT NOT NULL, prompt_label TEXT NOT NULL, UNIQUE (vocabulary_id, card_key));
 CREATE INDEX idx_word_forms_vocab ON word_forms(vocabulary_id);
 CREATE TABLE sentences (id INTEGER PRIMARY KEY, finnish TEXT NOT NULL UNIQUE);
-CREATE TABLE sentence_translations (
-    sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE,
-    english TEXT NOT NULL, ordinal INTEGER NOT NULL,
-    PRIMARY KEY (sentence_id, english)
-);
+CREATE TABLE sentence_translations (sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE, english TEXT NOT NULL, ordinal INTEGER NOT NULL, PRIMARY KEY (sentence_id, english));
 CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentence_id);
-CREATE TABLE sentence_tokens (
-    token_casefold TEXT NOT NULL,
-    sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE,
-    PRIMARY KEY (token_casefold, sentence_id)
-);
-CREATE TABLE frequency_words (
-    token_casefold TEXT PRIMARY KEY,
-    frequency_rank INTEGER NOT NULL UNIQUE,
-    frequency_count INTEGER NOT NULL CHECK (frequency_count > 0)
-);
+CREATE TABLE sentence_tokens (token_casefold TEXT NOT NULL, sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE, PRIMARY KEY (token_casefold, sentence_id));
+CREATE TABLE frequency_words (token_casefold TEXT PRIMARY KEY, frequency_rank INTEGER NOT NULL UNIQUE, frequency_count INTEGER NOT NULL CHECK (frequency_count > 0));
 """
 
 
 def _build_database(path: Path, content: ImportedContent) -> None:
-    connection = sqlite3.connect(path)
-    try:
+    with sqlite3.connect(path) as connection:
         connection.executescript(SCHEMA)
         with connection:
             for word, meanings in content.vocabulary.items():
-                cursor = connection.execute("INSERT INTO vocabulary (finnish) VALUES (?)", (word,))
-                vocabulary_id = cursor.lastrowid
-                connection.executemany(
-                    "INSERT INTO vocabulary_meanings (vocabulary_id, meaning, ordinal) VALUES (?, ?, ?)",
-                    [(vocabulary_id, meaning, ordinal) for ordinal, meaning in enumerate(meanings)],
-                )
-                connection.executemany(
-                    "INSERT INTO word_forms (vocabulary_id, form, parent_form) VALUES (?, ?, ?)",
-                    [(vocabulary_id, form, parent) for form, parent in content.forms[word].items()],
-                )
-            connection.executemany(
-                "INSERT INTO sentences (finnish) VALUES (?)",
-                ((finnish,) for finnish in content.sentences),
-            )
-            sentence_ids = {
-                finnish: sentence_id
-                for sentence_id, finnish in connection.execute("SELECT id, finnish FROM sentences")
-            }
-            connection.executemany(
-                "INSERT INTO sentence_translations (sentence_id, english, ordinal) VALUES (?, ?, ?)",
-                (
-                    (sentence_ids[finnish], english, ordinal)
-                    for finnish, translations in content.sentences.items()
-                    for ordinal, english in enumerate(translations)
-                ),
-            )
-            connection.executemany(
-                "INSERT INTO sentence_tokens (token_casefold, sentence_id) VALUES (?, ?)",
-                (
-                    (token, sentence_ids[finnish])
-                    for finnish in content.sentences
-                    for token in tokens(finnish)
-                ),
-            )
-            connection.executemany(
-                "INSERT INTO frequency_words (token_casefold, frequency_rank, frequency_count) VALUES (?, ?, ?)",
-                (
-                    (token, rank, count)
-                    for rank, (token, count) in enumerate(content.frequency_words.items(), start=1)
-                ),
-            )
+                vocabulary_id = connection.execute("INSERT INTO vocabulary (finnish) VALUES (?)", (word,)).lastrowid
+                connection.executemany("INSERT INTO vocabulary_meanings (vocabulary_id, meaning, ordinal) VALUES (?, ?, ?)", [(vocabulary_id, meaning, ordinal) for ordinal, meaning in enumerate(meanings)])
+                connection.executemany("INSERT INTO word_forms (vocabulary_id, card_key, form, profile, prompt_label) VALUES (?, ?, ?, ?, ?)", [(vocabulary_id, form.card_key, form.form, form.profile, form.prompt_label) for form in content.forms[word]])
+            connection.executemany("INSERT INTO sentences (finnish) VALUES (?)", ((finnish,) for finnish in content.sentences))
+            sentence_ids = {finnish: sentence_id for sentence_id, finnish in connection.execute("SELECT id, finnish FROM sentences")}
+            connection.executemany("INSERT INTO sentence_translations (sentence_id, english, ordinal) VALUES (?, ?, ?)", ((sentence_ids[finnish], english, ordinal) for finnish, translations in content.sentences.items() for ordinal, english in enumerate(translations)))
+            connection.executemany("INSERT INTO sentence_tokens (token_casefold, sentence_id) VALUES (?, ?)", ((token, sentence_ids[finnish]) for finnish in content.sentences for token in tokens(finnish)))
+            connection.executemany("INSERT INTO frequency_words (token_casefold, frequency_rank, frequency_count) VALUES (?, ?, ?)", ((token, rank, count) for rank, (token, count) in enumerate(content.frequency_words.items(), start=1)))
             connection.execute("CREATE INDEX idx_sentence_tokens_sentence ON sentence_tokens(sentence_id)")
-        foreign_key_errors = connection.execute("PRAGMA foreign_key_check").fetchall()
-        integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
-        if foreign_key_errors or integrity != "ok":
+        if connection.execute("PRAGMA foreign_key_check").fetchall() or connection.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
             raise RuntimeError("content database integrity verification failed")
-    finally:
-        connection.close()
 
 
 def run_import(project_root: Path = PROJECT_ROOT, *, dry_run: bool = False) -> ImportReport:

@@ -132,7 +132,7 @@ def card_exists(content_path: Path, card: CardReference) -> bool:
         return connection.execute(
             """SELECT 1 FROM word_forms
                JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id
-               WHERE vocabulary.finnish = ? AND word_forms.form = ?""",
+               WHERE vocabulary.finnish = ? AND word_forms.card_key = ?""",
             (card.base_word, card.target_form),
         ).fetchone() is not None
 
@@ -152,7 +152,7 @@ def get_stats(content_path: Path, progress_path: Path) -> dict[str, dict[str, in
             """SELECT COUNT(*) FROM word_forms
                JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id
                JOIN progress.card_progress p ON p.card_type = 'word_form'
-                  AND p.base_word = vocabulary.finnish AND p.target_form = word_forms.form AND p.score = 3"""
+                  AND p.base_word = vocabulary.finnish AND p.target_form = word_forms.card_key AND p.score = 3"""
         ).fetchone()[0]
     total = vocabulary_total + form_total
     mastered = vocabulary_mastered + form_mastered

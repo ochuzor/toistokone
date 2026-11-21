@@ -11,6 +11,9 @@ frontend/dist/
 data/content.sqlite
 data/progress.sqlite
 data/import-report.txt
+data/kaikki-forms.sqlite
+data/kaikki-forms.tmp*
 .pytest_cache/
 coverage/
 *:Zone.Identifier
+*.jsonl
