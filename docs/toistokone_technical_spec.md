@@ -109,7 +109,7 @@ CREATE TABLE frequency_words (
 
 **Grammar-card generation:** The pipeline indexes the local Kaikki JSONL source and generates form cards for matching dictionary headwords. Nominal cards cover six singular cases; verb cards cover six active affirmative present-indicative persons. `card_key` identifies the grammar slot independently of its surface spelling, so a shared noun/verb spelling keeps separate progress. The first non-rare single-word candidate is selected and alternatives are reported. All generated cards unlock after vocabulary mastery.
 
-**Sentence storage:** The pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens for contextual recommendations and future sentence-based practice. No sentence-to-form association table is persisted. `frequency_words` stores the required frequency source for contextual word recommendations; it is content-only and has no progress state.
+**Sentence storage:** The pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens for contextual recommendations and score-3 form reinforcement. No sentence-to-form association table is persisted. `frequency_words` stores the required frequency source for contextual word recommendations; it is content-only and has no progress state.
 
 ## 3. Progress database (`progress.sqlite`)
 
@@ -214,7 +214,7 @@ Let `N = QUIZ_BATCH_SIZE` (positive integer). For v1 use `quota_12 = floor(0.7 *
 6. Preserve the chosen vocabulary/form mix in the score-0 selection. For its never-practised vocabulary slots, use the best available `frequency_words.frequency_rank`; unranked vocabulary follows ranked vocabulary and ties stay randomized. Do not prioritize word forms or previously practised score-0 cards this way.
 7. Never repeat a card within a batch.
 8. Within each bucket, order by `last_practiced_at` ascending, with NULL first; break ties randomly.
-9. For each selected word-form card, generate the stored base-word and grammar-label prompt.
+9. For score-3 selected word-form cards, choose a mastery-weighted exact matching sentence, blank every target occurrence, and include its translations. If no match exists, generate the stored base-word and grammar-label prompt. Score-0–2 cards always use the grammar-label prompt.
 10. Generate answer options and shuffle cards and options before returning.
 
 Example results at N=20:
@@ -240,11 +240,11 @@ Example results at N=20:
 
 ### Word form
 
-- Prompt: the base word plus the stored grammar label, such as `talo — Inessiivi (missä?)` or `tehdä — hän ____`.
-- English translations: none for a grammar card.
+- Prompt: score-0–2 cards use the base word plus the stored grammar label, such as `talo — Inessiivi (missä?)` or `tehdä — hän ____`. Score-3 cards use a matching sentence with every target occurrence blanked when one exists.
+- English translations: sentence translations for contextual score-3 cards; none for grammar-prompt cards.
 - Options: target form plus up to three **distinct** options from its same-profile Kaikki forms; randomize. Exclude the card when this produces fewer than two distinct options.
 
-No sentence is assigned a form-card mastery score in this grammar-prompt mode.
+Contextual prompts reuse their form card's existing mastery score; score 3 remains permanent unless manually reset.
 
 ## 7. HTTP API (`/api`)
 
@@ -399,7 +399,7 @@ Required: working local pipeline, two databases, FastAPI service, two React rout
 
 ## 12. Scale note: thousands of Tatoeba sentences
 
-The content-only `sentence_tokens(token_casefold, sentence_id)` index is populated on every import for recommendations and future contextual practice. It is not a sentence-to-word-form association.
+The content-only `sentence_tokens(token_casefold, sentence_id)` index is populated on every import for recommendations and score-3 contextual reinforcement. It is not a sentence-to-word-form association.
 
 ## 13. Open implementation decisions (do not silently invent product behavior)
 

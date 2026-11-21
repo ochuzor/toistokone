@@ -7,7 +7,7 @@ import uuid
 from dataclasses import dataclass
 from pathlib import Path
 
-from .sentences import tokens
+from .sentences import blank_form, matches_form, tokens
 
 
 @dataclass(frozen=True)
@@ -57,7 +57,7 @@ def _profile_options(cards: list[FormCard], profile: str) -> list[str]:
     return list(dict.fromkeys(card.form for card in cards if card.profile == profile))
 
 
-def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, list[str]], dict[str, list[FormCard]], list[Candidate]]:
+def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, list[str]], dict[str, list[FormCard]], dict[str, set[str]], set[str], list[Candidate]]:
     with sqlite3.connect(content_path) as connection:
         connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
         vocabulary: dict[str, list[str]] = {}
@@ -66,6 +66,17 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
         forms: dict[str, list[FormCard]] = {}
         for word, card_key, form, profile, prompt_label in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, word_forms.prompt_label FROM vocabulary JOIN word_forms ON vocabulary.id = word_forms.vocabulary_id ORDER BY vocabulary.id, word_forms.id"):
             forms.setdefault(word, []).append(FormCard(card_key, form, profile, prompt_label))
+        token_families: dict[str, set[str]] = {}
+        for base_word, form_cards in forms.items():
+            for form_card in form_cards:
+                form_tokens = tokens(form_card.form)
+                if len(form_tokens) == 1 and next(iter(form_tokens)) == form_card.form.casefold():
+                    token_families.setdefault(form_card.form.casefold(), set()).add(base_word)
+        mastered_families = {
+            base_word for (base_word,) in connection.execute(
+                "SELECT base_word FROM progress.card_progress WHERE card_type = 'vocabulary' AND target_form = '' AND score = 3"
+            )
+        }
         frequency_ranks = {token: rank for token, rank in connection.execute("SELECT token_casefold, frequency_rank FROM frequency_words")}
         candidates: list[Candidate] = []
         for word, score, last_practiced_at in connection.execute("SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at FROM vocabulary LEFT JOIN progress.card_progress ON progress.card_progress.card_type = 'vocabulary' AND progress.card_progress.base_word = vocabulary.finnish AND progress.card_progress.target_form = ''"):
@@ -73,7 +84,7 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
         for base_word, card_key, profile, score, last_practiced_at, vocabulary_score in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0) FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
             if vocabulary_score == 3 and len(_profile_options(forms[base_word], profile)) >= 2:
                 candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at))
-    return vocabulary, forms, candidates
+    return vocabulary, forms, token_families, mastered_families, candidates
 
 
 def _sentence_weight(sentence: str, token_families: dict[str, set[str]], mastered_families: set[str], excluded_family: str | None = None) -> int:
@@ -85,6 +96,35 @@ def _sentence_weight(sentence: str, token_families: dict[str, set[str]], mastere
     return (16, 8, 4, 1)[min(len(unmastered_families), 3)]
 
 
+def _matching_sentences(
+    connection: sqlite3.Connection,
+    form: str,
+    token_families: dict[str, set[str]],
+    mastered_families: set[str],
+    target_family: str,
+) -> tuple[list[tuple[str, list[str]]], list[int]]:
+    form_tokens = tokens(form)
+    if len(form_tokens) != 1 or next(iter(form_tokens)) != form.casefold():
+        return [], []
+    rows = connection.execute(
+        """SELECT sentences.id, sentences.finnish FROM sentence_tokens
+           JOIN sentences ON sentences.id = sentence_tokens.sentence_id
+           WHERE sentence_tokens.token_casefold = ?""",
+        (form.casefold(),),
+    ).fetchall()
+    matching: list[tuple[str, list[str]]] = []
+    weights: list[int] = []
+    for sentence_id, sentence in rows:
+        if not matches_form(sentence, form):
+            continue
+        translations = [english for (english,) in connection.execute(
+            "SELECT english FROM sentence_translations WHERE sentence_id = ? ORDER BY ordinal", (sentence_id,)
+        )]
+        matching.append((sentence, translations))
+        weights.append(_sentence_weight(sentence, token_families, mastered_families, target_family))
+    return matching, weights
+
+
 def _options(texts: list[str], correct_text: str, rng: random.Random) -> tuple[list[dict[str, str]], str]:
     options = [{"id": str(uuid.uuid4()), "text": text} for text in texts]
     correct_id = next(option["id"] for option in options if option["text"] == correct_text)
@@ -94,21 +134,27 @@ def _options(texts: list[str], correct_text: str, rng: random.Random) -> tuple[l
 
 def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: random.Random | None = None) -> list[dict[str, object]]:
     rng = rng or random.Random()
-    vocabulary, forms, candidates = _load_content(content_path, progress_path)
+    vocabulary, forms, token_families, mastered_families, candidates = _load_content(content_path, progress_path)
     questions: list[dict[str, object]] = []
-    for card in select_candidates(candidates, batch_size, rng):
-        if card.card_type == "vocabulary":
-            correct_text = " / ".join(vocabulary[card.base_word])
-            distractors = list({" / ".join(meanings) for word, meanings in vocabulary.items() if word != card.base_word})
-            rng.shuffle(distractors)
-            options, correct_id = _options([correct_text, *distractors[:3]], correct_text, rng)
-            prompt, english_translations = card.base_word, []
-        else:
-            form_card = next(form for form in forms[card.base_word] if form.card_key == card.target_form)
-            branch_forms = _profile_options(forms[card.base_word], form_card.profile)
-            distractors = [form for form in branch_forms if form != form_card.form]
-            rng.shuffle(distractors)
-            options, correct_id = _options([form_card.form, *distractors[:3]], form_card.form, rng)
-            prompt, english_translations = f"{card.base_word} — {form_card.prompt_label}", []
-        questions.append({"question_id": str(uuid.uuid4()), "card": {"type": card.card_type, "base_word": card.base_word, "target_form": card.target_form}, "score": card.score, "prompt": prompt, "english_translations": english_translations, "options": options, "correct_option_id": correct_id})
+    with sqlite3.connect(content_path) as connection:
+        for card in select_candidates(candidates, batch_size, rng):
+            if card.card_type == "vocabulary":
+                correct_text = " / ".join(vocabulary[card.base_word])
+                distractors = list({" / ".join(meanings) for word, meanings in vocabulary.items() if word != card.base_word})
+                rng.shuffle(distractors)
+                options, correct_id = _options([correct_text, *distractors[:3]], correct_text, rng)
+                prompt, english_translations = card.base_word, []
+            else:
+                form_card = next(form for form in forms[card.base_word] if form.card_key == card.target_form)
+                branch_forms = _profile_options(forms[card.base_word], form_card.profile)
+                distractors = [form for form in branch_forms if form != form_card.form]
+                rng.shuffle(distractors)
+                options, correct_id = _options([form_card.form, *distractors[:3]], form_card.form, rng)
+                prompt, english_translations = f"{card.base_word} — {form_card.prompt_label}", []
+                if card.score == 3:
+                    matching, weights = _matching_sentences(connection, form_card.form, token_families, mastered_families, card.base_word)
+                    if matching:
+                        sentence, english_translations = rng.choices(matching, weights=weights, k=1)[0]
+                        prompt = blank_form(sentence, form_card.form)
+            questions.append({"question_id": str(uuid.uuid4()), "card": {"type": card.card_type, "base_word": card.base_word, "target_form": card.target_form}, "score": card.score, "prompt": prompt, "english_translations": english_translations, "options": options, "correct_option_id": correct_id})
     return questions

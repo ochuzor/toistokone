@@ -51,9 +51,9 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 
 - Kaikki generates labelled grammar cards for applicable dictionary words: six singular nominal cases and six active affirmative present-indicative verb forms.
 - Form cards unlock after their base vocabulary card reaches score 3.
-- Prompt: the base word plus its grammar cue, for example `talo — Inessiivi (missä?)` or `tehdä — hän ____`.
+- Prompt: score-0–2 cards use the base word plus its grammar cue, for example `talo — Inessiivi (missä?)` or `tehdä — hän ____`. Score-3 cards use a matching sentence with the target form blanked and display its English translations when coverage exists; otherwise they use the grammar cue.
 - Answers: correct form plus up to three distinct forms from the same nominal or verb profile, shuffled. A question requires at least two distinct options.
-- Sentences are not required for form practice; they remain imported for recommendations and future contextual practice.
+- Sentences are not required for form practice: missing coverage falls back to the grammar prompt.
 
 ## 4. Mastery rules
 
@@ -122,7 +122,7 @@ Input rules:
 - Require exactly one word and a positive frequency count per frequency-list
   line; reject missing, malformed, or duplicate frequency entries fatally.
 - Merge duplicate Finnish sentences by **exact Finnish text**, combining distinct English translations.
-- Store sentences independently from words/forms and index them for recommendations and future contextual practice.
+- Store sentences independently from words/forms and index them for recommendations and score-3 contextual reinforcement.
 - Build a content-only case-folded sentence-token index for scalable lookup and
   contextual sentence weighting.
 - Do not use AI to generate or validate content in v1. Sentences can be added manually or imported from Tatoeba after formatting.

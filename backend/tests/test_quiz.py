@@ -34,6 +34,7 @@ class GrammarBatchTests(unittest.TestCase):
         (self.root / "frequency").mkdir()
         (self.root / "frequency" / "fi_50k.txt").write_text("talo 100\ntehdä 90\n", encoding="utf-8")
         (self.root / "dictionary.txt").write_text("talo - house\ntehdä - to do\n", encoding="utf-8")
+        (self.root / "sentences" / "lesson.txt").write_text("Talossa asun. - I live in the house.\n", encoding="utf-8")
         write_kaikki(self.root)
         run_import(self.root)
         self.content = self.root / "data" / "content.sqlite"
@@ -47,7 +48,11 @@ class GrammarBatchTests(unittest.TestCase):
         for attempt in range(3):
             record_answer(self.progress, CardReference(type="vocabulary", base_word=word), f"{word}-{attempt}", True, cooldown_minutes=0)
 
-    def test_generated_forms_unlock_after_vocabulary_and_use_grammar_prompts(self) -> None:
+    def master_form(self, word: str, card_key: str) -> None:
+        for attempt in range(3):
+            record_answer(self.progress, CardReference(type="word_form", base_word=word, target_form=card_key), f"{word}-{card_key}-{attempt}", True, cooldown_minutes=0)
+
+    def test_mastered_forms_use_contextual_sentences_and_fall_back_to_grammar_prompts(self) -> None:
         before = build_batch(self.content, self.progress, 20, random.Random(3))
         self.assertFalse(any(question["card"]["type"] == "word_form" for question in before))
         self.master("talo")
@@ -59,6 +64,16 @@ class GrammarBatchTests(unittest.TestCase):
         self.assertEqual(verb["prompt"], "tehdä — hän ____")
         self.assertIn("talossa", {option["text"] for option in inessive["options"]})
         self.assertEqual(len(inessive["options"]), 4)
+        self.assertEqual(verb["english_translations"], [])
+
+        self.master_form("talo", "nominal:inessive")
+        self.master_form("tehdä", "verb:present-3sg")
+        questions = build_batch(self.content, self.progress, 20, random.Random(3))
+        inessive = next(question for question in questions if question["card"]["target_form"] == "nominal:inessive")
+        verb = next(question for question in questions if question["card"]["target_form"] == "verb:present-3sg")
+        self.assertEqual(inessive["prompt"], "____ asun.")
+        self.assertEqual(inessive["english_translations"], ["I live in the house."])
+        self.assertEqual(verb["prompt"], "tehdä — hän ____")
         self.assertEqual(verb["english_translations"], [])
 
 

@@ -22,3 +22,4 @@
 - [x] Clarify incorrect quiz answers
 - [x] Exclude word-form questions with only one answer option
 - [x] Generate grammar form cards from Kaikki
+- [x] Reinforce mastered forms with contextual sentences
