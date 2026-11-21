@@ -59,6 +59,35 @@ class PipelineTests(unittest.TestCase):
         report = run_import(self.root)
         self.assertEqual(report.form_alternatives["talo"]["nominal:genitive"], ["talojen"])
 
+    def test_pronoun_template_forms_are_assigned_to_the_template_lemma(self) -> None:
+        path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+        pronoun_entry = {
+            "word": "ne",
+            "lang_code": "fi",
+            "inflection_templates": [{"name": "fi-decl-pron/se"}],
+            "forms": [
+                {"form": "se", "source": "inflection", "tags": ["nominative", "singular"]},
+                {"form": "sen", "source": "inflection", "tags": ["genitive", "singular"]},
+                {"form": "sitä", "source": "inflection", "tags": ["partitive", "singular"]},
+                {"form": "siinä", "source": "inflection", "tags": ["inessive", "singular"]},
+                {"form": "siitä", "source": "inflection", "tags": ["elative", "singular"]},
+                {"form": "siihen", "source": "inflection", "tags": ["illative", "singular"]},
+            ],
+        }
+        with path.open("a", encoding="utf-8") as source:
+            source.write(json.dumps(pronoun_entry) + "\n")
+        self.write_sources("se - it\n")
+
+        report = run_import(self.root)
+
+        self.assertEqual(report.missing_lexicon_profiles, [])
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            forms = database.execute(
+                "SELECT card_key, form FROM word_forms JOIN vocabulary ON vocabulary.id = vocabulary_id WHERE finnish = 'se' ORDER BY card_key"
+            ).fetchall()
+        self.assertIn(("nominal:partitive", "sitä"), forms)
+        self.assertIn(("nominal:inessive", "siinä"), forms)
+
     def test_missing_kaikki_source_and_index_is_fatal_and_preserves_databases(self) -> None:
         self.write_sources("talo - house\n")
         (self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl").unlink()

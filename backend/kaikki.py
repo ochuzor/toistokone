@@ -19,6 +19,8 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
+INDEX_VERSION = 2
+PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 
 NOMINAL_SLOTS = (
     ("nominative", "Nominatiivi (mikä?)", {"nominative", "singular"}),
@@ -50,7 +52,7 @@ class GeneratedForm:
 def _source_signature(path: Path, lemmas: set[str]) -> str:
     stat = path.stat()
     words = "\0".join(sorted(lemmas)).encode("utf-8")
-    return f"{stat.st_size}:{stat.st_mtime_ns}:{hashlib.sha256(words).hexdigest()}"
+    return f"{INDEX_VERSION}:{stat.st_size}:{stat.st_mtime_ns}:{hashlib.sha256(words).hexdigest()}"
 
 
 def _slots_for(form: dict[str, object]) -> list[tuple[str, str, str]]:
@@ -62,9 +64,35 @@ def _slots_for(form: dict[str, object]) -> list[tuple[str, str, str]]:
     tags = {tag for tag in raw_tags if isinstance(tag, str)}
     if not text or text == "-" or " " in text or tags.intersection(DISALLOWED_TAGS):
         return []
-    slots = NOMINAL_SLOTS if source == "declension" else VERB_SLOTS if source == "conjugation" else ()
-    profile = "nominal" if source == "declension" else "verb" if source == "conjugation" else ""
+    slots = NOMINAL_SLOTS if source in {"declension", "inflection"} else VERB_SLOTS if source == "conjugation" else ()
+    profile = "nominal" if source in {"declension", "inflection"} else "verb" if source == "conjugation" else ""
     return [(profile, slot, label) for slot, label, required in slots if required.issubset(tags)]
+
+
+def _owned_lemmas(entry: dict[str, object], lemmas: set[str]) -> set[str]:
+    """Return requested lemmas represented by a Kaikki entry.
+
+    Finnish pronouns may be inflected on a related entry.  For example, the
+    entry headed by ``ne`` declares the ``fi-decl-pron/se`` template and
+    contains the singular forms of ``se``.
+    """
+    owned: set[str] = set()
+    word = entry.get("word")
+    if isinstance(word, str) and word.casefold() in lemmas:
+        owned.add(word.casefold())
+    templates = entry.get("inflection_templates", [])
+    if not isinstance(templates, list):
+        return owned
+    for template in templates:
+        if not isinstance(template, dict):
+            continue
+        name = template.get("name")
+        if not isinstance(name, str) or not name.startswith(PRONOUN_TEMPLATE_PREFIX):
+            continue
+        lemma = name.removeprefix(PRONOUN_TEMPLATE_PREFIX).casefold()
+        if lemma in lemmas:
+            owned.add(lemma)
+    return owned
 
 
 def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
@@ -90,7 +118,14 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
                 for lemma in lemmas
                 for ensure_ascii in (False, True)
             }
-            pattern = re.compile(r'"word"\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in encodings) + r')') if encodings else None
+            word_pattern = r'"word"\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in encodings) + r')'
+            template_encodings = {
+                json.dumps(f"{PRONOUN_TEMPLATE_PREFIX}{lemma}", ensure_ascii=ensure_ascii)
+                for lemma in lemmas
+                for ensure_ascii in (False, True)
+            }
+            template_pattern = r'"name"\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in template_encodings) + r')'
+            pattern = re.compile(f"(?:{word_pattern}|{template_pattern})") if encodings else None
             with source_path.open(encoding="utf-8") as source:
                 for source_order, line in enumerate(source):
                     if pattern is None or not pattern.search(line):
@@ -101,14 +136,15 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
                         continue
                     if entry.get("lang_code") != "fi" or not isinstance(entry.get("word"), str):
                         continue
-                    lemma = entry["word"].casefold()
-                    if lemma not in lemmas:
+                    entry_lemmas = _owned_lemmas(entry, lemmas)
+                    if not entry_lemmas:
                         continue
                     for raw_form in entry.get("forms", []):
                         if not isinstance(raw_form, dict):
                             continue
                         for profile, slot, _ in _slots_for(raw_form):
-                            batch.append((lemma, profile, slot, raw_form["form"], source_order))
+                            for lemma in entry_lemmas:
+                                batch.append((lemma, profile, slot, raw_form["form"], source_order))
                     if len(batch) >= 10_000:
                         connection.executemany(
                             "INSERT INTO candidates (lemma, profile, slot, form, source_order) VALUES (?, ?, ?, ?, ?)", batch
