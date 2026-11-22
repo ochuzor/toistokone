@@ -167,7 +167,7 @@ murre - dialect / dog
 hevonen - horse / knight
 nainen - woman / lady / female
 iloinen - happy / cheerful
-keltainen - yellow
+
 perhonen - butterfly / moth
 uutinen - news item / piece of news
 pilvinen - cloudy / overcast
@@ -254,3 +254,54 @@ tie - path / road / direction / trail
 pää - head / chief/principal/prime
 sää - weather / you (puhekieli)
 jää - ice
+syy - fibre / reason / cause / motive
+suo - bog / swamp / marsh
+vai - or
+tai - or
+ai - ouch / oh / ah
+oi - oh / alas
+hei - hello / hi / hey
+moi - hi / hello / see ya
+nuo - those / them
+tuo - that / that one
+ne - they / them
+me - we
+te - you (pl) / y'all
+he - they / them
+yksi - one
+hame - skirt
+kone - machine / appliance
+home - mould / mildew
+kirje - letter
+kastike - sauce / gravy / dressing
+neste - liquid / fluid
+jarruneste - brake fluid
+ohjausneste - power steering fluid
+ruumiinneste - bodily fluid
+pääte - terminal / ending / suffix / computer terminal / termination
+vaate - apparel / piece of clothing / fabric
+liike - motion / movement / shop / business / maneuver
+liite - annex / attachment / appendix / supplement
+aine - matter / material / essay / substance / subject
+äänne - phone / sound / speech sound
+kolme - three
+sormi - digit / finger
+tuoli - chair / seat
+äiti - mother
+emä - mother of an animal / womb / dam
+emo - dam / mother
+surullinen - sad / sorrowful / unhappy
+vihainen - angry / mad / pissed of
+ystävällinen - friendly / nice / affable / amiable
+hyttynen - mosquito / gnat
+kärpänen - fly / bug
+punainen - red (colour)
+sininen - blue (colour)
+keltainen - yellow (colour)
+toinen - second / other / another
+ensimmäinen - first / prime / primary
+huolellinen - careful / thorough / meticulous / precise
+ampiainen - wasp
+valkoinen - white (colour) / Caucasian person
+suomalainen - Finn / Finnish
+mehiläinen - bee / honeybee
