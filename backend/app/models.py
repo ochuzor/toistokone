@@ -45,10 +45,27 @@ class OverallStats(CardStats):
     mastery_percent: float
 
 
+class DailyActivity(BaseModel):
+    date: str
+    attempts: int
+    correct: int
+    accuracy_percent: float
+    unique_cards: int
+    score_increases: int
+    newly_mastered: int
+
+
+class PracticeActivity(BaseModel):
+    today: DailyActivity
+    days: list[DailyActivity]
+    streak_days: int
+
+
 class StatsResponse(BaseModel):
     vocabulary: CardStats
     word_forms: CardStats
     overall: OverallStats
+    activity: PracticeActivity
 
 
 class RecommendationExample(BaseModel):

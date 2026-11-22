@@ -120,5 +120,40 @@ class ProgressDatabaseTests(unittest.TestCase):
         self.assertIn("last_score_increased_at", columns)
         self.assertEqual(progress, (2, 3, 2))
 
+    def test_daily_activity_uses_local_dates_and_carries_a_streak_through_today(self) -> None:
+        first_day = datetime(2026, 1, 13, 12, 0, tzinfo=timezone.utc)
+        second_day = datetime(2026, 1, 14, 12, 0, tzinfo=timezone.utc)
+        local_today = datetime(2026, 1, 14, 22, 30, tzinfo=timezone.utc)
+        for attempt_id, answered_at in (("first", first_day), ("second", second_day), ("third", local_today)):
+            record_answer(self.progress_path, self.vocabulary, attempt_id, True, cooldown_minutes=0, now=answered_at)
+
+        stats = get_stats(
+            self.content_path,
+            self.progress_path,
+            "Europe/Helsinki",
+            now=datetime(2026, 1, 15, 10, 0, tzinfo=timezone.utc),
+        )
+
+        activity = stats["activity"]
+        self.assertEqual(activity["today"], {
+            "date": "2026-01-15", "attempts": 1, "correct": 1, "accuracy_percent": 100.0,
+            "unique_cards": 1, "score_increases": 1, "newly_mastered": 1,
+        })
+        self.assertEqual(len(activity["days"]), 14)
+        self.assertEqual(activity["days"][0]["attempts"], 0)
+        self.assertEqual(activity["streak_days"], 3)
+
+        carried = get_stats(
+            self.content_path,
+            self.progress_path,
+            "Europe/Helsinki",
+            now=datetime(2026, 1, 16, 10, 0, tzinfo=timezone.utc),
+        )
+        self.assertEqual(carried["activity"]["streak_days"], 3)
+
+    def test_daily_activity_rejects_unknown_timezones(self) -> None:
+        with self.assertRaises(ValueError):
+            get_stats(self.content_path, self.progress_path, "Not/A-Timezone")
+
 if __name__ == "__main__":
     unittest.main()

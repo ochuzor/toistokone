@@ -25,6 +25,21 @@ export type Stats = {
   vocabulary: { total: number; mastered: number }
   word_forms: { total: number; mastered: number }
   overall: { total: number; mastered: number; mastery_percent: number }
+  activity: {
+    today: DailyActivity
+    days: DailyActivity[]
+    streak_days: number
+  }
+}
+
+export type DailyActivity = {
+  date: string
+  attempts: number
+  correct: number
+  accuracy_percent: number
+  unique_cards: number
+  score_increases: number
+  newly_mastered: number
 }
 
 export type Recommendation = {
@@ -52,7 +67,8 @@ export async function fetchBatch(): Promise<QuizQuestion[]> {
 }
 
 export function fetchStats(): Promise<Stats> {
-  return request<Stats>('/api/stats')
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+  return request<Stats>(`/api/stats?timezone=${encodeURIComponent(timezone)}`)
 }
 
 export async function fetchRecommendations(): Promise<Recommendation[]> {

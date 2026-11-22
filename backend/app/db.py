@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import sqlite3
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from .models import CardReference
 
@@ -32,6 +33,7 @@ CREATE TABLE IF NOT EXISTS practice_attempts (
   answered_at TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS idx_attempts_card ON practice_attempts(card_type, base_word, target_form, answered_at);
+CREATE INDEX IF NOT EXISTS idx_attempts_answered_at ON practice_attempts(answered_at);
 """
 
 
@@ -137,7 +139,81 @@ def card_exists(content_path: Path, card: CardReference) -> bool:
         ).fetchone() is not None
 
 
-def get_stats(content_path: Path, progress_path: Path) -> dict[str, dict[str, int | float]]:
+def _local_activity(
+    progress_path: Path,
+    timezone_name: str,
+    now: datetime | None = None,
+) -> dict[str, object]:
+    try:
+        local_timezone = ZoneInfo(timezone_name)
+    except ZoneInfoNotFoundError as error:
+        raise ValueError("timezone must be a valid IANA timezone name") from error
+
+    now = now or _now()
+    today = now.astimezone(local_timezone).date()
+    first_day = today - timedelta(days=13)
+    start = datetime.combine(first_day, time.min, tzinfo=local_timezone).astimezone(timezone.utc)
+    end = datetime.combine(today + timedelta(days=1), time.min, tzinfo=local_timezone).astimezone(timezone.utc)
+    daily: dict[date, dict[str, object]] = {
+        first_day + timedelta(days=offset): {
+            "attempts": 0,
+            "correct": 0,
+            "cards": set(),
+            "score_increases": 0,
+            "newly_mastered": 0,
+        }
+        for offset in range(14)
+    }
+    with sqlite3.connect(progress_path) as connection:
+        rows = connection.execute(
+            """SELECT card_type, base_word, target_form, correct, score_before, score_after, answered_at
+               FROM practice_attempts WHERE answered_at >= ? AND answered_at < ?""",
+            (start.isoformat(), end.isoformat()),
+        )
+        for card_type, base_word, target_form, correct, score_before, score_after, answered_at in rows:
+            local_day = datetime.fromisoformat(answered_at).astimezone(local_timezone).date()
+            record = daily[local_day]
+            record["attempts"] = int(record["attempts"]) + 1
+            record["correct"] = int(record["correct"]) + correct
+            record["cards"].add((card_type, base_word, target_form))  # type: ignore[union-attr]
+            record["score_increases"] = int(record["score_increases"]) + int(score_after > score_before)
+            record["newly_mastered"] = int(record["newly_mastered"]) + int(score_before < 3 and score_after == 3)
+
+        active_days = {
+            datetime.fromisoformat(answered_at).astimezone(local_timezone).date()
+            for (answered_at,) in connection.execute(
+                "SELECT answered_at FROM practice_attempts WHERE answered_at < ?", (end.isoformat(),)
+            )
+        }
+
+    days = []
+    for day, record in daily.items():
+        attempts = int(record["attempts"])
+        correct = int(record["correct"])
+        days.append({
+            "date": day.isoformat(),
+            "attempts": attempts,
+            "correct": correct,
+            "accuracy_percent": round((correct / attempts * 100) if attempts else 0, 2),
+            "unique_cards": len(record["cards"]),
+            "score_increases": int(record["score_increases"]),
+            "newly_mastered": int(record["newly_mastered"]),
+        })
+
+    streak_day = today if today in active_days else today - timedelta(days=1)
+    streak_days = 0
+    while streak_day in active_days:
+        streak_days += 1
+        streak_day -= timedelta(days=1)
+    return {"today": days[-1], "days": days, "streak_days": streak_days}
+
+
+def get_stats(
+    content_path: Path,
+    progress_path: Path,
+    timezone_name: str = "UTC",
+    now: datetime | None = None,
+) -> dict[str, object]:
     with sqlite3.connect(content_path) as content:
         content.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
         vocabulary_total = content.execute("SELECT COUNT(*) FROM vocabulary").fetchone()[0]
@@ -160,4 +236,5 @@ def get_stats(content_path: Path, progress_path: Path) -> dict[str, dict[str, in
         "vocabulary": {"total": vocabulary_total, "mastered": vocabulary_mastered},
         "word_forms": {"total": form_total, "mastered": form_mastered},
         "overall": {"total": total, "mastered": mastered, "mastery_percent": round((mastered / total * 100) if total else 0, 2)},
+        "activity": _local_activity(progress_path, timezone_name, now),
     }

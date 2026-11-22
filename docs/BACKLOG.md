@@ -4,7 +4,6 @@
 ## Next
 
 ## Later
-- [ ] Add practice statistics by day
 - [ ] Improve mobile layout
 
 ## Completed
@@ -29,3 +28,4 @@
 - [x] Prioritize new cards by reinforcement potential
 - [x] Normalize recommendation surface forms to lemmas
 - [x] Add direct-context learning chains to recommendations and new-card selection
+- [x] Add daily practice statistics

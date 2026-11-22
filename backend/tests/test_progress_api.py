@@ -53,7 +53,9 @@ class ProgressApiTests(unittest.TestCase):
         retry = answer(AnswerRequest(**{**payload, "selected_option_id": "wrong"}))
         self.assertEqual(retry.model_dump(), result.model_dump())
 
-        self.assertEqual(stats().overall.model_dump(), {"total": 7, "mastered": 0, "mastery_percent": 0.0})
+        response = stats("Europe/Helsinki")
+        self.assertEqual(response.overall.model_dump(), {"total": 7, "mastered": 0, "mastery_percent": 0.0})
+        self.assertEqual(len(response.activity.days), 14)
         self.assertEqual(reset(ResetRequest(card=payload["card"])).model_dump(), {"score": 0})
 
     def test_rejects_card_absent_from_current_content(self) -> None:
@@ -67,6 +69,11 @@ class ProgressApiTests(unittest.TestCase):
                 )
             )
         self.assertEqual(raised.exception.status_code, 404)
+
+    def test_stats_rejects_unknown_timezone(self) -> None:
+        with self.assertRaises(HTTPException) as raised:
+            stats("Not/A-Timezone")
+        self.assertEqual(raised.exception.status_code, 422)
 
     def test_quiz_batch_route_returns_current_content_without_writing_progress(self) -> None:
         batch = quiz_batch()
