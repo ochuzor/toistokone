@@ -216,3 +216,5 @@ suomalais-ruotsalainen sanakirja - a Finnish-Swedish dictionary
 Minulla on yksi heijastin. - I have one reflector.
 Sinulla on kaksi heijastinta. - You have two reflectors.
 Opiskelijalla ei ole taskulaskinta. - The student does not have a calculator.
+Olet minulle hyvin kallis. - You are very dear to me.
+Tämä auto on kallis. - This car is expensive.
