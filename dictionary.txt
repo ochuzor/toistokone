@@ -332,3 +332,5 @@ kangas - cloth / fabric / material / textitle / canvas
 varvas - toe / digit
 uutuus - newness / novelty / new product
 leivos - pastry / cake
+tehdas - factory / plant / mill
+kiharrin - (hair) curling tongs

@@ -218,3 +218,13 @@ Sinulla on kaksi heijastinta. - You have two reflectors.
 Opiskelijalla ei ole taskulaskinta. - The student does not have a calculator.
 Olet minulle hyvin kallis. - You are very dear to me.
 Tämä auto on kallis. - This car is expensive.
+Talvella minulla on usein kylmät varpaat. - In the winter I often have cold toes.
+Ostin punaista kangasta, josta aion ommella itselleni uudet verhot. - I bought some red fabric that I'm going to sew for myself new curtains.
+Suomen kielen kokeen kaikki kysymykset olivat liian vaikeita. - All the questions on the Finnish language exam were too difficult.
+Älä kerro tätä salaisuutta kenellekään! - Don't tell this secret to anyone!
+Lähetin ystävälleni viestin eilen ja odotan edelleen vastausta. - I sent my friend a message yesterday and I'm still waiting for a response.
+Minulla on uudet ruskeat saappaat. - I have new brown boots.
+Saat nousta pöydästä heti, kun olet syönyt kaikki vihannekset. - You can get up from the table as soon as you have eaten all your vegetables.
+Kuinka monta kerrosta tässä talossa on? - How many floors are there in this house?
+Ystäväni opiskelee yliopistossa kirjallisuutta. - My friend is studying literature at university.
+Kuka on syönyt kaikki leivokset keittiön pöydältä? - Who has eaten all the pastries from the kitchen table?
