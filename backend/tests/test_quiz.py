@@ -28,10 +28,26 @@ class ContextSupportTests(unittest.TestCase):
                 [(1, "auto"), (2, "auto"), (2, "talo")],
             )
 
-            support = _context_support(connection, {"auto": {"auto"}, "talo": {"talo"}})
+            support = _context_support(connection, {"auto": {"auto"}, "talo": {"talo"}}, set())
 
-        self.assertEqual(support["auto"], (1, 2, frozenset({"talo"})))
-        self.assertEqual(support["talo"], (1, 1, frozenset({"auto"})))
+        self.assertEqual(support["auto"], (1, 2, frozenset({"talo"}), 24))
+        self.assertEqual(support["talo"], (1, 1, frozenset({"auto"}), 8))
+
+    def test_context_support_rewards_sentences_with_mastered_families(self) -> None:
+        with sqlite3.connect(":memory:") as connection:
+            connection.execute("CREATE TABLE sentence_tokens (sentence_id INTEGER, token_casefold TEXT)")
+            connection.executemany(
+                "INSERT INTO sentence_tokens VALUES (?, ?)",
+                [(1, "target"), (1, "known"), (2, "target"), (2, "unknown")],
+            )
+
+            support = _context_support(
+                connection,
+                {"target": {"target"}, "known": {"known"}, "unknown": {"unknown"}},
+                {"known"},
+            )
+
+        self.assertEqual(support["target"][3], 24)
 
 
 class QuizSelectionTests(unittest.TestCase):
@@ -61,6 +77,16 @@ class QuizSelectionTests(unittest.TestCase):
         selected = select_candidates(candidates, 1, random.Random(7))
 
         self.assertEqual(selected[0].base_word, "very-common")
+
+    def test_new_vocabulary_prefers_reinforcement_quality_after_contextual_breadth(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "more-sentences", "", 0, None, 200, 2, 3, frozenset(), 12),
+            Candidate("vocabulary", "reinforcement-ready", "", 0, None, 300, 2, 1, frozenset(), 16),
+        ]
+
+        selected = select_candidates(candidates, 1, random.Random(7))
+
+        self.assertEqual(selected[0].base_word, "reinforcement-ready")
 
     def test_new_vocabulary_prefers_a_different_context_neighborhood_after_relevance(self) -> None:
         candidates = [

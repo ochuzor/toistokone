@@ -26,3 +26,4 @@
 - [x] Support Kaikki pronoun-template forms
 - [x] Prioritize new quiz cards by contextual relevance
 - [x] Diversify new vocabulary within quiz batches
+- [x] Prioritize new cards by reinforcement potential
