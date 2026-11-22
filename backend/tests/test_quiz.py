@@ -8,7 +8,7 @@ from pathlib import Path
 
 from backend.app.db import initialize_progress_database, record_answer
 from backend.app.models import CardReference
-from backend.app.quiz import Candidate, _context_support, _sentence_weight, build_batch, select_candidates
+from backend.app.quiz import Candidate, _context_support, _load_content, _sentence_weight, build_batch, select_candidates
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -163,6 +163,13 @@ class GrammarBatchTests(unittest.TestCase):
         self.assertFalse(any(question["card"]["type"] == "word_form" for question in before))
         self.master("talo")
         self.master("tehdä")
+        _, _, _, _, candidates = _load_content(self.content, self.progress)
+        self.assertTrue(any(
+            candidate.card_type == "word_form"
+            and candidate.base_word == "talo"
+            and candidate.target_form == "nominal:nominative-plural"
+            for candidate in candidates
+        ))
         questions = build_batch(self.content, self.progress, 20, random.Random(3))
         inessive = next(question for question in questions if question["card"]["target_form"] == "nominal:inessive")
         verb = next(question for question in questions if question["card"]["target_form"] == "verb:present-3sg")

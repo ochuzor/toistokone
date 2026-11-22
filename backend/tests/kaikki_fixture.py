@@ -10,6 +10,7 @@ def write_kaikki(root: Path) -> None:
     entries = [
         {"word": "talo", "lang_code": "fi", "forms": [
             {"form": "talo", "source": "declension", "tags": ["nominative", "singular"]},
+            {"form": "talot", "source": "declension", "tags": ["nominative", "plural"]},
             {"form": "talon", "source": "declension", "tags": ["genitive", "singular"]},
             {"form": "taloa", "source": "declension", "tags": ["partitive", "singular"]},
             {"form": "talossa", "source": "declension", "tags": ["inessive", "singular"]},
@@ -18,6 +19,7 @@ def write_kaikki(root: Path) -> None:
         ]},
         {"word": "ruoka", "lang_code": "fi", "forms": [
             {"form": "ruoka", "source": "declension", "tags": ["nominative", "singular"]},
+            {"form": "ruoat", "source": "declension", "tags": ["nominative", "plural"]},
             {"form": "ruoan", "source": "declension", "tags": ["genitive", "singular"]},
             {"form": "ruokaa", "source": "declension", "tags": ["partitive", "singular"]},
             {"form": "ruoassa", "source": "declension", "tags": ["inessive", "singular"]},
@@ -26,6 +28,7 @@ def write_kaikki(root: Path) -> None:
         ]},
         {"word": "auto", "lang_code": "fi", "forms": [
             {"form": "auto", "source": "declension", "tags": ["nominative", "singular"]},
+            {"form": "autot", "source": "declension", "tags": ["nominative", "plural"]},
             {"form": "auton", "source": "declension", "tags": ["genitive", "singular"]},
             {"form": "autoa", "source": "declension", "tags": ["partitive", "singular"]},
             {"form": "autossa", "source": "declension", "tags": ["inessive", "singular"]},

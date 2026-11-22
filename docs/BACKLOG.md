@@ -29,3 +29,4 @@
 - [x] Normalize recommendation surface forms to lemmas
 - [x] Add direct-context learning chains to recommendations and new-card selection
 - [x] Add daily practice statistics
+- [x] Add nominative plural grammar cards

@@ -57,7 +57,7 @@ class ProgressDatabaseTests(unittest.TestCase):
             record_answer(self.progress_path, self.vocabulary, attempt_id, True, cooldown_minutes=0)
         for attempt_id in ("four", "five", "six"):
             record_answer(self.progress_path, self.form, attempt_id, True, cooldown_minutes=0)
-        self.assertEqual(get_stats(self.content_path, self.progress_path)["overall"], {"total": 14, "mastered": 2, "mastery_percent": 14.29})
+        self.assertEqual(get_stats(self.content_path, self.progress_path)["overall"], {"total": 16, "mastered": 2, "mastery_percent": 12.5})
 
         reset_card(self.progress_path, self.vocabulary)
         with sqlite3.connect(self.progress_path) as connection:
