@@ -11,7 +11,10 @@ from pathlib import Path
 
 from backend.app.config import PROJECT_ROOT
 from backend.app.sentences import tokens
-from backend.kaikki import GeneratedForm, ensure_index, generated_forms
+from backend.kaikki import GeneratedForm, ensure_index, ensure_recommendation_index, generated_forms, recommendation_lemmas
+
+
+RECOMMENDATION_LEMMA_CANDIDATE_LIMIT = 100
 
 
 @dataclass
@@ -28,6 +31,7 @@ class ImportReport:
     duplicate_sentence_count: int = 0
     duplicate_translation_count: int = 0
     kaikki_index_rebuilt: bool = False
+    recommendation_lemma_index_rebuilt: bool = False
     missing_lexicon_profiles: list[str] = field(default_factory=list)
     form_alternatives: dict[str, dict[str, list[str]]] = field(default_factory=dict)
     fatal_errors: list[str] = field(default_factory=list)
@@ -38,6 +42,7 @@ class ImportReport:
             "ToistoKone import report", f"Mode: {'dry run' if dry_run else 'normal'}",
             f"Dictionary files: {self.dictionary_file_count}", f"Frequency files: {self.frequency_file_count}",
             f"Sentence files: {self.sentence_file_count}", f"Kaikki index rebuilt: {'yes' if self.kaikki_index_rebuilt else 'no'}",
+            f"Recommendation lemma index rebuilt: {'yes' if self.recommendation_lemma_index_rebuilt else 'no'}",
             f"Imported vocabulary: {self.vocabulary_count}", f"Imported grammar forms: {self.form_count}",
             f"Imported sentences: {self.sentence_count}", f"Imported translations: {self.translation_count}",
             f"Imported frequency entries: {self.frequency_entry_count}",
@@ -75,6 +80,7 @@ class ImportedContent:
     forms: OrderedDict[str, list[GeneratedForm]]
     sentences: OrderedDict[str, list[str]]
     frequency_words: OrderedDict[str, int]
+    recommendation_lemmas: dict[str, str]
     report: ImportReport
 
 
@@ -94,6 +100,26 @@ def _parse_line(path: Path, line_number: int, line: str, report: ImportReport) -
         report.skipped_lines.append(f"{path}: line {line_number}: empty field")
         return None
     return left.strip(), values
+
+
+def _recommendation_surfaces(vocabulary: OrderedDict[str, list[str]], forms: OrderedDict[str, list[GeneratedForm]], sentences: OrderedDict[str, list[str]], frequency_words: OrderedDict[str, int]) -> set[str]:
+    known: set[str] = set()
+    for word in vocabulary:
+        word_tokens = tokens(word)
+        if len(word_tokens) == 1 and next(iter(word_tokens)) == word.casefold():
+            known.update(word_tokens)
+    for form_cards in forms.values():
+        for form_card in form_cards:
+            form_tokens = tokens(form_card.form)
+            if len(form_tokens) == 1 and next(iter(form_tokens)) == form_card.form.casefold():
+                known.update(form_tokens)
+    candidates: set[str] = set()
+    for sentence in sentences:
+        sentence_tokens = tokens(sentence)
+        if sentence_tokens.intersection(known):
+            candidates.update(token for token in sentence_tokens if len(token) >= 3 and token not in known and token in frequency_words)
+    ranks = {token: rank for rank, token in enumerate(frequency_words, start=1)}
+    return set(sorted(candidates, key=ranks.__getitem__)[:RECOMMENDATION_LEMMA_CANDIDATE_LIMIT])
 
 
 def parse_content(project_root: Path) -> ImportedContent:
@@ -178,12 +204,19 @@ def parse_content(project_root: Path) -> ImportedContent:
                 else:
                     sentences[finnish].append(translation)
 
+    recommendation_index_path = project_root / "data" / "kaikki-recommendations.sqlite"
+    recommendation_surfaces = _recommendation_surfaces(vocabulary, forms, sentences, frequency_words)
+    lemma_mappings: dict[str, str] = {}
+    if source_path.exists():
+        report.recommendation_lemma_index_rebuilt = ensure_recommendation_index(source_path, recommendation_index_path, recommendation_surfaces)
+    lemma_mappings = recommendation_lemmas(recommendation_index_path)
+
     report.vocabulary_count = len(vocabulary)
     report.form_count = sum(len(entries) for entries in forms.values())
     report.sentence_count = len(sentences)
     report.translation_count = sum(len(translations) for translations in sentences.values())
     report.frequency_entry_count = len(frequency_words)
-    return ImportedContent(vocabulary, forms, sentences, frequency_words, report)
+    return ImportedContent(vocabulary, forms, sentences, frequency_words, lemma_mappings, report)
 
 
 SCHEMA = """
@@ -198,6 +231,7 @@ CREATE TABLE sentence_translations (sentence_id INTEGER NOT NULL REFERENCES sent
 CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentence_id);
 CREATE TABLE sentence_tokens (token_casefold TEXT NOT NULL, sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE, PRIMARY KEY (token_casefold, sentence_id));
 CREATE TABLE frequency_words (token_casefold TEXT PRIMARY KEY, frequency_rank INTEGER NOT NULL UNIQUE, frequency_count INTEGER NOT NULL CHECK (frequency_count > 0));
+CREATE TABLE recommendation_lemmas (surface TEXT PRIMARY KEY, lemma TEXT NOT NULL);
 """
 
 
@@ -214,6 +248,7 @@ def _build_database(path: Path, content: ImportedContent) -> None:
             connection.executemany("INSERT INTO sentence_translations (sentence_id, english, ordinal) VALUES (?, ?, ?)", ((sentence_ids[finnish], english, ordinal) for finnish, translations in content.sentences.items() for ordinal, english in enumerate(translations)))
             connection.executemany("INSERT INTO sentence_tokens (token_casefold, sentence_id) VALUES (?, ?)", ((token, sentence_ids[finnish]) for finnish in content.sentences for token in tokens(finnish)))
             connection.executemany("INSERT INTO frequency_words (token_casefold, frequency_rank, frequency_count) VALUES (?, ?, ?)", ((token, rank, count) for rank, (token, count) in enumerate(content.frequency_words.items(), start=1)))
+            connection.executemany("INSERT INTO recommendation_lemmas (surface, lemma) VALUES (?, ?)", content.recommendation_lemmas.items())
             connection.execute("CREATE INDEX idx_sentence_tokens_sentence ON sentence_tokens(sentence_id)")
         if connection.execute("PRAGMA foreign_key_check").fetchall() or connection.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
             raise RuntimeError("content database integrity verification failed")

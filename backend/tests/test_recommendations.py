@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -52,6 +53,53 @@ class RecommendationTests(unittest.TestCase):
         run_import(self.root)
 
         self.assertEqual(get_recommendations(self.content_path), [])
+
+    def test_recommendations_merge_unambiguous_forms_and_keep_ambiguous_surfaces(self) -> None:
+        source = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+        entries = [
+            {"word": "ravintola", "lang_code": "fi", "forms": [
+                {"form": "ravintolassa", "source": "declension", "tags": ["inessive", "singular"]},
+                {"form": "ravintolasta", "source": "declension", "tags": ["elative", "singular"]},
+            ]},
+            {"word": "pankki", "lang_code": "fi", "forms": [
+                {"form": "pankissa", "source": "declension", "tags": ["inessive", "singular"]},
+            ]},
+            {"word": "penkki", "lang_code": "fi", "forms": [
+                {"form": "pankissa", "source": "declension", "tags": ["inessive", "singular"]},
+            ]},
+            {"word": "joka", "lang_code": "fi", "forms": [
+                {"form": "joten", "source": "inflection", "tags": ["causative", "singular"]},
+            ]},
+            {"word": "hyvä", "lang_code": "fi", "forms": [
+                {"form": "hyvin", "source": "declension", "tags": ["instructive", "plural"]},
+            ]},
+            {"word": "hyvin", "lang_code": "fi", "senses": [{"glosses": ["well"]}]},
+        ]
+        with source.open("a", encoding="utf-8") as file:
+            file.write("".join(json.dumps(entry) + "\n" for entry in entries))
+        (self.root / "frequency" / "fi_50k.txt").write_text(
+            "ravintolassa 120\nravintolasta 110\npankissa 100\nhyvin 95\njoten 90\nauto 80\ntalo 70\n",
+            encoding="utf-8",
+        )
+        (self.root / "sentences" / "lesson.txt").write_text(
+            "Auto ravintolassa. - A car in the restaurant.\n"
+            "Talo ravintolasta. - From the restaurant.\n"
+            "Auto pankissa. - A car in the bank.\n"
+            "Auto hyvin. - A car well.\n"
+            "Auto joten. - A car therefore.\n",
+            encoding="utf-8",
+        )
+
+        run_import(self.root)
+        recommendations = get_recommendations(self.content_path)
+
+        restaurant = next(item for item in recommendations if item["word"] == "ravintola")
+        self.assertEqual(restaurant["observed_forms"], ["ravintolassa", "ravintolasta"])
+        self.assertEqual(restaurant["related_vocabulary_count"], 2)
+        self.assertEqual(sum(item["word"] == "ravintola" for item in recommendations), 1)
+        self.assertIn("pankissa", [item["word"] for item in recommendations])
+        self.assertIn("hyvin", [item["word"] for item in recommendations])
+        self.assertIn("joten", [item["word"] for item in recommendations])
 
 
 if __name__ == "__main__":

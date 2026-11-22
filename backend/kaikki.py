@@ -20,6 +20,7 @@ CREATE TABLE candidates (
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
 INDEX_VERSION = 2
+RECOMMENDATION_INDEX_VERSION = 3
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 
 NOMINAL_SLOTS = (
@@ -39,6 +40,7 @@ VERB_SLOTS = (
     ("present-3pl", "he ____", {"indicative", "present", "third-person", "plural"}),
 )
 DISALLOWED_TAGS = {"rare", "possessive", "singular-possessive", "plural-possessive", "negative", "passive", "connegative", "accusative"}
+NORMALIZABLE_NOMINAL_TAGS = {"nominative", "genitive", "partitive", "inessive", "elative", "illative", "adessive", "ablative", "allative", "essive", "translative", "abessive", "instructive", "comitative"}
 
 
 @dataclass(frozen=True)
@@ -67,6 +69,10 @@ def _slots_for(form: dict[str, object]) -> list[tuple[str, str, str]]:
     slots = NOMINAL_SLOTS if source in {"declension", "inflection"} else VERB_SLOTS if source == "conjugation" else ()
     profile = "nominal" if source in {"declension", "inflection"} else "verb" if source == "conjugation" else ""
     return [(profile, slot, label) for slot, label, required in slots if required.issubset(tags)]
+
+
+def _is_normalizable_form(source: str, tags: set[str]) -> bool:
+    return source == "conjugation" or (source in {"declension", "inflection"} and bool(tags.intersection(NORMALIZABLE_NOMINAL_TAGS)))
 
 
 def _owned_lemmas(entry: dict[str, object], lemmas: set[str]) -> set[str]:
@@ -184,3 +190,84 @@ def generated_forms(index_path: Path, word: str) -> tuple[list[GeneratedForm], d
         if len(unique) > 1:
             alternatives[card_key] = unique[1:]
     return forms, alternatives
+
+
+RECOMMENDATION_INDEX_SCHEMA = """
+CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+CREATE TABLE surface_lemmas (surface TEXT NOT NULL, lemma TEXT NOT NULL, PRIMARY KEY (surface, lemma));
+CREATE INDEX idx_surface_lemmas_surface ON surface_lemmas(surface);
+"""
+
+
+def _recommendation_signature(path: Path, surfaces: set[str]) -> str:
+    stat = path.stat()
+    encoded = "\0".join(sorted(surfaces)).encode("utf-8")
+    return f"{RECOMMENDATION_INDEX_VERSION}:{stat.st_size}:{stat.st_mtime_ns}:{hashlib.sha256(encoded).hexdigest()}"
+
+
+def ensure_recommendation_index(source_path: Path, index_path: Path, surfaces: set[str]) -> bool:
+    """Build a small reverse morphology cache for recommendation candidates."""
+    signature = _recommendation_signature(source_path, surfaces)
+    if index_path.exists():
+        with sqlite3.connect(index_path) as connection:
+            row = connection.execute("SELECT value FROM metadata WHERE key = 'source_signature'").fetchone()
+        if row and row[0] == signature:
+            return False
+
+    temporary_path = index_path.with_suffix(".tmp")
+    temporary_path.unlink(missing_ok=True)
+    try:
+        with sqlite3.connect(temporary_path) as connection:
+            connection.executescript(RECOMMENDATION_INDEX_SCHEMA)
+            encodings = {json.dumps(surface, ensure_ascii=ensure_ascii) for surface in surfaces for ensure_ascii in (False, True)}
+            surface_pattern = r'(?:"form"|"word")\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in encodings) + r')'
+            pattern = re.compile(surface_pattern) if encodings else None
+            batch: list[tuple[str, str]] = []
+            with source_path.open(encoding="utf-8") as source:
+                for line in source:
+                    if pattern is None or not pattern.search(line):
+                        continue
+                    try:
+                        entry = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
+                    lemma = entry.get("word")
+                    if entry.get("lang_code") != "fi" or not isinstance(lemma, str) or " " in lemma:
+                        continue
+                    senses = entry.get("senses", [])
+                    if lemma.casefold() in surfaces and isinstance(senses, list) and any(
+                        isinstance(sense, dict) and not sense.get("form_of") for sense in senses
+                    ):
+                        batch.append((lemma.casefold(), lemma.casefold()))
+                    for raw_form in entry.get("forms", []):
+                        if not isinstance(raw_form, dict):
+                            continue
+                        surface = raw_form.get("form")
+                        source_name = raw_form.get("source")
+                        raw_tags = raw_form.get("tags", [])
+                        if not isinstance(surface, str) or not isinstance(source_name, str) or not isinstance(raw_tags, list):
+                            continue
+                        tags = {tag for tag in raw_tags if isinstance(tag, str)}
+                        if surface.casefold() not in surfaces or not _is_normalizable_form(source_name, tags):
+                            continue
+                        if not surface or surface == "-" or " " in surface or tags.intersection(DISALLOWED_TAGS):
+                            continue
+                        batch.append((surface.casefold(), lemma.casefold()))
+            if batch:
+                connection.executemany("INSERT OR IGNORE INTO surface_lemmas (surface, lemma) VALUES (?, ?)", batch)
+            connection.execute("INSERT INTO metadata VALUES ('source_signature', ?)", (signature,))
+        temporary_path.replace(index_path)
+    finally:
+        temporary_path.unlink(missing_ok=True)
+    return True
+
+
+def recommendation_lemmas(index_path: Path) -> dict[str, str]:
+    """Return only unambiguous surface-to-lemma mappings from the cache."""
+    if not index_path.exists():
+        return {}
+    with sqlite3.connect(index_path) as connection:
+        rows = connection.execute(
+            "SELECT surface, GROUP_CONCAT(lemma), COUNT(*) FROM surface_lemmas GROUP BY surface HAVING COUNT(*) = 1"
+        ).fetchall()
+    return {surface: lemma for surface, lemma, _ in rows}

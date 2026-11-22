@@ -27,3 +27,4 @@
 - [x] Prioritize new quiz cards by contextual relevance
 - [x] Diversify new vocabulary within quiz batches
 - [x] Prioritize new cards by reinforcement potential
+- [x] Normalize recommendation surface forms to lemmas

@@ -24,6 +24,7 @@ export default function Recommendations() {
     {error ? <p className="error" role="alert">{error}</p> : recommendations === null ? <p>Finding recommendations…</p> : recommendations.length === 0 ? <p>No contextual recommendations are available yet. Add more sentence content or vocabulary, then run the import pipeline.</p> : <ol className="recommendation-list">{recommendations.map((recommendation) => <li className="recommendation" key={recommendation.word}>
       <div className="recommendation-heading"><strong>{recommendation.word}</strong><span>Frequency rank #{recommendation.frequency_rank}</span></div>
       <small>Found beside {recommendation.related_vocabulary_count} of your vocabulary word{recommendation.related_vocabulary_count === 1 ? '' : 's'}.</small>
+      {recommendation.observed_forms.length > 0 && <small>Seen as: {recommendation.observed_forms.join(', ')}.</small>}
       <div className="recommendation-examples">{recommendation.examples.map((example) => <div className="recommendation-example" key={example.finnish}>
         <p>{example.finnish}</p><small>{example.english_translations.join(' / ')}</small>
       </div>)}</div>

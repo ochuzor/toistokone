@@ -81,23 +81,42 @@ def get_recommendations(content_path: Path, limit: int = 20) -> list[dict[str, o
             ):
                 frequency_words[token] = (rank, count)
 
+        has_lemma_table = connection.execute(
+            "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'recommendation_lemmas'"
+        ).fetchone()
+        lemma_mappings = {
+            surface: lemma for surface, lemma in connection.execute("SELECT surface, lemma FROM recommendation_lemmas")
+        } if has_lemma_table else {}
+
+        grouped: dict[str, tuple[int, int, set[int], set[str], set[str]]] = {}
+        for token, (rank, count) in frequency_words.items():
+            word = lemma_mappings.get(token, token)
+            sentence_ids = candidate_sentences[token]
+            families = set().union(*(sentence_families[sentence_id] for sentence_id in sentence_ids))
+            if word not in grouped:
+                grouped[word] = (rank, count, set(sentence_ids), families, {token})
+                continue
+            best_rank, total_count, existing_sentences, existing_families, observed_forms = grouped[word]
+            grouped[word] = (min(best_rank, rank), total_count + count, existing_sentences | sentence_ids, existing_families | families, observed_forms | {token})
+
         ranked = sorted(
             (
                 (
-                    token,
+                    word,
                     rank,
                     count,
-                    candidate_sentences[token],
-                    set().union(*(sentence_families[sentence_id] for sentence_id in candidate_sentences[token])),
+                    sentence_ids,
+                    families,
+                    observed_forms,
                 )
-                for token, (rank, count) in frequency_words.items()
+                for word, (rank, count, sentence_ids, families, observed_forms) in grouped.items()
             ),
             key=lambda candidate: (candidate[1], -len(candidate[4]), -len(candidate[3]), candidate[0]),
         )[:limit]
         if not ranked:
             return []
 
-        example_ids = sorted({sentence_id for _, _, _, sentence_ids, _ in ranked for sentence_id in sorted(sentence_ids)[:2]})
+        example_ids = sorted({sentence_id for _, _, _, sentence_ids, _, _ in ranked for sentence_id in sorted(sentence_ids)[:2]})
         sentence_texts: dict[int, str] = {}
         translations: dict[int, list[str]] = defaultdict(list)
         for sentence_chunk in _chunks(example_ids):
@@ -115,14 +134,15 @@ def get_recommendations(content_path: Path, limit: int = 20) -> list[dict[str, o
 
     return [
         {
-            "word": token,
+            "word": word,
             "frequency_rank": rank,
             "frequency_count": count,
             "related_vocabulary_count": len(families),
+            "observed_forms": sorted(form for form in observed_forms if form != word),
             "examples": [
                 {"finnish": sentence_texts[sentence_id], "english_translations": translations[sentence_id]}
                 for sentence_id in sorted(sentence_ids)[:2]
             ],
         }
-        for token, rank, count, sentence_ids, families in ranked
+        for word, rank, count, sentence_ids, families, observed_forms in ranked
     ]

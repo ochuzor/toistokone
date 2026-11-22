@@ -13,6 +13,8 @@ data/progress.sqlite
 data/import-report.txt
 data/kaikki-forms.sqlite
 data/kaikki-forms.tmp*
+data/kaikki-recommendations.sqlite
+data/kaikki-recommendations.tmp*
 .pytest_cache/
 coverage/
 *:Zone.Identifier

@@ -32,6 +32,7 @@ class PipelineTests(unittest.TestCase):
         self.write_sources("talo - house\ntehdä - to do\nparticle - just\n", {"lesson.txt": "Talo on suuri. - The house is big.\n"})
         report = run_import(self.root)
         self.assertTrue(report.kaikki_index_rebuilt)
+        self.assertTrue(report.recommendation_lemma_index_rebuilt)
         self.assertEqual(report.form_count, 12)
         self.assertEqual(report.missing_lexicon_profiles, ["particle"])
         with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
@@ -41,6 +42,7 @@ class PipelineTests(unittest.TestCase):
         self.assertIn(("verb:present-3sg", "tekee", "hän ____"), verb)
         second = run_import(self.root, dry_run=True)
         self.assertFalse(second.kaikki_index_rebuilt)
+        self.assertFalse(second.recommendation_lemma_index_rebuilt)
 
     def test_changed_kaikki_source_rebuilds_the_index(self) -> None:
         self.write_sources("talo - house\n")
