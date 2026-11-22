@@ -25,6 +25,7 @@ export default function Recommendations() {
       <div className="recommendation-heading"><strong>{recommendation.word}</strong><span>Frequency rank #{recommendation.frequency_rank}</span></div>
       <small>Found beside {recommendation.related_vocabulary_count} of your vocabulary word{recommendation.related_vocabulary_count === 1 ? '' : 's'}.</small>
       {recommendation.observed_forms.length > 0 && <small>Seen as: {recommendation.observed_forms.join(', ')}.</small>}
+      {recommendation.chain_words.length > 0 && <small>Learn alongside: {recommendation.chain_words.join(', ')}.</small>}
       <div className="recommendation-examples">{recommendation.examples.map((example) => <div className="recommendation-example" key={example.finnish}>
         <p>{example.finnish}</p><small>{example.english_translations.join(' / ')}</small>
       </div>)}</div>

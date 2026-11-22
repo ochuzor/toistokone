@@ -62,6 +62,7 @@ class Recommendation(BaseModel):
     frequency_count: int
     related_vocabulary_count: int
     observed_forms: list[str]
+    chain_words: list[str]
     examples: list[RecommendationExample]
 
 

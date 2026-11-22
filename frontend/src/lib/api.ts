@@ -33,6 +33,7 @@ export type Recommendation = {
   frequency_count: number
   related_vocabulary_count: number
   observed_forms: string[]
+  chain_words: string[]
   examples: { finnish: string; english_translations: string[] }[]
 }
 

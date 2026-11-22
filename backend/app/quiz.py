@@ -4,6 +4,7 @@ import math
 import random
 import sqlite3
 import uuid
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -22,6 +23,7 @@ class Candidate:
     supporting_sentence_count: int = 0
     related_families: frozenset[str] = frozenset()
     reinforcement_quality: int = 0
+    chain_families: frozenset[str] = frozenset()
 
 
 @dataclass(frozen=True)
@@ -87,11 +89,26 @@ def _select_diverse_new_vocabulary(candidates: list[Candidate], limit: int) -> l
     selected: list[Candidate] = []
     remaining = list(candidates)
     represented_families: frozenset[str] = frozenset()
+    chain_companion_selected = False
     while remaining and len(selected) < limit:
         card = min(remaining, key=lambda candidate: _new_vocabulary_key(candidate, represented_families))
         selected.append(card)
         remaining.remove(card)
         represented_families = represented_families.union(card.related_families)
+        if chain_companion_selected or len(selected) == limit:
+            continue
+        companions = [
+            candidate for candidate in remaining
+            if candidate.base_word in card.chain_families
+            and _frequency_band(candidate.frequency_rank) == _frequency_band(card.frequency_rank)
+        ]
+        if not companions:
+            continue
+        companion = min(companions, key=lambda candidate: _new_vocabulary_key(candidate, represented_families))
+        selected.append(companion)
+        remaining.remove(companion)
+        represented_families = represented_families.union(companion.related_families)
+        chain_companion_selected = True
     return selected
 
 
@@ -147,6 +164,25 @@ def _context_support(connection: sqlite3.Connection, token_families: dict[str, s
     }
 
 
+def _direct_chain_families(connection: sqlite3.Connection, token_families: dict[str, set[str]]) -> dict[str, frozenset[str]]:
+    """Return vocabulary families that directly co-occur in imported sentences."""
+    sentence_families: dict[int, set[str]] = defaultdict(set)
+    token_list = list(token_families)
+    for start in range(0, len(token_list), 900):
+        token_chunk = token_list[start:start + 900]
+        placeholders = ", ".join("?" for _ in token_chunk)
+        for sentence_id, token in connection.execute(
+            f"SELECT sentence_id, token_casefold FROM sentence_tokens WHERE token_casefold IN ({placeholders})",
+            token_chunk,
+        ):
+            sentence_families[sentence_id].update(token_families[token])
+    related: dict[str, set[str]] = defaultdict(set)
+    for families in sentence_families.values():
+        for family in families:
+            related[family].update(families - {family})
+    return {family: frozenset(other_families) for family, other_families in related.items()}
+
+
 def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, list[str]], dict[str, list[FormCard]], dict[str, set[str]], set[str], list[Candidate]]:
     with sqlite3.connect(content_path) as connection:
         connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
@@ -174,11 +210,12 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
             )
         }
         context_support = _context_support(connection, contextual_token_families, mastered_families)
+        direct_chain_families = _direct_chain_families(connection, contextual_token_families)
         frequency_ranks = {token: rank for token, rank in connection.execute("SELECT token_casefold, frequency_rank FROM frequency_words")}
         candidates: list[Candidate] = []
         for word, score, last_practiced_at in connection.execute("SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at FROM vocabulary LEFT JOIN progress.card_progress ON progress.card_progress.card_type = 'vocabulary' AND progress.card_progress.base_word = vocabulary.finnish AND progress.card_progress.target_form = ''"):
             breadth, sentence_count, related_families, reinforcement_quality = context_support.get(word, (0, 0, frozenset(), 0))
-            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality))
+            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality, direct_chain_families.get(word, frozenset())))
         for base_word, card_key, profile, score, last_practiced_at, vocabulary_score in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0) FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
             if vocabulary_score == 3 and len(_profile_options(forms[base_word], profile)) >= 2:
                 candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at))

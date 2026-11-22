@@ -57,6 +57,7 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .recommendation-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
 .recommendation-heading strong { font-size: 1.25rem; }
 .recommendation-heading span, .recommendation small { color: #475569; }
+.recommendation > small { display: block; }
 .recommendation-examples { display: grid; gap: .5rem; margin-top: 1rem; }
 .recommendation-example { padding-left: .75rem; border-left: 3px solid #86efac; }
 .recommendation-example p { margin: 0; }

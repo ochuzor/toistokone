@@ -28,3 +28,4 @@
 - [x] Diversify new vocabulary within quiz batches
 - [x] Prioritize new cards by reinforcement potential
 - [x] Normalize recommendation surface forms to lemmas
+- [x] Add direct-context learning chains to recommendations and new-card selection

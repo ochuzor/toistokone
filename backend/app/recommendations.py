@@ -3,6 +3,7 @@ from __future__ import annotations
 import sqlite3
 from collections import defaultdict
 from collections.abc import Iterable
+from itertools import combinations
 from pathlib import Path
 
 from .sentences import tokens
@@ -28,6 +29,64 @@ def _single_token(value: str) -> str | None:
         return None
     token = next(iter(value_tokens))
     return token if token == value.casefold() else None
+
+
+def _chain_relationships(
+    candidates: list[tuple[str, int, int, set[int], set[str], set[str]]],
+) -> dict[str, list[str]]:
+    """Return directly co-occurring candidate words ordered by relationship strength."""
+    sentence_words: dict[int, set[str]] = defaultdict(set)
+    ranks = {word: rank for word, rank, *_ in candidates}
+    for word, _, _, sentence_ids, _, _ in candidates:
+        for sentence_id in sentence_ids:
+            sentence_words[sentence_id].add(word)
+
+    shared_counts: dict[tuple[str, str], int] = defaultdict(int)
+    for words in sentence_words.values():
+        for first, second in combinations(sorted(words), 2):
+            shared_counts[(first, second)] += 1
+
+    relationships: dict[str, list[tuple[str, int]]] = defaultdict(list)
+    for (first, second), shared_count in shared_counts.items():
+        relationships[first].append((second, shared_count))
+        relationships[second].append((first, shared_count))
+    return {
+        word: [related for related, _ in sorted(related_words, key=lambda item: (-item[1], ranks[item[0]], item[0]))]
+        for word, related_words in relationships.items()
+    }
+
+
+def _visible_recommendations(
+    ranked: list[tuple[str, int, int, set[int], set[str], set[str]]],
+    relationships: dict[str, list[str]],
+    limit: int,
+) -> list[tuple[str, int, int, set[int], set[str], set[str]]]:
+    """Keep the strongest ranked results while making a few direct pairs visible."""
+    visible = list(ranked[:limit])
+    visible_words = {word for word, *_ in visible}
+    promotions = 0
+    for root, *_ in list(visible):
+        if promotions == 3:
+            break
+        if root not in visible_words:
+            continue
+        companion = next((word for word in relationships.get(root, []) if word not in visible_words), None)
+        if companion is None:
+            continue
+        connected = {
+            word for word in visible_words
+            if any(related in visible_words for related in relationships.get(word, []))
+        }
+        removable_indexes = [index for index, (word, *_) in enumerate(visible) if word not in connected]
+        if not removable_indexes:
+            break
+        companion_candidate = next(candidate for candidate in ranked if candidate[0] == companion)
+        removed = visible.pop(removable_indexes[-1])
+        visible_words.remove(removed[0])
+        visible.append(companion_candidate)
+        visible_words.add(companion)
+        promotions += 1
+    return sorted(visible, key=lambda candidate: (candidate[1], -len(candidate[4]), -len(candidate[3]), candidate[0]))
 
 
 def get_recommendations(content_path: Path, limit: int = 20) -> list[dict[str, object]]:
@@ -112,9 +171,13 @@ def get_recommendations(content_path: Path, limit: int = 20) -> list[dict[str, o
                 for word, (rank, count, sentence_ids, families, observed_forms) in grouped.items()
             ),
             key=lambda candidate: (candidate[1], -len(candidate[4]), -len(candidate[3]), candidate[0]),
-        )[:limit]
+        )
         if not ranked:
             return []
+
+        relationships = _chain_relationships(ranked)
+        ranked = _visible_recommendations(ranked, relationships, limit)
+        visible_words = {word for word, *_ in ranked}
 
         example_ids = sorted({sentence_id for _, _, _, sentence_ids, _, _ in ranked for sentence_id in sorted(sentence_ids)[:2]})
         sentence_texts: dict[int, str] = {}
@@ -139,6 +202,7 @@ def get_recommendations(content_path: Path, limit: int = 20) -> list[dict[str, o
             "frequency_count": count,
             "related_vocabulary_count": len(families),
             "observed_forms": sorted(form for form in observed_forms if form != word),
+            "chain_words": [related for related in relationships.get(word, []) if related in visible_words][:1],
             "examples": [
                 {"finnish": sentence_texts[sentence_id], "english_translations": translations[sentence_id]}
                 for sentence_id in sorted(sentence_ids)[:2]

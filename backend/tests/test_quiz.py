@@ -109,6 +109,28 @@ class QuizSelectionTests(unittest.TestCase):
 
         self.assertEqual({card.base_word for card in selected}, {"first", "second"})
 
+    def test_new_vocabulary_adds_one_same_band_direct_companion_then_resumes_diversity(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "first", "", 0, None, 200, 3, 3, frozenset({"auto"}), 10, frozenset({"companion"})),
+            Candidate("vocabulary", "companion", "", 0, None, 300, 0, 0, frozenset({"auto"}), 0, frozenset({"first"})),
+            Candidate("vocabulary", "diverse", "", 0, None, 400, 2, 2, frozenset({"ruoka"}), 5),
+        ]
+
+        selected = select_candidates(candidates, 3, random.Random(7))
+
+        self.assertEqual({card.base_word for card in selected}, {"first", "companion", "diverse"})
+
+    def test_new_vocabulary_does_not_promote_a_companion_from_a_lower_frequency_band(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "first", "", 0, None, 100, 0, 0, frozenset(), 0, frozenset({"lower-band"})),
+            Candidate("vocabulary", "lower-band", "", 0, None, 101, 0, 0, frozenset(), 0, frozenset({"first"})),
+            Candidate("vocabulary", "contextual", "", 0, None, 102, 1, 1),
+        ]
+
+        selected = select_candidates(candidates, 2, random.Random(7))
+
+        self.assertEqual({card.base_word for card in selected}, {"first", "contextual"})
+
 
 class GrammarBatchTests(unittest.TestCase):
     def setUp(self) -> None:

@@ -54,6 +54,25 @@ class RecommendationTests(unittest.TestCase):
 
         self.assertEqual(get_recommendations(self.content_path), [])
 
+    def test_recommendations_promote_direct_sentence_companions(self) -> None:
+        (self.root / "frequency" / "fi_50k.txt").write_text(
+            "alpha 100\ngamma 90\nbeta 80\nauto 70\n",
+            encoding="utf-8",
+        )
+        (self.root / "dictionary.txt").write_text("auto - car\n", encoding="utf-8")
+        (self.root / "sentences" / "lesson.txt").write_text(
+            "Auto alpha beta. - A car alpha beta.\n"
+            "Auto gamma. - A car gamma.\n",
+            encoding="utf-8",
+        )
+        run_import(self.root)
+
+        recommendations = get_recommendations(self.content_path, limit=2)
+
+        self.assertEqual([item["word"] for item in recommendations], ["alpha", "beta"])
+        self.assertEqual(recommendations[0]["chain_words"], ["beta"])
+        self.assertEqual(recommendations[1]["chain_words"], ["alpha"])
+
     def test_recommendations_merge_unambiguous_forms_and_keep_ambiguous_surfaces(self) -> None:
         source = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
         entries = [
