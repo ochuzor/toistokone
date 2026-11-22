@@ -30,8 +30,8 @@ class ContextSupportTests(unittest.TestCase):
 
             support = _context_support(connection, {"auto": {"auto"}, "talo": {"talo"}})
 
-        self.assertEqual(support["auto"], (1, 2))
-        self.assertEqual(support["talo"], (1, 1))
+        self.assertEqual(support["auto"], (1, 2, frozenset({"talo"})))
+        self.assertEqual(support["talo"], (1, 1, frozenset({"auto"})))
 
 
 class QuizSelectionTests(unittest.TestCase):
@@ -61,6 +61,27 @@ class QuizSelectionTests(unittest.TestCase):
         selected = select_candidates(candidates, 1, random.Random(7))
 
         self.assertEqual(selected[0].base_word, "very-common")
+
+    def test_new_vocabulary_prefers_a_different_context_neighborhood_after_relevance(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "first", "", 0, None, 200, 2, 2, frozenset({"auto", "talo"})),
+            Candidate("vocabulary", "overlapping", "", 0, None, 300, 2, 2, frozenset({"auto", "talo"})),
+            Candidate("vocabulary", "diverse", "", 0, None, 400, 2, 2, frozenset({"ruoka", "ravintola"})),
+        ]
+
+        selected = select_candidates(candidates, 2, random.Random(7))
+
+        self.assertEqual({card.base_word for card in selected}, {"first", "diverse"})
+
+    def test_new_vocabulary_does_not_exclude_shared_neighborhoods(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "first", "", 0, None, 200, 2, 2, frozenset({"auto"})),
+            Candidate("vocabulary", "second", "", 0, None, 300, 2, 2, frozenset({"auto"})),
+        ]
+
+        selected = select_candidates(candidates, 2, random.Random(7))
+
+        self.assertEqual({card.base_word for card in selected}, {"first", "second"})
 
 
 class GrammarBatchTests(unittest.TestCase):

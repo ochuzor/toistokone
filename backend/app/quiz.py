@@ -20,6 +20,7 @@ class Candidate:
     frequency_rank: int | None = None
     contextual_breadth: int = 0
     supporting_sentence_count: int = 0
+    related_families: frozenset[str] = frozenset()
 
 
 @dataclass(frozen=True)
@@ -40,9 +41,9 @@ def select_candidates(candidates: list[Candidate], batch_size: int, rng: random.
         if not prioritize_new_vocabulary:
             return selected
         vocabulary_positions = [index for index, card in enumerate(selected) if card.card_type == "vocabulary" and card.last_practiced_at is None]
-        ranked_vocabulary = sorted(
-            (card for card in shuffled if card.card_type == "vocabulary" and card.last_practiced_at is None),
-            key=_new_vocabulary_key,
+        ranked_vocabulary = _select_diverse_new_vocabulary(
+            [card for card in shuffled if card.card_type == "vocabulary" and card.last_practiced_at is None],
+            len(vocabulary_positions),
         )
         for index, card in zip(vocabulary_positions, ranked_vocabulary):
             selected[index] = card
@@ -70,13 +71,26 @@ def _frequency_band(rank: int | None) -> int:
     return 3
 
 
-def _new_vocabulary_key(card: Candidate) -> tuple[int, int, int, int]:
+def _new_vocabulary_key(card: Candidate, selected_families: frozenset[str]) -> tuple[int, int, int, int, int]:
     return (
         _frequency_band(card.frequency_rank),
         -card.contextual_breadth,
         -card.supporting_sentence_count,
+        len(card.related_families.intersection(selected_families)),
         card.frequency_rank if card.frequency_rank is not None else 0,
     )
+
+
+def _select_diverse_new_vocabulary(candidates: list[Candidate], limit: int) -> list[Candidate]:
+    selected: list[Candidate] = []
+    remaining = list(candidates)
+    represented_families: frozenset[str] = frozenset()
+    while remaining and len(selected) < limit:
+        card = min(remaining, key=lambda candidate: _new_vocabulary_key(candidate, represented_families))
+        selected.append(card)
+        remaining.remove(card)
+        represented_families = represented_families.union(card.related_families)
+    return selected
 
 
 def _profile_options(cards: list[FormCard], profile: str) -> list[str]:
@@ -91,8 +105,8 @@ def _single_token(value: str) -> str | None:
     return token if token == value.casefold() else None
 
 
-def _context_support(connection: sqlite3.Connection, token_families: dict[str, set[str]]) -> dict[str, tuple[int, int]]:
-    """Return contextual breadth and sentence count for each tracked word family."""
+def _context_support(connection: sqlite3.Connection, token_families: dict[str, set[str]]) -> dict[str, tuple[int, int, frozenset[str]]]:
+    """Return contextual breadth, sentence count, and related families for each word family."""
     sentence_families: dict[int, set[str]] = {}
     token_list = list(token_families)
     for start in range(0, len(token_list), 900):
@@ -111,7 +125,11 @@ def _context_support(connection: sqlite3.Connection, token_families: dict[str, s
             sentence_counts.setdefault(family, set()).add(sentence_id)
             related_families.setdefault(family, set()).update(families - {family})
     return {
-        family: (len(related_families.get(family, set())), len(sentence_counts.get(family, set())))
+        family: (
+            len(related_families.get(family, set())),
+            len(sentence_counts.get(family, set())),
+            frozenset(related_families.get(family, set())),
+        )
         for families in token_families.values()
         for family in families
     }
@@ -147,8 +165,8 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
         frequency_ranks = {token: rank for token, rank in connection.execute("SELECT token_casefold, frequency_rank FROM frequency_words")}
         candidates: list[Candidate] = []
         for word, score, last_practiced_at in connection.execute("SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at FROM vocabulary LEFT JOIN progress.card_progress ON progress.card_progress.card_type = 'vocabulary' AND progress.card_progress.base_word = vocabulary.finnish AND progress.card_progress.target_form = ''"):
-            breadth, sentence_count = context_support.get(word, (0, 0))
-            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count))
+            breadth, sentence_count, related_families = context_support.get(word, (0, 0, frozenset()))
+            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families))
         for base_word, card_key, profile, score, last_practiced_at, vocabulary_score in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0) FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
             if vocabulary_score == 3 and len(_profile_options(forms[base_word], profile)) >= 2:
                 candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at))
