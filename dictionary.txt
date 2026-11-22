@@ -305,3 +305,8 @@ ampiainen - wasp
 valkoinen - white (colour) / Caucasian person
 suomalainen - Finn / Finnish
 mehiläinen - bee / honeybee
+laskin - calculator
+kirjoitin - printer
+tulostin - printer / output device
+viestin - medium (thro which)
+kahvinkeitin - coffee machine

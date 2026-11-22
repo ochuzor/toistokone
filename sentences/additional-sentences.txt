@@ -213,3 +213,6 @@ Tässä ne kirjat nyt ovat. - This is where those books are now.
 Lähetän tiedoston sähköpostin liitteenä. - I'll send the file as an email attachment.
 Hänen lempiaineensa on fysiikka. - Her favorite subject is physics.
 suomalais-ruotsalainen sanakirja - a Finnish-Swedish dictionary
+Minulla on yksi heijastin. - I have one reflector.
+Sinulla on kaksi heijastinta. - You have two reflectors.
+Opiskelijalla ei ole taskulaskinta. - The student does not have a calculator.
