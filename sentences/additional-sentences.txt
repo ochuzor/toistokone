@@ -184,3 +184,17 @@ Tarvitsen voimassa olevan passin. - I need a valid passport.
 Tämä passi oikeuttaa käyttämään kaikkia hiihtohissejä. - This pass gives access to all the ski lifts.
 Metsästäjä odotti passissa. - The hunter waited on stand.
 Hevonen liikkui passissa. - The horse moved at a pace.
+Kaupungissa järjestetään kesällä monta tapahtumaa. - Many events are held in the city during the summer.
+Yöllä on pimeää. - It is dark at night.
+hyvällä säällä - on good weather
+huonolla säällä - on bad weather
+Mitä sää teet? - What are you doing?
+Hän jää tänne. - S/he stays here.
+Jää tähän! - Stay here!
+Älä jää tähän! - Don't stay here!
+(Minä) en jää tänne. - I don't stay here.
+(Sinä) et jää tänne. - You don't stay here.
+Hän ei jää tänne. - He/She doesn't stay here.
+(Me) emme jää tänne. - We don't stay here.
+(Te) ette jää tänne. - You don't stay here.
+He eivät jää tänne. - They don't stay here.

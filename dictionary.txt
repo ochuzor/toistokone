@@ -243,3 +243,14 @@ tulli - tariff / customs duty
 tietulli - road toll
 takki - jacket / coat
 kuppi - cup
+tapahtuma - event
+suu - mouth / orifice
+luu - bone
+kuu - moon / satellite / month / animal fat
+yö - night
+vyö - belt / girdle
+maa - country / soil / earth / countryside / land
+tie - path / road / direction / trail
+pää - head / chief/principal/prime
+sää - weather / you (puhekieli)
+jää - ice
