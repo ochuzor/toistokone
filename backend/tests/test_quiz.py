@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import random
+import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
 
 from backend.app.db import initialize_progress_database, record_answer
 from backend.app.models import CardReference
-from backend.app.quiz import Candidate, _sentence_weight, build_batch, select_candidates
+from backend.app.quiz import Candidate, _context_support, _sentence_weight, build_batch, select_candidates
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -18,12 +19,48 @@ class SentenceWeightTests(unittest.TestCase):
         self.assertEqual(_sentence_weight("Tuttu uusi toinen kolmas.", families, {"tuttu"}), 1)
 
 
+class ContextSupportTests(unittest.TestCase):
+    def test_context_support_excludes_a_word_family_from_its_own_breadth(self) -> None:
+        with sqlite3.connect(":memory:") as connection:
+            connection.execute("CREATE TABLE sentence_tokens (sentence_id INTEGER, token_casefold TEXT)")
+            connection.executemany(
+                "INSERT INTO sentence_tokens VALUES (?, ?)",
+                [(1, "auto"), (2, "auto"), (2, "talo")],
+            )
+
+            support = _context_support(connection, {"auto": {"auto"}, "talo": {"talo"}})
+
+        self.assertEqual(support["auto"], (1, 2))
+        self.assertEqual(support["talo"], (1, 1))
+
+
 class QuizSelectionTests(unittest.TestCase):
     def test_new_vocabulary_uses_frequency_rank_without_changing_mix(self) -> None:
         candidates = [Candidate("vocabulary", "unranked", "", 0, None), Candidate("vocabulary", "rank-two", "", 0, None, 2), Candidate("vocabulary", "rank-one", "", 0, None, 1), Candidate("word_form", "root", "form", 0, None)]
         selected = select_candidates(candidates, 4, random.Random(7))
         self.assertEqual(sum(card.card_type == "vocabulary" for card in selected), 3)
         self.assertEqual({card.frequency_rank for card in selected if card.card_type == "vocabulary"}, {1, 2, None})
+
+    def test_new_vocabulary_uses_context_within_a_frequency_band(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "frequent", "", 0, None, 200, 0, 0),
+            Candidate("vocabulary", "contextual", "", 0, None, 300, 3, 2),
+            Candidate("vocabulary", "some-context", "", 0, None, 400, 2, 3),
+        ]
+
+        selected = select_candidates(candidates, 2, random.Random(7))
+
+        self.assertEqual({card.base_word for card in selected}, {"contextual", "some-context"})
+
+    def test_new_vocabulary_keeps_higher_frequency_bands_first(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "very-common", "", 0, None, 100, 0, 0),
+            Candidate("vocabulary", "contextual", "", 0, None, 101, 10, 10),
+        ]
+
+        selected = select_candidates(candidates, 1, random.Random(7))
+
+        self.assertEqual(selected[0].base_word, "very-common")
 
 
 class GrammarBatchTests(unittest.TestCase):

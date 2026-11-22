@@ -24,3 +24,4 @@
 - [x] Generate grammar form cards from Kaikki
 - [x] Reinforce mastered forms with contextual sentences
 - [x] Support Kaikki pronoun-template forms
+- [x] Prioritize new quiz cards by contextual relevance
