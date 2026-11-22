@@ -34,6 +34,10 @@ def get_recommendations(content_path: Path, limit: int = 20) -> list[dict[str, o
     """Recommend common unknown tokens found beside tracked vocabulary families."""
     with sqlite3.connect(content_path) as connection:
         token_families: dict[str, set[str]] = defaultdict(set)
+        for (base_word,) in connection.execute("SELECT finnish FROM vocabulary"):
+            token = _single_token(base_word)
+            if token is not None:
+                token_families[token].add(base_word)
         for base_word, form in connection.execute(
             """SELECT vocabulary.finnish, word_forms.form
                FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id"""
