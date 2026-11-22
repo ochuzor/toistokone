@@ -41,7 +41,6 @@ lohi - salmon
 hauki - hauki (a type of fish)
 sika - pig / swine
 koiranpentu - puppy
-joki - river
 käsi - arm / hand
 lehti - leaf / newspaper / magazine
 
@@ -98,3 +97,149 @@ ruumis - body / corpse
 posti - postal service / post office / mail
 poliisi - the police / police officer
 hotelli - hotel
+baari - bar / cafeteria
+taksi - taxi
+helikopteri - helicopter
+kaupunki - city / town
+tomaatti - tomato
+banaani - banana
+kahvila - cafe / coffee shop
+appelsiini - orange (fruit) / orange tree
+viini - wine
+siili - hedgehog / heat sink
+vuohi - goat
+kameli - camel
+särki - roach (a fish)
+hanhi - goose
+
+poni - pony
+kani - rabbit / pawnshop / bunny
+pelikaani - pelican
+elefantti - elephant
+aasi - donkey / jackass / stupid person
+delfiini - dolphin
+pingviini - penguin
+hai - shark
+fasaani - pheasant
+tilhi - waxwing (a type of bird)
+tiikeri - tiger
+lasi - glass / bell
+traktori - tractor
+minuutti - minute
+kalenteri - calendar / planner
+teksti - text / lyric / copy (as in ad) / insscription / handwriting
+ruotsi - Swedish
+vesi - water / aquatic
+kuukausi - month / moon
+viisi - five
+kuusi - six / spruce
+vuorokausi - day (24-hour period)
+köysi - line / rope / cord / cable / string
+täysi - full / outright / absolute
+saari - island / isle
+meri - sea / marine / nautical
+vuori - mountain
+pieni - tiny / small / little / minor
+suuri - large / big / great / grand
+nuori - youth / teen / teenager / young person
+tuli - fire
+tuuli - wind / mood / breeze
+sateenkaari - rainbow
+punajuuri - beetroot / beet
+ovi - door / gate
+joki - river / stream
+mäki - slope / hill
+tähti - star / celebrity
+polvi - knee
+poski - cheek
+ripsi - eyelash
+pilvi - cloud / pot/weed
+helmi - pearl / bead / jewel
+lääke - medicine / remedy / medication
+osoite - address
+koe - experiment / trial / exam / test
+tarve - necessity / need / demand / requirement
+sade - rain / rainfall event
+lumme - water lily
+kiille - enamel
+ranne - wrist
+murre - dialect / dog
+hevonen - horse / knight
+nainen - woman / lady / female
+iloinen - happy / cheerful
+keltainen - yellow
+perhonen - butterfly / moth
+uutinen - news item / piece of news
+pilvinen - cloudy / overcast
+ihminen - person / human
+tarpeellinen - important / necessary / essential / required
+avain - key / code / clef
+soitin - musical instrument / player
+eläin - animal / beast
+puhelinnumero - phone number
+puhelin - phone
+pakastin - freezer
+kirja - book
+kirjain - letter/character (of the alphabet)
+heijastin - reflector / pedestrian safety reflector
+keitin - cooker / coffee machine / hotplate / boiler
+leivänpaahdin - toaster
+tuuletin - fan / ventilator
+kaiutin - speaker / loudspeaker
+kaukosäädin - remote control
+kaunis - pretty / beautiful
+valmis - finished / completed / ready / willing
+sairas - sick / ill / ailing / unwell
+sairaus - disease / illness / sickness
+potilas - patient / inmate
+lounas - lunch / southwest
+asiakas - client / customer
+hidas - slow / sluggish
+porras - step / stair / rung
+vanhus - senior citizen / old person / antique
+kysymys - question / issue / problem / query
+vastaus - answer / reply / response
+kerros - floor / storey / layer / tier
+vihannes - vegetable
+harjoitus - exercise / rehearsal / practice
+yritys - attempt / company/firm
+kokous - meeting / assembly / gathering
+rakkaus - love / affection / darling / beloved
+salaisuus - secret / mystery
+avaruus - space / outer space / the universe
+terveys - health / fitness / healthiness
+lapsuus - childhood
+vanhuus - age / old age
+kirjallisuus - literature / literary
+kissa - cat / feline
+laukku - bag / case
+metsä - wood / forest
+työ - occupation/employment / job / task / profession
+kaappi - cabinet / closet / cupboard / locker
+hinta - cost / price
+täysin - absolutely / whole / completely / perfectly
+reisi - thigh / femur
+murrettu - broken / fractured
+matto - carpet / rug
+spagetti - spaghetti
+muki - mug / beaker
+robotti - robot
+kassi - bag / sack
+maisteri - master / master of Arts
+maistraatti - magistrate / local register office
+imuri - vacuum cleaner / air extractor / vacuum
+mestari - champion / adept / expert / master
+ministeri - minister / secretary
+maali - paint / finish line / target/goal
+moppi - mop / swab
+pussi - bag / pouch / bladder
+sekunti - second (as in time)
+sihteeri - secretary / secretary bird
+apteekki - chemist / pharmacy / drugstore
+biisi - song / piece of music
+testi - test
+passi - passport / pass / set / pace
+tulli - tariff / customs duty
+tietulli - road toll
+takki - jacket / coat
+kuppi - cup
