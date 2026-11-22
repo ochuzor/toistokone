@@ -40,6 +40,7 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .option.incorrect { border-color: #b91c1c; background: #fee2e2; color: #b91c1c; text-decoration: line-through; }
 .option.faded { opacity: .45; }
 .feedback { border-top: 1px solid #e2e8f0; padding-top: 1rem; }
+.next-arrow { display: none; }
 .text-button { margin-right: 1rem; border: 0; background: none; color: #16704b; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; }
 .back-link { display: inline-block; margin-top: 1.5rem; color: #475569; }
 .error { color: #b91c1c; font-weight: 600; }
@@ -74,4 +75,20 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .recommendation-examples { display: grid; gap: .5rem; margin-top: 1rem; }
 .recommendation-example { padding-left: .75rem; border-left: 3px solid #86efac; }
 .recommendation-example p { margin: 0; }
-@media (max-width: 38rem) { .stats-grid, .activity-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .activity-heading { align-items: start; flex-direction: column; } .activity-heading > strong { text-align: left; } }
+@media (max-width: 38rem) {
+  .app-shell { align-items: start; padding: .75rem; }
+  .card { border-radius: .75rem; padding: 1.5rem 1.25rem; }
+  .stats-grid, .activity-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .activity-heading { align-items: start; flex-direction: column; }
+  .activity-heading > strong { text-align: left; }
+  .practice-card { padding: 1.25rem; }
+  .practice-header { align-items: center; }
+  .practice-header .eyebrow { margin-top: 0; }
+  .progress-track { margin: 1rem 0 1.5rem; }
+  .options { gap: .9rem; margin: 1.25rem 0; }
+  .option { min-height: 3.5rem; padding: .9rem 1rem; }
+  .feedback { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+  .next-button { display: grid; position: fixed; z-index: 10; right: max(.75rem, env(safe-area-inset-right)); bottom: max(.75rem, env(safe-area-inset-bottom)); left: auto; width: 3.25rem; height: 3.25rem; margin: 0; padding: 0; border-radius: 999px; box-shadow: 0 .4rem 1rem #1f293740; place-items: center; }
+  .next-label { display: none; }
+  .next-arrow { display: block; font-size: 2.15rem; line-height: 1; }
+}
