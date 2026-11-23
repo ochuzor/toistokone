@@ -26,7 +26,7 @@ export default function Practice() {
   const current = queue[0]
   const result = answer?.result
   const score = result?.score_after ?? current?.score ?? 0
-  const isNominalPrompt = current?.card.type === 'word_form' && current.card.target_form.startsWith('nominal:') && !!current.hint
+  const isNominalPrompt = current?.card.type === 'word_form' && (current.card.target_form.startsWith('nominal:') || current.card.target_form.startsWith('nominal-plural:')) && !!current.hint
   const nominalPrompt = isNominalPrompt && current ? splitNominalPrompt(current.prompt) : null
 
   useEffect(() => {

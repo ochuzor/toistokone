@@ -19,7 +19,7 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
-INDEX_VERSION = 3
+INDEX_VERSION = 5
 RECOMMENDATION_INDEX_VERSION = 3
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 
@@ -31,6 +31,14 @@ NOMINAL_SLOTS = (
     ("inessive", "Inessiivi (missä?)", {"inessive", "singular"}),
     ("elative", "Elatiivi (mistä?)", {"elative", "singular"}),
     ("illative", "Illatiivi (mihin?)", {"illative", "singular"}),
+)
+NOMINAL_PLURAL_SLOTS = (
+    ("nominative", "Nominatiivi, monikko (mitkä?)", {"nominative", "plural"}),
+    ("genitive", "Genetiivi, monikko (minkä?)", {"genitive", "plural"}),
+    ("partitive", "Partitiivi, monikko (mitä?)", {"partitive", "plural"}),
+    ("inessive", "Inessiivi, monikko (missä?)", {"inessive", "plural"}),
+    ("elative", "Elatiivi, monikko (mistä?)", {"elative", "plural"}),
+    ("illative", "Illatiivi, monikko (mihin?)", {"illative", "plural"}),
 )
 VERB_SLOTS = (
     ("present-1sg", "minä ____", {"indicative", "present", "first-person", "singular"}),
@@ -58,7 +66,7 @@ def _source_signature(path: Path, lemmas: set[str]) -> str:
     return f"{INDEX_VERSION}:{stat.st_size}:{stat.st_mtime_ns}:{hashlib.sha256(words).hexdigest()}"
 
 
-def _slots_for(form: dict[str, object]) -> list[tuple[str, str, str]]:
+def _slots_for(form: dict[str, object], *, plural_nominal: bool = False) -> list[tuple[str, str, str]]:
     text = form.get("form")
     source = form.get("source")
     raw_tags = form.get("tags", [])
@@ -67,8 +75,9 @@ def _slots_for(form: dict[str, object]) -> list[tuple[str, str, str]]:
     tags = {tag for tag in raw_tags if isinstance(tag, str)}
     if not text or text == "-" or " " in text or tags.intersection(DISALLOWED_TAGS):
         return []
-    slots = NOMINAL_SLOTS if source in {"declension", "inflection"} else VERB_SLOTS if source == "conjugation" else ()
-    profile = "nominal" if source in {"declension", "inflection"} else "verb" if source == "conjugation" else ""
+    is_nominal = source in {"declension", "inflection"}
+    slots = NOMINAL_PLURAL_SLOTS if is_nominal and plural_nominal else NOMINAL_SLOTS if is_nominal else VERB_SLOTS if source == "conjugation" else ()
+    profile = "nominal-plural" if is_nominal and plural_nominal else "nominal" if is_nominal else "verb" if source == "conjugation" else ""
     return [(profile, slot, label) for slot, label, required in slots if required.issubset(tags)]
 
 
@@ -102,6 +111,39 @@ def _owned_lemmas(entry: dict[str, object], lemmas: set[str]) -> set[str]:
     return owned
 
 
+def _is_pronoun_entry(entry: dict[str, object]) -> bool:
+    if entry.get("pos") == "pron":
+        return True
+    templates = entry.get("inflection_templates", [])
+    return isinstance(templates, list) and any(
+        isinstance(template, dict)
+        and isinstance(template.get("name"), str)
+        and template["name"].startswith("fi-decl-pron")
+        for template in templates
+    )
+
+
+def _pronoun_owners(entry: dict[str, object], lemmas: set[str]) -> dict[str, str]:
+    """Map requested pronoun lemmas to the number of their nominative form."""
+    owners: dict[str, str] = {}
+    for raw_form in entry.get("forms", []):
+        if not isinstance(raw_form, dict):
+            continue
+        form = raw_form.get("form")
+        source = raw_form.get("source")
+        raw_tags = raw_form.get("tags", [])
+        if not isinstance(form, str) or source not in {"declension", "inflection"} or not isinstance(raw_tags, list):
+            continue
+        tags = {tag for tag in raw_tags if isinstance(tag, str)}
+        if "nominative" not in tags:
+            continue
+        number = "singular" if "singular" in tags else "plural" if "plural" in tags else None
+        lemma = form.casefold()
+        if number and lemma in lemmas:
+            owners[lemma] = number
+    return owners
+
+
 def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
     """Build the reusable subset index when its Kaikki source has changed.
 
@@ -120,19 +162,21 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
         with sqlite3.connect(temporary_path) as connection:
             connection.executescript(INDEX_SCHEMA)
             batch: list[tuple[str, str, str, str, int]] = []
+            pronoun_numbers: dict[str, set[str]] = {}
             encodings = {
                 json.dumps(lemma, ensure_ascii=ensure_ascii)
                 for lemma in lemmas
                 for ensure_ascii in (False, True)
             }
             word_pattern = r'"word"\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in encodings) + r')'
+            form_pattern = r'"form"\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in encodings) + r')'
             template_encodings = {
                 json.dumps(f"{PRONOUN_TEMPLATE_PREFIX}{lemma}", ensure_ascii=ensure_ascii)
                 for lemma in lemmas
                 for ensure_ascii in (False, True)
             }
             template_pattern = r'"name"\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in template_encodings) + r')'
-            pattern = re.compile(f"(?:{word_pattern}|{template_pattern})") if encodings else None
+            pattern = re.compile(f"(?:{word_pattern}|{form_pattern}|{template_pattern})") if encodings else None
             with source_path.open(encoding="utf-8") as source:
                 for source_order, line in enumerate(source):
                     if pattern is None or not pattern.search(line):
@@ -144,10 +188,22 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
                     if entry.get("lang_code") != "fi" or not isinstance(entry.get("word"), str):
                         continue
                     entry_lemmas = _owned_lemmas(entry, lemmas)
-                    if not entry_lemmas:
+                    pronoun_owners = _pronoun_owners(entry, lemmas) if _is_pronoun_entry(entry) else {}
+                    for lemma, number in pronoun_owners.items():
+                        pronoun_numbers.setdefault(lemma, set()).add(number)
+                    if not entry_lemmas and not pronoun_owners:
                         continue
                     for raw_form in entry.get("forms", []):
                         if not isinstance(raw_form, dict):
+                            continue
+                        raw_tags = raw_form.get("tags", [])
+                        tags = {tag for tag in raw_tags if isinstance(tag, str)} if isinstance(raw_tags, list) else set()
+                        for lemma, number in pronoun_owners.items():
+                            if number not in tags:
+                                continue
+                            for profile, slot, _ in _slots_for(raw_form, plural_nominal=number == "plural"):
+                                batch.append((lemma, profile, slot, raw_form["form"], source_order))
+                        if pronoun_owners:
                             continue
                         for profile, slot, _ in _slots_for(raw_form):
                             for lemma in entry_lemmas:
@@ -161,6 +217,14 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
                 connection.executemany(
                     "INSERT INTO candidates (lemma, profile, slot, form, source_order) VALUES (?, ?, ?, ?, ?)", batch
                 )
+            for lemma, numbers in pronoun_numbers.items():
+                if "plural" in numbers:
+                    connection.execute("DELETE FROM candidates WHERE lemma = ? AND profile = 'nominal'", (lemma,))
+                if "singular" in numbers:
+                    connection.execute(
+                        "DELETE FROM candidates WHERE lemma = ? AND profile = 'nominal' AND slot = 'nominative-plural'",
+                        (lemma,),
+                    )
             connection.execute("INSERT INTO metadata VALUES ('source_signature', ?)", (signature,))
         temporary_path.replace(index_path)
     finally:
@@ -172,6 +236,7 @@ def generated_forms(index_path: Path, word: str) -> tuple[list[GeneratedForm], d
     forms: list[GeneratedForm] = []
     alternatives: dict[str, list[str]] = {}
     labels = {("nominal", slot): label for slot, label, _ in NOMINAL_SLOTS}
+    labels.update({("nominal-plural", slot): label for slot, label, _ in NOMINAL_PLURAL_SLOTS})
     labels.update({("verb", slot): label for slot, label, _ in VERB_SLOTS})
     with sqlite3.connect(index_path) as connection:
         rows = connection.execute(

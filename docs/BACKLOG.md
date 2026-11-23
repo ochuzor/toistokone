@@ -7,6 +7,7 @@
 - [ ] Improve mobile layout
 
 ## Completed
+- [x] Correct singular and plural pronoun paradigms
 - [x] Clarify standard word-form quiz prompts
 - [x] Polish the frontend shell and navigation
 - [x] Add one-time focus word requests
