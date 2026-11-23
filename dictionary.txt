@@ -265,7 +265,7 @@ moi - hi / hello / see ya
 nuo - those / them
 tuo - that / that one
 ne - they / them
-me - we
+me - we / us
 te - you (pl) / y'all
 he - they / them
 yksi - one
@@ -334,3 +334,15 @@ uutuus - newness / novelty / new product
 leivos - pastry / cake
 tehdas - factory / plant / mill
 kiharrin - (hair) curling tongs
+täällä - here / over here
+hyvä - good / desirable
+kaikki - everybody / every / all
+tänään - today
+sitten - then / ago / subsequently / since / later
+miksi - why / wherefore / how come
+miten - how / in what way / such
+älä - don't / stop / you don't say
+mikään - any / anything / nothing
+kyllä - yes
+kiitos - thanks / thank you / please
+mikä - what / which / that
