@@ -19,9 +19,11 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
-INDEX_VERSION = 6
+INDEX_VERSION = 7
 RECOMMENDATION_INDEX_VERSION = 3
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
+PERSONAL_PRONOUNS = frozenset({"minä", "sinä", "hän", "me", "te", "he"})
+PERSONAL_PRONOUN_ACCUSATIVE_SLOT = ("accusative", "Akkusatiivi", {"accusative"})
 
 NOMINAL_SLOTS = (
     ("nominative-plural", "Nominatiivi, monikko (mitkä?)", {"nominative", "plural"}),
@@ -65,18 +67,23 @@ def _source_signature(path: Path, lemmas: set[str]) -> str:
     return f"{INDEX_VERSION}:{stat.st_size}:{stat.st_mtime_ns}:{hashlib.sha256(words).hexdigest()}"
 
 
-def _slots_for(form: dict[str, object], *, plural_nominal: bool = False) -> list[tuple[str, str, str]]:
+def _slots_for(
+    form: dict[str, object], *, plural_nominal: bool = False, allow_personal_pronoun_accusative: bool = False
+) -> list[tuple[str, str, str]]:
     text = form.get("form")
     source = form.get("source")
     raw_tags = form.get("tags", [])
     if not isinstance(text, str) or not isinstance(source, str) or not isinstance(raw_tags, list):
         return []
     tags = {tag for tag in raw_tags if isinstance(tag, str)}
-    if not text or text == "-" or " " in text or tags.intersection(DISALLOWED_TAGS):
+    if not text or text == "-" or " " in text or tags.intersection(DISALLOWED_TAGS - {"accusative"}):
         return []
     is_nominal = source in {"declension", "inflection"}
     slots = NOMINAL_PLURAL_SLOTS if is_nominal and plural_nominal else NOMINAL_SLOTS if is_nominal else VERB_SLOTS if source == "conjugation" else ()
     profile = "nominal-plural" if is_nominal and plural_nominal else "nominal" if is_nominal else "verb" if source == "conjugation" else ""
+    if "accusative" in tags:
+        slot, label, _ = PERSONAL_PRONOUN_ACCUSATIVE_SLOT
+        return [(profile, slot, label)] if is_nominal and allow_personal_pronoun_accusative else []
     return [(profile, slot, label) for slot, label, required in slots if required.issubset(tags)]
 
 
@@ -200,12 +207,19 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
                         for lemma, number in pronoun_owners.items():
                             if number not in tags:
                                 continue
-                            for profile, slot, _ in _slots_for(raw_form, plural_nominal=number == "plural"):
+                            for profile, slot, _ in _slots_for(
+                                raw_form,
+                                plural_nominal=number == "plural",
+                                allow_personal_pronoun_accusative=lemma in PERSONAL_PRONOUNS,
+                            ):
                                 batch.append((lemma, profile, slot, raw_form["form"], source_order))
                         if pronoun_owners:
                             continue
-                        for profile, slot, _ in _slots_for(raw_form):
-                            for lemma in entry_lemmas:
+                        for lemma in entry_lemmas:
+                            for profile, slot, _ in _slots_for(
+                                raw_form,
+                                allow_personal_pronoun_accusative=lemma in PERSONAL_PRONOUNS,
+                            ):
                                 batch.append((lemma, profile, slot, raw_form["form"], source_order))
                     if len(batch) >= 10_000:
                         connection.executemany(
@@ -236,6 +250,7 @@ def generated_forms(index_path: Path, word: str) -> tuple[list[GeneratedForm], d
     alternatives: dict[str, list[str]] = {}
     labels = {("nominal", slot): label for slot, label, _ in NOMINAL_SLOTS}
     labels.update({("nominal-plural", slot): label for slot, label, _ in NOMINAL_PLURAL_SLOTS})
+    labels.update({(profile, PERSONAL_PRONOUN_ACCUSATIVE_SLOT[0]): PERSONAL_PRONOUN_ACCUSATIVE_SLOT[1] for profile in ("nominal", "nominal-plural")})
     labels.update({("verb", slot): label for slot, label, _ in VERB_SLOTS})
     with sqlite3.connect(index_path) as connection:
         rows = connection.execute(

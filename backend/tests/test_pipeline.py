@@ -100,12 +100,14 @@ class PipelineTests(unittest.TestCase):
                 {"form": "se", "source": "inflection", "tags": ["nominative", "singular"]},
                 {"form": "sen", "source": "inflection", "tags": ["genitive", "singular"]},
                 {"form": "sitä", "source": "inflection", "tags": ["partitive", "singular"]},
+                {"form": "se", "source": "inflection", "tags": ["accusative", "singular"]},
                 {"form": "siinä", "source": "inflection", "tags": ["inessive", "singular"]},
                 {"form": "siitä", "source": "inflection", "tags": ["elative", "singular"]},
                 {"form": "siihen", "source": "inflection", "tags": ["illative", "singular"]},
                 {"form": "ne", "source": "inflection", "tags": ["nominative", "plural"]},
                 {"form": "niiden", "source": "inflection", "tags": ["genitive", "plural"]},
                 {"form": "niitä", "source": "inflection", "tags": ["partitive", "plural"]},
+                {"form": "ne", "source": "inflection", "tags": ["accusative", "plural"]},
                 {"form": "niissä", "source": "inflection", "tags": ["inessive", "plural"]},
                 {"form": "niistä", "source": "inflection", "tags": ["elative", "plural"]},
                 {"form": "niihin", "source": "inflection", "tags": ["illative", "plural"]},
@@ -128,11 +130,57 @@ class PipelineTests(unittest.TestCase):
         self.assertIn(("nominal:partitive", "sitä"), singular_forms)
         self.assertIn(("nominal:inessive", "siinä"), singular_forms)
         self.assertNotIn(("nominal:nominative", "se"), singular_forms)
+        self.assertNotIn(("nominal:accusative", "se"), singular_forms)
         self.assertNotIn(("nominal-plural:partitive", "niitä"), singular_forms)
         self.assertIn(("nominal-plural:partitive", "niitä"), plural_forms)
         self.assertIn(("nominal-plural:inessive", "niissä"), plural_forms)
+        self.assertNotIn(("nominal-plural:accusative", "ne"), plural_forms)
         self.assertNotIn(("nominal:partitive", "sitä"), plural_forms)
         self.assertFalse(any(card_key.startswith("nominal:") for card_key, _ in plural_forms))
+
+    def test_personal_pronouns_receive_accusative_cards_only(self) -> None:
+        path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+        entries = [
+            ("minä", "me", "minut", "meidät"),
+            ("sinä", "te", "sinut", "teidät"),
+            ("hän", "he", "hänet", "heidät"),
+        ]
+        with path.open("a", encoding="utf-8") as source:
+            source.write(json.dumps({
+                "word": "talo",
+                "lang_code": "fi",
+                "forms": [{"form": "talon", "source": "declension", "tags": ["accusative", "genitive", "singular"]}],
+            }) + "\n")
+            for singular, plural, singular_accusative, plural_accusative in entries:
+                source.write(json.dumps({
+                    "word": plural,
+                    "lang_code": "fi",
+                    "pos": "pron",
+                    "forms": [
+                        {"form": singular, "source": "declension", "tags": ["nominative", "singular"]},
+                        {"form": singular_accusative, "source": "declension", "tags": ["accusative", "singular"]},
+                        {"form": f"{singular}n", "source": "declension", "tags": ["genitive", "singular"]},
+                        {"form": plural, "source": "declension", "tags": ["nominative", "plural"]},
+                        {"form": plural_accusative, "source": "declension", "tags": ["accusative", "plural"]},
+                        {"form": f"{plural}n", "source": "declension", "tags": ["genitive", "plural"]},
+                    ],
+                }) + "\n")
+        self.write_sources("minä - I\nsinä - you\nhän - he / she\nme - we\nte - you (pl)\nhe - they\ntalo - house\n")
+
+        run_import(self.root)
+
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            accusatives = database.execute(
+                "SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.prompt_label FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id WHERE word_forms.card_key LIKE '%:accusative' ORDER BY vocabulary.finnish"
+            ).fetchall()
+        self.assertEqual(accusatives, [
+            ("he", "nominal-plural:accusative", "heidät", "Akkusatiivi"),
+            ("hän", "nominal:accusative", "hänet", "Akkusatiivi"),
+            ("me", "nominal-plural:accusative", "meidät", "Akkusatiivi"),
+            ("minä", "nominal:accusative", "minut", "Akkusatiivi"),
+            ("sinä", "nominal:accusative", "sinut", "Akkusatiivi"),
+            ("te", "nominal-plural:accusative", "teidät", "Akkusatiivi"),
+        ])
 
     def test_missing_kaikki_source_and_index_is_fatal_and_preserves_databases(self) -> None:
         self.write_sources("talo - house\n")
