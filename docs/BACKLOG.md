@@ -31,3 +31,4 @@
 - [x] Add daily practice statistics
 - [x] Add nominative plural grammar cards
 - [x] Optimize the practice screen for mobile
+- [x] Exclude known normalized recommendations and prioritize new forms by frequency

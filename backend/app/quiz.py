@@ -36,19 +36,27 @@ class FormCard:
 
 def select_candidates(candidates: list[Candidate], batch_size: int, rng: random.Random) -> list[Candidate]:
     """Apply the PRD's non-backfilling 70/30/up-to-five-new selection rule."""
-    def take(items: list[Candidate], limit: int, *, prioritize_new_vocabulary: bool = False) -> list[Candidate]:
+    def take(items: list[Candidate], limit: int, *, prioritize_new_cards: bool = False) -> list[Candidate]:
         shuffled = list(items)
         rng.shuffle(shuffled)
         shuffled.sort(key=lambda card: (card.last_practiced_at is not None, card.last_practiced_at or ""))
         selected = shuffled[:limit]
-        if not prioritize_new_vocabulary:
+        if not prioritize_new_cards:
             return selected
         vocabulary_positions = [index for index, card in enumerate(selected) if card.card_type == "vocabulary" and card.last_practiced_at is None]
+        form_positions = [index for index, card in enumerate(selected) if card.card_type == "word_form" and card.last_practiced_at is None]
         ranked_vocabulary = _select_diverse_new_vocabulary(
             [card for card in shuffled if card.card_type == "vocabulary" and card.last_practiced_at is None],
             len(vocabulary_positions),
         )
+        ranked_forms = _select_new_forms(
+            [card for card in shuffled if card.card_type == "word_form" and card.last_practiced_at is None],
+            len(form_positions),
+            rng,
+        )
         for index, card in zip(vocabulary_positions, ranked_vocabulary):
+            selected[index] = card
+        for index, card in zip(form_positions, ranked_forms):
             selected[index] = card
         return selected
 
@@ -57,7 +65,7 @@ def select_candidates(candidates: list[Candidate], batch_size: int, rng: random.
     selected = take([card for card in candidates if card.score in (1, 2)], quota_12)
     selected.extend(take([card for card in candidates if card.score == 3], quota_3))
     if len(selected) < batch_size:
-        selected.extend(take([card for card in candidates if card.score == 0], min(5, batch_size - len(selected)), prioritize_new_vocabulary=True))
+        selected.extend(take([card for card in candidates if card.score == 0], min(5, batch_size - len(selected)), prioritize_new_cards=True))
     rng.shuffle(selected)
     return selected
 
@@ -110,6 +118,14 @@ def _select_diverse_new_vocabulary(candidates: list[Candidate], limit: int) -> l
         represented_families = represented_families.union(companion.related_families)
         chain_companion_selected = True
     return selected
+
+
+def _select_new_forms(candidates: list[Candidate], limit: int, rng: random.Random) -> list[Candidate]:
+    """Select common unpractised forms first while retaining randomized equal ranks."""
+    shuffled = list(candidates)
+    rng.shuffle(shuffled)
+    shuffled.sort(key=lambda candidate: (candidate.frequency_rank is None, candidate.frequency_rank or 0))
+    return shuffled[:limit]
 
 
 def _profile_options(cards: list[FormCard], profile: str) -> list[str]:
@@ -216,9 +232,10 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
         for word, score, last_practiced_at in connection.execute("SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at FROM vocabulary LEFT JOIN progress.card_progress ON progress.card_progress.card_type = 'vocabulary' AND progress.card_progress.base_word = vocabulary.finnish AND progress.card_progress.target_form = ''"):
             breadth, sentence_count, related_families, reinforcement_quality = context_support.get(word, (0, 0, frozenset(), 0))
             candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality, direct_chain_families.get(word, frozenset())))
-        for base_word, card_key, profile, score, last_practiced_at, vocabulary_score in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0) FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
+        for base_word, card_key, form, profile, score, last_practiced_at, vocabulary_score in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0) FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
             if vocabulary_score == 3 and len(_profile_options(forms[base_word], profile)) >= 2:
-                candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at))
+                form_token = _single_token(form)
+                candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at, frequency_ranks.get(form_token) if form_token else None))
     return vocabulary, forms, token_families, mastered_families, candidates
 
 

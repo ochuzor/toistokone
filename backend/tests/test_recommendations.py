@@ -73,6 +73,20 @@ class RecommendationTests(unittest.TestCase):
         self.assertEqual(recommendations[0]["chain_words"], ["beta"])
         self.assertEqual(recommendations[1]["chain_words"], ["alpha"])
 
+    def test_recommendations_exclude_known_normalized_lemmas(self) -> None:
+        source = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+        with source.open("a", encoding="utf-8") as file:
+            file.write(json.dumps({"word": "olla", "lang_code": "fi", "forms": [
+                {"form": "oli", "source": "conjugation", "tags": []},
+            ]}) + "\n")
+        (self.root / "dictionary.txt").write_text("auto - car\nolla - to be\n", encoding="utf-8")
+        (self.root / "frequency" / "fi_50k.txt").write_text("oli 100\nauto 90\n", encoding="utf-8")
+        (self.root / "sentences" / "lesson.txt").write_text("Auto oli. - A car was.\n", encoding="utf-8")
+
+        run_import(self.root)
+
+        self.assertNotIn("olla", [item["word"] for item in get_recommendations(self.content_path)])
+
     def test_recommendations_merge_unambiguous_forms_and_keep_ambiguous_surfaces(self) -> None:
         source = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
         entries = [

@@ -93,7 +93,9 @@ def get_recommendations(content_path: Path, limit: int = 20) -> list[dict[str, o
     """Recommend common unknown tokens found beside tracked vocabulary families."""
     with sqlite3.connect(content_path) as connection:
         token_families: dict[str, set[str]] = defaultdict(set)
+        known_base_words: set[str] = set()
         for (base_word,) in connection.execute("SELECT finnish FROM vocabulary"):
+            known_base_words.add(base_word.casefold())
             token = _single_token(base_word)
             if token is not None:
                 token_families[token].add(base_word)
@@ -150,6 +152,8 @@ def get_recommendations(content_path: Path, limit: int = 20) -> list[dict[str, o
         grouped: dict[str, tuple[int, int, set[int], set[str], set[str]]] = {}
         for token, (rank, count) in frequency_words.items():
             word = lemma_mappings.get(token, token)
+            if word.casefold() in known_base_words:
+                continue
             sentence_ids = candidate_sentences[token]
             families = set().union(*(sentence_families[sentence_id] for sentence_id in sentence_ids))
             if word not in grouped:

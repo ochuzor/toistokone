@@ -8,7 +8,7 @@ from pathlib import Path
 
 from backend.app.db import initialize_progress_database, record_answer
 from backend.app.models import CardReference
-from backend.app.quiz import Candidate, _context_support, _load_content, _sentence_weight, build_batch, select_candidates
+from backend.app.quiz import Candidate, _context_support, _load_content, _select_new_forms, _sentence_weight, build_batch, select_candidates
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -130,6 +130,39 @@ class QuizSelectionTests(unittest.TestCase):
         selected = select_candidates(candidates, 2, random.Random(7))
 
         self.assertEqual({card.base_word for card in selected}, {"first", "contextual"})
+
+    def test_new_forms_are_selected_by_frequency_before_unranked_forms(self) -> None:
+        candidates = [
+            Candidate("word_form", "olla", "present-3sg", 0, None, 9),
+            Candidate("word_form", "olla", "present-1pl", 0, None, 500),
+            Candidate("word_form", "olla", "present-2pl", 0, None),
+        ]
+
+        selected = _select_new_forms(candidates, 3, random.Random(7))
+
+        self.assertEqual([card.target_form for card in selected], ["present-3sg", "present-1pl", "present-2pl"])
+
+    def test_new_form_ranking_preserves_the_selected_card_type_mix(self) -> None:
+        candidates = [
+            Candidate("vocabulary", f"word-{index}", "", 0, None, 100 + index)
+            for index in range(4)
+        ] + [
+            Candidate("word_form", "olla", "present-3sg", 0, None, 1),
+            Candidate("word_form", "olla", "present-1sg", 0, None, 2),
+            Candidate("word_form", "olla", "present-1pl", 0, None, 3),
+            Candidate("word_form", "olla", "present-2pl", 0, None, 4),
+        ]
+        expected_initial = list(candidates)
+        random.Random(11).shuffle(expected_initial)
+
+        selected = select_candidates(candidates, 5, random.Random(11))
+
+        self.assertEqual(
+            sum(card.card_type == "word_form" for card in selected),
+            sum(card.card_type == "word_form" for card in expected_initial[:5]),
+        )
+        selected_form_ranks = sorted(card.frequency_rank for card in selected if card.card_type == "word_form")
+        self.assertEqual(selected_form_ranks, list(range(1, len(selected_form_ranks) + 1)))
 
 
 class GrammarBatchTests(unittest.TestCase):
