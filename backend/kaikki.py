@@ -19,12 +19,11 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
-INDEX_VERSION = 5
+INDEX_VERSION = 6
 RECOMMENDATION_INDEX_VERSION = 3
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 
 NOMINAL_SLOTS = (
-    ("nominative", "Nominatiivi (mikä?)", {"nominative", "singular"}),
     ("nominative-plural", "Nominatiivi, monikko (mitkä?)", {"nominative", "plural"}),
     ("genitive", "Genetiivi (minkä?)", {"genitive", "singular"}),
     ("partitive", "Partitiivi (mitä?)", {"partitive", "singular"}),

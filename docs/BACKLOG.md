@@ -7,6 +7,7 @@
 - [ ] Improve mobile layout
 
 ## Completed
+- [x] Remove redundant singular-nominative form cards
 - [x] Refresh stale practice queues after content imports
 - [x] Correct singular and plural pronoun paradigms
 - [x] Clarify standard word-form quiz prompts

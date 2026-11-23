@@ -49,7 +49,7 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 
 ### Word-form cards
 
-- Kaikki generates labelled grammar cards for applicable dictionary words: six singular nominal cases and six active affirmative present-indicative verb forms.
+- Kaikki generates labelled grammar cards for applicable dictionary words: genitive, partitive, inessive, elative, illative, and nominative plural nominal forms, plus six active affirmative present-indicative verb forms. Singular nominative is practised by the vocabulary meaning card and has no separate form card.
 - Form cards unlock after their base vocabulary card reaches score 3.
 - Prompt: score-0–2 cards use the base word plus its grammar cue, for example `talo — Inessiivi (missä?)` or `tehdä — hän ____`. Score-3 cards use a matching sentence with the target form blanked and display its English translations when coverage exists; otherwise they use the grammar cue.
 - Answers: correct form plus up to three distinct forms from the same nominal or verb profile, shuffled. A question requires at least two distinct options.
@@ -157,7 +157,7 @@ Content database IDs are not stable progress identifiers. Regenerating content m
 - [ ] Home shows accurate vocabulary/form mastery totals and percentage.
 - [ ] Recommendations show contextual, frequency-first unknown words with examples.
 - [ ] Vocabulary questions show all meanings and randomized distractors.
-- [ ] Mastered vocabulary unlocks separate word-form cards, including the base form.
+- [ ] Mastered vocabulary unlocks separate word-form cards, excluding the redundant singular base form.
 - [ ] Word-form questions use Kaikki-derived grammar prompts and same-profile distractors.
 - [ ] Words without applicable Kaikki profiles remain available as vocabulary cards.
 - [ ] Every answer immediately updates grading, mastery score, and persistence.

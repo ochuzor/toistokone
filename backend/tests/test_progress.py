@@ -57,16 +57,28 @@ class ProgressDatabaseTests(unittest.TestCase):
             record_answer(self.progress_path, self.vocabulary, attempt_id, True, cooldown_minutes=0)
         for attempt_id in ("four", "five", "six"):
             record_answer(self.progress_path, self.form, attempt_id, True, cooldown_minutes=0)
-        self.assertEqual(get_stats(self.content_path, self.progress_path)["overall"], {"total": 16, "mastered": 2, "mastery_percent": 12.5})
+        removed_singular_nominative = CardReference(
+            type="word_form", base_word="talo", target_form="nominal:nominative"
+        )
+        for attempt_id in ("seven", "eight", "nine"):
+            record_answer(self.progress_path, removed_singular_nominative, attempt_id, True, cooldown_minutes=0)
+        self.assertEqual(get_stats(self.content_path, self.progress_path)["overall"], {"total": 14, "mastered": 2, "mastery_percent": 14.29})
 
         reset_card(self.progress_path, self.vocabulary)
         with sqlite3.connect(self.progress_path) as connection:
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM practice_attempts").fetchone()[0], 6)
+            self.assertEqual(connection.execute("SELECT COUNT(*) FROM practice_attempts").fetchone()[0], 9)
         self.assertEqual(get_stats(self.content_path, self.progress_path)["overall"]["mastered"], 1)
 
         (self.root / "dictionary.txt").write_text("ruoka - food\n", encoding="utf-8")
         run_import(self.root)
         self.assertEqual(get_stats(self.content_path, self.progress_path)["overall"]["mastered"], 1)
+        with sqlite3.connect(self.progress_path) as connection:
+            self.assertEqual(
+                connection.execute(
+                    "SELECT score FROM card_progress WHERE card_type = 'word_form' AND base_word = 'talo' AND target_form = 'nominal:nominative'"
+                ).fetchone()[0],
+                3,
+            )
 
     def test_cooldown_blocks_score_changes_but_records_attempts(self) -> None:
         started_at = datetime(2026, 1, 1, 12, 0, tzinfo=timezone.utc)
