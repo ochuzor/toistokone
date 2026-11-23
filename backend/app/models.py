@@ -87,6 +87,27 @@ class RecommendationsResponse(BaseModel):
     recommendations: list[Recommendation]
 
 
+class VocabularyEntry(BaseModel):
+    finnish: str
+    meanings: list[str]
+    score: int
+    last_practiced_at: str | None
+    focus_requested_at: str | None
+
+
+class VocabularyResponse(BaseModel):
+    vocabulary: list[VocabularyEntry]
+
+
+class FocusWordRequest(BaseModel):
+    base_word: str
+
+
+class FocusWordResponse(BaseModel):
+    base_word: str
+    requested_at: str
+
+
 class QuizOption(BaseModel):
     id: str
     text: str

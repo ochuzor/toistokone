@@ -52,6 +52,14 @@ export type Recommendation = {
   examples: { finnish: string; english_translations: string[] }[]
 }
 
+export type VocabularyEntry = {
+  finnish: string
+  meanings: string[]
+  score: number
+  last_practiced_at: string | null
+  focus_requested_at: string | null
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(path, options)
   if (!response.ok) {
@@ -74,6 +82,28 @@ export function fetchStats(): Promise<Stats> {
 export async function fetchRecommendations(): Promise<Recommendation[]> {
   const response = await request<{ recommendations: Recommendation[] }>('/api/recommendations')
   return response.recommendations
+}
+
+export async function fetchVocabulary(query: string): Promise<VocabularyEntry[]> {
+  const response = await request<{ vocabulary: VocabularyEntry[] }>(`/api/vocabulary?query=${encodeURIComponent(query)}`)
+  return response.vocabulary
+}
+
+export async function fetchFocusWords(): Promise<VocabularyEntry[]> {
+  const response = await request<{ vocabulary: VocabularyEntry[] }>('/api/focus-words')
+  return response.vocabulary
+}
+
+export async function addFocusWord(baseWord: string): Promise<void> {
+  await request('/api/focus-words', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ base_word: baseWord }),
+  })
+}
+
+export async function removeFocusWord(baseWord: string): Promise<void> {
+  await request(`/api/focus-words/${encodeURIComponent(baseWord)}`, { method: 'DELETE' })
 }
 
 export function submitAnswer(card: CardReference, selectedOptionId: string, correctOptionId: string, attemptId: string): Promise<AnswerResult> {

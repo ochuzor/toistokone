@@ -6,9 +6,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from backend.app.db import initialize_progress_database, record_answer
+from backend.app.db import initialize_progress_database, list_focus_words, record_answer, request_focus_word
 from backend.app.models import CardReference
-from backend.app.quiz import Candidate, _context_support, _load_content, _select_new_forms, _sentence_weight, build_batch, select_candidates
+from backend.app.quiz import Candidate, _context_support, _load_content, _select_diverse_new_vocabulary, _select_new_forms, _sentence_weight, build_batch, select_candidates
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -131,6 +131,28 @@ class QuizSelectionTests(unittest.TestCase):
 
         self.assertEqual({card.base_word for card in selected}, {"first", "contextual"})
 
+    def test_focus_requests_take_vocabulary_slots_in_request_order(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "ordinary", "", 0, None, 1),
+            Candidate("vocabulary", "newer-focus", "", 0, None, 2, focus_requested_at="2026-01-02T00:00:00+00:00"),
+            Candidate("vocabulary", "older-focus", "", 0, None, 3, focus_requested_at="2026-01-01T00:00:00+00:00"),
+        ]
+
+        selected = _select_diverse_new_vocabulary(candidates, 2)
+
+        self.assertEqual([card.base_word for card in selected], ["older-focus", "newer-focus"])
+
+    def test_focus_requests_are_not_displaced_by_a_chain_companion(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "focus-one", "", 0, None, 100, chain_families=frozenset({"companion"}), focus_requested_at="2026-01-01T00:00:00+00:00"),
+            Candidate("vocabulary", "companion", "", 0, None, 100),
+            Candidate("vocabulary", "focus-two", "", 0, None, 100, focus_requested_at="2026-01-02T00:00:00+00:00"),
+        ]
+
+        selected = _select_diverse_new_vocabulary(candidates, 2)
+
+        self.assertEqual([card.base_word for card in selected], ["focus-one", "focus-two"])
+
     def test_new_forms_are_selected_by_frequency_before_unranked_forms(self) -> None:
         candidates = [
             Candidate("word_form", "olla", "present-3sg", 0, None, 9),
@@ -221,6 +243,14 @@ class GrammarBatchTests(unittest.TestCase):
         self.assertEqual(inessive["english_translations"], ["I live in the house."])
         self.assertEqual(verb["prompt"], "tehdä — hän ____")
         self.assertEqual(verb["english_translations"], [])
+
+    def test_focus_request_is_consumed_only_when_its_card_enters_a_batch(self) -> None:
+        request_focus_word(self.content, self.progress, "talo")
+
+        questions = build_batch(self.content, self.progress, 20, random.Random(3))
+
+        self.assertTrue(any(question["card"] == {"type": "vocabulary", "base_word": "talo", "target_form": ""} for question in questions))
+        self.assertEqual(list_focus_words(self.content, self.progress), [])
 
 
 if __name__ == "__main__":

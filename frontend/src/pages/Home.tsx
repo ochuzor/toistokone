@@ -52,6 +52,7 @@ export default function Home() {
       <div className="home-actions">
         <Link className="button" to="/practice">Start Practicing</Link>
         <Link className="button secondary" to="/recommendations">Word recommendations</Link>
+        <Link className="button secondary" to="/focus-words">Focus class words</Link>
       </div>
     </section>
   )

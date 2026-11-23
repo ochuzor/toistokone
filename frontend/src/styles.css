@@ -75,6 +75,18 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .recommendation-examples { display: grid; gap: .5rem; margin-top: 1rem; }
 .recommendation-example { padding-left: .75rem; border-left: 3px solid #86efac; }
 .recommendation-example p { margin: 0; }
+.focus-card { width: min(100%, 52rem); }
+.focus-search { display: grid; gap: .5rem; margin: 1.5rem 0; }
+.focus-search label { font-weight: 700; }
+.focus-search div { display: flex; gap: .5rem; }
+.focus-search input { min-width: 0; flex: 1; padding: .7rem .8rem; border: 2px solid #cbd5e1; border-radius: .5rem; font: inherit; }
+.focus-search .button { margin: 0; }
+.focus-list { display: grid; gap: .6rem; padding: 0; list-style: none; }
+.focus-list li { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem; border-radius: .6rem; background: #f1f5f9; }
+.focus-list li div { display: grid; gap: .2rem; }
+.focus-list small { color: #475569; }
+.focus-list .text-button { margin: 0; }
+.small-button { margin: 0; padding: .5rem .7rem; font-size: .85rem; }
 @media (max-width: 38rem) {
   .app-shell { align-items: start; padding: .75rem; }
   .card { border-radius: .75rem; padding: 1.5rem 1.25rem; }

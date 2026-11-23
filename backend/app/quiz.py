@@ -8,6 +8,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
+from .db import consume_focus_words
 from .sentences import blank_form, matches_form, tokens
 
 
@@ -24,6 +25,7 @@ class Candidate:
     related_families: frozenset[str] = frozenset()
     reinforcement_quality: int = 0
     chain_families: frozenset[str] = frozenset()
+    focus_requested_at: str | None = None
 
 
 @dataclass(frozen=True)
@@ -99,11 +101,15 @@ def _select_diverse_new_vocabulary(candidates: list[Candidate], limit: int) -> l
     represented_families: frozenset[str] = frozenset()
     chain_companion_selected = False
     while remaining and len(selected) < limit:
-        card = min(remaining, key=lambda candidate: _new_vocabulary_key(candidate, represented_families))
+        focused = [candidate for candidate in remaining if candidate.focus_requested_at is not None]
+        card = min(
+            focused,
+            key=lambda candidate: candidate.focus_requested_at or "",
+        ) if focused else min(remaining, key=lambda candidate: _new_vocabulary_key(candidate, represented_families))
         selected.append(card)
         remaining.remove(card)
         represented_families = represented_families.union(card.related_families)
-        if chain_companion_selected or len(selected) == limit:
+        if chain_companion_selected or focused or len(selected) == limit:
             continue
         companions = [
             candidate for candidate in remaining
@@ -228,10 +234,15 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
         context_support = _context_support(connection, contextual_token_families, mastered_families)
         direct_chain_families = _direct_chain_families(connection, contextual_token_families)
         frequency_ranks = {token: rank for token, rank in connection.execute("SELECT token_casefold, frequency_rank FROM frequency_words")}
+        focus_requests = {
+            base_word: requested_at for base_word, requested_at in connection.execute(
+                "SELECT base_word, requested_at FROM progress.focus_vocabulary"
+            )
+        }
         candidates: list[Candidate] = []
         for word, score, last_practiced_at in connection.execute("SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at FROM vocabulary LEFT JOIN progress.card_progress ON progress.card_progress.card_type = 'vocabulary' AND progress.card_progress.base_word = vocabulary.finnish AND progress.card_progress.target_form = ''"):
             breadth, sentence_count, related_families, reinforcement_quality = context_support.get(word, (0, 0, frozenset(), 0))
-            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality, direct_chain_families.get(word, frozenset())))
+            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality, direct_chain_families.get(word, frozenset()), focus_requests.get(word)))
         for base_word, card_key, form, profile, score, last_practiced_at, vocabulary_score in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0) FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
             if vocabulary_score == 3 and len(_profile_options(forms[base_word], profile)) >= 2:
                 form_token = _single_token(form)
@@ -292,8 +303,9 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
     rng = rng or random.Random()
     vocabulary, forms, token_families, mastered_families, candidates = _load_content(content_path, progress_path)
     questions: list[dict[str, object]] = []
+    selected_cards = select_candidates(candidates, batch_size, rng)
     with sqlite3.connect(content_path) as connection:
-        for card in select_candidates(candidates, batch_size, rng):
+        for card in selected_cards:
             if card.card_type == "vocabulary":
                 correct_text = " / ".join(vocabulary[card.base_word])
                 distractors = list({" / ".join(meanings) for word, meanings in vocabulary.items() if word != card.base_word})
@@ -313,4 +325,8 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
                         sentence, english_translations = rng.choices(matching, weights=weights, k=1)[0]
                         prompt = blank_form(sentence, form_card.form)
             questions.append({"question_id": str(uuid.uuid4()), "card": {"type": card.card_type, "base_word": card.base_word, "target_form": card.target_form}, "score": card.score, "prompt": prompt, "english_translations": english_translations, "options": options, "correct_option_id": correct_id})
+    consume_focus_words(progress_path, [
+        card.base_word for card in selected_cards
+        if card.card_type == "vocabulary" and card.focus_requested_at is not None
+    ])
     return questions

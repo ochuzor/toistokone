@@ -8,8 +8,8 @@ from fastapi import HTTPException
 
 from backend.app.config import Settings
 from backend.app.db import initialize_progress_database
-from backend.app.main import answer, app, quiz_batch, recommendations, reset, stats
-from backend.app.models import AnswerRequest, ResetRequest
+from backend.app.main import add_focus_word, answer, app, delete_focus_word, focus_words, quiz_batch, recommendations, reset, stats, vocabulary
+from backend.app.models import AnswerRequest, FocusWordRequest, ResetRequest
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -84,6 +84,23 @@ class ProgressApiTests(unittest.TestCase):
         response = recommendations()
         self.assertEqual(response.recommendations[0].word, "suuri")
         self.assertEqual(response.recommendations[0].examples[0].english_translations, ["The house is big."])
+
+    def test_focus_word_routes_expose_and_remove_a_new_word_request(self) -> None:
+        added = add_focus_word(FocusWordRequest(base_word="talo"))
+        self.assertEqual(added.base_word, "talo")
+        self.assertEqual(vocabulary("tal").vocabulary[0].focus_requested_at, added.requested_at)
+        self.assertEqual(focus_words().vocabulary[0].finnish, "talo")
+        self.assertEqual(delete_focus_word("talo").requested_at, added.requested_at)
+
+        answer(AnswerRequest(
+            attempt_id="practice-talo",
+            card={"type": "vocabulary", "base_word": "talo", "target_form": ""},
+            selected_option_id="correct",
+            correct_option_id="correct",
+        ))
+        with self.assertRaises(HTTPException) as raised:
+            add_focus_word(FocusWordRequest(base_word="talo"))
+        self.assertEqual(raised.exception.status_code, 409)
 
 
 if __name__ == "__main__":

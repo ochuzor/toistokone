@@ -34,6 +34,11 @@ CREATE TABLE IF NOT EXISTS practice_attempts (
 );
 CREATE INDEX IF NOT EXISTS idx_attempts_card ON practice_attempts(card_type, base_word, target_form, answered_at);
 CREATE INDEX IF NOT EXISTS idx_attempts_answered_at ON practice_attempts(answered_at);
+CREATE TABLE IF NOT EXISTS focus_vocabulary (
+  base_word TEXT PRIMARY KEY,
+  requested_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_focus_vocabulary_requested ON focus_vocabulary(requested_at);
 """
 
 
@@ -123,6 +128,118 @@ def reset_card(path: Path, card: CardReference) -> int:
             (card.type, card.base_word, card.target_form),
         )
     return 0
+
+
+def list_vocabulary(content_path: Path, progress_path: Path, query: str = "", limit: int = 50) -> list[dict[str, object]]:
+    """Return current dictionary entries with progress and focus-request state."""
+    normalized_query = query.casefold().strip()
+    with sqlite3.connect(content_path) as connection:
+        connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
+        rows = connection.execute(
+            """SELECT vocabulary.finnish, vocabulary_meanings.meaning,
+                      COALESCE(card_progress.score, 0), card_progress.last_practiced_at,
+                      focus_vocabulary.requested_at
+               FROM vocabulary
+               JOIN vocabulary_meanings ON vocabulary_meanings.vocabulary_id = vocabulary.id
+               LEFT JOIN progress.card_progress ON card_progress.card_type = 'vocabulary'
+                  AND card_progress.base_word = vocabulary.finnish AND card_progress.target_form = ''
+               LEFT JOIN progress.focus_vocabulary ON focus_vocabulary.base_word = vocabulary.finnish
+               ORDER BY vocabulary.finnish, vocabulary_meanings.ordinal"""
+        ).fetchall()
+    entries: dict[str, dict[str, object]] = {}
+    for finnish, meaning, score, last_practiced_at, requested_at in rows:
+        entry = entries.setdefault(finnish, {
+            "finnish": finnish,
+            "meanings": [],
+            "score": score,
+            "last_practiced_at": last_practiced_at,
+            "focus_requested_at": requested_at,
+        })
+        entry["meanings"].append(meaning)  # type: ignore[union-attr]
+    matches = [
+        entry for entry in entries.values()
+        if not normalized_query
+        or normalized_query in str(entry["finnish"]).casefold()
+        or any(normalized_query in meaning.casefold() for meaning in entry["meanings"])
+    ]
+    return matches[:limit]
+
+
+def list_focus_words(content_path: Path, progress_path: Path) -> list[dict[str, object]]:
+    """Return every outstanding focus request, oldest first."""
+    with sqlite3.connect(content_path) as connection:
+        connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
+        rows = connection.execute(
+            """SELECT vocabulary.finnish, vocabulary_meanings.meaning,
+                      COALESCE(card_progress.score, 0), card_progress.last_practiced_at,
+                      focus_vocabulary.requested_at
+               FROM progress.focus_vocabulary
+               JOIN vocabulary ON vocabulary.finnish = focus_vocabulary.base_word
+               JOIN vocabulary_meanings ON vocabulary_meanings.vocabulary_id = vocabulary.id
+               LEFT JOIN progress.card_progress ON card_progress.card_type = 'vocabulary'
+                  AND card_progress.base_word = vocabulary.finnish AND card_progress.target_form = ''
+               ORDER BY focus_vocabulary.requested_at, vocabulary.finnish, vocabulary_meanings.ordinal"""
+        ).fetchall()
+    entries: dict[str, dict[str, object]] = {}
+    for finnish, meaning, score, last_practiced_at, requested_at in rows:
+        entry = entries.setdefault(finnish, {
+            "finnish": finnish,
+            "meanings": [],
+            "score": score,
+            "last_practiced_at": last_practiced_at,
+            "focus_requested_at": requested_at,
+        })
+        entry["meanings"].append(meaning)  # type: ignore[union-attr]
+    return list(entries.values())
+
+
+def request_focus_word(
+    content_path: Path,
+    progress_path: Path,
+    base_word: str,
+    now: datetime | None = None,
+) -> dict[str, str]:
+    """Persist a one-time request for a current, never-practised vocabulary card."""
+    with sqlite3.connect(content_path) as content:
+        exists = content.execute("SELECT 1 FROM vocabulary WHERE finnish = ?", (base_word,)).fetchone()
+    if not exists:
+        raise LookupError("Vocabulary word does not exist in current content")
+    with sqlite3.connect(progress_path) as connection:
+        row = connection.execute(
+            """SELECT score, last_practiced_at FROM card_progress
+               WHERE card_type = 'vocabulary' AND base_word = ? AND target_form = ''""",
+            (base_word,),
+        ).fetchone()
+        if row and (row[0] != 0 or row[1] is not None):
+            raise ValueError("Only new, never-practised vocabulary words can be focused")
+        existing = connection.execute(
+            "SELECT requested_at FROM focus_vocabulary WHERE base_word = ?", (base_word,)
+        ).fetchone()
+        if existing:
+            return {"base_word": base_word, "requested_at": existing[0]}
+        requested_at = (now or _now()).isoformat()
+        connection.execute(
+            "INSERT INTO focus_vocabulary (base_word, requested_at) VALUES (?, ?)", (base_word, requested_at)
+        )
+    return {"base_word": base_word, "requested_at": requested_at}
+
+
+def remove_focus_word(progress_path: Path, base_word: str) -> dict[str, str] | None:
+    with sqlite3.connect(progress_path) as connection:
+        row = connection.execute(
+            "SELECT requested_at FROM focus_vocabulary WHERE base_word = ?", (base_word,)
+        ).fetchone()
+        if not row:
+            return None
+        connection.execute("DELETE FROM focus_vocabulary WHERE base_word = ?", (base_word,))
+    return {"base_word": base_word, "requested_at": row[0]}
+
+
+def consume_focus_words(progress_path: Path, base_words: list[str]) -> None:
+    if not base_words:
+        return
+    with sqlite3.connect(progress_path) as connection:
+        connection.executemany("DELETE FROM focus_vocabulary WHERE base_word = ?", ((word,) for word in base_words))
 
 
 def card_exists(content_path: Path, card: CardReference) -> bool:

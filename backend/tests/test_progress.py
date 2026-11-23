@@ -6,7 +6,7 @@ import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from backend.app.db import get_stats, initialize_progress_database, record_answer, reset_card
+from backend.app.db import get_stats, initialize_progress_database, list_focus_words, list_vocabulary, record_answer, remove_focus_word, request_focus_word, reset_card
 from backend.app.models import CardReference
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
@@ -119,6 +119,23 @@ class ProgressDatabaseTests(unittest.TestCase):
             progress = connection.execute("SELECT score, attempt_count, correct_count FROM card_progress").fetchone()
         self.assertIn("last_score_increased_at", columns)
         self.assertEqual(progress, (2, 3, 2))
+
+    def test_focus_request_is_limited_to_new_vocabulary_and_can_be_removed(self) -> None:
+        requested_at = datetime(2026, 1, 1, 12, 0, tzinfo=timezone.utc)
+        focused = request_focus_word(self.content_path, self.progress_path, "talo", requested_at)
+
+        self.assertEqual(focused, {"base_word": "talo", "requested_at": requested_at.isoformat()})
+        self.assertEqual(list_focus_words(self.content_path, self.progress_path)[0]["finnish"], "talo")
+        entry = next(entry for entry in list_vocabulary(self.content_path, self.progress_path) if entry["finnish"] == "talo")
+        self.assertEqual(entry["focus_requested_at"], requested_at.isoformat())
+        self.assertEqual(remove_focus_word(self.progress_path, "talo"), focused)
+        self.assertEqual(list_focus_words(self.content_path, self.progress_path), [])
+
+        record_answer(self.progress_path, self.vocabulary, "practised", True, cooldown_minutes=0)
+        with self.assertRaises(ValueError):
+            request_focus_word(self.content_path, self.progress_path, "talo")
+        with self.assertRaises(LookupError):
+            request_focus_word(self.content_path, self.progress_path, "missing")
 
     def test_daily_activity_uses_local_dates_and_carries_a_streak_through_today(self) -> None:
         first_day = datetime(2026, 1, 13, 12, 0, tzinfo=timezone.utc)

@@ -5,8 +5,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Query
 
 from .config import Settings, load_settings
-from .db import card_exists, get_stats, initialize_progress_database, record_answer, reset_card
-from .models import AnswerRequest, AnswerResult, RecommendationsResponse, ResetRequest, ResetResult, StatsResponse
+from .db import card_exists, get_stats, initialize_progress_database, list_focus_words, list_vocabulary, record_answer, remove_focus_word, request_focus_word, reset_card
+from .models import AnswerRequest, AnswerResult, FocusWordRequest, FocusWordResponse, RecommendationsResponse, ResetRequest, ResetResult, StatsResponse, VocabularyResponse
 from .models import QuizBatchResponse
 from .quiz import build_batch
 from .recommendations import get_recommendations
@@ -76,6 +76,43 @@ def recommendations() -> RecommendationsResponse:
     if not settings.content_db_path.exists():
         raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
     return RecommendationsResponse(recommendations=get_recommendations(settings.content_db_path))
+
+
+@app.get("/api/vocabulary", response_model=VocabularyResponse)
+def vocabulary(query: str = Query(default="", max_length=100)) -> VocabularyResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    return VocabularyResponse(vocabulary=list_vocabulary(settings.content_db_path, settings.progress_db_path, query))
+
+
+@app.post("/api/focus-words", response_model=FocusWordResponse)
+def add_focus_word(request: FocusWordRequest) -> FocusWordResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    try:
+        return FocusWordResponse(**request_focus_word(settings.content_db_path, settings.progress_db_path, request.base_word))
+    except LookupError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except ValueError as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+
+
+@app.get("/api/focus-words", response_model=VocabularyResponse)
+def focus_words() -> VocabularyResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    return VocabularyResponse(vocabulary=list_focus_words(settings.content_db_path, settings.progress_db_path))
+
+
+@app.delete("/api/focus-words/{base_word}", response_model=FocusWordResponse)
+def delete_focus_word(base_word: str) -> FocusWordResponse:
+    focused = remove_focus_word(get_settings().progress_db_path, base_word)
+    if not focused:
+        raise HTTPException(status_code=404, detail="Focus request does not exist")
+    return FocusWordResponse(**focused)
 
 
 @app.post("/api/quiz/batch", response_model=QuizBatchResponse)
