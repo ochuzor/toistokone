@@ -108,6 +108,10 @@ class FocusWordResponse(BaseModel):
     requested_at: str
 
 
+class ContentVersionResponse(BaseModel):
+    revision: str
+
+
 class QuizOption(BaseModel):
     id: str
     text: str

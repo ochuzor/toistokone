@@ -51,6 +51,19 @@ def initialize_progress_database(path: Path) -> None:
             connection.execute("ALTER TABLE card_progress ADD COLUMN last_score_increased_at TEXT")
 
 
+def get_content_revision(path: Path) -> str:
+    """Return the pipeline revision, with a stable fallback for legacy content."""
+    fallback = f"legacy-{path.stat().st_mtime_ns}-{path.stat().st_size}"
+    try:
+        with sqlite3.connect(path) as connection:
+            row = connection.execute(
+                "SELECT value FROM content_metadata WHERE key = 'revision'"
+            ).fetchone()
+    except sqlite3.OperationalError:
+        return fallback
+    return row[0] if row else fallback
+
+
 def _now() -> datetime:
     return datetime.now(timezone.utc)
 

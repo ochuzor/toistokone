@@ -45,6 +45,33 @@ class PipelineTests(unittest.TestCase):
         self.assertFalse(second.kaikki_index_rebuilt)
         self.assertFalse(second.recommendation_lemma_index_rebuilt)
 
+    def test_normal_import_assigns_a_new_content_revision(self) -> None:
+        self.write_sources("talo - house\n")
+        run_import(self.root)
+        content_path = self.root / "data" / "content.sqlite"
+        with sqlite3.connect(content_path) as database:
+            first_revision = database.execute(
+                "SELECT value FROM content_metadata WHERE key = 'revision'"
+            ).fetchone()[0]
+
+        run_import(self.root)
+
+        with sqlite3.connect(content_path) as database:
+            second_revision = database.execute(
+                "SELECT value FROM content_metadata WHERE key = 'revision'"
+            ).fetchone()[0]
+        self.assertNotEqual(first_revision, second_revision)
+
+        run_import(self.root, dry_run=True)
+
+        with sqlite3.connect(content_path) as database:
+            self.assertEqual(
+                database.execute(
+                    "SELECT value FROM content_metadata WHERE key = 'revision'"
+                ).fetchone()[0],
+                second_revision,
+            )
+
     def test_changed_kaikki_source_rebuilds_the_index(self) -> None:
         self.write_sources("talo - house\n")
         run_import(self.root)

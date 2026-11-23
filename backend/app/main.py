@@ -5,8 +5,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Query
 
 from .config import Settings, load_settings
-from .db import card_exists, get_stats, initialize_progress_database, list_focus_words, list_vocabulary, record_answer, remove_focus_word, request_focus_word, reset_card
-from .models import AnswerRequest, AnswerResult, FocusWordRequest, FocusWordResponse, RecommendationsResponse, ResetRequest, ResetResult, StatsResponse, VocabularyResponse
+from .db import card_exists, get_content_revision, get_stats, initialize_progress_database, list_focus_words, list_vocabulary, record_answer, remove_focus_word, request_focus_word, reset_card
+from .models import AnswerRequest, AnswerResult, ContentVersionResponse, FocusWordRequest, FocusWordResponse, RecommendationsResponse, ResetRequest, ResetResult, StatsResponse, VocabularyResponse
 from .models import QuizBatchResponse
 from .quiz import build_batch
 from .recommendations import get_recommendations
@@ -76,6 +76,14 @@ def recommendations() -> RecommendationsResponse:
     if not settings.content_db_path.exists():
         raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
     return RecommendationsResponse(recommendations=get_recommendations(settings.content_db_path))
+
+
+@app.get("/api/content-version", response_model=ContentVersionResponse)
+def content_version() -> ContentVersionResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    return ContentVersionResponse(revision=get_content_revision(settings.content_db_path))
 
 
 @app.get("/api/vocabulary", response_model=VocabularyResponse)

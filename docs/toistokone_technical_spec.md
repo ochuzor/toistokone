@@ -105,6 +105,10 @@ CREATE TABLE frequency_words (
   frequency_rank INTEGER NOT NULL UNIQUE,
   frequency_count INTEGER NOT NULL CHECK (frequency_count > 0)
 );
+CREATE TABLE content_metadata (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+);
 ```
 
 **Grammar-card generation:** The pipeline indexes the local Kaikki JSONL source and generates form cards for matching dictionary headwords. Nominal cards cover six singular cases, with a nominative-plural card for ordinary nouns. Pronouns use separate singular and plural case profiles, keeping pairs such as `se` and `ne` in their own paradigms. Verb cards cover six active affirmative present-indicative persons. `card_key` identifies the grammar slot independently of its surface spelling, so a shared noun/verb spelling keeps separate progress. The first non-rare single-word candidate is selected and alternatives are reported. All generated cards unlock after vocabulary mastery.
@@ -339,8 +343,10 @@ Store locally (e.g. `localStorage` under a versioned key):
 
 ```ts
 type SavedPracticeState = {
-  schemaVersion: 1;
+  schemaVersion: 2;
+  contentRevision: string;
   queue: QuizQuestion[];
+  capacity: number;
   currentAnswer?: {
     questionId: string;
     selectedOptionId: string;
@@ -358,7 +364,7 @@ type SavedPracticeState = {
 - When remaining queue count is **<= 3**, request a new batch and append unique card keys not already in the queue. Prevent concurrent replenishment requests.
 - If backend returns zero questions, show a friendly empty-state message and a Retry button rather than an endless request loop.
 - A returning learner sees the same unanswered questions, options, and sentence choices. If a card was already answered but Next was not pressed, restore the feedback state rather than resubmitting the answer.
-- Since content may change after restart, use a content-version fingerprint from the backend to invalidate stale queued questions **only when necessary**; if invalidated, generate a new batch. This does not affect progress.
+- A normal content import creates a new opaque revision in `content_metadata`; dry runs leave the current content database and revision untouched. On `/practice` load, fetch `/api/content-version` before restoring a queue. If its saved revision is absent or different, clear that queue and generate a new batch. This does not affect progress.
 
 ### Progress bar
 

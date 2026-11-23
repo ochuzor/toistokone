@@ -5,6 +5,7 @@ import os
 import sqlite3
 import sys
 import tempfile
+import uuid
 from collections import OrderedDict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -232,10 +233,11 @@ CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentenc
 CREATE TABLE sentence_tokens (token_casefold TEXT NOT NULL, sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE, PRIMARY KEY (token_casefold, sentence_id));
 CREATE TABLE frequency_words (token_casefold TEXT PRIMARY KEY, frequency_rank INTEGER NOT NULL UNIQUE, frequency_count INTEGER NOT NULL CHECK (frequency_count > 0));
 CREATE TABLE recommendation_lemmas (surface TEXT PRIMARY KEY, lemma TEXT NOT NULL);
+CREATE TABLE content_metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL);
 """
 
 
-def _build_database(path: Path, content: ImportedContent) -> None:
+def _build_database(path: Path, content: ImportedContent, revision: str) -> None:
     with sqlite3.connect(path) as connection:
         connection.executescript(SCHEMA)
         with connection:
@@ -249,6 +251,7 @@ def _build_database(path: Path, content: ImportedContent) -> None:
             connection.executemany("INSERT INTO sentence_tokens (token_casefold, sentence_id) VALUES (?, ?)", ((token, sentence_ids[finnish]) for finnish in content.sentences for token in tokens(finnish)))
             connection.executemany("INSERT INTO frequency_words (token_casefold, frequency_rank, frequency_count) VALUES (?, ?, ?)", ((token, rank, count) for rank, (token, count) in enumerate(content.frequency_words.items(), start=1)))
             connection.executemany("INSERT INTO recommendation_lemmas (surface, lemma) VALUES (?, ?)", content.recommendation_lemmas.items())
+            connection.execute("INSERT INTO content_metadata (key, value) VALUES ('revision', ?)", (revision,))
             connection.execute("CREATE INDEX idx_sentence_tokens_sentence ON sentence_tokens(sentence_id)")
         if connection.execute("PRAGMA foreign_key_check").fetchall() or connection.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
             raise RuntimeError("content database integrity verification failed")
@@ -267,7 +270,7 @@ def run_import(project_root: Path = PROJECT_ROOT, *, dry_run: bool = False) -> I
         os.close(descriptor)
         temporary_path = Path(temporary_name)
         try:
-            _build_database(temporary_path, content)
+            _build_database(temporary_path, content, uuid.uuid4().hex)
             os.replace(temporary_path, data_dir / "content.sqlite")
         finally:
             temporary_path.unlink(missing_ok=True)

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { fetchBatch, type QuizQuestion, resetMastery, submitAnswer } from '../lib/api'
+import { fetchBatch, fetchContentVersion, type QuizQuestion, resetMastery, submitAnswer } from '../lib/api'
 import { cardKey, clearPracticeState, loadPracticeState, savePracticeState, type SavedAnswer } from '../lib/queue'
 
 function masteryIcon(score: number): string { return ['○', '◔', '◑', '✓'][score] ?? '○' }
@@ -13,15 +13,18 @@ function splitNominalPrompt(prompt: string): { formName: string; questionCue: st
 }
 
 export default function Practice() {
-  const saved = loadPracticeState()
-  const [queue, setQueue] = useState<QuizQuestion[]>(() => saved?.queue ?? [])
-  const [capacity, setCapacity] = useState(() => saved?.capacity ?? 0)
-  const [answer, setAnswer] = useState<SavedAnswer | null>(() => saved?.currentAnswer ?? null)
-  const [loading, setLoading] = useState(!saved?.queue.length)
+  const [queue, setQueue] = useState<QuizQuestion[]>([])
+  const [capacity, setCapacity] = useState(0)
+  const [answer, setAnswer] = useState<SavedAnswer | null>(null)
+  const [contentRevision, setContentRevision] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [refillError, setRefillError] = useState<string | null>(null)
+  const [queueNotice, setQueueNotice] = useState<string | null>(null)
   const refillInFlight = useRef(false)
   const initialLoadInFlight = useRef(false)
+  const initializationInFlight = useRef(false)
+  const resumePendingAnswer = useRef(false)
   const requestedQueues = useRef(new Set<string>())
   const current = queue[0]
   const result = answer?.result
@@ -30,11 +33,11 @@ export default function Practice() {
   const nominalPrompt = isNominalPrompt && current ? splitNominalPrompt(current.prompt) : null
 
   useEffect(() => {
-    if (queue.length) savePracticeState({ schemaVersion: 1, queue, capacity: Math.max(capacity, queue.length), ...(answer ? { currentAnswer: answer } : {}) })
+    if (contentRevision && queue.length) savePracticeState({ schemaVersion: 2, contentRevision, queue, capacity: Math.max(capacity, queue.length), ...(answer ? { currentAnswer: answer } : {}) })
     else if (!loading) clearPracticeState()
-  }, [answer, capacity, loading, queue])
+  }, [answer, capacity, contentRevision, loading, queue])
 
-  const loadInitialBatch = async () => {
+  const loadInitialBatch = async (refreshed = false) => {
     if (initialLoadInFlight.current) return
     initialLoadInFlight.current = true
     setLoading(true)
@@ -44,6 +47,7 @@ export default function Practice() {
       setQueue(batch)
       setCapacity(batch.length)
       setAnswer(null)
+      setQueueNotice(refreshed ? 'Practice content was updated, so a fresh queue was loaded.' : null)
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Unable to load practice cards.')
     } finally {
@@ -52,7 +56,36 @@ export default function Practice() {
     }
   }
 
-  useEffect(() => { if (!queue.length && loading) void loadInitialBatch() }, [])
+  const initializePractice = async () => {
+    if (initializationInFlight.current) return
+    initializationInFlight.current = true
+    setLoading(true)
+    setError(null)
+    try {
+      const { revision } = await fetchContentVersion()
+      setContentRevision(revision)
+      const saved = loadPracticeState()
+      if (saved && saved.contentRevision === revision && saved.queue.length) {
+        setQueue(saved.queue)
+        setCapacity(saved.capacity)
+        setAnswer(saved.currentAnswer ?? null)
+        resumePendingAnswer.current = !!saved.currentAnswer && !saved.currentAnswer.submitted
+        setQueueNotice(null)
+        setLoading(false)
+      } else {
+        const hadSavedQueue = localStorage.getItem('toistokone.practice-queue.v1') !== null
+        clearPracticeState()
+        await loadInitialBatch(hadSavedQueue)
+      }
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Unable to verify practice content.')
+      setLoading(false)
+    } finally {
+      initializationInFlight.current = false
+    }
+  }
+
+  useEffect(() => { void initializePractice() }, [])
 
   const submitPendingAnswer = async (question: QuizQuestion, pending: SavedAnswer) => {
     setError(null)
@@ -63,8 +96,11 @@ export default function Practice() {
   }
 
   useEffect(() => {
-    if (current && answer && answer.questionId === current.question_id && !answer.submitted) void submitPendingAnswer(current, answer)
-  }, [])
+    if (resumePendingAnswer.current && current && answer && answer.questionId === current.question_id && !answer.submitted) {
+      resumePendingAnswer.current = false
+      void submitPendingAnswer(current, answer)
+    }
+  }, [answer, current])
 
   useEffect(() => {
     if (!queue.length || queue.length > 3 || refillInFlight.current) return
@@ -91,7 +127,7 @@ export default function Practice() {
     if (!current || answer) return
     const pending: SavedAnswer = { questionId: current.question_id, selectedOptionId: optionId, attemptId: crypto.randomUUID(), submitted: false }
     setAnswer(pending)
-    savePracticeState({ schemaVersion: 1, queue, capacity, currentAnswer: pending })
+    if (contentRevision) savePracticeState({ schemaVersion: 2, contentRevision, queue, capacity, currentAnswer: pending })
     void submitPendingAnswer(current, pending)
   }
 
@@ -111,12 +147,13 @@ export default function Practice() {
   }
 
   if (loading) return <section className="card"><p>Loading practice cards…</p></section>
-  if (error && !current) return <section className="card"><h1>Practice is unavailable</h1><p role="alert">{error}</p><button className="button" onClick={() => void loadInitialBatch()}>Retry</button></section>
-  if (!current) return <section className="card"><h1>No cards available yet</h1><p>Import content or answer vocabulary cards to unlock word forms.</p><button className="button" onClick={() => void loadInitialBatch()}>Retry</button><Link className="button secondary" to="/">Back home</Link></section>
+  if (error && !current) return <section className="card"><h1>Practice is unavailable</h1><p role="alert">{error}</p><button className="button" onClick={() => void initializePractice()}>Retry</button></section>
+  if (!current) return <section className="card"><h1>No cards available yet</h1><p>Import content or answer vocabulary cards to unlock word forms.</p><button className="button" onClick={() => void initializePractice()}>Retry</button><Link className="button secondary" to="/">Back home</Link></section>
 
   return <section className={`card practice-card${answer?.submitted ? ' feedback-visible' : ''}`}>
     <div className="practice-header"><div><p className="eyebrow">Practice</p><p className="queue-progress">{queue.length} card{queue.length === 1 ? '' : 's'} remaining</p></div><span aria-label={masteryLabel(score)} className="mastery-icon" title={masteryLabel(score)}>{masteryIcon(score)}</span></div>
     <div className="progress-track" aria-label="Queue progress"><div className="progress-fill" style={{ width: `${capacity ? queue.length / capacity * 100 : 0}%` }} /></div>
+    {queueNotice && <p className="notice" role="status">{queueNotice}</p>}
     {nominalPrompt ? <div className="nominal-prompt">
       <p className="nominal-base">{current.hint}</p>
       <p className="nominal-instruction">Choose the <strong>{nominalPrompt.formName}</strong>{nominalPrompt.questionCue && <span>{nominalPrompt.questionCue}</span>}</p>

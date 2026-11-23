@@ -75,6 +75,10 @@ export async function fetchBatch(): Promise<QuizQuestion[]> {
   return response.questions
 }
 
+export function fetchContentVersion(): Promise<{ revision: string }> {
+  return request('/api/content-version')
+}
+
 export function fetchStats(): Promise<Stats> {
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
   return request<Stats>(`/api/stats?timezone=${encodeURIComponent(timezone)}`)
