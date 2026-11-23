@@ -346,3 +346,12 @@ mikään - any / anything / nothing
 kyllä - yes
 kiitos - thanks / thank you / please
 mikä - what / which / that
+tietää - to know
+ehkä - maybe / perhaps
+kuka - who
+hyvin - very / well
+anteeksi - sorry / excuse me
+vielä - still / even / yet
+koska - because / when / since
+haluta - to want / desire / crave
+tehdä - to do / to execute / to make
