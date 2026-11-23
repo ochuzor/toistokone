@@ -7,6 +7,11 @@ import { cardKey, clearPracticeState, loadPracticeState, savePracticeState, type
 function masteryIcon(score: number): string { return ['○', '◔', '◑', '✓'][score] ?? '○' }
 function masteryLabel(score: number): string { return ['Not started', 'One correct answer', 'Two correct answers', 'Mastered'][score] ?? 'Not started' }
 
+function splitNominalPrompt(prompt: string): { formName: string; questionCue: string | null } {
+  const match = /^(.*?)\s*\(([^()]+)\)$/.exec(prompt)
+  return match ? { formName: match[1], questionCue: match[2] } : { formName: prompt, questionCue: null }
+}
+
 export default function Practice() {
   const saved = loadPracticeState()
   const [queue, setQueue] = useState<QuizQuestion[]>(() => saved?.queue ?? [])
@@ -21,6 +26,8 @@ export default function Practice() {
   const current = queue[0]
   const result = answer?.result
   const score = result?.score_after ?? current?.score ?? 0
+  const isNominalPrompt = current?.card.type === 'word_form' && current.card.target_form.startsWith('nominal:') && !!current.hint
+  const nominalPrompt = isNominalPrompt && current ? splitNominalPrompt(current.prompt) : null
 
   useEffect(() => {
     if (queue.length) savePracticeState({ schemaVersion: 1, queue, capacity: Math.max(capacity, queue.length), ...(answer ? { currentAnswer: answer } : {}) })
@@ -110,7 +117,13 @@ export default function Practice() {
   return <section className={`card practice-card${answer?.submitted ? ' feedback-visible' : ''}`}>
     <div className="practice-header"><div><p className="eyebrow">Practice</p><p className="queue-progress">{queue.length} card{queue.length === 1 ? '' : 's'} remaining</p></div><span aria-label={masteryLabel(score)} className="mastery-icon" title={masteryLabel(score)}>{masteryIcon(score)}</span></div>
     <div className="progress-track" aria-label="Queue progress"><div className="progress-fill" style={{ width: `${capacity ? queue.length / capacity * 100 : 0}%` }} /></div>
-    <p className="prompt">{current.prompt}</p>
+    {nominalPrompt ? <div className="nominal-prompt">
+      <p className="nominal-base">{current.hint}</p>
+      <p className="nominal-instruction">Choose the <strong>{nominalPrompt.formName}</strong>{nominalPrompt.questionCue && <span>{nominalPrompt.questionCue}</span>}</p>
+    </div> : <div className={current.hint ? 'form-prompt' : undefined}>
+      {current.hint && <p className="prompt-hint"><span>Base form</span>{current.hint}</p>}
+      <p className="prompt">{current.prompt}</p>
+    </div>}
     {current.english_translations.length > 0 && <p className="translations">{current.english_translations.join(' / ')}</p>}
     {error && <p className="error" role="alert">{error}</p>}
     {refillError && <p className="notice">{refillError}</p>}

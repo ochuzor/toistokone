@@ -9,6 +9,7 @@ export type QuizQuestion = {
   card: CardReference
   score: number
   prompt: string
+  hint?: string | null
   english_translations: string[]
   options: { id: string; text: string }[]
   correct_option_id: string

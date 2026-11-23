@@ -311,20 +311,21 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
                 distractors = list({" / ".join(meanings) for word, meanings in vocabulary.items() if word != card.base_word})
                 rng.shuffle(distractors)
                 options, correct_id = _options([correct_text, *distractors[:3]], correct_text, rng)
-                prompt, english_translations = card.base_word, []
+                prompt, hint, english_translations = card.base_word, None, []
             else:
                 form_card = next(form for form in forms[card.base_word] if form.card_key == card.target_form)
                 branch_forms = _profile_options(forms[card.base_word], form_card.profile)
                 distractors = [form for form in branch_forms if form != form_card.form]
                 rng.shuffle(distractors)
                 options, correct_id = _options([form_card.form, *distractors[:3]], form_card.form, rng)
-                prompt, english_translations = f"{card.base_word} — {form_card.prompt_label}", []
+                prompt, hint, english_translations = form_card.prompt_label, card.base_word, []
                 if card.score == 3:
                     matching, weights = _matching_sentences(connection, form_card.form, token_families, mastered_families, card.base_word)
                     if matching:
                         sentence, english_translations = rng.choices(matching, weights=weights, k=1)[0]
                         prompt = blank_form(sentence, form_card.form)
-            questions.append({"question_id": str(uuid.uuid4()), "card": {"type": card.card_type, "base_word": card.base_word, "target_form": card.target_form}, "score": card.score, "prompt": prompt, "english_translations": english_translations, "options": options, "correct_option_id": correct_id})
+                        hint = None
+            questions.append({"question_id": str(uuid.uuid4()), "card": {"type": card.card_type, "base_word": card.base_word, "target_form": card.target_form}, "score": card.score, "prompt": prompt, "hint": hint, "english_translations": english_translations, "options": options, "correct_option_id": correct_id})
     consume_focus_words(progress_path, [
         card.base_word for card in selected_cards
         if card.card_type == "vocabulary" and card.focus_requested_at is not None

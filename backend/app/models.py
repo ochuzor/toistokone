@@ -118,6 +118,7 @@ class QuizQuestion(BaseModel):
     card: CardReference
     score: int
     prompt: str
+    hint: str | None = None
     english_translations: list[str]
     options: list[QuizOption]
     correct_option_id: str
