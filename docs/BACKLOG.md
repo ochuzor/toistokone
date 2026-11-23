@@ -7,6 +7,7 @@
 - [ ] Improve mobile layout
 
 ## Completed
+- [x] Polish the frontend shell and navigation
 - [x] Add one-time focus word requests
 - [x] Implement ToistoKone v1
 - [x] Align documentation references and queue replenishment behavior

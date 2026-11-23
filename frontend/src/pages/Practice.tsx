@@ -121,6 +121,5 @@ export default function Practice() {
       return <button className={`option${feedbackClass}`} disabled={!!answer} key={option.id} onClick={() => chooseOption(option.id)}>{option.text}</button>
     })}</div>
     {answer && <div className="feedback" role="status">{result ? <><p>{result.correct ? 'Correct!' : 'Not quite — the correct answer is highlighted.'}</p><button className="text-button" onClick={() => void reset()}>Reset mastery</button><button aria-label="Next" className="button next-button" onClick={next}><span className="next-label">Next</span><span aria-hidden="true" className="next-arrow">→</span></button></> : <><p>Saving your answer…</p>{error && <button className="button" onClick={() => void submitPendingAnswer(current, answer)}>Retry submission</button>}</>}</div>}
-    <Link className="back-link" to="/">Back home</Link>
   </section>
 }

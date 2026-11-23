@@ -1,6 +1,4 @@
 import { FormEvent, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-
 import { addFocusWord, fetchFocusWords, fetchVocabulary, removeFocusWord, type VocabularyEntry } from '../lib/api'
 
 function isNew(entry: VocabularyEntry): boolean {
@@ -70,6 +68,5 @@ export default function FocusWords() {
       <h2 id="search-results-heading">{loading ? 'Searching…' : 'Dictionary words'}</h2>
       {!loading && <ul className="focus-list">{results.map((entry) => <li key={entry.finnish}><div><strong>{entry.finnish}</strong><small>{entry.meanings.join(' / ')}</small></div>{entry.focus_requested_at ? <span className="notice">Queued</span> : isNew(entry) ? <button className="button small-button" onClick={() => void focus(entry)}>Add next</button> : <span className="notice">Already practised</span>}</li>)}</ul>}
     </section>
-    <Link className="back-link" to="/">Back home</Link>
   </section>
 }

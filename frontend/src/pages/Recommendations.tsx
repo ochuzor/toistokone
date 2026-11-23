@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-
 import { fetchRecommendations, type Recommendation } from '../lib/api'
 
 export default function Recommendations() {
@@ -30,6 +28,5 @@ export default function Recommendations() {
         <p>{example.finnish}</p><small>{example.english_translations.join(' / ')}</small>
       </div>)}</div>
     </li>)}</ol>}
-    <Link className="back-link" to="/">Back home</Link>
   </section>
 }

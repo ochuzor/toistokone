@@ -1,30 +1,36 @@
-:root {
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  color: #1f2937;
-  background: #f3f7f3;
-}
+:root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #1f2937; background: #f5f7f6; }
 
 * { box-sizing: border-box; }
 
 body { margin: 0; min-width: 320px; }
 
-.app-shell { display: grid; min-height: 100vh; place-items: center; padding: 1.5rem; }
+.app-shell { display: flex; min-height: 100vh; flex-direction: column; }
+.site-header { display: flex; width: min(100% - 3rem, 70rem); align-items: center; justify-content: space-between; gap: 2rem; margin: 0 auto; padding: 1.1rem 0; border-bottom: 1px solid #dce7df; }
+.site-brand { color: #145c40; font-size: 1.1rem; font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+.site-nav { display: flex; align-items: center; gap: .2rem; }
+.site-nav a { padding: .5rem .7rem; border-radius: .45rem; color: #52616f; font-size: .9rem; font-weight: 650; text-decoration: none; }
+.site-nav a:hover { color: #145c40; background: #e8f0eb; }
+.site-nav a.active { color: #145c40; background: #dcece1; }
+.is-practice .site-header { border-color: #e2e8f0; opacity: .82; }
+.is-practice .site-nav a { font-size: .85rem; }
+.page-content { display: grid; width: min(100%, 70rem); flex: 1; place-items: center; margin: 0 auto; padding: 2.75rem 1.5rem; }
 
-.card { width: min(100%, 42rem); padding: clamp(2rem, 8vw, 4rem); background: white; border-radius: 1rem; box-shadow: 0 12px 36px #1f293720; }
+.card { width: min(100%, 42rem); padding: clamp(2rem, 6vw, 3.25rem); border: 1px solid #e2e8e4; border-radius: .9rem; background: white; box-shadow: 0 10px 28px #1f293712; }
 
-.eyebrow { color: #16704b; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.eyebrow { color: #16704b; font-size: .8rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
 
-h1 { margin: .5rem 0 1rem; font-size: clamp(2rem, 7vw, 3.5rem); line-height: 1.05; }
+h1 { margin: .5rem 0 1rem; color: #162b24; font-size: clamp(1.8rem, 4vw, 2.55rem); letter-spacing: -.035em; line-height: 1.12; }
+h2 { color: #20342d; letter-spacing: -.02em; }
 
 p { line-height: 1.6; }
 
-.button { display: inline-block; margin-top: 1rem; padding: .8rem 1.1rem; border-radius: .5rem; background: #16704b; color: white; font-weight: 700; text-decoration: none; }
+.button { display: inline-block; margin-top: 1rem; padding: .75rem 1rem; border-radius: .5rem; background: #16704b; color: white; font-weight: 700; text-decoration: none; }
 
 .secondary { background: #334155; }
 
 button.button { border: 0; cursor: pointer; font: inherit; }
 
-.practice-card { padding: clamp(1.5rem, 6vw, 3rem); }
+.practice-card { padding: clamp(1.5rem, 5vw, 2.75rem); }
 .practice-header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
 .queue-progress { margin: 0; color: #64748b; }
 .mastery-icon { color: #16704b; font-size: 2rem; font-weight: 700; }
@@ -42,7 +48,6 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .feedback { border-top: 1px solid #e2e8f0; padding-top: 1rem; }
 .next-arrow { display: none; }
 .text-button { margin-right: 1rem; border: 0; background: none; color: #16704b; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; }
-.back-link { display: inline-block; margin-top: 1.5rem; color: #475569; }
 .error { color: #b91c1c; font-weight: 600; }
 .notice { color: #64748b; font-size: .9rem; }
 .stats-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1.5rem 0; }
@@ -88,7 +93,12 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .focus-list .text-button { margin: 0; }
 .small-button { margin: 0; padding: .5rem .7rem; font-size: .85rem; }
 @media (max-width: 38rem) {
-  .app-shell { align-items: start; padding: .75rem; }
+  .site-header { display: block; width: 100%; padding: .85rem .75rem 0; border: 0; }
+  .site-brand { display: inline-block; margin: 0 .5rem .75rem; }
+  .site-nav { width: calc(100% + 1.5rem); gap: .15rem; overflow-x: auto; padding: 0 .75rem .75rem; scrollbar-width: none; }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav a { flex: 0 0 auto; padding: .45rem .6rem; font-size: .83rem; white-space: nowrap; }
+  .page-content { align-items: start; padding: 1.25rem .75rem; }
   .card { border-radius: .75rem; padding: 1.5rem 1.25rem; }
   .stats-grid, .activity-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .activity-heading { align-items: start; flex-direction: column; }
