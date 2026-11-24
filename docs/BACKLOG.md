@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Add outer local-case grammar cards
 - [x] Add content-health report and browser view
 - [x] Rank contextual reading-break sentences by mastery
 - [x] Polish all pages for mobile practice

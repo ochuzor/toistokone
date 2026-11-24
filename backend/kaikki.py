@@ -19,7 +19,7 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
-INDEX_VERSION = 11
+INDEX_VERSION = 12
 RECOMMENDATION_INDEX_VERSION = 5
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 PERSONAL_PRONOUNS = frozenset({"minä", "sinä", "hän", "me", "te", "he"})
@@ -35,6 +35,9 @@ NOMINAL_SLOTS = (
     ("inessive", "Inessiivi (missä?)", {"inessive", "singular"}),
     ("elative", "Elatiivi (mistä?)", {"elative", "singular"}),
     ("illative", "Illatiivi (mihin?)", {"illative", "singular"}),
+    ("adessive", "Adessiivi (millä?)", {"adessive", "singular"}),
+    ("ablative", "Ablatiivi (miltä?)", {"ablative", "singular"}),
+    ("allative", "Allatiivi (mille?)", {"allative", "singular"}),
 )
 NOMINAL_PLURAL_SLOTS = (
     ("nominative", "Nominatiivi, monikko (mitkä?)", {"nominative", "plural"}),
@@ -43,6 +46,9 @@ NOMINAL_PLURAL_SLOTS = (
     ("inessive", "Inessiivi, monikko (missä?)", {"inessive", "plural"}),
     ("elative", "Elatiivi, monikko (mistä?)", {"elative", "plural"}),
     ("illative", "Illatiivi, monikko (mihin?)", {"illative", "plural"}),
+    ("adessive", "Adessiivi, monikko (millä?)", {"adessive", "plural"}),
+    ("ablative", "Ablatiivi, monikko (miltä?)", {"ablative", "plural"}),
+    ("allative", "Allatiivi, monikko (mille?)", {"allative", "plural"}),
 )
 VERB_SLOTS = (
     ("present-1sg", "minä ____", {"indicative", "present", "first-person", "singular"}),

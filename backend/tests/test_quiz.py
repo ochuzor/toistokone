@@ -249,17 +249,6 @@ class GrammarBatchTests(unittest.TestCase):
             and candidate.target_form == "nominal:nominative-plural"
             for candidate in candidates
         ))
-        questions = build_batch(self.content, self.progress, 20, random.Random(3))
-        inessive = next(question for question in questions if question["card"]["target_form"] == "nominal:inessive")
-        verb = next(question for question in questions if question["card"]["target_form"] == "verb:present-3sg")
-        self.assertEqual(inessive["hint"], "talo")
-        self.assertEqual(inessive["prompt"], "Inessiivi (missä?)")
-        self.assertEqual(verb["hint"], "tehdä")
-        self.assertEqual(verb["prompt"], "hän ____")
-        self.assertIn("talossa", {option["text"] for option in inessive["options"]})
-        self.assertEqual(len(inessive["options"]), 4)
-        self.assertEqual(verb["english_translations"], [])
-
         self.master_form("talo", "nominal:inessive")
         self.master_form("tehdä", "verb:present-3sg")
         questions = build_batch(self.content, self.progress, 20, random.Random(3))

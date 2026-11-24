@@ -33,12 +33,15 @@ class PipelineTests(unittest.TestCase):
         report = run_import(self.root)
         self.assertTrue(report.kaikki_index_rebuilt)
         self.assertTrue(report.recommendation_lemma_index_rebuilt)
-        self.assertEqual(report.form_count, 12)
+        self.assertEqual(report.form_count, 15)
         self.assertEqual(report.missing_lexicon_profiles, ["particle"])
         with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
             talo = database.execute("SELECT card_key, form, profile, prompt_label FROM word_forms JOIN vocabulary ON vocabulary.id = vocabulary_id WHERE finnish = 'talo' ORDER BY card_key").fetchall()
             verb = database.execute("SELECT card_key, form, prompt_label FROM word_forms JOIN vocabulary ON vocabulary.id = vocabulary_id WHERE finnish = 'tehdä' ORDER BY card_key").fetchall()
         self.assertIn(("nominal:inessive", "talossa", "nominal", "Inessiivi (missä?)"), talo)
+        self.assertIn(("nominal:adessive", "talolla", "nominal", "Adessiivi (millä?)"), talo)
+        self.assertIn(("nominal:ablative", "talolta", "nominal", "Ablatiivi (miltä?)"), talo)
+        self.assertIn(("nominal:allative", "talolle", "nominal", "Allatiivi (mille?)"), talo)
         self.assertNotIn(("nominal:nominative", "talo", "nominal", "Nominatiivi (mikä?)"), talo)
         self.assertIn(("nominal:nominative-plural", "talot", "nominal", "Nominatiivi, monikko (mitkä?)"), talo)
         self.assertIn(("verb:present-3sg", "tekee", "hän ____"), verb)
@@ -137,6 +140,9 @@ class PipelineTests(unittest.TestCase):
                 {"form": "siinä", "source": "inflection", "tags": ["inessive", "singular"]},
                 {"form": "siitä", "source": "inflection", "tags": ["elative", "singular"]},
                 {"form": "siihen", "source": "inflection", "tags": ["illative", "singular"]},
+                {"form": "sillä", "source": "inflection", "tags": ["adessive", "singular"]},
+                {"form": "siltä", "source": "inflection", "tags": ["ablative", "singular"]},
+                {"form": "sille", "source": "inflection", "tags": ["allative", "singular"]},
                 {"form": "ne", "source": "inflection", "tags": ["nominative", "plural"]},
                 {"form": "niiden", "source": "inflection", "tags": ["genitive", "plural"]},
                 {"form": "niitä", "source": "inflection", "tags": ["partitive", "plural"]},
@@ -144,6 +150,9 @@ class PipelineTests(unittest.TestCase):
                 {"form": "niissä", "source": "inflection", "tags": ["inessive", "plural"]},
                 {"form": "niistä", "source": "inflection", "tags": ["elative", "plural"]},
                 {"form": "niihin", "source": "inflection", "tags": ["illative", "plural"]},
+                {"form": "niillä", "source": "inflection", "tags": ["adessive", "plural"]},
+                {"form": "niiltä", "source": "inflection", "tags": ["ablative", "plural"]},
+                {"form": "niille", "source": "inflection", "tags": ["allative", "plural"]},
             ],
         }
         with path.open("a", encoding="utf-8") as source:
@@ -162,11 +171,13 @@ class PipelineTests(unittest.TestCase):
             ).fetchall()
         self.assertIn(("nominal:partitive", "sitä"), singular_forms)
         self.assertIn(("nominal:inessive", "siinä"), singular_forms)
+        self.assertIn(("nominal:adessive", "sillä"), singular_forms)
         self.assertNotIn(("nominal:nominative", "se"), singular_forms)
         self.assertNotIn(("nominal:accusative", "se"), singular_forms)
         self.assertNotIn(("nominal-plural:partitive", "niitä"), singular_forms)
         self.assertIn(("nominal-plural:partitive", "niitä"), plural_forms)
         self.assertIn(("nominal-plural:inessive", "niissä"), plural_forms)
+        self.assertIn(("nominal-plural:adessive", "niillä"), plural_forms)
         self.assertNotIn(("nominal-plural:accusative", "ne"), plural_forms)
         self.assertNotIn(("nominal:partitive", "sitä"), plural_forms)
         self.assertFalse(any(card_key.startswith("nominal:") for card_key, _ in plural_forms))

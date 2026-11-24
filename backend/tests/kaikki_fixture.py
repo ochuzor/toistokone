@@ -16,6 +16,9 @@ def write_kaikki(root: Path) -> None:
             {"form": "talossa", "source": "declension", "tags": ["inessive", "singular"]},
             {"form": "talosta", "source": "declension", "tags": ["elative", "singular"]},
             {"form": "taloon", "source": "declension", "tags": ["illative", "singular"]},
+            {"form": "talolla", "source": "declension", "tags": ["adessive", "singular"]},
+            {"form": "talolta", "source": "declension", "tags": ["ablative", "singular"]},
+            {"form": "talolle", "source": "declension", "tags": ["allative", "singular"]},
         ]},
         {"word": "ruoka", "lang_code": "fi", "forms": [
             {"form": "ruoka", "source": "declension", "tags": ["nominative", "singular"]},
