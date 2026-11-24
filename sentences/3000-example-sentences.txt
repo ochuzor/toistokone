@@ -996,7 +996,7 @@ Hyvin se menee. - That's fine.
 Miten sinulla menee? - How are you?
 Niin se menee. - That's how it goes.
 Miten siellä menee? - How's it going there?
-Ei sinun tarvitse. Sinun ei tarvitse. - You don't have to.
+Sinun ei tarvitse. - You don't have to.
 Ei minun tarvitse. Minun ei tarvitse. - I don't have to.
 Mitä hän haluaa? - What does he want?
 Hän tulee pian. - He's coming soon.

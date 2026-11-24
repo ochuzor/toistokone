@@ -8,7 +8,6 @@ kielioppi - grammar
 tärkeä - important / crucial
 silta - bridge
 hän - he / she
-mitä - what
 että - that / so that
 ei ole - is not / has not
 niin - so / in that way / thus / such
@@ -363,3 +362,18 @@ tulla - to come
 aikoa - to mean to do smth / to intend to do smth / to plan to do smth
 tosissaan - in earnest / sincerely / seriously
 pieli - doorpost / gatepost / mast
+julkinen - public / unrestricted
+yhtä - as / like / equally / same / equal
+
+koti - home / residence / domestic / native
+tori - marketplace / town square
+uimaranta - beach
+puisto - park / garden
+bussipysäkki - bus stop
+Turku - Turku
+Helsinki - Helsinki
+Vantaa - Vantaa
+Tampere - Tampere
+Irlanti - Irlanti
+Itävalta - Itävalta
+eteinen - lobby / vestible / hallway
