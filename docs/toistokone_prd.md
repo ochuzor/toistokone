@@ -52,11 +52,16 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - Answers: one correct English meaning group plus up to three randomly chosen distractor groups from other vocabulary entries, in randomized order.
 - Each answer group displays all its English meanings together (e.g., `house / home`).
 - A vocabulary card achieving score 3 unlocks all associated word-form cards.
+- A capitalized dictionary word whose supplied English meanings are all exactly
+  the same spelling (for example, `Helsinki - Helsinki`) is forms-only: it has
+  no vocabulary meaning card, does not affect vocabulary totals, and its form
+  cards are eligible immediately.
 
 ### Word-form cards
 
 - Kaikki generates labelled grammar cards for applicable dictionary words: genitive, partitive, plural genitive, plural partitive, inessive, elative, illative, and nominative plural nominal forms, plus six active affirmative present-indicative verb forms. Plural genitive and plural partitive are limited to nouns, adjectives, pronouns/determiners, and numerals; proper names and verb/participle entries are excluded. Personal pronouns (`minä`, `sinä`, `hän`, `me`, `te`, `he`) also receive an accusative form card. Singular nominative is practised by the vocabulary meaning card and has no separate form card.
-- Form cards unlock after their base vocabulary card reaches score 3.
+- Form cards unlock after their base vocabulary card reaches score 3, except
+  forms-only entries, whose form cards are eligible immediately.
 - Prompt: score-0–2 cards use the base word plus its grammar cue, for example `talo — Inessiivi (missä?)` or `tehdä — hän ____`. Score-3 cards use a matching sentence with the target form blanked and display its English translations when coverage exists; otherwise they use the grammar cue.
 - Answers: correct form plus up to three distinct forms from the same nominal or verb profile, shuffled. A question requires at least two distinct options.
 - Sentences are not required for form practice: missing coverage falls back to the grammar prompt.

@@ -78,6 +78,7 @@ class ImportValidationError(RuntimeError):
 @dataclass
 class ImportedContent:
     vocabulary: OrderedDict[str, list[str]]
+    forms_only_words: set[str]
     forms: OrderedDict[str, list[GeneratedForm]]
     sentences: OrderedDict[str, list[str]]
     frequency_words: OrderedDict[str, int]
@@ -141,13 +142,18 @@ def parse_content(project_root: Path) -> ImportedContent:
             continue
         vocabulary[finnish] = list(OrderedDict.fromkeys(meanings))
 
+    forms_only_words = {
+        word for word, meanings in vocabulary.items()
+        if word[:1].isupper() and all(meaning == word for meaning in meanings)
+    }
+
     source_path = project_root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
     index_path = project_root / "data" / "kaikki-forms.sqlite"
     if not source_path.exists() and not index_path.exists():
         report.fatal_errors.append(f"missing Kaikki source and index: {source_path}")
     elif source_path.exists():
         index_path.parent.mkdir(parents=True, exist_ok=True)
-        report.kaikki_index_rebuilt = ensure_index(source_path, index_path, {word.casefold() for word in vocabulary})
+        report.kaikki_index_rebuilt = ensure_index(source_path, index_path, set(vocabulary))
 
     forms: OrderedDict[str, list[GeneratedForm]] = OrderedDict()
     if index_path.exists():
@@ -217,12 +223,12 @@ def parse_content(project_root: Path) -> ImportedContent:
     report.sentence_count = len(sentences)
     report.translation_count = sum(len(translations) for translations in sentences.values())
     report.frequency_entry_count = len(frequency_words)
-    return ImportedContent(vocabulary, forms, sentences, frequency_words, lemma_mappings, report)
+    return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, report)
 
 
 SCHEMA = """
 PRAGMA foreign_keys = ON;
-CREATE TABLE vocabulary (id INTEGER PRIMARY KEY, finnish TEXT NOT NULL UNIQUE);
+CREATE TABLE vocabulary (id INTEGER PRIMARY KEY, finnish TEXT NOT NULL UNIQUE, meaning_quizzable INTEGER NOT NULL CHECK (meaning_quizzable IN (0, 1)));
 CREATE TABLE vocabulary_meanings (vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE, meaning TEXT NOT NULL, ordinal INTEGER NOT NULL, PRIMARY KEY (vocabulary_id, meaning));
 CREATE INDEX idx_vocabulary_meanings_vocab ON vocabulary_meanings(vocabulary_id);
 CREATE TABLE word_forms (id INTEGER PRIMARY KEY, vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE, card_key TEXT NOT NULL, form TEXT NOT NULL, profile TEXT NOT NULL, prompt_label TEXT NOT NULL, UNIQUE (vocabulary_id, card_key));
@@ -242,7 +248,10 @@ def _build_database(path: Path, content: ImportedContent, revision: str) -> None
         connection.executescript(SCHEMA)
         with connection:
             for word, meanings in content.vocabulary.items():
-                vocabulary_id = connection.execute("INSERT INTO vocabulary (finnish) VALUES (?)", (word,)).lastrowid
+                vocabulary_id = connection.execute(
+                    "INSERT INTO vocabulary (finnish, meaning_quizzable) VALUES (?, ?)",
+                    (word, int(word not in content.forms_only_words)),
+                ).lastrowid
                 connection.executemany("INSERT INTO vocabulary_meanings (vocabulary_id, meaning, ordinal) VALUES (?, ?, ?)", [(vocabulary_id, meaning, ordinal) for ordinal, meaning in enumerate(meanings)])
                 connection.executemany("INSERT INTO word_forms (vocabulary_id, card_key, form, profile, prompt_label) VALUES (?, ?, ?, ?, ?)", [(vocabulary_id, form.card_key, form.form, form.profile, form.prompt_label) for form in content.forms[word]])
             connection.executemany("INSERT INTO sentences (finnish) VALUES (?)", ((finnish,) for finnish in content.sentences))

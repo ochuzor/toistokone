@@ -62,7 +62,8 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE vocabulary (
   id INTEGER PRIMARY KEY,
-  finnish TEXT NOT NULL UNIQUE
+  finnish TEXT NOT NULL UNIQUE,
+  meaning_quizzable INTEGER NOT NULL CHECK (meaning_quizzable IN (0, 1))
 );
 CREATE TABLE vocabulary_meanings (
   vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE,
@@ -112,6 +113,13 @@ CREATE TABLE content_metadata (
 ```
 
 **Grammar-card generation:** The pipeline indexes the local Kaikki JSONL source and generates form cards for matching dictionary headwords. Nominal cards cover genitive, partitive, plural genitive, plural partitive, inessive, elative, illative, and nominative plural; singular nominative is already the vocabulary meaning-card prompt and is not repeated as a form card. Plural genitive and plural partitive are generated only from Kaikki entries classified as nouns, adjectives, pronouns/determiners, or numerals; proper names and verb/participle entries are excluded. Only the six personal pronouns (`minä`, `sinä`, `hän`, `me`, `te`, `he`) also receive accusative cards. Pronouns use separate singular and plural case profiles, keeping pairs such as `se` and `ne` in their own paradigms. Verb cards cover six active affirmative present-indicative persons. `card_key` identifies the grammar slot independently of its surface spelling, so a shared noun/verb spelling keeps separate progress. The first non-rare single-word candidate is selected and alternatives are reported. All generated cards unlock after vocabulary mastery.
+
+**Forms-only entries:** A dictionary word with an uppercase initial and English
+meanings all exactly matching its Finnish spelling is imported with
+`meaning_quizzable = 0`. It remains available for Kaikki form generation and
+known-word filtering, but has no vocabulary card, vocabulary score, focus-word
+request, or mastery-statistics entry. Its form cards bypass the usual base-card
+mastery gate. This virtual mastery is limited to form eligibility.
 
 **Sentence storage:** The pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens for contextual recommendations and score-3 form reinforcement. No sentence-to-form association table is persisted. `frequency_words` stores the required frequency source for contextual word recommendations; it is content-only and has no progress state.
 

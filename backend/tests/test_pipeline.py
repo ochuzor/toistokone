@@ -90,6 +90,39 @@ class PipelineTests(unittest.TestCase):
         report = run_import(self.root)
         self.assertEqual(report.form_alternatives["talo"]["nominal:genitive"], ["talojen"])
 
+    def test_capitalized_identical_entries_are_forms_only(self) -> None:
+        path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+        with path.open("a", encoding="utf-8") as source:
+            source.write(json.dumps({
+                "word": "Helsinki", "lang_code": "fi", "pos": "name",
+                "forms": [
+                    {"form": "Helsinki", "source": "declension", "tags": ["nominative", "singular"]},
+                    {"form": "Helsingin", "source": "declension", "tags": ["genitive", "singular"]},
+                    {"form": "Helsingissä", "source": "declension", "tags": ["inessive", "singular"]},
+                ],
+            }) + "\n")
+            source.write(json.dumps({
+                "word": "Talo", "lang_code": "fi", "pos": "name",
+                "forms": [{"form": "Talon-nimi", "source": "declension", "tags": ["genitive", "singular"]}],
+            }) + "\n")
+        self.write_sources("Helsinki - Helsinki\nsauna - sauna\nItävalta - Austria\ntalo - house\n")
+
+        run_import(self.root)
+
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            flags = database.execute(
+                "SELECT finnish, meaning_quizzable FROM vocabulary ORDER BY finnish"
+            ).fetchall()
+            helsinki_forms = database.execute(
+                "SELECT card_key, form FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id WHERE vocabulary.finnish = 'Helsinki' ORDER BY card_key"
+            ).fetchall()
+        self.assertEqual(flags, [("Helsinki", 0), ("Itävalta", 1), ("sauna", 1), ("talo", 1)])
+        self.assertIn(("nominal:inessive", "Helsingissä"), helsinki_forms)
+        talo_forms = database.execute(
+            "SELECT form FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id WHERE vocabulary.finnish = 'talo'"
+        ).fetchall()
+        self.assertNotIn(("Talon-nimi",), talo_forms)
+
     def test_pronoun_forms_are_assigned_to_their_singular_or_plural_lemma(self) -> None:
         path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
         pronoun_entry = {

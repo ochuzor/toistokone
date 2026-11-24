@@ -157,6 +157,7 @@ def list_vocabulary(content_path: Path, progress_path: Path, query: str = "", li
                LEFT JOIN progress.card_progress ON card_progress.card_type = 'vocabulary'
                   AND card_progress.base_word = vocabulary.finnish AND card_progress.target_form = ''
                LEFT JOIN progress.focus_vocabulary ON focus_vocabulary.base_word = vocabulary.finnish
+               WHERE vocabulary.meaning_quizzable = 1
                ORDER BY vocabulary.finnish, vocabulary_meanings.ordinal"""
         ).fetchall()
     entries: dict[str, dict[str, object]] = {}
@@ -191,6 +192,7 @@ def list_focus_words(content_path: Path, progress_path: Path) -> list[dict[str, 
                JOIN vocabulary_meanings ON vocabulary_meanings.vocabulary_id = vocabulary.id
                LEFT JOIN progress.card_progress ON card_progress.card_type = 'vocabulary'
                   AND card_progress.base_word = vocabulary.finnish AND card_progress.target_form = ''
+               WHERE vocabulary.meaning_quizzable = 1
                ORDER BY focus_vocabulary.requested_at, vocabulary.finnish, vocabulary_meanings.ordinal"""
         ).fetchall()
     entries: dict[str, dict[str, object]] = {}
@@ -214,7 +216,9 @@ def request_focus_word(
 ) -> dict[str, str]:
     """Persist a one-time request for a current, never-practised vocabulary card."""
     with sqlite3.connect(content_path) as content:
-        exists = content.execute("SELECT 1 FROM vocabulary WHERE finnish = ?", (base_word,)).fetchone()
+        exists = content.execute(
+            "SELECT 1 FROM vocabulary WHERE finnish = ? AND meaning_quizzable = 1", (base_word,)
+        ).fetchone()
     if not exists:
         raise LookupError("Vocabulary word does not exist in current content")
     with sqlite3.connect(progress_path) as connection:
@@ -260,7 +264,9 @@ def card_exists(content_path: Path, card: CardReference) -> bool:
         return False
     with sqlite3.connect(content_path) as connection:
         if card.type == "vocabulary":
-            return connection.execute("SELECT 1 FROM vocabulary WHERE finnish = ?", (card.base_word,)).fetchone() is not None
+            return connection.execute(
+                "SELECT 1 FROM vocabulary WHERE finnish = ? AND meaning_quizzable = 1", (card.base_word,)
+            ).fetchone() is not None
         return connection.execute(
             """SELECT 1 FROM word_forms
                JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id
@@ -346,13 +352,14 @@ def get_stats(
 ) -> dict[str, object]:
     with sqlite3.connect(content_path) as content:
         content.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
-        vocabulary_total = content.execute("SELECT COUNT(*) FROM vocabulary").fetchone()[0]
+        vocabulary_total = content.execute("SELECT COUNT(*) FROM vocabulary WHERE meaning_quizzable = 1").fetchone()[0]
         form_total = content.execute("SELECT COUNT(*) FROM word_forms").fetchone()[0]
         # Progress rows for content removed by a later import must not affect current statistics.
         vocabulary_mastered = content.execute(
             """SELECT COUNT(*) FROM vocabulary
                JOIN progress.card_progress p ON p.card_type = 'vocabulary'
-                  AND p.base_word = vocabulary.finnish AND p.target_form = '' AND p.score = 3"""
+                  AND p.base_word = vocabulary.finnish AND p.target_form = '' AND p.score = 3
+               WHERE vocabulary.meaning_quizzable = 1"""
         ).fetchone()[0]
         form_mastered = content.execute(
             """SELECT COUNT(*) FROM word_forms

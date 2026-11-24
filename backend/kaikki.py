@@ -19,8 +19,8 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
-INDEX_VERSION = 9
-RECOMMENDATION_INDEX_VERSION = 3
+INDEX_VERSION = 11
+RECOMMENDATION_INDEX_VERSION = 5
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 PERSONAL_PRONOUNS = frozenset({"minä", "sinä", "hän", "me", "te", "he"})
 PERSONAL_PRONOUN_ACCUSATIVE_SLOT = ("accusative", "Akkusatiivi", {"accusative"})
@@ -64,10 +64,10 @@ class GeneratedForm:
     prompt_label: str
 
 
-def _source_signature(path: Path, lemmas: set[str]) -> str:
+def _source_signature(path: Path, words: set[str]) -> str:
     stat = path.stat()
-    words = "\0".join(sorted(lemmas)).encode("utf-8")
-    return f"{INDEX_VERSION}:{stat.st_size}:{stat.st_mtime_ns}:{hashlib.sha256(words).hexdigest()}"
+    encoded_words = "\0".join(sorted(words)).encode("utf-8")
+    return f"{INDEX_VERSION}:{stat.st_size}:{stat.st_mtime_ns}:{hashlib.sha256(encoded_words).hexdigest()}"
 
 
 def _slots_for(
@@ -158,12 +158,12 @@ def _pronoun_owners(entry: dict[str, object], lemmas: set[str]) -> dict[str, str
     return owners
 
 
-def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
+def ensure_index(source_path: Path, index_path: Path, words: set[str]) -> bool:
     """Build the reusable subset index when its Kaikki source has changed.
 
     Returns True when a new index was built.
     """
-    signature = _source_signature(source_path, lemmas)
+    signature = _source_signature(source_path, words)
     if index_path.exists():
         with sqlite3.connect(index_path) as connection:
             row = connection.execute("SELECT value FROM metadata WHERE key = 'source_signature'").fetchone()
@@ -177,9 +177,10 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
             connection.executescript(INDEX_SCHEMA)
             batch: list[tuple[str, str, str, str, int]] = []
             pronoun_numbers: dict[str, set[str]] = {}
+            lemmas = {word.casefold() for word in words}
             encodings = {
-                json.dumps(lemma, ensure_ascii=ensure_ascii)
-                for lemma in lemmas
+                json.dumps(word, ensure_ascii=ensure_ascii)
+                for word in words
                 for ensure_ascii in (False, True)
             }
             word_pattern = r'"word"\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in encodings) + r')'

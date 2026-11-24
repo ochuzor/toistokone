@@ -7,6 +7,7 @@
 - [ ] Improve mobile layout
 
 ## Completed
+- [x] Support forms-only capitalized dictionary entries
 - [x] Add POS-gated plural-genitive form cards
 - [x] Add contextual sentence reading breaks to practice
 - [x] Confirm mastery resets before changing a card score

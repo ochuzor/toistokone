@@ -218,7 +218,7 @@ class GrammarBatchTests(unittest.TestCase):
         self.assertFalse(any(question["card"]["type"] == "word_form" for question in before))
         self.master("talo")
         self.master("tehdä")
-        _, _, _, _, candidates = _load_content(self.content, self.progress)
+        _, _, _, _, _, candidates = _load_content(self.content, self.progress)
         self.assertTrue(any(
             candidate.card_type == "word_form"
             and candidate.base_word == "talo"
@@ -255,6 +255,20 @@ class GrammarBatchTests(unittest.TestCase):
 
         self.assertTrue(any(question["card"] == {"type": "vocabulary", "base_word": "talo", "target_form": ""} for question in questions))
         self.assertEqual(list_focus_words(self.content, self.progress), [])
+
+    def test_forms_only_entries_unlock_forms_without_a_vocabulary_card(self) -> None:
+        path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+        with path.open("a", encoding="utf-8") as source:
+            source.write('{"word":"Helsinki","lang_code":"fi","pos":"name","forms":[{"form":"Helsinki","source":"declension","tags":["nominative","singular"]},{"form":"Helsingin","source":"declension","tags":["genitive","singular"]},{"form":"Helsingissä","source":"declension","tags":["inessive","singular"]}]}\n')
+        (self.root / "dictionary.txt").write_text("talo - house\ntehdä - to do\nHelsinki - Helsinki\n", encoding="utf-8")
+        run_import(self.root)
+
+        vocabulary, quizzable_vocabulary, _, _, _, candidates = _load_content(self.content, self.progress)
+
+        self.assertIn("Helsinki", vocabulary)
+        self.assertNotIn("Helsinki", quizzable_vocabulary)
+        self.assertFalse(any(candidate.card_type == "vocabulary" and candidate.base_word == "Helsinki" for candidate in candidates))
+        self.assertTrue(any(candidate.card_type == "word_form" and candidate.base_word == "Helsinki" for candidate in candidates))
 
     def test_sentence_break_uses_mastered_base_words_and_forms_and_ignores_stale_progress(self) -> None:
         self.assertEqual(build_sentence_break(self.content, self.progress), [])

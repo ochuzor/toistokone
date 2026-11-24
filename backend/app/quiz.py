@@ -205,22 +205,27 @@ def _direct_chain_families(connection: sqlite3.Connection, token_families: dict[
     return {family: frozenset(other_families) for family, other_families in related.items()}
 
 
-def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, list[str]], dict[str, list[FormCard]], dict[str, set[str]], set[str], list[Candidate]]:
+def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, list[str]], set[str], dict[str, list[FormCard]], dict[str, set[str]], set[str], list[Candidate]]:
     with sqlite3.connect(content_path) as connection:
         connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
         vocabulary: dict[str, list[str]] = {}
         for word, meaning in connection.execute("SELECT vocabulary.finnish, vocabulary_meanings.meaning FROM vocabulary JOIN vocabulary_meanings ON vocabulary.id = vocabulary_meanings.vocabulary_id ORDER BY vocabulary.id, vocabulary_meanings.ordinal"):
             vocabulary.setdefault(word, []).append(meaning)
+        quizzable_vocabulary = {
+            word for word, in connection.execute("SELECT finnish FROM vocabulary WHERE meaning_quizzable = 1")
+        }
         forms: dict[str, list[FormCard]] = {}
         for word, card_key, form, profile, prompt_label in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, word_forms.prompt_label FROM vocabulary JOIN word_forms ON vocabulary.id = word_forms.vocabulary_id ORDER BY vocabulary.id, word_forms.id"):
             forms.setdefault(word, []).append(FormCard(card_key, form, profile, prompt_label))
         token_families: dict[str, set[str]] = {}
         contextual_token_families: dict[str, set[str]] = {}
-        for base_word in vocabulary:
+        for base_word in quizzable_vocabulary:
             token = _single_token(base_word)
             if token is not None:
                 contextual_token_families.setdefault(token, set()).add(base_word)
         for base_word, form_cards in forms.items():
+            if base_word not in quizzable_vocabulary:
+                continue
             for form_card in form_cards:
                 token = _single_token(form_card.form)
                 if token is not None:
@@ -228,7 +233,12 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
                     contextual_token_families.setdefault(token, set()).add(base_word)
         mastered_families = {
             base_word for (base_word,) in connection.execute(
-                "SELECT base_word FROM progress.card_progress WHERE card_type = 'vocabulary' AND target_form = '' AND score = 3"
+                """SELECT progress.card_progress.base_word FROM progress.card_progress
+                   JOIN vocabulary ON vocabulary.finnish = progress.card_progress.base_word
+                   WHERE progress.card_progress.card_type = 'vocabulary'
+                     AND progress.card_progress.target_form = ''
+                     AND progress.card_progress.score = 3
+                     AND vocabulary.meaning_quizzable = 1"""
             )
         }
         context_support = _context_support(connection, contextual_token_families, mastered_families)
@@ -240,14 +250,14 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
             )
         }
         candidates: list[Candidate] = []
-        for word, score, last_practiced_at in connection.execute("SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at FROM vocabulary LEFT JOIN progress.card_progress ON progress.card_progress.card_type = 'vocabulary' AND progress.card_progress.base_word = vocabulary.finnish AND progress.card_progress.target_form = ''"):
+        for word, score, last_practiced_at in connection.execute("SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at FROM vocabulary LEFT JOIN progress.card_progress ON progress.card_progress.card_type = 'vocabulary' AND progress.card_progress.base_word = vocabulary.finnish AND progress.card_progress.target_form = '' WHERE vocabulary.meaning_quizzable = 1"):
             breadth, sentence_count, related_families, reinforcement_quality = context_support.get(word, (0, 0, frozenset(), 0))
             candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality, direct_chain_families.get(word, frozenset()), focus_requests.get(word)))
-        for base_word, card_key, form, profile, score, last_practiced_at, vocabulary_score in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0) FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
-            if vocabulary_score == 3 and len(_profile_options(forms[base_word], profile)) >= 2:
+        for base_word, card_key, form, profile, score, last_practiced_at, vocabulary_score, meaning_quizzable in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0), vocabulary.meaning_quizzable FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
+            if (not meaning_quizzable or vocabulary_score == 3) and len(_profile_options(forms[base_word], profile)) >= 2:
                 form_token = _single_token(form)
                 candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at, frequency_ranks.get(form_token) if form_token else None))
-    return vocabulary, forms, token_families, mastered_families, candidates
+    return vocabulary, quizzable_vocabulary, forms, token_families, mastered_families, candidates
 
 
 def _sentence_weight(sentence: str, token_families: dict[str, set[str]], mastered_families: set[str], excluded_family: str | None = None) -> int:
@@ -344,14 +354,14 @@ def _options(texts: list[str], correct_text: str, rng: random.Random) -> tuple[l
 
 def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: random.Random | None = None) -> list[dict[str, object]]:
     rng = rng or random.Random()
-    vocabulary, forms, token_families, mastered_families, candidates = _load_content(content_path, progress_path)
+    vocabulary, quizzable_vocabulary, forms, token_families, mastered_families, candidates = _load_content(content_path, progress_path)
     questions: list[dict[str, object]] = []
     selected_cards = select_candidates(candidates, batch_size, rng)
     with sqlite3.connect(content_path) as connection:
         for card in selected_cards:
             if card.card_type == "vocabulary":
                 correct_text = " / ".join(vocabulary[card.base_word])
-                distractors = list({" / ".join(meanings) for word, meanings in vocabulary.items() if word != card.base_word})
+                distractors = list({" / ".join(meanings) for word, meanings in vocabulary.items() if word != card.base_word and word in quizzable_vocabulary})
                 rng.shuffle(distractors)
                 options, correct_id = _options([correct_text, *distractors[:3]], correct_text, rng)
                 prompt, hint, english_translations = card.base_word, None, []

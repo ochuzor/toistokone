@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+import json
 from pathlib import Path
 
 from fastapi import HTTPException
 
 from backend.app.config import Settings
-from backend.app.db import initialize_progress_database
+from backend.app.db import initialize_progress_database, list_vocabulary
 from backend.app.main import add_focus_word, answer, app, content_version, delete_focus_word, focus_words, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
 from backend.app.models import AnswerRequest, FocusWordRequest, ResetRequest
 from backend.pipeline import run_import
@@ -18,6 +19,7 @@ class ProgressApiTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary_directory = tempfile.TemporaryDirectory()
         root = Path(self.temporary_directory.name)
+        self.root = root
         (root / "sentences").mkdir()
         (root / "frequency").mkdir()
         write_kaikki(root)
@@ -108,6 +110,25 @@ class ProgressApiTests(unittest.TestCase):
         with self.assertRaises(HTTPException) as raised:
             add_focus_word(FocusWordRequest(base_word="talo"))
         self.assertEqual(raised.exception.status_code, 409)
+
+    def test_forms_only_entries_are_hidden_from_vocabulary_and_focus_requests(self) -> None:
+        path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+        with path.open("a", encoding="utf-8") as source:
+            source.write(json.dumps({
+                "word": "Helsinki", "lang_code": "fi", "pos": "name",
+                "forms": [
+                    {"form": "Helsinki", "source": "declension", "tags": ["nominative", "singular"]},
+                    {"form": "Helsingin", "source": "declension", "tags": ["genitive", "singular"]},
+                    {"form": "Helsingissä", "source": "declension", "tags": ["inessive", "singular"]},
+                ],
+            }) + "\n")
+        (self.root / "dictionary.txt").write_text("talo - house\nHelsinki - Helsinki\n", encoding="utf-8")
+        run_import(self.root)
+
+        self.assertEqual([entry["finnish"] for entry in list_vocabulary(self.settings.content_db_path, self.settings.progress_db_path)], ["talo"])
+        with self.assertRaises(HTTPException) as raised:
+            add_focus_word(FocusWordRequest(base_word="Helsinki"))
+        self.assertEqual(raised.exception.status_code, 404)
 
 
 if __name__ == "__main__":
