@@ -7,6 +7,7 @@
 - [ ] Improve mobile layout
 
 ## Completed
+- [x] Confirm mastery resets before changing a card score
 - [x] Add plural-partitive form cards for common nominals
 - [x] Add personal-pronoun accusative form cards
 - [x] Remove redundant singular-nominative form cards

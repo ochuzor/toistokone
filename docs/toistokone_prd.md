@@ -67,7 +67,8 @@ Every vocabulary and word-form card starts at score 0 and has a score from 0 thr
 | 3 | 3 | 3 |
 
 - At score 3, mastery is permanent until manually reset.
-- Reset mastery sets the individual card's score to 0; other cards are unchanged.
+- Reset mastery asks for browser confirmation, then sets the individual card's
+  score to 0; other cards are unchanged.
 - After a score increase, the card's score cannot change through answers until
   the configurable score cooldown has elapsed (default: 15 minutes). Attempts
   during the cooldown are still recorded; manual reset remains immediate.

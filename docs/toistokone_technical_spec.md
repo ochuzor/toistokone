@@ -329,13 +329,14 @@ If network submission fails, keep the answered card and pending `attempt_id` loc
 Request `{ "card": { "type": "vocabulary", "base_word": "talo", "target_form": "" } }`.
 
 Response `{ "score": 0 }`. Reset only the specified card, retain its practice history.
+The practice UI asks for browser confirmation before sending this request.
 
 ## 8. Frontend state and persistence
 
 ### Routes
 
 - `/`: home with vocabulary total/mastered, word-form total/mastered, overall percentage and **Start Practicing**.
-- `/practice`: current question, queue progress bar, mastery icon, clickable options, immediate grading, reset mastery after answer, **Next**, and navigation home.
+- `/practice`: current question, queue progress bar, mastery icon, clickable options, immediate grading, confirmed reset mastery after answer, **Next**, and navigation home.
 
 ### Queue model
 

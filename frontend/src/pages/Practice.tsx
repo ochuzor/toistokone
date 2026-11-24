@@ -133,6 +133,7 @@ export default function Practice() {
 
   const reset = async () => {
     if (!current || !result) return
+    if (!window.confirm('Reset mastery for this card? Its score will return to 0.')) return
     try {
       const response = await resetMastery(current.card)
       setAnswer((previous) => previous?.result ? { ...previous, result: { ...previous.result, score_after: response.score, mastered: false } } : previous)
