@@ -60,12 +60,11 @@ class ImportReport:
             summary = self.content_health.summary()
             lines.extend([
                 "Content health:",
+                f"Words without usable Kaikki profiles: {summary['missing_profiles']}",
                 f"Base words without supporting sentences: {summary['base_without_sentences']}",
                 f"Form cards with fewer than two supporting sentences: {summary['under_supported_forms']}",
                 f"Sentences without tracked vocabulary or forms: {summary['untracked_sentences']}",
             ])
-        if self.missing_lexicon_profiles:
-            lines.extend(["", "Words without usable Kaikki profiles:", *[f"- {word}" for word in self.missing_lexicon_profiles]])
         if self.form_alternatives:
             lines.extend(["", "Alternative Kaikki forms (first candidate selected):"])
             for word in sorted(self.form_alternatives):
@@ -73,18 +72,30 @@ class ImportReport:
                 for slot, alternatives in sorted(self.form_alternatives[word].items()):
                     lines.append(f"  - {slot}: {' / '.join(alternatives)}")
         if self.content_health:
+            if self.content_health.missing_profiles:
+                lines.extend([
+                    "", "Words without usable Kaikki profiles:",
+                    *[f"- {finding.word} — {finding.priority_reason}" for finding in self.content_health.missing_profiles],
+                ])
             if self.content_health.base_without_sentences:
-                lines.extend(["", "Base words without supporting sentences:", *[f"- {word}" for word in self.content_health.base_without_sentences]])
+                lines.extend([
+                    "", "Base words without supporting sentences:",
+                    *[f"- {finding.word} — {finding.priority_reason}" for finding in self.content_health.base_without_sentences],
+                ])
             if self.content_health.under_supported_forms:
-                lines.extend(["", "Form cards with fewer than two supporting sentences:"])
-                by_base: dict[str, list] = {}
-                for finding in self.content_health.under_supported_forms:
-                    by_base.setdefault(finding.base_word, []).append(finding)
-                for base_word, findings in by_base.items():
-                    lines.append(f"- {base_word}:")
-                    lines.extend(f"  - {finding.prompt_label}: {finding.form} ({finding.sentence_count})" for finding in findings)
+                lines.extend([
+                    "", "Form cards with fewer than two supporting sentences:",
+                    *[
+                        f"- {finding.base_word} → {finding.form}: {finding.prompt_label} "
+                        f"({finding.sentence_count}) — {finding.priority_reason}"
+                        for finding in self.content_health.under_supported_forms
+                    ],
+                ])
             if self.content_health.untracked_sentences:
-                lines.extend(["", "Sentences without tracked vocabulary or forms:", *[f"- {finding.finnish}" for finding in self.content_health.untracked_sentences]])
+                lines.extend([
+                    "", "Sentences without tracked vocabulary or forms:",
+                    *[f"- {finding.finnish} — {finding.priority_reason}" for finding in self.content_health.untracked_sentences],
+                ])
         if self.fatal_errors:
             lines.extend(["", "Errors:", *self.fatal_errors])
         if self.skipped_lines:
@@ -250,6 +261,8 @@ def parse_content(project_root: Path) -> ImportedContent:
         vocabulary,
         ((base_word, form.form, form.prompt_label) for base_word, entries in forms.items() for form in entries),
         sentences,
+        progress_path=project_root / "data" / "progress.sqlite",
+        frequency_ranks={token: rank for rank, token in enumerate(frequency_words, start=1)},
     )
     return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, report)
 

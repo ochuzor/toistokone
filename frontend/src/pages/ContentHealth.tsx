@@ -9,10 +9,27 @@ const categories: { key: ContentHealthCategory; label: string; empty: string }[]
   { key: 'untracked_sentences', label: 'Untracked sentences', empty: 'Every imported sentence contains tracked vocabulary or a generated form.' },
 ]
 
+function renderFormGroups(findings: ContentHealthFinding[]) {
+  const groups = new Map<string, ContentHealthFinding[]>()
+  for (const finding of findings) {
+    const baseWord = finding.base_word ?? ''
+    groups.set(baseWord, [...(groups.get(baseWord) ?? []), finding])
+  }
+  return [...groups].map(([baseWord, forms]) => <li key={baseWord} className="health-form-group">
+    <strong>{baseWord}</strong>
+    <ul>
+      {forms.map((finding, index) => <li key={`${finding.form}-${finding.prompt_label}-${index}`}>
+        <strong>{finding.form}</strong>
+        <small>{finding.prompt_label} · {finding.sentence_count} supporting sentence{finding.sentence_count === 1 ? '' : 's'}</small>
+        <small>{finding.priority_reason}</small>
+      </li>)}
+    </ul>
+  </li>)
+}
+
 function renderFinding(category: ContentHealthCategory, finding: ContentHealthFinding) {
-  if (category === 'under_supported_forms') return <><strong>{finding.base_word} → {finding.form}</strong><small>{finding.prompt_label} · {finding.sentence_count} supporting sentence{finding.sentence_count === 1 ? '' : 's'}</small></>
-  if (category === 'untracked_sentences') return <><strong>{finding.finnish}</strong>{finding.english_translations?.map((translation) => <small key={translation}>{translation}</small>)}</>
-  return <strong>{finding.word}</strong>
+  if (category === 'untracked_sentences') return <><strong>{finding.finnish}</strong>{finding.english_translations?.map((translation) => <small key={translation}>{translation}</small>)}<small>{finding.priority_reason}</small></>
+  return <><strong>{finding.word}</strong><small>{finding.priority_reason}</small></>
 }
 
 export default function ContentHealth() {
@@ -44,12 +61,12 @@ export default function ContentHealth() {
   return <section className="card health-card">
     <p className="eyebrow">Content health</p>
     <h1>Review your learning content</h1>
-    <p className="notice">These checks help identify vocabulary and forms that need sentences, plus sentences not connected to your tracked content.</p>
+    <p className="notice">Findings are shown in priority order: focus words, recent practice, frequency, and sentence simplicity.</p>
     {error ? <p className="error" role="alert">{error}</p> : <>
       <div className="health-summary" aria-label="Content health summary">{categories.map((item) => <button className={`health-summary-item${category === item.key ? ' active' : ''}`} key={item.key} onClick={() => setCategory(item.key)}><strong>{summary?.[item.key] ?? '–'}</strong><span>{item.label}</span></button>)}</div>
       <section aria-live="polite" aria-label={selected.label}>
         <p className="notice">{loading ? 'Loading findings…' : `${total} finding${total === 1 ? '' : 's'}`}</p>
-        {!loading && findings.length === 0 ? <p>{selected.empty}</p> : <ul className="health-list">{findings.map((finding, index) => <li key={`${category}-${index}`}>{renderFinding(category, finding)}</li>)}</ul>}
+        {!loading && findings.length === 0 ? <p>{selected.empty}</p> : <ul className="health-list">{category === 'under_supported_forms' ? renderFormGroups(findings) : findings.map((finding, index) => <li key={`${category}-${index}`}>{renderFinding(category, finding)}</li>)}</ul>}
         {!loading && findings.length < total && <button className="button" onClick={() => void load(category, findings.length)}>Show more</button>}
       </section>
     </>}

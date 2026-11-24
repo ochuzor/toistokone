@@ -336,8 +336,12 @@ Returns a read-only audit of the current content database. Query parameters are
 `category` (`missing_profiles`, `base_without_sentences`,
 `under_supported_forms`, or `untracked_sentences`), `offset`, and a maximum
 `limit` of 50. Every response includes summary counts and one paginated finding
-category. The analysis uses exact case-insensitive matching and is also rendered
-in full by the pipeline's import report; it never reads or writes progress.
+category. Findings include a `priority_reason` and are ranked first by focus
+requests, then latest practice for the base word, then frequency rank. Untracked
+sentences use frequency-list coverage, commonness, and token count. The audit
+uses exact case-insensitive matching and is rendered in full by the pipeline's
+import report. It reads matching current progress rows only to rank findings;
+it never writes progress.
 
 ### `POST /api/answers`
 

@@ -159,6 +159,7 @@ class ContentHealthFinding(BaseModel):
     sentence_count: int | None = None
     finnish: str | None = None
     english_translations: list[str] | None = None
+    priority_reason: str | None = None
 
 
 class ContentHealthResponse(BaseModel):

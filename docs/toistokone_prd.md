@@ -54,7 +54,8 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
   two supporting sentences, and imported sentences without tracked vocabulary or
   forms.
 - Show summary counts and category-specific findings in batches. The import
-  report contains the complete audit.
+  report contains the complete audit. Order findings by focus requests, recent
+  practice, frequency, and sentence simplicity, with a short priority reason.
 
 ## 3. Card types
 

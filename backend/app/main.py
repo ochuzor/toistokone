@@ -88,10 +88,10 @@ def content_health(
     settings = get_settings()
     if not settings.content_db_path.exists():
         raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
-    health = get_content_health(settings.content_db_path)
+    health = get_content_health(settings.content_db_path, settings.progress_db_path)
     findings_by_category = {
-        "missing_profiles": [{"word": word} for word in health.missing_profiles],
-        "base_without_sentences": [{"word": word} for word in health.base_without_sentences],
+        "missing_profiles": [finding.__dict__ for finding in health.missing_profiles],
+        "base_without_sentences": [finding.__dict__ for finding in health.base_without_sentences],
         "under_supported_forms": [finding.__dict__ for finding in health.under_supported_forms],
         "untracked_sentences": [finding.__dict__ for finding in health.untracked_sentences],
     }

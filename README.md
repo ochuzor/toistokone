@@ -126,7 +126,8 @@ infer lemmas, translations, or word-form trees automatically.
 The import report includes a content-health audit for dictionary entries without
 generated grammar forms, base words without sentence support, form cards with
 fewer than two supporting sentences, and imported sentences that do not contain
-tracked vocabulary or forms. The **Content health** page presents the same
+tracked vocabulary or forms. Findings are prioritized by focus requests, recent
+practice, frequency, and sentence simplicity. The **Content health** page presents the same
 current-content findings in manageable categories; it is read-only and does not
 change quizzes or progress.
 

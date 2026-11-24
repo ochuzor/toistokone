@@ -78,6 +78,7 @@ export type ContentHealthFinding = {
   sentence_count?: number | null
   finnish?: string | null
   english_translations?: string[] | null
+  priority_reason?: string | null
 }
 
 export type ContentHealthResponse = {

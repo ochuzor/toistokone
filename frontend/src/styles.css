@@ -114,6 +114,9 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .health-list { display: grid; gap: .6rem; padding: 0; list-style: none; }
 .health-list li { display: grid; gap: .2rem; padding: .8rem; border-radius: .6rem; background: #f1f5f9; overflow-wrap: anywhere; }
 .health-list small { color: #475569; }
+.health-form-group > ul { display: grid; gap: .5rem; margin: .2rem 0 0; padding: 0; list-style: none; }
+.health-form-group > ul li { padding: .65rem .7rem; background: #fff; border: 1px solid #dce7df; }
+.health-form-group > ul strong { color: #162b24; }
 @media (max-width: 38rem) {
   .site-header { display: block; width: 100%; padding: .85rem .75rem 0; border: 0; }
   .site-brand { display: inline-block; margin: 0 .5rem .75rem; }
