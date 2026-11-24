@@ -313,9 +313,12 @@ The batch endpoint does **not** create or modify progress, track issued question
 
 Request `{}`. The endpoint reads the 30 most recently practised current cards
 at score 3, resolves both vocabulary cards and word-form cards to their Finnish
-surfaces, and returns up to five distinct random imported sentences containing
-one of those surfaces. It includes ordered English translations and permits
-other, unmastered words in each sentence. Stale progress rows are ignored.
+surfaces, and returns up to five distinct imported sentences containing one of
+those surfaces. It uses weighted random sampling: short sentences with more
+mastered tracked families and recent anchor surfaces are favored; one or two
+known-but-unmastered families are allowed, while three or more are strongly
+deprioritized. Untracked tokens are neutral. It includes ordered English
+translations. Stale progress rows are ignored.
 
 ```json
 {

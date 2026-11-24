@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Rank contextual reading-break sentences by mastery
 - [x] Polish all pages for mobile practice
 - [x] Support forms-only capitalized dictionary entries
 - [x] Add POS-gated plural-genitive form cards

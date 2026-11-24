@@ -7,9 +7,13 @@ import uuid
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import TypeVar
 
 from .db import consume_focus_words
 from .sentences import blank_form, matches_form, tokens
+
+
+T = TypeVar("T")
 
 
 @dataclass(frozen=True)
@@ -273,6 +277,35 @@ def _reinforcement_weight(unmastered_family_count: int) -> int:
     return (16, 8, 4, 1)[min(unmastered_family_count, 3)]
 
 
+def _sentence_break_weight(
+    sentence_tokens: set[str],
+    token_families: dict[str, set[str]],
+    mastered_families: set[str],
+    anchor_tokens: set[str],
+) -> int:
+    """Favor short, mastered context without rejecting less familiar sentences."""
+    families = set().union(*(token_families.get(token, set()) for token in sentence_tokens))
+    mastered_count = len(families.intersection(mastered_families))
+    unmastered_count = len(families - mastered_families)
+    anchor_count = len(sentence_tokens.intersection(anchor_tokens))
+    short_sentence_bonus = 1 if len(sentence_tokens) <= 8 else 0
+    familiarity_multiplier = 8 if unmastered_count <= 2 else 2 if unmastered_count == 3 else 1
+    return max(1, 3 + mastered_count * 2 + max(0, anchor_count - 1) + short_sentence_bonus) * familiarity_multiplier
+
+
+def _weighted_sample_without_replacement(
+    items: list[T], weights: list[int], limit: int, rng: random.Random
+) -> list[T]:
+    remaining_items = list(items)
+    remaining_weights = list(weights)
+    selected: list[T] = []
+    while remaining_items and len(selected) < limit:
+        index = rng.choices(range(len(remaining_items)), weights=remaining_weights, k=1)[0]
+        selected.append(remaining_items.pop(index))
+        remaining_weights.pop(index)
+    return selected
+
+
 def _matching_sentences(
     connection: sqlite3.Connection,
     form: str,
@@ -302,8 +335,11 @@ def _matching_sentences(
     return matching, weights
 
 
-def build_sentence_break(content_path: Path, progress_path: Path, limit: int = 5) -> list[dict[str, object]]:
-    """Return random contextual sentences for the 30 most recently practised mastered cards."""
+def build_sentence_break(
+    content_path: Path, progress_path: Path, limit: int = 5, rng: random.Random | None = None
+) -> list[dict[str, object]]:
+    """Return mastery-aware contextual sentences for recently practised mastered cards."""
+    rng = rng or random.Random()
     with sqlite3.connect(content_path) as connection:
         connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
         mastered_rows = connection.execute(
@@ -323,7 +359,9 @@ def build_sentence_break(content_path: Path, progress_path: Path, limit: int = 5
                ORDER BY progress.card_progress.last_practiced_at DESC
                LIMIT 30"""
         ).fetchall()
-        surfaces = [token for (surface,) in mastered_rows if surface and (token := _single_token(surface)) is not None]
+        surfaces = list(dict.fromkeys(
+            token for (surface,) in mastered_rows if surface and (token := _single_token(surface)) is not None
+        ))
         if not surfaces:
             return []
         placeholders = ", ".join("?" for _ in surfaces)
@@ -331,11 +369,49 @@ def build_sentence_break(content_path: Path, progress_path: Path, limit: int = 5
             f"""SELECT sentences.id, sentences.finnish FROM sentence_tokens
                 JOIN sentences ON sentences.id = sentence_tokens.sentence_id
                 WHERE sentence_tokens.token_casefold IN ({placeholders})
-                GROUP BY sentences.id
-                ORDER BY RANDOM()
-                LIMIT ?""",
-            [*surfaces, limit],
+                GROUP BY sentences.id""",
+            surfaces,
         ).fetchall()
+        if not sentence_rows:
+            return []
+        sentence_ids = [sentence_id for sentence_id, _ in sentence_rows]
+        sentence_token_sets: dict[int, set[str]] = defaultdict(set)
+        for start in range(0, len(sentence_ids), 900):
+            sentence_chunk = sentence_ids[start:start + 900]
+            token_placeholders = ", ".join("?" for _ in sentence_chunk)
+            for sentence_id, token in connection.execute(
+                f"SELECT sentence_id, token_casefold FROM sentence_tokens WHERE sentence_id IN ({token_placeholders})",
+                sentence_chunk,
+            ):
+                sentence_token_sets[sentence_id].add(token)
+        token_families: dict[str, set[str]] = defaultdict(set)
+        for base_word, in connection.execute("SELECT finnish FROM vocabulary WHERE meaning_quizzable = 1"):
+            token = _single_token(base_word)
+            if token is not None:
+                token_families[token].add(base_word)
+        for base_word, form in connection.execute(
+            """SELECT vocabulary.finnish, word_forms.form FROM word_forms
+               JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id
+               WHERE vocabulary.meaning_quizzable = 1"""
+        ):
+            token = _single_token(form)
+            if token is not None:
+                token_families[token].add(base_word)
+        mastered_families = {
+            base_word for (base_word,) in connection.execute(
+                """SELECT progress.card_progress.base_word FROM progress.card_progress
+                   JOIN vocabulary ON vocabulary.finnish = progress.card_progress.base_word
+                   WHERE progress.card_progress.card_type = 'vocabulary'
+                     AND progress.card_progress.target_form = ''
+                     AND progress.card_progress.score = 3
+                     AND vocabulary.meaning_quizzable = 1"""
+            )
+        }
+        weights = [
+            _sentence_break_weight(sentence_token_sets[sentence_id], token_families, mastered_families, set(surfaces))
+            for sentence_id, _ in sentence_rows
+        ]
+        sentence_rows = _weighted_sample_without_replacement(sentence_rows, weights, limit, rng)
         result: list[dict[str, object]] = []
         for sentence_id, finnish in sentence_rows:
             translations = [english for (english,) in connection.execute(

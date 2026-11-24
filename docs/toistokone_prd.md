@@ -39,9 +39,12 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - After a random 3–10 completed quiz cards, show a reading break with up to five
   Finnish sentences and their English translations. A single **Next** returns
   to quiz practice without changing any scores.
-- Reading-break sentences are selected randomly from sentences containing one
-  of the 30 most recently practised mastered card surfaces, including mastered
-  word forms. Other unmastered words in those sentences are allowed.
+- Reading-break sentences are selected with weighted randomness from sentences
+  containing one of the 30 most recently practised mastered card surfaces,
+  including mastered word forms. Short sentences with more mastered word
+  families are favored. One or two known-but-unmastered families are allowed;
+  three or more are strongly deprioritized. Tokens outside tracked families are
+  neutral.
 - No session-completion screen is required. The learner can stop and return whenever desired.
 
 ## 3. Card types

@@ -8,7 +8,7 @@ from pathlib import Path
 
 from backend.app.db import initialize_progress_database, list_focus_words, record_answer, request_focus_word
 from backend.app.models import CardReference
-from backend.app.quiz import Candidate, _context_support, _load_content, _select_diverse_new_vocabulary, _select_new_forms, _sentence_weight, build_batch, build_sentence_break, select_candidates
+from backend.app.quiz import Candidate, _context_support, _load_content, _select_diverse_new_vocabulary, _select_new_forms, _sentence_break_weight, _sentence_weight, build_batch, build_sentence_break, select_candidates
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -17,6 +17,30 @@ class SentenceWeightTests(unittest.TestCase):
     def test_sentence_weight_counts_unmastered_families_once(self) -> None:
         families = {"tuttu": {"tuttu"}, "uusi": {"uusi"}, "toinen": {"toinen"}, "kolmas": {"kolmas"}}
         self.assertEqual(_sentence_weight("Tuttu uusi toinen kolmas.", families, {"tuttu"}), 1)
+
+
+class SentenceBreakWeightTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.families = {
+            "anchor": {"anchor"}, "mastered": {"mastered"},
+            "new-one": {"new-one"}, "new-two": {"new-two"}, "new-three": {"new-three"},
+        }
+
+    def weight(self, sentence: str) -> int:
+        return _sentence_break_weight(set(sentence.split()), self.families, {"anchor", "mastered"}, {"anchor"})
+
+    def test_rewards_additional_mastered_families(self) -> None:
+        self.assertGreater(self.weight("anchor mastered neutral"), self.weight("anchor neutral filler"))
+
+    def test_allows_up_to_two_known_unmastered_families_before_sharp_penalty(self) -> None:
+        self.assertGreater(self.weight("anchor new-one new-two neutral"), 0)
+        self.assertGreater(self.weight("anchor new-one new-two neutral"), self.weight("anchor new-one new-two new-three"))
+
+    def test_untracked_tokens_are_neutral(self) -> None:
+        self.assertEqual(
+            self.weight("anchor mastered neutral filler"),
+            self.weight("anchor mastered other words"),
+        )
 
 
 class ContextSupportTests(unittest.TestCase):
