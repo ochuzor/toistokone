@@ -19,13 +19,14 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
-INDEX_VERSION = 8
+INDEX_VERSION = 9
 RECOMMENDATION_INDEX_VERSION = 3
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 PERSONAL_PRONOUNS = frozenset({"minä", "sinä", "hän", "me", "te", "he"})
 PERSONAL_PRONOUN_ACCUSATIVE_SLOT = ("accusative", "Akkusatiivi", {"accusative"})
-PLURAL_PARTITIVE_POS = frozenset({"noun", "adj", "pron", "det", "num"})
+PLURAL_NOMINAL_POS = frozenset({"noun", "adj", "pron", "det", "num"})
 PLURAL_PARTITIVE_SLOT = ("partitive-plural", "Partitiivi, monikko (mitä?)", {"partitive", "plural"})
+PLURAL_GENITIVE_SLOT = ("genitive-plural", "Genetiivi, monikko (minkä?)", {"genitive", "plural"})
 
 NOMINAL_SLOTS = (
     ("nominative-plural", "Nominatiivi, monikko (mitkä?)", {"nominative", "plural"}),
@@ -71,7 +72,7 @@ def _source_signature(path: Path, lemmas: set[str]) -> str:
 
 def _slots_for(
     form: dict[str, object], *, plural_nominal: bool = False, allow_personal_pronoun_accusative: bool = False,
-    allow_plural_partitive: bool = False,
+    allow_plural_partitive: bool = False, allow_plural_genitive: bool = False,
 ) -> list[tuple[str, str, str]]:
     text = form.get("form")
     source = form.get("source")
@@ -89,6 +90,8 @@ def _slots_for(
         return [(profile, slot, label)] if is_nominal and allow_personal_pronoun_accusative else []
     if is_nominal and not plural_nominal and allow_plural_partitive:
         slots = (*slots, PLURAL_PARTITIVE_SLOT)
+    if is_nominal and not plural_nominal and allow_plural_genitive:
+        slots = (*slots, PLURAL_GENITIVE_SLOT)
     return [(profile, slot, label) for slot, label, required in slots if required.issubset(tags)]
 
 
@@ -199,7 +202,8 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
                     if entry.get("lang_code") != "fi" or not isinstance(entry.get("word"), str):
                         continue
                     entry_pos = entry.get("pos")
-                    allow_plural_partitive = entry_pos in PLURAL_PARTITIVE_POS
+                    allow_plural_partitive = entry_pos in PLURAL_NOMINAL_POS
+                    allow_plural_genitive = entry_pos in PLURAL_NOMINAL_POS
                     entry_lemmas = _owned_lemmas(entry, lemmas)
                     pronoun_owners = _pronoun_owners(entry, lemmas) if _is_pronoun_entry(entry) else {}
                     for lemma, number in pronoun_owners.items():
@@ -219,6 +223,7 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
                                 plural_nominal=number == "plural",
                                 allow_personal_pronoun_accusative=lemma in PERSONAL_PRONOUNS,
                                 allow_plural_partitive=allow_plural_partitive,
+                                allow_plural_genitive=allow_plural_genitive,
                             ):
                                 batch.append((lemma, profile, slot, raw_form["form"], source_order))
                         if pronoun_owners:
@@ -228,6 +233,7 @@ def ensure_index(source_path: Path, index_path: Path, lemmas: set[str]) -> bool:
                                 raw_form,
                                 allow_personal_pronoun_accusative=lemma in PERSONAL_PRONOUNS,
                                 allow_plural_partitive=allow_plural_partitive,
+                                allow_plural_genitive=allow_plural_genitive,
                             ):
                                 batch.append((lemma, profile, slot, raw_form["form"], source_order))
                     if len(batch) >= 10_000:
@@ -259,6 +265,7 @@ def generated_forms(index_path: Path, word: str) -> tuple[list[GeneratedForm], d
     alternatives: dict[str, list[str]] = {}
     labels = {("nominal", slot): label for slot, label, _ in NOMINAL_SLOTS}
     labels[("nominal", PLURAL_PARTITIVE_SLOT[0])] = PLURAL_PARTITIVE_SLOT[1]
+    labels[("nominal", PLURAL_GENITIVE_SLOT[0])] = PLURAL_GENITIVE_SLOT[1]
     labels.update({("nominal-plural", slot): label for slot, label, _ in NOMINAL_PLURAL_SLOTS})
     labels.update({(profile, PERSONAL_PRONOUN_ACCUSATIVE_SLOT[0]): PERSONAL_PRONOUN_ACCUSATIVE_SLOT[1] for profile in ("nominal", "nominal-plural")})
     labels.update({("verb", slot): label for slot, label, _ in VERB_SLOTS})

@@ -181,28 +181,45 @@ class PipelineTests(unittest.TestCase):
             ("sinä", "nominal:accusative", "sinut", "Akkusatiivi"),
             ("te", "nominal-plural:accusative", "teidät", "Akkusatiivi"),
         ])
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            duplicate_plural_genitives = database.execute(
+                "SELECT COUNT(*) FROM word_forms WHERE card_key = 'nominal:genitive-plural'"
+            ).fetchone()[0]
+        self.assertEqual(duplicate_plural_genitives, 0)
 
-    def test_plural_partitives_are_limited_to_supported_nominal_parts_of_speech(self) -> None:
+    def test_plural_genitives_and_partitives_are_limited_to_supported_nominal_parts_of_speech(self) -> None:
         path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
         entries = [
-            ("kana", "noun", "kanoja"),
-            ("pieni", "adj", "pieniä"),
-            ("kolme", "num", "kolmia"),
-            ("Suomi", "name", "Suomeja"),
-            ("valmistunut", "verb", "valmistuneita"),
+            ("kana", "noun", "kanojen", "kanoja"),
+            ("pieni", "adj", "pienten", "pieniä"),
+            ("kolme", "num", "kolmien", "kolmia"),
+            ("tämä", "det", "näiden", "näitä"),
+            ("Suomi", "name", "Suomien", "Suomeja"),
+            ("valmistunut", "verb", "valmistuneiden", "valmistuneita"),
         ]
         with path.open("a", encoding="utf-8") as source:
-            for word, pos, plural_partitive in entries:
+            for word, pos, plural_genitive, plural_partitive in entries:
                 source.write(json.dumps({
                     "word": word,
                     "lang_code": "fi",
                     "pos": pos,
                     "forms": [
                         {"form": word, "source": "declension", "tags": ["nominative", "singular"]},
+                        {"form": plural_genitive, "source": "declension", "tags": ["genitive", "plural"]},
                         {"form": plural_partitive, "source": "declension", "tags": ["partitive", "plural"]},
                     ],
                 }) + "\n")
-        self.write_sources("kana - chicken\npieni - small\nkolme - three\nSuomi - Finland\nvalmistunut - graduated\n")
+            source.write(json.dumps({
+                "word": "ne",
+                "lang_code": "fi",
+                "pos": "pron",
+                "forms": [
+                    {"form": "ne", "source": "declension", "tags": ["nominative", "plural"]},
+                    {"form": "niiden", "source": "declension", "tags": ["genitive", "plural"]},
+                    {"form": "niitä", "source": "declension", "tags": ["partitive", "plural"]},
+                ],
+            }) + "\n")
+        self.write_sources("kana - chicken\npieni - small\nkolme - three\nne - they\ntämä - this\nSuomi - Finland\nvalmistunut - graduated\n")
 
         run_import(self.root)
 
@@ -214,7 +231,21 @@ class PipelineTests(unittest.TestCase):
             ("kana", "kanoja", "Partitiivi, monikko (mitä?)"),
             ("kolme", "kolmia", "Partitiivi, monikko (mitä?)"),
             ("pieni", "pieniä", "Partitiivi, monikko (mitä?)"),
+            ("tämä", "näitä", "Partitiivi, monikko (mitä?)"),
         ])
+        genitives = database.execute(
+            "SELECT vocabulary.finnish, word_forms.form, word_forms.prompt_label FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id WHERE word_forms.card_key = 'nominal:genitive-plural' ORDER BY vocabulary.finnish"
+        ).fetchall()
+        self.assertEqual(genitives, [
+            ("kana", "kanojen", "Genetiivi, monikko (minkä?)"),
+            ("kolme", "kolmien", "Genetiivi, monikko (minkä?)"),
+            ("pieni", "pienten", "Genetiivi, monikko (minkä?)"),
+            ("tämä", "näiden", "Genetiivi, monikko (minkä?)"),
+        ])
+        pronoun_genitives = database.execute(
+            "SELECT vocabulary.finnish, word_forms.card_key, word_forms.form FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id WHERE vocabulary.finnish = 'ne' AND word_forms.card_key LIKE '%:genitive'"
+        ).fetchall()
+        self.assertEqual(pronoun_genitives, [("ne", "nominal-plural:genitive", "niiden")])
 
     def test_missing_kaikki_source_and_index_is_fatal_and_preserves_databases(self) -> None:
         self.write_sources("talo - house\n")
