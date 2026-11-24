@@ -6,9 +6,9 @@ from fastapi import FastAPI, HTTPException, Query
 
 from .config import Settings, load_settings
 from .db import card_exists, get_content_revision, get_stats, initialize_progress_database, list_focus_words, list_vocabulary, record_answer, remove_focus_word, request_focus_word, reset_card
-from .models import AnswerRequest, AnswerResult, ContentVersionResponse, FocusWordRequest, FocusWordResponse, RecommendationsResponse, ResetRequest, ResetResult, StatsResponse, VocabularyResponse
+from .models import AnswerRequest, AnswerResult, ContentVersionResponse, FocusWordRequest, FocusWordResponse, RecommendationsResponse, ResetRequest, ResetResult, SentenceBreakResponse, StatsResponse, VocabularyResponse
 from .models import QuizBatchResponse
-from .quiz import build_batch
+from .quiz import build_batch, build_sentence_break
 from .recommendations import get_recommendations
 
 
@@ -130,4 +130,14 @@ def quiz_batch() -> QuizBatchResponse:
         raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
     return QuizBatchResponse(
         questions=build_batch(settings.content_db_path, settings.progress_db_path, settings.quiz_batch_size)
+    )
+
+
+@app.post("/api/practice/sentence-break", response_model=SentenceBreakResponse)
+def sentence_break() -> SentenceBreakResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    return SentenceBreakResponse(
+        sentences=build_sentence_break(settings.content_db_path, settings.progress_db_path)
     )

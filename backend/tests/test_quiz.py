@@ -8,7 +8,7 @@ from pathlib import Path
 
 from backend.app.db import initialize_progress_database, list_focus_words, record_answer, request_focus_word
 from backend.app.models import CardReference
-from backend.app.quiz import Candidate, _context_support, _load_content, _select_diverse_new_vocabulary, _select_new_forms, _sentence_weight, build_batch, select_candidates
+from backend.app.quiz import Candidate, _context_support, _load_content, _select_diverse_new_vocabulary, _select_new_forms, _sentence_weight, build_batch, build_sentence_break, select_candidates
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -195,7 +195,7 @@ class GrammarBatchTests(unittest.TestCase):
         (self.root / "frequency").mkdir()
         (self.root / "frequency" / "fi_50k.txt").write_text("talo 100\ntehdä 90\n", encoding="utf-8")
         (self.root / "dictionary.txt").write_text("talo - house\ntehdä - to do\n", encoding="utf-8")
-        (self.root / "sentences" / "lesson.txt").write_text("Talossa asun. - I live in the house.\n", encoding="utf-8")
+        (self.root / "sentences" / "lesson.txt").write_text("Talossa asun. - I live in the house.\nTalo on suuri. - The house is big.\n", encoding="utf-8")
         write_kaikki(self.root)
         run_import(self.root)
         self.content = self.root / "data" / "content.sqlite"
@@ -255,6 +255,26 @@ class GrammarBatchTests(unittest.TestCase):
 
         self.assertTrue(any(question["card"] == {"type": "vocabulary", "base_word": "talo", "target_form": ""} for question in questions))
         self.assertEqual(list_focus_words(self.content, self.progress), [])
+
+    def test_sentence_break_uses_mastered_base_words_and_forms_and_ignores_stale_progress(self) -> None:
+        self.assertEqual(build_sentence_break(self.content, self.progress), [])
+        self.master("talo")
+        self.master_form("talo", "nominal:inessive")
+        for attempt in range(3):
+            record_answer(
+                self.progress,
+                CardReference(type="vocabulary", base_word="removed-word"),
+                f"removed-{attempt}",
+                True,
+                cooldown_minutes=0,
+            )
+
+        sentences = build_sentence_break(self.content, self.progress)
+
+        self.assertEqual({sentence["finnish"] for sentence in sentences}, {"Talossa asun.", "Talo on suuri."})
+        by_finnish = {sentence["finnish"]: sentence["english_translations"] for sentence in sentences}
+        self.assertEqual(by_finnish["Talossa asun."], ["I live in the house."])
+        self.assertEqual(by_finnish["Talo on suuri."], ["The house is big."])
 
 
 if __name__ == "__main__":

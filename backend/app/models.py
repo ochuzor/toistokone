@@ -130,3 +130,12 @@ class QuizQuestion(BaseModel):
 
 class QuizBatchResponse(BaseModel):
     questions: list[QuizQuestion]
+
+
+class PracticeSentence(BaseModel):
+    finnish: str
+    english_translations: list[str]
+
+
+class SentenceBreakResponse(BaseModel):
+    sentences: list[PracticeSentence]

@@ -22,6 +22,11 @@ export type AnswerResult = {
   mastered: boolean
 }
 
+export type PracticeSentence = {
+  finnish: string
+  english_translations: string[]
+}
+
 export type Stats = {
   vocabulary: { total: number; mastered: number }
   word_forms: { total: number; mastered: number }
@@ -73,6 +78,11 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 export async function fetchBatch(): Promise<QuizQuestion[]> {
   const response = await request<{ questions: QuizQuestion[] }>('/api/quiz/batch', { method: 'POST' })
   return response.questions
+}
+
+export async function fetchSentenceBreak(): Promise<PracticeSentence[]> {
+  const response = await request<{ sentences: PracticeSentence[] }>('/api/practice/sentence-break', { method: 'POST' })
+  return response.sentences
 }
 
 export function fetchContentVersion(): Promise<{ revision: string }> {

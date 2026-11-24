@@ -36,6 +36,12 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - Answers are selected by clicking/tapping; no keyboard shortcuts are required.
 - Immediately after selection, grade the answer, highlight the correct choice, update the card score and icon, and show a **Reset mastery** control.
 - Advance only when the learner clicks **Next**; remove the answered question from the queue at that point.
+- After a random 3–10 completed quiz cards, show a reading break with up to five
+  Finnish sentences and their English translations. A single **Next** returns
+  to quiz practice without changing any scores.
+- Reading-break sentences are selected randomly from sentences containing one
+  of the 30 most recently practised mastered card surfaces, including mastered
+  word forms. Other unmastered words in those sentences are allowed.
 - No session-completion screen is required. The learner can stop and return whenever desired.
 
 ## 3. Card types

@@ -8,7 +8,7 @@ from fastapi import HTTPException
 
 from backend.app.config import Settings
 from backend.app.db import initialize_progress_database
-from backend.app.main import add_focus_word, answer, app, content_version, delete_focus_word, focus_words, quiz_batch, recommendations, reset, stats, vocabulary
+from backend.app.main import add_focus_word, answer, app, content_version, delete_focus_word, focus_words, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
 from backend.app.models import AnswerRequest, FocusWordRequest, ResetRequest
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
@@ -79,6 +79,9 @@ class ProgressApiTests(unittest.TestCase):
         batch = quiz_batch()
         self.assertEqual(len(batch.questions), 1)
         self.assertEqual(batch.questions[0].card.base_word, "talo")
+
+    def test_sentence_break_route_returns_no_sentences_without_mastered_cards(self) -> None:
+        self.assertEqual(sentence_break().sentences, [])
 
     def test_content_version_route_returns_pipeline_revision(self) -> None:
         response = content_version()

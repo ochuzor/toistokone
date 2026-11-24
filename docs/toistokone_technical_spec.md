@@ -301,6 +301,24 @@ For word-form questions, `target_form` is the stable grammar slot key (for examp
 
 The batch endpoint does **not** create or modify progress, track issued questions, or store queue state.
 
+### `POST /api/practice/sentence-break`
+
+Request `{}`. The endpoint reads the 30 most recently practised current cards
+at score 3, resolves both vocabulary cards and word-form cards to their Finnish
+surfaces, and returns up to five distinct random imported sentences containing
+one of those surfaces. It includes ordered English translations and permits
+other, unmastered words in each sentence. Stale progress rows are ignored.
+
+```json
+{
+  "sentences": [
+    { "finnish": "Talossa asun.", "english_translations": ["I live in the house."] }
+  ]
+}
+```
+
+The endpoint does not write progress or retain sentence-exposure history.
+
 ### `POST /api/answers`
 
 Request:
@@ -336,7 +354,7 @@ The practice UI asks for browser confirmation before sending this request.
 ### Routes
 
 - `/`: home with vocabulary total/mastered, word-form total/mastered, overall percentage and **Start Practicing**.
-- `/practice`: current question, queue progress bar, mastery icon, clickable options, immediate grading, confirmed reset mastery after answer, **Next**, and navigation home.
+- `/practice`: current question, queue progress bar, mastery icon, clickable options, immediate grading, confirmed reset mastery after answer, contextual reading breaks, **Next**, and navigation home.
 
 ### Queue model
 
@@ -344,10 +362,13 @@ Store locally (e.g. `localStorage` under a versioned key):
 
 ```ts
 type SavedPracticeState = {
-  schemaVersion: 2;
+  schemaVersion: 3;
   contentRevision: string;
   queue: QuizQuestion[];
   capacity: number;
+  quizzesSinceSentenceBreak: number;
+  nextSentenceBreakAt: number;
+  sentenceBreak?: { finnish: string; english_translations: string[] }[];
   currentAnswer?: {
     questionId: string;
     selectedOptionId: string;
@@ -362,6 +383,11 @@ type SavedPracticeState = {
 - Persist queue updates after fetching, answering, resetting, and clicking Next. No backend queue endpoint.
 - Click an option once; lock all options while grading/submitting. On successful backend response, highlight selected/correct options and update icon. Show reset button and enable Next.
 - Next removes the current question and moves to the next one. Never remove a question before a successful answer submission.
+- After a randomly selected 3–10 completed quizzes, request a contextual
+  reading break. Persist a returned break until its **Next** is clicked; an
+  empty or failed response skips the break and schedules another interval.
+- Existing schema-version-2 queues migrate with a fresh interval and no
+  pending reading break.
 - When remaining queue count is **<= 3**, request a new batch and append unique card keys not already in the queue. Prevent concurrent replenishment requests.
 - If backend returns zero questions, show a friendly empty-state message and a Retry button rather than an endless request loop.
 - A returning learner sees the same unanswered questions, options, and sentence choices. If a card was already answered but Next was not pressed, restore the feedback state rather than resubmitting the answer.

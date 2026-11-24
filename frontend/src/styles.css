@@ -54,6 +54,11 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .option.incorrect { border-color: #b91c1c; background: #fee2e2; color: #b91c1c; text-decoration: line-through; }
 .option.faded { opacity: .45; }
 .feedback { border-top: 1px solid #e2e8f0; padding-top: 1rem; }
+.sentence-break h1 { margin-bottom: 1.5rem; }
+.sentence-list { display: grid; gap: .85rem; margin: 1.5rem 0; }
+.practice-sentence { padding: .9rem 1rem; border-left: 3px solid #86efac; border-radius: 0 .55rem .55rem 0; background: #f0fdf4; }
+.practice-sentence p { margin: 0 0 .2rem; color: #1f2937; font-weight: 650; }
+.practice-sentence small { display: block; color: #52616f; line-height: 1.45; }
 .next-arrow { display: none; }
 .text-button { margin-right: 1rem; border: 0; background: none; color: #16704b; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; }
 .error { color: #b91c1c; font-weight: 600; }

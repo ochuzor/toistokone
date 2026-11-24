@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { fetchBatch, fetchContentVersion, type QuizQuestion, resetMastery, submitAnswer } from '../lib/api'
-import { cardKey, clearPracticeState, loadPracticeState, savePracticeState, type SavedAnswer } from '../lib/queue'
+import { fetchBatch, fetchContentVersion, fetchSentenceBreak, type PracticeSentence, type QuizQuestion, resetMastery, submitAnswer } from '../lib/api'
+import { cardKey, clearPracticeState, loadPracticeState, randomSentenceBreakInterval, savePracticeState, type SavedAnswer } from '../lib/queue'
 
 function masteryIcon(score: number): string { return ['○', '◔', '◑', '✓'][score] ?? '○' }
 function masteryLabel(score: number): string { return ['Not started', 'One correct answer', 'Two correct answers', 'Mastered'][score] ?? 'Not started' }
@@ -21,6 +21,10 @@ export default function Practice() {
   const [error, setError] = useState<string | null>(null)
   const [refillError, setRefillError] = useState<string | null>(null)
   const [queueNotice, setQueueNotice] = useState<string | null>(null)
+  const [quizzesSinceSentenceBreak, setQuizzesSinceSentenceBreak] = useState(0)
+  const [nextSentenceBreakAt, setNextSentenceBreakAt] = useState(randomSentenceBreakInterval)
+  const [sentenceBreak, setSentenceBreak] = useState<PracticeSentence[] | null>(null)
+  const [loadingSentenceBreak, setLoadingSentenceBreak] = useState(false)
   const refillInFlight = useRef(false)
   const initialLoadInFlight = useRef(false)
   const initializationInFlight = useRef(false)
@@ -33,9 +37,9 @@ export default function Practice() {
   const nominalPrompt = isNominalPrompt && current ? splitNominalPrompt(current.prompt) : null
 
   useEffect(() => {
-    if (contentRevision && queue.length) savePracticeState({ schemaVersion: 2, contentRevision, queue, capacity: Math.max(capacity, queue.length), ...(answer ? { currentAnswer: answer } : {}) })
+    if (contentRevision && (queue.length || sentenceBreak)) savePracticeState({ schemaVersion: 3, contentRevision, queue, capacity: Math.max(capacity, queue.length), quizzesSinceSentenceBreak, nextSentenceBreakAt, ...(answer ? { currentAnswer: answer } : {}), ...(sentenceBreak ? { sentenceBreak } : {}) })
     else if (!loading) clearPracticeState()
-  }, [answer, capacity, contentRevision, loading, queue])
+  }, [answer, capacity, contentRevision, loading, nextSentenceBreakAt, queue, quizzesSinceSentenceBreak, sentenceBreak])
 
   const loadInitialBatch = async (refreshed = false) => {
     if (initialLoadInFlight.current) return
@@ -47,6 +51,9 @@ export default function Practice() {
       setQueue(batch)
       setCapacity(batch.length)
       setAnswer(null)
+      setQuizzesSinceSentenceBreak(0)
+      setNextSentenceBreakAt(randomSentenceBreakInterval())
+      setSentenceBreak(null)
       setQueueNotice(refreshed ? 'Practice content was updated, so a fresh queue was loaded.' : null)
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Unable to load practice cards.')
@@ -65,10 +72,13 @@ export default function Practice() {
       const { revision } = await fetchContentVersion()
       setContentRevision(revision)
       const saved = loadPracticeState()
-      if (saved && saved.contentRevision === revision && saved.queue.length) {
+      if (saved && saved.contentRevision === revision && (saved.queue.length || saved.sentenceBreak?.length)) {
         setQueue(saved.queue)
         setCapacity(saved.capacity)
         setAnswer(saved.currentAnswer ?? null)
+        setQuizzesSinceSentenceBreak(saved.quizzesSinceSentenceBreak)
+        setNextSentenceBreakAt(saved.nextSentenceBreakAt)
+        setSentenceBreak(saved.sentenceBreak ?? null)
         resumePendingAnswer.current = !!saved.currentAnswer && !saved.currentAnswer.submitted
         setQueueNotice(null)
         setLoading(false)
@@ -127,7 +137,7 @@ export default function Practice() {
     if (!current || answer) return
     const pending: SavedAnswer = { questionId: current.question_id, selectedOptionId: optionId, attemptId: crypto.randomUUID(), submitted: false }
     setAnswer(pending)
-    if (contentRevision) savePracticeState({ schemaVersion: 2, contentRevision, queue, capacity, currentAnswer: pending })
+    if (contentRevision) savePracticeState({ schemaVersion: 3, contentRevision, queue, capacity, quizzesSinceSentenceBreak, nextSentenceBreakAt, currentAnswer: pending, ...(sentenceBreak ? { sentenceBreak } : {}) })
     void submitPendingAnswer(current, pending)
   }
 
@@ -140,15 +150,45 @@ export default function Practice() {
     } catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to reset mastery.') }
   }
 
-  const next = () => {
-    if (!answer?.submitted) return
+  const next = async () => {
+    if (sentenceBreak) {
+      setSentenceBreak(null)
+      setQuizzesSinceSentenceBreak(0)
+      setNextSentenceBreakAt(randomSentenceBreakInterval())
+      return
+    }
+    if (!answer?.submitted || loadingSentenceBreak) return
     setQueue((remaining) => remaining.slice(1))
     setAnswer(null)
     setError(null)
+    const completed = quizzesSinceSentenceBreak + 1
+    if (completed < nextSentenceBreakAt) {
+      setQuizzesSinceSentenceBreak(completed)
+      return
+    }
+    setQuizzesSinceSentenceBreak(0)
+    setLoadingSentenceBreak(true)
+    try {
+      const sentences = await fetchSentenceBreak()
+      if (sentences.length) setSentenceBreak(sentences)
+      else setNextSentenceBreakAt(randomSentenceBreakInterval())
+    } catch {
+      setNextSentenceBreakAt(randomSentenceBreakInterval())
+      setQueueNotice('A reading break could not be loaded; practice will continue normally.')
+    } finally {
+      setLoadingSentenceBreak(false)
+    }
   }
 
   if (loading) return <section className="card"><p>Loading practice cards…</p></section>
   if (error && !current) return <section className="card"><h1>Practice is unavailable</h1><p role="alert">{error}</p><button className="button" onClick={() => void initializePractice()}>Retry</button></section>
+  if (loadingSentenceBreak) return <section className="card practice-card"><p className="eyebrow">Reading break</p><p>Preparing sentences…</p></section>
+  if (sentenceBreak) return <section className="card practice-card sentence-break">
+    <p className="eyebrow">Reading break</p>
+    <h1>Read these sentences</h1>
+    <div className="sentence-list">{sentenceBreak.map((sentence) => <article className="practice-sentence" key={sentence.finnish}><p>{sentence.finnish}</p>{sentence.english_translations.map((translation) => <small key={translation}>{translation}</small>)}</article>)}</div>
+    <button aria-label="Next" className="button next-button" onClick={() => void next()}><span className="next-label">Next</span><span aria-hidden="true" className="next-arrow">→</span></button>
+  </section>
   if (!current) return <section className="card"><h1>No cards available yet</h1><p>Import content or answer vocabulary cards to unlock word forms.</p><button className="button" onClick={() => void initializePractice()}>Retry</button><Link className="button secondary" to="/">Back home</Link></section>
 
   return <section className={`card practice-card${answer?.submitted ? ' feedback-visible' : ''}`}>
@@ -171,6 +211,6 @@ export default function Practice() {
       const feedbackClass = result ? (isCorrect ? ' correct' : isSelected ? ' incorrect' : ' faded') : ''
       return <button className={`option${feedbackClass}`} disabled={!!answer} key={option.id} onClick={() => chooseOption(option.id)}>{option.text}</button>
     })}</div>
-    {answer && <div className="feedback" role="status">{result ? <><p>{result.correct ? 'Correct!' : 'Not quite — the correct answer is highlighted.'}</p><button className="text-button" onClick={() => void reset()}>Reset mastery</button><button aria-label="Next" className="button next-button" onClick={next}><span className="next-label">Next</span><span aria-hidden="true" className="next-arrow">→</span></button></> : <><p>Saving your answer…</p>{error && <button className="button" onClick={() => void submitPendingAnswer(current, answer)}>Retry submission</button>}</>}</div>}
+    {answer && <div className="feedback" role="status">{result ? <><p>{result.correct ? 'Correct!' : 'Not quite — the correct answer is highlighted.'}</p><button className="text-button" onClick={() => void reset()}>Reset mastery</button><button aria-label="Next" className="button next-button" onClick={() => void next()}><span className="next-label">Next</span><span aria-hidden="true" className="next-arrow">→</span></button></> : <><p>Saving your answer…</p>{error && <button className="button" onClick={() => void submitPendingAnswer(current, answer)}>Retry submission</button>}</>}</div>}
   </section>
 }

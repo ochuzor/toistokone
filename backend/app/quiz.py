@@ -292,6 +292,49 @@ def _matching_sentences(
     return matching, weights
 
 
+def build_sentence_break(content_path: Path, progress_path: Path, limit: int = 5) -> list[dict[str, object]]:
+    """Return random contextual sentences for the 30 most recently practised mastered cards."""
+    with sqlite3.connect(content_path) as connection:
+        connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
+        mastered_rows = connection.execute(
+            """SELECT CASE progress.card_progress.card_type
+                       WHEN 'vocabulary' THEN vocabulary.finnish
+                       ELSE word_forms.form
+                     END
+               FROM progress.card_progress
+               LEFT JOIN vocabulary ON progress.card_progress.base_word = vocabulary.finnish
+               LEFT JOIN word_forms ON progress.card_progress.card_type = 'word_form'
+                  AND word_forms.vocabulary_id = vocabulary.id
+                  AND progress.card_progress.target_form = word_forms.card_key
+               WHERE progress.card_progress.score = 3
+                 AND ((progress.card_progress.card_type = 'vocabulary'
+                       AND progress.card_progress.target_form = '' AND vocabulary.id IS NOT NULL)
+                      OR word_forms.id IS NOT NULL)
+               ORDER BY progress.card_progress.last_practiced_at DESC
+               LIMIT 30"""
+        ).fetchall()
+        surfaces = [token for (surface,) in mastered_rows if surface and (token := _single_token(surface)) is not None]
+        if not surfaces:
+            return []
+        placeholders = ", ".join("?" for _ in surfaces)
+        sentence_rows = connection.execute(
+            f"""SELECT sentences.id, sentences.finnish FROM sentence_tokens
+                JOIN sentences ON sentences.id = sentence_tokens.sentence_id
+                WHERE sentence_tokens.token_casefold IN ({placeholders})
+                GROUP BY sentences.id
+                ORDER BY RANDOM()
+                LIMIT ?""",
+            [*surfaces, limit],
+        ).fetchall()
+        result: list[dict[str, object]] = []
+        for sentence_id, finnish in sentence_rows:
+            translations = [english for (english,) in connection.execute(
+                "SELECT english FROM sentence_translations WHERE sentence_id = ? ORDER BY ordinal", (sentence_id,)
+            )]
+            result.append({"finnish": finnish, "english_translations": translations})
+        return result
+
+
 def _options(texts: list[str], correct_text: str, rng: random.Random) -> tuple[list[dict[str, str]], str]:
     options = [{"id": str(uuid.uuid4()), "text": text} for text in texts]
     correct_id = next(option["id"] for option in options if option["text"] == correct_text)
