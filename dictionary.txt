@@ -364,7 +364,6 @@ tosissaan - in earnest / sincerely / seriously
 pieli - doorpost / gatepost / mast
 julkinen - public / unrestricted
 yhtä - as / like / equally / same / equal
-
 koti - home / residence / domestic / native
 tori - marketplace / town square
 uimaranta - beach
@@ -374,6 +373,63 @@ Turku - Turku
 Helsinki - Helsinki
 Vantaa - Vantaa
 Tampere - Tampere
-Irlanti - Irlanti
-Itävalta - Itävalta
+Irlanti - Ireland
+Itävalta - Austria
 eteinen - lobby / vestible / hallway
+noin - approximately / voilà / around / roughly
+tuntea - to know / to be acquainted with sb/smth / to sense/feel
+Tornio - Tornio
+Lontoo - London
+Thaimaa - Thailand
+Joensuu - Joensuu
+teatteri - theatre / playhouse
+konsertti - concert
+kioski - kiosk
+katu - street / avenue
+Ahvenanmaa - Åland
+Rauma - Rauma
+terassi - terrace / patio
+maaseutu - country / countryside / rural area
+kukka - flower
+paikka - place / location
+päiväkoti - day care center / kindergarten / preschool
+pysäkki - (bus) stop / stage / stand
+urheilukenttä - sport field / playing field
+taivas - sky / heaven / celestial
+ulkona - outside / outdoors
+kaukana - far / distant / far away
+takana - behind / after / in the back
+etänä - remote / remotely
+sisään - inside / indoors
+usein - often / frequently
+kirjasto - library
+olohuone - living room
+museo - museum
+ilma - air / weather / wind / atmosphere
+katto - ceiling / roof
+Pariisi - Paris
+New York - New York
+Brasilia - Brazil
+Australia - Australia
+venäjä - Russian
+Venäjä - Russia
+Filippiinit - Philippines
+Pori - Pori
+Vaasa - Vaasa
+Oulu - Oulu
+Salo - Salo
+salo - deep forest / wilderness
+Kuopio - Kuopio
+Jyväskylä - Jyväskylä
+Riihimäki - Riihimäki
+Hyvinkää - Hyvinkää
+huoltoasema - garage / gas station
+Islanti - Iceland
+Istanbul - Istanbul
+ahdas - narrow / tight / cramped / strict
+Espoo - Espoo
+keittiö - kitchen / cuisine
+kreikka - Greek language
+Kreikka - Greece
+Seinäjoki - Seinäjoki
+seinä - wall / mains
