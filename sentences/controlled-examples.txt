@@ -1489,7 +1489,7 @@ Työntekijät palaavat tehtaalta. - The workers are returning from the factory.
 Haen tavarat tehtaalta. - I pick up the goods from the factory.
 
 Kuulen melua tehtaasta. - I hear noise from the factory.
-Hän kertoo tarinan vanhasta tehtaasta. - He tells a story about an old factory. / She tells a story about an old factory.
+Hän kertoo tarinan vanhasta tehtaasta. - He/she tells a story about an old factory.
 
 Kunnan kirjasto on keskustassa. - The municipality's library is downtown.
 Tunnen kunnan johtajan. - I know the head of the municipality.
@@ -1519,7 +1519,7 @@ Tehtaiden työntekijät ovat lakossa. - The factory workers are on strike.
 Tehtaiden lähellä on paljon asuntoja. - There are many homes near the factories.
 
 Näin uutiset televisiolla. - I watched the news on television.
-Hän katsoo elokuvia vanhalla televisiolla. - He watches movies on an old television. / She watches movies on an old television.
+Hän katsoo elokuvia vanhalla televisiolla. - He/she watches movies on an old television.
 
 Minun nimeni on Anna. - My name is Anna.
 Kirjoitan nimeni paperille. - I write my name on the paper.
@@ -1531,7 +1531,7 @@ Siirrä pyörä pois tieltä. - Move the bicycle out of the way.
 Auto kääntyi pois tieltä. - The car turned off the road.
 Söin osan kakusta. - I ate part of the cake.
 Luin osan kirjasta. - I read part of the book.
-Tunnen hänet vain etunimellä. - I know him only by his first name. / I know her only by her first name.
+Tunnen hänet vain etunimellä. - I know him/her only by his first name.
 Tämä paikka tunnetaan toisella nimellä. - This place is known by another name.
 Kävelen metsässä. - I am walking in the forest.
 Metsässä on paljon lintuja. - There are many birds in the forest.
@@ -1566,11 +1566,11 @@ Täällä on paljon metsää. - There is a lot of forest here.
 Näen oppilaita pihalla. - I see pupils in the yard.
 Koulussa on paljon oppilaita. - There are many pupils at the school.
 Odotan vuoron alkua. - I am waiting for the start of the shift.
-Hän sai vuoron ensimmäisenä. - He got a turn first. / She got a turn first.
+Hän sai vuoron ensimmäisenä. - He/she got a turn first.
 Oppilaiden kirjat ovat pöydällä. - The pupils' books are on the table.
 Oppilaiden vanhemmat tulivat kouluun. - The pupils' parents came to the school.
 Tarvitsen lisää opetusta. - I need more instruction.
-Hän saa opetusta suomeksi. - He receives instruction in Finnish. / She receives instruction in Finnish.
+Hän saa opetusta suomeksi. - He/she receives instruction in Finnish.
 Osalla lapsista on polkupyörä. - Some of the children have a bicycle.
 Osalla työntekijöistä on vapaapäivä. - Some of the employees have a day off.
 Lapset menevät kouluihin aamulla. - The children go to schools in the morning.
@@ -1578,7 +1578,7 @@ Kaupunki lähettää kirjoja kouluihin. - The city sends books to schools.
 Haluan tutustua taiteeseen. - I want to get to know art.
 Tutustumme taiteeseen museossa. - We get to know art at the museum.
 Museo antaa tilaa taiteelle. - The museum gives space to art.
-Hän omistaa paljon aikaa taiteelle. - He devotes a lot of time to art. / She devotes a lot of time to art.
+Hän omistaa paljon aikaa taiteelle. - He/she devotes a lot of time to art.
 
 Odotan kaksi tuntia. - I will wait for two hours.
 Opiskelen suomea kolme tuntia päivässä. - I study Finnish for three hours a day.
@@ -1626,7 +1626,7 @@ Kahvi maksaa kolme euroa. - The coffee costs three euros.
 Minulla on vain viisi euroa. - I only have five euros.
 
 Ohjelmassa on paljon musiikkia. - There is a lot of music in the program.
-Hän esiintyy uudessa ohjelmassa. - He is appearing in a new program. / She is appearing in a new program.
+Hän esiintyy uudessa ohjelmassa. - He/she is appearing in a new program.
 
 Uudet lait tulevat voimaan tammikuussa. - The new laws come into effect in January.
 Kaikki lait eivät ole samanlaisia. - Not all laws are the same.
@@ -1635,7 +1635,7 @@ Ymmärrän tilanteesi hyvin. - I understand your situation well.
 Tilanteesi kuulostaa vaikealta. - Your situation sounds difficult.
 
 Yritys maksaa veroja valtiolle. - The company pays taxes to the state.
-Hän työskentelee valtiolle. - He works for the state. / She works for the state.
+Hän työskentelee valtiolle. - He/she works for the state.
 
 Tilanteemme on nyt parempi. - Our situation is better now.
 Meidän täytyy selittää tilanteemme opettajalle. - We need to explain our situation to the teacher.
@@ -1643,7 +1643,7 @@ Meidän täytyy selittää tilanteemme opettajalle. - We need to explain our sit
 Nämä tulot ovat pienet. - This income is low.
 Perheen tulot kasvoivat viime vuonna. - The family's income increased last year.
 
-Hänellä on paljon tuloja. - He has a lot of income. / She has a lot of income.
+Hänellä on paljon tuloja. - He/she has a lot of income.
 Tarvitsemme lisää tuloja. - We need more income.
 
 Opiskelijat tekevät tehtäviä tunneilla. - The students do exercises during lessons.
@@ -1698,19 +1698,19 @@ Minulle tuli mieleen hyvä idea. - A good idea came to mind.
 Hänen nimensä ei tule mieleen. - I can't remember his name.
 
 Tarvitsen tukea opiskeluun. - I need support for my studies.
-Hän saa tukea ystäviltään. - He gets support from his friends. / She gets support from her friends.
+Hän saa tukea ystäviltään. - He/she gets support from his friends.
 
 Odotimme vastausta useita kuukausia. - We waited for an answer for many months.
-Hän matkusti useita kuukausia. - He traveled for several months. / She traveled for several months.
+Hän matkusti useita kuukausia. - He/she traveled for several months.
 
 Saan palkkaa joka kuukausi. - I get paid every month.
-Hän pyytää parempaa palkkaa. - He is asking for better pay. / She is asking for better pay.
+Hän pyytää parempaa palkkaa. - He/she is asking for better pay.
 
 Lapsi on hoidossa päiväkodissa. - The child is in daycare.
 Potilas on hoidossa sairaalassa. - The patient is receiving treatment at the hospital.
 
 Joukkue juhli voiton jälkeen. - The team celebrated after the victory.
-Hän varmisti voiton viime hetkellä. - He secured the victory at the last moment. / She secured the victory at the last moment.
+Hän varmisti voiton viime hetkellä. - He/she secured the victory at the last moment.
 
 Potilas tarvitsee hoitoa. - The patient needs treatment.
 Koira saa hyvää hoitoa. - The dog receives good care.
@@ -1719,13 +1719,13 @@ Käyn uimassa kerran kuukaudessa. - I go swimming once a month.
 Maksan vuokran kerran kuukaudessa. - I pay the rent once a month.
 
 Haluan tietää todellisen syyn. - I want to know the real reason.
-Hän kertoi todellisen tarinan. - He told the true story. / She told the true story.
+Hän kertoi todellisen tarinan. - He/she told the true story.
 
-Hän meni hoitoon eilen. - He went for treatment yesterday. / She went for treatment yesterday.
+Hän meni hoitoon eilen. - He/she went for treatment yesterday.
 Potilas pääsi hoitoon nopeasti. - The patient received treatment quickly.
 
 Lääkäri huomasi syövän ajoissa. - The doctor detected the cancer in time.
-Lääkäri vahvisti syövän diagnoosin viime vuonna. - He received a cancer diagnosis last year. / She received a cancer diagnosis last year.
+Lääkäri vahvisti syövän diagnoosin viime vuonna. - He/she received a cancer diagnosis last year.
 
 Saan palkan perjantaina. - I get my salary on Friday.
 Työnantaja maksaa palkan ajoissa. - The employer pays the salary on time.
@@ -1749,13 +1749,13 @@ Päätöksen perusteet ovat selkeät. - The reasons for the decision are clear.
 Hakemuksen perusteet pitää kirjoittaa tarkasti. - The grounds for the application must be written carefully.
 
 Työskentelen pienessä yrityksessä. - I work at a small company.
-Hän aloitti uudessa yrityksessä. - He started at a new company. / She started at a new company.
+Hän aloitti uudessa yrityksessä. - He/she started at a new company.
 
 Meidän palkat nousevat ensi vuonna. - Salaries will rise next year.
 Tämän alan palkat ovat hyvät. - Salaries in this field are good.
 
 Lähetän laskun firmalle. - I will send the invoice to the company.
-Hän myy palveluja firmalle. - He sells services to the company. / She sells services to the company.
+Hän myy palveluja firmalle. - He/she sells services to the company.
 
 Puhumme palkasta huomenna. - We will talk about the salary tomorrow.
 Kysyin palkasta esimieheltä. - I am satisfied with the information I received about the salary.
@@ -1763,7 +1763,7 @@ Kysyin palkasta esimieheltä. - I am satisfied with the information I received a
 Keskustelimme veroista illalla. - We discussed taxes in the evening.
 Haluan oppia lisää veroista. - I want to learn more about taxes.
 
-Hän kertoi joukkueen voitoista. - He talked about the team's victories. / She talked about the team's victories.
+Hän kertoi joukkueen voitoista. - He/she talked about the team's victories.
 Olen iloinen ystäväni voitoista. - I am happy about my friend's victories.
 
 Näiden verojen määrä vaihtelee. - The amount of taxes varies.
