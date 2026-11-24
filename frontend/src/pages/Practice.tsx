@@ -187,7 +187,7 @@ export default function Practice() {
     <p className="eyebrow">Reading break</p>
     <h1>Read these sentences</h1>
     <div className="sentence-list">{sentenceBreak.map((sentence) => <article className="practice-sentence" key={sentence.finnish}><p>{sentence.finnish}</p>{sentence.english_translations.map((translation) => <small key={translation}>{translation}</small>)}</article>)}</div>
-    <button aria-label="Next" className="button next-button" onClick={() => void next()}><span className="next-label">Next</span><span aria-hidden="true" className="next-arrow">→</span></button>
+    <button className="button next-button" onClick={() => void next()}>Next</button>
   </section>
   if (!current) return <section className="card"><h1>No cards available yet</h1><p>Import content or answer vocabulary cards to unlock word forms.</p><button className="button" onClick={() => void initializePractice()}>Retry</button><Link className="button secondary" to="/">Back home</Link></section>
 
@@ -211,6 +211,6 @@ export default function Practice() {
       const feedbackClass = result ? (isCorrect ? ' correct' : isSelected ? ' incorrect' : ' faded') : ''
       return <button className={`option${feedbackClass}`} disabled={!!answer} key={option.id} onClick={() => chooseOption(option.id)}>{option.text}</button>
     })}</div>
-    {answer && <div className="feedback" role="status">{result ? <><p>{result.correct ? 'Correct!' : 'Not quite — the correct answer is highlighted.'}</p><button className="text-button" onClick={() => void reset()}>Reset mastery</button><button aria-label="Next" className="button next-button" onClick={() => void next()}><span className="next-label">Next</span><span aria-hidden="true" className="next-arrow">→</span></button></> : <><p>Saving your answer…</p>{error && <button className="button" onClick={() => void submitPendingAnswer(current, answer)}>Retry submission</button>}</>}</div>}
+    {answer && <div className="feedback" role="status">{result ? <><p>{result.correct ? 'Correct!' : 'Not quite — the correct answer is highlighted.'}</p><button className="text-button" onClick={() => void reset()}>Reset mastery</button><button className="button next-button" onClick={() => void next()}>Next</button></> : <><p>Saving your answer…</p>{error && <button className="button" onClick={() => void submitPendingAnswer(current, answer)}>Retry submission</button>}</>}</div>}
   </section>
 }
