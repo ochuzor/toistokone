@@ -7,6 +7,7 @@
 - [ ] Improve mobile layout
 
 ## Completed
+- [x] Add plural-partitive form cards for common nominals
 - [x] Add personal-pronoun accusative form cards
 - [x] Remove redundant singular-nominative form cards
 - [x] Refresh stale practice queues after content imports

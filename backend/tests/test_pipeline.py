@@ -182,6 +182,40 @@ class PipelineTests(unittest.TestCase):
             ("te", "nominal-plural:accusative", "teidät", "Akkusatiivi"),
         ])
 
+    def test_plural_partitives_are_limited_to_supported_nominal_parts_of_speech(self) -> None:
+        path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
+        entries = [
+            ("kana", "noun", "kanoja"),
+            ("pieni", "adj", "pieniä"),
+            ("kolme", "num", "kolmia"),
+            ("Suomi", "name", "Suomeja"),
+            ("valmistunut", "verb", "valmistuneita"),
+        ]
+        with path.open("a", encoding="utf-8") as source:
+            for word, pos, plural_partitive in entries:
+                source.write(json.dumps({
+                    "word": word,
+                    "lang_code": "fi",
+                    "pos": pos,
+                    "forms": [
+                        {"form": word, "source": "declension", "tags": ["nominative", "singular"]},
+                        {"form": plural_partitive, "source": "declension", "tags": ["partitive", "plural"]},
+                    ],
+                }) + "\n")
+        self.write_sources("kana - chicken\npieni - small\nkolme - three\nSuomi - Finland\nvalmistunut - graduated\n")
+
+        run_import(self.root)
+
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            forms = database.execute(
+                "SELECT vocabulary.finnish, word_forms.form, word_forms.prompt_label FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id WHERE word_forms.card_key = 'nominal:partitive-plural' ORDER BY vocabulary.finnish"
+            ).fetchall()
+        self.assertEqual(forms, [
+            ("kana", "kanoja", "Partitiivi, monikko (mitä?)"),
+            ("kolme", "kolmia", "Partitiivi, monikko (mitä?)"),
+            ("pieni", "pieniä", "Partitiivi, monikko (mitä?)"),
+        ])
+
     def test_missing_kaikki_source_and_index_is_fatal_and_preserves_databases(self) -> None:
         self.write_sources("talo - house\n")
         (self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl").unlink()
