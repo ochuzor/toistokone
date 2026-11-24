@@ -433,3 +433,4 @@ kreikka - Greek language
 Kreikka - Greece
 Seinäjoki - Seinäjoki
 seinä - wall / mains
+aamu - morning

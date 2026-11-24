@@ -606,10 +606,10 @@ Hän on muualla. - He/She is elsewhere.
 Täällä paistaa aurinko. - The sun is shining here.
 
 # Aika (time) 
-aamulla - in the morning
-päivällä - in the afternoon
-illalla - in the evening
-yöllä - in the night
+# aamulla - in the morning
+# päivällä - in the afternoon
+# illalla - in the evening
+# yöllä - in the night
 viisi minuuttia - five minutes to
 viisi minuuttia yli - five minutes past
 viittä vaille - five (min) short of
