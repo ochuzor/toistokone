@@ -105,6 +105,15 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .focus-list small { color: #475569; }
 .focus-list .text-button { margin: 0; }
 .small-button { margin: 0; padding: .5rem .7rem; font-size: .85rem; }
+.health-card { width: min(100%, 58rem); min-width: 0; }
+.health-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; margin: 1.5rem 0; }
+.health-summary-item { display: grid; gap: .3rem; min-height: 5.5rem; padding: .85rem; border: 1px solid #dce7df; border-radius: .65rem; background: #f8faf9; color: #475569; cursor: pointer; font: inherit; text-align: left; }
+.health-summary-item strong { color: #162b24; font-size: 1.4rem; }
+.health-summary-item span { font-size: .8rem; font-weight: 650; line-height: 1.25; }
+.health-summary-item.active { border-color: #16704b; background: #e8f5eb; }
+.health-list { display: grid; gap: .6rem; padding: 0; list-style: none; }
+.health-list li { display: grid; gap: .2rem; padding: .8rem; border-radius: .6rem; background: #f1f5f9; overflow-wrap: anywhere; }
+.health-list small { color: #475569; }
 @media (max-width: 38rem) {
   .site-header { display: block; width: 100%; padding: .85rem .75rem 0; border: 0; }
   .site-brand { display: inline-block; margin: 0 .5rem .75rem; }
@@ -114,7 +123,7 @@ button.button { border: 0; cursor: pointer; font: inherit; }
   .page-content { align-items: start; padding: 1.25rem .75rem; }
   .card { border-radius: .75rem; padding: 1.5rem 1.25rem; }
   .card h1 { font-size: clamp(1.7rem, 9vw, 2.15rem); }
-  .stats-grid, .activity-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats-grid, .activity-grid, .health-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .activity-heading { align-items: start; flex-direction: column; }
   .activity-heading > strong { text-align: left; }
   .practice-card { padding: 1.25rem; }

@@ -121,6 +121,15 @@ supporting Finnish-English examples. They are review aids only: add accepted
 words manually to `dictionary.txt`, then rerun the pipeline. The app does not
 infer lemmas, translations, or word-form trees automatically.
 
+### Content health
+
+The import report includes a content-health audit for dictionary entries without
+generated grammar forms, base words without sentence support, form cards with
+fewer than two supporting sentences, and imported sentences that do not contain
+tracked vocabulary or forms. The **Content health** page presents the same
+current-content findings in manageable categories; it is read-only and does not
+change quizzes or progress.
+
 ## Configuration and v1 limits
 
 `.env` sets `QUIZ_BATCH_SIZE` (default `20`), `CARD_SCORE_COOLDOWN_MINUTES` (default `15`), and local content/progress database paths. After a card's score increases, answer attempts continue to be recorded but cannot change that card's score until its cooldown expires. Set `CARD_SCORE_COOLDOWN_MINUTES=0` to disable this delay. ToistoKone is local-only: it has no accounts or sync, and ambiguous Kaikki spellings are reported while the first ordinary candidate is selected. Content is imported from your files; the app does not generate or validate sentences.

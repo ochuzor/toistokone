@@ -66,6 +66,28 @@ export type VocabularyEntry = {
   focus_requested_at: string | null
 }
 
+export type ContentHealthCategory = 'missing_profiles' | 'base_without_sentences' | 'under_supported_forms' | 'untracked_sentences'
+
+export type ContentHealthSummary = Record<ContentHealthCategory, number>
+
+export type ContentHealthFinding = {
+  word?: string | null
+  base_word?: string | null
+  form?: string | null
+  prompt_label?: string | null
+  sentence_count?: number | null
+  finnish?: string | null
+  english_translations?: string[] | null
+}
+
+export type ContentHealthResponse = {
+  summary: ContentHealthSummary
+  category: ContentHealthCategory
+  offset: number
+  total: number
+  findings: ContentHealthFinding[]
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(path, options)
   if (!response.ok) {
@@ -107,6 +129,10 @@ export async function fetchVocabulary(query: string): Promise<VocabularyEntry[]>
 export async function fetchFocusWords(): Promise<VocabularyEntry[]> {
   const response = await request<{ vocabulary: VocabularyEntry[] }>('/api/focus-words')
   return response.vocabulary
+}
+
+export function fetchContentHealth(category: ContentHealthCategory, offset = 0): Promise<ContentHealthResponse> {
+  return request(`/api/content-health?category=${category}&offset=${offset}`)
 }
 
 export async function addFocusWord(baseWord: string): Promise<void> {

@@ -139,3 +139,31 @@ class PracticeSentence(BaseModel):
 
 class SentenceBreakResponse(BaseModel):
     sentences: list[PracticeSentence]
+
+
+ContentHealthCategory = Literal["missing_profiles", "base_without_sentences", "under_supported_forms", "untracked_sentences"]
+
+
+class ContentHealthSummary(BaseModel):
+    missing_profiles: int
+    base_without_sentences: int
+    under_supported_forms: int
+    untracked_sentences: int
+
+
+class ContentHealthFinding(BaseModel):
+    word: str | None = None
+    base_word: str | None = None
+    form: str | None = None
+    prompt_label: str | None = None
+    sentence_count: int | None = None
+    finnish: str | None = None
+    english_translations: list[str] | None = None
+
+
+class ContentHealthResponse(BaseModel):
+    summary: ContentHealthSummary
+    category: ContentHealthCategory
+    offset: int
+    total: int
+    findings: list[ContentHealthFinding]

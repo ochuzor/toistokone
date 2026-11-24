@@ -330,6 +330,15 @@ translations. Stale progress rows are ignored.
 
 The endpoint does not write progress or retain sentence-exposure history.
 
+### `GET /api/content-health`
+
+Returns a read-only audit of the current content database. Query parameters are
+`category` (`missing_profiles`, `base_without_sentences`,
+`under_supported_forms`, or `untracked_sentences`), `offset`, and a maximum
+`limit` of 50. Every response includes summary counts and one paginated finding
+category. The analysis uses exact case-insensitive matching and is also rendered
+in full by the pipeline's import report; it never reads or writes progress.
+
 ### `POST /api/answers`
 
 Request:

@@ -11,6 +11,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from backend.app.config import PROJECT_ROOT
+from backend.app.content_health import ContentHealth, analyze_content_health
 from backend.app.sentences import tokens
 from backend.kaikki import GeneratedForm, ensure_index, ensure_recommendation_index, generated_forms, recommendation_lemmas
 
@@ -35,6 +36,7 @@ class ImportReport:
     recommendation_lemma_index_rebuilt: bool = False
     missing_lexicon_profiles: list[str] = field(default_factory=list)
     form_alternatives: dict[str, dict[str, list[str]]] = field(default_factory=dict)
+    content_health: ContentHealth | None = None
     fatal_errors: list[str] = field(default_factory=list)
     skipped_lines: list[str] = field(default_factory=list)
 
@@ -54,6 +56,14 @@ class ImportReport:
             f"Form slots with alternatives: {sum(len(slots) for slots in self.form_alternatives.values())}",
             f"Errors: {len(self.fatal_errors)}", f"Skipped lines: {len(self.skipped_lines)}",
         ]
+        if self.content_health:
+            summary = self.content_health.summary()
+            lines.extend([
+                "Content health:",
+                f"Base words without supporting sentences: {summary['base_without_sentences']}",
+                f"Form cards with fewer than two supporting sentences: {summary['under_supported_forms']}",
+                f"Sentences without tracked vocabulary or forms: {summary['untracked_sentences']}",
+            ])
         if self.missing_lexicon_profiles:
             lines.extend(["", "Words without usable Kaikki profiles:", *[f"- {word}" for word in self.missing_lexicon_profiles]])
         if self.form_alternatives:
@@ -62,6 +72,19 @@ class ImportReport:
                 lines.append(f"- {word}:")
                 for slot, alternatives in sorted(self.form_alternatives[word].items()):
                     lines.append(f"  - {slot}: {' / '.join(alternatives)}")
+        if self.content_health:
+            if self.content_health.base_without_sentences:
+                lines.extend(["", "Base words without supporting sentences:", *[f"- {word}" for word in self.content_health.base_without_sentences]])
+            if self.content_health.under_supported_forms:
+                lines.extend(["", "Form cards with fewer than two supporting sentences:"])
+                by_base: dict[str, list] = {}
+                for finding in self.content_health.under_supported_forms:
+                    by_base.setdefault(finding.base_word, []).append(finding)
+                for base_word, findings in by_base.items():
+                    lines.append(f"- {base_word}:")
+                    lines.extend(f"  - {finding.prompt_label}: {finding.form} ({finding.sentence_count})" for finding in findings)
+            if self.content_health.untracked_sentences:
+                lines.extend(["", "Sentences without tracked vocabulary or forms:", *[f"- {finding.finnish}" for finding in self.content_health.untracked_sentences]])
         if self.fatal_errors:
             lines.extend(["", "Errors:", *self.fatal_errors])
         if self.skipped_lines:
@@ -223,6 +246,11 @@ def parse_content(project_root: Path) -> ImportedContent:
     report.sentence_count = len(sentences)
     report.translation_count = sum(len(translations) for translations in sentences.values())
     report.frequency_entry_count = len(frequency_words)
+    report.content_health = analyze_content_health(
+        vocabulary,
+        ((base_word, form.form, form.prompt_label) for base_word, entries in forms.items() for form in entries),
+        sentences,
+    )
     return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, report)
 
 

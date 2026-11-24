@@ -47,6 +47,15 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
   neutral.
 - No session-completion screen is required. The learner can stop and return whenever desired.
 
+### Content health (`/content-health`)
+
+- Show a read-only audit of current content: dictionary entries without generated
+  grammar forms, base words without sentence support, form cards with fewer than
+  two supporting sentences, and imported sentences without tracked vocabulary or
+  forms.
+- Show summary counts and category-specific findings in batches. The import
+  report contains the complete audit.
+
 ## 3. Card types
 
 ### Vocabulary cards

@@ -6,7 +6,8 @@ from fastapi import FastAPI, HTTPException, Query
 
 from .config import Settings, load_settings
 from .db import card_exists, get_content_revision, get_stats, initialize_progress_database, list_focus_words, list_vocabulary, record_answer, remove_focus_word, request_focus_word, reset_card
-from .models import AnswerRequest, AnswerResult, ContentVersionResponse, FocusWordRequest, FocusWordResponse, RecommendationsResponse, ResetRequest, ResetResult, SentenceBreakResponse, StatsResponse, VocabularyResponse
+from .content_health import get_content_health
+from .models import AnswerRequest, AnswerResult, ContentHealthCategory, ContentHealthResponse, ContentVersionResponse, FocusWordRequest, FocusWordResponse, RecommendationsResponse, ResetRequest, ResetResult, SentenceBreakResponse, StatsResponse, VocabularyResponse
 from .models import QuizBatchResponse
 from .quiz import build_batch, build_sentence_break
 from .recommendations import get_recommendations
@@ -76,6 +77,28 @@ def recommendations() -> RecommendationsResponse:
     if not settings.content_db_path.exists():
         raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
     return RecommendationsResponse(recommendations=get_recommendations(settings.content_db_path))
+
+
+@app.get("/api/content-health", response_model=ContentHealthResponse)
+def content_health(
+    category: ContentHealthCategory = Query(default="missing_profiles"),
+    offset: int = Query(default=0, ge=0),
+    limit: int = Query(default=50, ge=1, le=50),
+) -> ContentHealthResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    health = get_content_health(settings.content_db_path)
+    findings_by_category = {
+        "missing_profiles": [{"word": word} for word in health.missing_profiles],
+        "base_without_sentences": [{"word": word} for word in health.base_without_sentences],
+        "under_supported_forms": [finding.__dict__ for finding in health.under_supported_forms],
+        "untracked_sentences": [finding.__dict__ for finding in health.untracked_sentences],
+    }
+    findings = findings_by_category[category]
+    return ContentHealthResponse(
+        summary=health.summary(), category=category, offset=offset, total=len(findings), findings=findings[offset:offset + limit]
+    )
 
 
 @app.get("/api/content-version", response_model=ContentVersionResponse)

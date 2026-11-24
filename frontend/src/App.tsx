@@ -2,6 +2,7 @@ import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 
 import Home from './pages/Home'
 import FocusWords from './pages/FocusWords'
+import ContentHealth from './pages/ContentHealth'
 import Practice from './pages/Practice'
 import Recommendations from './pages/Recommendations'
 
@@ -18,6 +19,7 @@ export default function App() {
           <NavLink to="/practice">Practice</NavLink>
           <NavLink to="/recommendations">Recommendations</NavLink>
           <NavLink to="/focus-words">Focus words</NavLink>
+          <NavLink to="/content-health">Content health</NavLink>
         </nav>
       </header>
       <main className="page-content">
@@ -26,6 +28,7 @@ export default function App() {
           <Route path="/practice" element={<Practice />} />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/focus-words" element={<FocusWords />} />
+          <Route path="/content-health" element={<ContentHealth />} />
         </Routes>
       </main>
     </div>
