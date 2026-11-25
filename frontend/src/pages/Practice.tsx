@@ -12,6 +12,12 @@ function splitNominalPrompt(prompt: string): { formName: string; questionCue: st
   return match ? { formName: match[1], questionCue: match[2] } : { formName: prompt, questionCue: null }
 }
 
+function verbTenseLabel(targetForm: string): string | null {
+  if (targetForm.startsWith('verb:present-')) return 'Present tense · preesens'
+  if (targetForm.startsWith('verb:past-')) return 'Past tense · imperfekti'
+  return null
+}
+
 export default function Practice() {
   const [queue, setQueue] = useState<QuizQuestion[]>([])
   const [capacity, setCapacity] = useState(0)
@@ -35,6 +41,7 @@ export default function Practice() {
   const score = result?.score_after ?? current?.score ?? 0
   const isNominalPrompt = current?.card.type === 'word_form' && (current.card.target_form.startsWith('nominal:') || current.card.target_form.startsWith('nominal-plural:')) && !!current.hint
   const nominalPrompt = isNominalPrompt && current ? splitNominalPrompt(current.prompt) : null
+  const tenseLabel = current?.card.type === 'word_form' && current.hint ? verbTenseLabel(current.card.target_form) : null
 
   useEffect(() => {
     if (contentRevision && (queue.length || sentenceBreak)) savePracticeState({ schemaVersion: 4, contentRevision, queue, capacity: Math.max(capacity, queue.length), quizzesSinceSentenceBreak, nextSentenceBreakAt, ...(answer ? { currentAnswer: answer } : {}), ...(sentenceBreak ? { sentenceBreak } : {}) })
@@ -201,6 +208,7 @@ export default function Practice() {
     </div> : <div className={current.hint ? 'form-prompt' : undefined}>
       {current.hint && <p className="prompt-hint"><span>Base form</span>{current.hint}</p>}
       <p className="prompt">{current.prompt}</p>
+      {tenseLabel && <p className="verb-tense">{tenseLabel}</p>}
     </div>}
     {current.english_translations.length > 0 && <p className="translations">{current.english_translations.join(' / ')}</p>}
     {error && <p className="error" role="alert">{error}</p>}
