@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { fetchBatch, fetchContentVersion, fetchSentenceBreak, type PracticeSentence, type QuizQuestion, resetMastery, submitAnswer } from '../lib/api'
+import { fetchBatch, fetchContentVersion, fetchLearningSets, fetchSentenceBreak, type PracticeSentence, type QuizQuestion, resetMastery, submitAnswer } from '../lib/api'
 import { cardKey, clearPracticeState, loadPracticeState, randomSentenceBreakInterval, savePracticeState, type SavedAnswer } from '../lib/queue'
 
 function masteryIcon(score: number): string { return ['○', '◔', '◑', '✓'][score] ?? '○' }
@@ -32,6 +32,7 @@ export default function Practice() {
   const [nextSentenceBreakAt, setNextSentenceBreakAt] = useState(randomSentenceBreakInterval)
   const [sentenceBreak, setSentenceBreak] = useState<PracticeSentence[] | null>(null)
   const [loadingSentenceBreak, setLoadingSentenceBreak] = useState(false)
+  const [activeLearningSet, setActiveLearningSet] = useState<string | null>(null)
   const refillInFlight = useRef(false)
   const initialLoadInFlight = useRef(false)
   const initializationInFlight = useRef(false)
@@ -104,6 +105,9 @@ export default function Practice() {
   }
 
   useEffect(() => { void initializePractice() }, [])
+  useEffect(() => {
+    void fetchLearningSets().then((learningSets) => setActiveLearningSet(learningSets.find((learningSet) => learningSet.active)?.title ?? null)).catch(() => setActiveLearningSet(null))
+  }, [])
 
   const submitPendingAnswer = async (question: QuizQuestion, pending: SavedAnswer) => {
     setError(null)
@@ -202,6 +206,7 @@ export default function Practice() {
   return <section className={`card practice-card${answer?.submitted ? ' feedback-visible' : ''}`}>
     <div className="practice-header"><div><p className="eyebrow">Practice</p><p className="queue-progress">{queue.length} card{queue.length === 1 ? '' : 's'} remaining</p></div><span aria-label={masteryLabel(score)} className="mastery-icon" title={masteryLabel(score)}>{masteryIcon(score)}</span></div>
     <div className="progress-track" aria-label="Queue progress"><div className="progress-fill" style={{ width: `${capacity ? queue.length / capacity * 100 : 0}%` }} /></div>
+    {activeLearningSet && <p className="active-learning-set">Learning set: {activeLearningSet}</p>}
     {queueNotice && <p className="notice" role="status">{queueNotice}</p>}
     {nominalPrompt ? <div className="nominal-prompt">
       <p className="nominal-base">{current.hint}</p>

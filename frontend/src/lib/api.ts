@@ -89,6 +89,14 @@ export type ContentHealthResponse = {
   findings: ContentHealthFinding[]
 }
 
+export type LearningSet = {
+  key: string
+  title: string
+  words: { total: number; mastered: number }
+  word_forms: { total: number; mastered: number }
+  active: boolean
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(path, options)
   if (!response.ok) {
@@ -134,6 +142,19 @@ export async function fetchFocusWords(): Promise<VocabularyEntry[]> {
 
 export function fetchContentHealth(category: ContentHealthCategory, offset = 0): Promise<ContentHealthResponse> {
   return request(`/api/content-health?category=${category}&offset=${offset}`)
+}
+
+export async function fetchLearningSets(): Promise<LearningSet[]> {
+  const response = await request<{ learning_sets: LearningSet[] }>('/api/learning-sets')
+  return response.learning_sets
+}
+
+export function setActiveLearningSet(setKey: string | null): Promise<void> {
+  return request('/api/learning-sets/active', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ set_key: setKey }),
+  })
 }
 
 export async function addFocusWord(baseWord: string): Promise<void> {

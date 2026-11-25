@@ -79,6 +79,17 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - Answers: correct form plus up to three distinct forms from the same nominal or verb profile, shuffled. A question requires at least two distinct options.
 - Sentences are not required for form practice: missing coverage falls back to the grammar prompt.
 
+### Learning sets
+
+- Learner-authored Markdown files under `learning-sets/` define named sets of
+  at least ten existing dictionary headwords. One set may be active at a time.
+- The active set prefers its eligible score-0 vocabulary and generated form
+  cards after explicit focus-word requests; normal review selection, mastery,
+  cooldown, and form staging remain unchanged.
+- Active-set word/form surfaces join the contextual reading-break pool and
+  receive a modest ranking preference. The learning-set page reports mastered
+  word and form-card totals.
+
 ## 4. Mastery rules
 
 Every vocabulary and word-form card starts at score 0 and has a score from 0 through 3.

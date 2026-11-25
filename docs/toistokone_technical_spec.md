@@ -84,6 +84,16 @@ CREATE TABLE word_forms (
 );
 CREATE INDEX idx_word_forms_vocab ON word_forms(vocabulary_id);
 
+CREATE TABLE learning_sets (
+  key TEXT PRIMARY KEY,
+  title TEXT NOT NULL
+);
+CREATE TABLE learning_set_words (
+  set_key TEXT NOT NULL REFERENCES learning_sets(key) ON DELETE CASCADE,
+  vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE,
+  PRIMARY KEY (set_key, vocabulary_id)
+);
+
 CREATE TABLE sentences (
   id INTEGER PRIMARY KEY,
   finnish TEXT NOT NULL UNIQUE
@@ -121,6 +131,24 @@ known-word filtering, but has no vocabulary card, vocabulary score, focus-word
 request, or mastery-statistics entry. Its form cards bypass the usual base-card
 mastery gate. This virtual mastery is limited to form eligibility.
 
+**Learning sets:** Direct-child `learning-sets/*.md` files contain a single H1
+title and a bullet list of at least ten exact dictionary headwords. The pipeline rejects
+missing titles, undersized sets, malformed entries, duplicates within a set, and words absent
+from `dictionary.txt`. It stores the filename stem as the stable set key in the
+content database with vocabulary membership; generated forms inherit their base
+word's membership. The import report warns about set-specific sentence coverage.
+`progress.sqlite` stores at most one selected set key. Score-0 candidate ranking
+prefers active-set vocabulary after focus requests and active-set forms before
+other forms; review quotas are unchanged. Reading breaks add active-set surfaces
+to their candidates and apply a small matching-sentence bonus.
+
+**Import preflight:** Dictionary entries, learning-set membership, Kaikki
+source/index availability, and the required frequency list are validated before
+the pipeline rebuilds any morphology or recommendation index. Fatal preflight
+errors write the import report and leave the existing content and progress
+databases unchanged. Malformed dictionary or sentence lines remain non-fatal
+diagnostics and are skipped as before.
+
 **Sentence storage:** The pipeline populates `sentence_tokens` with distinct case-folded Unicode tokens for contextual recommendations and score-3 form reinforcement. No sentence-to-form association table is persisted. `frequency_words` stores the required frequency source for contextual word recommendations; it is content-only and has no progress state.
 
 ## 3. Progress database (`progress.sqlite`)
@@ -153,6 +181,11 @@ CREATE TABLE practice_attempts (
   answered_at TEXT NOT NULL
 );
 CREATE INDEX idx_attempts_card ON practice_attempts(card_type, base_word, target_form, answered_at);
+
+CREATE TABLE active_learning_set (
+  singleton INTEGER PRIMARY KEY CHECK (singleton = 1),
+  set_key TEXT NOT NULL
+);
 ```
 
 Key conventions:

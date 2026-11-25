@@ -5,6 +5,7 @@ import FocusWords from './pages/FocusWords'
 import ContentHealth from './pages/ContentHealth'
 import Practice from './pages/Practice'
 import Recommendations from './pages/Recommendations'
+import LearningSets from './pages/LearningSets'
 
 export default function App() {
   const location = useLocation()
@@ -19,6 +20,7 @@ export default function App() {
           <NavLink to="/practice">Practice</NavLink>
           <NavLink to="/recommendations">Recommendations</NavLink>
           <NavLink to="/focus-words">Focus words</NavLink>
+          <NavLink to="/learning-sets">Learning sets</NavLink>
           <NavLink to="/content-health">Content health</NavLink>
         </nav>
       </header>
@@ -28,6 +30,7 @@ export default function App() {
           <Route path="/practice" element={<Practice />} />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/focus-words" element={<FocusWords />} />
+          <Route path="/learning-sets" element={<LearningSets />} />
           <Route path="/content-health" element={<ContentHealth />} />
         </Routes>
       </main>

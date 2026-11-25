@@ -6,6 +6,8 @@
 ## Later
 
 ## Completed
+- [x] Validate fatal pipeline input errors before expensive imports
+- [x] Add Markdown learning sets to guide new-card and sentence selection
 - [x] Add conditional verb and essive nominal cards
 - [x] Show progress while importing content
 - [x] Stage nominal form introduction by case group

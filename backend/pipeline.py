@@ -18,6 +18,7 @@ from backend.kaikki import GeneratedForm, ensure_index, ensure_recommendation_in
 
 
 RECOMMENDATION_LEMMA_CANDIDATE_LIMIT = 100
+MINIMUM_LEARNING_SET_WORDS = 10
 ProgressReporter = Callable[[str], None]
 
 
@@ -26,6 +27,7 @@ class ImportReport:
     dictionary_file_count: int = 0
     frequency_file_count: int = 0
     sentence_file_count: int = 0
+    learning_set_file_count: int = 0
     vocabulary_count: int = 0
     form_count: int = 0
     sentence_count: int = 0
@@ -39,6 +41,7 @@ class ImportReport:
     missing_lexicon_profiles: list[str] = field(default_factory=list)
     form_alternatives: dict[str, dict[str, list[str]]] = field(default_factory=dict)
     content_health: ContentHealth | None = None
+    learning_set_coverage: list["LearningSetCoverage"] = field(default_factory=list)
     fatal_errors: list[str] = field(default_factory=list)
     skipped_lines: list[str] = field(default_factory=list)
 
@@ -47,6 +50,7 @@ class ImportReport:
             "ToistoKone import report", f"Mode: {'dry run' if dry_run else 'normal'}",
             f"Dictionary files: {self.dictionary_file_count}", f"Frequency files: {self.frequency_file_count}",
             f"Sentence files: {self.sentence_file_count}", f"Kaikki index rebuilt: {'yes' if self.kaikki_index_rebuilt else 'no'}",
+            f"Learning-set files: {self.learning_set_file_count}",
             f"Recommendation lemma index rebuilt: {'yes' if self.recommendation_lemma_index_rebuilt else 'no'}",
             f"Imported vocabulary: {self.vocabulary_count}", f"Imported grammar forms: {self.form_count}",
             f"Imported sentences: {self.sentence_count}", f"Imported translations: {self.translation_count}",
@@ -67,6 +71,14 @@ class ImportReport:
                 f"Form cards with fewer than two supporting sentences: {summary['under_supported_forms']}",
                 f"Sentences without tracked vocabulary or forms: {summary['untracked_sentences']}",
             ])
+        if self.learning_set_coverage:
+            lines.extend(["", "Learning-set coverage:"])
+            lines.extend(
+                f"- {coverage.title}: {coverage.word_count} words, {coverage.form_count} forms; "
+                f"{coverage.words_without_sentences} words without sentences, "
+                f"{coverage.forms_with_fewer_than_two_sentences} forms with fewer than two sentences"
+                for coverage in self.learning_set_coverage
+            )
         if self.form_alternatives:
             lines.extend(["", "Alternative Kaikki forms (first candidate selected):"])
             for word in sorted(self.form_alternatives):
@@ -119,7 +131,24 @@ class ImportedContent:
     sentences: OrderedDict[str, list[str]]
     frequency_words: OrderedDict[str, int]
     recommendation_lemmas: dict[str, str]
+    learning_sets: list["LearningSet"]
     report: ImportReport
+
+
+@dataclass(frozen=True)
+class LearningSet:
+    key: str
+    title: str
+    words: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class LearningSetCoverage:
+    title: str
+    word_count: int
+    form_count: int
+    words_without_sentences: int
+    forms_with_fewer_than_two_sentences: int
 
 
 def _read_lines(path: Path):
@@ -138,6 +167,70 @@ def _parse_line(path: Path, line_number: int, line: str, report: ImportReport) -
         report.skipped_lines.append(f"{path}: line {line_number}: empty field")
         return None
     return left.strip(), values
+
+
+def _parse_learning_sets(root: Path, vocabulary: OrderedDict[str, list[str]], report: ImportReport) -> list[LearningSet]:
+    directory = root / "learning-sets"
+    paths = sorted(directory.glob("*.md")) if directory.exists() else []
+    report.learning_set_file_count = len(paths)
+    learning_sets: list[LearningSet] = []
+    for path in paths:
+        title: str | None = None
+        words: list[str] = []
+        seen: set[str] = set()
+        for number, raw_line in _read_lines(path):
+            line = raw_line.strip()
+            if not line:
+                continue
+            if title is None:
+                if not line.startswith("# ") or not line[2:].strip():
+                    report.fatal_errors.append(f"{path}: line {number}: expected a '# Title' heading")
+                    break
+                title = line[2:].strip()
+                continue
+            if not line.startswith("- ") or not line[2:].strip():
+                report.fatal_errors.append(f"{path}: line {number}: expected a '- dictionary word' entry")
+                continue
+            word = line[2:].strip()
+            if word in seen:
+                report.fatal_errors.append(f"{path}: line {number}: duplicate learning-set word '{word}'")
+            elif word not in vocabulary:
+                report.fatal_errors.append(f"{path}: line {number}: unknown dictionary word '{word}'")
+            else:
+                seen.add(word)
+                words.append(word)
+        if title is None:
+            report.fatal_errors.append(f"{path}: expected a '# Title' heading")
+        elif len(words) < MINIMUM_LEARNING_SET_WORDS:
+            report.fatal_errors.append(
+                f"{path}: learning set must contain at least {MINIMUM_LEARNING_SET_WORDS} dictionary words (found {len(words)})"
+            )
+        else:
+            learning_sets.append(LearningSet(path.stem, title, tuple(words)))
+    return learning_sets
+
+
+def _learning_set_coverage(
+    learning_sets: list[LearningSet], forms: OrderedDict[str, list[GeneratedForm]], sentences: OrderedDict[str, list[str]]
+) -> list[LearningSetCoverage]:
+    sentence_tokens = {sentence: tokens(sentence) for sentence in sentences}
+
+    def support(surface: str) -> int:
+        surface_tokens = tokens(surface)
+        if len(surface_tokens) != 1 or next(iter(surface_tokens)) != surface.casefold():
+            return 0
+        return sum(surface.casefold() in token_set for token_set in sentence_tokens.values())
+
+    return [
+        LearningSetCoverage(
+            learning_set.title,
+            len(learning_set.words),
+            sum(len(forms[word]) for word in learning_set.words),
+            sum(support(word) == 0 for word in learning_set.words),
+            sum(support(form.form) < 2 for word in learning_set.words for form in forms[word]),
+        )
+        for learning_set in learning_sets
+    ]
 
 
 def _recommendation_surfaces(vocabulary: OrderedDict[str, list[str]], forms: OrderedDict[str, list[GeneratedForm]], sentences: OrderedDict[str, list[str]], frequency_words: OrderedDict[str, int]) -> set[str]:
@@ -182,6 +275,10 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
     if progress:
         progress(f"Dictionary: {len(vocabulary):,} entries")
 
+    if progress:
+        progress("Reading learning sets")
+    learning_sets = _parse_learning_sets(project_root, vocabulary, report)
+
     forms_only_words = {
         word for word, meanings in vocabulary.items()
         if word[:1].isupper() and all(meaning == word for meaning in meanings)
@@ -191,23 +288,6 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
     index_path = project_root / "data" / "kaikki-forms.sqlite"
     if not source_path.exists() and not index_path.exists():
         report.fatal_errors.append(f"missing Kaikki source and index: {source_path}")
-    elif source_path.exists():
-        index_path.parent.mkdir(parents=True, exist_ok=True)
-        report.kaikki_index_rebuilt = ensure_index(source_path, index_path, set(vocabulary), progress=progress)
-
-    forms: OrderedDict[str, list[GeneratedForm]] = OrderedDict()
-    if index_path.exists():
-        if progress:
-            progress("Loading generated grammar forms")
-        for word in vocabulary:
-            generated, alternatives = generated_forms(index_path, word)
-            forms[word] = generated
-            if not generated:
-                report.missing_lexicon_profiles.append(word)
-            if alternatives:
-                report.form_alternatives[word] = alternatives
-    else:
-        forms = OrderedDict((word, []) for word in vocabulary)
 
     frequency_path = project_root / "frequency" / "fi_50k.txt"
     report.frequency_file_count = int(frequency_path.exists())
@@ -237,6 +317,32 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
             frequency_words[token] = count
     if progress:
         progress(f"Frequency list: {len(frequency_words):,} entries")
+
+    report.vocabulary_count = len(vocabulary)
+    report.frequency_entry_count = len(frequency_words)
+    if report.fatal_errors:
+        return ImportedContent(
+            vocabulary, forms_only_words, OrderedDict((word, []) for word in vocabulary),
+            sentences, frequency_words, {}, learning_sets, report,
+        )
+
+    if source_path.exists():
+        index_path.parent.mkdir(parents=True, exist_ok=True)
+        report.kaikki_index_rebuilt = ensure_index(source_path, index_path, set(vocabulary), progress=progress)
+
+    forms: OrderedDict[str, list[GeneratedForm]] = OrderedDict()
+    if index_path.exists():
+        if progress:
+            progress("Loading generated grammar forms")
+        for word in vocabulary:
+            generated, alternatives = generated_forms(index_path, word)
+            forms[word] = generated
+            if not generated:
+                report.missing_lexicon_profiles.append(word)
+            if alternatives:
+                report.form_alternatives[word] = alternatives
+    else:
+        forms = OrderedDict((word, []) for word in vocabulary)
 
     sentences_dir = project_root / "sentences"
     sentence_paths = sorted(sentences_dir.glob("*.txt")) if sentences_dir.exists() else []
@@ -275,6 +381,7 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
     report.sentence_count = len(sentences)
     report.translation_count = sum(len(translations) for translations in sentences.values())
     report.frequency_entry_count = len(frequency_words)
+    report.learning_set_coverage = _learning_set_coverage(learning_sets, forms, sentences)
     if progress:
         progress("Analyzing content health")
     report.content_health = analyze_content_health(
@@ -284,7 +391,7 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
         progress_path=project_root / "data" / "progress.sqlite",
         frequency_ranks={token: rank for rank, token in enumerate(frequency_words, start=1)},
     )
-    return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, report)
+    return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, learning_sets, report)
 
 
 SCHEMA = """
@@ -294,6 +401,9 @@ CREATE TABLE vocabulary_meanings (vocabulary_id INTEGER NOT NULL REFERENCES voca
 CREATE INDEX idx_vocabulary_meanings_vocab ON vocabulary_meanings(vocabulary_id);
 CREATE TABLE word_forms (id INTEGER PRIMARY KEY, vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE, card_key TEXT NOT NULL, form TEXT NOT NULL, profile TEXT NOT NULL, prompt_label TEXT NOT NULL, UNIQUE (vocabulary_id, card_key));
 CREATE INDEX idx_word_forms_vocab ON word_forms(vocabulary_id);
+CREATE TABLE learning_sets (key TEXT PRIMARY KEY, title TEXT NOT NULL);
+CREATE TABLE learning_set_words (set_key TEXT NOT NULL REFERENCES learning_sets(key) ON DELETE CASCADE, vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE, PRIMARY KEY (set_key, vocabulary_id));
+CREATE INDEX idx_learning_set_words_vocab ON learning_set_words(vocabulary_id);
 CREATE TABLE sentences (id INTEGER PRIMARY KEY, finnish TEXT NOT NULL UNIQUE);
 CREATE TABLE sentence_translations (sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE, english TEXT NOT NULL, ordinal INTEGER NOT NULL, PRIMARY KEY (sentence_id, english));
 CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentence_id);
@@ -315,6 +425,12 @@ def _build_database(path: Path, content: ImportedContent, revision: str) -> None
                 ).lastrowid
                 connection.executemany("INSERT INTO vocabulary_meanings (vocabulary_id, meaning, ordinal) VALUES (?, ?, ?)", [(vocabulary_id, meaning, ordinal) for ordinal, meaning in enumerate(meanings)])
                 connection.executemany("INSERT INTO word_forms (vocabulary_id, card_key, form, profile, prompt_label) VALUES (?, ?, ?, ?, ?)", [(vocabulary_id, form.card_key, form.form, form.profile, form.prompt_label) for form in content.forms[word]])
+            vocabulary_ids = {word: vocabulary_id for word, vocabulary_id in connection.execute("SELECT finnish, id FROM vocabulary")}
+            connection.executemany("INSERT INTO learning_sets (key, title) VALUES (?, ?)", [(learning_set.key, learning_set.title) for learning_set in content.learning_sets])
+            connection.executemany(
+                "INSERT INTO learning_set_words (set_key, vocabulary_id) VALUES (?, ?)",
+                [(learning_set.key, vocabulary_ids[word]) for learning_set in content.learning_sets for word in learning_set.words],
+            )
             connection.executemany("INSERT INTO sentences (finnish) VALUES (?)", ((finnish,) for finnish in content.sentences))
             sentence_ids = {finnish: sentence_id for sentence_id, finnish in connection.execute("SELECT id, finnish FROM sentences")}
             connection.executemany("INSERT INTO sentence_translations (sentence_id, english, ordinal) VALUES (?, ?, ?)", ((sentence_ids[finnish], english, ordinal) for finnish, translations in content.sentences.items() for ordinal, english in enumerate(translations)))

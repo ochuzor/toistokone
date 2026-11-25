@@ -9,8 +9,8 @@ from fastapi import HTTPException
 
 from backend.app.config import Settings
 from backend.app.db import initialize_progress_database, list_vocabulary
-from backend.app.main import add_focus_word, answer, app, content_version, delete_focus_word, focus_words, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
-from backend.app.models import AnswerRequest, FocusWordRequest, ResetRequest
+from backend.app.main import active_learning_set, add_focus_word, answer, app, content_version, delete_focus_word, focus_words, learning_sets, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
+from backend.app.models import ActiveLearningSetRequest, AnswerRequest, FocusWordRequest, ResetRequest
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -88,6 +88,28 @@ class ProgressApiTests(unittest.TestCase):
     def test_content_version_route_returns_pipeline_revision(self) -> None:
         response = content_version()
         self.assertRegex(response.revision, r"^[0-9a-f]{32}$")
+
+    def test_learning_set_routes_list_select_and_clear_a_set(self) -> None:
+        words = ["talo", *[f"word-{number}" for number in range(1, 10)]]
+        (self.root / "dictionary.txt").write_text("".join(f"{word} - meaning\n" for word in words), encoding="utf-8")
+        directory = self.root / "learning-sets"
+        directory.mkdir()
+        (directory / "home.md").write_text("# Home life\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8")
+        run_import(self.root)
+
+        initial = learning_sets().learning_sets
+        self.assertEqual(initial[0].key, "home")
+        self.assertFalse(initial[0].active)
+        self.assertEqual(initial[0].words.model_dump(), {"total": 10, "mastered": 0})
+
+        self.assertEqual(active_learning_set(ActiveLearningSetRequest(set_key="home")).set_key, "home")
+        self.assertTrue(learning_sets().learning_sets[0].active)
+        self.assertIsNone(active_learning_set(ActiveLearningSetRequest(set_key=None)).set_key)
+        self.assertFalse(learning_sets().learning_sets[0].active)
+
+        with self.assertRaises(HTTPException) as raised:
+            active_learning_set(ActiveLearningSetRequest(set_key="missing"))
+        self.assertEqual(raised.exception.status_code, 404)
 
     def test_recommendations_route_returns_contextual_words(self) -> None:
         response = recommendations()

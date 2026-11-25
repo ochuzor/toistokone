@@ -85,6 +85,43 @@ class PipelineTests(unittest.TestCase):
                 second_revision,
             )
 
+    def test_learning_sets_import_membership_and_report_coverage(self) -> None:
+        words = ["talo", "tehdä", *[f"word-{number}" for number in range(1, 9)]]
+        self.write_sources("".join(f"{word} - meaning\n" for word in words), {"lesson.txt": "Talossa asun. - I live in the house.\n"})
+        directory = self.root / "learning-sets"
+        directory.mkdir()
+        (directory / "home.md").write_text("# Home life\n\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8")
+
+        report = run_import(self.root)
+
+        self.assertEqual(report.learning_set_file_count, 1)
+        self.assertEqual(report.learning_set_coverage[0].title, "Home life")
+        self.assertEqual(report.learning_set_coverage[0].word_count, 10)
+        self.assertIn("Learning-set coverage:\n- Home life: 10 words", report.render(dry_run=False))
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            membership = database.execute(
+                "SELECT learning_sets.key, learning_sets.title, vocabulary.finnish "
+                "FROM learning_sets JOIN learning_set_words ON learning_set_words.set_key = learning_sets.key "
+                "JOIN vocabulary ON vocabulary.id = learning_set_words.vocabulary_id ORDER BY vocabulary.finnish"
+            ).fetchall()
+        self.assertEqual(len(membership), 10)
+        self.assertIn(("home", "Home life", "talo"), membership)
+        self.assertIn(("home", "Home life", "tehdä"), membership)
+
+    def test_learning_set_unknown_or_duplicate_words_fail_import(self) -> None:
+        self.write_sources("talo - house\n")
+        directory = self.root / "learning-sets"
+        directory.mkdir()
+        (directory / "invalid.md").write_text("# Invalid\n- talo\n- talo\n- puuttuu\n", encoding="utf-8")
+
+        with self.assertRaises(ImportValidationError) as raised:
+            run_import(self.root)
+
+        errors = raised.exception.report.fatal_errors
+        self.assertTrue(any("duplicate learning-set word 'talo'" in error for error in errors))
+        self.assertTrue(any("unknown dictionary word 'puuttuu'" in error for error in errors))
+        self.assertTrue(any("at least 10 dictionary words" in error for error in errors))
+
     def test_changed_kaikki_source_rebuilds_the_index(self) -> None:
         self.write_sources("talo - house\n")
         run_import(self.root)
@@ -342,8 +379,11 @@ class PipelineTests(unittest.TestCase):
         content_path = data_dir / "content.sqlite"
         content_path.write_bytes(b"existing-content")
         (self.root / "frequency" / "fi_50k.txt").write_text("talo nope\n", encoding="utf-8")
-        with self.assertRaises(ImportValidationError):
-            run_import(self.root)
+        with patch("backend.pipeline.ensure_index") as ensure_index, patch("backend.pipeline.ensure_recommendation_index") as ensure_recommendation_index:
+            with self.assertRaises(ImportValidationError):
+                run_import(self.root)
+        ensure_index.assert_not_called()
+        ensure_recommendation_index.assert_not_called()
         self.assertEqual(content_path.read_bytes(), b"existing-content")
 
     def test_sentence_import_and_dry_run_preserve_content_and_progress(self) -> None:

@@ -114,7 +114,30 @@ ei 2202943
 Ruokaa on pöydällä. - Food is on the table.
 ```
 
-The first pipeline run builds an ignored reusable `data/kaikki-forms.sqlite` index from the Kaikki source; later imports reuse it unless the source changes. Kaikki generates genitive, partitive, plural-genitive, plural-partitive, inessive, elative, illative, adessive, ablative, allative, essive, and nominative-plural cards where applicable; singular nominative is already practised by the vocabulary meaning card. Plural genitive and plural partitive are limited to nouns, adjectives, pronouns/determiners, and numerals, excluding proper names and verb/participle entries. A capitalized entry whose English meaning is identical—for example, `Helsinki - Helsinki`—is forms-only: it has no meaning card and begins form practice from its first usable stage. The six personal pronouns (`minä`, `sinä`, `hän`, `me`, `te`, `he`) also receive accusative cards. Pronouns use separate singular and plural case profiles, so `se` and `ne`, for example, receive only their own forms. Nominal forms unlock in stages: core forms first, then inner local, outer local, essive, and finally ordinary-entry plural genitive/partitive forms; personal-pronoun accusatives join the first stage. It also generates six active affirmative present-indicative, past-indicative, and conditional verb cards. After the base verb is mastered, verb cards unlock in six stages: present singular, past singular, present plural, past plural, conditional singular, then conditional plural; mastering two cards in a stage unlocks the next. Direct verb-form prompts label present (`preesens`), past (`imperfekti`), or conditional (`konditionaali`). Score-3 form cards use a matching blanked sentence and translation when available, otherwise they keep the grammar prompt. The report lists unsupported words and alternate valid forms; it selects the first ordinary single-word form. `frequency/fi_50k.txt` is required: every line must contain one word and a positive frequency count, and duplicate words are rejected. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. The app detects that new content revision and refreshes any saved practice queue before showing it; learning history remains in `data/progress.sqlite`, so back it up periodically if it matters to you.
+The pipeline first validates the dictionary, learning sets, Kaikki source/index availability, and frequency list; fatal errors write the report and stop before expensive morphology indexing begins. The first successful run builds an ignored reusable `data/kaikki-forms.sqlite` index from the Kaikki source; later imports reuse it unless the source changes. Kaikki generates genitive, partitive, plural-genitive, plural-partitive, inessive, elative, illative, adessive, ablative, allative, essive, and nominative-plural cards where applicable; singular nominative is already practised by the vocabulary meaning card. Plural genitive and plural partitive are limited to nouns, adjectives, pronouns/determiners, and numerals, excluding proper names and verb/participle entries. A capitalized entry whose English meaning is identical—for example, `Helsinki - Helsinki`—is forms-only: it has no meaning card and begins form practice from its first usable stage. The six personal pronouns (`minä`, `sinä`, `hän`, `me`, `te`, `he`) also receive accusative cards. Pronouns use separate singular and plural case profiles, so `se` and `ne`, for example, receive only their own forms. Nominal forms unlock in stages: core forms first, then inner local, outer local, essive, and finally ordinary-entry plural genitive/partitive forms; personal-pronoun accusatives join the first stage. It also generates six active affirmative present-indicative, past-indicative, and conditional verb cards. After the base verb is mastered, verb cards unlock in six stages: present singular, past singular, present plural, past plural, conditional singular, then conditional plural; mastering two cards in a stage unlocks the next. Direct verb-form prompts label present (`preesens`), past (`imperfekti`), or conditional (`konditionaali`). Score-3 form cards use a matching blanked sentence and translation when available, otherwise they keep the grammar prompt. The report lists unsupported words and alternate valid forms; it selects the first ordinary single-word form. `frequency/fi_50k.txt` is required: every line must contain one word and a positive frequency count, and duplicate words are rejected. Only direct-child `.txt` files under `sentences/` are imported. Re-running a normal import replaces the disposable content database, so restart `npm run dev` afterward. The app detects that new content revision and refreshes any saved practice queue before showing it; learning history remains in `data/progress.sqlite`, so back it up periodically if it matters to you.
+
+### Learning sets
+
+Learning sets connect existing dictionary material into a class week, book unit,
+or practical topic. Add direct-child Markdown files under `learning-sets/` and
+rerun the pipeline. Each file needs an H1 title followed by dictionary headwords:
+
+```md
+# At the supermarket
+
+- kauppa
+- ruoka
+- maksaa
+```
+
+Every set needs at least ten words, and every listed word must exist exactly in
+`dictionary.txt`; unknown or duplicate entries fail the import with a
+file-and-line diagnostic. The import report shows
+sentence coverage warnings for each set, but missing sentences do not prevent
+grammar-prompt practice. Select one imported set on the **Learning sets** page:
+it prefers eligible score-0 words and generated forms after explicit focus-word
+requests, and adds its surfaces to contextual reading breaks. Reviews, mastery,
+and form-unlock stages remain unchanged.
 
 ### Word recommendations
 

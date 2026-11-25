@@ -5,9 +5,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Query
 
 from .config import Settings, load_settings
-from .db import card_exists, get_content_revision, get_stats, initialize_progress_database, list_focus_words, list_vocabulary, record_answer, remove_focus_word, request_focus_word, reset_card
+from .db import card_exists, get_content_revision, get_stats, initialize_progress_database, list_focus_words, list_learning_sets, list_vocabulary, record_answer, remove_focus_word, request_focus_word, reset_card, set_active_learning_set
 from .content_health import get_content_health
-from .models import AnswerRequest, AnswerResult, ContentHealthCategory, ContentHealthResponse, ContentVersionResponse, FocusWordRequest, FocusWordResponse, RecommendationsResponse, ResetRequest, ResetResult, SentenceBreakResponse, StatsResponse, VocabularyResponse
+from .models import ActiveLearningSetRequest, ActiveLearningSetResponse, AnswerRequest, AnswerResult, ContentHealthCategory, ContentHealthResponse, ContentVersionResponse, FocusWordRequest, FocusWordResponse, LearningSetsResponse, RecommendationsResponse, ResetRequest, ResetResult, SentenceBreakResponse, StatsResponse, VocabularyResponse
 from .models import QuizBatchResponse
 from .quiz import build_batch, build_sentence_break
 from .recommendations import get_recommendations
@@ -115,6 +115,25 @@ def vocabulary(query: str = Query(default="", max_length=100)) -> VocabularyResp
     if not settings.content_db_path.exists():
         raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
     return VocabularyResponse(vocabulary=list_vocabulary(settings.content_db_path, settings.progress_db_path, query))
+
+
+@app.get("/api/learning-sets", response_model=LearningSetsResponse)
+def learning_sets() -> LearningSetsResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    return LearningSetsResponse(learning_sets=list_learning_sets(settings.content_db_path, settings.progress_db_path))
+
+
+@app.put("/api/learning-sets/active", response_model=ActiveLearningSetResponse)
+def active_learning_set(request: ActiveLearningSetRequest) -> ActiveLearningSetResponse:
+    settings = get_settings()
+    if not settings.content_db_path.exists():
+        raise HTTPException(status_code=503, detail="Content database is missing; run the import pipeline.")
+    try:
+        return ActiveLearningSetResponse(set_key=set_active_learning_set(settings.content_db_path, settings.progress_db_path, request.set_key))
+    except LookupError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
 
 
 @app.post("/api/focus-words", response_model=FocusWordResponse)

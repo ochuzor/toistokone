@@ -39,6 +39,10 @@ CREATE TABLE IF NOT EXISTS focus_vocabulary (
   requested_at TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS idx_focus_vocabulary_requested ON focus_vocabulary(requested_at);
+CREATE TABLE IF NOT EXISTS active_learning_set (
+  singleton INTEGER PRIMARY KEY CHECK (singleton = 1),
+  set_key TEXT NOT NULL
+);
 """
 
 
@@ -257,6 +261,68 @@ def consume_focus_words(progress_path: Path, base_words: list[str]) -> None:
         return
     with sqlite3.connect(progress_path) as connection:
         connection.executemany("DELETE FROM focus_vocabulary WHERE base_word = ?", ((word,) for word in base_words))
+
+
+def set_active_learning_set(content_path: Path, progress_path: Path, set_key: str | None) -> str | None:
+    """Select one current imported learning set, or clear the selection."""
+    if set_key is not None:
+        with sqlite3.connect(content_path) as content:
+            if content.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'learning_sets'").fetchone() is None:
+                raise LookupError("Learning set does not exist in current content")
+            if content.execute("SELECT 1 FROM learning_sets WHERE key = ?", (set_key,)).fetchone() is None:
+                raise LookupError("Learning set does not exist in current content")
+    with sqlite3.connect(progress_path) as connection:
+        if set_key is None:
+            connection.execute("DELETE FROM active_learning_set WHERE singleton = 1")
+        else:
+            connection.execute(
+                "INSERT INTO active_learning_set (singleton, set_key) VALUES (1, ?) "
+                "ON CONFLICT(singleton) DO UPDATE SET set_key = excluded.set_key",
+                (set_key,),
+            )
+    return set_key
+
+
+def list_learning_sets(content_path: Path, progress_path: Path) -> list[dict[str, object]]:
+    """Return imported learning sets with current vocabulary and form mastery."""
+    with sqlite3.connect(content_path) as connection:
+        if connection.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'learning_sets'").fetchone() is None:
+            return []
+        connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
+        rows = connection.execute(
+            """SELECT learning_sets.key, learning_sets.title,
+                      COUNT(DISTINCT vocabulary.id),
+                      COUNT(DISTINCT CASE WHEN vocabulary.meaning_quizzable = 0
+                           OR COALESCE(vocabulary_progress.score, 0) = 3 THEN vocabulary.id END),
+                      COUNT(word_forms.id),
+                      COUNT(DISTINCT CASE WHEN COALESCE(form_progress.score, 0) = 3 THEN word_forms.id END),
+                      active_learning_set.set_key = learning_sets.key
+               FROM learning_sets
+               JOIN learning_set_words ON learning_set_words.set_key = learning_sets.key
+               JOIN vocabulary ON vocabulary.id = learning_set_words.vocabulary_id
+               LEFT JOIN word_forms ON word_forms.vocabulary_id = vocabulary.id
+               LEFT JOIN progress.card_progress AS vocabulary_progress
+                 ON vocabulary_progress.card_type = 'vocabulary'
+                AND vocabulary_progress.base_word = vocabulary.finnish
+                AND vocabulary_progress.target_form = ''
+               LEFT JOIN progress.card_progress AS form_progress
+                 ON form_progress.card_type = 'word_form'
+                AND form_progress.base_word = vocabulary.finnish
+                AND form_progress.target_form = word_forms.card_key
+               LEFT JOIN progress.active_learning_set ON active_learning_set.singleton = 1
+               GROUP BY learning_sets.key, learning_sets.title
+               ORDER BY learning_sets.title COLLATE NOCASE, learning_sets.key"""
+        ).fetchall()
+    return [
+        {
+            "key": key,
+            "title": title,
+            "words": {"total": word_total, "mastered": word_mastered},
+            "word_forms": {"total": form_total, "mastered": form_mastered},
+            "active": bool(active),
+        }
+        for key, title, word_total, word_mastered, form_total, form_mastered, active in rows
+    ]
 
 
 def card_exists(content_path: Path, card: CardReference) -> bool:

@@ -42,6 +42,11 @@ class SentenceBreakWeightTests(unittest.TestCase):
             self.weight("anchor mastered other words"),
         )
 
+    def test_active_learning_set_tokens_receive_a_bonus(self) -> None:
+        baseline = _sentence_break_weight({"anchor", "neutral"}, self.families, {"anchor", "mastered"}, {"anchor"})
+        prioritized = _sentence_break_weight({"anchor", "neutral"}, self.families, {"anchor", "mastered"}, {"anchor"}, {"neutral"})
+        self.assertGreater(prioritized, baseline)
+
 
 class ContextSupportTests(unittest.TestCase):
     def test_context_support_excludes_a_word_family_from_its_own_breadth(self) -> None:
@@ -177,6 +182,17 @@ class QuizSelectionTests(unittest.TestCase):
 
         self.assertEqual([card.base_word for card in selected], ["focus-one", "focus-two"])
 
+    def test_active_learning_set_words_follow_focus_requests_when_new_cards_are_selected(self) -> None:
+        candidates = [
+            Candidate("vocabulary", "ordinary", "", 0, None, 1),
+            Candidate("vocabulary", "set-word", "", 0, None, 2, in_active_learning_set=True),
+            Candidate("vocabulary", "focus", "", 0, None, 3, focus_requested_at="2026-01-01T00:00:00+00:00"),
+        ]
+
+        selected = _select_diverse_new_vocabulary(candidates, 2)
+
+        self.assertEqual([card.base_word for card in selected], ["focus", "set-word"])
+
     def test_new_forms_are_selected_by_frequency_before_unranked_forms(self) -> None:
         candidates = [
             Candidate("word_form", "olla", "present-3sg", 0, None, 9),
@@ -187,6 +203,16 @@ class QuizSelectionTests(unittest.TestCase):
         selected = _select_new_forms(candidates, 3, random.Random(7))
 
         self.assertEqual([card.target_form for card in selected], ["present-3sg", "present-1pl", "present-2pl"])
+
+    def test_active_learning_set_forms_precede_other_new_forms(self) -> None:
+        candidates = [
+            Candidate("word_form", "ordinary", "present-3sg", 0, None, 1),
+            Candidate("word_form", "set-word", "present-1pl", 0, None, 500, in_active_learning_set=True),
+        ]
+
+        selected = _select_new_forms(candidates, 2, random.Random(7))
+
+        self.assertEqual([card.base_word for card in selected], ["set-word", "ordinary"])
 
     def test_new_form_ranking_preserves_the_selected_card_type_mix(self) -> None:
         candidates = [

@@ -30,6 +30,7 @@ class Candidate:
     reinforcement_quality: int = 0
     chain_families: frozenset[str] = frozenset()
     focus_requested_at: str | None = None
+    in_active_learning_set: bool = False
 
 
 @dataclass(frozen=True)
@@ -129,17 +130,20 @@ def _select_diverse_new_vocabulary(candidates: list[Candidate], limit: int) -> l
     chain_companion_selected = False
     while remaining and len(selected) < limit:
         focused = [candidate for candidate in remaining if candidate.focus_requested_at is not None]
+        active = [candidate for candidate in remaining if candidate.in_active_learning_set]
+        pool = focused or active or remaining
         card = min(
-            focused,
+            pool,
             key=lambda candidate: candidate.focus_requested_at or "",
-        ) if focused else min(remaining, key=lambda candidate: _new_vocabulary_key(candidate, represented_families))
+        ) if focused else min(pool, key=lambda candidate: _new_vocabulary_key(candidate, represented_families))
         selected.append(card)
         remaining.remove(card)
         represented_families = represented_families.union(card.related_families)
         if chain_companion_selected or focused or len(selected) == limit:
             continue
+        active_remaining = [candidate for candidate in remaining if candidate.in_active_learning_set]
         companions = [
-            candidate for candidate in remaining
+            candidate for candidate in (active_remaining or remaining)
             if candidate.base_word in card.chain_families
             and _frequency_band(candidate.frequency_rank) == _frequency_band(card.frequency_rank)
         ]
@@ -157,7 +161,7 @@ def _select_new_forms(candidates: list[Candidate], limit: int, rng: random.Rando
     """Select common unpractised forms first while retaining randomized equal ranks."""
     shuffled = list(candidates)
     rng.shuffle(shuffled)
-    shuffled.sort(key=lambda candidate: (candidate.frequency_rank is None, candidate.frequency_rank or 0))
+    shuffled.sort(key=lambda candidate: (not candidate.in_active_learning_set, candidate.frequency_rank is None, candidate.frequency_rank or 0))
     return shuffled[:limit]
 
 
@@ -343,14 +347,25 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
                 "SELECT base_word, requested_at FROM progress.focus_vocabulary"
             )
         }
+        has_learning_sets = connection.execute(
+            "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'learning_sets'"
+        ).fetchone() is not None
+        active_learning_set_words = {
+            word for (word,) in connection.execute(
+                """SELECT vocabulary.finnish FROM progress.active_learning_set
+                   JOIN learning_set_words ON learning_set_words.set_key = active_learning_set.set_key
+                   JOIN vocabulary ON vocabulary.id = learning_set_words.vocabulary_id
+                   WHERE active_learning_set.singleton = 1"""
+            )
+        } if has_learning_sets else set()
         candidates: list[Candidate] = []
         for word, score, last_practiced_at in connection.execute("SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0), progress.card_progress.last_practiced_at FROM vocabulary LEFT JOIN progress.card_progress ON progress.card_progress.card_type = 'vocabulary' AND progress.card_progress.base_word = vocabulary.finnish AND progress.card_progress.target_form = '' WHERE vocabulary.meaning_quizzable = 1"):
             breadth, sentence_count, related_families, reinforcement_quality = context_support.get(word, (0, 0, frozenset(), 0))
-            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality, direct_chain_families.get(word, frozenset()), focus_requests.get(word)))
+            candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality, direct_chain_families.get(word, frozenset()), focus_requests.get(word), word in active_learning_set_words))
         for base_word, card_key, form, profile, score, last_practiced_at, vocabulary_score, meaning_quizzable in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0), vocabulary.meaning_quizzable FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
             if card_key in unlocked_form_keys[base_word] and len(_profile_options(unlocked_forms[base_word], profile)) >= 2:
                 form_token = _single_token(form)
-                candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at, frequency_ranks.get(form_token) if form_token else None))
+                candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at, frequency_ranks.get(form_token) if form_token else None, in_active_learning_set=base_word in active_learning_set_words))
     return vocabulary, quizzable_vocabulary, forms, unlocked_forms, token_families, mastered_families, candidates
 
 
@@ -372,6 +387,7 @@ def _sentence_break_weight(
     token_families: dict[str, set[str]],
     mastered_families: set[str],
     anchor_tokens: set[str],
+    active_learning_set_tokens: set[str] | None = None,
 ) -> int:
     """Favor short, mastered context without rejecting less familiar sentences."""
     families = set().union(*(token_families.get(token, set()) for token in sentence_tokens))
@@ -380,7 +396,8 @@ def _sentence_break_weight(
     anchor_count = len(sentence_tokens.intersection(anchor_tokens))
     short_sentence_bonus = 1 if len(sentence_tokens) <= 8 else 0
     familiarity_multiplier = 8 if unmastered_count <= 2 else 2 if unmastered_count == 3 else 1
-    return max(1, 3 + mastered_count * 2 + max(0, anchor_count - 1) + short_sentence_bonus) * familiarity_multiplier
+    learning_set_bonus = len(sentence_tokens.intersection(active_learning_set_tokens or set())) * 2
+    return max(1, 3 + mastered_count * 2 + max(0, anchor_count - 1) + learning_set_bonus + short_sentence_bonus) * familiarity_multiplier
 
 
 def _weighted_sample_without_replacement(
@@ -449,9 +466,27 @@ def build_sentence_break(
                ORDER BY progress.card_progress.last_practiced_at DESC
                LIMIT 30"""
         ).fetchall()
-        surfaces = list(dict.fromkeys(
+        recent_surfaces = [
             token for (surface,) in mastered_rows if surface and (token := _single_token(surface)) is not None
-        ))
+        ]
+        has_learning_sets = connection.execute(
+            "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'learning_sets'"
+        ).fetchone() is not None
+        active_rows = connection.execute(
+            """SELECT vocabulary.finnish FROM progress.active_learning_set
+               JOIN learning_set_words ON learning_set_words.set_key = active_learning_set.set_key
+               JOIN vocabulary ON vocabulary.id = learning_set_words.vocabulary_id
+               WHERE active_learning_set.singleton = 1
+               UNION
+               SELECT word_forms.form FROM progress.active_learning_set
+               JOIN learning_set_words ON learning_set_words.set_key = active_learning_set.set_key
+               JOIN word_forms ON word_forms.vocabulary_id = learning_set_words.vocabulary_id
+               WHERE active_learning_set.singleton = 1"""
+        ).fetchall() if has_learning_sets else []
+        active_learning_set_tokens = {
+            token for (surface,) in active_rows if surface and (token := _single_token(surface)) is not None
+        }
+        surfaces = list(dict.fromkeys([*recent_surfaces, *active_learning_set_tokens]))
         if not surfaces:
             return []
         placeholders = ", ".join("?" for _ in surfaces)
@@ -498,7 +533,7 @@ def build_sentence_break(
             )
         }
         weights = [
-            _sentence_break_weight(sentence_token_sets[sentence_id], token_families, mastered_families, set(surfaces))
+            _sentence_break_weight(sentence_token_sets[sentence_id], token_families, mastered_families, set(surfaces), active_learning_set_tokens)
             for sentence_id, _ in sentence_rows
         ]
         sentence_rows = _weighted_sample_without_replacement(sentence_rows, weights, limit, rng)

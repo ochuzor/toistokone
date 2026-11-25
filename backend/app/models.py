@@ -108,6 +108,31 @@ class FocusWordResponse(BaseModel):
     requested_at: str
 
 
+class LearningSetCardStats(BaseModel):
+    total: int
+    mastered: int
+
+
+class LearningSet(BaseModel):
+    key: str
+    title: str
+    words: LearningSetCardStats
+    word_forms: LearningSetCardStats
+    active: bool
+
+
+class LearningSetsResponse(BaseModel):
+    learning_sets: list[LearningSet]
+
+
+class ActiveLearningSetRequest(BaseModel):
+    set_key: str | None = None
+
+
+class ActiveLearningSetResponse(BaseModel):
+    set_key: str | None = None
+
+
 class ContentVersionResponse(BaseModel):
     revision: str
 
