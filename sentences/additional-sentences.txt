@@ -436,7 +436,6 @@ Olen lähettänyt työhakemuksen jo viiteen työpaikkaan. - I have already sent 
 Jätä arvotavarat lukolliseen kaappiin! - Leave valuables in a locked cabinet!
 En tiedä vastausta opettajan vaikeaan kysymykseen. - I don't know the answer to the teacher's difficult question.
 Kesälomalla haluan matkustaa avaruuteen. - I want to travel to space during my summer vacation.
-
 Minä asun Turussa, mutta olen kotoisin Seinäjoelta. - I live in Turku, but I'm originally from Seinäjoki.
 Menen huomenna taidemuseoon. - I'm going to the art museum tomorrow.
 Otan puhtaan paidan vaatekaapista. - I'll take a clean shirt from the wardrobe.
@@ -452,3 +451,50 @@ Laita pipo päähän! Ulkona on kylmä. - Put on your hat! It's cold outside.
 Olen istunut jo kaksi tuntia tässä hitaassa junassa. - I've been sitting on this slow train for two hours now.
 Koira nukkuu pehmeällä matolla. - The dog is sleeping on a soft carpet.
 Mennäänkö ensi viikolla syömään uuteen ravintolaan? - Shall we go to a new restaurant next week?
+Miltä kuulostaa? - How does that/it sound?
+Minä lähden, entä sinä? - I'll go, what about you?
+Sinulla on selvästi hauskaa, mutta entä minä? - You're obviously having a good time, but what about me?
+A: Pidätkö jalkapallosta? B: En. A: Entä koripallosta? - A: Do you like football? B:No. A: What about basketball?
+Entä toinen maali! - What about the second goal!
+Entä jos eksyn matkalla laivaan? - What if I get lost on my way to the ship?
+Entä jos Abraham Lincolnia ei olisi murhattu? - What if Abraham Lincoln had not been assassinated?
+Entä jos mentäisiinkin elokuviin? - What if we went to the movies instead?
+Joku odottaa sinua. - Someone is waiting for you
+joku muu - somebody/someone else
+joku heistä - someone of them
+Äiti, ovella on joku kaupustelija. - Mom, there's a salesman at the door.
+Ota joku näistä! - Take one of these!
+kansalaisuuden myöntäminen - naturalization
+Kuinka voin auttaa? - How can I help you?
+minkä ikäinen olet - how old are you
+Minkä maalainen hän on? - From which country is he?
+En tiedä, minkä maalaisia he olivat. - I don't know from which country they came.
+arabialainen numero - Arabic numeral
+Hevonen numero 34 voitti kilpailun. - Horse number 34 won the race.
+Toisena numeronaan hän lauloi ... - For his second number, he sang ...
+Sanoiko hän sen? - Did she say it?
+Sanoiko hän siitä mitään? - Did she say anything about it?
+vastakkainen sukupuoli - the opposite sex
+kauniimpi sukupuoli - the fair sex
+sukupuolten taistelu - the battle of the sexes
+suomalais-ruotsalainen sanakirja - a Finnish-Swedish dictionary
+Sain sähköpostin, jossa... - I got/received an e-mail in which...
+Hän oli kolmen terveen lapsen isä. - He was father to three healthy kids.
+Kunnon selkäsauna palauttaa aina vintiön terveen kunnioituksen kasvattajiaan kohtaan. - Healthy spankings never fail to restore a rascal's healthy respect for his educators.
+Terveet moraaliset arvot auttavat kansakunnan vaikeiden aikojen yli. - Sound moral values help the nation to survive the difficult times.
+Hän oli turvassa ja terveenä. - He was safe and sound.
+Olin sairaana, mutta nyt olen terve. - I had been sick, but now I'm well.
+Reeti vakuutti minulle, että lattialaudat olivat terveitä. - Fred assured me the floorboards were sound.
+Terve yritys selviää normaaleista kysynnän vaihteluista. - A sound business can handle normal fluctuations in demand.
+ymmärtää väärin - to misunderstand
+Hän on ainoa, joka ymmärtää minua. - He is the only one who understands me.
+Hän puhuu äidinkielenään englantia. - He is a native speaker of English.
+Kuinka paljon tämä maksaa? - How much does this cost?
+Hän maksaa sen. - She will pay for it.
+Maksoin lopulta opintolainani. - I finally repaid my student loan.
+Kuinka voitte? - How are you doing?
+En voinut olla nauramatta. - I could not help laughing.
+Voisitko auttaa minua? - Could you please help me?
+Voisin juosta, jos haluaisin. - I could run if I wanted.
+Voinko avata ikkunan? - May I open the window?
+Sinä teet sen hyvin, mutta Erkki tekee vielä paremmin. - You do it well, but Eric does it even better.

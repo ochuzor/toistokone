@@ -46,13 +46,14 @@ lehti - leaf / newspaper / magazine
 pankki - bank
 talvi - winter
 uusi - new
-kieli - language / tongue
+kieli - language / tongue / indicator / pointer
 järvi - lake
 nojatuoli - armchair
 hissi - lift / elevator
 
 kahvi - coffee
 suomi - Finnish, the Finnish language
+Suomi - Finland
 lumi - snow
 huone - room
 vene - boat
@@ -126,7 +127,7 @@ lasi - glass / bell
 traktori - tractor
 minuutti - minute
 kalenteri - calendar / planner
-teksti - text / lyric / copy (as in ad) / insscription / handwriting
+teksti - text / lyric / copy (as in ad) / inscription / handwriting
 ruotsi - Swedish
 vesi - water / aquatic
 kuukausi - month / moon
@@ -434,3 +435,75 @@ Kreikka - Greece
 Seinäjoki - Seinäjoki
 seinä - wall / mains
 aamu - morning
+allekirjoitus - signature / autograph
+ei se mitään - never mind / no problem / it's nothing / it's alright
+englanti - English
+Englanti - England / United Kingdom
+entä - what about / how about
+etunimi - first name
+hauska - pleasant / merry / fun / comical / funny
+henkilö - person / figure / character
+henkilötiedot - personal data/details
+henkilötunnus - social security number / ssn
+häiritä - to disturb / bother / harass / annoy / distract
+ikä - age / lifetime
+ja - and
+joku - someone / some / somebody / anyone/anybody
+Kanada - Canada
+kansalaisuus - nationality / citizenship / franchise
+kansalainen - citizen / national
+kirjoittaa - to write / spell
+kirjoitus - writing / article / scripture / inscription
+kuinka - how / what
+mies - man / husband / male
+maalainen - rural / country / country dweller
+naapuri - neighbour / contiguous
+missä - where / in which / in what
+naimaton - unmarried / single
+numero - number / digit / numeral
+nähdä - to meet / see / view / perceive
+ole hyvä - you're welcome / here you are / there you go / please
+ongelma - problem / trouble / issue
+opettaja - teacher / instructor
+opettaa - to teach / educate / train
+opiskella - to study / learn
+opiskelija - a student / academic
+opiskelu - study / coursework
+postinumero - postal code / zip code
+postitoimipaikka - post office (coverage area)
+puhua - to talk / converse / speak
+puhuja - speaker / orator
+rahasto - fund / treasury/reserve
+Ranska - France
+ranska - French (language)
+sanoa - to say / tell
+siviilisääty - marital status / civil status
+sukunimi - last name / family name
+sukupuoli - gender / sex / sexual
+
+syntymä - birth
+syntymäaika - date/time of birth
+sähkö - electricity / utility / power
+sähköposti - e-mail
+sähköpostiosoite - email address
+terve - healthy / well / wholesome
+tervetuloa - welcome
+tutustua - to meet / get acquainted with / familiarise oneself with
+täydentää - to complete / supplement/complement / fill up / replenish
+vaimo - wife / woman
+vanha - old / former / previous / elderly/aged
+venäläinen - Russian
+vähän - few / a little / very
+Yhdysvallat - the United States / America
+ymmärtää - to understand / comprehend / sympathise with
+äidinkieli - mother tongue / native language
+peruna - potato
+kassa - cashier / cash register / checkout / cash desk
+kuitti - receipt / ticket
+vuoro - turn / shift
+jono - a line / queue / sequence
+vuorijono - mountain range
+jonotus - queuing
+jonottaa - to queue / to stand/wait in line
+maksaa - to pay / cost / repay
+voida - (to) can / feel / be able to / to allowed to

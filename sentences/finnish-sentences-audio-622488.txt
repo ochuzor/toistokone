@@ -311,7 +311,6 @@ Suomen kieli on suomalais-ugrilainen. - The Finnish language is Finno-Ugric.
 Suomen kielessä on 15 sijamuotoa. - The Finnish language has 15 noun cases.
 Suomessa on 2 miljoonaa saunaa. - There are 2 million saunas in Finland.
 Obama sanoi vuonna 2009, että maailman pitäisi päästä eroon ydinaseista. - Obama said in 2009 that the world should get rid of nuclear weapons.
-Romanikerjäläiset ilmestyivät pohjoismaisten suurkaupunkien kaduille EU-jäsenyyden myötä. - Roman citizens appeared on the streets of the Nordic cities as a result of EU membership.
 
 # Idioms
 Nopea kuin ajatus. - Fast as thought.
