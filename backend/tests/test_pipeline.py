@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import io
 import sqlite3
 import tempfile
 import unittest
@@ -88,6 +89,27 @@ class PipelineTests(unittest.TestCase):
             source.write("\n")
         report = run_import(self.root, dry_run=True)
         self.assertTrue(report.kaikki_index_rebuilt)
+
+    def test_progress_reports_import_phases_and_cached_indexes(self) -> None:
+        self.write_sources("talo - house\n", {"lesson.txt": "Talo on suuri. - The house is big.\n"})
+        first_progress: list[str] = []
+
+        run_import(self.root, dry_run=True, progress=first_progress.append)
+
+        self.assertIn("Reading dictionary", first_progress)
+        self.assertIn("Kaikki form index: rebuilding", first_progress)
+        self.assertIn("Kaikki form index: complete", first_progress)
+        self.assertIn("Reading sentences (1/1): lesson.txt", first_progress)
+        self.assertIn("Recommendation lemma index: rebuilding", first_progress)
+        self.assertIn("Analyzing content health", first_progress)
+        self.assertIn("Dry run: skipping content database build", first_progress)
+        self.assertEqual(first_progress[-1], "Writing import report")
+
+        cached_progress: list[str] = []
+        run_import(self.root, dry_run=True, progress=cached_progress.append)
+
+        self.assertIn("Kaikki form index: reusing existing index", cached_progress)
+        self.assertIn("Recommendation lemma index: reusing existing index", cached_progress)
 
     def test_report_uses_canonical_form_and_lists_alternatives(self) -> None:
         path = self.root / "lexicon" / "kaikki.org-dictionary-Finnish-words.jsonl"
@@ -333,11 +355,21 @@ class PipelineTests(unittest.TestCase):
 
     def test_main_exits_non_zero_for_fatal_error(self) -> None:
         report = ImportReport(fatal_errors=["missing Kaikki source"])
-        with patch("backend.pipeline.run_import", side_effect=ImportValidationError(report)):
-            with patch("sys.argv", ["pipeline"]):
-                with self.assertRaises(SystemExit) as raised:
-                    main()
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with patch("backend.pipeline.run_import", side_effect=ImportValidationError(report)), patch("sys.argv", ["pipeline"]), patch("sys.stdout", stdout), patch("sys.stderr", stderr):
+            with self.assertRaises(SystemExit) as raised:
+                main()
         self.assertEqual(raised.exception.code, 1)
+        self.assertEqual(stdout.getvalue(), "")
+        self.assertEqual(stderr.getvalue(), "Import failed: content validation errors found. See data/import-report.txt.\n")
+
+    def test_main_points_to_the_report_without_printing_it(self) -> None:
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with patch("backend.pipeline.run_import", return_value=ImportReport()), patch("sys.argv", ["pipeline"]), patch("sys.stdout", stdout), patch("sys.stderr", stderr):
+            main()
+
+        self.assertEqual(stdout.getvalue(), "Import complete. See data/import-report.txt.\n")
+        self.assertEqual(stderr.getvalue(), "")
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ import uuid
 from collections import OrderedDict
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Callable
 
 from backend.app.config import PROJECT_ROOT
 from backend.app.content_health import ContentHealth, analyze_content_health
@@ -17,6 +18,7 @@ from backend.kaikki import GeneratedForm, ensure_index, ensure_recommendation_in
 
 
 RECOMMENDATION_LEMMA_CANDIDATE_LIMIT = 100
+ProgressReporter = Callable[[str], None]
 
 
 @dataclass
@@ -158,13 +160,15 @@ def _recommendation_surfaces(vocabulary: OrderedDict[str, list[str]], forms: Ord
     return set(sorted(candidates, key=ranks.__getitem__)[:RECOMMENDATION_LEMMA_CANDIDATE_LIMIT])
 
 
-def parse_content(project_root: Path) -> ImportedContent:
+def parse_content(project_root: Path, *, progress: ProgressReporter | None = None) -> ImportedContent:
     report = ImportReport()
     vocabulary: OrderedDict[str, list[str]] = OrderedDict()
     sentences: OrderedDict[str, list[str]] = OrderedDict()
     frequency_words: OrderedDict[str, int] = OrderedDict()
     dictionary_path = project_root / "dictionary.txt"
     report.dictionary_file_count = int(dictionary_path.exists())
+    if progress:
+        progress("Reading dictionary")
     for number, line in _read_lines(dictionary_path):
         parsed = _parse_line(dictionary_path, number, line, report)
         if parsed is None:
@@ -175,6 +179,8 @@ def parse_content(project_root: Path) -> ImportedContent:
             report.skipped_lines.append(f"{dictionary_path}: line {number}: duplicate vocabulary '{finnish}'")
             continue
         vocabulary[finnish] = list(OrderedDict.fromkeys(meanings))
+    if progress:
+        progress(f"Dictionary: {len(vocabulary):,} entries")
 
     forms_only_words = {
         word for word, meanings in vocabulary.items()
@@ -187,10 +193,12 @@ def parse_content(project_root: Path) -> ImportedContent:
         report.fatal_errors.append(f"missing Kaikki source and index: {source_path}")
     elif source_path.exists():
         index_path.parent.mkdir(parents=True, exist_ok=True)
-        report.kaikki_index_rebuilt = ensure_index(source_path, index_path, set(vocabulary))
+        report.kaikki_index_rebuilt = ensure_index(source_path, index_path, set(vocabulary), progress=progress)
 
     forms: OrderedDict[str, list[GeneratedForm]] = OrderedDict()
     if index_path.exists():
+        if progress:
+            progress("Loading generated grammar forms")
         for word in vocabulary:
             generated, alternatives = generated_forms(index_path, word)
             forms[word] = generated
@@ -203,6 +211,8 @@ def parse_content(project_root: Path) -> ImportedContent:
 
     frequency_path = project_root / "frequency" / "fi_50k.txt"
     report.frequency_file_count = int(frequency_path.exists())
+    if progress:
+        progress("Reading frequency list")
     if not frequency_path.exists():
         report.fatal_errors.append(f"missing required frequency file: {frequency_path}")
     else:
@@ -225,12 +235,18 @@ def parse_content(project_root: Path) -> ImportedContent:
                 report.fatal_errors.append(f"{frequency_path}: line {number}: duplicate frequency word '{word}'")
                 continue
             frequency_words[token] = count
+    if progress:
+        progress(f"Frequency list: {len(frequency_words):,} entries")
 
     sentences_dir = project_root / "sentences"
     sentence_paths = sorted(sentences_dir.glob("*.txt")) if sentences_dir.exists() else []
     report.sentence_file_count = len(sentence_paths)
-    for sentence_path in sentence_paths:
+    for file_number, sentence_path in enumerate(sentence_paths, start=1):
+        if progress:
+            progress(f"Reading sentences ({file_number}/{len(sentence_paths)}): {sentence_path.name}")
         for number, line in _read_lines(sentence_path):
+            if progress and number % 10_000 == 0:
+                progress(f"Reading sentences ({file_number}/{len(sentence_paths)}): {sentence_path.name} — {number:,} lines")
             parsed = _parse_line(sentence_path, number, line, report)
             if parsed is None:
                 continue
@@ -244,12 +260,14 @@ def parse_content(project_root: Path) -> ImportedContent:
                     report.duplicate_translation_count += 1
                 else:
                     sentences[finnish].append(translation)
+    if progress:
+        progress(f"Sentences: {len(sentences):,} unique")
 
     recommendation_index_path = project_root / "data" / "kaikki-recommendations.sqlite"
     recommendation_surfaces = _recommendation_surfaces(vocabulary, forms, sentences, frequency_words)
     lemma_mappings: dict[str, str] = {}
     if source_path.exists():
-        report.recommendation_lemma_index_rebuilt = ensure_recommendation_index(source_path, recommendation_index_path, recommendation_surfaces)
+        report.recommendation_lemma_index_rebuilt = ensure_recommendation_index(source_path, recommendation_index_path, recommendation_surfaces, progress=progress)
     lemma_mappings = recommendation_lemmas(recommendation_index_path)
 
     report.vocabulary_count = len(vocabulary)
@@ -257,6 +275,8 @@ def parse_content(project_root: Path) -> ImportedContent:
     report.sentence_count = len(sentences)
     report.translation_count = sum(len(translations) for translations in sentences.values())
     report.frequency_entry_count = len(frequency_words)
+    if progress:
+        progress("Analyzing content health")
     report.content_health = analyze_content_health(
         vocabulary,
         ((base_word, form.form, form.prompt_label) for base_word, entries in forms.items() for form in entries),
@@ -307,15 +327,19 @@ def _build_database(path: Path, content: ImportedContent, revision: str) -> None
             raise RuntimeError("content database integrity verification failed")
 
 
-def run_import(project_root: Path = PROJECT_ROOT, *, dry_run: bool = False) -> ImportReport:
-    content = parse_content(project_root)
+def run_import(project_root: Path = PROJECT_ROOT, *, dry_run: bool = False, progress: ProgressReporter | None = None) -> ImportReport:
+    content = parse_content(project_root, progress=progress)
     data_dir = project_root / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
     report_path = data_dir / "import-report.txt"
     if content.report.fatal_errors:
+        if progress:
+            progress("Writing import report")
         report_path.write_text(content.report.render(dry_run=dry_run), encoding="utf-8")
         raise ImportValidationError(content.report)
     if not dry_run:
+        if progress:
+            progress("Building content database")
         descriptor, temporary_name = tempfile.mkstemp(prefix="content-", suffix=".sqlite", dir=data_dir)
         os.close(descriptor)
         temporary_path = Path(temporary_name)
@@ -324,6 +348,12 @@ def run_import(project_root: Path = PROJECT_ROOT, *, dry_run: bool = False) -> I
             os.replace(temporary_path, data_dir / "content.sqlite")
         finally:
             temporary_path.unlink(missing_ok=True)
+        if progress:
+            progress("Content database: complete")
+    elif progress:
+        progress("Dry run: skipping content database build")
+    if progress:
+        progress("Writing import report")
     report_path.write_text(content.report.render(dry_run=dry_run), encoding="utf-8")
     return content.report
 
@@ -333,12 +363,11 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true", help="write only the import report")
     arguments = parser.parse_args()
     try:
-        report = run_import(dry_run=arguments.dry_run)
+        report = run_import(dry_run=arguments.dry_run, progress=lambda message: print(message, file=sys.stderr, flush=True))
     except ImportValidationError as error:
-        print(error.report.render(dry_run=arguments.dry_run), end="")
-        print("Import failed: content validation errors found.", file=sys.stderr)
+        print("Import failed: content validation errors found. See data/import-report.txt.", file=sys.stderr)
         raise SystemExit(1) from error
-    print(report.render(dry_run=arguments.dry_run), end="")
+    print("Import complete. See data/import-report.txt.")
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ import re
 import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Callable
 
 
 INDEX_SCHEMA = """
@@ -170,7 +171,17 @@ def _pronoun_owners(entry: dict[str, object], lemmas: set[str]) -> dict[str, str
     return owners
 
 
-def ensure_index(source_path: Path, index_path: Path, words: set[str]) -> bool:
+def _report_scan_progress(progress: Callable[[str], None] | None, label: str, processed_bytes: int, total_bytes: int, next_percent: int) -> int:
+    if progress is None or total_bytes <= 0:
+        return next_percent
+    percent = processed_bytes * 100 // total_bytes
+    while percent >= next_percent and next_percent < 100:
+        progress(f"{label}: {next_percent}%")
+        next_percent += 10
+    return next_percent
+
+
+def ensure_index(source_path: Path, index_path: Path, words: set[str], *, progress: Callable[[str], None] | None = None) -> bool:
     """Build the reusable subset index when its Kaikki source has changed.
 
     Returns True when a new index was built.
@@ -180,8 +191,12 @@ def ensure_index(source_path: Path, index_path: Path, words: set[str]) -> bool:
         with sqlite3.connect(index_path) as connection:
             row = connection.execute("SELECT value FROM metadata WHERE key = 'source_signature'").fetchone()
         if row and row[0] == signature:
+            if progress:
+                progress("Kaikki form index: reusing existing index")
             return False
 
+    if progress:
+        progress("Kaikki form index: rebuilding")
     temporary_path = index_path.with_suffix(".tmp")
     temporary_path.unlink(missing_ok=True)
     try:
@@ -205,7 +220,12 @@ def ensure_index(source_path: Path, index_path: Path, words: set[str]) -> bool:
             template_pattern = r'"name"\s*:\s*(?:' + "|".join(re.escape(encoded) for encoded in template_encodings) + r')'
             pattern = re.compile(f"(?:{word_pattern}|{form_pattern}|{template_pattern})") if encodings else None
             with source_path.open(encoding="utf-8") as source:
+                processed_bytes = 0
+                next_percent = 10
+                total_bytes = source_path.stat().st_size
                 for source_order, line in enumerate(source):
+                    processed_bytes += len(line.encode("utf-8"))
+                    next_percent = _report_scan_progress(progress, "Kaikki form index", processed_bytes, total_bytes, next_percent)
                     if pattern is None or not pattern.search(line):
                         continue
                     try:
@@ -270,6 +290,8 @@ def ensure_index(source_path: Path, index_path: Path, words: set[str]) -> bool:
         temporary_path.replace(index_path)
     finally:
         temporary_path.unlink(missing_ok=True)
+    if progress:
+        progress("Kaikki form index: complete")
     return True
 
 
@@ -315,15 +337,19 @@ def _recommendation_signature(path: Path, surfaces: set[str]) -> str:
     return f"{RECOMMENDATION_INDEX_VERSION}:{stat.st_size}:{stat.st_mtime_ns}:{hashlib.sha256(encoded).hexdigest()}"
 
 
-def ensure_recommendation_index(source_path: Path, index_path: Path, surfaces: set[str]) -> bool:
+def ensure_recommendation_index(source_path: Path, index_path: Path, surfaces: set[str], *, progress: Callable[[str], None] | None = None) -> bool:
     """Build a small reverse morphology cache for recommendation candidates."""
     signature = _recommendation_signature(source_path, surfaces)
     if index_path.exists():
         with sqlite3.connect(index_path) as connection:
             row = connection.execute("SELECT value FROM metadata WHERE key = 'source_signature'").fetchone()
         if row and row[0] == signature:
+            if progress:
+                progress("Recommendation lemma index: reusing existing index")
             return False
 
+    if progress:
+        progress("Recommendation lemma index: rebuilding")
     temporary_path = index_path.with_suffix(".tmp")
     temporary_path.unlink(missing_ok=True)
     try:
@@ -334,7 +360,12 @@ def ensure_recommendation_index(source_path: Path, index_path: Path, surfaces: s
             pattern = re.compile(surface_pattern) if encodings else None
             batch: list[tuple[str, str]] = []
             with source_path.open(encoding="utf-8") as source:
+                processed_bytes = 0
+                next_percent = 10
+                total_bytes = source_path.stat().st_size
                 for line in source:
+                    processed_bytes += len(line.encode("utf-8"))
+                    next_percent = _report_scan_progress(progress, "Recommendation lemma index", processed_bytes, total_bytes, next_percent)
                     if pattern is None or not pattern.search(line):
                         continue
                     try:
@@ -369,6 +400,8 @@ def ensure_recommendation_index(source_path: Path, index_path: Path, surfaces: s
         temporary_path.replace(index_path)
     finally:
         temporary_path.unlink(missing_ok=True)
+    if progress:
+        progress("Recommendation lemma index: complete")
     return True
 
 
