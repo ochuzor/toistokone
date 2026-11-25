@@ -40,6 +40,15 @@ class FormCard:
     prompt_label: str
 
 
+VERB_FORM_STAGES = (
+    frozenset({"verb:present-1sg", "verb:present-2sg", "verb:present-3sg"}),
+    frozenset({"verb:past-1sg", "verb:past-2sg", "verb:past-3sg"}),
+    frozenset({"verb:present-1pl", "verb:present-2pl", "verb:present-3pl"}),
+    frozenset({"verb:past-1pl", "verb:past-2pl", "verb:past-3pl"}),
+)
+STAGE_MASTERY_THRESHOLD = 2
+
+
 def select_candidates(candidates: list[Candidate], batch_size: int, rng: random.Random) -> list[Candidate]:
     """Apply the PRD's non-backfilling 70/30/up-to-five-new selection rule."""
     def take(items: list[Candidate], limit: int, *, prioritize_new_cards: bool = False) -> list[Candidate]:
@@ -142,6 +151,20 @@ def _profile_options(cards: list[FormCard], profile: str) -> list[str]:
     return list(dict.fromkeys(card.form for card in cards if card.profile == profile))
 
 
+def _unlocked_verb_cards(cards: list[FormCard], progress: dict[str, tuple[int, str | None]]) -> list[FormCard]:
+    """Keep previously introduced cards available and stage new verb forms."""
+    unlocked_keys = {card_key for card_key, (_, practiced_at) in progress.items() if practiced_at is not None}
+    for stage in VERB_FORM_STAGES:
+        stage_cards = [card for card in cards if card.card_key in stage]
+        if len(stage_cards) < 2:
+            continue
+        unlocked_keys.update(card.card_key for card in stage_cards)
+        mastered_count = sum(progress.get(card.card_key, (0, None))[0] == 3 for card in stage_cards)
+        if mastered_count < STAGE_MASTERY_THRESHOLD:
+            break
+    return [card for card in cards if card.card_key in unlocked_keys]
+
+
 def _single_token(value: str) -> str | None:
     value_tokens = tokens(value)
     if len(value_tokens) != 1:
@@ -209,7 +232,7 @@ def _direct_chain_families(connection: sqlite3.Connection, token_families: dict[
     return {family: frozenset(other_families) for family, other_families in related.items()}
 
 
-def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, list[str]], set[str], dict[str, list[FormCard]], dict[str, set[str]], set[str], list[Candidate]]:
+def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, list[str]], set[str], dict[str, list[FormCard]], dict[str, list[FormCard]], dict[str, set[str]], set[str], list[Candidate]]:
     with sqlite3.connect(content_path) as connection:
         connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
         vocabulary: dict[str, list[str]] = {}
@@ -221,6 +244,38 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
         forms: dict[str, list[FormCard]] = {}
         for word, card_key, form, profile, prompt_label in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, word_forms.prompt_label FROM vocabulary JOIN word_forms ON vocabulary.id = word_forms.vocabulary_id ORDER BY vocabulary.id, word_forms.id"):
             forms.setdefault(word, []).append(FormCard(card_key, form, profile, prompt_label))
+        vocabulary_scores = {
+            word: score for word, score in connection.execute(
+                """SELECT vocabulary.finnish, COALESCE(progress.card_progress.score, 0)
+                   FROM vocabulary LEFT JOIN progress.card_progress
+                   ON progress.card_progress.card_type = 'vocabulary'
+                   AND progress.card_progress.base_word = vocabulary.finnish
+                   AND progress.card_progress.target_form = ''"""
+            )
+        }
+        form_progress: dict[str, dict[str, tuple[int, str | None]]] = defaultdict(dict)
+        for base_word, card_key, score, practiced_at in connection.execute(
+            """SELECT base_word, target_form, score, last_practiced_at
+               FROM progress.card_progress WHERE card_type = 'word_form'"""
+        ):
+            form_progress[base_word][card_key] = (score, practiced_at)
+        unlocked_forms: dict[str, list[FormCard]] = {}
+        for base_word, form_cards in forms.items():
+            if base_word not in quizzable_vocabulary:
+                unlocked_forms[base_word] = form_cards
+            elif vocabulary_scores.get(base_word) == 3:
+                verb_cards = [card for card in form_cards if card.profile == "verb"]
+                unlocked_verb_cards = _unlocked_verb_cards(verb_cards, form_progress[base_word])
+                unlocked_forms[base_word] = [
+                    card for card in form_cards
+                    if card.profile != "verb" or card in unlocked_verb_cards
+                ]
+            else:
+                unlocked_forms[base_word] = []
+        unlocked_form_keys = {
+            base_word: {card.card_key for card in form_cards}
+            for base_word, form_cards in unlocked_forms.items()
+        }
         token_families: dict[str, set[str]] = {}
         contextual_token_families: dict[str, set[str]] = {}
         for base_word in quizzable_vocabulary:
@@ -258,10 +313,10 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
             breadth, sentence_count, related_families, reinforcement_quality = context_support.get(word, (0, 0, frozenset(), 0))
             candidates.append(Candidate("vocabulary", word, "", score, last_practiced_at, frequency_ranks.get(word.casefold()), breadth, sentence_count, related_families, reinforcement_quality, direct_chain_families.get(word, frozenset()), focus_requests.get(word)))
         for base_word, card_key, form, profile, score, last_practiced_at, vocabulary_score, meaning_quizzable in connection.execute("SELECT vocabulary.finnish, word_forms.card_key, word_forms.form, word_forms.profile, COALESCE(form_progress.score, 0), form_progress.last_practiced_at, COALESCE(vocabulary_progress.score, 0), vocabulary.meaning_quizzable FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id LEFT JOIN progress.card_progress AS form_progress ON form_progress.card_type = 'word_form' AND form_progress.base_word = vocabulary.finnish AND form_progress.target_form = word_forms.card_key LEFT JOIN progress.card_progress AS vocabulary_progress ON vocabulary_progress.card_type = 'vocabulary' AND vocabulary_progress.base_word = vocabulary.finnish AND vocabulary_progress.target_form = ''"):
-            if (not meaning_quizzable or vocabulary_score == 3) and len(_profile_options(forms[base_word], profile)) >= 2:
+            if card_key in unlocked_form_keys[base_word] and len(_profile_options(unlocked_forms[base_word], profile)) >= 2:
                 form_token = _single_token(form)
                 candidates.append(Candidate("word_form", base_word, card_key, score, last_practiced_at, frequency_ranks.get(form_token) if form_token else None))
-    return vocabulary, quizzable_vocabulary, forms, token_families, mastered_families, candidates
+    return vocabulary, quizzable_vocabulary, forms, unlocked_forms, token_families, mastered_families, candidates
 
 
 def _sentence_weight(sentence: str, token_families: dict[str, set[str]], mastered_families: set[str], excluded_family: str | None = None) -> int:
@@ -430,7 +485,7 @@ def _options(texts: list[str], correct_text: str, rng: random.Random) -> tuple[l
 
 def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: random.Random | None = None) -> list[dict[str, object]]:
     rng = rng or random.Random()
-    vocabulary, quizzable_vocabulary, forms, token_families, mastered_families, candidates = _load_content(content_path, progress_path)
+    vocabulary, quizzable_vocabulary, forms, unlocked_forms, token_families, mastered_families, candidates = _load_content(content_path, progress_path)
     questions: list[dict[str, object]] = []
     selected_cards = select_candidates(candidates, batch_size, rng)
     with sqlite3.connect(content_path) as connection:
@@ -443,7 +498,7 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
                 prompt, hint, english_translations = card.base_word, None, []
             else:
                 form_card = next(form for form in forms[card.base_word] if form.card_key == card.target_form)
-                branch_forms = _profile_options(forms[card.base_word], form_card.profile)
+                branch_forms = _profile_options(unlocked_forms[card.base_word], form_card.profile)
                 distractors = [form for form in branch_forms if form != form_card.form]
                 rng.shuffle(distractors)
                 options, correct_id = _options([form_card.form, *distractors[:3]], form_card.form, rng)

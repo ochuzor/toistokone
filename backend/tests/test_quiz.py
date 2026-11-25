@@ -242,7 +242,7 @@ class GrammarBatchTests(unittest.TestCase):
         self.assertFalse(any(question["card"]["type"] == "word_form" for question in before))
         self.master("talo")
         self.master("tehdä")
-        _, _, _, _, _, candidates = _load_content(self.content, self.progress)
+        _, _, _, _, _, _, candidates = _load_content(self.content, self.progress)
         self.assertTrue(any(
             candidate.card_type == "word_form"
             and candidate.base_word == "talo"
@@ -276,12 +276,65 @@ class GrammarBatchTests(unittest.TestCase):
         (self.root / "dictionary.txt").write_text("talo - house\ntehdä - to do\nHelsinki - Helsinki\n", encoding="utf-8")
         run_import(self.root)
 
-        vocabulary, quizzable_vocabulary, _, _, _, candidates = _load_content(self.content, self.progress)
+        vocabulary, quizzable_vocabulary, _, _, _, _, candidates = _load_content(self.content, self.progress)
 
         self.assertIn("Helsinki", vocabulary)
         self.assertNotIn("Helsinki", quizzable_vocabulary)
         self.assertFalse(any(candidate.card_type == "vocabulary" and candidate.base_word == "Helsinki" for candidate in candidates))
         self.assertTrue(any(candidate.card_type == "word_form" and candidate.base_word == "Helsinki" for candidate in candidates))
+
+    def verb_candidates(self) -> set[str]:
+        _, _, _, _, _, _, candidates = _load_content(self.content, self.progress)
+        return {
+            candidate.target_form for candidate in candidates
+            if candidate.card_type == "word_form" and candidate.base_word == "tehdä"
+        }
+
+    def test_verb_forms_unlock_in_stages(self) -> None:
+        self.master("tehdä")
+        self.assertEqual(self.verb_candidates(), {
+            "verb:present-1sg", "verb:present-2sg", "verb:present-3sg",
+        })
+
+        self.master_form("tehdä", "verb:present-1sg")
+        self.master_form("tehdä", "verb:present-2sg")
+        self.assertEqual(self.verb_candidates(), {
+            "verb:present-1sg", "verb:present-2sg", "verb:present-3sg",
+            "verb:past-1sg", "verb:past-2sg", "verb:past-3sg",
+        })
+
+        self.master_form("tehdä", "verb:past-1sg")
+        self.master_form("tehdä", "verb:past-2sg")
+        self.assertTrue({"verb:present-1pl", "verb:present-2pl", "verb:present-3pl"}.issubset(self.verb_candidates()))
+        self.assertFalse({"verb:past-1pl", "verb:past-2pl", "verb:past-3pl"}.intersection(self.verb_candidates()))
+
+        self.master_form("tehdä", "verb:present-1pl")
+        self.master_form("tehdä", "verb:present-2pl")
+        self.assertTrue({"verb:past-1pl", "verb:past-2pl", "verb:past-3pl"}.issubset(self.verb_candidates()))
+
+    def test_previously_practised_later_verb_form_remains_available(self) -> None:
+        self.master("tehdä")
+        record_answer(
+            self.progress,
+            CardReference(type="word_form", base_word="tehdä", target_form="verb:past-3pl"),
+            "existing-past-plural", False, cooldown_minutes=0,
+        )
+
+        self.assertIn("verb:past-3pl", self.verb_candidates())
+
+    def test_locked_verb_forms_are_not_answer_options(self) -> None:
+        self.master("tehdä")
+        record_answer(
+            self.progress,
+            CardReference(type="word_form", base_word="tehdä", target_form="verb:present-1sg"),
+            "present-singular", True, cooldown_minutes=0,
+        )
+
+        question = next(
+            question for question in build_batch(self.content, self.progress, 2, random.Random(5))
+            if question["card"]["target_form"] == "verb:present-1sg"
+        )
+        self.assertEqual({option["text"] for option in question["options"]}, {"teen", "teet", "tekee"})
 
     def test_sentence_break_uses_mastered_base_words_and_forms_and_ignores_stale_progress(self) -> None:
         self.assertEqual(build_sentence_break(self.content, self.progress), [])
