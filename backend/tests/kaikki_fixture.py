@@ -45,6 +45,14 @@ def write_kaikki(root: Path) -> None:
             {"form": "teemme", "source": "conjugation", "tags": ["indicative", "present", "first-person", "plural"]},
             {"form": "teette", "source": "conjugation", "tags": ["indicative", "present", "second-person", "plural"]},
             {"form": "tekevät", "source": "conjugation", "tags": ["indicative", "present", "third-person", "plural"]},
+            {"form": "tein", "source": "conjugation", "tags": ["indicative", "past", "first-person", "singular"]},
+            {"form": "teit", "source": "conjugation", "tags": ["indicative", "past", "second-person", "singular"]},
+            {"form": "teki", "source": "conjugation", "tags": ["indicative", "past", "third-person", "singular"]},
+            {"form": "teimme", "source": "conjugation", "tags": ["indicative", "past", "first-person", "plural"]},
+            {"form": "teitte", "source": "conjugation", "tags": ["indicative", "past", "second-person", "plural"]},
+            {"form": "tekivät", "source": "conjugation", "tags": ["indicative", "past", "third-person", "plural"]},
+            {"form": "en tehnyt", "source": "conjugation", "tags": ["indicative", "negative", "past", "first-person", "singular"]},
+            {"form": "tehtiin", "source": "conjugation", "tags": ["indicative", "passive", "past"]},
         ]},
     ]
     (lexicon / "kaikki.org-dictionary-Finnish-words.jsonl").write_text("".join(json.dumps(entry) + "\n" for entry in entries), encoding="utf-8")

@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Add active affirmative past-tense verb cards
 - [x] Prioritize content-health findings by current learning relevance
 - [x] Add outer local-case grammar cards
 - [x] Add content-health report and browser view

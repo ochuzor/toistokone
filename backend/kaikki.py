@@ -19,7 +19,7 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
-INDEX_VERSION = 12
+INDEX_VERSION = 13
 RECOMMENDATION_INDEX_VERSION = 5
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 PERSONAL_PRONOUNS = frozenset({"minä", "sinä", "hän", "me", "te", "he"})
@@ -57,6 +57,12 @@ VERB_SLOTS = (
     ("present-1pl", "me ____", {"indicative", "present", "first-person", "plural"}),
     ("present-2pl", "te ____", {"indicative", "present", "second-person", "plural"}),
     ("present-3pl", "he ____", {"indicative", "present", "third-person", "plural"}),
+    ("past-1sg", "minä ____", {"indicative", "past", "first-person", "singular"}),
+    ("past-2sg", "sinä ____", {"indicative", "past", "second-person", "singular"}),
+    ("past-3sg", "hän ____", {"indicative", "past", "third-person", "singular"}),
+    ("past-1pl", "me ____", {"indicative", "past", "first-person", "plural"}),
+    ("past-2pl", "te ____", {"indicative", "past", "second-person", "plural"}),
+    ("past-3pl", "he ____", {"indicative", "past", "third-person", "plural"}),
 )
 DISALLOWED_TAGS = {"rare", "possessive", "singular-possessive", "plural-possessive", "negative", "passive", "connegative", "accusative"}
 NORMALIZABLE_NOMINAL_TAGS = {"nominative", "genitive", "partitive", "inessive", "elative", "illative", "adessive", "ablative", "allative", "essive", "translative", "abessive", "instructive", "comitative"}
