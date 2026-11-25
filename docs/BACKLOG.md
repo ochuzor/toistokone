@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Add conditional verb and essive nominal cards
 - [x] Show progress while importing content
 - [x] Stage nominal form introduction by case group
 - [x] Make present and past verb prompts unambiguous

@@ -20,7 +20,7 @@ CREATE TABLE candidates (
 );
 CREATE INDEX idx_candidates_lookup ON candidates(lemma, profile, slot, source_order);
 """
-INDEX_VERSION = 13
+INDEX_VERSION = 14
 RECOMMENDATION_INDEX_VERSION = 5
 PRONOUN_TEMPLATE_PREFIX = "fi-decl-pron/"
 PERSONAL_PRONOUNS = frozenset({"minä", "sinä", "hän", "me", "te", "he"})
@@ -39,6 +39,7 @@ NOMINAL_SLOTS = (
     ("adessive", "Adessiivi (millä?)", {"adessive", "singular"}),
     ("ablative", "Ablatiivi (miltä?)", {"ablative", "singular"}),
     ("allative", "Allatiivi (mille?)", {"allative", "singular"}),
+    ("essive", "Essiivi (minä?)", {"essive", "singular"}),
 )
 NOMINAL_PLURAL_SLOTS = (
     ("nominative", "Nominatiivi, monikko (mitkä?)", {"nominative", "plural"}),
@@ -64,6 +65,12 @@ VERB_SLOTS = (
     ("past-1pl", "me ____", {"indicative", "past", "first-person", "plural"}),
     ("past-2pl", "te ____", {"indicative", "past", "second-person", "plural"}),
     ("past-3pl", "he ____", {"indicative", "past", "third-person", "plural"}),
+    ("conditional-1sg", "minä ____", {"conditional", "present", "first-person", "singular"}),
+    ("conditional-2sg", "sinä ____", {"conditional", "present", "second-person", "singular"}),
+    ("conditional-3sg", "hän ____", {"conditional", "present", "third-person", "singular"}),
+    ("conditional-1pl", "me ____", {"conditional", "present", "first-person", "plural"}),
+    ("conditional-2pl", "te ____", {"conditional", "present", "second-person", "plural"}),
+    ("conditional-3pl", "he ____", {"conditional", "present", "third-person", "plural"}),
 )
 DISALLOWED_TAGS = {"rare", "possessive", "singular-possessive", "plural-possessive", "negative", "passive", "connegative", "accusative"}
 NORMALIZABLE_NOMINAL_TAGS = {"nominative", "genitive", "partitive", "inessive", "elative", "illative", "adessive", "ablative", "allative", "essive", "translative", "abessive", "instructive", "comitative"}

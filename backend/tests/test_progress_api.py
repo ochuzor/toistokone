@@ -56,7 +56,7 @@ class ProgressApiTests(unittest.TestCase):
         self.assertEqual(retry.model_dump(), result.model_dump())
 
         response = stats("Europe/Helsinki")
-        self.assertEqual(response.overall.model_dump(), {"total": 10, "mastered": 0, "mastery_percent": 0.0})
+        self.assertEqual(response.overall.model_dump(), {"total": 11, "mastered": 0, "mastery_percent": 0.0})
         self.assertEqual(len(response.activity.days), 14)
         self.assertEqual(reset(ResetRequest(card=payload["card"])).model_dump(), {"score": 0})
 

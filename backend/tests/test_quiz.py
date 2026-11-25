@@ -316,13 +316,18 @@ class GrammarBatchTests(unittest.TestCase):
         self.master_form("talo", "nominal:elative")
         self.assertTrue({"nominal:adessive", "nominal:ablative", "nominal:allative"}.issubset(self.nominal_candidates()))
 
-    def test_nominal_final_plural_stage_requires_the_outer_local_stage(self) -> None:
+        self.master_form("talo", "nominal:adessive")
+        self.master_form("talo", "nominal:ablative")
+        self.assertIn("nominal:essive", self.nominal_candidates())
+
+    def test_nominal_final_plural_stage_requires_the_essive_stage(self) -> None:
         cards = [
             FormCard(card_key, card_key, "nominal", card_key)
             for card_key in (
                 "nominal:genitive", "nominal:partitive", "nominal:nominative-plural",
                 "nominal:inessive", "nominal:elative", "nominal:illative",
                 "nominal:adessive", "nominal:ablative", "nominal:allative",
+                "nominal:essive",
                 "nominal:genitive-plural", "nominal:partitive-plural",
             )
         ]
@@ -335,6 +340,12 @@ class GrammarBatchTests(unittest.TestCase):
             )
         }
 
+        self.assertFalse(
+            {"nominal:genitive-plural", "nominal:partitive-plural"}.issubset(
+                {card.card_key for card in _unlocked_nominal_cards(cards, progress)}
+            )
+        )
+        progress["nominal:essive"] = (3, "2026-01-01T00:00:00+00:00")
         self.assertTrue(
             {"nominal:genitive-plural", "nominal:partitive-plural"}.issubset(
                 {card.card_key for card in _unlocked_nominal_cards(cards, progress)}
@@ -400,6 +411,15 @@ class GrammarBatchTests(unittest.TestCase):
         self.master_form("tehdä", "verb:present-1pl")
         self.master_form("tehdä", "verb:present-2pl")
         self.assertTrue({"verb:past-1pl", "verb:past-2pl", "verb:past-3pl"}.issubset(self.verb_candidates()))
+
+        self.master_form("tehdä", "verb:past-1pl")
+        self.master_form("tehdä", "verb:past-2pl")
+        self.assertTrue({"verb:conditional-1sg", "verb:conditional-2sg", "verb:conditional-3sg"}.issubset(self.verb_candidates()))
+        self.assertFalse({"verb:conditional-1pl", "verb:conditional-2pl", "verb:conditional-3pl"}.intersection(self.verb_candidates()))
+
+        self.master_form("tehdä", "verb:conditional-1sg")
+        self.master_form("tehdä", "verb:conditional-2sg")
+        self.assertTrue({"verb:conditional-1pl", "verb:conditional-2pl", "verb:conditional-3pl"}.issubset(self.verb_candidates()))
 
     def test_previously_practised_later_verb_form_remains_available(self) -> None:
         self.master("tehdä")

@@ -45,11 +45,14 @@ VERB_FORM_STAGES = (
     frozenset({"verb:past-1sg", "verb:past-2sg", "verb:past-3sg"}),
     frozenset({"verb:present-1pl", "verb:present-2pl", "verb:present-3pl"}),
     frozenset({"verb:past-1pl", "verb:past-2pl", "verb:past-3pl"}),
+    frozenset({"verb:conditional-1sg", "verb:conditional-2sg", "verb:conditional-3sg"}),
+    frozenset({"verb:conditional-1pl", "verb:conditional-2pl", "verb:conditional-3pl"}),
 )
 NOMINAL_FORM_STAGES = (
     frozenset({"nominal:genitive", "nominal:partitive", "nominal:nominative-plural", "nominal:accusative"}),
     frozenset({"nominal:inessive", "nominal:elative", "nominal:illative"}),
     frozenset({"nominal:adessive", "nominal:ablative", "nominal:allative"}),
+    frozenset({"nominal:essive"}),
     frozenset({"nominal:genitive-plural", "nominal:partitive-plural"}),
 )
 NOMINAL_PLURAL_FORM_STAGES = (
@@ -185,12 +188,13 @@ def _unlocked_nominal_cards(cards: list[FormCard], progress: dict[str, tuple[int
             stage_cards = [card for card in profile_cards if card.card_key in stage]
             if not stage_cards:
                 continue
-            if len(stage_cards) < 2:
-                unlocked_keys.update(card.card_key for card in stage_cards)
-                continue
             unlocked_keys.update(card.card_key for card in stage_cards)
+            unlocked_profile_cards = [card for card in profile_cards if card.card_key in unlocked_keys]
+            if len(_profile_options(unlocked_profile_cards, profile)) < 2:
+                continue
             mastered_count = sum(progress.get(card.card_key, (0, None))[0] == 3 for card in stage_cards)
-            if mastered_count < STAGE_MASTERY_THRESHOLD:
+            threshold = min(STAGE_MASTERY_THRESHOLD, len(stage_cards))
+            if mastered_count < threshold:
                 break
     return [card for card in cards if card.card_key in unlocked_keys]
 
