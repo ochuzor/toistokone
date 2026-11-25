@@ -46,6 +46,17 @@ VERB_FORM_STAGES = (
     frozenset({"verb:present-1pl", "verb:present-2pl", "verb:present-3pl"}),
     frozenset({"verb:past-1pl", "verb:past-2pl", "verb:past-3pl"}),
 )
+NOMINAL_FORM_STAGES = (
+    frozenset({"nominal:genitive", "nominal:partitive", "nominal:nominative-plural", "nominal:accusative"}),
+    frozenset({"nominal:inessive", "nominal:elative", "nominal:illative"}),
+    frozenset({"nominal:adessive", "nominal:ablative", "nominal:allative"}),
+    frozenset({"nominal:genitive-plural", "nominal:partitive-plural"}),
+)
+NOMINAL_PLURAL_FORM_STAGES = (
+    frozenset({"nominal-plural:nominative", "nominal-plural:genitive", "nominal-plural:partitive", "nominal-plural:accusative"}),
+    frozenset({"nominal-plural:inessive", "nominal-plural:elative", "nominal-plural:illative"}),
+    frozenset({"nominal-plural:adessive", "nominal-plural:ablative", "nominal-plural:allative"}),
+)
 STAGE_MASTERY_THRESHOLD = 2
 
 
@@ -165,6 +176,25 @@ def _unlocked_verb_cards(cards: list[FormCard], progress: dict[str, tuple[int, s
     return [card for card in cards if card.card_key in unlocked_keys]
 
 
+def _unlocked_nominal_cards(cards: list[FormCard], progress: dict[str, tuple[int, str | None]]) -> list[FormCard]:
+    """Keep previously introduced cards available and stage new nominal forms."""
+    unlocked_keys = {card_key for card_key, (_, practiced_at) in progress.items() if practiced_at is not None}
+    for profile, stages in (("nominal", NOMINAL_FORM_STAGES), ("nominal-plural", NOMINAL_PLURAL_FORM_STAGES)):
+        profile_cards = [card for card in cards if card.profile == profile]
+        for stage in stages:
+            stage_cards = [card for card in profile_cards if card.card_key in stage]
+            if not stage_cards:
+                continue
+            if len(stage_cards) < 2:
+                unlocked_keys.update(card.card_key for card in stage_cards)
+                continue
+            unlocked_keys.update(card.card_key for card in stage_cards)
+            mastered_count = sum(progress.get(card.card_key, (0, None))[0] == 3 for card in stage_cards)
+            if mastered_count < STAGE_MASTERY_THRESHOLD:
+                break
+    return [card for card in cards if card.card_key in unlocked_keys]
+
+
 def _single_token(value: str) -> str | None:
     value_tokens = tokens(value)
     if len(value_tokens) != 1:
@@ -261,14 +291,15 @@ def _load_content(content_path: Path, progress_path: Path) -> tuple[dict[str, li
             form_progress[base_word][card_key] = (score, practiced_at)
         unlocked_forms: dict[str, list[FormCard]] = {}
         for base_word, form_cards in forms.items():
-            if base_word not in quizzable_vocabulary:
-                unlocked_forms[base_word] = form_cards
-            elif vocabulary_scores.get(base_word) == 3:
+            if base_word not in quizzable_vocabulary or vocabulary_scores.get(base_word) == 3:
                 verb_cards = [card for card in form_cards if card.profile == "verb"]
+                nominal_cards = [card for card in form_cards if card.profile in {"nominal", "nominal-plural"}]
                 unlocked_verb_cards = _unlocked_verb_cards(verb_cards, form_progress[base_word])
+                unlocked_nominal_cards = _unlocked_nominal_cards(nominal_cards, form_progress[base_word])
                 unlocked_forms[base_word] = [
                     card for card in form_cards
-                    if card.profile != "verb" or card in unlocked_verb_cards
+                    if (card.profile == "verb" and card in unlocked_verb_cards)
+                    or (card.profile in {"nominal", "nominal-plural"} and card in unlocked_nominal_cards)
                 ]
             else:
                 unlocked_forms[base_word] = []

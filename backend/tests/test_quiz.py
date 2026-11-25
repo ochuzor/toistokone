@@ -8,7 +8,7 @@ from pathlib import Path
 
 from backend.app.db import initialize_progress_database, list_focus_words, record_answer, request_focus_word
 from backend.app.models import CardReference
-from backend.app.quiz import Candidate, _context_support, _load_content, _select_diverse_new_vocabulary, _select_new_forms, _sentence_break_weight, _sentence_weight, build_batch, build_sentence_break, select_candidates
+from backend.app.quiz import Candidate, FormCard, _context_support, _load_content, _select_diverse_new_vocabulary, _select_new_forms, _sentence_break_weight, _sentence_weight, _unlocked_nominal_cards, build_batch, build_sentence_break, select_candidates
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
 
@@ -281,7 +281,11 @@ class GrammarBatchTests(unittest.TestCase):
         self.assertIn("Helsinki", vocabulary)
         self.assertNotIn("Helsinki", quizzable_vocabulary)
         self.assertFalse(any(candidate.card_type == "vocabulary" and candidate.base_word == "Helsinki" for candidate in candidates))
-        self.assertTrue(any(candidate.card_type == "word_form" and candidate.base_word == "Helsinki" for candidate in candidates))
+        helsinki_candidates = {
+            candidate.target_form for candidate in candidates
+            if candidate.card_type == "word_form" and candidate.base_word == "Helsinki"
+        }
+        self.assertEqual(helsinki_candidates, {"nominal:genitive", "nominal:inessive"})
 
     def verb_candidates(self) -> set[str]:
         _, _, _, _, _, _, candidates = _load_content(self.content, self.progress)
@@ -289,6 +293,91 @@ class GrammarBatchTests(unittest.TestCase):
             candidate.target_form for candidate in candidates
             if candidate.card_type == "word_form" and candidate.base_word == "tehdä"
         }
+
+    def nominal_candidates(self) -> set[str]:
+        _, _, _, _, _, _, candidates = _load_content(self.content, self.progress)
+        return {
+            candidate.target_form for candidate in candidates
+            if candidate.card_type == "word_form" and candidate.base_word == "talo"
+        }
+
+    def test_nominal_forms_unlock_in_stages(self) -> None:
+        self.master("talo")
+        self.assertEqual(self.nominal_candidates(), {
+            "nominal:genitive", "nominal:partitive", "nominal:nominative-plural",
+        })
+
+        self.master_form("talo", "nominal:genitive")
+        self.master_form("talo", "nominal:partitive")
+        self.assertTrue({"nominal:inessive", "nominal:elative", "nominal:illative"}.issubset(self.nominal_candidates()))
+        self.assertFalse({"nominal:adessive", "nominal:ablative", "nominal:allative"}.intersection(self.nominal_candidates()))
+
+        self.master_form("talo", "nominal:inessive")
+        self.master_form("talo", "nominal:elative")
+        self.assertTrue({"nominal:adessive", "nominal:ablative", "nominal:allative"}.issubset(self.nominal_candidates()))
+
+    def test_nominal_final_plural_stage_requires_the_outer_local_stage(self) -> None:
+        cards = [
+            FormCard(card_key, card_key, "nominal", card_key)
+            for card_key in (
+                "nominal:genitive", "nominal:partitive", "nominal:nominative-plural",
+                "nominal:inessive", "nominal:elative", "nominal:illative",
+                "nominal:adessive", "nominal:ablative", "nominal:allative",
+                "nominal:genitive-plural", "nominal:partitive-plural",
+            )
+        ]
+        progress = {
+            card_key: (3, "2026-01-01T00:00:00+00:00")
+            for card_key in (
+                "nominal:genitive", "nominal:partitive",
+                "nominal:inessive", "nominal:elative",
+                "nominal:adessive", "nominal:ablative",
+            )
+        }
+
+        self.assertTrue(
+            {"nominal:genitive-plural", "nominal:partitive-plural"}.issubset(
+                {card.card_key for card in _unlocked_nominal_cards(cards, progress)}
+            )
+        )
+
+    def test_previously_practised_later_nominal_form_remains_available(self) -> None:
+        self.master("talo")
+        record_answer(
+            self.progress,
+            CardReference(type="word_form", base_word="talo", target_form="nominal:adessive"),
+            "existing-adessive", False, cooldown_minutes=0,
+        )
+
+        self.assertIn("nominal:adessive", self.nominal_candidates())
+
+    def test_plural_nominal_stage_includes_personal_pronoun_accusative(self) -> None:
+        cards = [
+            FormCard("nominal-plural:nominative", "he", "nominal-plural", "Nominatiivi, monikko (mitkä?)"),
+            FormCard("nominal-plural:genitive", "heidän", "nominal-plural", "Genetiivi, monikko (minkä?)"),
+            FormCard("nominal-plural:partitive", "heitä", "nominal-plural", "Partitiivi, monikko (mitä?)"),
+            FormCard("nominal-plural:accusative", "heidät", "nominal-plural", "Akkusatiivi"),
+            FormCard("nominal-plural:inessive", "heissä", "nominal-plural", "Inessiivi, monikko (missä?)"),
+        ]
+
+        self.assertEqual(
+            {card.card_key for card in _unlocked_nominal_cards(cards, {})},
+            {"nominal-plural:nominative", "nominal-plural:genitive", "nominal-plural:partitive", "nominal-plural:accusative"},
+        )
+        progress = {
+            "nominal-plural:nominative": (3, "2026-01-01T00:00:00+00:00"),
+            "nominal-plural:genitive": (3, "2026-01-01T00:00:00+00:00"),
+        }
+        self.assertIn("nominal-plural:inessive", {card.card_key for card in _unlocked_nominal_cards(cards, progress)})
+
+    def test_locked_nominal_forms_are_not_answer_options(self) -> None:
+        self.master("talo")
+
+        question = next(
+            question for question in build_batch(self.content, self.progress, 5, random.Random(5))
+            if question["card"]["target_form"] == "nominal:genitive"
+        )
+        self.assertEqual({option["text"] for option in question["options"]}, {"talot", "talon", "taloa"})
 
     def test_verb_forms_unlock_in_stages(self) -> None:
         self.master("tehdä")

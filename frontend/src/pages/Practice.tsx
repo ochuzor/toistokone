@@ -44,7 +44,7 @@ export default function Practice() {
   const tenseLabel = current?.card.type === 'word_form' && current.hint ? verbTenseLabel(current.card.target_form) : null
 
   useEffect(() => {
-    if (contentRevision && (queue.length || sentenceBreak)) savePracticeState({ schemaVersion: 4, contentRevision, queue, capacity: Math.max(capacity, queue.length), quizzesSinceSentenceBreak, nextSentenceBreakAt, ...(answer ? { currentAnswer: answer } : {}), ...(sentenceBreak ? { sentenceBreak } : {}) })
+    if (contentRevision && (queue.length || sentenceBreak)) savePracticeState({ schemaVersion: 5, contentRevision, queue, capacity: Math.max(capacity, queue.length), quizzesSinceSentenceBreak, nextSentenceBreakAt, ...(answer ? { currentAnswer: answer } : {}), ...(sentenceBreak ? { sentenceBreak } : {}) })
     else if (!loading) clearPracticeState()
   }, [answer, capacity, contentRevision, loading, nextSentenceBreakAt, queue, quizzesSinceSentenceBreak, sentenceBreak])
 
@@ -144,7 +144,7 @@ export default function Practice() {
     if (!current || answer) return
     const pending: SavedAnswer = { questionId: current.question_id, selectedOptionId: optionId, attemptId: crypto.randomUUID(), submitted: false }
     setAnswer(pending)
-    if (contentRevision) savePracticeState({ schemaVersion: 4, contentRevision, queue, capacity, quizzesSinceSentenceBreak, nextSentenceBreakAt, currentAnswer: pending, ...(sentenceBreak ? { sentenceBreak } : {}) })
+    if (contentRevision) savePracticeState({ schemaVersion: 5, contentRevision, queue, capacity, quizzesSinceSentenceBreak, nextSentenceBreakAt, currentAnswer: pending, ...(sentenceBreak ? { sentenceBreak } : {}) })
     void submitPendingAnswer(current, pending)
   }
 

@@ -11,7 +11,7 @@ export type SavedAnswer = {
 }
 
 export type SavedPracticeState = {
-  schemaVersion: 4
+  schemaVersion: 5
   contentRevision: string
   queue: QuizQuestion[]
   capacity: number
@@ -48,7 +48,7 @@ export function loadPracticeState(): SavedPracticeState | null {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return null
     const saved = JSON.parse(raw) as RawSavedPracticeState
-    if (saved.schemaVersion !== 4 || typeof saved.contentRevision !== 'string' || !Array.isArray(saved.queue) || !saved.queue.every(isQuestion) || typeof saved.capacity !== 'number' || saved.capacity < saved.queue.length) return null
+    if (saved.schemaVersion !== 5 || typeof saved.contentRevision !== 'string' || !Array.isArray(saved.queue) || !saved.queue.every(isQuestion) || typeof saved.capacity !== 'number' || saved.capacity < saved.queue.length) return null
     if (saved.currentAnswer && (typeof saved.currentAnswer.questionId !== 'string' || typeof saved.currentAnswer.selectedOptionId !== 'string' || typeof saved.currentAnswer.attemptId !== 'string' || typeof saved.currentAnswer.submitted !== 'boolean' || saved.queue[0]?.question_id !== saved.currentAnswer.questionId)) return null
     if (typeof saved.quizzesSinceSentenceBreak !== 'number' || saved.quizzesSinceSentenceBreak < 0 || !Number.isInteger(saved.quizzesSinceSentenceBreak) || typeof saved.nextSentenceBreakAt !== 'number' || saved.nextSentenceBreakAt < 3 || saved.nextSentenceBreakAt > 10 || !Number.isInteger(saved.nextSentenceBreakAt) || (saved.sentenceBreak !== undefined && (!Array.isArray(saved.sentenceBreak) || !saved.sentenceBreak.length || !saved.sentenceBreak.every(isSentence)))) return null
     return saved as SavedPracticeState

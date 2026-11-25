@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Stage nominal form introduction by case group
 - [x] Make present and past verb prompts unambiguous
 - [x] Stage verb-form introduction by tense and person
 - [x] Add active affirmative past-tense verb cards

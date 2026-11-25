@@ -64,15 +64,15 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - Prompt: Finnish base word, with no hint.
 - Answers: one correct English meaning group plus up to three randomly chosen distractor groups from other vocabulary entries, in randomized order.
 - Each answer group displays all its English meanings together (e.g., `house / home`).
-- A vocabulary card achieving score 3 unlocks all associated word-form cards.
+- A vocabulary card achieving score 3 begins unlocking its associated word-form cards in stages.
 - A capitalized dictionary word whose supplied English meanings are all exactly
   the same spelling (for example, `Helsinki - Helsinki`) is forms-only: it has
-  no vocabulary meaning card, does not affect vocabulary totals, and its form
-  cards are eligible immediately.
+  no vocabulary meaning card, does not affect vocabulary totals, and begins
+  form practice from its first usable stage immediately.
 
 ### Word-form cards
 
-- Kaikki generates labelled grammar cards for applicable dictionary words: genitive, partitive, plural genitive, plural partitive, inessive, elative, illative, adessive, ablative, allative, and nominative plural nominal forms, plus six active affirmative present-indicative and six past-indicative verb forms. After a verb's meaning card is mastered, its forms unlock in present singular, past singular, present plural, then past plural stages; mastering two cards unlocks the next stage. Plural genitive and plural partitive are limited to nouns, adjectives, pronouns/determiners, and numerals; proper names and verb/participle entries are excluded. Personal pronouns (`minä`, `sinä`, `hän`, `me`, `te`, `he`) also receive an accusative form card. Singular nominative is practised by the vocabulary meaning card and has no separate form card.
+- Kaikki generates labelled grammar cards for applicable dictionary words: genitive, partitive, plural genitive, plural partitive, inessive, elative, illative, adessive, ablative, allative, and nominative plural nominal forms, plus six active affirmative present-indicative and six past-indicative verb forms. After base-word mastery, ordinary nominal profiles unlock genitive, partitive, and nominative plural first; then inner local cases, outer local cases, and plural genitive/partitive. Plural-pronoun profiles use their own nominative, genitive, and partitive first, followed by their inner and outer local cases. Personal-pronoun accusative cards join the first stage. Verb forms unlock in present singular, past singular, present plural, then past plural stages. Mastering two cards in a stage unlocks the next; sparse stages pass through until there are at least two answer options. Plural genitive and plural partitive are limited to nouns, adjectives, pronouns/determiners, and numerals; proper names and verb/participle entries are excluded. Singular nominative is practised by the vocabulary meaning card and has no separate form card.
 - Form cards unlock after their base vocabulary card reaches score 3, except
   forms-only entries, whose form cards are eligible immediately.
 - Prompt: score-0–2 cards use the base word plus its grammar cue, for example `talo — Inessiivi (missä?)` or `tehdä — hän ____`. Direct verb-form prompts explicitly identify whether they practise present tense (`preesens`) or past tense (`imperfekti`). Score-3 cards use a matching sentence with the target form blanked and display its English translations when coverage exists; otherwise they use the grammar prompt.
