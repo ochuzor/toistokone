@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Require stable explicit IDs for learning sets
 - [x] Validate fatal pipeline input errors before expensive imports
 - [x] Add Markdown learning sets to guide new-card and sentence selection
 - [x] Add conditional verb and essive nominal cards

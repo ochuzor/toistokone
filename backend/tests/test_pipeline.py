@@ -90,7 +90,7 @@ class PipelineTests(unittest.TestCase):
         self.write_sources("".join(f"{word} - meaning\n" for word in words), {"lesson.txt": "Talossa asun. - I live in the house.\n"})
         directory = self.root / "learning-sets"
         directory.mkdir()
-        (directory / "home.md").write_text("# Home life\n\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8")
+        (directory / "renamed-file.md").write_text("---\nid: home-life\n---\n\n# Home life\n\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8")
 
         report = run_import(self.root)
 
@@ -105,14 +105,14 @@ class PipelineTests(unittest.TestCase):
                 "JOIN vocabulary ON vocabulary.id = learning_set_words.vocabulary_id ORDER BY vocabulary.finnish"
             ).fetchall()
         self.assertEqual(len(membership), 10)
-        self.assertIn(("home", "Home life", "talo"), membership)
-        self.assertIn(("home", "Home life", "tehdä"), membership)
+        self.assertIn(("home-life", "Home life", "talo"), membership)
+        self.assertIn(("home-life", "Home life", "tehdä"), membership)
 
     def test_learning_set_unknown_or_duplicate_words_fail_import(self) -> None:
         self.write_sources("talo - house\n")
         directory = self.root / "learning-sets"
         directory.mkdir()
-        (directory / "invalid.md").write_text("# Invalid\n- talo\n- talo\n- puuttuu\n", encoding="utf-8")
+        (directory / "invalid.md").write_text("---\nid: invalid\n---\n# Invalid\n- talo\n- talo\n- puuttuu\n", encoding="utf-8")
 
         with self.assertRaises(ImportValidationError) as raised:
             run_import(self.root)
@@ -121,6 +121,25 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue(any("duplicate learning-set word 'talo'" in error for error in errors))
         self.assertTrue(any("unknown dictionary word 'puuttuu'" in error for error in errors))
         self.assertTrue(any("at least 10 dictionary words" in error for error in errors))
+
+    def test_learning_set_ids_are_required_valid_and_unique(self) -> None:
+        words = ["talo", *[f"word-{number}" for number in range(1, 10)]]
+        self.write_sources("".join(f"{word} - meaning\n" for word in words))
+        directory = self.root / "learning-sets"
+        directory.mkdir()
+        entries = "".join(f"- {word}\n" for word in words)
+        (directory / "missing.md").write_text("# Missing ID\n" + entries, encoding="utf-8")
+        (directory / "malformed.md").write_text("---\nid: Not Valid\n---\n# Malformed\n" + entries, encoding="utf-8")
+        (directory / "first.md").write_text("---\nid: duplicate\n---\n# First\n" + entries, encoding="utf-8")
+        (directory / "second.md").write_text("---\nid: duplicate\n---\n# Second\n" + entries, encoding="utf-8")
+
+        with self.assertRaises(ImportValidationError) as raised:
+            run_import(self.root)
+
+        errors = raised.exception.report.fatal_errors
+        self.assertTrue(any("expected opening '---'" in error for error in errors))
+        self.assertTrue(any("must use lower-case kebab-case" in error for error in errors))
+        self.assertTrue(any("conflicts with" in error and "first.md" in error for error in errors))
 
     def test_changed_kaikki_source_rebuilds_the_index(self) -> None:
         self.write_sources("talo - house\n")

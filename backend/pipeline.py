@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import sqlite3
 import sys
 import tempfile
@@ -19,6 +20,7 @@ from backend.kaikki import GeneratedForm, ensure_index, ensure_recommendation_in
 
 RECOMMENDATION_LEMMA_CANDIDATE_LIMIT = 100
 MINIMUM_LEARNING_SET_WORDS = 10
+LEARNING_SET_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 ProgressReporter = Callable[[str], None]
 
 
@@ -174,11 +176,51 @@ def _parse_learning_sets(root: Path, vocabulary: OrderedDict[str, list[str]], re
     paths = sorted(directory.glob("*.md")) if directory.exists() else []
     report.learning_set_file_count = len(paths)
     learning_sets: list[LearningSet] = []
+    known_ids: dict[str, tuple[Path, int]] = {}
     for path in paths:
+        lines = list(_read_lines(path))
+        key: str | None = None
+        key_line: int | None = None
         title: str | None = None
         words: list[str] = []
         seen: set[str] = set()
-        for number, raw_line in _read_lines(path):
+        position = 0
+        if not lines or lines[0][1].strip() != "---":
+            report.fatal_errors.append(f"{path}: line 1: expected opening '---' for learning-set ID")
+        else:
+            position = 1
+            closed = False
+            while position < len(lines):
+                number, raw_line = lines[position]
+                line = raw_line.strip()
+                position += 1
+                if not line:
+                    continue
+                if line == "---":
+                    closed = True
+                    break
+                if line.startswith("id: ") and line[4:].strip():
+                    if key is not None:
+                        report.fatal_errors.append(f"{path}: line {number}: duplicate learning-set ID")
+                    else:
+                        key = line[4:].strip()
+                        key_line = number
+                else:
+                    report.fatal_errors.append(f"{path}: line {number}: expected 'id: lower-case-kebab-id'")
+            if not closed:
+                report.fatal_errors.append(f"{path}: missing closing '---' for learning-set ID")
+            elif key is None:
+                report.fatal_errors.append(f"{path}: missing learning-set ID")
+            elif not LEARNING_SET_ID_PATTERN.fullmatch(key):
+                report.fatal_errors.append(f"{path}: line {key_line}: learning-set ID '{key}' must use lower-case kebab-case")
+            elif key in known_ids:
+                previous_path, previous_line = known_ids[key]
+                report.fatal_errors.append(
+                    f"{path}: line {key_line}: learning-set ID '{key}' conflicts with {previous_path}: line {previous_line}"
+                )
+            else:
+                known_ids[key] = (path, key_line)
+        for number, raw_line in lines[position:]:
             line = raw_line.strip()
             if not line:
                 continue
@@ -205,8 +247,8 @@ def _parse_learning_sets(root: Path, vocabulary: OrderedDict[str, list[str]], re
             report.fatal_errors.append(
                 f"{path}: learning set must contain at least {MINIMUM_LEARNING_SET_WORDS} dictionary words (found {len(words)})"
             )
-        else:
-            learning_sets.append(LearningSet(path.stem, title, tuple(words)))
+        elif key is not None and LEARNING_SET_ID_PATTERN.fullmatch(key) and known_ids.get(key, (None, None))[0] == path:
+            learning_sets.append(LearningSet(key, title, tuple(words)))
     return learning_sets
 
 

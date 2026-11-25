@@ -94,7 +94,7 @@ class ProgressApiTests(unittest.TestCase):
         (self.root / "dictionary.txt").write_text("".join(f"{word} - meaning\n" for word in words), encoding="utf-8")
         directory = self.root / "learning-sets"
         directory.mkdir()
-        (directory / "home.md").write_text("# Home life\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8")
+        (directory / "home.md").write_text("---\nid: home\n---\n# Home life\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8")
         run_import(self.root)
 
         initial = learning_sets().learning_sets

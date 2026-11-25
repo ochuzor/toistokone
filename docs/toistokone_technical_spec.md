@@ -131,10 +131,12 @@ known-word filtering, but has no vocabulary card, vocabulary score, focus-word
 request, or mastery-statistics entry. Its form cards bypass the usual base-card
 mastery gate. This virtual mastery is limited to form eligibility.
 
-**Learning sets:** Direct-child `learning-sets/*.md` files contain a single H1
-title and a bullet list of at least ten exact dictionary headwords. The pipeline rejects
-missing titles, undersized sets, malformed entries, duplicates within a set, and words absent
-from `dictionary.txt`. It stores the filename stem as the stable set key in the
+**Learning sets:** Direct-child `learning-sets/*.md` files begin with a `---`,
+`id: lower-case-kebab-id`, `---` block, then contain a single H1 title and a
+bullet list of at least ten exact dictionary headwords. The pipeline rejects
+missing, malformed, or duplicate IDs; missing titles; undersized sets;
+malformed entries; duplicates within a set; and words absent from
+`dictionary.txt`. It stores the declared ID as the stable set key in the
 content database with vocabulary membership; generated forms inherit their base
 word's membership. The import report warns about set-specific sentence coverage.
 `progress.sqlite` stores at most one selected set key. Score-0 candidate ranking

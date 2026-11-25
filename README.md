@@ -120,9 +120,14 @@ The pipeline first validates the dictionary, learning sets, Kaikki source/index 
 
 Learning sets connect existing dictionary material into a class week, book unit,
 or practical topic. Add direct-child Markdown files under `learning-sets/` and
-rerun the pipeline. Each file needs an H1 title followed by dictionary headwords:
+rerun the pipeline. Each file needs a stable lower-case kebab-case ID, then an
+H1 title followed by dictionary headwords:
 
 ```md
+---
+id: at-the-supermarket
+---
+
 # At the supermarket
 
 - kauppa
@@ -131,8 +136,9 @@ rerun the pipeline. Each file needs an H1 title followed by dictionary headwords
 ```
 
 Every set needs at least ten words, and every listed word must exist exactly in
-`dictionary.txt`; unknown or duplicate entries fail the import with a
-file-and-line diagnostic. The import report shows
+`dictionary.txt`; missing, invalid, or conflicting IDs and unknown or duplicate
+entries fail the import with a file-and-line diagnostic. The ID—not filename or
+title—keeps a set stable across renames. The import report shows
 sentence coverage warnings for each set, but missing sentences do not prevent
 grammar-prompt practice. Select one imported set on the **Learning sets** page:
 it prefers eligible score-0 words and generated forms after explicit focus-word

@@ -82,7 +82,8 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 ### Learning sets
 
 - Learner-authored Markdown files under `learning-sets/` define named sets of
-  at least ten existing dictionary headwords. One set may be active at a time.
+  at least ten existing dictionary headwords. Each declares an immutable
+  lower-case kebab-case ID before its title; one set may be active at a time.
 - The active set prefers its eligible score-0 vocabulary and generated form
   cards after explicit focus-word requests; normal review selection, mastery,
   cooldown, and form staging remain unchanged.
