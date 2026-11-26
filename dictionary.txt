@@ -340,7 +340,7 @@ kaikki - everybody / every / all
 tänään - today
 sitten - then / ago / subsequently / since / later
 miksi - why / wherefore / how come
-miten - how / in what way / such
+miten - how (to do) / in what way / such
 älä - don't / stop / you don't say
 mikään - any / anything / nothing
 kyllä - yes
@@ -454,7 +454,7 @@ kansalaisuus - nationality / citizenship / franchise
 kansalainen - citizen / national
 kirjoittaa - to write / spell
 kirjoitus - writing / article / scripture / inscription
-kuinka - how / what
+kuinka - how (measurement) / what
 mies - man / husband / male
 maalainen - rural / country / country dweller
 naapuri - neighbour / contiguous
@@ -546,3 +546,13 @@ vihko - notebook
 virhe - mistake
 viivoitin - ruler
 välitunti - recess
+
+oletko - Are you
+onko - Is it
+milloin - When
+mistä - where from
+mihin - where to
+millainen - what kind of
+onnea - good luck / congratulations
+rakas - (My) love
+näkemiin. - goodbye.

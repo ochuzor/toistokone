@@ -1,28 +1,12 @@
 # https://community-courses.memrise.com/community/course/622488/finnish-sentences-audio/
 
 # Basic
-Kuka? - Who?
-Milloin? - When?
-Mitä - What
-Mikä - What, which
-Miksi - Why
-Miten - How (to do)
-Kuinka? - How? (measurement)
 Kuinka kauan? - How long?
 Kuinka paljon? - How much?
 Kuinka monta? - How many?
-Missä - Where
-Mistä - Where from
-Mihin - Where to
-Millainen - What kind of
-Oletko - Are you
-Onko - Is it
 Onko teillä... - Do you have...
 
 # Basic
-Tervetuloa! - Welcome (here)!
-Anteeksi. - Excuse me.
-Kiitos. - Thank you.
 Ole hyvä. - (You're) welcome.
 Mukava tavata. - Nice to meet you.
 Oli mukava tavata. - It was nice to meet you.
@@ -33,7 +17,6 @@ Hyvää päivänjatkoa! - Have a nice day!
 Turvaliista matkaa. - Safe journey.
 Onneksiolkoon! - Congradulations!
 Hyvää syntymäpäivää! - Happy Birthday!
-Onnea! - Good luck!
 Ei kestä. - Don't mention it.
 Terveydeksi. - Bless you (sneeze).
 Selvä homma, ei kiirettä! - It's okay, no hurry!
@@ -52,7 +35,6 @@ Hyvää huomenta! - Good morning!
 Hyvää päivää! - Good day!
 Hyvää iltapäivää! - Good afternoon!
 Hyvää yötä! - Good night!
-Näkemiin. - Goodbye.
 Moi moi. - Bye bye.
 
 # Where are you from? 
@@ -224,7 +206,6 @@ Seksikäs peto. - Sexy beast.
 Olet tärkeä minulle. - You are important to me.
 Mun rakkaani. - My beloved.
 Rakkaimpani. - Most beloved.
-Rakas - (My) love
 Ilo on puolellani. - The pleasure is mine.
 Kauniita unia. - Sweet dreams.
 poskisuukko - kiss on the cheek

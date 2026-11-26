@@ -589,3 +589,4 @@ Voisitko auttaa minua? - Could you help me?
 Voisitko puhua hitaammin? - Could you talk more slowly?
 Voisitko sanoa uudelleen? - Could you say that again?
 Voisitko tarkistaa tämän? - Could you check this?
+Raha on minulla. - I have the money.

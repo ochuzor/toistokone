@@ -562,7 +562,8 @@ Oletteko varma? - Are you sure?
 Se se on. - That's it.
 Se on hän. - It is he.
 Hän se on. - He is it.
-Mitä se on? Mikä se on? - What is it?
+Mitä se on? - What is it?
+Mikä se on? - What is it?
 Ei, en ole. - No, I'm not.
 Ei, ei ole. - No, it is not.
 Niin se on. - That's right. 
@@ -831,7 +832,8 @@ Mene sinä vain. - You just go.
 Se on totta. - That is true. 
 Totta se on. - That is true. 
 Tuo on totta. - That is true.
-Onko se totta? Onko tuo totta? - Is that true?
+Onko se totta? - Is that true?
+Onko tuo totta? - Is that true?
 Ei ole totta. - Not true.
 Totta kai on. - Of course it is.
 Onko tämä totta? - Is this true?
