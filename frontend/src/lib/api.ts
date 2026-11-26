@@ -109,6 +109,27 @@ export type LearningSetDetail = {
   }>
 }
 
+export type LearningPath = {
+  key: string
+  title: string
+  sets: { total: number; mastered: number }
+  completed: boolean
+}
+
+export type LearningPathDetail = {
+  key: string
+  title: string
+  completed: boolean
+  steps: Array<{
+    ordinal: number
+    key: string
+    title: string
+    state: 'completed' | 'available' | 'locked'
+    vocabulary: { total: number; qualified: number; percent: number }
+    word_forms: { total: number; qualified: number; percent: number }
+  }>
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(path, options)
   if (!response.ok) {
@@ -163,6 +184,15 @@ export async function fetchLearningSets(): Promise<LearningSet[]> {
 
 export function fetchLearningSet(setKey: string): Promise<LearningSetDetail> {
   return request<LearningSetDetail>(`/api/learning-sets/${encodeURIComponent(setKey)}`)
+}
+
+export async function fetchLearningPaths(): Promise<LearningPath[]> {
+  const response = await request<{ learning_paths: LearningPath[] }>('/api/learning-paths')
+  return response.learning_paths
+}
+
+export function fetchLearningPath(pathKey: string): Promise<LearningPathDetail> {
+  return request<LearningPathDetail>(`/api/learning-paths/${encodeURIComponent(pathKey)}`)
 }
 
 export function setActiveLearningSet(setKey: string | null): Promise<void> {

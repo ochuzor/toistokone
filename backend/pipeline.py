@@ -30,6 +30,7 @@ class ImportReport:
     frequency_file_count: int = 0
     sentence_file_count: int = 0
     learning_set_file_count: int = 0
+    learning_path_file_count: int = 0
     vocabulary_count: int = 0
     form_count: int = 0
     sentence_count: int = 0
@@ -55,6 +56,7 @@ class ImportReport:
             f"- Dictionary files: {self.dictionary_file_count}", f"- Frequency files: {self.frequency_file_count}",
             f"- Sentence files: {self.sentence_file_count}", f"- Kaikki index rebuilt: {'yes' if self.kaikki_index_rebuilt else 'no'}",
             f"- Learning-set files: {self.learning_set_file_count}",
+            f"- Learning-path files: {self.learning_path_file_count}",
             f"- Recommendation lemma index rebuilt: {'yes' if self.recommendation_lemma_index_rebuilt else 'no'}",
             f"- Imported vocabulary: {self.vocabulary_count}", f"- Imported grammar forms: {self.form_count}",
             f"- Imported sentences: {self.sentence_count}", f"- Imported translations: {self.translation_count}",
@@ -136,6 +138,7 @@ class ImportedContent:
     frequency_words: OrderedDict[str, int]
     recommendation_lemmas: dict[str, str]
     learning_sets: list["LearningSet"]
+    learning_paths: list["LearningPath"]
     report: ImportReport
 
 
@@ -144,6 +147,13 @@ class LearningSet:
     key: str
     title: str
     words: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class LearningPath:
+    key: str
+    title: str
+    learning_set_keys: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -254,6 +264,86 @@ def _parse_learning_sets(root: Path, vocabulary: OrderedDict[str, list[str]], re
     return learning_sets
 
 
+def _parse_learning_paths(root: Path, learning_sets: list[LearningSet], report: ImportReport) -> list[LearningPath]:
+    directory = root / "learning-paths"
+    paths = sorted(directory.glob("*.md")) if directory.exists() else []
+    report.learning_path_file_count = len(paths)
+    learning_paths: list[LearningPath] = []
+    known_ids: dict[str, tuple[Path, int]] = {}
+    known_set_keys = {learning_set.key for learning_set in learning_sets}
+    for path in paths:
+        lines = list(_read_lines(path))
+        key: str | None = None
+        key_line: int | None = None
+        title: str | None = None
+        learning_set_keys: list[str] = []
+        seen: set[str] = set()
+        position = 0
+        if not lines or lines[0][1].strip() != "---":
+            report.fatal_errors.append(f"{path}: line 1: expected opening '---' for learning-path ID")
+        else:
+            position = 1
+            closed = False
+            while position < len(lines):
+                number, raw_line = lines[position]
+                line = raw_line.strip()
+                position += 1
+                if not line:
+                    continue
+                if line == "---":
+                    closed = True
+                    break
+                if line.startswith("id: ") and line[4:].strip():
+                    if key is not None:
+                        report.fatal_errors.append(f"{path}: line {number}: duplicate learning-path ID")
+                    else:
+                        key = line[4:].strip()
+                        key_line = number
+                else:
+                    report.fatal_errors.append(f"{path}: line {number}: expected 'id: lower-case-kebab-id'")
+            if not closed:
+                report.fatal_errors.append(f"{path}: missing closing '---' for learning-path ID")
+            elif key is None:
+                report.fatal_errors.append(f"{path}: missing learning-path ID")
+            elif not LEARNING_SET_ID_PATTERN.fullmatch(key):
+                report.fatal_errors.append(f"{path}: line {key_line}: learning-path ID '{key}' must use lower-case kebab-case")
+            elif key in known_ids:
+                previous_path, previous_line = known_ids[key]
+                report.fatal_errors.append(
+                    f"{path}: line {key_line}: learning-path ID '{key}' conflicts with {previous_path}: line {previous_line}"
+                )
+            else:
+                known_ids[key] = (path, key_line)
+        for number, raw_line in lines[position:]:
+            line = raw_line.strip()
+            if not line:
+                continue
+            if title is None:
+                if not line.startswith("# ") or not line[2:].strip():
+                    report.fatal_errors.append(f"{path}: line {number}: expected a '# Title' heading")
+                    break
+                title = line[2:].strip()
+                continue
+            if not line.startswith("- ") or not line[2:].strip():
+                report.fatal_errors.append(f"{path}: line {number}: expected a '- learning-set-id' entry")
+                continue
+            learning_set_key = line[2:].strip()
+            if learning_set_key in seen:
+                report.fatal_errors.append(f"{path}: line {number}: duplicate learning-set ID '{learning_set_key}'")
+            elif learning_set_key not in known_set_keys:
+                report.fatal_errors.append(f"{path}: line {number}: unknown learning-set ID '{learning_set_key}'")
+            else:
+                seen.add(learning_set_key)
+                learning_set_keys.append(learning_set_key)
+        if title is None:
+            report.fatal_errors.append(f"{path}: expected a '# Title' heading")
+        elif not learning_set_keys:
+            report.fatal_errors.append(f"{path}: learning path must contain at least one learning-set ID")
+        elif key is not None and LEARNING_SET_ID_PATTERN.fullmatch(key) and known_ids.get(key, (None, None))[0] == path:
+            learning_paths.append(LearningPath(key, title, tuple(learning_set_keys)))
+    return learning_paths
+
+
 def _learning_set_coverage(
     learning_sets: list[LearningSet], forms: OrderedDict[str, list[GeneratedForm]], sentences: OrderedDict[str, list[str]]
 ) -> list[LearningSetCoverage]:
@@ -322,6 +412,9 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
     if progress:
         progress("Reading learning sets")
     learning_sets = _parse_learning_sets(project_root, vocabulary, report)
+    if progress:
+        progress("Reading learning paths")
+    learning_paths = _parse_learning_paths(project_root, learning_sets, report)
 
     forms_only_words = {
         word for word, meanings in vocabulary.items()
@@ -367,7 +460,7 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
     if report.fatal_errors:
         return ImportedContent(
             vocabulary, forms_only_words, OrderedDict((word, []) for word in vocabulary),
-            sentences, frequency_words, {}, learning_sets, report,
+            sentences, frequency_words, {}, learning_sets, learning_paths, report,
         )
 
     if source_path.exists():
@@ -435,7 +528,7 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
         progress_path=project_root / "data" / "progress.sqlite",
         frequency_ranks={token: rank for rank, token in enumerate(frequency_words, start=1)},
     )
-    return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, learning_sets, report)
+    return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, learning_sets, learning_paths, report)
 
 
 SCHEMA = """
@@ -448,6 +541,9 @@ CREATE INDEX idx_word_forms_vocab ON word_forms(vocabulary_id);
 CREATE TABLE learning_sets (key TEXT PRIMARY KEY, title TEXT NOT NULL);
 CREATE TABLE learning_set_words (set_key TEXT NOT NULL REFERENCES learning_sets(key) ON DELETE CASCADE, vocabulary_id INTEGER NOT NULL REFERENCES vocabulary(id) ON DELETE CASCADE, PRIMARY KEY (set_key, vocabulary_id));
 CREATE INDEX idx_learning_set_words_vocab ON learning_set_words(vocabulary_id);
+CREATE TABLE learning_paths (key TEXT PRIMARY KEY, title TEXT NOT NULL);
+CREATE TABLE learning_path_sets (path_key TEXT NOT NULL REFERENCES learning_paths(key) ON DELETE CASCADE, set_key TEXT NOT NULL REFERENCES learning_sets(key) ON DELETE CASCADE, ordinal INTEGER NOT NULL, PRIMARY KEY (path_key, set_key), UNIQUE (path_key, ordinal));
+CREATE INDEX idx_learning_path_sets_set ON learning_path_sets(set_key);
 CREATE TABLE sentences (id INTEGER PRIMARY KEY, finnish TEXT NOT NULL UNIQUE);
 CREATE TABLE sentence_translations (sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE, english TEXT NOT NULL, ordinal INTEGER NOT NULL, PRIMARY KEY (sentence_id, english));
 CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentence_id);
@@ -474,6 +570,18 @@ def _build_database(path: Path, content: ImportedContent, revision: str) -> None
             connection.executemany(
                 "INSERT INTO learning_set_words (set_key, vocabulary_id) VALUES (?, ?)",
                 [(learning_set.key, vocabulary_ids[word]) for learning_set in content.learning_sets for word in learning_set.words],
+            )
+            connection.executemany(
+                "INSERT INTO learning_paths (key, title) VALUES (?, ?)",
+                [(learning_path.key, learning_path.title) for learning_path in content.learning_paths],
+            )
+            connection.executemany(
+                "INSERT INTO learning_path_sets (path_key, set_key, ordinal) VALUES (?, ?, ?)",
+                [
+                    (learning_path.key, set_key, ordinal)
+                    for learning_path in content.learning_paths
+                    for ordinal, set_key in enumerate(learning_path.learning_set_keys)
+                ],
             )
             connection.executemany("INSERT INTO sentences (finnish) VALUES (?)", ((finnish,) for finnish in content.sentences))
             sentence_ids = {finnish: sentence_id for sentence_id, finnish in connection.execute("SELECT id, finnish FROM sentences")}

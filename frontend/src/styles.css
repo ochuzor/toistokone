@@ -127,6 +127,19 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .learning-set-word-list strong { color: #162b24; font-size: 1.05rem; }
 .learning-set-word-list span, .learning-set-word-list small { color: #475569; overflow-wrap: anywhere; }
 .learning-set-mastery-icon { flex: 0 0 1.5rem; color: #16704b; font-size: 1.35rem; font-weight: 700; line-height: 1.2; text-align: center; }
+.learning-paths-card, .learning-path-detail-card { width: min(100%, 52rem); }
+.learning-path-list, .learning-path-step-list { display: grid; gap: .75rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.learning-path-list li { display: grid; gap: .25rem; padding: 1rem; border: 1px solid #dce7df; border-radius: .65rem; background: #f8faf9; }
+.learning-path-list small, .learning-path-step small { color: #475569; }
+.learning-path-link, .learning-path-step a { color: #162b24; font-weight: 750; text-decoration: none; }
+.learning-path-link:hover, .learning-path-step a:hover { color: #16704b; text-decoration: underline; }
+.learning-path-step { padding: 1rem; border: 1px solid #dce7df; border-radius: .65rem; background: #f8faf9; }
+.learning-path-step.available { border-color: #16704b; background: #e8f5eb; }
+.learning-path-step.locked { opacity: .68; }
+.learning-path-step-heading { display: flex; gap: .7rem; }
+.learning-path-step-heading > div { display: grid; gap: .15rem; }
+.learning-path-step-state { flex: 0 0 1.4rem; color: #16704b; font-size: 1.3rem; font-weight: 750; text-align: center; }
+.learning-path-step p { margin: .55rem 0 0 2.1rem; color: #475569; font-size: .9rem; }
 .health-card { width: min(100%, 58rem); min-width: 0; }
 .health-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; margin: 1.5rem 0; }
 .health-summary-item { display: grid; gap: .3rem; min-height: 5.5rem; padding: .85rem; border: 1px solid #dce7df; border-radius: .65rem; background: #f8faf9; color: #475569; cursor: pointer; font: inherit; text-align: left; }

@@ -157,6 +157,7 @@ class PipelineTests(unittest.TestCase):
         run_import(self.root, dry_run=True, progress=first_progress.append)
 
         self.assertIn("Reading dictionary", first_progress)
+        self.assertIn("Reading learning paths", first_progress)
         self.assertIn("Kaikki form index: rebuilding", first_progress)
         self.assertIn("Kaikki form index: complete", first_progress)
         self.assertIn("Reading sentences (1/1): lesson.txt", first_progress)
@@ -390,6 +391,32 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("missing Kaikki source and index", raised.exception.report.fatal_errors[0])
         self.assertEqual(content_path.read_bytes(), b"existing-content")
         self.assertEqual(progress_path.read_bytes(), b"persistent-progress")
+
+    def test_learning_paths_import_ordered_set_membership_and_reject_invalid_references(self) -> None:
+        words = ["talo", "ruoka", *[f"word-{number}" for number in range(1, 9)]]
+        self.write_sources("".join(f"{word} - meaning\n" for word in words))
+        sets = self.root / "learning-sets"
+        sets.mkdir()
+        for key, title in (("first", "First set"), ("second", "Second set")):
+            (sets / f"{key}.md").write_text(
+                f"---\nid: {key}\n---\n# {title}\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8"
+            )
+        paths = self.root / "learning-paths"
+        paths.mkdir()
+        (paths / "journey.md").write_text("---\nid: journey\n---\n# My journey\n- first\n- second\n", encoding="utf-8")
+
+        report = run_import(self.root)
+
+        self.assertEqual(report.learning_path_file_count, 1)
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            self.assertEqual(database.execute("SELECT key, title FROM learning_paths").fetchall(), [("journey", "My journey")])
+            self.assertEqual(database.execute("SELECT set_key FROM learning_path_sets WHERE path_key = 'journey' ORDER BY ordinal").fetchall(), [("first",), ("second",)])
+
+        (paths / "invalid.md").write_text("---\nid: invalid\n---\n# Invalid\n- missing\n- first\n- first\n", encoding="utf-8")
+        with self.assertRaises(ImportValidationError) as raised:
+            run_import(self.root, dry_run=True)
+        self.assertTrue(any("unknown learning-set ID 'missing'" in error for error in raised.exception.report.fatal_errors))
+        self.assertTrue(any("duplicate learning-set ID 'first'" in error for error in raised.exception.report.fatal_errors))
 
     def test_frequency_error_preserves_existing_databases(self) -> None:
         self.write_sources("talo - house\n")

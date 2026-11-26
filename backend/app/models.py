@@ -139,6 +139,39 @@ class LearningSetDetail(BaseModel):
     words: list[LearningSetWord]
 
 
+class LearningPathProgress(BaseModel):
+    total: int
+    qualified: int
+    percent: float
+
+
+class LearningPathStep(BaseModel):
+    ordinal: int
+    key: str
+    title: str
+    state: Literal["completed", "available", "locked"]
+    vocabulary: LearningPathProgress
+    word_forms: LearningPathProgress
+
+
+class LearningPath(BaseModel):
+    key: str
+    title: str
+    sets: LearningSetCardStats
+    completed: bool
+
+
+class LearningPathsResponse(BaseModel):
+    learning_paths: list[LearningPath]
+
+
+class LearningPathDetail(BaseModel):
+    key: str
+    title: str
+    steps: list[LearningPathStep]
+    completed: bool
+
+
 class ActiveLearningSetRequest(BaseModel):
     set_key: str | None = None
 

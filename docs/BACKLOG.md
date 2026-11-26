@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Add Markdown learning paths with live progression
 - [x] Show words and progress within each learning set
 - [x] Render the content import report as navigable Markdown
 - [x] Prevent duplicate displayed vocabulary answer options

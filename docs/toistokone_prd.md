@@ -92,6 +92,19 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
   word and form-card totals, and each set has a detail page listing its words,
   translations, base-card mastery state, and form-card mastery summary.
 
+### Learning paths
+
+- Learner-authored Markdown files under `learning-paths/` define ordered paths
+  of one or more stable learning-set IDs. A set may appear in more than one
+  path; duplicate references within one path and missing referenced set IDs are
+  fatal pipeline errors.
+- A step completes when at least 70% of its meaning cards and 40% of its form
+  cards have score 2 or higher. Forms-only entries are excluded from the
+  meaning-card denominator.
+- The first incomplete step whose predecessors are complete is available; later
+  incomplete steps are locked. Paths are guidance only and never auto-activate
+  a learning set.
+
 ## 4. Mastery rules
 
 Every vocabulary and word-form card starts at score 0 and has a score from 0 through 3.

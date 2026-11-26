@@ -325,6 +325,87 @@ def list_learning_sets(content_path: Path, progress_path: Path) -> list[dict[str
     ]
 
 
+def _learning_path_steps(connection: sqlite3.Connection, path_key: str) -> list[dict[str, object]]:
+    rows = connection.execute(
+        """SELECT learning_path_sets.ordinal, learning_sets.key, learning_sets.title,
+                  COUNT(DISTINCT CASE WHEN vocabulary.meaning_quizzable = 1 THEN vocabulary.id END),
+                  COUNT(DISTINCT CASE WHEN vocabulary.meaning_quizzable = 1
+                       AND COALESCE(vocabulary_progress.score, 0) >= 2 THEN vocabulary.id END),
+                  COUNT(word_forms.id),
+                  COUNT(DISTINCT CASE WHEN COALESCE(form_progress.score, 0) >= 2 THEN word_forms.id END)
+           FROM learning_path_sets
+           JOIN learning_sets ON learning_sets.key = learning_path_sets.set_key
+           JOIN learning_set_words ON learning_set_words.set_key = learning_sets.key
+           JOIN vocabulary ON vocabulary.id = learning_set_words.vocabulary_id
+           LEFT JOIN word_forms ON word_forms.vocabulary_id = vocabulary.id
+           LEFT JOIN progress.card_progress AS vocabulary_progress
+             ON vocabulary_progress.card_type = 'vocabulary'
+            AND vocabulary_progress.base_word = vocabulary.finnish
+            AND vocabulary_progress.target_form = ''
+           LEFT JOIN progress.card_progress AS form_progress
+             ON form_progress.card_type = 'word_form'
+            AND form_progress.base_word = vocabulary.finnish
+            AND form_progress.target_form = word_forms.card_key
+           WHERE learning_path_sets.path_key = ?
+           GROUP BY learning_path_sets.ordinal, learning_sets.key, learning_sets.title
+           ORDER BY learning_path_sets.ordinal""",
+        (path_key,),
+    ).fetchall()
+    steps: list[dict[str, object]] = []
+    preceding_steps_completed = True
+    for ordinal, key, title, vocabulary_total, vocabulary_qualified, forms_total, forms_qualified in rows:
+        vocabulary_percent = round((vocabulary_qualified / vocabulary_total * 100) if vocabulary_total else 100, 2)
+        forms_percent = round((forms_qualified / forms_total * 100) if forms_total else 100, 2)
+        completed = vocabulary_percent >= 70 and forms_percent >= 40
+        state = "completed" if completed else "available" if preceding_steps_completed else "locked"
+        steps.append({
+            "ordinal": ordinal,
+            "key": key,
+            "title": title,
+            "state": state,
+            "vocabulary": {"total": vocabulary_total, "qualified": vocabulary_qualified, "percent": vocabulary_percent},
+            "word_forms": {"total": forms_total, "qualified": forms_qualified, "percent": forms_percent},
+        })
+        preceding_steps_completed = preceding_steps_completed and completed
+    return steps
+
+
+def list_learning_paths(content_path: Path, progress_path: Path) -> list[dict[str, object]]:
+    """Return imported learning paths with their live completion summaries."""
+    with sqlite3.connect(content_path) as connection:
+        if connection.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'learning_paths'").fetchone() is None:
+            return []
+        connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
+        paths = connection.execute("SELECT key, title FROM learning_paths ORDER BY title COLLATE NOCASE, key").fetchall()
+        return [
+            {
+                "key": key,
+                "title": title,
+                "sets": {"total": len(steps := _learning_path_steps(connection, key)), "mastered": sum(step["state"] == "completed" for step in steps)},
+                "completed": bool(steps) and all(step["state"] == "completed" for step in steps),
+            }
+            for key, title in paths
+        ]
+
+
+def get_learning_path_detail(content_path: Path, progress_path: Path, path_key: str) -> dict[str, object]:
+    """Return one imported learning path with its ordered, live step progress."""
+    with sqlite3.connect(content_path) as connection:
+        if connection.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'learning_paths'").fetchone() is None:
+            raise LookupError("Learning path does not exist in current content")
+        learning_path = connection.execute("SELECT key, title FROM learning_paths WHERE key = ?", (path_key,)).fetchone()
+        if learning_path is None:
+            raise LookupError("Learning path does not exist in current content")
+        connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
+        steps = _learning_path_steps(connection, path_key)
+    return {
+        "key": learning_path[0],
+        "title": learning_path[1],
+        "steps": steps,
+        "completed": bool(steps) and all(step["state"] == "completed" for step in steps),
+    }
+
+
 def get_learning_set_detail(content_path: Path, progress_path: Path, set_key: str) -> dict[str, object]:
     """Return one imported learning set with current member-card progress."""
     with sqlite3.connect(content_path) as connection:

@@ -10,7 +10,7 @@ from fastapi import HTTPException
 
 from backend.app.config import Settings
 from backend.app.db import initialize_progress_database, list_vocabulary
-from backend.app.main import active_learning_set, add_focus_word, answer, app, content_version, delete_focus_word, focus_words, learning_set_detail, learning_sets, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
+from backend.app.main import active_learning_set, add_focus_word, answer, app, content_version, delete_focus_word, focus_words, learning_path_detail, learning_paths, learning_set_detail, learning_sets, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
 from backend.app.models import ActiveLearningSetRequest, AnswerRequest, FocusWordRequest, ResetRequest
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
@@ -158,6 +158,53 @@ class ProgressApiTests(unittest.TestCase):
 
         self.assertEqual(detail.words[0].finnish, "Tampere")
         self.assertEqual(detail.words[0].score, 3)
+
+    def test_learning_path_unlocks_at_score_two_thresholds_and_relocks_after_regression(self) -> None:
+        first_words = ["talo", *[f"first-{number}" for number in range(1, 10)]]
+        second_words = ["ruoka", *[f"second-{number}" for number in range(1, 10)]]
+        (self.root / "dictionary.txt").write_text(
+            "talo - house\nruoka - food\n" + "".join(f"{word} - meaning\n" for word in [*first_words[1:], *second_words[1:]]),
+            encoding="utf-8",
+        )
+        sets = self.root / "learning-sets"
+        sets.mkdir()
+        for key, title, words in (("first", "First set", first_words), ("second", "Second set", second_words)):
+            (sets / f"{key}.md").write_text(
+                f"---\nid: {key}\n---\n# {title}\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8"
+            )
+        paths = self.root / "learning-paths"
+        paths.mkdir()
+        (paths / "journey.md").write_text("---\nid: journey\n---\n# My journey\n- first\n- second\n", encoding="utf-8")
+        run_import(self.root)
+
+        initial = learning_path_detail("journey")
+        self.assertEqual([step.state for step in initial.steps], ["available", "locked"])
+        with sqlite3.connect(self.settings.content_db_path) as content:
+            form_keys = [row[0] for row in content.execute("SELECT card_key FROM word_forms JOIN vocabulary ON vocabulary.id = word_forms.vocabulary_id WHERE finnish = 'talo' ORDER BY card_key LIMIT 4")]
+        with sqlite3.connect(self.settings.progress_db_path) as progress:
+            progress.executemany(
+                "INSERT INTO card_progress (card_type, base_word, target_form, score) VALUES ('vocabulary', ?, '', 2)",
+                ((word,) for word in first_words[:7]),
+            )
+            progress.executemany(
+                "INSERT INTO card_progress (card_type, base_word, target_form, score) VALUES ('word_form', 'talo', ?, 2)",
+                ((form_key,) for form_key in form_keys),
+            )
+
+        progressed = learning_path_detail("journey")
+        self.assertEqual([step.state for step in progressed.steps], ["completed", "available"])
+        self.assertEqual(progressed.steps[0].vocabulary.model_dump(), {"total": 10, "qualified": 7, "percent": 70.0})
+        self.assertEqual(progressed.steps[0].word_forms.model_dump(), {"total": 10, "qualified": 4, "percent": 40.0})
+        self.assertFalse(progressed.completed)
+        self.assertEqual(learning_paths().learning_paths[0].sets.model_dump(), {"total": 2, "mastered": 1})
+        with sqlite3.connect(self.settings.progress_db_path) as progress:
+            progress.execute("UPDATE card_progress SET score = 1 WHERE card_type = 'vocabulary' AND base_word = ?", (first_words[6],))
+
+        regressed = learning_path_detail("journey")
+        self.assertEqual([step.state for step in regressed.steps], ["available", "locked"])
+        with self.assertRaises(HTTPException) as raised:
+            learning_path_detail("missing")
+        self.assertEqual(raised.exception.status_code, 404)
 
     def test_recommendations_route_returns_contextual_words(self) -> None:
         response = recommendations()

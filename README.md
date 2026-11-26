@@ -146,6 +146,28 @@ it prefers eligible score-0 words and generated forms after explicit focus-word
 requests, and adds its surfaces to contextual reading breaks. Reviews, mastery,
 and form-unlock stages remain unchanged.
 
+### Learning paths
+
+Learning paths arrange learning sets into an ordered curriculum. Add direct-child
+Markdown files under `learning-paths/`, using stable path and learning-set IDs:
+
+```md
+---
+id: beginner-class
+---
+
+# Beginner Finnish class
+
+- classroom-vocabulary-001
+- at-the-supermarket
+```
+
+The pipeline rejects missing, malformed, or duplicate path IDs; unknown set IDs;
+and duplicate set references within one path. A set may appear in more than one
+path. A path opens its next set when the prior set has at least 70% of its
+meaning cards and 40% of its form cards at score 2 or above. Paths guide the
+learner but never activate a set automatically.
+
 ### Word recommendations
 
 The **Word recommendations** page suggests common three-or-more-character

@@ -148,6 +148,19 @@ set's member words, meanings, base-card scores, and form mastery counts at
 `GET /api/learning-sets/{set_key}`. The frontend presents that detail at
 `/learning-sets/:setKey`.
 
+**Learning paths:** Direct-child `learning-paths/*.md` files use the same
+stable-ID header and H1 title format as learning sets, followed by ordered
+learning-set IDs. The pipeline rejects malformed, missing, or duplicate path
+IDs; unknown referenced set IDs; and duplicates within a path. It stores paths
+and their ordered memberships in the content database; a set may be reused in
+different paths. `GET /api/learning-paths` lists live summaries and
+`GET /api/learning-paths/{path_key}` returns ordered steps. A step completes
+when at least 70% of meaning-quizzable vocabulary cards and 40% of form cards
+have score at least 2; a zero-card category is considered complete. The first
+incomplete step after a fully completed prefix is available; later incomplete
+steps are locked. No path state is stored in `progress.sqlite`, and paths never
+change the selected active set automatically.
+
 **Import preflight:** Dictionary entries, learning-set membership, Kaikki
 source/index availability, and the required frequency list are validated before
 the pipeline rebuilds any morphology or recommendation index. Fatal preflight
