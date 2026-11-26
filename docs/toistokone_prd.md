@@ -106,6 +106,9 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - The first incomplete step whose predecessors are complete is available; later
   incomplete steps are locked. Paths are guidance only and never auto-activate
   a learning set.
+- Home shows each imported path's next available set with its base-card and
+  form-card threshold progress, linking to the set detail page. Completed paths
+  link to their path detail instead.
 
 ## 4. Mastery rules
 

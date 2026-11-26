@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Show each learning path's next step on Home
 - [x] Emphasize base verbs in verb-form prompts
 - [x] Add Markdown learning paths with live progression
 - [x] Show words and progress within each learning set

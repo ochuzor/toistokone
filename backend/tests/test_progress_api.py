@@ -196,12 +196,15 @@ class ProgressApiTests(unittest.TestCase):
         self.assertEqual(progressed.steps[0].vocabulary.model_dump(), {"total": 10, "qualified": 7, "percent": 70.0})
         self.assertEqual(progressed.steps[0].word_forms.model_dump(), {"total": 10, "qualified": 4, "percent": 40.0})
         self.assertFalse(progressed.completed)
-        self.assertEqual(learning_paths().learning_paths[0].sets.model_dump(), {"total": 2, "mastered": 1})
+        summary = learning_paths().learning_paths[0]
+        self.assertEqual(summary.sets.model_dump(), {"total": 2, "mastered": 1})
+        self.assertEqual(summary.next_step.key, "second")
         with sqlite3.connect(self.settings.progress_db_path) as progress:
             progress.execute("UPDATE card_progress SET score = 1 WHERE card_type = 'vocabulary' AND base_word = ?", (first_words[6],))
 
         regressed = learning_path_detail("journey")
         self.assertEqual([step.state for step in regressed.steps], ["available", "locked"])
+        self.assertEqual(learning_paths().learning_paths[0].next_step.key, "first")
         with self.assertRaises(HTTPException) as raised:
             learning_path_detail("missing")
         self.assertEqual(raised.exception.status_code, 404)

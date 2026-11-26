@@ -164,6 +164,8 @@ have score at least 2; a zero-card category is considered complete. The first
 incomplete step after a fully completed prefix is available; later incomplete
 steps are locked. No path state is stored in `progress.sqlite`, and paths never
 change the selected active set automatically.
+Each path summary includes its first available step, if any, so Home can show
+the recommended next set without fetching every path detail.
 
 **Import preflight:** Dictionary entries, learning-set membership, Kaikki
 source/index availability, and the required frequency list are validated before

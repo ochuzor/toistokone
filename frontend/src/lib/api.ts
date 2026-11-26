@@ -114,6 +114,7 @@ export type LearningPath = {
   title: string
   sets: { total: number; mastered: number }
   completed: boolean
+  next_step: LearningPathDetail['steps'][number] | null
 }
 
 export type LearningPathDetail = {

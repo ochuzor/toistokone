@@ -377,15 +377,18 @@ def list_learning_paths(content_path: Path, progress_path: Path) -> list[dict[st
             return []
         connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
         paths = connection.execute("SELECT key, title FROM learning_paths ORDER BY title COLLATE NOCASE, key").fetchall()
-        return [
-            {
+        summaries = []
+        for key, title in paths:
+            steps = _learning_path_steps(connection, key)
+            completed = bool(steps) and all(step["state"] == "completed" for step in steps)
+            summaries.append({
                 "key": key,
                 "title": title,
-                "sets": {"total": len(steps := _learning_path_steps(connection, key)), "mastered": sum(step["state"] == "completed" for step in steps)},
-                "completed": bool(steps) and all(step["state"] == "completed" for step in steps),
-            }
-            for key, title in paths
-        ]
+                "sets": {"total": len(steps), "mastered": sum(step["state"] == "completed" for step in steps)},
+                "completed": completed,
+                "next_step": next((step for step in steps if step["state"] == "available"), None),
+            })
+        return summaries
 
 
 def get_learning_path_detail(content_path: Path, progress_path: Path, path_key: str) -> dict[str, object]:

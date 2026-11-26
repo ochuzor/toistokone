@@ -159,6 +159,7 @@ class LearningPath(BaseModel):
     title: str
     sets: LearningSetCardStats
     completed: bool
+    next_step: LearningPathStep | None = None
 
 
 class LearningPathsResponse(BaseModel):
