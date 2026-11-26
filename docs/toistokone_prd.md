@@ -78,6 +78,8 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - Prompt: score-0–2 cards use the base word plus its grammar cue, for example `talo — Inessiivi (missä?)` or `tehdä — hän ____`. Direct verb-form prompts explicitly identify present tense (`preesens`), past tense (`imperfekti`), or conditional (`konditionaali`). Score-3 cards use a matching sentence with the target form blanked and display its English translations when coverage exists; otherwise they use the grammar prompt.
 - Answers: correct form plus up to three distinct forms from the same nominal or verb profile, shuffled. A question requires at least two distinct options.
 - Sentences are not required for form practice: missing coverage falls back to the grammar prompt.
+- Verb-form prompts visually emphasize the base verb; the person-and-blank cue
+  and tense label provide secondary context.
 
 ### Learning sets
 

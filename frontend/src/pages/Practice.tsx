@@ -211,9 +211,9 @@ export default function Practice() {
     {nominalPrompt ? <div className="nominal-prompt">
       <p className="nominal-base">{current.hint}</p>
       <p className="nominal-instruction">Choose the <strong>{nominalPrompt.formName}</strong>{nominalPrompt.questionCue && <span>{nominalPrompt.questionCue}</span>}</p>
-    </div> : <div className={current.hint ? 'form-prompt' : undefined}>
-      {current.hint && <p className="prompt-hint"><span>Base form</span>{current.hint}</p>}
-      <p className="prompt">{current.prompt}</p>
+    </div> : <div className={tenseLabel ? 'form-prompt verb-form-prompt' : current.hint ? 'form-prompt' : undefined}>
+      {current.hint && <p className={tenseLabel ? 'verb-base' : 'prompt-hint'}><span>Base form</span>{current.hint}</p>}
+      <p className={tenseLabel ? 'prompt verb-person-prompt' : 'prompt'}>{current.prompt}</p>
       {tenseLabel && <p className="verb-tense">{tenseLabel}</p>}
     </div>}
     {current.english_translations.length > 0 && <p className="translations">{current.english_translations.join(' / ')}</p>}
