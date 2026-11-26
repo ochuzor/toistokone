@@ -62,7 +62,7 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 ### Vocabulary cards
 
 - Prompt: Finnish base word, with no hint.
-- Answers: one correct English meaning group plus up to three randomly chosen distractor groups from other vocabulary entries, in randomized order.
+- Answers: one correct English meaning group plus up to three randomly chosen distractor groups from other vocabulary entries, in randomized order. Displayed option texts are unique, even when different Finnish entries share a translation.
 - Each answer group displays all its English meanings together (e.g., `house / home`).
 - A vocabulary card achieving score 3 begins unlocking its associated word-form cards in stages.
 - A capitalized dictionary word whose supplied English meanings are all exactly

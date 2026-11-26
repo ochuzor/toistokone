@@ -562,7 +562,11 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
         for card in selected_cards:
             if card.card_type == "vocabulary":
                 correct_text = " / ".join(vocabulary[card.base_word])
-                distractors = list({" / ".join(meanings) for word, meanings in vocabulary.items() if word != card.base_word and word in quizzable_vocabulary})
+                distractors = list({
+                    " / ".join(meanings)
+                    for word, meanings in vocabulary.items()
+                    if word != card.base_word and word in quizzable_vocabulary and " / ".join(meanings) != correct_text
+                })
                 rng.shuffle(distractors)
                 options, correct_id = _options([correct_text, *distractors[:3]], correct_text, rng)
                 prompt, hint, english_translations = card.base_word, None, []

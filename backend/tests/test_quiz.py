@@ -237,6 +237,34 @@ class QuizSelectionTests(unittest.TestCase):
         self.assertEqual(selected_form_ranks, list(range(1, len(selected_form_ranks) + 1)))
 
 
+class VocabularyOptionTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temporary_directory = tempfile.TemporaryDirectory()
+        root = Path(self.temporary_directory.name)
+        (root / "sentences").mkdir()
+        (root / "frequency").mkdir()
+        (root / "frequency" / "fi_50k.txt").write_text("vai 100\ntai 90\nranta 80\ntuli 70\n", encoding="utf-8")
+        (root / "dictionary.txt").write_text("vai - or\ntai - or\nranta - beach\ntuli - fire\n", encoding="utf-8")
+        write_kaikki(root)
+        run_import(root)
+        self.content = root / "data" / "content.sqlite"
+        self.progress = root / "data" / "progress.sqlite"
+        initialize_progress_database(self.progress)
+
+    def tearDown(self) -> None:
+        self.temporary_directory.cleanup()
+
+    def test_identical_meaning_group_is_not_a_vocabulary_distractor(self) -> None:
+        question = next(
+            question for question in build_batch(self.content, self.progress, 4, random.Random(7))
+            if question["card"]["base_word"] == "vai"
+        )
+
+        texts = [option["text"] for option in question["options"]]
+        self.assertEqual(texts.count("or"), 1)
+        self.assertEqual(len(texts), len(set(texts)))
+
+
 class GrammarBatchTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary_directory = tempfile.TemporaryDirectory()
