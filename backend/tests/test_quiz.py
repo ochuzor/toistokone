@@ -374,6 +374,45 @@ class GrammarBatchTests(unittest.TestCase):
         self.master_form("talo", "nominal:ablative")
         self.assertIn("nominal:essive", self.nominal_candidates())
 
+    def test_matching_form_cards_include_grammar_guide_metadata(self) -> None:
+        directory = self.root / "grammar-guides"
+        directory.mkdir()
+        for form, title in (("genitive", "Genetiivi"), ("partitive", "Partitiivi"), ("inessive", "Inessiivi"), ("allative", "Allatiivi")):
+            (directory / f"{form}.md").write_text(
+                f"---\nid: nominal-{form}\nform: nominal:{form}\nsummary: {title} summary.\n"
+                "example: Kirja pöydälle. | A book onto the table.\n"
+                "example: Anna se opettajalle. | Give it to the teacher.\n---\n\n"
+                f"# {title}\n\nMore detail.\n",
+                encoding="utf-8",
+            )
+        run_import(self.root)
+        self.master("talo")
+        self.master_form("talo", "nominal:genitive")
+        self.master_form("talo", "nominal:partitive")
+        self.master_form("talo", "nominal:inessive")
+        self.master_form("talo", "nominal:elative")
+        questions = build_batch(self.content, self.progress, 20, random.Random(4))
+        guides = {
+            question["card"]["target_form"]: question["grammar_guide"]
+            for question in questions if question["grammar_guide"] is not None
+        }
+        allative = next(
+            question for question in questions
+            if question["card"]["target_form"] == "nominal:allative"
+        )
+        self.assertEqual({"nominal:genitive", "nominal:partitive", "nominal:inessive", "nominal:allative"}, set(guides))
+        self.assertEqual(guides["nominal:genitive"]["title"], "Genetiivi")
+        self.assertEqual(guides["nominal:partitive"]["title"], "Partitiivi")
+        self.assertEqual(guides["nominal:inessive"]["title"], "Inessiivi")
+        self.assertEqual(allative["grammar_guide"], {
+            "key": "nominal-allative", "title": "Allatiivi", "summary": "Allatiivi summary.",
+            "examples": [
+                {"finnish": "Kirja pöydälle.", "english": "A book onto the table."},
+                {"finnish": "Anna se opettajalle.", "english": "Give it to the teacher."},
+            ],
+            "seen": False,
+        })
+
     def test_nominal_final_plural_stage_requires_the_essive_stage(self) -> None:
         cards = [
             FormCard(card_key, card_key, "nominal", card_key)

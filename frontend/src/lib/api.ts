@@ -13,6 +13,20 @@ export type QuizQuestion = {
   english_translations: string[]
   options: { id: string; text: string }[]
   correct_option_id: string
+  grammar_guide?: GrammarGuideSummary | null
+}
+
+export type GrammarGuideSummary = {
+  key: string
+  title: string
+  summary: string
+  examples: { finnish: string; english: string }[]
+  seen: boolean
+}
+
+export type GrammarGuideDetail = GrammarGuideSummary & {
+  target_form: string
+  details_markdown: string
 }
 
 export type AnswerResult = {
@@ -152,6 +166,14 @@ export async function fetchSentenceBreak(): Promise<PracticeSentence[]> {
 
 export function fetchContentVersion(): Promise<{ revision: string }> {
   return request('/api/content-version')
+}
+
+export function fetchGrammarGuide(guideKey: string): Promise<GrammarGuideDetail> {
+  return request<GrammarGuideDetail>(`/api/grammar-guides/${encodeURIComponent(guideKey)}`)
+}
+
+export function markGrammarGuideSeen(guideKey: string): Promise<{ seen: boolean }> {
+  return request<{ seen: boolean }>(`/api/grammar-guides/${encodeURIComponent(guideKey)}/seen`, { method: 'POST' })
 }
 
 export function fetchStats(): Promise<Stats> {

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import math
 import random
 import sqlite3
@@ -559,6 +560,28 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
     questions: list[dict[str, object]] = []
     selected_cards = select_candidates(candidates, batch_size, rng)
     with sqlite3.connect(content_path) as connection:
+        grammar_guides: dict[str, dict[str, object]] = {}
+        try:
+            connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
+            guide_rows = connection.execute(
+                """SELECT grammar_guides.key, grammar_guides.target_form, grammar_guides.title,
+                          grammar_guides.summary, grammar_guides.examples_json,
+                          grammar_guide_progress.guide_key IS NOT NULL
+                   FROM grammar_guides
+                   LEFT JOIN progress.grammar_guide_progress
+                     ON grammar_guide_progress.guide_key = grammar_guides.key"""
+            ).fetchall()
+            grammar_guides = {
+                target_form: {
+                    "key": key, "title": title, "summary": summary,
+                    "examples": [{"finnish": finnish, "english": english} for finnish, english in json.loads(examples_json)],
+                    "seen": bool(seen),
+                }
+                for key, target_form, title, summary, examples_json, seen in guide_rows
+            }
+        except sqlite3.OperationalError:
+            # Content imported before grammar guides remains usable.
+            grammar_guides = {}
         for card in selected_cards:
             if card.card_type == "vocabulary":
                 correct_text = " / ".join(vocabulary[card.base_word])
@@ -583,7 +606,7 @@ def build_batch(content_path: Path, progress_path: Path, batch_size: int, rng: r
                         sentence, english_translations = rng.choices(matching, weights=weights, k=1)[0]
                         prompt = blank_form(sentence, form_card.form)
                         hint = None
-            questions.append({"question_id": str(uuid.uuid4()), "card": {"type": card.card_type, "base_word": card.base_word, "target_form": card.target_form}, "score": card.score, "prompt": prompt, "hint": hint, "english_translations": english_translations, "options": options, "correct_option_id": correct_id})
+            questions.append({"question_id": str(uuid.uuid4()), "card": {"type": card.card_type, "base_word": card.base_word, "target_form": card.target_form}, "score": card.score, "prompt": prompt, "hint": hint, "english_translations": english_translations, "options": options, "correct_option_id": correct_id, "grammar_guide": grammar_guides.get(card.target_form)})
     consume_focus_words(progress_path, [
         card.base_word for card in selected_cards
         if card.card_type == "vocabulary" and card.focus_requested_at is not None

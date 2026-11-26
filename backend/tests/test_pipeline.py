@@ -85,6 +85,36 @@ class PipelineTests(unittest.TestCase):
                 second_revision,
             )
 
+    def test_grammar_guides_are_imported_with_validated_metadata(self) -> None:
+        self.write_sources("talo - house\n")
+        directory = self.root / "grammar-guides"
+        directory.mkdir()
+        for form, title in (("genitive", "Genetiivi"), ("partitive", "Partitiivi"), ("inessive", "Inessiivi"), ("allative", "Allatiivi")):
+            (directory / f"{form}.md").write_text(
+                f"---\nid: nominal-{form}\nform: nominal:{form}\nsummary: {title} summary.\n"
+                "example: Kirja pöydälle. | A book onto the table.\n"
+                "example: Anna se opettajalle. | Give it to the teacher.\n---\n\n"
+                f"# {title}\n\n## More detail\n\nDetails.\n",
+                encoding="utf-8",
+            )
+        report = run_import(self.root)
+        self.assertEqual(report.grammar_guide_file_count, 4)
+        with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
+            guides = database.execute("SELECT target_form, title FROM grammar_guides ORDER BY target_form").fetchall()
+        self.assertEqual(guides, [
+            ("nominal:allative", "Allatiivi"), ("nominal:genitive", "Genetiivi"),
+            ("nominal:inessive", "Inessiivi"), ("nominal:partitive", "Partitiivi"),
+        ])
+
+    def test_invalid_grammar_guide_stops_before_import(self) -> None:
+        self.write_sources("talo - house\n")
+        directory = self.root / "grammar-guides"
+        directory.mkdir()
+        (directory / "bad.md").write_text("---\nid: bad\nform: nominal:essive\nsummary: Missing examples.\n---\n# Bad\n", encoding="utf-8")
+        with self.assertRaises(ImportValidationError) as raised:
+            run_import(self.root)
+        self.assertTrue(any("unsupported grammar-guide form 'nominal:essive'" in error for error in raised.exception.report.fatal_errors))
+
     def test_learning_sets_import_membership_and_report_coverage(self) -> None:
         words = ["talo", "tehdä", *[f"word-{number}" for number in range(1, 9)]]
         self.write_sources("".join(f"{word} - meaning\n" for word in words), {"lesson.txt": "Talossa asun. - I live in the house.\n"})

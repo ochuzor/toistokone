@@ -9,6 +9,7 @@ import LearningSets from './pages/LearningSets'
 import LearningSetDetail from './pages/LearningSetDetail'
 import LearningPaths from './pages/LearningPaths'
 import LearningPathDetail from './pages/LearningPathDetail'
+import GrammarGuideDetail from './pages/GrammarGuideDetail'
 
 export default function App() {
   const location = useLocation()
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/learning-sets/:setKey" element={<LearningSetDetail />} />
           <Route path="/learning-paths" element={<LearningPaths />} />
           <Route path="/learning-paths/:pathKey" element={<LearningPathDetail />} />
+          <Route path="/grammar-guides/:guideKey" element={<GrammarGuideDetail />} />
           <Route path="/content-health" element={<ContentHealth />} />
         </Routes>
       </main>

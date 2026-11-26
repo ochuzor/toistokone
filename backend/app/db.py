@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
@@ -43,6 +44,10 @@ CREATE TABLE IF NOT EXISTS active_learning_set (
   singleton INTEGER PRIMARY KEY CHECK (singleton = 1),
   set_key TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS grammar_guide_progress (
+  guide_key TEXT PRIMARY KEY,
+  seen_at TEXT NOT NULL
+);
 """
 
 
@@ -66,6 +71,42 @@ def get_content_revision(path: Path) -> str:
     except sqlite3.OperationalError:
         return fallback
     return row[0] if row else fallback
+
+
+def get_grammar_guide(content_path: Path, progress_path: Path, guide_key: str) -> dict[str, object] | None:
+    """Return one imported grammar guide with its durable seen state."""
+    try:
+        with sqlite3.connect(content_path) as content:
+            row = content.execute(
+                "SELECT key, target_form, title, summary, examples_json, details_markdown FROM grammar_guides WHERE key = ?",
+                (guide_key,),
+            ).fetchone()
+    except sqlite3.OperationalError:
+        return None
+    if not row:
+        return None
+    with sqlite3.connect(progress_path) as progress:
+        seen = progress.execute(
+            "SELECT seen_at FROM grammar_guide_progress WHERE guide_key = ?", (guide_key,)
+        ).fetchone()
+    return {
+        "key": row[0], "target_form": row[1], "title": row[2], "summary": row[3],
+        "examples": [{"finnish": finnish, "english": english} for finnish, english in json.loads(row[4])],
+        "details_markdown": row[5], "seen": bool(seen),
+    }
+
+
+def mark_grammar_guide_seen(content_path: Path, progress_path: Path, guide_key: str) -> bool:
+    """Record that a current guide has been acknowledged, without touching card progress."""
+    guide = get_grammar_guide(content_path, progress_path, guide_key)
+    if guide is None:
+        return False
+    with sqlite3.connect(progress_path) as connection:
+        connection.execute(
+            "INSERT INTO grammar_guide_progress (guide_key, seen_at) VALUES (?, ?) ON CONFLICT(guide_key) DO NOTHING",
+            (guide_key, _now().isoformat()),
+        )
+    return True
 
 
 def _now() -> datetime:

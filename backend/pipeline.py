@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import sqlite3
@@ -21,6 +22,12 @@ from backend.kaikki import GeneratedForm, ensure_index, ensure_recommendation_in
 RECOMMENDATION_LEMMA_CANDIDATE_LIMIT = 100
 MINIMUM_LEARNING_SET_WORDS = 10
 LEARNING_SET_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+SUPPORTED_GRAMMAR_GUIDE_FORMS = frozenset({
+    "nominal:genitive",
+    "nominal:partitive",
+    "nominal:inessive",
+    "nominal:allative",
+})
 ProgressReporter = Callable[[str], None]
 
 
@@ -31,6 +38,7 @@ class ImportReport:
     sentence_file_count: int = 0
     learning_set_file_count: int = 0
     learning_path_file_count: int = 0
+    grammar_guide_file_count: int = 0
     vocabulary_count: int = 0
     form_count: int = 0
     sentence_count: int = 0
@@ -57,6 +65,7 @@ class ImportReport:
             f"- Sentence files: {self.sentence_file_count}", f"- Kaikki index rebuilt: {'yes' if self.kaikki_index_rebuilt else 'no'}",
             f"- Learning-set files: {self.learning_set_file_count}",
             f"- Learning-path files: {self.learning_path_file_count}",
+            f"- Grammar-guide files: {self.grammar_guide_file_count}",
             f"- Recommendation lemma index rebuilt: {'yes' if self.recommendation_lemma_index_rebuilt else 'no'}",
             f"- Imported vocabulary: {self.vocabulary_count}", f"- Imported grammar forms: {self.form_count}",
             f"- Imported sentences: {self.sentence_count}", f"- Imported translations: {self.translation_count}",
@@ -139,6 +148,7 @@ class ImportedContent:
     recommendation_lemmas: dict[str, str]
     learning_sets: list["LearningSet"]
     learning_paths: list["LearningPath"]
+    grammar_guides: list["GrammarGuide"]
     report: ImportReport
 
 
@@ -154,6 +164,16 @@ class LearningPath:
     key: str
     title: str
     learning_set_keys: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class GrammarGuide:
+    key: str
+    target_form: str
+    title: str
+    summary: str
+    examples: tuple[tuple[str, str], ...]
+    details_markdown: str
 
 
 @dataclass(frozen=True)
@@ -344,6 +364,91 @@ def _parse_learning_paths(root: Path, learning_sets: list[LearningSet], report: 
     return learning_paths
 
 
+def _parse_grammar_guides(root: Path, report: ImportReport) -> list[GrammarGuide]:
+    directory = root / "grammar-guides"
+    paths = sorted(directory.glob("*.md")) if directory.exists() else []
+    report.grammar_guide_file_count = len(paths)
+    guides: list[GrammarGuide] = []
+    known_ids: dict[str, tuple[Path, int]] = {}
+    known_forms: dict[str, tuple[Path, int]] = {}
+    for path in paths:
+        lines = list(_read_lines(path))
+        fields: dict[str, str] = {}
+        examples: list[tuple[str, str]] = []
+        position = 0
+        if not lines or lines[0][1].strip() != "---":
+            report.fatal_errors.append(f"{path}: line 1: expected opening '---' for grammar-guide metadata")
+        else:
+            position = 1
+            closed = False
+            while position < len(lines):
+                number, raw_line = lines[position]
+                line = raw_line.strip()
+                position += 1
+                if not line:
+                    continue
+                if line == "---":
+                    closed = True
+                    break
+                if line.startswith("example: ") and line[9:].strip():
+                    parts = [part.strip() for part in line[9:].split(" | ", 1)]
+                    if len(parts) != 2 or not all(parts):
+                        report.fatal_errors.append(f"{path}: line {number}: example must use 'Finnish | English'")
+                    else:
+                        examples.append((parts[0], parts[1]))
+                elif ": " in line:
+                    field, value = line.split(": ", 1)
+                    if field not in {"id", "form", "summary"} or not value.strip() or field in fields:
+                        report.fatal_errors.append(f"{path}: line {number}: expected unique id, form, summary, or example metadata")
+                    else:
+                        fields[field] = value.strip()
+                else:
+                    report.fatal_errors.append(f"{path}: line {number}: expected grammar-guide metadata")
+            if not closed:
+                report.fatal_errors.append(f"{path}: missing closing '---' for grammar-guide metadata")
+        body = lines[position:]
+        title: str | None = None
+        details: list[str] = []
+        for number, raw_line in body:
+            line = raw_line.rstrip()
+            if title is None:
+                if not line.strip():
+                    continue
+                if not line.startswith("# ") or not line[2:].strip():
+                    report.fatal_errors.append(f"{path}: line {number}: expected a '# Title' heading")
+                    break
+                title = line[2:].strip()
+            else:
+                details.append(line)
+        key = fields.get("id")
+        target_form = fields.get("form")
+        if key is None:
+            report.fatal_errors.append(f"{path}: missing grammar-guide ID")
+        elif not LEARNING_SET_ID_PATTERN.fullmatch(key):
+            report.fatal_errors.append(f"{path}: grammar-guide ID '{key}' must use lower-case kebab-case")
+        elif key in known_ids:
+            previous_path, previous_line = known_ids[key]
+            report.fatal_errors.append(f"{path}: grammar-guide ID '{key}' conflicts with {previous_path}: line {previous_line}")
+        else:
+            known_ids[key] = (path, 1)
+        if target_form not in SUPPORTED_GRAMMAR_GUIDE_FORMS:
+            report.fatal_errors.append(f"{path}: unsupported grammar-guide form '{target_form or ''}'")
+        elif target_form in known_forms:
+            previous_path, previous_line = known_forms[target_form]
+            report.fatal_errors.append(f"{path}: grammar-guide form '{target_form}' conflicts with {previous_path}: line {previous_line}")
+        else:
+            known_forms[target_form] = (path, 1)
+        if "summary" not in fields:
+            report.fatal_errors.append(f"{path}: missing grammar-guide summary")
+        if len(examples) < 2:
+            report.fatal_errors.append(f"{path}: grammar guide requires at least two examples")
+        if title is None:
+            report.fatal_errors.append(f"{path}: expected a '# Title' heading")
+        if key and target_form in SUPPORTED_GRAMMAR_GUIDE_FORMS and title and "summary" in fields and len(examples) >= 2 and known_ids.get(key, (None,))[0] == path and known_forms.get(target_form, (None,))[0] == path:
+            guides.append(GrammarGuide(key, target_form, title, fields["summary"], tuple(examples), "\n".join(details).strip()))
+    return guides
+
+
 def _learning_set_coverage(
     learning_sets: list[LearningSet], forms: OrderedDict[str, list[GeneratedForm]], sentences: OrderedDict[str, list[str]]
 ) -> list[LearningSetCoverage]:
@@ -415,6 +520,9 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
     if progress:
         progress("Reading learning paths")
     learning_paths = _parse_learning_paths(project_root, learning_sets, report)
+    if progress:
+        progress("Reading grammar guides")
+    grammar_guides = _parse_grammar_guides(project_root, report)
 
     forms_only_words = {
         word for word, meanings in vocabulary.items()
@@ -460,7 +568,7 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
     if report.fatal_errors:
         return ImportedContent(
             vocabulary, forms_only_words, OrderedDict((word, []) for word in vocabulary),
-            sentences, frequency_words, {}, learning_sets, learning_paths, report,
+            sentences, frequency_words, {}, learning_sets, learning_paths, grammar_guides, report,
         )
 
     if source_path.exists():
@@ -528,7 +636,7 @@ def parse_content(project_root: Path, *, progress: ProgressReporter | None = Non
         progress_path=project_root / "data" / "progress.sqlite",
         frequency_ranks={token: rank for rank, token in enumerate(frequency_words, start=1)},
     )
-    return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, learning_sets, learning_paths, report)
+    return ImportedContent(vocabulary, forms_only_words, forms, sentences, frequency_words, lemma_mappings, learning_sets, learning_paths, grammar_guides, report)
 
 
 SCHEMA = """
@@ -544,6 +652,7 @@ CREATE INDEX idx_learning_set_words_vocab ON learning_set_words(vocabulary_id);
 CREATE TABLE learning_paths (key TEXT PRIMARY KEY, title TEXT NOT NULL);
 CREATE TABLE learning_path_sets (path_key TEXT NOT NULL REFERENCES learning_paths(key) ON DELETE CASCADE, set_key TEXT NOT NULL REFERENCES learning_sets(key) ON DELETE CASCADE, ordinal INTEGER NOT NULL, PRIMARY KEY (path_key, set_key), UNIQUE (path_key, ordinal));
 CREATE INDEX idx_learning_path_sets_set ON learning_path_sets(set_key);
+CREATE TABLE grammar_guides (key TEXT PRIMARY KEY, target_form TEXT NOT NULL UNIQUE, title TEXT NOT NULL, summary TEXT NOT NULL, examples_json TEXT NOT NULL, details_markdown TEXT NOT NULL);
 CREATE TABLE sentences (id INTEGER PRIMARY KEY, finnish TEXT NOT NULL UNIQUE);
 CREATE TABLE sentence_translations (sentence_id INTEGER NOT NULL REFERENCES sentences(id) ON DELETE CASCADE, english TEXT NOT NULL, ordinal INTEGER NOT NULL, PRIMARY KEY (sentence_id, english));
 CREATE INDEX idx_sentence_translations_sentence ON sentence_translations(sentence_id);
@@ -581,6 +690,13 @@ def _build_database(path: Path, content: ImportedContent, revision: str) -> None
                     (learning_path.key, set_key, ordinal)
                     for learning_path in content.learning_paths
                     for ordinal, set_key in enumerate(learning_path.learning_set_keys)
+                ],
+            )
+            connection.executemany(
+                "INSERT INTO grammar_guides (key, target_form, title, summary, examples_json, details_markdown) VALUES (?, ?, ?, ?, ?, ?)",
+                [
+                    (guide.key, guide.target_form, guide.title, guide.summary, json.dumps(guide.examples, ensure_ascii=False), guide.details_markdown)
+                    for guide in content.grammar_guides
                 ],
             )
             connection.executemany("INSERT INTO sentences (finnish) VALUES (?)", ((finnish,) for finnish in content.sentences))

@@ -167,6 +167,20 @@ change the selected active set automatically.
 Each path summary includes its first available step, if any, so Home can show
 the recommended next set without fetching every path detail.
 
+**Grammar guides:** Direct-child `grammar-guides/*.md` files use metadata for a
+stable guide ID, one supported target form, a concise summary, and at least two
+Finnish-English examples, followed by an H1 title and Markdown detail text. The
+content database stores guide text keyed by ID and target form. The pipeline
+rejects malformed metadata, duplicate IDs or target forms, missing examples, and
+unsupported form keys during preflight. `progress.sqlite` stores a guide key and
+acknowledgement timestamp in `grammar_guide_progress`; it is independent of
+card progress. A batch includes optional guide summary metadata for matching
+form cards. `GET /api/grammar-guides/{guide_key}` returns the full guide and
+`POST /api/grammar-guides/{guide_key}/seen` idempotently records acknowledgement.
+The frontend interstitial leaves the queued card in place; later help uses the
+same summary. Supported targets are `nominal:genitive`, `nominal:partitive`,
+`nominal:inessive`, and `nominal:allative`.
+
 **Import preflight:** Dictionary entries, learning-set membership, Kaikki
 source/index availability, and the required frequency list are validated before
 the pipeline rebuilds any morphology or recommendation index. Fatal preflight

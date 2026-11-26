@@ -46,6 +46,11 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
   three or more are strongly deprioritized. Tokens outside tracked families are
   neutral.
 - No session-completion screen is required. The learner can stop and return whenever desired.
+- The first encounter with a guided grammar form shows a brief instructional
+  card before the queued question. Continuing records that the guide was read
+  and reveals that same question; later cards expose the guide through a small
+  help control and a full-detail page. Guide acknowledgement never changes a
+  card's score, attempts, unlock status, or queue selection.
 
 ### Content health (`/content-health`)
 
@@ -78,6 +83,8 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
 - Prompt: score-0–2 cards use the base word plus its grammar cue, for example `talo — Inessiivi (missä?)` or `tehdä — hän ____`. Direct verb-form prompts explicitly identify present tense (`preesens`), past tense (`imperfekti`), or conditional (`konditionaali`). Score-3 cards use a matching sentence with the target form blanked and display its English translations when coverage exists; otherwise they use the grammar prompt.
 - Answers: correct form plus up to three distinct forms from the same nominal or verb profile, shuffled. A question requires at least two distinct options.
 - Sentences are not required for form practice: missing coverage falls back to the grammar prompt.
+- Grammar guides currently cover Genetiivi, Partitiivi, Inessiivi, and Allatiivi
+  form cards.
 - Verb-form prompts visually emphasize the base verb; the person-and-blank cue
   and tense label provide secondary context.
 

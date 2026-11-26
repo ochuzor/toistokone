@@ -168,6 +168,36 @@ path. A path opens its next set when the prior set has at least 70% of its
 meaning cards and 40% of its form cards at score 2 or above. Paths guide the
 learner but never activate a set automatically.
 
+### Grammar guides
+
+Grammar guides are short, imported teaching notes for selected form-card types.
+Add direct-child Markdown files under `grammar-guides/` with a stable ID, a
+supported form key, a short summary, and at least two Finnish-English examples:
+
+```md
+---
+id: nominal-allative
+form: nominal:allative
+summary: The allative often shows direction onto, to, or for something.
+example: Laitan kirjan pöydälle. | I put the book onto the table.
+example: Annan kynän opettajalle. | I give the pen to the teacher.
+---
+
+# Allatiivi
+
+## More detail
+
+Many forms end in `-lle`.
+```
+
+The pipeline rejects malformed metadata, duplicate IDs or target forms, missing
+examples, and unsupported target forms before expensive imports. The first time
+a learner encounters a guided form, Practice shows its short guide before the
+unchanged queued question. A later `?` opens the same summary and links to its
+full page. Acknowledging a guide is stored in `progress.sqlite`, independently
+of card score and attempts. The current guides support `nominal:genitive`,
+`nominal:partitive`, `nominal:inessive`, and `nominal:allative`.
+
 ### Word recommendations
 
 The **Word recommendations** page suggests common three-or-more-character

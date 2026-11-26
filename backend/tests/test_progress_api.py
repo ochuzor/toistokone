@@ -10,7 +10,7 @@ from fastapi import HTTPException
 
 from backend.app.config import Settings
 from backend.app.db import initialize_progress_database, list_vocabulary
-from backend.app.main import active_learning_set, add_focus_word, answer, app, content_version, delete_focus_word, focus_words, learning_path_detail, learning_paths, learning_set_detail, learning_sets, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
+from backend.app.main import acknowledge_grammar_guide, active_learning_set, add_focus_word, answer, app, content_version, delete_focus_word, focus_words, grammar_guide, learning_path_detail, learning_paths, learning_set_detail, learning_sets, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
 from backend.app.models import ActiveLearningSetRequest, AnswerRequest, FocusWordRequest, ResetRequest
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
@@ -72,6 +72,23 @@ class ProgressApiTests(unittest.TestCase):
                 )
             )
         self.assertEqual(raised.exception.status_code, 404)
+
+    def test_grammar_guide_is_seen_without_changing_card_progress(self) -> None:
+        directory = self.root / "grammar-guides"
+        directory.mkdir()
+        (directory / "allative.md").write_text(
+            "---\nid: nominal-allative\nform: nominal:allative\nsummary: Direction or a recipient.\n"
+            "example: Kirja pöydälle. | A book onto the table.\n"
+            "example: Anna se opettajalle. | Give it to the teacher.\n---\n\n# Allatiivi\n\nMore detail.\n",
+            encoding="utf-8",
+        )
+        run_import(self.root)
+        before = grammar_guide("nominal-allative")
+        self.assertFalse(before.seen)
+        self.assertTrue(acknowledge_grammar_guide("nominal-allative").seen)
+        self.assertTrue(grammar_guide("nominal-allative").seen)
+        with sqlite3.connect(self.settings.progress_db_path) as database:
+            self.assertEqual(database.execute("SELECT COUNT(*) FROM card_progress").fetchone()[0], 0)
 
     def test_stats_rejects_unknown_timezone(self) -> None:
         with self.assertRaises(HTTPException) as raised:

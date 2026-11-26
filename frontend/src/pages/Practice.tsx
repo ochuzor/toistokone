@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { fetchBatch, fetchContentVersion, fetchLearningSets, fetchSentenceBreak, type PracticeSentence, type QuizQuestion, resetMastery, submitAnswer } from '../lib/api'
+import { fetchBatch, fetchContentVersion, fetchLearningSets, fetchSentenceBreak, markGrammarGuideSeen, type PracticeSentence, type QuizQuestion, resetMastery, submitAnswer } from '../lib/api'
 import { cardKey, clearPracticeState, loadPracticeState, randomSentenceBreakInterval, savePracticeState, type SavedAnswer } from '../lib/queue'
 
 function masteryIcon(score: number): string { return ['○', '◔', '◑', '✓'][score] ?? '○' }
@@ -33,6 +33,8 @@ export default function Practice() {
   const [sentenceBreak, setSentenceBreak] = useState<PracticeSentence[] | null>(null)
   const [loadingSentenceBreak, setLoadingSentenceBreak] = useState(false)
   const [activeLearningSet, setActiveLearningSet] = useState<string | null>(null)
+  const [seenGuideKeys, setSeenGuideKeys] = useState<Set<string>>(() => new Set())
+  const [guideHelpOpen, setGuideHelpOpen] = useState(false)
   const refillInFlight = useRef(false)
   const initialLoadInFlight = useRef(false)
   const initializationInFlight = useRef(false)
@@ -44,6 +46,10 @@ export default function Practice() {
   const isNominalPrompt = current?.card.type === 'word_form' && (current.card.target_form.startsWith('nominal:') || current.card.target_form.startsWith('nominal-plural:')) && !!current.hint
   const nominalPrompt = isNominalPrompt && current ? splitNominalPrompt(current.prompt) : null
   const tenseLabel = current?.card.type === 'word_form' && current.hint ? verbTenseLabel(current.card.target_form) : null
+  const grammarGuide = current?.grammar_guide
+  const showGuideIntro = !!grammarGuide && !grammarGuide.seen && !seenGuideKeys.has(grammarGuide.key)
+
+  useEffect(() => { setGuideHelpOpen(false) }, [current?.question_id])
 
   useEffect(() => {
     if (contentRevision && (queue.length || sentenceBreak)) savePracticeState({ schemaVersion: 6, contentRevision, queue, capacity: Math.max(capacity, queue.length), quizzesSinceSentenceBreak, nextSentenceBreakAt, ...(answer ? { currentAnswer: answer } : {}), ...(sentenceBreak ? { sentenceBreak } : {}) })
@@ -162,6 +168,18 @@ export default function Practice() {
     } catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to reset mastery.') }
   }
 
+  const continueGrammarGuide = async () => {
+    if (!grammarGuide) return
+    try {
+      await markGrammarGuideSeen(grammarGuide.key)
+      setSeenGuideKeys((keys) => new Set(keys).add(grammarGuide.key))
+      setQueue((questions) => questions.map((question) => question.grammar_guide?.key === grammarGuide.key
+        ? { ...question, grammar_guide: { ...question.grammar_guide, seen: true } }
+        : question))
+      setError(null)
+    } catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to save that you read this guide.') }
+  }
+
   const next = async () => {
     if (sentenceBreak) {
       setSentenceBreak(null)
@@ -208,6 +226,15 @@ export default function Practice() {
     <div className="progress-track" aria-label="Queue progress"><div className="progress-fill" style={{ width: `${capacity ? queue.length / capacity * 100 : 0}%` }} /></div>
     {activeLearningSet && <p className="active-learning-set">Learning set: {activeLearningSet}</p>}
     {queueNotice && <p className="notice" role="status">{queueNotice}</p>}
+    {showGuideIntro ? <section className="grammar-guide-intro">
+      <p className="eyebrow">Grammar tip</p>
+      <h1>{grammarGuide.title}</h1>
+      <p>{grammarGuide.summary}</p>
+      <div className="grammar-guide-examples">{grammarGuide.examples.map((example) => <p key={example.finnish}><strong>{example.finnish}</strong><span>{example.english}</span></p>)}</div>
+      {error && <p className="error" role="alert">{error}</p>}
+      <div className="grammar-guide-actions"><Link className="text-button" to={`/grammar-guides/${grammarGuide.key}`}>Learn more</Link><button className="button" onClick={() => void continueGrammarGuide()}>Continue to question</button></div>
+    </section> : <>
+    {grammarGuide && <button aria-label={`Help: ${grammarGuide.title}`} className="grammar-guide-help" onClick={() => setGuideHelpOpen(true)} type="button">?</button>}
     {nominalPrompt ? <div className="nominal-prompt">
       <p className="nominal-base">{current.hint}</p>
       <p className="nominal-instruction">Choose the <strong>{nominalPrompt.formName}</strong>{nominalPrompt.questionCue && <span>{nominalPrompt.questionCue}</span>}</p>
@@ -226,5 +253,7 @@ export default function Practice() {
       return <button className={`option${feedbackClass}`} disabled={!!answer} key={option.id} onClick={() => chooseOption(option.id)}>{option.text}</button>
     })}</div>
     {answer && <div className="feedback" role="status">{result ? <><p>{result.correct ? 'Correct!' : 'Not quite — the correct answer is highlighted.'}</p><button className="text-button" onClick={() => void reset()}>Reset mastery</button><button className="button next-button" onClick={() => void next()}>Next</button></> : <><p>Saving your answer…</p>{error && <button className="button" onClick={() => void submitPendingAnswer(current, answer)}>Retry submission</button>}</>}</div>}
+    {grammarGuide && guideHelpOpen && <div className="grammar-guide-dialog-backdrop" role="presentation" onClick={() => setGuideHelpOpen(false)}><section aria-labelledby="grammar-guide-help-title" aria-modal="true" className="grammar-guide-dialog" onClick={(event) => event.stopPropagation()} role="dialog"><button aria-label="Close grammar help" className="grammar-guide-close" onClick={() => setGuideHelpOpen(false)} type="button">×</button><p className="eyebrow">Grammar tip</p><h2 id="grammar-guide-help-title">{grammarGuide.title}</h2><p>{grammarGuide.summary}</p><div className="grammar-guide-examples">{grammarGuide.examples.map((example) => <p key={example.finnish}><strong>{example.finnish}</strong><span>{example.english}</span></p>)}</div><Link className="text-button" to={`/grammar-guides/${grammarGuide.key}`}>Learn more</Link></section></div>}
+    </>}
   </section>
 }

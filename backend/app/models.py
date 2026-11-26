@@ -190,6 +190,28 @@ class QuizOption(BaseModel):
     text: str
 
 
+class GrammarGuideExample(BaseModel):
+    finnish: str
+    english: str
+
+
+class GrammarGuideSummary(BaseModel):
+    key: str
+    title: str
+    summary: str
+    examples: list[GrammarGuideExample]
+    seen: bool
+
+
+class GrammarGuideDetail(GrammarGuideSummary):
+    target_form: str
+    details_markdown: str
+
+
+class GrammarGuideSeenResponse(BaseModel):
+    seen: bool
+
+
 class QuizQuestion(BaseModel):
     question_id: str
     card: CardReference
@@ -199,6 +221,7 @@ class QuizQuestion(BaseModel):
     english_translations: list[str]
     options: list[QuizOption]
     correct_option_id: str
+    grammar_guide: GrammarGuideSummary | None = None
 
 
 class QuizBatchResponse(BaseModel):

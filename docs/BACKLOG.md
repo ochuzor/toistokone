@@ -6,6 +6,8 @@
 ## Later
 
 ## Completed
+- [x] Add early Genetiivi, Partitiivi, and Inessiivi grammar guides
+- [x] Add unobtrusive grammar guides for newly encountered form types
 - [x] Show each learning path's next step on Home
 - [x] Emphasize base verbs in verb-form prompts
 - [x] Add Markdown learning paths with live progression
