@@ -4,6 +4,7 @@
 ## Next
 
 ## Later
+- [ ] Add path and learning-set landmark guides to provide lightweight course narration during practice
 
 ## Completed
 - [x] Add early Genetiivi, Partitiivi, and Inessiivi grammar guides
