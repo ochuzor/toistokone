@@ -468,7 +468,7 @@ opettaja - teacher / instructor
 opettaa - to teach / educate / train
 opiskella - to study / learn
 opiskelija - a student / academic
-opiskelu - study / coursework
+opiskelu - study / coursework / studying
 postinumero - postal code / zip code
 postitoimipaikka - post office (coverage area)
 puhua - to talk / converse / speak
@@ -507,3 +507,42 @@ jonotus - queuing
 jonottaa - to queue / to stand/wait in line
 maksaa - to pay / cost / repay
 voida - (to) can / feel / be able to / to allowed to
+antaa - to give / to allow/let
+
+ikkuna - window
+kahvitauko - coffee break
+kansio - folder, binder
+kello - clock
+kielikurssi - language course
+kotitehtävä - homework
+kumi - eraser
+pyyhekumi - eraser
+kurssi - course
+kuulakärkikynä - ballpoint pen
+kynä - pen / pencil
+kännykkä - mobile phone
+kääntäjä - translator
+liima - glue
+lounastauko - lunch break
+luokka - classroom
+lyijykynä - pencil
+läksyt - homework
+läppäri - laptop
+opetus - teaching
+oppikirja - textbook
+paperi - paper
+pulpetti - desk
+reppu - backpack
+roskakori - trash can
+sanakirja - dictionary
+tehtävä - exercise, task
+teippi - tape
+teroitin - pencil sharpener
+tietokone - computer
+valkotaulu - whiteboard
+valo - light
+verhot - curtains
+vihko - notebook
+virhe - mistake
+viivoitin - ruler
+välitunti - recess
