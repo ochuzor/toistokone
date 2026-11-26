@@ -25,7 +25,7 @@ during long Kaikki scans and sentence-file reads.
 
 - A long import visibly advances through its phases.
 - Kaikki scans show periodic approximate percentages.
-- The full report remains available in `data/import-report.txt`.
+- The full report remains available in `data/import-report.md`.
 
 ## Status
 

@@ -11,6 +11,7 @@ frontend/dist/
 data/content.sqlite
 data/progress.sqlite
 data/import-report.txt
+data/import-report.md
 data/kaikki-forms.sqlite
 data/kaikki-forms.tmp*
 data/kaikki-recommendations.sqlite

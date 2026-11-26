@@ -67,7 +67,7 @@ database:
 .venv/bin/python -m backend.pipeline
 ```
 
-Use `--dry-run` to validate inputs and update only `data/import-report.txt`:
+Use `--dry-run` to validate inputs and update only `data/import-report.md`:
 
 ```bash
 .venv/bin/python -m backend.pipeline --dry-run
@@ -75,9 +75,10 @@ Use `--dry-run` to validate inputs and update only `data/import-report.txt`:
 
 The command prints flushed phase updates to the terminal while it works. Long
 Kaikki index scans also show approximate percentage updates. When it finishes,
-the command points to `data/import-report.txt`, which contains the full report.
+the command points to `data/import-report.md`, which contains the full report.
+Its Markdown headings make long audits navigable from editors such as VS Code.
 
-The pipeline replaces only `data/content.sqlite` and `data/import-report.txt`. It never modifies `data/progress.sqlite`.
+The pipeline replaces only `data/content.sqlite` and `data/import-report.md`. It never modifies `data/progress.sqlite`.
 
 ### One-time Tatoeba extraction
 

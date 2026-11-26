@@ -49,32 +49,34 @@ class ImportReport:
 
     def render(self, *, dry_run: bool) -> str:
         lines = [
-            "ToistoKone import report", f"Mode: {'dry run' if dry_run else 'normal'}",
-            f"Dictionary files: {self.dictionary_file_count}", f"Frequency files: {self.frequency_file_count}",
-            f"Sentence files: {self.sentence_file_count}", f"Kaikki index rebuilt: {'yes' if self.kaikki_index_rebuilt else 'no'}",
-            f"Learning-set files: {self.learning_set_file_count}",
-            f"Recommendation lemma index rebuilt: {'yes' if self.recommendation_lemma_index_rebuilt else 'no'}",
-            f"Imported vocabulary: {self.vocabulary_count}", f"Imported grammar forms: {self.form_count}",
-            f"Imported sentences: {self.sentence_count}", f"Imported translations: {self.translation_count}",
-            f"Imported frequency entries: {self.frequency_entry_count}",
-            f"Duplicate vocabulary entries: {self.duplicate_vocabulary_count}",
-            f"Duplicate sentences: {self.duplicate_sentence_count}",
-            f"Duplicate translations: {self.duplicate_translation_count}",
-            f"Words without usable Kaikki profiles: {len(self.missing_lexicon_profiles)}",
-            f"Form slots with alternatives: {sum(len(slots) for slots in self.form_alternatives.values())}",
-            f"Errors: {len(self.fatal_errors)}", f"Skipped lines: {len(self.skipped_lines)}",
+            "# ToistoKone import report", "",
+            f"**Mode:** {'dry run' if dry_run else 'normal'}", "",
+            "## Import summary",
+            f"- Dictionary files: {self.dictionary_file_count}", f"- Frequency files: {self.frequency_file_count}",
+            f"- Sentence files: {self.sentence_file_count}", f"- Kaikki index rebuilt: {'yes' if self.kaikki_index_rebuilt else 'no'}",
+            f"- Learning-set files: {self.learning_set_file_count}",
+            f"- Recommendation lemma index rebuilt: {'yes' if self.recommendation_lemma_index_rebuilt else 'no'}",
+            f"- Imported vocabulary: {self.vocabulary_count}", f"- Imported grammar forms: {self.form_count}",
+            f"- Imported sentences: {self.sentence_count}", f"- Imported translations: {self.translation_count}",
+            f"- Imported frequency entries: {self.frequency_entry_count}",
+            f"- Duplicate vocabulary entries: {self.duplicate_vocabulary_count}",
+            f"- Duplicate sentences: {self.duplicate_sentence_count}",
+            f"- Duplicate translations: {self.duplicate_translation_count}",
+            f"- Words without usable Kaikki profiles: {len(self.missing_lexicon_profiles)}",
+            f"- Form slots with alternatives: {sum(len(slots) for slots in self.form_alternatives.values())}",
+            f"- Errors: {len(self.fatal_errors)}", f"- Skipped lines: {len(self.skipped_lines)}",
         ]
         if self.content_health:
             summary = self.content_health.summary()
             lines.extend([
-                "Content health:",
-                f"Words without usable Kaikki profiles: {summary['missing_profiles']}",
-                f"Base words without supporting sentences: {summary['base_without_sentences']}",
-                f"Form cards with fewer than two supporting sentences: {summary['under_supported_forms']}",
-                f"Sentences without tracked vocabulary or forms: {summary['untracked_sentences']}",
+                "", "## Content health",
+                f"- Words without usable Kaikki profiles: {summary['missing_profiles']}",
+                f"- Base words without supporting sentences: {summary['base_without_sentences']}",
+                f"- Form cards with fewer than two supporting sentences: {summary['under_supported_forms']}",
+                f"- Sentences without tracked vocabulary or forms: {summary['untracked_sentences']}",
             ])
         if self.learning_set_coverage:
-            lines.extend(["", "Learning-set coverage:"])
+            lines.extend(["", "## Learning-set coverage"])
             lines.extend(
                 f"- {coverage.title}: {coverage.word_count} words, {coverage.form_count} forms; "
                 f"{coverage.words_without_sentences} words without sentences, "
@@ -82,7 +84,7 @@ class ImportReport:
                 for coverage in self.learning_set_coverage
             )
         if self.form_alternatives:
-            lines.extend(["", "Alternative Kaikki forms (first candidate selected):"])
+            lines.extend(["", "## Alternative Kaikki forms (first candidate selected)"])
             for word in sorted(self.form_alternatives):
                 lines.append(f"- {word}:")
                 for slot, alternatives in sorted(self.form_alternatives[word].items()):
@@ -90,17 +92,17 @@ class ImportReport:
         if self.content_health:
             if self.content_health.missing_profiles:
                 lines.extend([
-                    "", "Words without usable Kaikki profiles:",
+                    "", "## Words without usable Kaikki profiles",
                     *[f"- {finding.word} — {finding.priority_reason}" for finding in self.content_health.missing_profiles],
                 ])
             if self.content_health.base_without_sentences:
                 lines.extend([
-                    "", "Base words without supporting sentences:",
+                    "", "## Base words without supporting sentences",
                     *[f"- {finding.word} — {finding.priority_reason}" for finding in self.content_health.base_without_sentences],
                 ])
             if self.content_health.under_supported_forms:
                 lines.extend([
-                    "", "Form cards with fewer than two supporting sentences:",
+                    "", "## Form cards with fewer than two supporting sentences",
                     *[
                         f"- {finding.base_word} → {finding.form}: {finding.prompt_label} "
                         f"({finding.sentence_count}) — {finding.priority_reason}"
@@ -109,13 +111,13 @@ class ImportReport:
                 ])
             if self.content_health.untracked_sentences:
                 lines.extend([
-                    "", "Sentences without tracked vocabulary or forms:",
+                    "", "## Sentences without tracked vocabulary or forms",
                     *[f"- {finding.finnish} — {finding.priority_reason}" for finding in self.content_health.untracked_sentences],
                 ])
         if self.fatal_errors:
-            lines.extend(["", "Errors:", *self.fatal_errors])
+            lines.extend(["", "## Errors", *[f"- {error}" for error in self.fatal_errors]])
         if self.skipped_lines:
-            lines.extend(["", "Diagnostics:", *self.skipped_lines])
+            lines.extend(["", "## Diagnostics", *[f"- {line}" for line in self.skipped_lines]])
         return "\n".join(lines) + "\n"
 
 
@@ -489,7 +491,7 @@ def run_import(project_root: Path = PROJECT_ROOT, *, dry_run: bool = False, prog
     content = parse_content(project_root, progress=progress)
     data_dir = project_root / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
-    report_path = data_dir / "import-report.txt"
+    report_path = data_dir / "import-report.md"
     if content.report.fatal_errors:
         if progress:
             progress("Writing import report")
@@ -523,9 +525,9 @@ def main() -> None:
     try:
         report = run_import(dry_run=arguments.dry_run, progress=lambda message: print(message, file=sys.stderr, flush=True))
     except ImportValidationError as error:
-        print("Import failed: content validation errors found. See data/import-report.txt.", file=sys.stderr)
+        print("Import failed: content validation errors found. See data/import-report.md.", file=sys.stderr)
         raise SystemExit(1) from error
-    print("Import complete. See data/import-report.txt.")
+    print("Import complete. See data/import-report.md.")
 
 
 if __name__ == "__main__":

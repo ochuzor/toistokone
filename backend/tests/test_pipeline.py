@@ -97,7 +97,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(report.learning_set_file_count, 1)
         self.assertEqual(report.learning_set_coverage[0].title, "Home life")
         self.assertEqual(report.learning_set_coverage[0].word_count, 10)
-        self.assertIn("Learning-set coverage:\n- Home life: 10 words", report.render(dry_run=False))
+        self.assertIn("## Learning-set coverage\n- Home life: 10 words", report.render(dry_run=False))
         with sqlite3.connect(self.root / "data" / "content.sqlite") as database:
             membership = database.execute(
                 "SELECT learning_sets.key, learning_sets.title, vocabulary.finnish "
@@ -424,15 +424,26 @@ class PipelineTests(unittest.TestCase):
                 main()
         self.assertEqual(raised.exception.code, 1)
         self.assertEqual(stdout.getvalue(), "")
-        self.assertEqual(stderr.getvalue(), "Import failed: content validation errors found. See data/import-report.txt.\n")
+        self.assertEqual(stderr.getvalue(), "Import failed: content validation errors found. See data/import-report.md.\n")
 
     def test_main_points_to_the_report_without_printing_it(self) -> None:
         stdout, stderr = io.StringIO(), io.StringIO()
         with patch("backend.pipeline.run_import", return_value=ImportReport()), patch("sys.argv", ["pipeline"]), patch("sys.stdout", stdout), patch("sys.stderr", stderr):
             main()
 
-        self.assertEqual(stdout.getvalue(), "Import complete. See data/import-report.txt.\n")
+        self.assertEqual(stdout.getvalue(), "Import complete. See data/import-report.md.\n")
         self.assertEqual(stderr.getvalue(), "")
+
+    def test_report_renders_navigable_markdown_sections(self) -> None:
+        report = ImportReport(
+            fatal_errors=["missing Kaikki source"],
+            skipped_lines=["dictionary.txt: line 2: empty field"],
+        ).render(dry_run=True)
+
+        self.assertTrue(report.startswith("# ToistoKone import report\n"))
+        self.assertIn("## Import summary", report)
+        self.assertIn("## Errors\n- missing Kaikki source", report)
+        self.assertIn("## Diagnostics\n- dictionary.txt: line 2: empty field", report)
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@
 - **Frontend:** React + TypeScript + Vite + React Router. Routes `/` (home) and `/practice` (continuous quiz).
 - **Backend:** Python 3.11+ with FastAPI, Pydantic, standard-library `sqlite3` (no ORM required for v1).
 - **Databases:** `data/content.sqlite` (replaced by pipeline) and `data/progress.sqlite` (owned by running backend, never touched by pipeline).
-- **Pipeline:** Python CLI reading plain-text inputs and producing `content.sqlite` and `import-report.txt`; dry-run produces only report.
+- **Pipeline:** Python CLI reading plain-text inputs and producing `content.sqlite` and `import-report.md`; dry-run produces only report.
 - **Development:** root `npm run dev` starts backend and frontend together; Vite proxies `/api` to FastAPI. Bind to localhost only.
 - **Configuration:** root `.env`, with `QUIZ_BATCH_SIZE=20`. Backend reads it on startup; no settings UI.
 
@@ -29,7 +29,7 @@ toistokone/
   data/
     content.sqlite             # generated, disposable
     progress.sqlite            # persistent, never pipeline-owned
-    import-report.txt          # generated
+    import-report.md           # generated
     kaikki-forms.sqlite        # generated local morphology index
   backend/
     requirements.txt
@@ -241,9 +241,9 @@ Normal run:
 2. Create a **temporary** content SQLite file and load it transactionally.
 3. Build indexes, run `PRAGMA foreign_key_check` and `PRAGMA integrity_check`.
 4. Atomically replace `data/content.sqlite` only after successful build.
-5. Replace `data/import-report.txt` with a human-readable report.
+5. Replace `data/import-report.md` with a human-readable Markdown report.
 
-Dry run (`python -m backend.pipeline --dry-run`): parse/validate and replace `data/import-report.txt`; do not create, open for writing, or replace `data/content.sqlite`. It may build or refresh the ignored reusable Kaikki index. Neither mode ever writes to `progress.sqlite`.
+Dry run (`python -m backend.pipeline --dry-run`): parse/validate and replace `data/import-report.md`; do not create, open for writing, or replace `data/content.sqlite`. It may build or refresh the ignored reusable Kaikki index. Neither mode ever writes to `progress.sqlite`.
 
 Suggested CLI: `python -m backend.pipeline [--dry-run]`. Running the pipeline while the backend is active is unsupported for v1; restart the app after rebuilding.
 

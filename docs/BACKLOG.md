@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Render the content import report as navigable Markdown
 - [x] Prevent duplicate displayed vocabulary answer options
 - [x] Require stable explicit IDs for learning sets
 - [x] Validate fatal pipeline input errors before expensive imports

@@ -35,7 +35,7 @@ The user can edit three kinds of plain-text input, run a terminal import, start 
 - [x] Build content schema: vocabulary, meanings, word forms, sentences, translations, foreign keys, and indexes.
 - [x] Insert a separate base-form word-form row for every dictionary word; skip/report form entries without a dictionary base word.
 - [x] Deduplicate identical vocabulary/forms and exact Finnish sentences; merge unique sentence translations preserving first-seen order.
-- [x] Implement `python -m backend.pipeline` to build a temporary SQLite DB, verify integrity, then atomically replace `data/content.sqlite` and write `data/import-report.txt`.
+- [x] Implement `python -m backend.pipeline` to build a temporary SQLite DB, verify integrity, then atomically replace `data/content.sqlite` and write `data/import-report.md`.
 - [x] Implement `--dry-run` to write **only** the report, never changing content or progress DB.
 - [x] Add representative sample data: at least two vocabulary words, a word with multiple forms, and multiple sentences/translations.
 
@@ -136,7 +136,7 @@ For each phase: implement only that phase; run its tests/smoke checks; fix failu
 
 ## 4. Explicit invariants for code review
 
-1. **Only the pipeline** replaces `content.sqlite` and writes `import-report.txt`; **never** `progress.sqlite`.
+1. **Only the pipeline** replaces `content.sqlite` and writes `import-report.md`; **never** `progress.sqlite`.
 2. **Only the backend** writes mastery scores and practice history; **only the frontend** owns the active question queue.
 3. A sentence is **not** a card; score is attached to a vocabulary entry or a `(base, form)` pair.
 4. Score 3 never changes through ordinary answers, only explicit reset.

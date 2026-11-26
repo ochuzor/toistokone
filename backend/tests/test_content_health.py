@@ -96,13 +96,13 @@ class ContentHealthApiTests(unittest.TestCase):
         self.assertEqual(response.findings[0].priority_reason, "Focus word")
 
     def test_import_report_renders_complete_content_health_sections(self) -> None:
-        report = (self.root / "data" / "import-report.txt").read_text(encoding="utf-8")
+        report = (self.root / "data" / "import-report.md").read_text(encoding="utf-8")
 
-        self.assertIn("Content health:", report)
-        self.assertIn("Words without usable Kaikki profiles:", report)
-        self.assertIn("Base words without supporting sentences:", report)
-        self.assertIn("Form cards with fewer than two supporting sentences:", report)
-        self.assertIn("Sentences without tracked vocabulary or forms:", report)
+        self.assertIn("## Content health", report)
+        self.assertIn("- Words without usable Kaikki profiles: 0", report)
+        self.assertIn("## Base words without supporting sentences", report)
+        self.assertIn("## Form cards with fewer than two supporting sentences", report)
+        self.assertIn("## Sentences without tracked vocabulary or forms", report)
         self.assertIn("Focus word", report)
         self.assertEqual(
             hashlib.sha256((self.root / "data" / "progress.sqlite").read_bytes()).hexdigest(),
