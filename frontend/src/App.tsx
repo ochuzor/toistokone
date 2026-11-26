@@ -6,6 +6,7 @@ import ContentHealth from './pages/ContentHealth'
 import Practice from './pages/Practice'
 import Recommendations from './pages/Recommendations'
 import LearningSets from './pages/LearningSets'
+import LearningSetDetail from './pages/LearningSetDetail'
 
 export default function App() {
   const location = useLocation()
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/focus-words" element={<FocusWords />} />
           <Route path="/learning-sets" element={<LearningSets />} />
+          <Route path="/learning-sets/:setKey" element={<LearningSetDetail />} />
           <Route path="/content-health" element={<ContentHealth />} />
         </Routes>
       </main>

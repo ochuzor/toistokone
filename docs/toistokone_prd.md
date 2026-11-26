@@ -89,7 +89,8 @@ Build a small browser-based app for intensive Finnish vocabulary memorization fo
   cooldown, and form staging remain unchanged.
 - Active-set word/form surfaces join the contextual reading-break pool and
   receive a modest ranking preference. The learning-set page reports mastered
-  word and form-card totals.
+  word and form-card totals, and each set has a detail page listing its words,
+  translations, base-card mastery state, and form-card mastery summary.
 
 ## 4. Mastery rules
 

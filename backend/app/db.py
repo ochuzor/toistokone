@@ -325,6 +325,68 @@ def list_learning_sets(content_path: Path, progress_path: Path) -> list[dict[str
     ]
 
 
+def get_learning_set_detail(content_path: Path, progress_path: Path, set_key: str) -> dict[str, object]:
+    """Return one imported learning set with current member-card progress."""
+    with sqlite3.connect(content_path) as connection:
+        if connection.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'learning_sets'").fetchone() is None:
+            raise LookupError("Learning set does not exist in current content")
+        learning_set = connection.execute(
+            "SELECT key, title FROM learning_sets WHERE key = ?", (set_key,)
+        ).fetchone()
+        if learning_set is None:
+            raise LookupError("Learning set does not exist in current content")
+        connection.execute("ATTACH DATABASE ? AS progress", (str(progress_path),))
+        active = connection.execute(
+            "SELECT 1 FROM progress.active_learning_set WHERE singleton = 1 AND set_key = ?", (set_key,)
+        ).fetchone() is not None
+        member_rows = connection.execute(
+            """SELECT vocabulary.id, vocabulary.finnish, vocabulary.meaning_quizzable,
+                      COALESCE(vocabulary_progress.score, 0),
+                      COUNT(word_forms.id),
+                      COUNT(DISTINCT CASE WHEN COALESCE(form_progress.score, 0) = 3 THEN word_forms.id END)
+               FROM learning_set_words
+               JOIN vocabulary ON vocabulary.id = learning_set_words.vocabulary_id
+               LEFT JOIN word_forms ON word_forms.vocabulary_id = vocabulary.id
+               LEFT JOIN progress.card_progress AS vocabulary_progress
+                 ON vocabulary_progress.card_type = 'vocabulary'
+                AND vocabulary_progress.base_word = vocabulary.finnish
+                AND vocabulary_progress.target_form = ''
+               LEFT JOIN progress.card_progress AS form_progress
+                 ON form_progress.card_type = 'word_form'
+                AND form_progress.base_word = vocabulary.finnish
+                AND form_progress.target_form = word_forms.card_key
+               WHERE learning_set_words.set_key = ?
+               GROUP BY vocabulary.id, vocabulary.finnish, vocabulary.meaning_quizzable, vocabulary_progress.score
+               ORDER BY MIN(learning_set_words.rowid)""",
+            (set_key,),
+        ).fetchall()
+        meanings_by_vocabulary_id: dict[int, list[str]] = {}
+        for vocabulary_id, meaning in connection.execute(
+            """SELECT vocabulary.id, vocabulary_meanings.meaning
+               FROM learning_set_words
+               JOIN vocabulary ON vocabulary.id = learning_set_words.vocabulary_id
+               JOIN vocabulary_meanings ON vocabulary_meanings.vocabulary_id = vocabulary.id
+               WHERE learning_set_words.set_key = ?
+               ORDER BY learning_set_words.rowid, vocabulary_meanings.ordinal""",
+            (set_key,),
+        ):
+            meanings_by_vocabulary_id.setdefault(vocabulary_id, []).append(meaning)
+    return {
+        "key": learning_set[0],
+        "title": learning_set[1],
+        "active": active,
+        "words": [
+            {
+                "finnish": finnish,
+                "meanings": meanings_by_vocabulary_id[vocabulary_id],
+                "score": 3 if not meaning_quizzable else score,
+                "word_forms": {"total": form_total, "mastered": form_mastered},
+            }
+            for vocabulary_id, finnish, meaning_quizzable, score, form_total, form_mastered in member_rows
+        ],
+    }
+
+
 def card_exists(content_path: Path, card: CardReference) -> bool:
     if not content_path.exists():
         return False

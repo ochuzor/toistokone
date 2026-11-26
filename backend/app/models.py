@@ -125,6 +125,20 @@ class LearningSetsResponse(BaseModel):
     learning_sets: list[LearningSet]
 
 
+class LearningSetWord(BaseModel):
+    finnish: str
+    meanings: list[str]
+    score: int
+    word_forms: LearningSetCardStats
+
+
+class LearningSetDetail(BaseModel):
+    key: str
+    title: str
+    active: bool
+    words: list[LearningSetWord]
+
+
 class ActiveLearningSetRequest(BaseModel):
     set_key: str | None = None
 

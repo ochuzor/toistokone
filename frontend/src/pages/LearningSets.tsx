@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { fetchLearningSets, setActiveLearningSet, type LearningSet } from '../lib/api'
 
@@ -40,7 +41,7 @@ export default function LearningSets() {
       <ul className="learning-set-list">
         {learningSets.map((learningSet) => <li key={learningSet.key} className={learningSet.active ? 'active' : ''}>
           <div>
-            <strong>{learningSet.title}</strong>
+            <Link className="learning-set-link" to={`/learning-sets/${encodeURIComponent(learningSet.key)}`}>{learningSet.title}</Link>
             <small>{learningSet.words.mastered} / {learningSet.words.total} words mastered · {learningSet.word_forms.mastered} / {learningSet.word_forms.total} forms mastered</small>
           </div>
           {learningSet.active ? <span className="active-set-label">Active</span> : <button className="button small-button" onClick={() => void select(learningSet.key)}>Make active</button>}

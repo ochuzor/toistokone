@@ -143,6 +143,10 @@ word's membership. The import report warns about set-specific sentence coverage.
 prefers active-set vocabulary after focus requests and active-set forms before
 other forms; review quotas are unchanged. Reading breaks add active-set surfaces
 to their candidates and apply a small matching-sentence bonus.
+The API lists set summaries at `GET /api/learning-sets` and exposes a selected
+set's member words, meanings, base-card scores, and form mastery counts at
+`GET /api/learning-sets/{set_key}`. The frontend presents that detail at
+`/learning-sets/:setKey`.
 
 **Import preflight:** Dictionary entries, learning-set membership, Kaikki
 source/index availability, and the required frequency list are validated before

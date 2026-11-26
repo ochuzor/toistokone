@@ -97,6 +97,18 @@ export type LearningSet = {
   active: boolean
 }
 
+export type LearningSetDetail = {
+  key: string
+  title: string
+  active: boolean
+  words: Array<{
+    finnish: string
+    meanings: string[]
+    score: number
+    word_forms: { total: number; mastered: number }
+  }>
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(path, options)
   if (!response.ok) {
@@ -147,6 +159,10 @@ export function fetchContentHealth(category: ContentHealthCategory, offset = 0):
 export async function fetchLearningSets(): Promise<LearningSet[]> {
   const response = await request<{ learning_sets: LearningSet[] }>('/api/learning-sets')
   return response.learning_sets
+}
+
+export function fetchLearningSet(setKey: string): Promise<LearningSetDetail> {
+  return request<LearningSetDetail>(`/api/learning-sets/${encodeURIComponent(setKey)}`)
 }
 
 export function setActiveLearningSet(setKey: string | null): Promise<void> {

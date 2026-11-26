@@ -9,7 +9,7 @@ body { margin: 0; min-width: 320px; }
 .site-brand { color: #145c40; font-size: 1.1rem; font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
 .site-nav { display: flex; align-items: center; gap: .2rem; }
 .site-nav a { padding: .5rem .7rem; border-radius: .45rem; color: #52616f; font-size: .9rem; font-weight: 650; text-decoration: none; }
-.site-nav a:focus-visible, .button:focus-visible, .option:focus-visible, .text-button:focus-visible, .focus-search input:focus-visible { outline: 3px solid #86efac; outline-offset: 2px; }
+.site-nav a:focus-visible, .button:focus-visible, .option:focus-visible, .text-button:focus-visible, .focus-search input:focus-visible, .learning-set-link:focus-visible, .back-link:focus-visible { outline: 3px solid #86efac; outline-offset: 2px; }
 .site-nav a:hover { color: #145c40; background: #e8f0eb; }
 .site-nav a.active { color: #145c40; background: #dcece1; }
 .is-practice .site-header { border-color: #e2e8f0; opacity: .82; }
@@ -114,7 +114,19 @@ button.button { border: 0; cursor: pointer; font: inherit; }
 .learning-set-list li.active { border-color: #16704b; background: #e8f5eb; }
 .learning-set-list li div { display: grid; gap: .25rem; }
 .learning-set-list small { color: #475569; }
+.learning-set-link, .back-link { color: #162b24; font-weight: 750; text-decoration: none; }
+.learning-set-link:hover, .back-link:hover { color: #16704b; text-decoration: underline; }
 .active-set-label { color: #16704b; font-size: .85rem; font-weight: 750; }
+.learning-set-detail-card { width: min(100%, 52rem); }
+.back-link { display: inline-block; color: #16704b; font-size: .9rem; }
+.learning-set-detail-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.learning-set-detail-heading h1 { margin-top: 1rem; }
+.learning-set-word-list { display: grid; gap: .6rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.learning-set-word-list li { display: flex; gap: .85rem; padding: .85rem; border-radius: .6rem; background: #f1f5f9; }
+.learning-set-word-list li > div { display: grid; min-width: 0; gap: .15rem; }
+.learning-set-word-list strong { color: #162b24; font-size: 1.05rem; }
+.learning-set-word-list span, .learning-set-word-list small { color: #475569; overflow-wrap: anywhere; }
+.learning-set-mastery-icon { flex: 0 0 1.5rem; color: #16704b; font-size: 1.35rem; font-weight: 700; line-height: 1.2; text-align: center; }
 .health-card { width: min(100%, 58rem); min-width: 0; }
 .health-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; margin: 1.5rem 0; }
 .health-summary-item { display: grid; gap: .3rem; min-height: 5.5rem; padding: .85rem; border: 1px solid #dce7df; border-radius: .65rem; background: #f8faf9; color: #475569; cursor: pointer; font: inherit; text-align: left; }
@@ -161,4 +173,5 @@ button.button { border: 0; cursor: pointer; font: inherit; }
   .focus-list li > :last-child { margin-left: auto; }
   .learning-set-list li { align-items: start; flex-wrap: wrap; }
   .learning-set-list li > :last-child { margin-left: auto; }
+  .learning-set-detail-heading { align-items: start; flex-direction: column; gap: .25rem; }
 }

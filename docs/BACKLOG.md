@@ -6,6 +6,7 @@
 ## Later
 
 ## Completed
+- [x] Show words and progress within each learning set
 - [x] Render the content import report as navigable Markdown
 - [x] Prevent duplicate displayed vocabulary answer options
 - [x] Require stable explicit IDs for learning sets

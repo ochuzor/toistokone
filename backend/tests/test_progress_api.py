@@ -3,13 +3,14 @@ from __future__ import annotations
 import tempfile
 import unittest
 import json
+import sqlite3
 from pathlib import Path
 
 from fastapi import HTTPException
 
 from backend.app.config import Settings
 from backend.app.db import initialize_progress_database, list_vocabulary
-from backend.app.main import active_learning_set, add_focus_word, answer, app, content_version, delete_focus_word, focus_words, learning_sets, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
+from backend.app.main import active_learning_set, add_focus_word, answer, app, content_version, delete_focus_word, focus_words, learning_set_detail, learning_sets, quiz_batch, recommendations, reset, sentence_break, stats, vocabulary
 from backend.app.models import ActiveLearningSetRequest, AnswerRequest, FocusWordRequest, ResetRequest
 from backend.pipeline import run_import
 from backend.tests.kaikki_fixture import write_kaikki
@@ -110,6 +111,53 @@ class ProgressApiTests(unittest.TestCase):
         with self.assertRaises(HTTPException) as raised:
             active_learning_set(ActiveLearningSetRequest(set_key="missing"))
         self.assertEqual(raised.exception.status_code, 404)
+
+    def test_learning_set_detail_returns_member_progress_in_set_order(self) -> None:
+        words = ["talo", *[f"word-{number}" for number in range(1, 10)]]
+        (self.root / "dictionary.txt").write_text(
+            "talo - house\n" + "".join(f"{word} - meaning\n" for word in words[1:]), encoding="utf-8"
+        )
+        directory = self.root / "learning-sets"
+        directory.mkdir()
+        (directory / "home.md").write_text("---\nid: home\n---\n# Home life\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8")
+        run_import(self.root)
+        with sqlite3.connect(self.settings.progress_db_path) as connection:
+            connection.execute(
+                "INSERT INTO card_progress (card_type, base_word, target_form, score) VALUES ('vocabulary', 'talo', '', 2)"
+            )
+            connection.execute(
+                "INSERT INTO card_progress (card_type, base_word, target_form, score) VALUES ('word_form', 'talo', 'nominal:genitive', 3)"
+            )
+
+        detail = learning_set_detail("home")
+
+        self.assertEqual(detail.title, "Home life")
+        self.assertEqual([word.finnish for word in detail.words], words)
+        self.assertEqual(detail.words[0].model_dump(), {
+            "finnish": "talo", "meanings": ["house"], "score": 2,
+            "word_forms": {"total": 10, "mastered": 1},
+        })
+        self.assertFalse(detail.active)
+        active_learning_set(ActiveLearningSetRequest(set_key="home"))
+        self.assertTrue(learning_set_detail("home").active)
+        with self.assertRaises(HTTPException) as raised:
+            learning_set_detail("missing")
+        self.assertEqual(raised.exception.status_code, 404)
+
+    def test_learning_set_detail_treats_forms_only_word_as_base_mastered(self) -> None:
+        words = ["Tampere", *[f"word-{number}" for number in range(1, 10)]]
+        (self.root / "dictionary.txt").write_text(
+            "Tampere - Tampere\n" + "".join(f"{word} - meaning\n" for word in words[1:]), encoding="utf-8"
+        )
+        directory = self.root / "learning-sets"
+        directory.mkdir()
+        (directory / "places.md").write_text("---\nid: places\n---\n# Places\n" + "".join(f"- {word}\n" for word in words), encoding="utf-8")
+        run_import(self.root)
+
+        detail = learning_set_detail("places")
+
+        self.assertEqual(detail.words[0].finnish, "Tampere")
+        self.assertEqual(detail.words[0].score, 3)
 
     def test_recommendations_route_returns_contextual_words(self) -> None:
         response = recommendations()
